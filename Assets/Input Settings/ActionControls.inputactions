@@ -1,0 +1,90 @@
+{
+    "name": "ActionControls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "8903f1e2-f788-46ec-951d-31e43e17e7ab",
+            "actions": [
+                {
+                    "name": "Move Top-Down",
+                    "type": "Value",
+                    "id": "70e499d5-6edc-46aa-9c8b-a3cc1aa4c0df",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "WASD Keys",
+                    "id": "b7b27895-92f5-4b7f-9e99-87ba0398634d",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Top-Down",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "93ca97d8-10b7-4865-89b2-1c3c71a89473",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Config",
+                    "action": "Move Top-Down",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "a346e03a-4738-4ec4-87b1-21b9c6443aa5",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Config",
+                    "action": "Move Top-Down",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "3f529c1a-9a92-4701-84fe-1f823c8a2917",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Config",
+                    "action": "Move Top-Down",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "8098becf-fa85-486f-bdba-ed2e6eef525b",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Config",
+                    "action": "Move Top-Down",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard Config",
+            "bindingGroup": "Keyboard Config",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
