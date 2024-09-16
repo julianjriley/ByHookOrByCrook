@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Mathematics;
 
 public class MouseTracker : MonoBehaviour
 {
@@ -26,20 +27,12 @@ public class MouseTracker : MonoBehaviour
     void Update()
     {
         _mousePos = _mousePosAction.ReadValue<Vector2>();
-        Debug.Log(_mousePos.x + " " +  _mousePos.y);
         _mouseTrackerX = _mousePos.x - (1920/2);
         _mouseTrackerZ = _mousePos.y - (1080/2);
 
         // Imposing bounds
-        if (_mouseTrackerX > MouseRadius)
-            _mouseTrackerX = MouseRadius;
-        if (_mouseTrackerX < -MouseRadius)
-            _mouseTrackerX = -MouseRadius;
-
-        if (_mouseTrackerZ > MouseRadius)
-            _mouseTrackerZ = -MouseRadius;
-        if (_mouseTrackerZ < -MouseRadius)
-            _mouseTrackerZ = MouseRadius;
+        _mouseTrackerX = math.remap(- Screen.width / 2, Screen.width / 2, -MouseRadius, MouseRadius, _mouseTrackerX);
+        _mouseTrackerZ = math.remap(-Screen.height / 2, Screen.height / 2, MouseRadius, -MouseRadius, _mouseTrackerZ);
 
         this.transform.localPosition = new Vector3(_mouseTrackerX, this.transform.position.y, _mouseTrackerZ);
     }
