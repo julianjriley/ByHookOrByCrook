@@ -34,6 +34,11 @@ public class MouseTracker : MonoBehaviour
         _mouseTrackerX = math.remap(- Screen.width / 2, Screen.width / 2, -MouseRadius, MouseRadius, _mouseTrackerX);
         _mouseTrackerZ = math.remap(-Screen.height / 2, Screen.height / 2, MouseRadius, -MouseRadius, _mouseTrackerZ);
 
+        if (_mousePos.x < 0 || _mousePos.x > Screen.width)
+            _mouseTrackerX = 0;
+        if (_mousePos.y < 0 || _mousePos.y > Screen.height)
+            _mouseTrackerZ = 0;
+
         this.transform.localPosition = new Vector3(_mouseTrackerX, this.transform.position.y, _mouseTrackerZ);
     }
 }
