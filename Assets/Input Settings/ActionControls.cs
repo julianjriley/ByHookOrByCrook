@@ -37,6 +37,24 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Mouse Position"",
+                    ""type"": ""Value"",
+                    ""id"": ""fd9892de-5789-4223-914c-f0df68645461"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""5062e6e8-5b71-497f-a235-f33a2162389a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""FireWeapon"",
                     ""type"": ""Button"",
                     ""id"": ""a3990f97-25d4-4c4c-9f85-7fd0d46ddb3e"",
@@ -113,12 +131,34 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""0b490b19-3ede-45d5-80e8-c9657a8e5d78"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard Config"",
+                    ""action"": ""Mouse Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""cea4f83c-5bd1-43dc-a59c-067e959f375a"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""FireWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f76f5ef8-4f23-4446-a73f-93950ebb29fa"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard Config"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -197,6 +237,8 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_MoveTopDown = m_Player.FindAction("Move Top-Down", throwIfNotFound: true);
+        m_Player_MousePosition = m_Player.FindAction("Mouse Position", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_FireWeapon = m_Player.FindAction("FireWeapon", throwIfNotFound: true);
         m_Player_MoveArena = m_Player.FindAction("MoveArena", throwIfNotFound: true);
     }
@@ -266,6 +308,8 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_MoveTopDown;
+    private readonly InputAction m_Player_MousePosition;
+    private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_FireWeapon;
     private readonly InputAction m_Player_MoveArena;
     public struct PlayerActions
@@ -273,6 +317,8 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         private @ActionControls m_Wrapper;
         public PlayerActions(@ActionControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveTopDown => m_Wrapper.m_Player_MoveTopDown;
+        public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @FireWeapon => m_Wrapper.m_Player_FireWeapon;
         public InputAction @MoveArena => m_Wrapper.m_Player_MoveArena;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -287,6 +333,12 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @MoveTopDown.started += instance.OnMoveTopDown;
             @MoveTopDown.performed += instance.OnMoveTopDown;
             @MoveTopDown.canceled += instance.OnMoveTopDown;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
             @FireWeapon.started += instance.OnFireWeapon;
             @FireWeapon.performed += instance.OnFireWeapon;
             @FireWeapon.canceled += instance.OnFireWeapon;
@@ -300,6 +352,12 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @MoveTopDown.started -= instance.OnMoveTopDown;
             @MoveTopDown.performed -= instance.OnMoveTopDown;
             @MoveTopDown.canceled -= instance.OnMoveTopDown;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
             @FireWeapon.started -= instance.OnFireWeapon;
             @FireWeapon.performed -= instance.OnFireWeapon;
             @FireWeapon.canceled -= instance.OnFireWeapon;
@@ -335,6 +393,8 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMoveTopDown(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnFireWeapon(InputAction.CallbackContext context);
         void OnMoveArena(InputAction.CallbackContext context);
     }
