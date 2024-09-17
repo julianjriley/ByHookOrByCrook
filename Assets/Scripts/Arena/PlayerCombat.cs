@@ -18,34 +18,54 @@ public class PlayerCombat : MonoBehaviour
     private float _speed;
 
     //Children Transforms
-    private Transform _weaponsTransform;
-    private Transform _passivesTransform;
+    [SerializeField] private Transform _weaponsTransform;
+    [SerializeField] private Transform _passivesTransform;
 
     private WeaponInstance _equippedWeapon;
 
     //Total Inventory
-    private Inventory _items;
+    private Inventory _inventory;
 
     //Weapons Inventory
     private List<WeaponInstance> _weapons;
 
+    //Basically for testing and stuff
+    //[SerializeField] private PassiveItem _testItem;
+
     private void OnEnable()
     {
-        controls.Player.Enable();
-        controls.Player.FireWeapon.started += FireWeapon;
+        
+
     }
 
-
+    private void Awake()
+    {
+        controls = new ActionControls();
+    }
     void Start()
     {
-        Inventory items = new Inventory();
+        controls.Player.FireWeapon.Enable();
+        controls.Player.FireWeapon.started += FireWeapon;
+        ResetStats();
+
+        /*
+        
+        Just Showing off How inventory works feel free to annihilate this
+        _inventory = new Inventory();
+        _inventory.AddItem(_testItem);
+
+        PassiveItem itemTest = _inventory.items[0] as PassiveItem;
+        itemTest.SetPlayer(this);
+        itemTest.CreatePrefabOnPlayer();
+        */
     }
 
 
 
     void FireWeapon(InputAction.CallbackContext context)
     {
-        _equippedWeapon.Fire(Vector3.zero);
+        if(_equippedWeapon != null)
+            _equippedWeapon.Fire(Vector3.zero);
     }
 
 
@@ -71,5 +91,16 @@ public class PlayerCombat : MonoBehaviour
     public Transform GetPassivesTransform()
     {
         return _passivesTransform;
+    }
+
+    void ResetStats()
+    {
+        _health = _baseHealth;
+        _speed = _baseSpeed;
+    }
+
+    public void AppendItemToPassiveInstances(GameObject prefab)
+    {
+        GameObject instantiatedPrefab = Instantiate(prefab, _passivesTransform);
     }
 }
