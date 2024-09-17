@@ -46,7 +46,9 @@ public class Interactor : MonoBehaviour
         {
             if (IsNPC) // If E is pressed on an NPC
             {
-
+                // Stop player movement
+                // Remove player control of camera, passing it over to a pre-set static virtual camera
+                // Disable the interaction trigger so the player pressing E to talk doesn't re-trigger the interaction
             }
             else // If E is pressed on a shop
             {
