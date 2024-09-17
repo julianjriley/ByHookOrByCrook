@@ -14,7 +14,7 @@ public class HubMovement : MonoBehaviour
     private Vector2 _moveValues;
     private Vector3 _velocity;
 
-    private Rigidbody _rb;
+    private Rigidbody2D _rb;
     private Animator _anim;
     private SpriteRenderer _sr;
 
@@ -23,9 +23,14 @@ public class HubMovement : MonoBehaviour
     void Start()
     {
         _moveAction = InputSystem.actions.FindAction("Move Top-Down");
-        _rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _sr = GetComponent<SpriteRenderer>();
+
+        // TODO: Put this somewhere relevant to it
+        Camera camera = Camera.main;
+        camera.transparencySortMode = TransparencySortMode.CustomAxis;
+        camera.transparencySortAxis = new Vector3(0, 1, 1);
     }
 
     // Update is called once per frame
@@ -35,7 +40,7 @@ public class HubMovement : MonoBehaviour
 
         AnimatePlayer2D();
 
-        _velocity = new Vector3(_moveValues.x * MoveSpeed, _moveValues.y * MoveSpeed, _rb.velocity.z);
+        _velocity = new Vector2(_moveValues.x * MoveSpeed, _moveValues.y * MoveSpeed);
     }
 
     private void FixedUpdate()

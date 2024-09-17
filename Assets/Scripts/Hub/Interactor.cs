@@ -10,8 +10,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // TODO
-// Solve my sprite depth problem https://docs.unity3d.com/Manual/2DSorting.html#sortlayer
-    // I think this is literally gonna have to be the classic "split it in half and put the collider on the bottom half"
 // Set up cryer system for NPCs
 // Figure out how to store an NPC's icon and script so they can be called up
 // Set up UI for conversations
@@ -59,19 +57,20 @@ public class Interactor : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             _interactPrompt.SetActive(true);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             _interactPrompt.SetActive(false);
         }
     }
+
 }
