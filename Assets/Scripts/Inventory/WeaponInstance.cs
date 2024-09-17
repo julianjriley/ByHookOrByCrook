@@ -9,6 +9,6 @@ public class WeaponInstance : MonoBehaviour
 
     public virtual void Fire(Vector3 direction)
     {
-
+        
     }
 }
