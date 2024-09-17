@@ -8,7 +8,7 @@ public class Inventory
 {
     public List<Item> items = new List<Item>();
 
-    public void AddIten(Item item)
+    public void AddItem(Item item)
     {
         items.Add(item);
     }
