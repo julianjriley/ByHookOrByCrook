@@ -35,7 +35,7 @@ public class HubMovement : MonoBehaviour
 
         AnimatePlayer2D();
 
-        _velocity = new Vector3(_moveValues.x * MoveSpeed, _rb.velocity.y, _moveValues.y * MoveSpeed);
+        _velocity = new Vector3(_moveValues.x * MoveSpeed, _moveValues.y * MoveSpeed, _rb.velocity.z);
     }
 
     private void FixedUpdate()
