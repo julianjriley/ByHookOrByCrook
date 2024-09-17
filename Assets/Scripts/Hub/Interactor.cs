@@ -62,6 +62,8 @@ public class Interactor : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _interactPrompt.SetActive(true);
+            if(IsNPC)
+                _cryerPrompt.SetActive(false);
         }
     }
 
