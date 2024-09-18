@@ -15,6 +15,24 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Mouse Position",
+                    "type": "Value",
+                    "id": "fd9892de-5789-4223-914c-f0df68645461",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "5062e6e8-5b71-497f-a235-f33a2162389a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "FireWeapon",
                     "type": "Button",
                     "id": "a3990f97-25d4-4c4c-9f85-7fd0d46ddb3e",
@@ -91,6 +109,16 @@
                 },
                 {
                     "name": "",
+                    "id": "0b490b19-3ede-45d5-80e8-c9657a8e5d78",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard Config",
+                    "action": "Mouse Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "id": "cea4f83c-5bd1-43dc-a59c-067e959f375a",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -101,6 +129,16 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "f76f5ef8-4f23-4446-a73f-93950ebb29fa",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard Config",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },{
                     "name": "WASD Keys",
                     "id": "8afa6fd5-04d5-4c8e-9337-0ac0e9db8bf0",
                     "path": "2DVector",
