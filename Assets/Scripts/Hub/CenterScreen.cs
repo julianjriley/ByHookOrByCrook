@@ -14,7 +14,6 @@ public class CenterScreen : MonoBehaviour
     void Update()
     {
         Vector3 translation = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        Debug.Log(translation);
         this.transform.position = new Vector3(translation.x, translation.y, 0);
     }
 }

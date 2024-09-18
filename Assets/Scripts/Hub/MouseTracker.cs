@@ -39,6 +39,6 @@ public class MouseTracker : MonoBehaviour
         if (_mousePos.y < 0 || _mousePos.y > Screen.height)
             _mouseTrackerY = 0;
 
-        this.transform.position = new Vector3(_mouseTrackerX, _mouseTrackerY, this.transform.position.z); // localP
+        this.transform.localPosition = new Vector3(_mouseTrackerX, _mouseTrackerY, this.transform.position.z); // localP
     }
 }
