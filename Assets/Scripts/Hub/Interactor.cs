@@ -8,9 +8,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 // TODO
-// Set up cryer system for NPCs
 // Figure out how to store an NPC's icon and script so they can be called up
 // Set up UI for conversations
 // Set up UI so that the amount of gold you have is displayed only when in front of a shop, DKC style
@@ -19,21 +19,28 @@ using UnityEngine.InputSystem;
 public class Interactor : MonoBehaviour
 {
     private InputAction _interactAction;
-
+    
     [Tooltip("The prompt to interact with the object (press E)")]
     [SerializeField] private GameObject _interactPrompt;
     [Tooltip("Whether this interaction point is for an NPC or a shop point.")]
     public bool IsNPC;
     
-    // An NPC interaction point will open the actual canvas UI with a script for dialogue when interacted with.
+    // An NPC interaction point will lock the player into an interaction.
     // A shop interaction point will attempt to use the player's money to purchase something.
     [Header("NPC Interaction Variables")]
     [Tooltip("The text box that will show when the player is farther away from the NPC")]
-    [SerializeField] private GameObject _cryerPrompt; 
+    [SerializeField] private GameObject _cryerPrompt;
+    [Tooltip("The main hub camera, and the camera focused on this specific interaction")]
+    [SerializeField] private GameObject _mainCamera;
+    [SerializeField] private GameObject _interactCamera;
+    [Tooltip("The player's movement script")]
+    [SerializeField] private HubMovement _player;
 
     [Header("Shop Interaction Variables")]
     [Tooltip("Whether to get rid of this shop after something is bought.")]
     [SerializeField] private bool _destroyOnPurchase;
+
+    bool isActiveCoroutine;
     void Start()
     {
         _interactAction = InputSystem.actions.FindAction("Interact");
@@ -42,13 +49,11 @@ public class Interactor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_interactAction.IsPressed())
+        if (_interactAction.IsPressed() && !isActiveCoroutine)
         {
             if (IsNPC) // If E is pressed on an NPC
             {
-                // Stop player movement
-                // Remove player control of camera, passing it over to a pre-set static virtual camera
-                // Disable the interaction trigger so the player pressing E to talk doesn't re-trigger the interaction
+                StartCoroutine(DoInteractionNPC());
             }
             else // If E is pressed on a shop
             {
@@ -59,6 +64,36 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    private IEnumerator DoInteractionNPC()
+    {
+        isActiveCoroutine = true;
+
+        // Deactivate the interaction prompt
+        _interactPrompt.SetActive(false);
+
+        // Switch cameras
+        _interactCamera.SetActive(true);
+        _mainCamera.SetActive(false);
+
+        // Stop player movement
+        _player.IsIdle = true;
+
+        // Disable the interaction trigger so the player pressing E to talk doesn't re-trigger the interaction
+
+        yield return new WaitForSeconds(3f);
+
+        // Switch cameras back
+        _interactCamera.SetActive(false);
+        _mainCamera.SetActive(true);
+
+        // Give player movement back
+        _player.IsIdle = false;
+
+        isActiveCoroutine = false;
+        yield return null;
+    }
+
+    #region TRIGGER PROXIMITY CHECKS
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -76,5 +111,6 @@ public class Interactor : MonoBehaviour
             _interactPrompt.SetActive(false);
         }
     }
+    #endregion
 
 }
