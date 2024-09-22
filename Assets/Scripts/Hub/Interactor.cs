@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using TMPro;
 
 // TODO
 // Figure out how to store an NPC's icon and script so they can be called up
@@ -19,6 +20,7 @@ using Cinemachine;
 public class Interactor : MonoBehaviour
 {
     private InputAction _interactAction;
+    private BoxCollider2D _col;
     
     [Tooltip("The prompt to interact with the object (press E)")]
     [SerializeField] private GameObject _interactPrompt;
@@ -30,6 +32,11 @@ public class Interactor : MonoBehaviour
     [Header("NPC Interaction Variables")]
     [Tooltip("The text box that will show when the player is farther away from the NPC")]
     [SerializeField] private GameObject _cryerPrompt;
+    [Tooltip("The text box and text item that will be used for talking")]
+    [SerializeField] private GameObject _convoBubble;
+    [SerializeField] private TextMeshPro _convoText;
+    [Tooltip("The object that represents the conversation script")]
+    [SerializeField] private Conversation _conversation;
     [Tooltip("The main hub camera, and the camera focused on this specific interaction")]
     [SerializeField] private GameObject _mainCamera;
     [SerializeField] private GameObject _interactCamera;
@@ -44,6 +51,7 @@ public class Interactor : MonoBehaviour
     void Start()
     {
         _interactAction = InputSystem.actions.FindAction("Interact");
+        _col = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -67,6 +75,7 @@ public class Interactor : MonoBehaviour
     private IEnumerator DoInteractionNPC()
     {
         isActiveCoroutine = true;
+        _col.enabled = false;
 
         // Deactivate the interaction prompt
         _interactPrompt.SetActive(false);
@@ -78,9 +87,18 @@ public class Interactor : MonoBehaviour
         // Stop player movement
         _player.IsIdle = true;
 
-        // Disable the interaction trigger so the player pressing E to talk doesn't re-trigger the interaction
+        // Show the discussion box
+        _convoBubble.SetActive(true);
 
-        yield return new WaitForSeconds(3f);
+        // Set up the conversation
+        foreach(string line in _conversation.lines)
+        {
+            _convoText.text = line;
+            yield return new WaitForSeconds(.1f);
+            yield return new WaitUntil(() => _interactAction.IsPressed());
+        }
+        // Hide the discussion box
+        _convoBubble.SetActive(false);
 
         // Switch cameras back
         _interactCamera.SetActive(false);
@@ -89,7 +107,9 @@ public class Interactor : MonoBehaviour
         // Give player movement back
         _player.IsIdle = false;
 
+        yield return new WaitForSeconds(3f);
         isActiveCoroutine = false;
+        _col.enabled = true;
         yield return null;
     }
 
