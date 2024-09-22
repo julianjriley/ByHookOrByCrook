@@ -48,6 +48,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private bool _destroyOnPurchase;
 
     bool isActiveCoroutine;
+    bool isSkippingLine;
     void Start()
     {
         _interactAction = InputSystem.actions.FindAction("Interact");
@@ -93,8 +94,29 @@ public class Interactor : MonoBehaviour
         // Set up the conversation
         foreach(string line in _conversation.lines)
         {
+            isSkippingLine = false;
+            StartCoroutine(DoTextEscapeSubroutine());
+            for(int i = 0; i < line.Length; i++)
+            {
+                if (!isSkippingLine)
+                {
+                    if (line[i].Equals(' '))
+                    {
+                        i++;
+                    }
+                    _convoText.text = line.Substring(0, i);
+
+                    yield return new WaitForSeconds(.07f);
+                }
+                else { 
+                    _convoText.text = line;
+                    break;
+                }
+                
+            }
+            StopCoroutine(DoTextEscapeSubroutine());
             _convoText.text = line;
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitUntil(() => !_interactAction.IsPressed()); // Make the player lift the button so they don't hold through
             yield return new WaitUntil(() => _interactAction.IsPressed());
         }
         // Hide the discussion box
@@ -111,6 +133,13 @@ public class Interactor : MonoBehaviour
         isActiveCoroutine = false;
         _col.enabled = true;
         yield return null;
+    }
+
+    private IEnumerator DoTextEscapeSubroutine()
+    {
+        yield return new WaitUntil(() => !_interactAction.IsPressed()); // Make the player lift the button so they don't hold through
+        yield return new WaitUntil(() => _interactAction.IsPressed());
+        isSkippingLine = true;
     }
 
     #region TRIGGER PROXIMITY CHECKS
