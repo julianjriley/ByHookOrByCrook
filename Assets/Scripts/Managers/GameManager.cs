@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         // TODO: INITIALIZE DEFAULT VALUES FOR SAVE DATA
         // default data in case player prefs not found
         newSaveData.bossNumber = 0;
-        newSaveData.lossCounter = 0;
+        newSaveData.lossCounter = 3;
 
         // TODO: read existing save data (if it exists) from PlayerPrefs
 

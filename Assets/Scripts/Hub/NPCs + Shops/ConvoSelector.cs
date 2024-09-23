@@ -54,17 +54,44 @@ public class ConvoSelector : MonoBehaviour
         book.generalConvos.Sort(comparer);
         // This sorts the list from lowest to highest priority. We store the highest priority for iteration purposes.
         int highPriority = book.generalConvos[book.generalConvos.Count - 1].GeneralPriority;
-        for(int j = 0; j < book.generalConvos.Count; j++)
+
+        // We iterate through the priorities, from X to 0
+        for(int k = highPriority; k >= 0; k--)
         {
-            Debug.Log(book.generalConvos[j].GeneralPriority); // This is for me to see how my sort works, lol
+            List<Conversation> tempList = new List<Conversation>();
+            foreach(Conversation conversation in book.generalConvos)
+            {
+                // If this is a high priority conversation we haven't had, add it to the tempList
+                if(conversation.GeneralPriority == k && !conversation.IsConversationHad)
+                {
+                    tempList.Add(conversation);
+                }
+            }
+
+            if(tempList.Count == 1) // If there's only one viable convo of this priority, return it
+            {
+                return tempList[0];
+            }
+            else if(tempList.Count > 1) // Otherwise, randomly pick one from the pool
+            {
+                int index = Random.Range(0, tempList.Count);
+                return tempList[index];
+            }
         }
-        
 
         // If we get here, to the very end, without any conversation returned, we clear the Had booleans of ALL the 0 priorities
         // and just return the first one
+        for(int l = 0; l < book.generalConvos.Count; l++)
+        {
+            if(book.generalConvos[l].GeneralPriority == 0)
+            {
+                book.generalConvos[l].IsConversationHad = false;
+            }
+        }
         return book.generalConvos[0];
     }
 
+    #region COMPARER CLASS
     public class ConvoComparer : IComparer<Conversation>
     {
         public int Compare(Conversation x, Conversation y)
@@ -118,4 +145,5 @@ public class ConvoSelector : MonoBehaviour
             }
         }
     }
+    #endregion
 }

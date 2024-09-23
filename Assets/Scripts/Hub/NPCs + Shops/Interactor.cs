@@ -97,6 +97,7 @@ public class Interactor : MonoBehaviour
         _convoBubble.SetActive(true);
 
         // Set up the conversation
+        _conversation.IsConversationHad = true;
         foreach(string line in _conversation.lines)
         {
             isSkippingLine = false;
