@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c20799f1421fb745b061183acc66a9c, type: 3}
+  m_Name: TBook1
+  m_EditorClassIdentifier: 
+  bookNumber: 0
+  postBossLossConvos:
+  - {fileID: 11400000, guid: 62a4707aaf7af5e43ac7bfca4bb260fb, type: 2}
+  generalConvos:
+  - {fileID: 11400000, guid: 7e4dff0d2f35ba148b3232cbb4125eda, type: 2}
+  - {fileID: 11400000, guid: f43ee1b3887339a428d2847a7b58c282, type: 2}
+  - {fileID: 11400000, guid: 9adb582f21a7ed2488c60a30d2aec8a1, type: 2}

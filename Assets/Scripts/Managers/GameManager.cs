@@ -85,6 +85,9 @@ public class GameManager : MonoBehaviour
     {
         // TODO: ADD SAVE DATA HERE
         // i.e. UPGRADES, CURRENCY (ECONOMY), SETTINGS
+        // Boss-related stats
+        public int bossNumber;  // Whether the player is on the first, second, or third boss (0, 1, 2)
+        public int lossCounter; // How many times you've lost to a boss (resets on victory)
     }
 
     // private stored save data
@@ -120,6 +123,8 @@ public class GameManager : MonoBehaviour
 
         // TODO: INITIALIZE DEFAULT VALUES FOR SAVE DATA
         // default data in case player prefs not found
+        newSaveData.bossNumber = 0;
+        newSaveData.lossCounter = 0;
 
         // TODO: read existing save data (if it exists) from PlayerPrefs
 

@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
-  m_Name: Test1
+  m_Name: GeneralPri2
   m_EditorClassIdentifier: 
   lines:
-  - You know, they probably won't let me swear in the real game.
-  - I guess that means this might be my only chance.
-  - ...alright, here I go.
-  - 3... 2... 1...
-  - ...
-  - heck.
-  - WHEW. That was a RUSH!
+  - To succeed at fishing, you'll need my secret tip.
+  - Ready for it?
+  - Use the LEFT MOUSE BUTTON to cast and reel!
   IsConversationHad: 0
+  RequiredBossLossCount: 0
+  GeneralPriority: 2

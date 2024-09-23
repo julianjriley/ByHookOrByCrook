@@ -73,6 +73,11 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    public void SetConversation(Conversation convo)
+    {
+        _conversation = convo;
+    }
+
     private IEnumerator DoInteractionNPC()
     {
         isActiveCoroutine = true;
