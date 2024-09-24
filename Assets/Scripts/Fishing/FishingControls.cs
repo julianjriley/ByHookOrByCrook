@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Mathematics;
 
+/// <summary>
+/// Handles input gathering (using new input system), processing of casting inputs, and processing of reeling inputs.
+/// Calls are made to the bobber and random fish selector as needed.
+/// </summary>
 public class FishingControls : MonoBehaviour
 {
     // State management
@@ -103,6 +107,12 @@ public class FishingControls : MonoBehaviour
         else if(!_fishingClick && _prevClick) // transition to reeling mode
         {
             _isReeling = true;
+
+            // launch bobber
+            _bobber.LaunchBobber(_currCharge);
+
+            // TODO: make this fade out instead
+            _castingIndicator.SetActive(false);
         }
 
         // UPDATING FILL BAR
@@ -127,63 +137,39 @@ public class FishingControls : MonoBehaviour
     #endregion
 
     #region REELING
-    [Header("Bobber Behavior")]
-    [SerializeField, Tooltip("Bobber rigidbody, needed to simulate its movement")]
-    private Rigidbody2D _bobber;
-    [SerializeField, Tooltip("Gravity value of the launching bobber")]
-    private float _launchGravity;
-    [SerializeField, Tooltip("Initial vertical cast speed of the bobber")]
-    private float _verticalCastSpeed;
-    [SerializeField, Tooltip("Smallest charge initial horizontal cast speed of the bobber")]
-    private float _minHorizontalCastSpeed;
-    [SerializeField, Tooltip("Largest charge initial horizontal cast speed of the bobber")]
-    private float _maxHorizontalCastSpeed;
-    [SerializeField, Tooltip("Height value of the water line (relative to bobber transform). Needed to determine when bobber should bob")]
-    private float _waterLevel;
-    [SerializeField, Tooltip("factor by which the vertical velocity is reduced on impact with the water; should be between 0 and 1")]
-    private float _verticalDampen;
-    [SerializeField, Tooltip("Gravity Value of the bobbing bobber")]
-    private float _bobbingGravity;
+    [Header("Reeling")]
+    [SerializeField, Tooltip("Handles bobber movement and is called within controls.")]
+    private BobberBehavior _bobber;
+    [SerializeField, Tooltip("Smallest possible wait before a fish bites.")]
+    private float _minFishBiteTime;
+    [SerializeField, Tooltip("Larges possible wait before a fish bites.")]
+    private float _maxFishBiteTime;
 
-    // states
     private bool _firstReelingFrame = true;
-    private bool _inWater = false;
+    private float _fishBiteTimer = 0;
 
     private void HandleReelingControls()
     {
-        // launch bobber
+        // randomize fish bite time
         if (_firstReelingFrame)
         {
-            // set launch speed and enable gravity
-            float xSpeed = math.remap(0, 1, _minHorizontalCastSpeed, _maxHorizontalCastSpeed, _currCharge);
-            Vector2 launchVelocity = new Vector2(xSpeed, _verticalCastSpeed);
-            _bobber.velocity = launchVelocity;
-            _bobber.gravityScale = _launchGravity;
-
+            _fishBiteTimer = UnityEngine.Random.Range(_minFishBiteTime, _maxFishBiteTime);
             _firstReelingFrame = false;
         }
-        // hits water
-        else if (!_inWater && _bobber.transform.localPosition.y < _waterLevel)
+
+        // Wait for fish to bite
+        if (_bobber.State == BobberBehavior.BobberState.Bobbing)
         {
-            _inWater = true;
-
-            // stop horizontal momentum; dampen vertical momentum
-            Vector2 newVelocity = _bobber.velocity;
-            newVelocity.x = 0;
-            newVelocity.y = _bobber.velocity.y * _verticalDampen;
-            _bobber.velocity = newVelocity;
-
-            // no longer needed, the bobber has hit the water
-            _castingIndicator.SetActive(false);
+            if (_fishBiteTimer < 0)
+                _bobber.StartTugging();
+            else
+                _fishBiteTimer -= Time.deltaTime;
         }
 
-        if(_inWater)
+        // Timing click controls
+        if(_bobber.State == BobberBehavior.BobberState.Tugging)
         {
-            // Bobbing behavior
-            if (_bobber.transform.localPosition.y < _waterLevel)
-                _bobber.gravityScale = -_bobbingGravity;
-            else
-                _bobber.gravityScale = _bobbingGravity;
+            // TODO: handle timing click
         }
     }
     #endregion
