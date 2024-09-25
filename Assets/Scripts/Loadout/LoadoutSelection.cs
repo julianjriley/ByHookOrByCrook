@@ -10,40 +10,62 @@ public class LoadoutSelection : MonoBehaviour
 {
     // This script will be used for the Weapon Loadout Screen
 
-    public GameObject caughtFishInvis;
-    public GameObject loadoutInvis;
-    public float padding;
+
+
+
+
+    // ** CURRENT BUGS: 
+    //      1. On click, the buttons are removed before onclick finishes, causes Event System Error. 
+    //          Current workaround- starting a coroutine to let onclick finish while using SetActive = false.
+
+
+
+
+
+    ///     TODO:
+    ///     1. shows all items the player has caught-- each are a button the player clicks on
+    ///         a. determined by how much bait the player casts
+    ///     2. clicking on an item puts it into your loadout slots-- determined by backpack upgrade
+    ///        a. ON HOVER: display description+effect in a pop-up textbox below the item
+    ///        b. ON CLICK: call a function that greys out the item AND move it into the correct slot
+    ///     3. display PRACTICE? or FIGHT!  
+    ///         a. ON CLICK, change scene
+
+
+
+
+    // Spawnpoints in the grid layout so our items follow a nice grid
+    public GameObject caughtItemsSpawn; 
+    public GameObject chosenItemsSpawn;
 
     [SerializeField]
-    private List<Button> _caughtFish;
+    private List<Button> _caughtFish; 
     [SerializeField]
     private List<Button> _chosenFish;
-    
-    //private bool _isChosen = false;
+
+    private GameManager _gameManager;
+    private Inventory _inventory;
 
     void Start()
     {
+        _gameManager = GameManager.Instance;
+
+        foreach (var item in _inventory.items)
+        {
+            Item _item = Instantiate(item);
+            item.AddComponent<Button>();
+        }
+
         // get reference from game manager to access
         //      1. list of catches from fishing minigame
-        //      2. list of catches you choose to bring into battle
+        //      2. list of catches you choose to bring into battle   
+        // loop through the lists and instantiate each button into the grid layout
+                    // each button has a reference to the scriptable objects
     }
 
     void Update()
     {
-        ///     shows all items the player has caught-- each are a button the player clicks on
-        ///         a. determined by how much bait the player casts
-        ///     clicking on an item puts it into your loadout slots-- determined by backpack upgrade
-        ///        a. ON HOVER: display description+effect in a pop-up textbox below the item
-        ///        b. ON CLICK: call a function that greys out the item AND move it into the correct slot
-        ///     display PRACTICE? or FIGHT!  
-        ///         a. ON CLICK, change scene
 
-    }
-
-    public void OnHover()
-    {
-        // Instantiate prefab with UI assets
-        // Based on what item it is, display the item name, description, and sprite 
     }
 
     public void MoveToLoadout(Button fish)
@@ -51,17 +73,13 @@ public class LoadoutSelection : MonoBehaviour
         
         if (fish.GetComponent<FishButtons>().isChosen) {
             MoveBack(fish);
-            Debug.Log("move fish back to caught" + fish);
         }
         else
         {
             fish.GetComponent<FishButtons>().isChosen = true;
-            Button fishClone = Instantiate(fish, loadoutInvis.transform);
+            Button fishClone = Instantiate(fish, chosenItemsSpawn.transform);
             _chosenFish.Add(fishClone);
-            
-
-            Debug.Log("move fish back to loadout" + fish.gameObject);
-            
+                        
             if (fish != null)
             {
                 _caughtFish.Remove(fish);
@@ -80,7 +98,7 @@ public class LoadoutSelection : MonoBehaviour
     public void MoveBack(Button fish)
     {
         fish.GetComponent<FishButtons>().isChosen = false;
-        Button fishClone = Instantiate(fish, caughtFishInvis.transform);
+        Button fishClone = Instantiate(fish, caughtItemsSpawn.transform);
         _caughtFish.Add(fishClone);
 
         if (fish != null)
