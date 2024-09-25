@@ -85,7 +85,7 @@ public class LoadoutSelection : MonoBehaviour
                         
             if (fish != null)
             {
-                _caughtFish.Remove(fish);
+                _caughtFishButtons.Remove(fish);
                 fish.gameObject.SetActive(false);
                 StartCoroutine(Waiting(fish.gameObject));
                
@@ -102,7 +102,7 @@ public class LoadoutSelection : MonoBehaviour
     {
         fish.GetComponent<FishButtons>().isChosen = false;
         Button fishClone = Instantiate(fish, caughtItemsSpawn.transform);
-        _caughtFish.Add(fishClone);
+        _caughtFishButtons.Add(fishClone);
 
         if (fish != null)
         {
