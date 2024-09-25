@@ -12,9 +12,18 @@ public class ConvoSelector : MonoBehaviour
     void Start()
     {
         // Get the interactor and choose the appropriate book to look for a conversation in
+        
+    }
+
+    private void Awake()
+    {
         _npcInteractor = GetComponent<Interactor>();
         _npcInteractor.SetConversation(SelectConversation(_books[GameManager.Instance.SaveData.bossNumber]));
     }
+
+    // Ok, how do we save the "had" state of:
+        // 3 books worth of conversations for each NPC
+        // Solution: We don't. We save the Had state of only the current book
 
     private Conversation SelectConversation(Book book)
     {
