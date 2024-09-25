@@ -11,16 +11,18 @@ public class Weapon : Item
     private float _fireRate;
     [SerializeField] protected float _baseSize;
     private float _size;
+    [SerializeField] protected float _baseSpeed;
+    private float _speed;
     [SerializeField] protected float _baseLifetime;
     private float _lifetime;
     [SerializeField] protected float _baseHeatBuildup;
     private float _heatBuildup;
-    [SerializeField] protected float _baseCoolingTime;
-    private float _coolingTime;
+    [SerializeField] protected float _baseCoolingSpeed;
+    private float _coolingSpeed;
     [SerializeField] protected int _baseProjectileCount;
     private int _projectileCount;
 
-    [SerializeField] protected GameObject _projectile;
+    //[SerializeField] protected GameObject _projectile;
 
     public float BaseDamage
     {
@@ -37,6 +39,11 @@ public class Weapon : Item
         get { return _baseSize; }
     }
 
+    public float BaseSpeed
+    {
+        get { return _speed; }
+    }
+
     public float BaseLifetime
     {
         get { return _baseLifetime; }
@@ -49,7 +56,7 @@ public class Weapon : Item
 
     public float BaseCoolingTime
     {
-        get { return _coolingTime; }
+        get { return _coolingSpeed; }
     }
 
     public int BaseProjectileCount
@@ -75,6 +82,12 @@ public class Weapon : Item
         set { _size = value; }
     }
 
+    public float Speed
+    {
+        get { return _speed; }
+        set { _speed = value; }
+    }
+
     public float Lifetime
     {
         get { return _lifetime; }
@@ -89,8 +102,8 @@ public class Weapon : Item
 
     public float CoolingTime
     {
-        get { return _coolingTime; }
-        set { _coolingTime = value; }
+        get { return _coolingSpeed; }
+        set { _coolingSpeed = value; }
     }
 
     public int ProjectileCount
@@ -106,7 +119,7 @@ public class Weapon : Item
         _size = _baseSize;
         _lifetime = _baseLifetime;
         _heatBuildup = _baseHeatBuildup;
-        _coolingTime = _baseCoolingTime;
+        _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
     }
 
@@ -117,7 +130,7 @@ public class Weapon : Item
         _size = _baseSize;
         _lifetime = _baseLifetime;
         _heatBuildup = _baseHeatBuildup;
-        _coolingTime = _baseCoolingTime;
+        _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
     }
 }
