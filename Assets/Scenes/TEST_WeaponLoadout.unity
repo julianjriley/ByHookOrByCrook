@@ -270,7 +270,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
-  scriptableObject: {fileID: 0}
 --- !u!1 &97118868
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +417,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
-  scriptableObject: {fileID: 0}
 --- !u!1 &289665295
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,12 +777,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c62b160e623ddd42ac6e0ee47beef9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _caughtFishButtons: []
+  _chosenFishButtons: []
   caughtItemsSpawn: {fileID: 0}
   chosenItemsSpawn: {fileID: 0}
-  _caughtFish:
-  - {fileID: 0}
-  _chosenFish:
-  - {fileID: 0}
 --- !u!4 &877972555
 Transform:
   m_ObjectHideFlags: 0
@@ -947,7 +943,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
-  scriptableObject: {fileID: 0}
 --- !u!1 &961592187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1090,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
-  scriptableObject: {fileID: 0}
 --- !u!1 &984937035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,7 +1352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
-  scriptableObject: {fileID: 0}
 --- !u!1 &1216488675
 GameObject:
   m_ObjectHideFlags: 0

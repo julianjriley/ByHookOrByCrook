@@ -13,19 +13,21 @@ public class FishButtons : MonoBehaviour
     // Display items in game
     private TextMeshProUGUI _itemName;
     private TextMeshProUGUI _itemDescription;
-    private Image _sprite;
 
+    // Note: Only Image items appear correctly on UI
+    private Image _sprite; 
 
     public void AssignItem(Item fishItem)
     {
+        // This function assigns the scriptable object properties to properties that appear in game
         scriptableObject = fishItem;
+        _itemName.text = fishItem.GetItemName();
+        _itemDescription.text = fishItem.GetItemDescription();
+        _sprite.sprite = fishItem.GetSprite();
     }
-
-    // we assign UI tooltip stuff by referencing the information from the scriptableObject
     public void OnHover()
     {
-        
-        // Instantiate prefab with UI assets
-        // Based on what item it is, display the item name, description, and sprite 
+        // TODO: Make sprite box with text appear
+        // Buttons will need an Event Trigger "Pointer Enter" Event Type added to them
     }
 }
