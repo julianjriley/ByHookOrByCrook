@@ -71,6 +71,15 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fishing"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5b4f0af-5de7-4ad0-982e-bab1d0685db7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -216,6 +225,17 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                     ""action"": ""MoveArena"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""645edc6c-eb00-4b9e-95a7-5f54fef4b760"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fishing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -241,6 +261,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_FireWeapon = m_Player.FindAction("FireWeapon", throwIfNotFound: true);
         m_Player_MoveArena = m_Player.FindAction("MoveArena", throwIfNotFound: true);
+        m_Player_Fishing = m_Player.FindAction("Fishing", throwIfNotFound: true);
     }
 
     ~@ActionControls()
@@ -312,6 +333,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_FireWeapon;
     private readonly InputAction m_Player_MoveArena;
+    private readonly InputAction m_Player_Fishing;
     public struct PlayerActions
     {
         private @ActionControls m_Wrapper;
@@ -321,6 +343,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @FireWeapon => m_Wrapper.m_Player_FireWeapon;
         public InputAction @MoveArena => m_Wrapper.m_Player_MoveArena;
+        public InputAction @Fishing => m_Wrapper.m_Player_Fishing;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -345,6 +368,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @MoveArena.started += instance.OnMoveArena;
             @MoveArena.performed += instance.OnMoveArena;
             @MoveArena.canceled += instance.OnMoveArena;
+            @Fishing.started += instance.OnFishing;
+            @Fishing.performed += instance.OnFishing;
+            @Fishing.canceled += instance.OnFishing;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -364,6 +390,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @MoveArena.started -= instance.OnMoveArena;
             @MoveArena.performed -= instance.OnMoveArena;
             @MoveArena.canceled -= instance.OnMoveArena;
+            @Fishing.started -= instance.OnFishing;
+            @Fishing.performed -= instance.OnFishing;
+            @Fishing.canceled -= instance.OnFishing;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -397,5 +426,6 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnFireWeapon(InputAction.CallbackContext context);
         void OnMoveArena(InputAction.CallbackContext context);
+        void OnFishing(InputAction.CallbackContext context);
     }
 }

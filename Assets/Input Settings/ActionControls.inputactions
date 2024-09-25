@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Fishing",
+                    "type": "Button",
+                    "id": "b5b4f0af-5de7-4ad0-982e-bab1d0685db7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -194,6 +203,17 @@
                     "action": "MoveArena",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "645edc6c-eb00-4b9e-95a7-5f54fef4b760",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fishing",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
