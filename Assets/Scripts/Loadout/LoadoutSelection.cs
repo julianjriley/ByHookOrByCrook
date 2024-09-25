@@ -39,21 +39,24 @@ public class LoadoutSelection : MonoBehaviour
     public GameObject chosenItemsSpawn;
 
     [SerializeField]
-    private List<Button> _caughtFish; 
+    private List<Button> _caughtFishButtons; 
     [SerializeField]
     private List<Button> _chosenFish;
 
     private GameManager _gameManager;
-    private Inventory _inventory;
+    private Inventory _caughtFish;
+
+    private Button spawned;
 
     void Start()
     {
         _gameManager = GameManager.Instance;
-
-        foreach (var item in _inventory.items)
+        _caughtFish = _gameManager.ScenePersistent.CaughtFish;
+        foreach (var item in _caughtFish.items)
         {
-            Item _item = Instantiate(item);
-            item.AddComponent<Button>();
+            Button fishClone = Instantiate(spawned, caughtItemsSpawn.transform);
+            FishButtons fishButtonClone = fishClone.AddComponent<FishButtons>();
+            fishButtonClone.AssignItem(item);
         }
 
         // get reference from game manager to access

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     [Serializable]
     public class ScenePersistentData
     {
-        
+        public Inventory CaughtFish;   
     }
 
     // private stored inventory
