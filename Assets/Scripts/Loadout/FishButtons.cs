@@ -11,19 +11,19 @@ public class FishButtons : MonoBehaviour
     Item scriptableObject;
 
     // Display items in game
-    private TextMeshProUGUI _itemName;
-    private TextMeshProUGUI _itemDescription;
+    public TextMeshProUGUI itemName;
+    public TextMeshProUGUI itemDescription;
 
     // Note: Only Image items appear correctly on UI
-    private Image _sprite; 
+    public Image sprite; 
 
     public void AssignItem(Item fishItem)
     {
         // This function assigns the scriptable object properties to properties that appear in game
         scriptableObject = fishItem;
-        _itemName.text = fishItem.GetItemName();
-        _itemDescription.text = fishItem.GetItemDescription();
-        _sprite.sprite = fishItem.GetSprite();
+        itemName.text = fishItem.GetItemName();
+        itemDescription.text = fishItem.GetItemDescription();
+        sprite.sprite = fishItem.GetSprite();
     }
     public void OnHover()
     {

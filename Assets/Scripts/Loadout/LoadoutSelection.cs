@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ public class LoadoutSelection : MonoBehaviour
     ///     TODO:
     ///     1. Shows all items caught-- each are a button the player clicks on
     ///     2. Clicking on an item puts it into your loadout slots-- determined by backpack upgrade
-    ///        a. ON HOVER: Display name & description tooltip
+    ///        a. ON HOVER: Display name & description tooltip ** STOPPED HERE: 09-25 11:37pm
     ///        b. ON CLICK: Move into correct slot
     ///     3. Display PRACTICE? or FIGHT!  
     ///         a. ON CLICK: Change scene
@@ -30,11 +31,15 @@ public class LoadoutSelection : MonoBehaviour
     private GameManager _gameManager;
     private Inventory _caughtFish;
 
+    [SerializeField]
     private Button spawnedItem;
 
     // Spawnpoints in the grid layout so our items follow a nice grid
     public GameObject caughtItemsSpawn;
     public GameObject chosenItemsSpawn;
+
+    // Parent GameObject that contains all UI assets for the fish desctriptions
+    public GameObject descriptionToolTip;
 
     void Start()
     {
@@ -44,18 +49,32 @@ public class LoadoutSelection : MonoBehaviour
         // Below instantiates the item loadout into grid layout
         foreach (var item in _caughtFish.items)
         {
-            // Here we spawn buttons and assign them to the items
+            // Here we spawn buttons into the grid layout and assign them to the items
             Button fishClone = Instantiate(spawnedItem, caughtItemsSpawn.transform);
             FishButtons fishButtonClone = fishClone.AddComponent<FishButtons>();
             fishButtonClone.AssignItem(item);
+
+            // Automatically adds OnClick function to spawned buttons
             fishClone.onClick.AddListener(() => MoveToLoadout(fishClone));
+
+            // Trying to add OnHover function by adding Event Trigger "Pointer Enter" Event Type programatically
+            EventTrigger trigger = fishClone.gameObject.AddComponent<EventTrigger>();
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerEnter;
+            entry.callback.AddListener((eventdata) => { OnHover();});
+
             _caughtFishButtons.Add(fishClone);
         }
     }
 
+    public void OnHover()
+    {
+        descriptionToolTip.SetActive(true);
+    }
+
     public void MoveToLoadout(Button fish)
     {
-        // This function moves the button between CAUGHT and CHOSEN slots
+        // This function moves the fish items between CAUGHT and CHOSEN slots
 
         if (fish.GetComponent<FishButtons>().isChosen) {
             MoveBack(fish);
@@ -98,7 +117,6 @@ public class LoadoutSelection : MonoBehaviour
     void NextScene(int sceneIndex)
     {
         // Use this function to transition to PRACTICE or COMBAT scene
-
         StartCoroutine(Fadeout(sceneIndex));
     }
 
@@ -106,7 +124,6 @@ public class LoadoutSelection : MonoBehaviour
     public IEnumerator Fadeout(int index)
     {
         // Fadeout logic
-
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(index);
     }
