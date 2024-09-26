@@ -16,12 +16,12 @@ MonoBehaviour:
   _itemName: Rotten Salmon
   _itemDescription: You brought this with you, and it seems it's here to stay
   _sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  _itemPrefab: {fileID: 601086307551454052, guid: f108e024955af01408a8a70c5f9edea7, type: 3}
+  _itemPrefab: {fileID: 8942891787185002483, guid: 96c7762b2ac80984aa9987e0aaa581a8, type: 3}
   _baseDamage: 2
   _baseFireRate: 3
   _baseSize: 1
-  _baseSpeed: 10
+  _baseSpeed: 15
   _baseLifetime: 3
-  _baseHeatBuildup: 6
-  _baseCoolingSpeed: 0
+  _baseHeatBuildup: 10
+  _baseCoolingSpeed: 15
   _baseProjectileCount: 1

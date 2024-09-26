@@ -25,5 +25,6 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //DO DAMAGE CODE HERE
+        Destroy(gameObject);
     }
 }

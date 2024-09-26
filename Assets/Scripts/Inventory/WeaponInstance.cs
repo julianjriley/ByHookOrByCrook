@@ -7,7 +7,8 @@ public class WeaponInstance : MonoBehaviour
     [SerializeField] protected Weapon _weapon;
     [SerializeField] protected Transform _firePoint;
     [SerializeField] protected bool overHeated;
-    [SerializeField] protected bool canFire;
+    [SerializeField] protected bool canFire = true;
+
 
     protected float _heatLevel;
     
@@ -23,12 +24,20 @@ public class WeaponInstance : MonoBehaviour
         yield return new WaitForSeconds(_weapon.FireRate);
         canFire = true;
     }
-    /*
-    protected IEnumerator CoolingDown()
+
+    protected virtual void FixedUpdate()
     {
-        overHeated = true;
-        yield return new WaitForSeconds(_weapon.
-        overHeated = false;
+        _heatLevel = Mathf.Clamp(_heatLevel - _weapon.CoolingTime * Time.deltaTime, 0, 100);
+        
+        if (_heatLevel <= 0)
+            overHeated = false;
+ 
     }
-    */
+
+    public void UpdateRotation(Vector2 lookAt)
+    {
+        gameObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, lookAt);
+    }
+
+
 }

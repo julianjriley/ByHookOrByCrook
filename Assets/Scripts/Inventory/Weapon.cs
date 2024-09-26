@@ -22,7 +22,7 @@ public class Weapon : Item
     [SerializeField] protected int _baseProjectileCount;
     private int _projectileCount;
 
-    //[SerializeField] protected GameObject _projectile;
+    
 
     public float BaseDamage
     {
@@ -117,6 +117,7 @@ public class Weapon : Item
         _damage = _baseDamage;
         _fireRate = _baseFireRate;
         _size = _baseSize;
+        _speed = _baseSpeed;
         _lifetime = _baseLifetime;
         _heatBuildup = _baseHeatBuildup;
         _coolingSpeed = _baseCoolingSpeed;
@@ -128,9 +129,21 @@ public class Weapon : Item
         _damage = _baseDamage;
         _fireRate = _baseFireRate;
         _size = _baseSize;
+        _speed = _baseSpeed;
         _lifetime = _baseLifetime;
         _heatBuildup = _baseHeatBuildup;
         _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
+    }
+
+    public override void SetPlayer(PlayerCombat player)
+    {
+        base.SetPlayer(player);
+        CreatePrefabOnPlayer();
+    }
+
+    public void CreatePrefabOnPlayer()
+    {
+        _player.AppendItemToWeaponInstances(_itemPrefab);
     }
 }

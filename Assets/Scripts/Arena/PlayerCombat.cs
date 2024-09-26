@@ -7,6 +7,7 @@ public class PlayerCombat : MonoBehaviour
 {
 
     private ActionControls controls;
+    Camera cam;
 
     //Player Movement Script
     ArenaMovement playerMovement;
@@ -20,6 +21,7 @@ public class PlayerCombat : MonoBehaviour
     //Children Transforms
     [SerializeField] private Transform _weaponsTransform;
     [SerializeField] private Transform _passivesTransform;
+    [SerializeField] private Transform _aimPivot;
 
     private WeaponInstance _equippedWeapon;
 
@@ -30,11 +32,16 @@ public class PlayerCombat : MonoBehaviour
     private List<WeaponInstance> _weapons;
 
     //Basically for testing and stuff
-    //[SerializeField] private PassiveItem _testItem;
+    [SerializeField] private Weapon testWeapon;
+
+    //Firing Stuff
+    Vector2 mousePosition;
+    Vector3 worldPos;
+    Vector2 weaponDirection;
 
     private void OnEnable()
     {
-        
+        cam = Camera.main;
     }
 
     private void Awake()
@@ -57,6 +64,13 @@ public class PlayerCombat : MonoBehaviour
         itemTest.SetPlayer(this);
         itemTest.CreatePrefabOnPlayer();
         */
+
+        _inventory = new Inventory();
+        _inventory.AddItem(testWeapon);
+        Weapon weapon = _inventory.items[0] as Weapon;
+        weapon.SetPlayer(this);
+        _equippedWeapon = _weaponsTransform.GetComponentInChildren<WeaponInstance>();
+        
     }
 
 
@@ -64,9 +78,33 @@ public class PlayerCombat : MonoBehaviour
     void FireWeapon(InputAction.CallbackContext context)
     {
         if(_equippedWeapon != null)
-            _equippedWeapon.Fire(Vector3.zero);
+            _equippedWeapon.Fire(weaponDirection);
     }
 
+    private void Update()
+    {
+        mousePosition = Mouse.current.position.ReadValue();
+        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 10));
+
+    }
+
+    private void FixedUpdate()
+    {
+
+        if (_equippedWeapon != null)
+        {
+            weaponDirection = (worldPos - _aimPivot.transform.position).normalized;
+            //_equippedWeapon.UpdateRotation(weaponDirection);
+            UpdateRotation(weaponDirection);
+            
+        }
+
+
+    }
+    public void UpdateRotation(Vector2 lookAt)
+    {
+        _aimPivot.transform.rotation = Quaternion.FromToRotation(Vector3.right, lookAt);
+    }
 
 
 
@@ -101,5 +139,10 @@ public class PlayerCombat : MonoBehaviour
     public void AppendItemToPassiveInstances(GameObject prefab)
     {
         GameObject instantiatedPrefab = Instantiate(prefab, _passivesTransform);
+    }
+
+    public void AppendItemToWeaponInstances(GameObject prefab)
+    {
+        GameObject instantiatedPrefab = Instantiate(prefab, _weaponsTransform);
     }
 }

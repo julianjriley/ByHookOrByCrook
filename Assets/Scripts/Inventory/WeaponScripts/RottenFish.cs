@@ -15,12 +15,15 @@ public class RottenFish : WeaponInstance
         }
         for (int i = 0; i < _weapon.ProjectileCount; i++)
         {
-            GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.LookRotation(direction, Vector2.up));
+            GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, direction));
             projectile.GetComponent<Rigidbody>().AddForce(direction * _weapon.Speed, ForceMode.Impulse);
-            RottenFishProjectile rottenFishProjectile = GetComponent<RottenFishProjectile>();
+            RottenFishProjectile rottenFishProjectile = projectile.GetComponent<RottenFishProjectile>();
             rottenFishProjectile.AssignStats(_weapon);
             _heatLevel += _weapon.HeatBuildup;
         }
+        if (_heatLevel >= 100)
+            overHeated = true;
+
         StartCoroutine(FireRate());
     }
 }
