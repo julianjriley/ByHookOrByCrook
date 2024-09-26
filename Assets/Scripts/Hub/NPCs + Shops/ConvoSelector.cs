@@ -19,23 +19,23 @@ public class ConvoSelector : MonoBehaviour
     private void Awake()
     {
         // If the tracker list in save data is empty
-        if(GameManager.Instance.SaveData.IsConvoHad.Count == 0)
+        if(GameManager.Instance.GamePersistent.IsConvoHad.Count == 0)
         {
-            int fullConvoCount = _books[GameManager.Instance.SaveData.bossNumber].generalConvos.Count + _books[GameManager.Instance.SaveData.bossNumber].postBossLossConvos.Count;
+            int fullConvoCount = _books[GameManager.Instance.GamePersistent.bossNumber].generalConvos.Count + _books[GameManager.Instance.GamePersistent.bossNumber].postBossLossConvos.Count;
             for (int i = 0; i < fullConvoCount; i++)
             {
-                GameManager.Instance.SaveData.IsConvoHad.Add(false); // Fill it to the brim
+                GameManager.Instance.GamePersistent.IsConvoHad.Add(false); // Fill it to the brim
             }
         }
 
         _npcInteractor = GetComponent<Interactor>();
-        Conversation convo = SelectConversation(_books[GameManager.Instance.SaveData.bossNumber]);
+        Conversation convo = SelectConversation(_books[GameManager.Instance.GamePersistent.bossNumber]);
         _npcInteractor.SetConversation(convo, returnIndex);
     }
 
     private Conversation SelectConversation(Book book)
     {
-        int lossCount = GameManager.Instance.SaveData.lossCounter;
+        int lossCount = GameManager.Instance.GamePersistent.lossCounter;
         // First, we check and see if there are any conversation that should occur after a certain amount of losses to the boss
         for(int i = 0; i < book.postBossLossConvos.Count; i++)
         {
@@ -44,7 +44,7 @@ public class ConvoSelector : MonoBehaviour
             {
                 if (book.postBossLossConvos[i].RequiredBossLossCount <= lossCount && lossCount < maxTries)
                 {
-                    if (!GameManager.Instance.SaveData.IsConvoHad[i])
+                    if (!GameManager.Instance.GamePersistent.IsConvoHad[i])
                     {
                     // If we haven't had this conversation, it's high time to slot it in
                         returnIndex = i;
@@ -57,7 +57,7 @@ public class ConvoSelector : MonoBehaviour
             {
                 if (book.postBossLossConvos[i].RequiredBossLossCount <= lossCount && lossCount < book.postBossLossConvos[i + 1].RequiredBossLossCount)
                 {
-                    if (!GameManager.Instance.SaveData.IsConvoHad[i])
+                    if (!GameManager.Instance.GamePersistent.IsConvoHad[i])
                     {
                     // If we haven't had this conversation, it's high time to slot it in
                         returnIndex = i;
@@ -83,7 +83,7 @@ public class ConvoSelector : MonoBehaviour
             {
                 int index = book.generalConvos.FindIndex(x => x == conversation);
                 // If this is a high priority conversation we haven't had, add it to the tempList
-                if(conversation.GeneralPriority == k && !GameManager.Instance.SaveData.IsConvoHad[book.postBossLossConvos.Count + index])
+                if(conversation.GeneralPriority == k && !GameManager.Instance.GamePersistent.IsConvoHad[book.postBossLossConvos.Count + index])
                 {
                     tempList.Add(conversation);
                 }
@@ -110,7 +110,7 @@ public class ConvoSelector : MonoBehaviour
         {
             if(book.generalConvos[l].GeneralPriority == 0)
             {
-                GameManager.Instance.SaveData.IsConvoHad[l + book.postBossLossConvos.Count] = false;
+                GameManager.Instance.GamePersistent.IsConvoHad[l + book.postBossLossConvos.Count] = false;
                 
             }
         }
