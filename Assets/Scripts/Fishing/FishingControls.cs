@@ -10,6 +10,12 @@ using Unity.Mathematics;
 /// </summary>
 public class FishingControls : MonoBehaviour
 {
+    [Header("Other Components")]
+    [SerializeField, Tooltip("Handles bobber movement and is called within controls.")]
+    private BobberBehavior _bobber;
+    [SerializeField, Tooltip("Handles randomization of caught fish based on relevant parameters.")]
+    private CatchRandomizer _catchRandomizer;
+
     // State management
     private bool _isReeling = false;
 
@@ -146,8 +152,6 @@ public class FishingControls : MonoBehaviour
 
     #region REELING
     [Header("Bobbing")]
-    [SerializeField, Tooltip("Handles bobber movement and is called within controls.")]
-    private BobberBehavior _bobber;
     [SerializeField, Tooltip("Smallest possible wait before a fish bites.")]
     private float _minFishBiteTime;
     [SerializeField, Tooltip("Larges possible wait before a fish bites.")]
@@ -207,6 +211,10 @@ public class FishingControls : MonoBehaviour
                     // FAILURE
                     // variable odds depending on distance from goal range (either max or min depending on if it was an early or a late miss)
                 }
+
+                // make catch with calculated odds
+                // TODO: make odds calculations actually go in here
+                _catchRandomizer.CatchFish(1, 1);
 
                 _reelIndicator.SetActive(false);
                 _bobber.ReturnBobber();

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -32,11 +33,24 @@ public class GameManager : MonoBehaviour
     }
 
     #region SCENE PERSISTENT DATA
+    // used for storing scene persistent BaitType data
+    public enum BaitType
+    {
+        Empty,
+        Default,
+        Weapon,
+        Attack,
+        Support,
+        Movement
+    }
+
     // Bait, Inventory, Loadout, etc. (saved between scenes)
     [Serializable]
     public class ScenePersistentData
     {
         public Inventory CaughtFish;   
+
+        public List<BaitType> BaitList;
     }
 
     // private stored inventory
@@ -69,10 +83,44 @@ public class GameManager : MonoBehaviour
     {
         ScenePersistentData newInventory = new ScenePersistentData();
 
-        // TODO: INITIALIZE DEFAULT VALUES FOR INVENTORY DATA
+        // Initialize default values for scene persistent data
+        newInventory.BaitList = new List<BaitType>();
 
         // Apply reset/initialized Inventory data to Instance
         Instance.ScenePersistent = newInventory;
+    }
+
+    /// <summary>
+    /// Returns the type of bait that is queued up next in the bait list.
+    /// Returns BaitType.Empty if the list is empty.
+    /// </summary>
+    public BaitType PeekBait()
+    {
+        // return last bait in list
+        if (ScenePersistent.BaitList.Count >= 1)
+            return ScenePersistent.BaitList[ScenePersistent.BaitList.Count - 1];
+        // bait list is empty
+        else
+            return BaitType.Empty;
+    }
+
+    /// <summary>
+    /// Removes last bait item from the bait list.
+    /// </summary>
+    public void ConsumeBait()
+    {
+        if (ScenePersistent.BaitList.Count >= 1)
+            ScenePersistent.BaitList.RemoveAt(ScenePersistent.BaitList.Count - 1);
+        else
+            throw new Exception("Invalid use of ConsumeBait() in GameManager. There is no bait to remove.");
+    }
+
+    /// <summary>
+    /// Adds new bait item to the end of the bait list.
+    /// </summary>
+    public void AddBait(BaitType newBait)
+    {
+        ScenePersistent.BaitList.Add(newBait);
     }
     #endregion
 
@@ -83,27 +131,28 @@ public class GameManager : MonoBehaviour
     {
         // TODO: ADD SAVE DATA HERE
         // i.e. UPGRADES, CURRENCY (ECONOMY), SETTINGS
+        public int RodLevel;
     }
 
     // private stored save data
-    private GamePersistentData _gameData;
+    private GamePersistentData _gamePersistent;
 
     // public accessor for save data
-    public GamePersistentData SaveData
+    public GamePersistentData GamePersistent
     {
         get
         {
             // initialize if necessary and possible
-            if (_gameData == null)
+            if (_gamePersistent == null)
             {
                 InitializeSaveData();
             }
 
-            return _gameData;
+            return _gamePersistent;
         }
         private set
         {
-            _gameData = value;
+            _gamePersistent = value;
         }
     }
 
@@ -118,6 +167,7 @@ public class GameManager : MonoBehaviour
 
         // TODO: INITIALIZE DEFAULT VALUES FOR SAVE DATA
         // default data in case player prefs not found
+        newSaveData.RodLevel = 1;
 
         // TODO: read existing save data (if it exists) from PlayerPrefs
 
@@ -134,7 +184,7 @@ public class GameManager : MonoBehaviour
         *****************************************************************/
 
         // Apply read/initialized data to instance
-        Instance.SaveData = newSaveData;
+        Instance.GamePersistent = newSaveData;
     }
 
     private void OnApplicationQuit()
