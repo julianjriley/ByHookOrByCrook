@@ -76,6 +76,7 @@ public class FishingControls : MonoBehaviour
     private float _currCharge = 0; // 0 is minimum charge; 1 is maximum charge
     private bool _isIncreasing = true;
     private bool _prevClick = false;
+    private bool _isWaiting = true;
     private float _castingScore = 0; // min 0; max 1
 
     private void HandleCastingControls()
@@ -83,12 +84,13 @@ public class FishingControls : MonoBehaviour
         // CONTROLS LOGIC
         if(_bobber.State == BobberBehavior.BobberState.Waiting) // ensure you can only cast once bobber has fully returned
         {
-            // start displaying charging bar
-            if (_fishingClick && !_prevClick)
+            // start showing indicator and reset charge
+            if (_fishingClick && _isWaiting)
             {
                 // reset bar
                 _currCharge = 0;
                 _isIncreasing = true;
+                _isWaiting = false;
 
                 _castingIndicator.SetActive(true);
             }
@@ -117,19 +119,8 @@ public class FishingControls : MonoBehaviour
                         _isIncreasing = true;
                     }
                 }
-            }
-            else if (!_fishingClick && _prevClick) // transition to reeling mode (mouse released)
-            {
-                // launch bobber
-                _bobber.LaunchBobber(_currCharge);
 
-                // TODO: make this fade out instead
-                _castingIndicator.SetActive(false);
-            }
-
-            // UPDATING FILL BAR
-            if (_fishingClick)
-            {
+                // UPDATE FILLING BAR
                 // determine new fill bar scale
                 Vector3 newBarScale = _fillBar.transform.localScale;
                 newBarScale.x = math.remap(0, 1, 0, _initFillScaleX, _currCharge);
@@ -142,6 +133,15 @@ public class FishingControls : MonoBehaviour
                 // set new fill bar values
                 _fillBar.transform.localScale = newBarScale;
                 _fillBar.transform.localPosition = newBarPos;
+            }
+            // mouse released (launch bobber)
+            else if (!_fishingClick && _prevClick)
+            {
+                // launch bobber
+                _bobber.LaunchBobber(_currCharge);
+
+                // TODO: make this fade out instead
+                _castingIndicator.SetActive(false);
             }
         }
         
@@ -253,6 +253,7 @@ public class FishingControls : MonoBehaviour
 
                 // return back to casting controls
                 _isReeling = false;
+                _isWaiting = true;
             }
 
             // update reeling timer
