@@ -5,7 +5,7 @@ using Unity.Mathematics;
 
 /// <summary>
 /// Handles random selection of junk, weapon, attack buff, support buff, or movement buff when a fish is caught.
-/// Accounts for casting and reeling scores, bait type, and fishing rod upgrade tiers.
+/// Accounts for casting and reeling score, bait type, and fishing rod upgrade tiers.
 /// </summary>
 public class CatchRandomizer : MonoBehaviour
 {
@@ -54,17 +54,13 @@ public class CatchRandomizer : MonoBehaviour
     /// <summary>
     /// Handles randomization of caught fish and interfacing with inventory and bait list of game manager accordingly.
     /// </summary>
-    /// <param name="castScore">0 to 1 value for proficiency on casting task (0 = worst fail, 1 = perfect success)</param>
-    /// <param name="reelScore">0 to 1 value for proficiency on reeling task (0 = worst fail, 1 = perfect success)</param>
-    public void CatchFish(float castScore, float reelScore)
+    /// <param name="score">0 to 1 value for proficiency on casting & reeling tasks (0 = worst fail, 1 = perfect success)</param>
+    public void CatchFish(float score)
     {
-        // average cast/reel scores (equally weighted)
-        float combinedScore = (castScore + reelScore) / 2f;
-
         // determine percent chance of catching trash based on performance
         // 0 score = max trash rate
         // 1 score = 0% trash rate
-        float trashRate = math.remap(0, 1, _maxTrashRate, 0, combinedScore);
+        float trashRate = math.remap(0, 1, _maxTrashRate, 0, score);
 
         // Determine Trash vs. Fish odds
         float random = UnityEngine.Random.Range(0f, 1f);
