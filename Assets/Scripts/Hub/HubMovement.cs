@@ -19,6 +19,7 @@ public class HubMovement : MonoBehaviour
     private SpriteRenderer _sr;
 
     public float MoveSpeed = 7f;
+    public bool IsIdle = false; // A toggle for forcing the bear to stand still
 
     void Start()
     {
@@ -50,23 +51,36 @@ public class HubMovement : MonoBehaviour
 
     private void MovePlayer2D()
     {
-        _rb.velocity = _velocity;
+        if (!IsIdle)
+        {
+            _rb.velocity = _velocity;
+
+        }
+        else
+        {
+            _rb.velocity = Vector2.zero;
+        }
+        
     }
 
     private void AnimatePlayer2D()
     {
-        if (_moveValues.x != 0 || _moveValues.y != 0)
+        if ((_moveValues.x != 0 || _moveValues.y != 0 ) && !IsIdle)
             _anim.SetBool("IsMoving", true);
         else
             _anim.SetBool("IsMoving", false);
 
-        if(_moveValues.x > 0)
+        if (!IsIdle)
         {
-            _sr.flipX = true;
+            if (_moveValues.x > 0)
+            {
+                _sr.flipX = true;
+            }
+            else if (_moveValues.x < 0)
+            {
+                _sr.flipX = false;
+            }
         }
-        else if(_moveValues.x < 0)
-        {
-            _sr.flipX = false;
-        }
+        
     }
 }
