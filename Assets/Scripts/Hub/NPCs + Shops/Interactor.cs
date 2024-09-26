@@ -21,6 +21,7 @@ public class Interactor : MonoBehaviour
 {
     private InputAction _interactAction;
     private BoxCollider2D _col;
+    private bool _canInteract;
     
     [Tooltip("The prompt to interact with the object (press E)")]
     [SerializeField] private GameObject _interactPrompt;
@@ -37,6 +38,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private TextMeshPro _convoText;
     [Tooltip("The object that represents the conversation script")]
     [SerializeField] private Conversation _conversation;
+    private int _convoIndex;
     [Tooltip("The main hub camera, and the camera focused on this specific interaction")]
     [SerializeField] private GameObject _mainCamera;
     [SerializeField] private GameObject _interactCamera;
@@ -58,7 +60,7 @@ public class Interactor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_interactAction.IsPressed() && !isActiveCoroutine)
+        if (_interactAction.IsPressed() && !isActiveCoroutine && _canInteract)
         {
             if (IsNPC) // If E is pressed on an NPC
             {
@@ -73,9 +75,10 @@ public class Interactor : MonoBehaviour
         }
     }
 
-    public void SetConversation(Conversation convo)
+    public void SetConversation(Conversation convo, int index)
     {
         _conversation = convo;
+        _convoIndex = index;
     }
 
     private IEnumerator DoInteractionNPC()
@@ -97,7 +100,7 @@ public class Interactor : MonoBehaviour
         _convoBubble.SetActive(true);
 
         // Set up the conversation
-        _conversation.IsConversationHad = true;
+        GameManager.Instance.SaveData.IsConvoHad[_convoIndex] = true;
         foreach(string line in _conversation.lines)
         {
             isSkippingLine = false;
@@ -153,6 +156,7 @@ public class Interactor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            _canInteract = true;
             _interactPrompt.SetActive(true);
             if(IsNPC)
                 _cryerPrompt.SetActive(false);
@@ -163,6 +167,7 @@ public class Interactor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            _canInteract = false;
             _interactPrompt.SetActive(false);
         }
     }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -86,6 +87,9 @@ public class GameManager : MonoBehaviour
         // Boss-related stats
         public int bossNumber;  // Whether the player is on the first, second, or third boss (0, 1, 2)
         public int lossCounter; // How many times you've lost to a boss (resets on victory)
+
+        // Hub related stats
+        public List<bool> IsConvoHad;
     }
 
     // private stored save data
@@ -123,6 +127,7 @@ public class GameManager : MonoBehaviour
         // default data in case player prefs not found
         newSaveData.bossNumber = 0;
         newSaveData.lossCounter = 3;
+        newSaveData.IsConvoHad = new List<bool>();
 
         // TODO: read existing save data (if it exists) from PlayerPrefs
 

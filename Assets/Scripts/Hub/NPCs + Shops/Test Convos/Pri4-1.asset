@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
-  m_Name: GeneralPri2
+  m_Name: Pri4-1
   m_EditorClassIdentifier: 
   lines:
-  - To succeed at fishing, you'll need my secret tip.
-  - Ready for it?
-  - Use the LEFT MOUSE BUTTON to cast and reel!
+  - To purchase my wares, check yellow squares!
+  - Isn't that catchy?
   IsConversationHad: 0
   RequiredBossLossCount: 0
-  GeneralPriority: 2
+  GeneralPriority: 4

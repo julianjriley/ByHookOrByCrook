@@ -9,6 +9,7 @@ public class ConvoSelector : MonoBehaviour
     [SerializeField] private int maxTries;
     [Tooltip("The 3 books of conversations an NPC has for before boss 1 / 2 / 3")]
     [SerializeField] private List<Book> _books;
+    private int returnIndex;
     void Start()
     {
         // Get the interactor and choose the appropriate book to look for a conversation in
@@ -17,13 +18,20 @@ public class ConvoSelector : MonoBehaviour
 
     private void Awake()
     {
-        _npcInteractor = GetComponent<Interactor>();
-        _npcInteractor.SetConversation(SelectConversation(_books[GameManager.Instance.SaveData.bossNumber]));
-    }
+        // If the tracker list in save data is empty
+        if(GameManager.Instance.SaveData.IsConvoHad.Count == 0)
+        {
+            int fullConvoCount = _books[GameManager.Instance.SaveData.bossNumber].generalConvos.Count + _books[GameManager.Instance.SaveData.bossNumber].postBossLossConvos.Count;
+            for (int i = 0; i < fullConvoCount; i++)
+            {
+                GameManager.Instance.SaveData.IsConvoHad.Add(false); // Fill it to the brim
+            }
+        }
 
-    // Ok, how do we save the "had" state of:
-        // 3 books worth of conversations for each NPC
-        // Solution: We don't. We save the Had state of only the current book
+        _npcInteractor = GetComponent<Interactor>();
+        Conversation convo = SelectConversation(_books[GameManager.Instance.SaveData.bossNumber]);
+        _npcInteractor.SetConversation(convo, returnIndex);
+    }
 
     private Conversation SelectConversation(Book book)
     {
@@ -36,9 +44,10 @@ public class ConvoSelector : MonoBehaviour
             {
                 if (book.postBossLossConvos[i].RequiredBossLossCount <= lossCount && lossCount < maxTries)
                 {
-                    if (!book.postBossLossConvos[i].IsConversationHad)
+                    if (!GameManager.Instance.SaveData.IsConvoHad[i])
                     {
-                        // If we haven't had this conversation, it's high time to slot it in
+                    // If we haven't had this conversation, it's high time to slot it in
+                        returnIndex = i;
                         return book.postBossLossConvos[i];
                     }
                 }
@@ -48,9 +57,10 @@ public class ConvoSelector : MonoBehaviour
             {
                 if (book.postBossLossConvos[i].RequiredBossLossCount <= lossCount && lossCount < book.postBossLossConvos[i + 1].RequiredBossLossCount)
                 {
-                    if (!book.postBossLossConvos[i].IsConversationHad)
+                    if (!GameManager.Instance.SaveData.IsConvoHad[i])
                     {
-                        // If we haven't had this conversation, it's high time to slot it in
+                    // If we haven't had this conversation, it's high time to slot it in
+                        returnIndex = i;
                         return book.postBossLossConvos[i];
                     }
                 }
@@ -61,6 +71,7 @@ public class ConvoSelector : MonoBehaviour
         // First, we sort it by general priority
         ConvoComparer comparer = new ConvoComparer();
         book.generalConvos.Sort(comparer);
+
         // This sorts the list from lowest to highest priority. We store the highest priority for iteration purposes.
         int highPriority = book.generalConvos[book.generalConvos.Count - 1].GeneralPriority;
 
@@ -70,8 +81,9 @@ public class ConvoSelector : MonoBehaviour
             List<Conversation> tempList = new List<Conversation>();
             foreach(Conversation conversation in book.generalConvos)
             {
+                int index = book.generalConvos.FindIndex(x => x == conversation);
                 // If this is a high priority conversation we haven't had, add it to the tempList
-                if(conversation.GeneralPriority == k && !conversation.IsConversationHad)
+                if(conversation.GeneralPriority == k && !GameManager.Instance.SaveData.IsConvoHad[book.postBossLossConvos.Count + index])
                 {
                     tempList.Add(conversation);
                 }
@@ -79,11 +91,15 @@ public class ConvoSelector : MonoBehaviour
 
             if(tempList.Count == 1) // If there's only one viable convo of this priority, return it
             {
+                int index = book.generalConvos.FindIndex(x=>x == tempList[0]);
+                returnIndex = index + book.postBossLossConvos.Count;
                 return tempList[0];
             }
             else if(tempList.Count > 1) // Otherwise, randomly pick one from the pool
             {
                 int index = Random.Range(0, tempList.Count);
+                int trueIndex = book.generalConvos.FindIndex(x => x == tempList[index]);
+                returnIndex = trueIndex + book.postBossLossConvos.Count;
                 return tempList[index];
             }
         }
@@ -94,9 +110,11 @@ public class ConvoSelector : MonoBehaviour
         {
             if(book.generalConvos[l].GeneralPriority == 0)
             {
-                book.generalConvos[l].IsConversationHad = false;
+                GameManager.Instance.SaveData.IsConvoHad[l + book.postBossLossConvos.Count] = false;
+                
             }
         }
+        returnIndex = book.postBossLossConvos.Count;
         return book.generalConvos[0];
     }
 

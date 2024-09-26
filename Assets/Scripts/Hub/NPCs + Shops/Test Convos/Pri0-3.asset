@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
-  m_Name: BossTest1
+  m_Name: Pri0-3
   m_EditorClassIdentifier: 
   lines:
-  - That tentacle is no joke.
-  - You'll have to keep at it for a while, but I believe in you!
-  RequiredBossLossCount: 2
-  GeneralPriority: 8
+  - I wonder if anyone else is gonna show up.
+  - The card said September, right?
+  - ...wait, no, that's not an S.
+  - I'm THREE MONTHS EARLY??
+  - I could have been playing Miku Fitness Boxing this whole time...
+  - I'm sorry, I need to be alone.
+  RequiredBossLossCount: 0
+  GeneralPriority: 0
