@@ -100,6 +100,7 @@ public class LoadoutSelection : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Destroy(_fishGameObject);
     }
+
     public void MoveBack(Button fish)
     {
         fish.GetComponent<FishButtons>().isChosen = false;

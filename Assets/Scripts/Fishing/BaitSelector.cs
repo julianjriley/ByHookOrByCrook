@@ -1,11 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaitSelector : MonoBehaviour
 {
-    // Will mimic LoadoutSelection script. Jane will do tmr bc it is LATE (by tmr i mean 09-26 3pmish)
+    public List<Sprite> _baitSprites = new List<Sprite>();
+    public List<Button> _barrelList; // For now, I will manually add barrels to this list
+    
+    private GameManager _gameManager;
+    private BarrelScript _barrelScript;
 
-    // Barrel buttons
-    //  onclick: adds bait type to selection.
+    public GameObject baitSlotSpawn;
+
+    private int baitSlots = 3;
+
+    public GameObject TooltipParent;
+
+    void Start()
+    {
+        _gameManager = GameManager.Instance;
+        TooltipParent.SetActive(false);
+
+        //TODO: Initialize barrelList based on upgrades player has from gamepersistentdata
+
+        // Initialize each barrel as locked, shouldn't include the basic bait barrel
+        foreach (var button in _barrelList)
+        {
+            if (button.GetComponent<BarrelScript>() == null)
+            {
+                _barrelScript = button.AddComponent<BarrelScript>();
+            }
+            _barrelScript = button.GetComponent<BarrelScript>();
+
+            if (_barrelScript.gameObject.name != "Basic Bait") {
+                _barrelScript.locked = true;
+            }
+
+            if (!_barrelScript.locked)
+            {
+                // Make barrel clickable
+                _barrelScript.GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                _barrelScript.GetComponent<Button>().interactable = false;
+            }
+        }
+    }
+
+    public int GetBaitSlots()
+    {
+        return baitSlots;
+    }
+
+    public void DecreaseBaitSlot()
+    {
+        baitSlots--;
+    }
+    public void increaseBaitSlot()
+    {
+        baitSlots++;
+    }
 }
