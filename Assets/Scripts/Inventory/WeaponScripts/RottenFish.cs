@@ -8,22 +8,26 @@ public class RottenFish : WeaponInstance
 
     public override void Fire(Vector3 direction)
     {
-        if(overHeated)
+        if(!_canFire) 
+            return;
+        if(_overHeated)
         {
             //Modify later if we wanna do cool stuff to the gun while overheated idk
             return;
         }
         for (int i = 0; i < _weapon.ProjectileCount; i++)
         {
-            GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, direction));
-            projectile.GetComponent<Rigidbody>().AddForce(direction * _weapon.Speed, ForceMode.Impulse);
+            GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, _direction));
+            projectile.GetComponent<Rigidbody>().AddForce(_direction * _weapon.Speed, ForceMode.Impulse);
             RottenFishProjectile rottenFishProjectile = projectile.GetComponent<RottenFishProjectile>();
             rottenFishProjectile.AssignStats(_weapon);
             _heatLevel += _weapon.HeatBuildup;
         }
         if (_heatLevel >= 100)
-            overHeated = true;
-
+            _overHeated = true;
         StartCoroutine(FireRate());
+        _autoFireCoroutine = StartCoroutine(FireAuto(_direction));
     }
+
+
 }

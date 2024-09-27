@@ -39,6 +39,8 @@ public class PlayerCombat : MonoBehaviour
     Vector3 worldPos;
     Vector2 weaponDirection;
 
+    bool _facingLeft;
+
     private void OnEnable()
     {
         cam = Camera.main;
@@ -50,8 +52,10 @@ public class PlayerCombat : MonoBehaviour
     }
     void Start()
     {
-        controls.Player.FireWeapon.Enable();
         controls.Player.FireWeapon.started += FireWeapon;
+        controls.Player.FireWeapon.canceled += FireWeapon;
+        controls.Player.FireWeapon.Enable();
+        
         ResetStats();
 
         /*
@@ -77,14 +81,52 @@ public class PlayerCombat : MonoBehaviour
 
     void FireWeapon(InputAction.CallbackContext context)
     {
+        if(_equippedWeapon != null && context.started)
+        {
+            FireFunctionality();
+        }
+        else if(_equippedWeapon != null && context.canceled)
+        {
+            Debug.Log("NONO");
+            CeaseFire();
+        }
+            
+    }
+
+    void FireFunctionality()
+    {
         if(_equippedWeapon != null)
+        {
             _equippedWeapon.Fire(weaponDirection);
+        }
+    }
+
+    void CeaseFire()
+    {
+        if(_equippedWeapon != null)
+        {
+            _equippedWeapon.CeaseFire();
+        }
     }
 
     private void Update()
     {
         mousePosition = Mouse.current.position.ReadValue();
         worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 10));
+        _equippedWeapon.SetAim(weaponDirection);
+        if (worldPos.x < gameObject.transform.position.x)
+        {
+            _facingLeft = true;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+            
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            _facingLeft = false;
+        }
+            
+            
 
     }
 
@@ -103,7 +145,10 @@ public class PlayerCombat : MonoBehaviour
     }
     public void UpdateRotation(Vector2 lookAt)
     {
-        _aimPivot.transform.rotation = Quaternion.FromToRotation(Vector3.right, lookAt);
+        if (!_facingLeft)
+            _aimPivot.transform.rotation = Quaternion.FromToRotation(Vector3.right, lookAt);
+        else
+            _aimPivot.transform.rotation = Quaternion.FromToRotation(-Vector3.right, lookAt);
     }
 
 

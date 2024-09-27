@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     private float _speed;
     private float _lifetime;
 
+    [SerializeField] private float _heatlh;
+
     private void Start()
     {
         Destroy(gameObject, _lifetime);
@@ -22,7 +24,7 @@ public class Projectile : MonoBehaviour
         _lifetime = weapon.Lifetime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         //DO DAMAGE CODE HERE
         Destroy(gameObject);
