@@ -46,15 +46,25 @@ public class BobberBehavior : MonoBehaviour
     private float _tugOrigin;
     private float _tugGoal;
 
+    [Header("Returning")]
+    [SerializeField, Tooltip("Game object whose position is the goal of the rod returning.")]
+    private GameObject _returnGoal;
+    [SerializeField, Tooltip("'Snapiness' of bobber returning to return goal (fishing rod)")]
+    private float _returnSharpness;
+    [SerializeField, Tooltip("Distance at which bobber will snap to return goal and transition to waiting state.")]
+    private float _returnSnapThreshold;
+
     public enum BobberState
     {
         Waiting,
         Launching,
         Bobbing,
-        Tugging
+        Tugging,
+        Returning
     }
 
-    [HideInInspector]
+    [Header("Bobber State")]
+    [Tooltip("Do not modify directly. Useful for viewing current state.")]
     public BobberState State = BobberState.Waiting;
 
     private void Update()
@@ -107,6 +117,19 @@ public class BobberBehavior : MonoBehaviour
                 transform.localPosition = Vector3.Lerp(transform.localPosition, goalPos, 1f - Mathf.Exp(-_tuggingSharpness * Time.deltaTime));
 
                 break;
+            case BobberState.Returning:
+                
+                // snap if at return position
+                if (Vector3.Distance(transform.position, _returnGoal.transform.position) < _returnSnapThreshold)
+                {
+                    transform.position = _returnGoal.transform.position;
+                    State = BobberState.Waiting;
+                }
+                // smooth lerp back to return position
+                else
+                    transform.position = Vector3.Lerp(transform.position, _returnGoal.transform.position, 1f - Mathf.Exp(-_returnSharpness * Time.deltaTime));
+
+                break;
         }
     }
 
@@ -140,5 +163,18 @@ public class BobberBehavior : MonoBehaviour
         }
         else
             throw new System.Exception("Incorrect usage of FishOnTheLine() function of BobberBehavior. Can only be called while bobber is currently in Bobbing State");
+    }
+
+    /// <summary>
+    /// Switches bobber to Returning state (you just caught something).
+    /// </summary>
+    public void ReturnBobber()
+    {
+        if (State == BobberState.Tugging)
+        {
+            State = BobberState.Returning;
+        }
+        else
+            throw new System.Exception("Incorrect usage of ReturnBobber() function of BobberBehavior. Can only be called while bobber is currently in Tugging State");
     }
 }

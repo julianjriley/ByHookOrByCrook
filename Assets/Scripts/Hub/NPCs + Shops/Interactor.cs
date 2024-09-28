@@ -134,7 +134,7 @@ public class Interactor : MonoBehaviour
         _convoBubble.SetActive(true);
 
         // Set up the conversation
-        GameManager.Instance.SaveData.IsConvoHad[_convoIndex] = true;
+        GameManager.Instance.GamePersistent.IsConvoHad[_convoIndex] = true;
         foreach(string line in _conversation.lines)
         {
             isSkippingLine = false;
