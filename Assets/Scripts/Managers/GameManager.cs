@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -31,35 +32,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    #region INVENTORY DATA
-    // Inventory Data (saved between scenes)
-    [System.Serializable]
-    public class InventoryData
+    #region SCENE PERSISTENT DATA
+    // Bait, Inventory, Loadout, etc. (saved between scenes)
+    [Serializable]
+    public class ScenePersistentData
     {
-        // STORE ALL BETWEEN SCENES DATA HERE
-        // i.e. INVENTORY
-        // also for bait data (for between bait selection->fishing)?
+        public Inventory CaughtFish;   
     }
 
     // private stored inventory
-    private InventoryData _inventory;
+    private ScenePersistentData _scenePersistent;
 
     // public accessor of inventory
-    public InventoryData Inventory
+    public ScenePersistentData ScenePersistent
     {
         get
         {
             // initialize if necessary and possible
-            if (_inventory == null)
+            if (_scenePersistent == null)
             {
-                ResetInventory();
+                ResetScenePersistentData();
             }
             // return new/existing inventory
-            return _inventory;
+            return _scenePersistent;
         }
         private set
         {
-            _inventory = value;
+            _scenePersistent = value;
         }
     }
 
@@ -67,45 +66,51 @@ public class GameManager : MonoBehaviour
     /// initializes base stats of inventory.
     /// Used to reset inventory between runs.
     /// </summary>
-    public void ResetInventory()
+    public void ResetScenePersistentData()
     {
-        InventoryData newInventory = new InventoryData();
+        ScenePersistentData newInventory = new ScenePersistentData();
 
         // TODO: INITIALIZE DEFAULT VALUES FOR INVENTORY DATA
 
         // Apply reset/initialized Inventory data to Instance
-        Instance.Inventory = newInventory;
+        Instance.ScenePersistent = newInventory;
     }
     #endregion
 
-    #region SAVE DATA
-    // save data (saved between sessions)
-    [System.Serializable]
-    public class PersistentData
+    #region GAME PERSISTENT DATA
+    // permanent upgrades, settings, etc. (saved between sessions)
+    [Serializable]
+    public class GamePersistentData
     {
         // TODO: ADD SAVE DATA HERE
         // i.e. UPGRADES, CURRENCY (ECONOMY), SETTINGS
+        // Boss-related stats
+        public int bossNumber;  // Whether the player is on the first, second, or third boss (0, 1, 2)
+        public int lossCounter; // How many times you've lost to a boss (resets on victory)
+
+        // Hub related stats
+        public List<bool> IsConvoHad;
     }
 
     // private stored save data
-    private PersistentData _saveData;
+    private GamePersistentData _gameData;
 
     // public accessor for save data
-    public PersistentData SaveData
+    public GamePersistentData SaveData
     {
         get
         {
             // initialize if necessary and possible
-            if (_saveData == null)
+            if (_gameData == null)
             {
                 InitializeSaveData();
             }
 
-            return _saveData;
+            return _gameData;
         }
         private set
         {
-            _saveData = value;
+            _gameData = value;
         }
     }
 
@@ -116,10 +121,13 @@ public class GameManager : MonoBehaviour
     private void InitializeSaveData()
     {
         // initialize and load save data
-        PersistentData newSaveData = new PersistentData();
+        GamePersistentData newSaveData = new GamePersistentData();
 
         // TODO: INITIALIZE DEFAULT VALUES FOR SAVE DATA
         // default data in case player prefs not found
+        newSaveData.bossNumber = 0;
+        newSaveData.lossCounter = 3;
+        newSaveData.IsConvoHad = new List<bool>();
 
         // TODO: read existing save data (if it exists) from PlayerPrefs
 

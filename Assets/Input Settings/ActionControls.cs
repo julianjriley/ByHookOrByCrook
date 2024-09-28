@@ -73,13 +73,31 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""SwitchWeapon"",
-                    ""type"": ""Value"",
-                    ""id"": ""07deb346-3c75-4aa8-9732-96533e45b550"",
-                    ""expectedControlType"": ""Axis"",
+                    ""name"": ""Fishing"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5b4f0af-5de7-4ad0-982e-bab1d0685db7"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JumpAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""f85f16af-e833-4a81-9f51-31618fecb3d1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e142d78-0024-419c-8b0f-2279feefc4f3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -185,7 +203,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""8cdb75c9-40f8-42a4-b76c-d99ed0897832"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""none"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -196,7 +214,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""49573d8a-e67c-4949-a73c-80ea6ea21cfb"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""none"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -227,70 +245,92 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""9bdf3776-ef20-495f-8564-d40d10d10a93"",
-                    ""path"": ""1DAxis"",
+                    ""name"": ""Jump"",
+                    ""id"": ""f0ada086-6bb7-4f9e-882f-5532b24b9273"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SwitchWeapon"",
+                    ""action"": ""MoveArena"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""c1fe0f1a-0462-4b99-b676-b88bced124c3"",
-                    ""path"": ""<Mouse>/scroll/down"",
+                    ""name"": ""Up"",
+                    ""id"": ""f35c9903-9646-45cd-aee7-0238390aa7ec"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SwitchWeapon"",
+                    ""action"": ""MoveArena"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""54bd6e04-7549-46be-be74-cc48d569d9f7"",
-                    ""path"": ""<Mouse>/scroll/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwitchWeapon"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""82c0a091-9011-46d9-9cfa-f1087fe5fa23"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwitchWeapon"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""1aa8760f-b7f8-48e3-9d80-8a660988cf15"",
+                    ""name"": ""Down"",
+                    ""id"": ""98aa0e7c-b5be-4945-9248-a54377b52cb2"",
                     ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SwitchWeapon"",
+                    ""action"": ""MoveArena"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""dd3e12e1-7243-4656-a5c8-72271fd38947"",
-                    ""path"": ""<Keyboard>/tab"",
+                    ""name"": ""Left"",
+                    ""id"": ""aa385538-3127-4abb-895c-16a181885145"",
+                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SwitchWeapon"",
+                    ""action"": ""MoveArena"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""e2fd6fa9-f6e5-476e-b223-d445e29f307a"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveArena"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""645edc6c-eb00-4b9e-95a7-5f54fef4b760"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fishing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52098013-c4ad-4dd8-b18f-608a931824f2"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95c09b18-20bb-47ac-b047-18268ba36c8e"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -316,7 +356,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_FireWeapon = m_Player.FindAction("FireWeapon", throwIfNotFound: true);
         m_Player_MoveArena = m_Player.FindAction("MoveArena", throwIfNotFound: true);
-        m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
+        m_Player_Fishing = m_Player.FindAction("Fishing", throwIfNotFound: true);
+        m_Player_JumpAction = m_Player.FindAction("JumpAction", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
     }
 
     ~@ActionControls()
@@ -388,7 +430,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_FireWeapon;
     private readonly InputAction m_Player_MoveArena;
-    private readonly InputAction m_Player_SwitchWeapon;
+    private readonly InputAction m_Player_Fishing;
+    private readonly InputAction m_Player_JumpAction;
+    private readonly InputAction m_Player_Dash;
     public struct PlayerActions
     {
         private @ActionControls m_Wrapper;
@@ -398,7 +442,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @FireWeapon => m_Wrapper.m_Player_FireWeapon;
         public InputAction @MoveArena => m_Wrapper.m_Player_MoveArena;
-        public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
+        public InputAction @Fishing => m_Wrapper.m_Player_Fishing;
+        public InputAction @JumpAction => m_Wrapper.m_Player_JumpAction;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -423,9 +469,15 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @MoveArena.started += instance.OnMoveArena;
             @MoveArena.performed += instance.OnMoveArena;
             @MoveArena.canceled += instance.OnMoveArena;
-            @SwitchWeapon.started += instance.OnSwitchWeapon;
-            @SwitchWeapon.performed += instance.OnSwitchWeapon;
-            @SwitchWeapon.canceled += instance.OnSwitchWeapon;
+            @Fishing.started += instance.OnFishing;
+            @Fishing.performed += instance.OnFishing;
+            @Fishing.canceled += instance.OnFishing;
+            @JumpAction.started += instance.OnJumpAction;
+            @JumpAction.performed += instance.OnJumpAction;
+            @JumpAction.canceled += instance.OnJumpAction;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -445,9 +497,15 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @MoveArena.started -= instance.OnMoveArena;
             @MoveArena.performed -= instance.OnMoveArena;
             @MoveArena.canceled -= instance.OnMoveArena;
-            @SwitchWeapon.started -= instance.OnSwitchWeapon;
-            @SwitchWeapon.performed -= instance.OnSwitchWeapon;
-            @SwitchWeapon.canceled -= instance.OnSwitchWeapon;
+            @Fishing.started -= instance.OnFishing;
+            @Fishing.performed -= instance.OnFishing;
+            @Fishing.canceled -= instance.OnFishing;
+            @JumpAction.started -= instance.OnJumpAction;
+            @JumpAction.performed -= instance.OnJumpAction;
+            @JumpAction.canceled -= instance.OnJumpAction;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -481,6 +539,8 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnFireWeapon(InputAction.CallbackContext context);
         void OnMoveArena(InputAction.CallbackContext context);
-        void OnSwitchWeapon(InputAction.CallbackContext context);
+        void OnFishing(InputAction.CallbackContext context);
+        void OnJumpAction(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }
