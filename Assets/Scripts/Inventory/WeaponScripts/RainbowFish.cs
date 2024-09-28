@@ -2,20 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RottenFish : WeaponInstance 
+public class RainbowFish : WeaponInstance
 {
     [SerializeField] GameObject _projectile;
 
+    float increasedFireRate;
+    float fireRateCap;
+    protected override void Start()
+    {
+        base.Start();
+        fireRateCap = _weapon.FireRate * 3;
+    }
+
     public override void Fire(Vector3 direction)
     {
-        if(!_canFire) 
+        if (!_canFire)
             return;
-        if(_overHeated)
+        if (_overHeated)
         {
             //Modify later if we wanna do cool stuff to the gun while overheated idk
             return;
         }
-        if(_weapon.ProjectileCount < 2)
+        if (_weapon.ProjectileCount < 2)
         {
             for (int i = 0; i < _weapon.ProjectileCount; i++)
             {
@@ -28,10 +36,10 @@ public class RottenFish : WeaponInstance
         }
         else
         {
-            
+
             for (int i = -1; i < _weapon.ProjectileCount - 1; i++)
             {
-                Vector3 aimingDir = Quaternion.Euler(0,0, 8 * i) * _direction;
+                Vector3 aimingDir = Quaternion.Euler(0, 0, 8 * i) * _direction;
                 GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, aimingDir));
                 projectile.GetComponent<Rigidbody>().AddForce(aimingDir * _weapon.Speed, ForceMode.Impulse);
                 RottenFishProjectile rottenFishProjectile = projectile.GetComponent<RottenFishProjectile>();
@@ -42,9 +50,21 @@ public class RottenFish : WeaponInstance
 
         if (_heatLevel >= 100)
             _overHeated = true;
+        increasedFireRate += 0.3f;
         StartCoroutine(FireRate());
         _autoFireCoroutine = StartCoroutine(FireAuto(_direction));
     }
 
+    protected override IEnumerator FireRate()
+    {
+        _canFire = false;
+        yield return new WaitForSeconds(1 / (_weapon.FireRate + increasedFireRate));
+        _canFire = true;
+    }
 
+    public override void CeaseFire()
+    {
+        base.CeaseFire();
+        increasedFireRate = 0;
+    }
 }

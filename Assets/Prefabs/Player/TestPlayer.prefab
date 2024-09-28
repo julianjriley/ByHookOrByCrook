@@ -142,7 +142,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -170,7 +170,8 @@ MonoBehaviour:
   _weaponsTransform: {fileID: 2227883122097606566}
   _passivesTransform: {fileID: 8367796524174305367}
   _aimPivot: {fileID: 4413851721358271744}
-  testWeapon: {fileID: 11400000, guid: a54f958a76eba9d4d9e9e4180bce0ce4, type: 2}
+  defaultWeapon: {fileID: 11400000, guid: a54f958a76eba9d4d9e9e4180bce0ce4, type: 2}
+  testWeapon2: {fileID: 11400000, guid: 34c1a93d6ce2e9f45b973bd36719fdc1, type: 2}
 --- !u!114 &2822287764505044261
 MonoBehaviour:
   m_ObjectHideFlags: 0

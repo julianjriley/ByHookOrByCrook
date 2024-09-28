@@ -71,6 +71,15 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwitchWeapon"",
+                    ""type"": ""Value"",
+                    ""id"": ""07deb346-3c75-4aa8-9732-96533e45b550"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -216,6 +225,72 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                     ""action"": ""MoveArena"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""9bdf3776-ef20-495f-8564-d40d10d10a93"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""c1fe0f1a-0462-4b99-b676-b88bced124c3"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""54bd6e04-7549-46be-be74-cc48d569d9f7"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""82c0a091-9011-46d9-9cfa-f1087fe5fa23"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""1aa8760f-b7f8-48e3-9d80-8a660988cf15"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""dd3e12e1-7243-4656-a5c8-72271fd38947"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -241,6 +316,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_FireWeapon = m_Player.FindAction("FireWeapon", throwIfNotFound: true);
         m_Player_MoveArena = m_Player.FindAction("MoveArena", throwIfNotFound: true);
+        m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
     }
 
     ~@ActionControls()
@@ -312,6 +388,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_FireWeapon;
     private readonly InputAction m_Player_MoveArena;
+    private readonly InputAction m_Player_SwitchWeapon;
     public struct PlayerActions
     {
         private @ActionControls m_Wrapper;
@@ -321,6 +398,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @FireWeapon => m_Wrapper.m_Player_FireWeapon;
         public InputAction @MoveArena => m_Wrapper.m_Player_MoveArena;
+        public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -345,6 +423,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @MoveArena.started += instance.OnMoveArena;
             @MoveArena.performed += instance.OnMoveArena;
             @MoveArena.canceled += instance.OnMoveArena;
+            @SwitchWeapon.started += instance.OnSwitchWeapon;
+            @SwitchWeapon.performed += instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled += instance.OnSwitchWeapon;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -364,6 +445,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @MoveArena.started -= instance.OnMoveArena;
             @MoveArena.performed -= instance.OnMoveArena;
             @MoveArena.canceled -= instance.OnMoveArena;
+            @SwitchWeapon.started -= instance.OnSwitchWeapon;
+            @SwitchWeapon.performed -= instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled -= instance.OnSwitchWeapon;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -397,5 +481,6 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnFireWeapon(InputAction.CallbackContext context);
         void OnMoveArena(InputAction.CallbackContext context);
+        void OnSwitchWeapon(InputAction.CallbackContext context);
     }
 }

@@ -9,14 +9,21 @@ public class WeaponInstance : MonoBehaviour
     [SerializeField] protected Transform _firePoint;
     [SerializeField] protected bool _overHeated;
     [SerializeField] protected bool _canFire = true;
+    protected SpriteRenderer spriteRenderer; 
 
+    //Constantly retrieved from the player
     protected Vector3 _direction;
 
-
+    //You know
     protected float _heatLevel;
 
-
+    //Used for auto firing weapons
     protected Coroutine _autoFireCoroutine;
+
+    protected virtual void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public virtual void Fire(Vector3 direction)
     {
@@ -29,7 +36,7 @@ public class WeaponInstance : MonoBehaviour
             StopCoroutine(_autoFireCoroutine);
     }
 
-    protected IEnumerator FireRate()
+    protected virtual IEnumerator FireRate()
     {
         _canFire = false;
         yield return new WaitForSeconds(1/_weapon.FireRate);
@@ -62,5 +69,14 @@ public class WeaponInstance : MonoBehaviour
         _direction = direction;
     }
 
+    public void DisableRendering()
+    {
+        spriteRenderer.enabled = false;
+    }
+
+    public void EnableRendering()
+    {
+        spriteRenderer.enabled = true;
+    }
 
 }
