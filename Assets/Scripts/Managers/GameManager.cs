@@ -133,11 +133,23 @@ public class GameManager : MonoBehaviour
         // i.e. UPGRADES, CURRENCY (ECONOMY), SETTINGS
         public int RodLevel;
         // Boss-related stats
-        public int bossNumber;  // Whether the player is on the first, second, or third boss (0, 1, 2)
-        public int lossCounter; // How many times you've lost to a boss (resets on victory)
+        public int BossNumber;  // Whether the player is on the first, second, or third boss (0, 1, 2)
+        public int LossCounter; // How many times you've lost to a boss (resets on victory)
+
+        // Money
+        public int Gill; // How much $ the player has
+
+        // Upgrades
+        public int BaitInventorySize;   // Current sizes of inventories
+        public int BattleInventorySize;
+        public int RodNumber;           // What # rod the player is on (0, 1, 2 - starter, upgrade 1, etc...)
+        public bool AttackBait;         // Booleans for each bait type
+        public bool MovementBait;       // Not a list for ease of access at point of sale / hub shops
+        public bool SupportBait;
+        public bool WeaponBait;
 
         // Hub related stats
-        public List<bool> IsConvoHad;
+        public List<bool> IsConvoHad; // TODO: Each NPC will need one of these lists.
     }
 
     // private stored save data
@@ -174,8 +186,18 @@ public class GameManager : MonoBehaviour
         // TODO: INITIALIZE DEFAULT VALUES FOR SAVE DATA
         // default data in case player prefs not found
         newSaveData.RodLevel = 1;
-        newSaveData.bossNumber = 0;
-        newSaveData.lossCounter = 3;
+        newSaveData.BossNumber = 0;
+        newSaveData.LossCounter = 3;
+
+        newSaveData.Gill = 0;
+        newSaveData.BaitInventorySize = 3;
+        newSaveData.BattleInventorySize = 3;
+        newSaveData.RodNumber = 0;
+        newSaveData.AttackBait = false;
+        newSaveData.MovementBait = false;
+        newSaveData.SupportBait = false;
+        newSaveData.WeaponBait = false;
+
         newSaveData.IsConvoHad = new List<bool>();
 
         // TODO: read existing save data (if it exists) from PlayerPrefs

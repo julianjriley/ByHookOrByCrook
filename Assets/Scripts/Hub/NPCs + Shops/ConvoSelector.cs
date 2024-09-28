@@ -21,7 +21,7 @@ public class ConvoSelector : MonoBehaviour
         // If the tracker list in save data is empty
         if(GameManager.Instance.GamePersistent.IsConvoHad.Count == 0)
         {
-            int fullConvoCount = _books[GameManager.Instance.GamePersistent.bossNumber].generalConvos.Count + _books[GameManager.Instance.GamePersistent.bossNumber].postBossLossConvos.Count;
+            int fullConvoCount = _books[GameManager.Instance.GamePersistent.BossNumber].generalConvos.Count + _books[GameManager.Instance.GamePersistent.BossNumber].postBossLossConvos.Count;
             for (int i = 0; i < fullConvoCount; i++)
             {
                 GameManager.Instance.GamePersistent.IsConvoHad.Add(false); // Fill it to the brim
@@ -29,13 +29,13 @@ public class ConvoSelector : MonoBehaviour
         }
 
         _npcInteractor = GetComponent<Interactor>();
-        Conversation convo = SelectConversation(_books[GameManager.Instance.GamePersistent.bossNumber]);
+        Conversation convo = SelectConversation(_books[GameManager.Instance.GamePersistent.BossNumber]);
         _npcInteractor.SetConversation(convo, returnIndex);
     }
 
     private Conversation SelectConversation(Book book)
     {
-        int lossCount = GameManager.Instance.GamePersistent.lossCounter;
+        int lossCount = GameManager.Instance.GamePersistent.LossCounter;
         // First, we check and see if there are any conversation that should occur after a certain amount of losses to the boss
         for(int i = 0; i < book.postBossLossConvos.Count; i++)
         {
