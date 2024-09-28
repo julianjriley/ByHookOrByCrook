@@ -46,8 +46,10 @@ public class Interactor : MonoBehaviour
     [SerializeField] private HubMovement _player;
 
     [Header("Shop Interaction Variables")]
-    [Tooltip("Whether to get rid of this shop after something is bought.")]
+    [Tooltip("Whether to get rid of this shop in the scene after something is bought.")]
     [SerializeField] private bool _destroyOnPurchase;
+    [Tooltip("Price of the item")]
+    [SerializeField] private int _cost;
 
     bool isActiveCoroutine;
     bool isSkippingLine;
@@ -68,9 +70,7 @@ public class Interactor : MonoBehaviour
             }
             else // If E is pressed on a shop
             {
-                // Check if they have enough money
-                // If they do, sell it to 'em
-                // If not, [LOUD INCORRECT BUZZER NOISE]
+                StartCoroutine(DoInteractionShop());
             }
         }
     }
@@ -80,6 +80,40 @@ public class Interactor : MonoBehaviour
         _conversation = convo;
         _convoIndex = index;
     }
+
+    private IEnumerator DoInteractionShop()
+    {
+        // Check if they have enough money
+        if(GameManager.Instance.SaveData.Gill >= _cost)
+        {
+            // Remove the cost from their balance
+            GameManager.Instance.SaveData.Gill -= _cost;
+            // If this is a one-time purchase shop
+            //TODO:
+            // How do we add an item to player inventory
+            // How do we store shop states so that a rod shop restocks a rod, a bait shop point stays purchased after it's bought, etc.
+            // Shop types
+                // One purchase, and that's it, shop's closed. (Bait)
+                // Multiple purchases of the same thing until you hit an upper cap (Bait space, battle space)
+                // Potentially dynamic pricing?
+                // One purchase, but more to come (Rods)
+
+            if (_destroyOnPurchase) // If this shop shouldn't be accessed again within this scene, get rid of it
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            // If not, [LOUD INCORRECT BUZZER NOISE]
+            // We can put a little sound effect and a little text box animation here to really
+            // emphasize to the player that they are poor
+        }
+        yield return null;
+
+    }
+
+    #region NPC COROUTINES
 
     private IEnumerator DoInteractionNPC()
     {
@@ -100,7 +134,7 @@ public class Interactor : MonoBehaviour
         _convoBubble.SetActive(true);
 
         // Set up the conversation
-        GameManager.Instance.SaveData.IsConvoHad[_convoIndex] = true;
+        GameManager.Instance.GamePersistent.IsConvoHad[_convoIndex] = true;
         foreach(string line in _conversation.lines)
         {
             isSkippingLine = false;
@@ -150,6 +184,8 @@ public class Interactor : MonoBehaviour
         yield return new WaitUntil(() => _interactAction.IsPressed());
         isSkippingLine = true;
     }
+
+    #endregion
 
     #region TRIGGER PROXIMITY CHECKS
     private void OnTriggerEnter2D(Collider2D collision)
