@@ -86,9 +86,13 @@ public class ArenaMovement : MonoBehaviour
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime;
+            print("Time Reset " + coyoteTimeCounter);
         }
         else
+        {
             coyoteTimeCounter -= Time.deltaTime;
+            print("Time going down " + coyoteTimeCounter);
+        }
 
 
 
@@ -102,10 +106,13 @@ public class ArenaMovement : MonoBehaviour
             jumpBufferCounter = 0f;
         }
 
-        if (isGrounded)
+
+
+        if (isGrounded || coyoteTimeCounter > 0f)
         {
             remainingJumps = maxNumberOfJumps;
         }
+
 
         rb.velocity = new Vector2(horizontal * MovementSpeed, rb.velocity.y);
 
@@ -119,8 +126,9 @@ public class ArenaMovement : MonoBehaviour
         {
             jumpBufferCounter = jumpBufferTime;
             canJump = true;
-            if (remainingJumps > 1  && !isGrounded)
-            {
+
+            if (remainingJumps > 1  && !isGrounded )
+            { 
                 print("Remaining Jumps " + remainingJumps);
                 rb.velocity = new Vector2(rb.velocity.x, jumpHeight); 
                 remainingJumps--;
