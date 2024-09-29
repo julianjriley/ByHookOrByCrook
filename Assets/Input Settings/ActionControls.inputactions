@@ -223,61 +223,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Jump",
-                    "id": "f0ada086-6bb7-4f9e-882f-5532b24b9273",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveArena",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Up",
-                    "id": "f35c9903-9646-45cd-aee7-0238390aa7ec",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveArena",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Down",
-                    "id": "98aa0e7c-b5be-4945-9248-a54377b52cb2",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveArena",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Left",
-                    "id": "aa385538-3127-4abb-895c-16a181885145",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveArena",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Right",
-                    "id": "e2fd6fa9-f6e5-476e-b223-d445e29f307a",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveArena",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "645edc6c-eb00-4b9e-95a7-5f54fef4b760",
                     "path": "<Mouse>/leftButton",
