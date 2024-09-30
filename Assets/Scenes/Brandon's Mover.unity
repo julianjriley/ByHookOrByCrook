@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 70744332}
   m_Layer: 3
   m_Name: JumpTest (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 823928376}
   m_Layer: 3
   m_Name: JumpTest (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 1181317411}
   m_Layer: 3
   m_Name: JumpTest (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -803,7 +803,7 @@ GameObject:
   - component: {fileID: 1307508700}
   m_Layer: 3
   m_Name: JumpTest (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1334,7 +1334,7 @@ GameObject:
   - component: {fileID: 2084789787}
   m_Layer: 3
   m_Name: JumpTest
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1494,6 +1494,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2054334842378462304, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 1fe2693a15f2fa24080fd6e5a91875ae, type: 2}
     - target: {fileID: 2822287764505044261, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: coyoteTime
       value: 0.2
@@ -1504,6 +1508,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2822287764505044261, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: MaxJumpNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822287764505044261, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: maxNumberOfJumps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822287764505044261, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: ToggleGravityWhenDashing
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3586478448919471552, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}

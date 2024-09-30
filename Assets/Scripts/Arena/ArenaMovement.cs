@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class ArenaMovement : MonoBehaviour
 
     //X-Movement
     public float MovementSpeed = 5f;
+    private bool canMove = true;
 
     //Jumping
     public float jumpHeight = 7f;
@@ -31,6 +33,7 @@ public class ArenaMovement : MonoBehaviour
     public float dashSpeed = 24f;
     public float dashDistance = 0.2f;
     public float dashingCooldown = 0.5f;
+    private bool isDashingCooldown;
     //Dash With and Without Gravity can be toggled for feel
     public bool ToggleGravityWhenDashing = false;
     
@@ -59,6 +62,7 @@ public class ArenaMovement : MonoBehaviour
 
         controls.Player.MoveArena.Enable();
         controls.Player.MoveArena.started += Move;
+        controls.Player.MoveArena.performed += Move;
         controls.Player.MoveArena.canceled += Move;
 
 
@@ -86,34 +90,39 @@ public class ArenaMovement : MonoBehaviour
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime;
-            print("Time Reset " + coyoteTimeCounter);
+            canDash = true;
         }
         else
         {
             coyoteTimeCounter -= Time.deltaTime;
-            print("Time going down " + coyoteTimeCounter);
         }
-
-
+       
 
         if (isDashing)
             return;
 
-        //Jump Buffer Logic
-        if ((jumpBufferCounter > 0f && coyoteTimeCounter > 0f) && canJump)
+        //Jump Logic
+        if (jumpBufferCounter > 0f && canJump)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+            if (coyoteTimeCounter > 0f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                remainingJumps++;
+            } else if (!isGrounded && remainingJumps > 1) {
+                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+            }
+            remainingJumps--;
             jumpBufferCounter = 0f;
         }
 
 
 
-        if (isGrounded || coyoteTimeCounter > 0f)
+        if (isGrounded && coyoteTimeCounter > 0f)
         {
             remainingJumps = maxNumberOfJumps;
         }
 
-
+        //Movement (Maybe Add Acceleration to Character)
         rb.velocity = new Vector2(horizontal * MovementSpeed, rb.velocity.y);
 
         jumpBufferCounter -= Time.deltaTime;
@@ -126,41 +135,42 @@ public class ArenaMovement : MonoBehaviour
         {
             jumpBufferCounter = jumpBufferTime;
             canJump = true;
-
-            if (remainingJumps > 1  && !isGrounded )
-            { 
-                print("Remaining Jumps " + remainingJumps);
-                rb.velocity = new Vector2(rb.velocity.x, jumpHeight); 
-                remainingJumps--;
-            }
-
         }
 
         
-        if (context.canceled && rb.velocity.y > 0)
+        if (context.canceled )
         {
-            canJump = false;
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-            coyoteTimeCounter = 0f;
+            //Bunny Hop
+            if (rb.velocity.y > 0) {
+                canJump = false;
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                coyoteTimeCounter = 0f;
+            }
         }
        
     }
     public void Move(InputAction.CallbackContext context)
     {
-        horizontal = context.ReadValue<Vector2>().x;
-
+        // If Wall Don't ReadValue / set horizontal = 0
+        if(canMove && context.performed)
+            horizontal = context.ReadValue<Vector2>().x;
+        else
+            horizontal = 0f;
     }
           
     public void Dash(InputAction.CallbackContext context)
     {
-        if (canDash && context.started)
-        {
+        if(!isDashingCooldown)
             StartCoroutine(Dasher(rb.velocity.x));
-        }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        isGrounded = true;
+        // If ground can jump
+        if(collision.gameObject.tag == "Ground")
+            isGrounded = true;
+
+        // if wall CAN NOT MOVE
+        // else can move
     }
 
     private void OnCollisionExit(Collision collision)
@@ -170,32 +180,35 @@ public class ArenaMovement : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        isGrounded = true;
+        // If ground can jump
+        if (collision.gameObject.tag == "Ground")
+            isGrounded = true;
     }
 
     //Dashes Based off the Orientation of the Sprite
     private IEnumerator Dasher(float direction)
     {
-        canDash = false;
-        isDashing = true;
-        int leftOrRight = IsFacingRight > 0 ? 1 : -1;
-        rb.useGravity = !ToggleGravityWhenDashing;
+        if (canDash)
+        {
+            isDashingCooldown = true;
+            canDash = false;
+            isDashing = true;
+            int leftOrRight = IsFacingRight > 0 ? 1 : -1;
+            rb.useGravity = !ToggleGravityWhenDashing;
 
-        _anim.SetBool("IsMoving", true);
-        yield return new WaitForSeconds(dashDistance);
-        _anim.SetBool("IsMoving", false);
-        isDashing = false;
+            _anim.SetBool("IsMoving", true);
+            rb.velocity = new Vector2(transform.localScale.x * dashSpeed * IsFacingRight, 0f);
+            yield return new WaitForSeconds(dashDistance);
+            _anim.SetBool("IsMoving", false);
+            isDashing = false;
 
-        rb.useGravity = true;
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
+            rb.useGravity = true;
+            yield return new WaitForSeconds(dashingCooldown);
+            isDashingCooldown = false;
+        }
     }
 
 
-    /*private IEnumerator Mover()
-    {
-        
-    }*/
     /* Player Animation Function if ever Needed Can Be Commented out after Pull request
             - I'm only keeping it in my code right now because dash Coroutine needs the orientation of
                 of the Sprite to know which way to dash, since the combat script handles that then I can 
