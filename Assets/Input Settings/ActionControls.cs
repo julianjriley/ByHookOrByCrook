@@ -71,6 +71,42 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fishing"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5b4f0af-5de7-4ad0-982e-bab1d0685db7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JumpAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""f85f16af-e833-4a81-9f51-31618fecb3d1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e142d78-0024-419c-8b0f-2279feefc4f3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""36758d1c-4e56-4854-ab48-ae56dcf65f5f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -176,7 +212,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""8cdb75c9-40f8-42a4-b76c-d99ed0897832"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""none"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -187,7 +223,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""49573d8a-e67c-4949-a73c-80ea6ea21cfb"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""none"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -216,6 +252,160 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                     ""action"": ""MoveArena"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""id"": ""f0ada086-6bb7-4f9e-882f-5532b24b9273"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveArena"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""f35c9903-9646-45cd-aee7-0238390aa7ec"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveArena"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""98aa0e7c-b5be-4945-9248-a54377b52cb2"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveArena"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""aa385538-3127-4abb-895c-16a181885145"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveArena"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""e2fd6fa9-f6e5-476e-b223-d445e29f307a"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveArena"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""645edc6c-eb00-4b9e-95a7-5f54fef4b760"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fishing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52098013-c4ad-4dd8-b18f-608a931824f2"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JumpAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95c09b18-20bb-47ac-b047-18268ba36c8e"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""fb8ddd35-8a4c-4fcd-b043-da381adaf240"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""92fa1186-7523-4076-a0c8-070a11cc526f"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""6f64a38f-dda7-4d06-85fd-2889c4a833de"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""98706d55-b693-4de2-a31f-442837636714"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""500cfb83-4cde-43c3-9916-1aa473be8fff"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""5d1d93e9-dec9-43c7-b74f-476ad96ad6b6"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -241,6 +431,10 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_FireWeapon = m_Player.FindAction("FireWeapon", throwIfNotFound: true);
         m_Player_MoveArena = m_Player.FindAction("MoveArena", throwIfNotFound: true);
+        m_Player_Fishing = m_Player.FindAction("Fishing", throwIfNotFound: true);
+        m_Player_JumpAction = m_Player.FindAction("JumpAction", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
     }
 
     ~@ActionControls()
@@ -312,6 +506,10 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_FireWeapon;
     private readonly InputAction m_Player_MoveArena;
+    private readonly InputAction m_Player_Fishing;
+    private readonly InputAction m_Player_JumpAction;
+    private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_SwitchWeapon;
     public struct PlayerActions
     {
         private @ActionControls m_Wrapper;
@@ -321,6 +519,10 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @FireWeapon => m_Wrapper.m_Player_FireWeapon;
         public InputAction @MoveArena => m_Wrapper.m_Player_MoveArena;
+        public InputAction @Fishing => m_Wrapper.m_Player_Fishing;
+        public InputAction @JumpAction => m_Wrapper.m_Player_JumpAction;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -345,6 +547,18 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @MoveArena.started += instance.OnMoveArena;
             @MoveArena.performed += instance.OnMoveArena;
             @MoveArena.canceled += instance.OnMoveArena;
+            @Fishing.started += instance.OnFishing;
+            @Fishing.performed += instance.OnFishing;
+            @Fishing.canceled += instance.OnFishing;
+            @JumpAction.started += instance.OnJumpAction;
+            @JumpAction.performed += instance.OnJumpAction;
+            @JumpAction.canceled += instance.OnJumpAction;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
+            @SwitchWeapon.started += instance.OnSwitchWeapon;
+            @SwitchWeapon.performed += instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled += instance.OnSwitchWeapon;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -364,6 +578,18 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @MoveArena.started -= instance.OnMoveArena;
             @MoveArena.performed -= instance.OnMoveArena;
             @MoveArena.canceled -= instance.OnMoveArena;
+            @Fishing.started -= instance.OnFishing;
+            @Fishing.performed -= instance.OnFishing;
+            @Fishing.canceled -= instance.OnFishing;
+            @JumpAction.started -= instance.OnJumpAction;
+            @JumpAction.performed -= instance.OnJumpAction;
+            @JumpAction.canceled -= instance.OnJumpAction;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
+            @SwitchWeapon.started -= instance.OnSwitchWeapon;
+            @SwitchWeapon.performed -= instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled -= instance.OnSwitchWeapon;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -397,5 +623,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnFireWeapon(InputAction.CallbackContext context);
         void OnMoveArena(InputAction.CallbackContext context);
+        void OnFishing(InputAction.CallbackContext context);
+        void OnJumpAction(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
+        void OnSwitchWeapon(InputAction.CallbackContext context);
     }
 }

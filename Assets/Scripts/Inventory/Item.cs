@@ -36,7 +36,7 @@ public class Item : ScriptableObject
     }
 
 
-    public void SetPlayer(PlayerCombat player)
+    public virtual void SetPlayer(PlayerCombat player)
     {
         _player = player;
     }

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
+  m_Name: RottenFish
+  m_EditorClassIdentifier: 
+  _itemID: 2
+  _itemName: Rotten Salmon
+  _itemDescription: You brought this with you, and it seems it's here to stay
+  _sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  _itemPrefab: {fileID: 8942891787185002483, guid: 96c7762b2ac80984aa9987e0aaa581a8, type: 3}
+  _baseDamage: 2
+  _baseFireRate: 3
+  _baseSize: 1
+  _baseSpeed: 15
+  _baseLifetime: 3
+  _baseHeatBuildup: 10
+  _baseCoolingSpeed: 15
+  _baseProjectileCount: 1
