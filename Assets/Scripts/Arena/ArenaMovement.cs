@@ -102,6 +102,8 @@ public class ArenaMovement : MonoBehaviour
 
     private void AnimatePlayer2D()
     {
+        if (_anim == null)
+            return;
         if ((horizontal != 0 || horizontal != 0) && !IsIdle)
             _anim.SetBool("IsMoving", true);
         else
