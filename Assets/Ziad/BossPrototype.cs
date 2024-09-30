@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Rigidbody))]
+
 public class BossPrototype : MonoBehaviour
 {
     public float BossHealth;
@@ -12,27 +14,41 @@ public class BossPrototype : MonoBehaviour
     private Transform spawnLocation;
     [SerializeField]
     private PhaseInfo[] _phases;
+
+    private Transform target;
+    private Rigidbody rb;
+    public float Speed;
+
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();
-        //currentEvent = Phases[0];
+        target = GameObject.Find("Boss Target").GetComponent<Transform>();
         PhaseSwitch();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!_defeated) {
+            Move();
+            //check for phase change
             if (BossHealth <= 0) {
                 DefeatLogic();
             } else if (_phaseCounter == _phases.Length - 1) { 
                 return; //if it's the last phase, don't check ahead and avoid error
-            } else if (BossHealth < _phases[_phaseCounter + 1].threshold) {
-                _phaseCounter++; //if under next phase threshold meet, up the phase counter and switch phases
+            } else if (BossHealth < _phases[_phaseCounter + 1].Threshold) {
+                _phaseCounter++; //if under next phase Threshold meet, up the phase counter and switch phases
                 PhaseSwitch();
             }
         } 
+    }
+
+    void Move() {
+        Debug.Log("Target position: " + target.position);
+        Debug.Log("Current position: " + transform.position);
+        rb.AddForce((target.position - transform.position).normalized * Speed, ForceMode.Force);
     }
 
     void AttackLogic() {
@@ -67,7 +83,9 @@ public class BossPrototype : MonoBehaviour
 [Serializable]
 public class PhaseInfo {
     [SerializeField]
-    public float threshold;
+    public float Threshold;
+    [SerializeField]
+    public UnityEvent StartEvent;
     [SerializeField]
     public float StartDelay;
     [SerializeField]
