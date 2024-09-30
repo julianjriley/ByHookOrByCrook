@@ -84,10 +84,10 @@ public class Interactor : MonoBehaviour
     private IEnumerator DoInteractionShop()
     {
         // Check if they have enough money
-        if(GameManager.Instance.SaveData.Gill >= _cost)
+        if(GameManager.Instance.GamePersistent.Gill >= _cost)
         {
             // Remove the cost from their balance
-            GameManager.Instance.SaveData.Gill -= _cost;
+            GameManager.Instance.GamePersistent.Gill -= _cost;
             // If this is a one-time purchase shop
             //TODO:
             // How do we add an item to player inventory
