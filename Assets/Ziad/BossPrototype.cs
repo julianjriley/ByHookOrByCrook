@@ -8,6 +8,12 @@ using UnityEngine.Events;
 
 public class BossPrototype : MonoBehaviour
 {
+    [Header ("Boss Movement")]
+    private Transform target;
+    private Rigidbody rb;
+    public float Speed = 50f;
+
+    [Header ("Boss Phases + Attacks")]
     public float BossHealth;
     private int _phaseCounter = 0;
     private bool _defeated = false;
@@ -15,9 +21,7 @@ public class BossPrototype : MonoBehaviour
     [SerializeField]
     private PhaseInfo[] _phases;
 
-    private Transform target;
-    private Rigidbody rb;
-    public float Speed;
+    
 
     // Start is called before the first frame update
     void Start()
