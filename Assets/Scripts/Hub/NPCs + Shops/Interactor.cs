@@ -46,20 +46,34 @@ public class Interactor : MonoBehaviour
     [SerializeField] private HubMovement _player;
 
     [Header("Shop Interaction Variables")]
-    [Tooltip("Whether to get rid of this shop in the scene after something is bought.")]
-    [SerializeField] private bool _destroyOnPurchase;
-    [Tooltip("Price of the item")]
-    [SerializeField] private int _cost;
+    [Tooltip("Price of the item (or if successive, prices of the items)")]
+    [SerializeField] private List<int> _costs;
+    private int _currentCost;
+    [Tooltip("Display of item price")]
+    [SerializeField] private TextMeshPro _priceText;
+    [SerializeField] private Animator _shopAnim;
     public enum ShopType { Rod, BaitSpace, BagSpace, WeaponBait, AttackBait, MovementBait, SupportBait};
     public ShopType GoodsSold;
 
     bool isActiveCoroutine;
     bool isSkippingLine;
+
+    public delegate void OnShopEnter();
+    public static event OnShopEnter onShopEnter;
+    public delegate void OnShopExit();
+    public static event OnShopExit onShopExit;
+
     void Start()
     {
         _interactAction = InputSystem.actions.FindAction("Interact");
         _col = GetComponent<BoxCollider2D>();
-        ShopSpawn();
+        if (!IsNPC)
+        {
+            ShopSpawn();
+            ShopCost();
+            _priceText.text = "G " + _currentCost;
+        }
+        
     }
 
     // Update is called once per frame
@@ -87,35 +101,34 @@ public class Interactor : MonoBehaviour
     private IEnumerator DoInteractionShop()
     {
         // Check if they have enough money
-        if(GameManager.Instance.GamePersistent.Gill >= _cost)
+        if(GameManager.Instance.GamePersistent.Gill >= _currentCost)
         {
             // Remove the cost from their balance
-            GameManager.Instance.GamePersistent.Gill -= _cost;
+            GameManager.Instance.GamePersistent.Gill -= _currentCost;
             // Give them the item
             ShopSell();
 
-            // If this is a one-time purchase shop
             //TODO:
-            // Add in price lists for things that will restock and change prices
-            // Add in the NPC hookup so that they have a new conversation after a purchase
-            // Redesign this system so that multi-purchase stalls have multiple convos stored since they sell more than one thing
-            // Make UI for money appear
-
-            if (_destroyOnPurchase) // If this shop shouldn't be accessed again within this scene, get rid of it
-            {
-                Destroy(gameObject);
-            }
+            // Add in convo hookups for NPCs
+            // Integrate dynamic item descs and sprites for fishing rods and inventory spaces
+            Destroy(gameObject); // Destroy on purchase
+            
         }
         else
         {
             // If not, [LOUD INCORRECT BUZZER NOISE]
             // We can put a little sound effect and a little text box animation here to really
             // emphasize to the player that they are poor
+
+            _shopAnim.Play("NotEnough", 0, 0);
+            yield return new WaitForSeconds(.5f);
+            _shopAnim.Play("Static", 0, 0);
         }
         yield return null;
 
     }
 
+    #region SHOP HELPER METHODS
     private void ShopSpawn() // Checks if we need to spawn this shop at all
     {
         // This is the only place in the game we will EVER need to check current sizes against a max,
@@ -137,19 +150,23 @@ public class Interactor : MonoBehaviour
         }
         else if (GoodsSold == ShopType.WeaponBait)
         {
-
+            if (GameManager.Instance.GamePersistent.WeaponBait == true)
+                Destroy(gameObject);
         }
         else if (GoodsSold == ShopType.AttackBait)
         {
-
+            if (GameManager.Instance.GamePersistent.AttackBait == true)
+                Destroy(gameObject);
         }
         else if (GoodsSold == ShopType.SupportBait)
         {
-
+            if (GameManager.Instance.GamePersistent.SupportBait == true)
+                Destroy(gameObject);
         }
         else if (GoodsSold == ShopType.MovementBait)
         {
-
+            if (GameManager.Instance.GamePersistent.MovementBait == true)
+                Destroy(gameObject);
         }
     }
 
@@ -184,6 +201,29 @@ public class Interactor : MonoBehaviour
             GameManager.Instance.GamePersistent.MovementBait = true;
         }
     }
+
+    private void ShopCost() // Sets the price for the shop
+    { 
+        // If you have rod 0, this'll get the cost for rod 1
+        if (GoodsSold == ShopType.Rod)
+        {
+            _currentCost = _costs[GameManager.Instance.GamePersistent.RodLevel]; 
+        }
+        // The minus here should be whatever the default inven sizes are for these
+        else if (GoodsSold == ShopType.BaitSpace)
+        {
+            _currentCost = _costs[GameManager.Instance.GamePersistent.BaitInventorySize - 3];
+        }
+        else if (GoodsSold == ShopType.BagSpace)
+        {
+            _currentCost = _costs[GameManager.Instance.GamePersistent.BattleInventorySize - 3];
+        }
+        else
+        {
+            _currentCost = _costs[0];
+        }
+    }
+    #endregion
 
     #region NPC COROUTINES
 
@@ -266,8 +306,10 @@ public class Interactor : MonoBehaviour
         {
             _canInteract = true;
             _interactPrompt.SetActive(true);
-            if(IsNPC)
+            if (IsNPC)
                 _cryerPrompt.SetActive(false);
+            else
+                onShopEnter?.Invoke();
         }
     }
 
@@ -277,6 +319,8 @@ public class Interactor : MonoBehaviour
         {
             _canInteract = false;
             _interactPrompt.SetActive(false);
+          if(!IsNPC)
+                onShopExit?.Invoke();
         }
     }
     #endregion
