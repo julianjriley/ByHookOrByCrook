@@ -50,6 +50,8 @@ public class Interactor : MonoBehaviour
     [SerializeField] private bool _destroyOnPurchase;
     [Tooltip("Price of the item")]
     [SerializeField] private int _cost;
+    public enum ShopType { Rod, BaitSpace, BagSpace, WeaponBait, AttackBait, MovementBait, SupportBait};
+    public ShopType GoodsSold;
 
     bool isActiveCoroutine;
     bool isSkippingLine;
@@ -57,6 +59,7 @@ public class Interactor : MonoBehaviour
     {
         _interactAction = InputSystem.actions.FindAction("Interact");
         _col = GetComponent<BoxCollider2D>();
+        ShopSpawn();
     }
 
     // Update is called once per frame
@@ -88,15 +91,15 @@ public class Interactor : MonoBehaviour
         {
             // Remove the cost from their balance
             GameManager.Instance.GamePersistent.Gill -= _cost;
+            // Give them the item
+            ShopSell();
+
             // If this is a one-time purchase shop
             //TODO:
-            // How do we add an item to player inventory
-            // How do we store shop states so that a rod shop restocks a rod, a bait shop point stays purchased after it's bought, etc.
-            // Shop types
-                // One purchase, and that's it, shop's closed. (Bait)
-                // Multiple purchases of the same thing until you hit an upper cap (Bait space, battle space)
-                // Potentially dynamic pricing?
-                // One purchase, but more to come (Rods)
+            // Add in price lists for things that will restock and change prices
+            // Add in the NPC hookup so that they have a new conversation after a purchase
+            // Redesign this system so that multi-purchase stalls have multiple convos stored since they sell more than one thing
+            // Make UI for money appear
 
             if (_destroyOnPurchase) // If this shop shouldn't be accessed again within this scene, get rid of it
             {
@@ -111,6 +114,75 @@ public class Interactor : MonoBehaviour
         }
         yield return null;
 
+    }
+
+    private void ShopSpawn() // Checks if we need to spawn this shop at all
+    {
+        // This is the only place in the game we will EVER need to check current sizes against a max,
+        // so this is where the max rod level, max bait inventory size, and max battle inventory size are stored.
+        if(GoodsSold == ShopType.Rod)
+        {
+            if (GameManager.Instance.GamePersistent.RodLevel >= 2)
+                Destroy(gameObject);
+        }
+        else if(GoodsSold == ShopType.BaitSpace)
+        {
+            if (GameManager.Instance.GamePersistent.BaitInventorySize >= 8)
+                Destroy(gameObject);
+        }
+        else if (GoodsSold == ShopType.BagSpace)
+        {
+            if (GameManager.Instance.GamePersistent.BattleInventorySize >= 8)
+                Destroy(gameObject);
+        }
+        else if (GoodsSold == ShopType.WeaponBait)
+        {
+
+        }
+        else if (GoodsSold == ShopType.AttackBait)
+        {
+
+        }
+        else if (GoodsSold == ShopType.SupportBait)
+        {
+
+        }
+        else if (GoodsSold == ShopType.MovementBait)
+        {
+
+        }
+    }
+
+    private void ShopSell() // Handles providing the player with the correct item
+    {
+        if (GoodsSold == ShopType.Rod)
+        {
+            GameManager.Instance.GamePersistent.RodLevel += 1;
+        }
+        else if (GoodsSold == ShopType.BaitSpace)
+        {
+            GameManager.Instance.GamePersistent.BaitInventorySize += 1;
+        }
+        else if (GoodsSold == ShopType.BagSpace)
+        {
+            GameManager.Instance.GamePersistent.BattleInventorySize += 1;
+        }
+        else if (GoodsSold == ShopType.WeaponBait)
+        {
+            GameManager.Instance.GamePersistent.WeaponBait = true;
+        }
+        else if (GoodsSold == ShopType.AttackBait)
+        {
+            GameManager.Instance.GamePersistent.AttackBait = true;
+        }
+        else if (GoodsSold == ShopType.SupportBait)
+        {
+            GameManager.Instance.GamePersistent.SupportBait = true;
+        }
+        else if (GoodsSold == ShopType.MovementBait)
+        {
+            GameManager.Instance.GamePersistent.MovementBait = true;
+        }
     }
 
     #region NPC COROUTINES
