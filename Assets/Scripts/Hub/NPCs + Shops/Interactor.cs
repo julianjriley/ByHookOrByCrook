@@ -55,6 +55,8 @@ public class Interactor : MonoBehaviour
     [SerializeField] private List<string> _descs;
     [Tooltip("Sprite of the item (or if successive, sprites of the items)")]
     [SerializeField] private List<Sprite> _sprites;
+    [Tooltip("Convo you get for buying the item (or if successive, convos)")]
+    [SerializeField] private List<Conversation> _convos;
     [Tooltip("Display of item price")]
     [SerializeField] private TextMeshPro _priceText;
     [Tooltip("Display of item title")]
@@ -64,6 +66,9 @@ public class Interactor : MonoBehaviour
     [Tooltip("Item sprite")]
     [SerializeField] private SpriteRenderer _itemSprite;
     [SerializeField] private Animator _shopAnim;
+    [Tooltip("The NPC selling the item")]
+    [SerializeField] private Interactor _npc;
+
     public enum ShopType { Rod, BaitSpace, BagSpace, WeaponBait, AttackBait, MovementBait, SupportBait};
     public ShopType GoodsSold;
 
@@ -117,12 +122,11 @@ public class Interactor : MonoBehaviour
         {
             // Remove the cost from their balance
             GameManager.Instance.GamePersistent.Gill -= _currentCost;
-            // Give them the item
-            ShopSell();
 
-            //TODO:
-            // Add in convo hookups for NPCs
-            // Integrate dynamic item descs and sprites for fishing rods and inventory spaces
+            ShopConvo(); // Set the correct conversation
+            ShopSell();  // Give them the item
+           
+
             Destroy(gameObject); // Destroy on purchase
             
         }
@@ -249,6 +253,28 @@ public class Interactor : MonoBehaviour
             _itemSprite.sprite = _sprites[0];
         }
     }
+
+    private void ShopConvo() // Assigns the relevant conversation to the attached NPC
+    {
+        int minBaitSlots = 3;
+        int minBattleSlots = 3;
+        if (GoodsSold == ShopType.Rod)
+        {
+            _npc.SetConversation(_convos[GameManager.Instance.GamePersistent.RodLevel], -1);
+        }
+        else if (GoodsSold == ShopType.BaitSpace)
+        {
+            _npc.SetConversation(_convos[GameManager.Instance.GamePersistent.BattleInventorySize - minBaitSlots], -1);
+        }
+        else if (GoodsSold == ShopType.BagSpace)
+        {
+            _npc.SetConversation(_convos[GameManager.Instance.GamePersistent.BattleInventorySize - minBattleSlots], -1);
+        }
+        else
+        {
+            _npc.SetConversation(_convos[0], -1);
+        }
+    }
     #endregion
 
     #region NPC COROUTINES
@@ -272,7 +298,8 @@ public class Interactor : MonoBehaviour
         _convoBubble.SetActive(true);
 
         // Set up the conversation
-        GameManager.Instance.GamePersistent.IsConvoHad[_convoIndex] = true;
+        if(_convoIndex >= 0)
+            GameManager.Instance.GamePersistent.IsConvoHad[_convoIndex] = true;
         foreach(string line in _conversation.lines)
         {
             isSkippingLine = false;

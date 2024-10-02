@@ -1411,11 +1411,13 @@ MonoBehaviour:
   _titles: []
   _descs: []
   _sprites: []
+  _convos: []
   _priceText: {fileID: 0}
   _titleText: {fileID: 0}
   _descText: {fileID: 0}
   _itemSprite: {fileID: 0}
   _shopAnim: {fileID: 0}
+  _npc: {fileID: 0}
   GoodsSold: 0
 --- !u!61 &513995387
 BoxCollider2D:
@@ -1892,11 +1894,15 @@ MonoBehaviour:
   _sprites:
   - {fileID: 21300000, guid: 5ff21a902e4f3234582ede1fff4366c8, type: 3}
   - {fileID: 21300000, guid: 9b6d886ec40aff94d881d0dc53a19871, type: 3}
+  _convos:
+  - {fileID: 11400000, guid: ebf206b74439e5d47b8454051c50fd9e, type: 2}
+  - {fileID: 11400000, guid: c692dd1d5ecf5904eafd54871bb7f64d, type: 2}
   _priceText: {fileID: 75641915}
   _titleText: {fileID: 1100701682}
   _descText: {fileID: 576662683}
   _itemSprite: {fileID: 239543388}
   _shopAnim: {fileID: 855627693}
+  _npc: {fileID: 513995386}
   GoodsSold: 0
 --- !u!212 &653011580
 SpriteRenderer:

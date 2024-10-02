@@ -55,7 +55,7 @@ public class HubUI : MonoBehaviour
         _anim.Play("GoDown", 0, 0);
         _isShowingMoney = true;
         _atShop = true;
-        _moneyTimer = 4f;
+        _moneyTimer = 3f;
     }
 
     private void LeaveShop()
