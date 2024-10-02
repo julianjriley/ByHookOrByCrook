@@ -16,7 +16,6 @@ public class Bait : MonoBehaviour
         _spriteList = baitSelector._baitSprites;
     }
 
-
     public void AssignBaitType(string barrelType)
     {
         if (_baitType == "Basic Bait")
@@ -47,7 +46,6 @@ public class Bait : MonoBehaviour
         baitSelector.increaseBaitSlot();
         StartCoroutine(Waiting(this.gameObject));
     }
-
 
     IEnumerator Waiting(GameObject _baitGameObject)
     {

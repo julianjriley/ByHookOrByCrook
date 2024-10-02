@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class BarrelScript : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class BarrelScript : MonoBehaviour
 
     private int _baitSlots;
 
+    private Vector2 _tooltipSpot;
     public void BaitToSlot()
     {
         // If barrels aren't locked and we have slots
@@ -32,11 +35,19 @@ public class BarrelScript : MonoBehaviour
         }
     }
 
+    public void AssignTooltipSpawn(int index)
+    {
+        // Assigns the tooltip's spawnpoint for each barrel
+        _tooltipSpot = baitSelector.ToolTipSpawnpoints[index];
+    }
+
     public void OnHover()
     {
+
         // Display UI tooltip: "Purchase at shop"
         if (locked)
         {
+            baitSelector.TooltipParent.transform.localPosition = _tooltipSpot;
             baitSelector.TooltipParent.SetActive(true);
         }
 

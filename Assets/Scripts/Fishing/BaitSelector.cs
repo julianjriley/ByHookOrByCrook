@@ -17,6 +17,9 @@ public class BaitSelector : MonoBehaviour
     private int baitSlots = 3;
 
     public GameObject TooltipParent;
+    public GameObject TooltipSpawn;
+
+    public List<Vector2> ToolTipSpawnpoints;
 
     void Start()
     {
