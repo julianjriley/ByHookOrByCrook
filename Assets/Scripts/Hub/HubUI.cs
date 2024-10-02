@@ -40,7 +40,7 @@ public class HubUI : MonoBehaviour
         {
             StartCoroutine(DoIncrementalIncrease());
         }
-        if(_isShowingMoney && _moneyTimer > 0 && !_atShop)
+        if(_isShowingMoney && _moneyTimer > 0 && !_atShop && !_activeCoroutine)
         {
             _moneyTimer -= Time.deltaTime;
         }
@@ -52,8 +52,12 @@ public class HubUI : MonoBehaviour
 
     private void ShowGill()
     {
-        _anim.Play("GoDown", 0, 0);
-        _isShowingMoney = true;
+        if (!_isShowingMoney)
+        {
+            _anim.Play("GoDown", 0, 0);
+            _isShowingMoney = true;
+        }
+        
         _atShop = true;
         _moneyTimer = 3f;
     }

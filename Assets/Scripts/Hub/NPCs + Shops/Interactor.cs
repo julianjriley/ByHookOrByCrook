@@ -46,6 +46,8 @@ public class Interactor : MonoBehaviour
     [SerializeField] private HubMovement _player;
 
     [Header("Shop Interaction Variables")]
+    [Tooltip("Whether multiple things can be bought from this shop in the same scene")]
+    [SerializeField] private bool _multipurchase;
     [Tooltip("Price of the item (or if successive, prices of the items)")]
     [SerializeField] private List<int> _costs;
     private int _currentCost;
@@ -87,8 +89,11 @@ public class Interactor : MonoBehaviour
         if (!IsNPC)
         {
             ShopSpawn();
-            ShopCost();
-            _priceText.text = "G " + _currentCost;
+            if (this.isActiveAndEnabled)
+            {
+                ShopCost();
+                _priceText.text = "G " + _currentCost;
+            }
         }
         
     }
@@ -125,9 +130,25 @@ public class Interactor : MonoBehaviour
 
             ShopConvo(); // Set the correct conversation
             ShopSell();  // Give them the item
-           
 
-            Destroy(gameObject); // Destroy on purchase
+            if (!_multipurchase) // If it's one purchase per load, destroy this thing
+            {
+                Destroy(gameObject); // Destroy on purchase
+            }
+            else // Essentially respawn/reset the shop
+            {
+                _col.enabled = false;
+                ShopSpawn();
+                if (this.isActiveAndEnabled)
+                {
+                    ShopCost();
+                    _priceText.text = "G " + _currentCost;
+                }
+                yield return new WaitUntil(() => !_interactAction.IsPressed());
+                _col.enabled = true;
+
+            }
+            
             
         }
         else
@@ -149,40 +170,64 @@ public class Interactor : MonoBehaviour
     {
         // This is the only place in the game we will EVER need to check current sizes against a max,
         // so this is where the max rod level, max bait inventory size, and max battle inventory size are stored.
-        if(GoodsSold == ShopType.Rod)
+        int maxBaitSlots = 5;
+        int maxBattleSlots = 5;
+        if (GoodsSold == ShopType.Rod)
         {
             if (GameManager.Instance.GamePersistent.RodLevel >= 2)
+            {
                 Destroy(gameObject);
+                this.gameObject.SetActive(false);
+            }
+               
         }
         else if(GoodsSold == ShopType.BaitSpace)
         {
-            if (GameManager.Instance.GamePersistent.BaitInventorySize >= 8)
+            if (GameManager.Instance.GamePersistent.BaitInventorySize >= maxBaitSlots)
+            {
                 Destroy(gameObject);
+                this.gameObject.SetActive(false);
+            }
         }
         else if (GoodsSold == ShopType.BagSpace)
         {
-            if (GameManager.Instance.GamePersistent.BattleInventorySize >= 8)
+            if (GameManager.Instance.GamePersistent.BattleInventorySize >= maxBattleSlots)
+            {
                 Destroy(gameObject);
+                this.gameObject.SetActive(false);
+            }
         }
         else if (GoodsSold == ShopType.WeaponBait)
         {
             if (GameManager.Instance.GamePersistent.WeaponBait == true)
+            {
                 Destroy(gameObject);
+                this.gameObject.SetActive(false);
+            }
         }
         else if (GoodsSold == ShopType.AttackBait)
         {
             if (GameManager.Instance.GamePersistent.AttackBait == true)
+            {
                 Destroy(gameObject);
+                this.gameObject.SetActive(false);
+            }
         }
         else if (GoodsSold == ShopType.SupportBait)
         {
             if (GameManager.Instance.GamePersistent.SupportBait == true)
+            {
                 Destroy(gameObject);
+                this.gameObject.SetActive(false);
+            }
         }
         else if (GoodsSold == ShopType.MovementBait)
         {
             if (GameManager.Instance.GamePersistent.MovementBait == true)
+            {
                 Destroy(gameObject);
+                this.gameObject.SetActive(false);
+            }
         }
     }
 
