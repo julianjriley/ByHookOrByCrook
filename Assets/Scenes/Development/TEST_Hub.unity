@@ -609,7 +609,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5ff21a902e4f3234582ede1fff4366c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9b6d886ec40aff94d881d0dc53a19871, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1408,7 +1408,13 @@ MonoBehaviour:
   _interactCamera: {fileID: 567196280}
   _player: {fileID: 1538144252}
   _costs: 
+  _titles: []
+  _descs: []
+  _sprites: []
   _priceText: {fileID: 0}
+  _titleText: {fileID: 0}
+  _descText: {fileID: 0}
+  _itemSprite: {fileID: 0}
   _shopAnim: {fileID: 0}
   GoodsSold: 0
 --- !u!61 &513995387
@@ -1687,7 +1693,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Very approachable.
+  m_text: Temp.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1714,12 +1720,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 20
   m_fontSizeBase: 18
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 12
+  m_fontSizeMax: 20
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
@@ -1876,8 +1882,20 @@ MonoBehaviour:
   _mainCamera: {fileID: 0}
   _interactCamera: {fileID: 0}
   _player: {fileID: 0}
-  _costs: 45000000
+  _costs: 3200000009030000
+  _titles:
+  - SHARK DIO
+  - WORM WEAPON
+  _descs:
+  - Very approachable.
+  - Has a button for easy shootin'.
+  _sprites:
+  - {fileID: 21300000, guid: 5ff21a902e4f3234582ede1fff4366c8, type: 3}
+  - {fileID: 21300000, guid: 9b6d886ec40aff94d881d0dc53a19871, type: 3}
   _priceText: {fileID: 75641915}
+  _titleText: {fileID: 1100701682}
+  _descText: {fileID: 576662683}
+  _itemSprite: {fileID: 239543388}
   _shopAnim: {fileID: 855627693}
   GoodsSold: 0
 --- !u!212 &653011580
@@ -2405,9 +2423,9 @@ Transform:
   - {fileID: 409461665}
   - {fileID: 1100701681}
   - {fileID: 576662682}
+  - {fileID: 75641914}
   - {fileID: 1008257923}
   - {fileID: 690884963}
-  - {fileID: 75641914}
   m_Father: {fileID: 653011581}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3218,7 +3236,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SHARK DIO
+  m_text: TEMP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3248,9 +3266,9 @@ MonoBehaviour:
   m_fontSize: 20
   m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 12
+  m_fontSizeMax: 20
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
@@ -3281,7 +3299,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -2.0811472, y: 0, z: 6.69374, w: 0}
+  m_margin: {x: -2.0811472, y: 0, z: 6.69374, w: 2.4544911}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0

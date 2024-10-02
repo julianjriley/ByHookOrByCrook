@@ -49,8 +49,20 @@ public class Interactor : MonoBehaviour
     [Tooltip("Price of the item (or if successive, prices of the items)")]
     [SerializeField] private List<int> _costs;
     private int _currentCost;
+    [Tooltip("Title of the item (or if successive, titles of the items)")]
+    [SerializeField] private List<string> _titles;
+    [Tooltip("Description of the item (or if successive, descriptions of the items)")]
+    [SerializeField] private List<string> _descs;
+    [Tooltip("Sprite of the item (or if successive, sprites of the items)")]
+    [SerializeField] private List<Sprite> _sprites;
     [Tooltip("Display of item price")]
     [SerializeField] private TextMeshPro _priceText;
+    [Tooltip("Display of item title")]
+    [SerializeField] private TextMeshPro _titleText;
+    [Tooltip("Display of item desc")]
+    [SerializeField] private TextMeshPro _descText;
+    [Tooltip("Item sprite")]
+    [SerializeField] private SpriteRenderer _itemSprite;
     [SerializeField] private Animator _shopAnim;
     public enum ShopType { Rod, BaitSpace, BagSpace, WeaponBait, AttackBait, MovementBait, SupportBait};
     public ShopType GoodsSold;
@@ -202,25 +214,39 @@ public class Interactor : MonoBehaviour
         }
     }
 
-    private void ShopCost() // Sets the price for the shop
-    { 
+    private void ShopCost() // Sets the price, title, and desc. for the shop
+    {
+        int minBaitSlots = 3;
+        int minBattleSlots = 3;
         // If you have rod 0, this'll get the cost for rod 1
         if (GoodsSold == ShopType.Rod)
         {
             _currentCost = _costs[GameManager.Instance.GamePersistent.RodLevel]; 
+            _titleText.text = _titles[GameManager.Instance.GamePersistent.RodLevel];
+            _descText.text = _descs[GameManager.Instance.GamePersistent.RodLevel];
+            _itemSprite.sprite = _sprites[GameManager.Instance.GamePersistent.RodLevel];
         }
         // The minus here should be whatever the default inven sizes are for these
         else if (GoodsSold == ShopType.BaitSpace)
         {
-            _currentCost = _costs[GameManager.Instance.GamePersistent.BaitInventorySize - 3];
+            _currentCost = _costs[GameManager.Instance.GamePersistent.BaitInventorySize - minBaitSlots];
+            _titleText.text = _titles[GameManager.Instance.GamePersistent.BaitInventorySize - minBaitSlots];
+            _descText.text = _descs[GameManager.Instance.GamePersistent.BaitInventorySize - minBaitSlots];
+            _itemSprite.sprite = _sprites[GameManager.Instance.GamePersistent.BaitInventorySize - minBaitSlots];
         }
         else if (GoodsSold == ShopType.BagSpace)
         {
-            _currentCost = _costs[GameManager.Instance.GamePersistent.BattleInventorySize - 3];
+            _currentCost = _costs[GameManager.Instance.GamePersistent.BattleInventorySize - minBattleSlots];
+            _titleText.text = _titles[GameManager.Instance.GamePersistent.BattleInventorySize - minBattleSlots];
+            _descText.text = _descs[GameManager.Instance.GamePersistent.BattleInventorySize - minBattleSlots];
+            _itemSprite.sprite = _sprites[GameManager.Instance.GamePersistent.BattleInventorySize - minBattleSlots];
         }
         else
         {
             _currentCost = _costs[0];
+            _titleText.text = _titles[0];
+            _descText.text = _descs[0];
+            _itemSprite.sprite = _sprites[0];
         }
     }
     #endregion
