@@ -17,9 +17,10 @@ public class BossPrototype : MonoBehaviour
     public float BossHealth;
     private int _phaseCounter = 0;
     private bool _defeated = false;
-    private Transform spawnLocation;
+    private Transform _spawnLocation;
     [SerializeField]
     private PhaseInfo[] _phases;
+    private int _lastChosenAttack = -1;
 
     
 
@@ -27,9 +28,10 @@ public class BossPrototype : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();
+        _spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();
         target = GameObject.Find("Boss Target").GetComponent<Transform>();
         PhaseSwitch();
+        Debug.Log("Phase Counter = " + _phaseCounter);
     }
 
     // Update is called once per frame
@@ -56,29 +58,41 @@ public class BossPrototype : MonoBehaviour
     }
 
     void AttackLogic() {
-        //add random choosing later that avoids repeats
-        //check what phase
-        //instantiate attack in [0] place
+        //random choosing
         GameObject chosenAttack = _phases[0].AttackPrefabs[0];
         switch (_phaseCounter) {
             case 0:
-            chosenAttack = _phases[0].AttackPrefabs[0];
+                ChooseAttack(ref chosenAttack, 0);
             break;
             case 1:
-            chosenAttack = _phases[0].AttackPrefabs[0];
+                ChooseAttack(ref chosenAttack, 1);
             break;
         }
-        Instantiate(chosenAttack, spawnLocation);
+        Debug.Log("Instantiating: " + chosenAttack.name);
+        Instantiate(chosenAttack, _spawnLocation);
     }
+
+    void ChooseAttack(ref GameObject choice, int phaseNum) {
+        int rand = UnityEngine.Random.Range(0, _phases[phaseNum].AttackPrefabs.Length);
+        if (rand == _lastChosenAttack && _phases[phaseNum].AttackPrefabs.Length > 1) { //avoid choosing the same attack if there is more than 1 option
+            ChooseAttack(ref choice, phaseNum);
+            return;
+        }
+        _lastChosenAttack = rand;
+        Debug.Log("last chosen attack = " + _lastChosenAttack);
+        choice = _phases[phaseNum].AttackPrefabs[rand];
+    }
+
     void PhaseSwitch() {
         CancelInvoke();
         InvokeRepeating("AttackLogic", _phases[_phaseCounter].StartDelay, _phases[_phaseCounter].RepeatRate);
+        _lastChosenAttack = -1;
     }
     void DefeatLogic() {
         Debug.Log("Defeated!");
         _defeated = true;
         CancelInvoke();
-        foreach (Transform child in spawnLocation) {
+        foreach (Transform child in _spawnLocation) {
             Destroy(child.gameObject);
         }
     }
