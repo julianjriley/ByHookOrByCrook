@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PixelInk : BossProjectile
+public class PixelInk : Projectile
 {
-    [SerializeField, Tooltip("Constant speed projectile travels at.")]
-    private float _speed;
-
-    override protected void Awake()
+    override protected void Start()
     {
-        base.Awake();
+        base.Start();
 
         // ensure gravity is disabled
         _rb.useGravity = false;

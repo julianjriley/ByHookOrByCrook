@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2131560071058606546
 MonoBehaviour:
@@ -46,10 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03c85ac61db76141a2197232917d1e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 4033764306046351637}
-  _lifeTime: 5
-  _health: 1
+  _damage: 1
+  _size: 1
   _speed: 5
+  _lifetime: 10
+  _health: 1
 --- !u!54 &4033764306046351637
 Rigidbody:
   m_ObjectHideFlags: 0

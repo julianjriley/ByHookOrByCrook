@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField, Tooltip("Amount of damage projectile deals on contact.")]
     private float _damage;
+    [SerializeField, Tooltip("Scale of projectile hitbox.")]
     private float _size;
-    private float _speed;
+    [SerializeField, Tooltip("Move speed of projectile")]
+    protected float _speed;
+    [SerializeField, Tooltip("Time until projectile is automatically destroyed")]
     private float _lifetime;
+    [SerializeField, Tooltip("Amount of damage required to destroy the projectile")] 
+    private float _health;
 
-    [SerializeField] private float _heatlh;
+    protected Rigidbody _rb;
 
-    private void Start()
+    virtual protected void Start()
     {
+        _rb = GetComponent<Rigidbody>();
+
         Destroy(gameObject, _lifetime);
     }
 
@@ -28,5 +36,25 @@ public class Projectile : MonoBehaviour
     {
         //DO DAMAGE CODE HERE
         Destroy(gameObject);
+
+        // TODO: handle damaging of boss projectiles (when contacting player projectiles / shields)
+        /*  if (collision.layer == BossProjectile)
+         *  {
+         *      if (collision.CompareTag("PlayerProjectile")
+         *      {
+         *          _health -= collision.GetComponent<Projectile>.damage;
+         *          Destroy(collision);
+         *      
+         *          if(_health < 0)
+         *             Destroy(gameObject);
+         *      }
+         *      if (collision.CompareTag("Player")
+         *      {
+         *          collision.GetComponent<PlayerHealth>().ApplyDamage(_damage);
+         *      
+         *          Destroy(gameObject);
+         *      }
+         *  }
+         */
     }
 }
