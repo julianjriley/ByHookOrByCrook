@@ -23,6 +23,8 @@ public class LoadoutSelection : MonoBehaviour
     ///     3. Display PRACTICE? or FIGHT!  
     ///         a. ON CLICK: Change scene
 
+    public List<Item> TempListofFish;
+    
     [SerializeField]
     private List<Button> _caughtFishButtons; 
     [SerializeField]
@@ -32,7 +34,7 @@ public class LoadoutSelection : MonoBehaviour
     private Inventory _caughtFish;
 
     [SerializeField]
-    private Button spawnedItem;
+    private GameObject spawnedItem;
 
     // Spawnpoints in the grid layout so our items follow a nice grid
     public GameObject caughtItemsSpawn;
@@ -40,6 +42,9 @@ public class LoadoutSelection : MonoBehaviour
 
     // Parent GameObject that contains all UI assets for the fish desctriptions
     public GameObject descriptionToolTip;
+    public TextMeshProUGUI fishName;
+    public TextMeshProUGUI fishDescription;
+    public Image fishIcon;
 
     void Start()
     {
@@ -47,23 +52,26 @@ public class LoadoutSelection : MonoBehaviour
         _caughtFish = _gameManager.ScenePersistent.CaughtFish;
 
         // Below instantiates the item loadout into grid layout
-        foreach (var item in _caughtFish.items)
+        foreach (var item in TempListofFish) // Will use _caughtFish.items
         {
-            // Here we spawn buttons into the grid layout and assign them to the items
-            Button fishClone = Instantiate(spawnedItem, caughtItemsSpawn.transform);
-            FishButtons fishButtonClone = fishClone.AddComponent<FishButtons>();
-            fishButtonClone.AssignItem(item);
+            // Here we spawn prefabs into the grid layout and assign them to the items
+                // Prefabs spawn with Button Components & FishButton Scripts
+
+            GameObject spawnedFish = Instantiate(spawnedItem, caughtItemsSpawn.transform);
+
+            Debug.Log("after instantiation " + spawnedFish.name);
+            spawnedFish.GetComponent<FishButtons>().AssignItem(item);
 
             // Automatically adds OnClick function to spawned buttons
-            fishClone.onClick.AddListener(() => MoveToLoadout(fishClone));
+            spawnedFish.GetComponent<Button>().onClick.AddListener(() => MoveToLoadout((spawnedFish.GetComponent<Button>())));
 
             // Trying to add OnHover function by adding Event Trigger "Pointer Enter" Event Type programatically
-            EventTrigger trigger = fishClone.gameObject.AddComponent<EventTrigger>();
+            EventTrigger trigger = spawnedFish.GetComponent<Button>().gameObject.AddComponent<EventTrigger>();
             EventTrigger.Entry entry = new EventTrigger.Entry();
             entry.eventID = EventTriggerType.PointerEnter;
             entry.callback.AddListener((eventdata) => { OnHover();});
 
-            _caughtFishButtons.Add(fishClone);
+            _caughtFishButtons.Add(spawnedFish.GetComponent<Button>());
         }
     }
 

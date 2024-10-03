@@ -21,13 +21,10 @@ public class FishButtons : MonoBehaviour
     {
         // This function assigns the scriptable object properties to properties that appear in game
         scriptableObject = fishItem;
-        itemName.text = fishItem.GetItemName();
+        Debug.Log(fishItem.GetItemName());
+        itemName.text = fishItem.GetItemName(); // ERROR HERE because TMPGUI elements are null
         itemDescription.text = fishItem.GetItemDescription();
         sprite.sprite = fishItem.GetSprite();
     }
-    public void OnHover()
-    {
-        // TODO: Make sprite box with text appear
-        // Buttons will need an Event Trigger "Pointer Enter" Event Type added to them
-    }
+
 }
