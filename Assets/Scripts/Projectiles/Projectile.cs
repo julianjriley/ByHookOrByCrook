@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
     protected virtual void OnCollisionEnter(Collision collision)
     {
         //DO DAMAGE CODE HERE
-        Destroy(gameObject);
+        //Destroy(gameObject);
 
         // TODO: handle damaging of boss projectiles (when contacting player projectiles / shields)
         /*  if (collision.layer == BossProjectile)

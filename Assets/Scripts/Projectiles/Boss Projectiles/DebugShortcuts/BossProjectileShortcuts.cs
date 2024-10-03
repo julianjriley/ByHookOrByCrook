@@ -47,18 +47,33 @@ public class BossProjectileShortcuts : MonoBehaviour
         Vector2 mousePos = _mouseInput.ReadValue<Vector2>();
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
         worldPos.z = 0;
+
+        Quaternion rot = new Quaternion();
+        GameObject newSpawner;
+
         // spawn projectile
-        switch(_currProjectile)
+        switch (_currProjectile)
         {
             case 0: // Pixel Ink
 
-                GameObject newSpawner = Instantiate(spawners[_currProjectile], worldPos, spawners[_currProjectile].transform.rotation);
+                newSpawner = Instantiate(spawners[_currProjectile], worldPos, spawners[_currProjectile].transform.rotation);
 
                 // facing center (0, 0)
-                Quaternion rot = new Quaternion();
                 rot.SetFromToRotation(Vector3.right, -worldPos);
 
                 newSpawner.transform.rotation = rot * transform.rotation;
+
+                break;
+            case 1: // Pink Man
+
+                newSpawner = Instantiate(spawners[_currProjectile], worldPos, spawners[_currProjectile].transform.rotation);
+
+                // needs to be flipped to face left
+                if(worldPos.x > 0)
+                {
+                    rot.SetFromToRotation(Vector3.right, Vector3.left);
+                    newSpawner.transform.rotation = rot * transform.rotation;
+                }
 
                 break;
         }

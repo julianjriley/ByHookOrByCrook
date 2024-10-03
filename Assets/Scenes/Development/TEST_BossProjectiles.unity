@@ -152,9 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847db13048b88224bbfca6479c49a850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numOfProjectileTypes: 1
+  _numOfProjectileTypes: 2
   spawners:
   - {fileID: 2123999255432267849, guid: 66f8bc184e1252f4591f60b6e1760125, type: 3}
+  - {fileID: 334340606897948097, guid: 0163005952921034eab9c5b91c2d202f, type: 3}
 --- !u!4 &829807800
 Transform:
   m_ObjectHideFlags: 0
