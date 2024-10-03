@@ -60,12 +60,6 @@ public class BossProjectileShortcuts : MonoBehaviour
 
                 newSpawner.transform.rotation = rot * transform.rotation;
 
-
-                /*float zAngle = Vector3.Angle(Vector3.right, -worldPos);
-                newSpawner.transform.rotation = SetFromToRotation(Vector3.right, -worldPos);
-                //newSpawner.transform.Rotate(Vector3.forward, -zAngle);
-                Debug.Log(zAngle);*/
-
                 break;
         }
     }
