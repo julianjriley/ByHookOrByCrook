@@ -14,12 +14,10 @@ public class BossProjectileShortcuts : MonoBehaviour
     private InputAction _mouseInput;
 
     private int _currProjectile = 0;
-    [SerializeField, Tooltip("Max number of projectiles that currently have shortcuts to spawn them.")]
-    private int _numOfProjectileTypes;
 
     [Header("Prefabs")]
     [SerializeField]
-    private GameObject[] spawners;
+    private GameObject[] _spawners;
 
     private void Awake()
     {
@@ -40,7 +38,7 @@ public class BossProjectileShortcuts : MonoBehaviour
     {
         // increment or loop current projectile
         _currProjectile++;
-        if (_currProjectile >= _numOfProjectileTypes)
+        if (_currProjectile >= _spawners.Length)
             _currProjectile = 0;
     }
 
@@ -59,7 +57,7 @@ public class BossProjectileShortcuts : MonoBehaviour
         {
             case 0: // Pixel Ink
 
-                newSpawner = Instantiate(spawners[_currProjectile], worldPos, spawners[_currProjectile].transform.rotation);
+                newSpawner = Instantiate(_spawners[_currProjectile], worldPos, _spawners[_currProjectile].transform.rotation);
 
                 // facing center (0, 0)
                 rot.SetFromToRotation(Vector3.right, -worldPos);
@@ -69,7 +67,7 @@ public class BossProjectileShortcuts : MonoBehaviour
                 break;
             case 1: // Pink Man
 
-                newSpawner = Instantiate(spawners[_currProjectile], worldPos, spawners[_currProjectile].transform.rotation);
+                newSpawner = Instantiate(_spawners[_currProjectile], worldPos, _spawners[_currProjectile].transform.rotation);
 
                 // needs to be flipped to face left
                 if(worldPos.x > 0)
@@ -77,6 +75,11 @@ public class BossProjectileShortcuts : MonoBehaviour
                     rot.SetFromToRotation(Vector3.right, Vector3.left);
                     newSpawner.transform.rotation = rot * transform.rotation;
                 }
+
+                break;
+            case 2: // Galaga Fleet
+
+                newSpawner = Instantiate(_spawners[_currProjectile], worldPos, _spawners[_currProjectile].transform.rotation);
 
                 break;
         }
