@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles movement and player tracking behavior of PinkMan projectile.
+/// </summary>
 public class PinkMan : Projectile
 {
     [SerializeField, Tooltip("Multiplier for speed after direction change")]

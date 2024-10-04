@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Temporary script to handle inputs for spawning projectiles for demo purposes.
+/// </summary>
 public class BossProjectileShortcuts : MonoBehaviour
 {
     private const string MOUSE_INPUT = "Mouse Position";

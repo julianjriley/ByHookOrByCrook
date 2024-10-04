@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles setting constant speed of PixelInk projectile.
+/// </summary>
 public class PixelInk : Projectile
 {
     override protected void Start()
