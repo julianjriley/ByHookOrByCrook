@@ -9,9 +9,13 @@ using UnityEngine.Events;
 public class BossPrototype : MonoBehaviour
 {
     [Header ("Boss Movement")]
-    private Transform target;
-    private Rigidbody rb;
+    private Transform _target;
+    private Rigidbody _rb;
     public float Speed = 50f;
+    private bool _right = true;
+    private bool _checkingSwap = false;
+    private Transform _playerTransform;
+    private SpriteRenderer _renderer;
 
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
@@ -27,11 +31,13 @@ public class BossPrototype : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         _spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();
-        target = GameObject.Find("Boss Target").GetComponent<Transform>();
+        _target = GameObject.Find("Boss Target").GetComponent<Transform>();
         PhaseSwitch();
         Debug.Log("Phase Counter = " + _phaseCounter);
+        _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        _renderer = GetComponent<SpriteRenderer>(); 
     }
 
     // Update is called once per frame
@@ -52,9 +58,43 @@ public class BossPrototype : MonoBehaviour
     }
 
     void Move() {
-        Debug.Log("Target position: " + target.position);
-        Debug.Log("Current position: " + transform.position);
-        rb.AddForce((target.position - transform.position).normalized * Speed, ForceMode.Force);
+        _rb.AddForce((_target.position - transform.position).normalized * Speed, ForceMode.Force);
+        if (!(_checkingSwap)) { //ensure only one check is happening at a time
+            SpriteSwapCheck();
+        } 
+    }
+
+    void SpriteSwapCheck() {
+        Debug.Log("_right = " + _right);
+        if (transform.position.x >= _playerTransform.position.x) { //if boss is on the right of player
+            if (_right == false) { //and was just on the left
+                StartCoroutine(SpriteSwapCheckTimer(_right)); 
+            }// else {
+                _right = true;
+            //}
+        } else { //if boss is on the left
+            if (_right == true) { //and was just on the right
+                StartCoroutine(SpriteSwapCheckTimer(_right)); 
+            } //else {
+                _right = false;
+            //}
+        }
+    }
+
+    IEnumerator SpriteSwapCheckTimer(bool right) {
+        _checkingSwap = true;
+        float rand = UnityEngine.Random.Range(0.4f, 2.1f);
+        yield return new WaitForSeconds(rand);
+        if (right == true) {
+            if (transform.position.x < _playerTransform.position.x) { //honestly i can't even keep track anymore, this seems to work tho lmao
+                _renderer.flipX = true;
+            }
+        } else {
+            if (transform.position.x >= _playerTransform.position.x) { 
+                _renderer.flipX = false;
+            }
+        }
+        _checkingSwap = false;
     }
 
     void AttackLogic() {
