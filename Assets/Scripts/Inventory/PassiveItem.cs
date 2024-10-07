@@ -15,6 +15,12 @@ public class PassiveItem : Item
         return _passiveType;
     }
 
+    public override void SetPlayer(PlayerCombat player)
+    {
+        base.SetPlayer(player);
+        CreatePrefabOnPlayer();
+    }
+
     public void CreatePrefabOnPlayer()
     {
         _player.AppendItemToPassiveInstances(_itemPrefab);

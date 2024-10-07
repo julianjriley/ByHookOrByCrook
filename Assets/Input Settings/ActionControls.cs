@@ -98,6 +98,15 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""36758d1c-4e56-4854-ab48-ae56dcf65f5f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -276,6 +285,72 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""fb8ddd35-8a4c-4fcd-b043-da381adaf240"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""92fa1186-7523-4076-a0c8-070a11cc526f"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""6f64a38f-dda7-4d06-85fd-2889c4a833de"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""98706d55-b693-4de2-a31f-442837636714"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""500cfb83-4cde-43c3-9916-1aa473be8fff"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""5d1d93e9-dec9-43c7-b74f-476ad96ad6b6"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -304,6 +379,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         m_Player_Fishing = m_Player.FindAction("Fishing", throwIfNotFound: true);
         m_Player_JumpAction = m_Player.FindAction("JumpAction", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
     }
 
     ~@ActionControls()
@@ -378,6 +454,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Fishing;
     private readonly InputAction m_Player_JumpAction;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_SwitchWeapon;
     public struct PlayerActions
     {
         private @ActionControls m_Wrapper;
@@ -390,6 +467,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         public InputAction @Fishing => m_Wrapper.m_Player_Fishing;
         public InputAction @JumpAction => m_Wrapper.m_Player_JumpAction;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -423,6 +501,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @SwitchWeapon.started += instance.OnSwitchWeapon;
+            @SwitchWeapon.performed += instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled += instance.OnSwitchWeapon;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -451,6 +532,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @SwitchWeapon.started -= instance.OnSwitchWeapon;
+            @SwitchWeapon.performed -= instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled -= instance.OnSwitchWeapon;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -487,5 +571,6 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         void OnFishing(InputAction.CallbackContext context);
         void OnJumpAction(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnSwitchWeapon(InputAction.CallbackContext context);
     }
 }

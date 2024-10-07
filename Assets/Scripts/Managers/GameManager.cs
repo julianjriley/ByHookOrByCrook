@@ -33,11 +33,24 @@ public class GameManager : MonoBehaviour
     }
 
     #region SCENE PERSISTENT DATA
+    // used for storing scene persistent BaitType data
+    public enum BaitType
+    {
+        Empty,
+        Default,
+        Weapon,
+        Attack,
+        Support,
+        Movement
+    }
+
     // Bait, Inventory, Loadout, etc. (saved between scenes)
     [Serializable]
     public class ScenePersistentData
     {
         public Inventory CaughtFish;   
+
+        public List<BaitType> BaitList;
     }
 
     // private stored inventory
@@ -70,10 +83,44 @@ public class GameManager : MonoBehaviour
     {
         ScenePersistentData newInventory = new ScenePersistentData();
 
-        // TODO: INITIALIZE DEFAULT VALUES FOR INVENTORY DATA
+        // Initialize default values for scene persistent data
+        newInventory.BaitList = new List<BaitType>();
 
         // Apply reset/initialized Inventory data to Instance
         Instance.ScenePersistent = newInventory;
+    }
+
+    /// <summary>
+    /// Returns the type of bait that is queued up next in the bait list.
+    /// Returns BaitType.Empty if the list is empty.
+    /// </summary>
+    public BaitType PeekBait()
+    {
+        // return last bait in list
+        if (ScenePersistent.BaitList.Count >= 1)
+            return ScenePersistent.BaitList[ScenePersistent.BaitList.Count - 1];
+        // bait list is empty
+        else
+            return BaitType.Empty;
+    }
+
+    /// <summary>
+    /// Removes last bait item from the bait list.
+    /// </summary>
+    public void ConsumeBait()
+    {
+        if (ScenePersistent.BaitList.Count >= 1)
+            ScenePersistent.BaitList.RemoveAt(ScenePersistent.BaitList.Count - 1);
+        else
+            throw new Exception("Invalid use of ConsumeBait() in GameManager. There is no bait to remove.");
+    }
+
+    /// <summary>
+    /// Adds new bait item to the end of the bait list.
+    /// </summary>
+    public void AddBait(BaitType newBait)
+    {
+        ScenePersistent.BaitList.Add(newBait);
     }
     #endregion
 
@@ -84,33 +131,46 @@ public class GameManager : MonoBehaviour
     {
         // TODO: ADD SAVE DATA HERE
         // i.e. UPGRADES, CURRENCY (ECONOMY), SETTINGS
+        
         // Boss-related stats
-        public int bossNumber;  // Whether the player is on the first, second, or third boss (0, 1, 2)
-        public int lossCounter; // How many times you've lost to a boss (resets on victory)
+        public int BossNumber;  // Whether the player is on the first, second, or third boss (0, 1, 2)
+        public int LossCounter; // How many times you've lost to a boss (resets on victory)
+
+        // Money
+        public int Gill; // How much $ the player has
+
+        // Upgrades
+        public int BaitInventorySize;   // Current sizes of inventories
+        public int BattleInventorySize;
+        public int RodLevel;            // What # rod the player is on (0, 1, 2 - starter, upgrade 1, etc...)
+        public bool AttackBait;         // Booleans for each bait type
+        public bool MovementBait;       // Not a list for ease of access at point of sale / hub shops
+        public bool SupportBait;
+        public bool WeaponBait;
 
         // Hub related stats
-        public List<bool> IsConvoHad;
+        public List<bool> IsConvoHad; // TODO: Each NPC will need one of these lists.
     }
 
     // private stored save data
-    private GamePersistentData _gameData;
+    private GamePersistentData _gamePersistent;
 
     // public accessor for save data
-    public GamePersistentData SaveData
+    public GamePersistentData GamePersistent
     {
         get
         {
             // initialize if necessary and possible
-            if (_gameData == null)
+            if (_gamePersistent == null)
             {
                 InitializeSaveData();
             }
 
-            return _gameData;
+            return _gamePersistent;
         }
         private set
         {
-            _gameData = value;
+            _gamePersistent = value;
         }
     }
 
@@ -125,8 +185,19 @@ public class GameManager : MonoBehaviour
 
         // TODO: INITIALIZE DEFAULT VALUES FOR SAVE DATA
         // default data in case player prefs not found
-        newSaveData.bossNumber = 0;
-        newSaveData.lossCounter = 3;
+        
+        newSaveData.BossNumber = 0;
+        newSaveData.LossCounter = 3;
+
+        newSaveData.Gill = 9999;
+        newSaveData.BaitInventorySize = 3;
+        newSaveData.BattleInventorySize = 3;
+        newSaveData.RodLevel = 0;
+        newSaveData.AttackBait = false;
+        newSaveData.MovementBait = false;
+        newSaveData.SupportBait = false;
+        newSaveData.WeaponBait = false;
+
         newSaveData.IsConvoHad = new List<bool>();
 
         // TODO: read existing save data (if it exists) from PlayerPrefs
@@ -144,7 +215,7 @@ public class GameManager : MonoBehaviour
         *****************************************************************/
 
         // Apply read/initialized data to instance
-        Instance.SaveData = newSaveData;
+        Instance.GamePersistent = newSaveData;
     }
 
     private void OnApplicationQuit()
