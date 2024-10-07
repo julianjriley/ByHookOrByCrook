@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c20799f1421fb745b061183acc66a9c, type: 3}
-  m_Name: BagBook3
+  m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
+  m_Name: Bag1-Purch
   m_EditorClassIdentifier: 
-  bookNumber: 2
-  postBossLossConvos: []
-  generalConvos: []
+  lines:
+  - How's that new bag? Feel a little roomier?
+  - Course it does, I made it!
+  RequiredBossLossCount: 0
+  GeneralPriority: 0

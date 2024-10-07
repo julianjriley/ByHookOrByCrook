@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bookNumber: 0
   postBossLossConvos: []
-  generalConvos: []
+  generalConvos:
+  - {fileID: 11400000, guid: 6aa3ff506cf7ad744a0394ccf2f01a36, type: 2}
+  - {fileID: 11400000, guid: d5d02e558cb348c499d9c4b484852535, type: 2}
+  - {fileID: 11400000, guid: f41fe9d17b931ee44be461d40eeebba3, type: 2}
