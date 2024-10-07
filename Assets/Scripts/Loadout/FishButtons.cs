@@ -9,28 +9,24 @@ public class FishButtons : MonoBehaviour
 {
     public bool isChosen = false;
 
-    Item scriptableObject;
     private LoadoutSelection _loadoutSelection;
 
     // Display items in game
     private TextMeshProUGUI _itemName;
     private TextMeshProUGUI _itemDescription;
-
-    // Note: Only Image items appear correctly on UI
-    private Image _sprite; 
+    private Image _sprite;
+    public GameObject tooltipChild;
 
     public void AssignItem(Item fishItem)
     {
         // This function assigns the fish properties to properties that appear in game
 
-        Debug.Log("AssignItem() is called");
-        _loadoutSelection = FindAnyObjectByType<LoadoutSelection>();
-        _itemName = _loadoutSelection.fishName;
-        _itemDescription = _loadoutSelection.fishDescription;
-        _sprite = _loadoutSelection.fishIcon;
+        tooltipChild = this.gameObject.transform.GetChild(0).gameObject;
+        _itemName = tooltipChild.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        _itemDescription = tooltipChild.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        _sprite = tooltipChild.transform.GetChild(3).GetComponent<Image>();
 
-        scriptableObject = fishItem;
-        _itemName.text = fishItem.GetItemName(); // ERROR HERE because TMPGUI elements are null
+        _itemName.text = fishItem.GetItemName(); 
         _itemDescription.text = fishItem.GetItemDescription();
         _sprite.sprite = fishItem.GetSprite();
     }
