@@ -45,6 +45,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2822287764505044261, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: jumpFallingForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822287764505044261, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: maxNumberOfJumps
       value: 1
       objectReference: {fileID: 0}
@@ -70,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3586478448919471552, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: m_Name
-      value: TestArenaPlayer Variant
+      value: TestArenaPlayer Brandon
       objectReference: {fileID: 0}
     - target: {fileID: 3586478448919471552, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: m_TagString

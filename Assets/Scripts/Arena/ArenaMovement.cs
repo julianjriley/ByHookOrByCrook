@@ -234,7 +234,7 @@ public class ArenaMovement : MonoBehaviour
         //Fall Speed Force downward
         if (rb.velocity.y < 0)
         {
-           // rb.AddForce(Vector2.down * jumpFallingForce, ForceMode.Force);
+           rb.AddForce(Vector2.down * jumpFallingForce, ForceMode.Force);
 
             jumpDurrationTimer = 0;
         }
