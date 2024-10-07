@@ -16,12 +16,7 @@ public class LoadoutSelection : MonoBehaviour
     //          Current workaround- starting a coroutine to let onclick finish while using SetActive = false.
 
     ///     TODO:
-    ///     1. Shows all items caught-- each are a button the player clicks on
-    ///     2. Clicking on an item puts it into your loadout slots-- determined by backpack upgrade
-    ///        a. ON HOVER: Display name & description tooltip ** STOPPED HERE: 09-25 11:37pm
-    ///        b. ON CLICK: Move into correct slot
-    ///     3. Display PRACTICE? or FIGHT!  
-    ///         a. ON CLICK: Change scene
+    ///     1. OnHover: Display name & desc. tool tip
 
     public List<Item> TempListofFish;
     
@@ -34,7 +29,7 @@ public class LoadoutSelection : MonoBehaviour
     private Inventory _caughtFish;
 
     [SerializeField]
-    private GameObject spawnedItem;
+    private Button spawnedItem;
 
     // Spawnpoints in the grid layout so our items follow a nice grid
     public GameObject caughtItemsSpawn;
@@ -55,15 +50,16 @@ public class LoadoutSelection : MonoBehaviour
         foreach (var item in TempListofFish) // Will use _caughtFish.items
         {
             // Here we spawn prefabs into the grid layout and assign them to the items
-                // Prefabs spawn with Button Components & FishButton Scripts
+            // Prefabs spawn with Button Components & FishButton Scripts
 
-            GameObject spawnedFish = Instantiate(spawnedItem, caughtItemsSpawn.transform);
-
-            Debug.Log("after instantiation " + spawnedFish.name);
+            Button spawnedFish = Instantiate(spawnedItem, caughtItemsSpawn.transform);
             spawnedFish.GetComponent<FishButtons>().AssignItem(item);
 
-            // Automatically adds OnClick function to spawned buttons
-            spawnedFish.GetComponent<Button>().onClick.AddListener(() => MoveToLoadout((spawnedFish.GetComponent<Button>())));
+            spawnedFish.onClick.AddListener(() =>
+            {
+                Debug.Log("Listener added");
+                MoveToLoadout((spawnedFish.GetComponent<Button>()));
+            });
 
             // Trying to add OnHover function by adding Event Trigger "Pointer Enter" Event Type programatically
             EventTrigger trigger = spawnedFish.GetComponent<Button>().gameObject.AddComponent<EventTrigger>();
@@ -98,7 +94,6 @@ public class LoadoutSelection : MonoBehaviour
                 _caughtFishButtons.Remove(fish);
                 fish.gameObject.SetActive(false);
                 StartCoroutine(Waiting(fish.gameObject));
-               
             }
         }
     }

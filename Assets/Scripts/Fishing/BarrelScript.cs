@@ -8,17 +8,15 @@ using UnityEngine.Windows;
 
 public class BarrelScript : MonoBehaviour
 {
-    // Locked or unlocked
     public bool locked;
     public BaitSelector baitSelector;
 
     [SerializeField] 
     private Button spawnedBait;
-
     private int _baitSlots;
-
     private Vector2 _tooltipSpot;
-    public void BaitToSlot()
+
+    public void BaitToSlot(int baitType)
     {
         // If barrels aren't locked and we have slots
         if (!locked && baitSelector.GetBaitSlots() != 0)
@@ -29,8 +27,10 @@ public class BarrelScript : MonoBehaviour
             // Assign the bait a type based on the barrel's name
             Bait baitScript = baitButton.AddComponent<Bait>();
             baitScript.AssignBaitType(gameObject.name);
-            baitButton.onClick.AddListener(() => baitScript.PutBack());
+            baitButton.onClick.AddListener(() => baitScript.PutBack(baitType));
 
+            //Add bait to scene persistent inventory
+            GameManager.Instance.ScenePersistent.BaitList.Add((GameManager.BaitType) baitType);
             baitSelector.DecreaseBaitSlot();
         }
     }
@@ -43,7 +43,6 @@ public class BarrelScript : MonoBehaviour
 
     public void OnHover()
     {
-
         // Display UI tooltip: "Purchase at shop"
         if (locked)
         {

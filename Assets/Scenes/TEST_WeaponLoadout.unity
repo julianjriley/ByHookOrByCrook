@@ -270,9 +270,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
-  itemName: {fileID: 0}
-  itemDescription: {fileID: 0}
-  sprite: {fileID: 0}
 --- !u!1 &289665295
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,9 +848,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _chosenFishButtons: []
-  spawnedItem: {fileID: 8699184159063563099, guid: fc7fd8036ce53d14f8a33f2f71921748, type: 3}
+  spawnedItem: {fileID: 1070592512}
   caughtItemsSpawn: {fileID: 1227385808}
-  chosenItemsSpawn: {fileID: 1329552889}
+  chosenItemsSpawn: {fileID: 999720807}
   descriptionToolTip: {fileID: 2143514235}
   fishName: {fileID: 1702207836800454515}
   fishDescription: {fileID: 501524050}
@@ -1020,9 +1017,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
-  itemName: {fileID: 0}
-  itemDescription: {fileID: 0}
-  sprite: {fileID: 0}
 --- !u!1 &961592187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,9 +1164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
-  itemName: {fileID: 0}
-  itemDescription: {fileID: 0}
-  sprite: {fileID: 0}
 --- !u!1 &984937035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,12 +1293,12 @@ GameObject:
   - component: {fileID: 1070592512}
   - component: {fileID: 1070592515}
   m_Layer: 5
-  m_Name: F5
+  m_Name: BaitTestPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1070592511
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1320,12 +1311,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1227385809}
+  m_Father: {fileID: 2043735471}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 949.8, y: -60}
+  m_AnchoredPosition: {x: 1701.67, y: 36.650017}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1070592512
@@ -1435,9 +1426,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
-  itemName: {fileID: 0}
-  itemDescription: {fileID: 0}
-  sprite: {fileID: 0}
 --- !u!1 &1216488675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,7 +1539,6 @@ RectTransform:
   - {fileID: 961592188}
   - {fileID: 932572944}
   - {fileID: 49326654}
-  - {fileID: 1070592511}
   m_Father: {fileID: 2043735471}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1945,6 +1932,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 295251222}
+  - {fileID: 1070592511}
   - {fileID: 1227385809}
   m_Father: {fileID: 1318174483}
   m_RootOrder: -1
@@ -2482,9 +2470,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChosen: 0
-  itemName: {fileID: 0}
-  itemDescription: {fileID: 0}
-  sprite: {fileID: 0}
 --- !u!224 &7180744786664986029
 RectTransform:
   m_ObjectHideFlags: 0

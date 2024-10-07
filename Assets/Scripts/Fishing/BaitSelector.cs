@@ -26,8 +26,6 @@ public class BaitSelector : MonoBehaviour
         _gameManager = GameManager.Instance;
         TooltipParent.SetActive(false);
 
-        //TODO: Initialize barrelList based on upgrades player has from gamepersistentdata
-
         // Initialize each barrel as locked, shouldn't include the basic bait barrel
         foreach (var button in _barrelList)
         {
@@ -37,7 +35,8 @@ public class BaitSelector : MonoBehaviour
             }
             _barrelScript = button.GetComponent<BarrelScript>();
 
-            if (_barrelScript.gameObject.name != "Basic Bait") {
+            // Weapon bait unlocked for prototype
+            if (_barrelScript.gameObject.name != "Basic Bait"  && _barrelScript.gameObject.name != "Weapon Bait") {
                 _barrelScript.locked = true;
             }
 

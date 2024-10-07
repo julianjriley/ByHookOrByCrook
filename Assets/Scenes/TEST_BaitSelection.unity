@@ -207,7 +207,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 49326656}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 49326658}
+        m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
+        m_MethodName: BaitToSlot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &49326656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,11 +417,11 @@ MonoBehaviour:
       - m_Target: {fileID: 97118873}
         m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
         m_MethodName: BaitToSlot
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1202,7 +1214,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 932572946}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 932572948}
+        m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
+        m_MethodName: BaitToSlot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &932572946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1435,7 +1459,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 961592190}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 961592192}
+        m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
+        m_MethodName: BaitToSlot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &961592190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1486,7 +1522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb334f31c8d48594ba419b6842ff38af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 1
+  locked: 0
   baitSelector: {fileID: 877972556}
   spawnedBait: {fileID: 769642767}
 --- !u!114 &961592193
@@ -1745,7 +1781,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1070592513}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1070592515}
+        m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
+        m_MethodName: BaitToSlot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1070592513
 MonoBehaviour:
   m_ObjectHideFlags: 0
