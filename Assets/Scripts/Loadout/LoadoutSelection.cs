@@ -3,77 +3,66 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
+// ** CURRENT BUGS: 
+//      On click, the buttons are removed before onclick finishes. It causes an Event System Error. 
+//          Current workaround- starting a coroutine to let onclick finish while using SetActive = false.
 
 public class LoadoutSelection : MonoBehaviour
 {
     // This script will be used for the Weapon Loadout Screen
 
-
-
-
-
-    // ** CURRENT BUGS: 
-    //      1. On click, the buttons are removed before onclick finishes, causes Event System Error. 
-    //          Current workaround- starting a coroutine to let onclick finish while using SetActive = false.
-
-
-
-
-
-    ///     TODO:
-    ///     1. shows all items the player has caught-- each are a button the player clicks on
-    ///         a. determined by how much bait the player casts
-    ///     2. clicking on an item puts it into your loadout slots-- determined by backpack upgrade
-    ///        a. ON HOVER: display description+effect in a pop-up textbox below the item
-    ///        b. ON CLICK: call a function that greys out the item AND move it into the correct slot
-    ///     3. display PRACTICE? or FIGHT!  
-    ///         a. ON CLICK, change scene
-
-
-
-
-    // Spawnpoints in the grid layout so our items follow a nice grid
-    public GameObject caughtItemsSpawn; 
-    public GameObject chosenItemsSpawn;
-
+    // Temporary list of scriptable objects
+    public List<Item> TempListofFish;
     [SerializeField]
     private List<Button> _caughtFishButtons; 
     [SerializeField]
-    private List<Button> _chosenFish;
+    private List<Button> _chosenFishButtons;
 
     private GameManager _gameManager;
     private Inventory _caughtFish;
 
-    private Button spawned;
+    [SerializeField]
+    private Button _buttonPrefab;
 
+    // Spawnpoints in the grid layout so our items follow a nice grid
+    public GameObject caughtItemsSpawn;
+    public GameObject chosenItemsSpawn;
+
+    private GameObject _tooltipChild;
     void Start()
     {
         _gameManager = GameManager.Instance;
         _caughtFish = _gameManager.ScenePersistent.CaughtFish;
-        foreach (var item in _caughtFish.items)
-        {
-            Button fishClone = Instantiate(spawned, caughtItemsSpawn.transform);
-            FishButtons fishButtonClone = fishClone.AddComponent<FishButtons>();
-            fishButtonClone.AssignItem(item);
-        }
 
-        // get reference from game manager to access
-        //      1. list of catches from fishing minigame
-        //      2. list of catches you choose to bring into battle   
-        // loop through the lists and instantiate each button into the grid layout
-                    // each button has a reference to the scriptable objects
+        foreach (var item in TempListofFish) // Change list to GM list later 
+        {
+            // Spawns buttons into grid and assigns each to a scriptable objects' properties
+
+             Button _spawnedFish = Instantiate(_buttonPrefab, caughtItemsSpawn.transform);
+            _spawnedFish.GetComponent<FishButtons>().AssignItem(item);
+            _caughtFishButtons.Add(_spawnedFish.GetComponent<Button>());
+        }
     }
 
-    void Update()
+    public void OnHover(GameObject tooltipChild)
     {
-
+        tooltipChild.SetActive(true);
+    }
+    public void OnExit(GameObject tooltipChild)
+    {
+        tooltipChild.SetActive(false);
     }
 
     public void MoveToLoadout(Button fish)
     {
+        // This function moves the fish items between CAUGHT and CHOSEN slots
         
+        fish.transform.GetChild(0).gameObject.SetActive(false);
+
         if (fish.GetComponent<FishButtons>().isChosen) {
             MoveBack(fish);
         }
@@ -81,23 +70,23 @@ public class LoadoutSelection : MonoBehaviour
         {
             fish.GetComponent<FishButtons>().isChosen = true;
             Button fishClone = Instantiate(fish, chosenItemsSpawn.transform);
-            _chosenFish.Add(fishClone);
+            _chosenFishButtons.Add(fishClone);
                         
             if (fish != null)
             {
                 _caughtFishButtons.Remove(fish);
                 fish.gameObject.SetActive(false);
                 StartCoroutine(Waiting(fish.gameObject));
-               
             }
         }
     }
 
-    IEnumerator Waiting(GameObject f)
+    IEnumerator Waiting(GameObject _fishGameObject)
     {
         yield return new WaitForSeconds(3f);
-        Destroy(f);
+        Destroy(_fishGameObject);
     }
+
     public void MoveBack(Button fish)
     {
         fish.GetComponent<FishButtons>().isChosen = false;
@@ -106,29 +95,23 @@ public class LoadoutSelection : MonoBehaviour
 
         if (fish != null)
         {
-            _chosenFish.Remove(fish);
+            _chosenFishButtons.Remove(fish);
             fish.gameObject.SetActive(false);
             StartCoroutine(Waiting(fish.gameObject));
         }
-
     }
 
     void NextScene(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
-        
-        // For Fadeout, call the Fadeout coroutine
+        // Use this function to transition to PRACTICE or COMBAT scene
+        StartCoroutine(Fadeout(sceneIndex));
     }
 
 
-    //public IEnumerator Fadeout(int index)
-    //{
-    //    fade.FadeIn();
-    //    Turn off all of the assets
-    //    yield return new WaitForSeconds(1);
-    //    SceneManager.LoadScene(index);
-
-    //}
-
-
+    public IEnumerator Fadeout(int index)
+    {
+        // Fadeout logic
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(index);
+    }
 }
