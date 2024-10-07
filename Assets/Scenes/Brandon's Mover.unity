@@ -1302,6 +1302,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestArenaPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 4244875140385027966, guid: 738039a9791116c4b83ab1a545cb2fc0, type: 3}
+      propertyPath: jumpFallingForce
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 6016135954369332627, guid: 738039a9791116c4b83ab1a545cb2fc0, type: 3}
       propertyPath: m_RootOrder
       value: 3
