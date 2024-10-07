@@ -367,7 +367,7 @@ public class ArenaMovement : MonoBehaviour
 
         if (_anim == null)
             return;
-        if ((horizontal != 0 || horizontal != 0) && !IsIdle)
+        if ((_horizontal != 0 || _horizontal != 0) && !_isIdle)
             _anim.SetBool("IsMoving", true);
         else
             _anim.SetBool("IsMoving", false);
