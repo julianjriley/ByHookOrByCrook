@@ -2712,6 +2712,10 @@ PrefabInstance:
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2912413853833242545, guid: fd513ca90511eb24ea33fdc84351ca33, type: 3}
+      propertyPath: NPCharaType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912413853833242545, guid: fd513ca90511eb24ea33fdc84351ca33, type: 3}
       propertyPath: _books.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 81b26960a38d98942b01710f6b288d9c, type: 2}
@@ -5372,7 +5376,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 811150e13e3463d49ac60089913eae25, type: 2}
   - {fileID: 11400000, guid: 469ad7b80bd321e49aaf1a32c490d310, type: 2}
   - {fileID: 11400000, guid: cd17fbf6d1f770b4aabddb97395632e3, type: 2}
-  NPCharaType: 0
+  NPCharaType: 1
 --- !u!1 &3211631042630083477
 GameObject:
   m_ObjectHideFlags: 0
