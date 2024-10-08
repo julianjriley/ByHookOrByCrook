@@ -18,21 +18,22 @@ public class BossTargetRepositioner : MonoBehaviour
     private Transform _currentTargetTransform;
     private Coroutine _lerpRotation;
     private Coroutine _lerpScale;
-    //private Transform _playerTransform;
+    private Transform _playerTransform;
     
     void Start()
     {
         _bounds = GameObject.Find("TargetBoundingBox").GetComponent<BoxCollider>();
         _rotater = GameObject.Find("Rotater");
         _rotaterTransform = _rotater.GetComponent<Transform>();
-        //_playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         InvokeRepeating("MakeNewTarget", TimeBetweenRepositions, TimeBetweenRepositions);
     }
     void FixedUpdate() {
-        _rotaterTransform.localPosition = Vector3.zero; //fix bug where rotator/circle does not stay with the player as a child
+        //_rotaterTransform.localPosition = Vector3.zero; //fix bug where rotator/circle does not stay with the player as a child
+        transform.localPosition = _playerTransform.localPosition;
 
         if (_currentTargetTransform != null) {
-            _currentTargetTransform.localPosition = Vector3.zero;
+            //_currentTargetTransform.localPosition = Vector3.zero;
             Debug.Log("CurrentTargetTransform != null");
             if (_bounds.bounds.Contains(_currentTargetTransform.GetChild(0).position) != true) { //if target goes outside of bounds, regenerate a new one and restart the invokerepeating
                 StopCoroutine(_lerpScale);
