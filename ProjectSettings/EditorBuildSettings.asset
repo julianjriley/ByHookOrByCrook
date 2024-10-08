@@ -11,6 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Development/TEST_SceneSwap.unity
     guid: a934548c310ce744884c40ea68276dcc
+  - enabled: 1
+    path: Assets/Scenes/Prototype/PROTO_Hub.unity
+    guid: 4c4221357da2e8d4f865290187778667
+  - enabled: 1
+    path: Assets/Scenes/Prototype/PROTO_BaitSelection.unity
+    guid: 1831fafca37eb7443886e3d7249b5446
+  - enabled: 1
+    path: Assets/Scenes/Prototype/PROTO_Fishing.unity
+    guid: 3475ba68b40803a46b6cbf3d13163df7
+  - enabled: 1
+    path: Assets/Scenes/Prototype/PROTO_LoadoutSelection.unity
+    guid: 4264b1417bd851e42ac3b7939b546a45
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 384bcd4988928974aa114b62e3df7c6c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 32b4fa1732b70f44a80685895a7e2848, type: 3}
