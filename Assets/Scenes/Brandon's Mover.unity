@@ -1306,6 +1306,10 @@ PrefabInstance:
       propertyPath: jumpFallingForce
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 4719763371106850428, guid: 738039a9791116c4b83ab1a545cb2fc0, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6016135954369332627, guid: 738039a9791116c4b83ab1a545cb2fc0, type: 3}
       propertyPath: m_RootOrder
       value: 3

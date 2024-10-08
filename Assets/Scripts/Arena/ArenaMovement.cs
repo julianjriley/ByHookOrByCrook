@@ -18,7 +18,7 @@ public class ArenaMovement : MonoBehaviour
     [SerializeField, Tooltip("Speed of Character Movement")]
     public float MaxSpeed = 7f;
     //Read Input for x-movement
-    private float _horizontal;
+    private float _horizontalMovemenet;
 
     //Jumping
     [Header("Jump Variables")]
@@ -82,6 +82,7 @@ public class ArenaMovement : MonoBehaviour
     //Sprite Characteristics Variables
     private bool _isIdle = false;
     private int _isFacingRight = -1;
+    private float _directionOfCharacterMovement;
 
     //Player Components
     private Rigidbody rb;
@@ -101,30 +102,35 @@ public class ArenaMovement : MonoBehaviour
         _dashCount = numberOfAirDashes;
 
         //Bind JumpInput      
-        controls.Player.JumpAction.Enable();
+        //controls.Player.JumpAction.Enable();
         controls.Player.JumpAction.started += JumpInput;
         controls.Player.JumpAction.performed += JumpInput;
         controls.Player.JumpAction.canceled += JumpInput;
 
         //Bind MoveInput
-        controls.Player.MoveArena.Enable();
+        //controls.Player.MoveArena.Enable();
         controls.Player.MoveArena.started += MoveInput;
         controls.Player.MoveArena.performed += MoveInput;
         controls.Player.MoveArena.canceled += MoveInput;
 
         //Bind DashInput
-        controls.Player.Dash.Enable();
+        //controls.Player.Dash.Enable();
         controls.Player.Dash.started += DashInput;
     }
-
+    //
     private void Awake()
     {
         controls = new ActionControls();
+        //Enable Player Movement Binds
+        controls.Player.JumpAction.Enable();
+        controls.Player.MoveArena.Enable();
+        controls.Player.Dash.Enable();
     }
 
     //Update: used to dcrement/Increment Timers only
     void Update()
     {
+        Debug.Log(gameObject.transform.localScale.x);
         if (isDashing)
             return;
         //Check Comment Above Function Header
@@ -249,9 +255,11 @@ public class ArenaMovement : MonoBehaviour
     public void MoveInput(InputAction.CallbackContext context)
     {
         //Reads x-distence if character can move
-        if(context.performed) 
-            _horizontal = context.ReadValue<Vector2>().x;
-        else _horizontal = 0f;
+        if (context.performed)
+        {
+            _horizontalMovemenet = context.ReadValue<Vector2>().x;
+        }
+        else _horizontalMovemenet = 0f;
 
     }
     /*  MoveInput: Moves player based on read value from button press
@@ -260,7 +268,7 @@ public class ArenaMovement : MonoBehaviour
     private void Move()
     {
         //Character Velocity
-        rb.velocity = new Vector2(_horizontal * MaxSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(_horizontalMovemenet * MaxSpeed, rb.velocity.y);
     }
     /*  DashInput: Runs when dash button is pressed
      *      - Has a cooldown so players cant spam the button
@@ -290,12 +298,16 @@ public class ArenaMovement : MonoBehaviour
             //Set Values/Flags Before Dashing
             IsDashingInAir = true;
             isDashing = true;
-            int leftOrRight = _isFacingRight > 0 ? 1 : -1;
+            int leftOrRightOrrientation =  gameObject.transform.localScale.x > 0 ? 1 : -1;
             rb.useGravity = !_toggleGravityWhenDashing;
 
+            float dashDirection = _horizontalMovemenet;
+            if (_horizontalMovemenet == 0)
+                dashDirection = gameObject.transform.localScale.x;  
+            
             //Dash a certian distance
             _anim.SetBool("IsMoving", true);
-            rb.velocity = new Vector2(transform.localScale.x * _dashSpeed * _isFacingRight, 0f);
+            rb.velocity = new Vector2(transform.localScale.x * _dashSpeed * leftOrRightOrrientation * dashDirection, 0f);
             yield return new WaitForSeconds(dashDistance);
             _anim.SetBool("IsMoving", false);
 
@@ -328,7 +340,7 @@ public class ArenaMovement : MonoBehaviour
     private void groundedCheck()
     {
 
-        // Update grounded state
+        // Update grounded state //
         Vector3 castOrigin = transform.position + new Vector3(0, _maxGroundedDistance / 2f, 0);
         _isGrounded = Physics.BoxCast(castOrigin, _collider.bounds.extents, Vector3.down, transform.rotation, _maxGroundedDistance * 1.5f, _groundLayer);
 
@@ -367,24 +379,34 @@ public class ArenaMovement : MonoBehaviour
 
         if (_anim == null)
             return;
-        if ((_horizontal != 0 || _horizontal != 0) && !_isIdle)
+        if ((_horizontalMovemenet != 0 || _horizontalMovemenet != 0) && !_isIdle)
             _anim.SetBool("IsMoving", true);
         else
             _anim.SetBool("IsMoving", false);
 
         if (!_isIdle)
         {
-            if (_horizontal > 0)
+            if (_horizontalMovemenet > 0)
             {
-                _sr.flipX = true;
                 _isFacingRight = 1;
             }
-            else if (_horizontal < 0)
+            else if (_horizontalMovemenet < 0)
             {
-                _sr.flipX = false;
                 _isFacingRight = -1;
             }
         }
 
     }
+
+
+    private void OnDisable()
+    {
+        if (controls != null)
+        {
+            controls.Player.MoveArena.Disable();
+            controls.Player.JumpAction.Disable();
+            controls.Player.Dash.Disable();
+        }
+    }
 }
+
