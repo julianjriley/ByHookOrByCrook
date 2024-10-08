@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
     {
         // TODO: ADD SAVE DATA HERE
         // i.e. UPGRADES, CURRENCY (ECONOMY), SETTINGS
-        public int RodLevel;
+        
         // Boss-related stats
         public int BossNumber;  // Whether the player is on the first, second, or third boss (0, 1, 2)
         public int LossCounter; // How many times you've lost to a boss (resets on victory)
@@ -142,14 +142,16 @@ public class GameManager : MonoBehaviour
         // Upgrades
         public int BaitInventorySize;   // Current sizes of inventories
         public int BattleInventorySize;
-        public int RodNumber;           // What # rod the player is on (0, 1, 2 - starter, upgrade 1, etc...)
+        public int RodLevel;            // What # rod the player is on (0, 1, 2 - starter, upgrade 1, etc...)
         public bool AttackBait;         // Booleans for each bait type
         public bool MovementBait;       // Not a list for ease of access at point of sale / hub shops
         public bool SupportBait;
         public bool WeaponBait;
 
         // Hub related stats
-        public List<bool> IsConvoHad; // TODO: Each NPC will need one of these lists.
+        public List<bool> IsConvoHadRod;
+        public List<bool> IsConvoHadBait;
+        public List<bool> IsConvoHadBag;
     }
 
     // private stored save data
@@ -185,20 +187,22 @@ public class GameManager : MonoBehaviour
 
         // TODO: INITIALIZE DEFAULT VALUES FOR SAVE DATA
         // default data in case player prefs not found
-        newSaveData.RodLevel = 1;
+        
         newSaveData.BossNumber = 0;
         newSaveData.LossCounter = 3;
 
-        newSaveData.Gill = 0;
+        newSaveData.Gill = 9999;
         newSaveData.BaitInventorySize = 3;
         newSaveData.BattleInventorySize = 3;
-        newSaveData.RodNumber = 0;
+        newSaveData.RodLevel = 0;
         newSaveData.AttackBait = false;
         newSaveData.MovementBait = false;
         newSaveData.SupportBait = false;
         newSaveData.WeaponBait = false;
 
-        newSaveData.IsConvoHad = new List<bool>();
+        newSaveData.IsConvoHadRod = new List<bool>();
+        newSaveData.IsConvoHadBait = new List<bool>();
+        newSaveData.IsConvoHadBag = new List<bool>();
 
         // TODO: read existing save data (if it exists) from PlayerPrefs
 
