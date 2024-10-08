@@ -51,6 +51,7 @@ public class BossPrototype : MonoBehaviour
             } else if (_phaseCounter == _phases.Length - 1) { 
                 return; //if it's the last phase, don't check ahead and avoid error
             } else if (BossHealth < _phases[_phaseCounter + 1].Threshold) {
+                Debug.Log("Initiating new phase");
                 _phaseCounter++; //if under next phase Threshold meet, up the phase counter and switch phases
                 PhaseSwitch();
             }
@@ -99,10 +100,11 @@ public class BossPrototype : MonoBehaviour
 
     void AttackLogic() {
         //random choosing
-        GameObject chosenAttack = _phases[0].AttackPrefabs[0];
+        Debug.Log("phasecounter = " + _phaseCounter);
+        GameObject chosenAttack = _phases[0].AttackPrefabs[0]; //default that will be overwritten
         switch (_phaseCounter) {
             case 0:
-                ChooseAttack(ref chosenAttack, 0);
+                ChooseAttack(ref chosenAttack, 0); //pass in a reference to chosenAttack and the phase #
             break;
             case 1:
                 ChooseAttack(ref chosenAttack, 1);
@@ -112,8 +114,12 @@ public class BossPrototype : MonoBehaviour
         Instantiate(chosenAttack, _spawnLocation);
     }
 
+    public void SpawnAttackOnce(GameObject gameObj) {
+        Instantiate(gameObj, _spawnLocation);
+    }
+
     void ChooseAttack(ref GameObject choice, int phaseNum) {
-        int rand = UnityEngine.Random.Range(0, _phases[phaseNum].AttackPrefabs.Length);
+        int rand = UnityEngine.Random.Range(0, _phases[phaseNum].AttackPrefabs.Length); //special attack
         if (rand == _lastChosenAttack && _phases[phaseNum].AttackPrefabs.Length > 1) { //avoid choosing the same attack if there is more than 1 option
             ChooseAttack(ref choice, phaseNum);
             return;
@@ -125,14 +131,15 @@ public class BossPrototype : MonoBehaviour
 
     void PhaseSwitch() {
         CancelInvoke();
+        _phases[_phaseCounter].StartEvent.Invoke();
         InvokeRepeating("AttackLogic", _phases[_phaseCounter].StartDelay, _phases[_phaseCounter].RepeatRate);
-        _lastChosenAttack = -1;
+        _lastChosenAttack = -1; //reset last chosen attack bc it's a new phase now and no attacks have been chosen
     }
     void DefeatLogic() {
         Debug.Log("Defeated!");
         _defeated = true;
         CancelInvoke();
-        foreach (Transform child in _spawnLocation) {
+        foreach (Transform child in _spawnLocation) { //delete all attacks to ensure player doesn't die after defeating the boss
             Destroy(child.gameObject);
         }
     }
