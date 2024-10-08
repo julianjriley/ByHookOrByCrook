@@ -10,6 +10,8 @@ public class ConvoSelector : MonoBehaviour
     [Tooltip("The 3 books of conversations an NPC has for before boss 1 / 2 / 3")]
     [SerializeField] private List<Book> _books;
     private int returnIndex;
+    public enum NPCType { Rod, Bait, Bag };
+    public NPCType NPCharaType;
     void Start()
     {
         // Get the interactor and choose the appropriate book to look for a conversation in
@@ -19,12 +21,12 @@ public class ConvoSelector : MonoBehaviour
     private void Awake()
     {
         // If the tracker list in save data is empty
-        if(GameManager.Instance.GamePersistent.IsConvoHad.Count == 0)
+        if(getIsConvoHad().Count == 0)
         {
             int fullConvoCount = _books[GameManager.Instance.GamePersistent.BossNumber].generalConvos.Count + _books[GameManager.Instance.GamePersistent.BossNumber].postBossLossConvos.Count;
             for (int i = 0; i < fullConvoCount; i++)
             {
-                GameManager.Instance.GamePersistent.IsConvoHad.Add(false); // Fill it to the brim
+                getIsConvoHad().Add(false); // Fill it to the brim
             }
         }
 
@@ -44,7 +46,7 @@ public class ConvoSelector : MonoBehaviour
             {
                 if (book.postBossLossConvos[i].RequiredBossLossCount <= lossCount && lossCount < maxTries)
                 {
-                    if (!GameManager.Instance.GamePersistent.IsConvoHad[i])
+                    if (!getIsConvoHad()[i])
                     {
                     // If we haven't had this conversation, it's high time to slot it in
                         returnIndex = i;
@@ -57,7 +59,7 @@ public class ConvoSelector : MonoBehaviour
             {
                 if (book.postBossLossConvos[i].RequiredBossLossCount <= lossCount && lossCount < book.postBossLossConvos[i + 1].RequiredBossLossCount)
                 {
-                    if (!GameManager.Instance.GamePersistent.IsConvoHad[i])
+                    if (!getIsConvoHad()[i])
                     {
                     // If we haven't had this conversation, it's high time to slot it in
                         returnIndex = i;
@@ -83,7 +85,7 @@ public class ConvoSelector : MonoBehaviour
             {
                 int index = book.generalConvos.FindIndex(x => x == conversation);
                 // If this is a high priority conversation we haven't had, add it to the tempList
-                if(conversation.GeneralPriority == k && !GameManager.Instance.GamePersistent.IsConvoHad[book.postBossLossConvos.Count + index])
+                if(conversation.GeneralPriority == k && !getIsConvoHad()[book.postBossLossConvos.Count + index])
                 {
                     tempList.Add(conversation);
                 }
@@ -110,12 +112,28 @@ public class ConvoSelector : MonoBehaviour
         {
             if(book.generalConvos[l].GeneralPriority == 0)
             {
-                GameManager.Instance.GamePersistent.IsConvoHad[l + book.postBossLossConvos.Count] = false;
+                getIsConvoHad()[l + book.postBossLossConvos.Count] = false;
                 
             }
         }
         returnIndex = book.postBossLossConvos.Count;
         return book.generalConvos[0];
+    }
+
+    private List<bool> getIsConvoHad()
+    {
+        if(NPCharaType == NPCType.Rod)
+        {
+            return GameManager.Instance.GamePersistent.IsConvoHadRod;
+        }
+        else if (NPCharaType == NPCType.Bait)
+        {
+            return GameManager.Instance.GamePersistent.IsConvoHadBait;
+        }
+        else
+        {
+            return GameManager.Instance.GamePersistent.IsConvoHadBag;
+        }
     }
 
     #region COMPARER CLASS

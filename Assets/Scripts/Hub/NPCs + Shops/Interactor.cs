@@ -165,6 +165,22 @@ public class Interactor : MonoBehaviour
 
     }
 
+    private List<bool> getIsConvoHad()
+    {
+        if (GoodsSold == ShopType.Rod)
+        {
+            return GameManager.Instance.GamePersistent.IsConvoHadRod;
+        }
+        else if (GoodsSold == ShopType.BagSpace || GoodsSold == ShopType.BaitSpace)
+        {
+            return GameManager.Instance.GamePersistent.IsConvoHadBag;
+        }
+        else
+        {
+            return GameManager.Instance.GamePersistent.IsConvoHadBait;
+        }
+    }
+
     #region SHOP HELPER METHODS
     private void ShopSpawn() // Checks if we need to spawn this shop at all
     {
@@ -344,7 +360,7 @@ public class Interactor : MonoBehaviour
 
         // Set up the conversation
         if(_convoIndex >= 0)
-            GameManager.Instance.GamePersistent.IsConvoHad[_convoIndex] = true;
+            getIsConvoHad()[_convoIndex] = true;
         foreach(string line in _conversation.lines)
         {
             isSkippingLine = false;

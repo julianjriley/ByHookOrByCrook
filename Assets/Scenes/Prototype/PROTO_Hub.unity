@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.84, y: -8.07}
+  m_AnchoredPosition: {x: 4.08, y: -8.72}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &38071391
@@ -181,8 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Touch this to go onward! Your return will refresh the conversations and
-    shops. --->
+  m_text: Touch this and come back to re-load shops and conversations. --->
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2712,10 +2711,6 @@ PrefabInstance:
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2912413853833242545, guid: fd513ca90511eb24ea33fdc84351ca33, type: 3}
-      propertyPath: NPCharaType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2912413853833242545, guid: fd513ca90511eb24ea33fdc84351ca33, type: 3}
       propertyPath: _books.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 81b26960a38d98942b01710f6b288d9c, type: 2}
@@ -5130,7 +5125,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5bdc5d8fcd6f8e248a846e89c97a0605, type: 2}
   - {fileID: 11400000, guid: 24a78b87ce775714b967bf9c1cddc911, type: 2}
   - {fileID: 11400000, guid: 5f676b22bd79d8544bb85f5da96cc028, type: 2}
-  NPCharaType: 0
 --- !u!212 &2620583758232239849
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5376,7 +5370,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 811150e13e3463d49ac60089913eae25, type: 2}
   - {fileID: 11400000, guid: 469ad7b80bd321e49aaf1a32c490d310, type: 2}
   - {fileID: 11400000, guid: cd17fbf6d1f770b4aabddb97395632e3, type: 2}
-  NPCharaType: 1
 --- !u!1 &3211631042630083477
 GameObject:
   m_ObjectHideFlags: 0

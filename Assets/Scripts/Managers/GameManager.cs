@@ -149,7 +149,9 @@ public class GameManager : MonoBehaviour
         public bool WeaponBait;
 
         // Hub related stats
-        public List<bool> IsConvoHad; // TODO: Each NPC will need one of these lists.
+        public List<bool> IsConvoHadRod;
+        public List<bool> IsConvoHadBait;
+        public List<bool> IsConvoHadBag;
     }
 
     // private stored save data
@@ -198,7 +200,9 @@ public class GameManager : MonoBehaviour
         newSaveData.SupportBait = false;
         newSaveData.WeaponBait = false;
 
-        newSaveData.IsConvoHad = new List<bool>();
+        newSaveData.IsConvoHadRod = new List<bool>();
+        newSaveData.IsConvoHadBait = new List<bool>();
+        newSaveData.IsConvoHadBag = new List<bool>();
 
         // TODO: read existing save data (if it exists) from PlayerPrefs
 
