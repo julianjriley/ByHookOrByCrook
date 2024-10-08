@@ -16,14 +16,32 @@ public class BossTargetRepositioner : MonoBehaviour
     private Transform _rotaterTransform;
     private GameObject _currentTarget;
     private Transform _currentTargetTransform;
+    private Coroutine _lerpRotation;
+    private Coroutine _lerpScale;
+    //private Transform _playerTransform;
     
     void Start()
     {
         _bounds = GameObject.Find("TargetBoundingBox").GetComponent<BoxCollider>();
         _rotater = GameObject.Find("Rotater");
         _rotaterTransform = _rotater.GetComponent<Transform>();
-        //Instantiate(_rotater, transform);
+        //_playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         InvokeRepeating("MakeNewTarget", TimeBetweenRepositions, TimeBetweenRepositions);
+    }
+    void FixedUpdate() {
+        _rotaterTransform.localPosition = Vector3.zero; //fix bug where rotator/circle does not stay with the player as a child
+
+        if (_currentTargetTransform != null) {
+            _currentTargetTransform.localPosition = Vector3.zero;
+            Debug.Log("CurrentTargetTransform != null");
+            if (_bounds.bounds.Contains(_currentTargetTransform.GetChild(0).position) != true) { //if target goes outside of bounds, regenerate a new one and restart the invokerepeating
+                StopCoroutine(_lerpScale);
+                StopCoroutine(_lerpRotation);
+                CancelInvoke();
+                MakeNewTarget();
+                InvokeRepeating("MakeNewTarget", TimeBetweenRepositions, TimeBetweenRepositions);
+            }
+        }
     }
 
     public void MakeNewTarget() {
@@ -42,6 +60,7 @@ public class BossTargetRepositioner : MonoBehaviour
         newTransform.Rotate(0f, 0f, randRotation, Space.Self);
 
         //check if position of new target is in the bounds
+        //BUG: I think if it keeps generating targets that our out of bounds, it overloads the stack
         if (_bounds.bounds.Contains(newTransform.GetChild(0).position) != true) {
             Debug.Log("Target outside of bounds, making new target");
             MakeNewTarget();
@@ -59,11 +78,11 @@ public class BossTargetRepositioner : MonoBehaviour
         //lerp rotater to newTarget scale and rotation over time
         float rotaterZ = _rotaterTransform.eulerAngles.z;
         float targetZ = _currentTarget.GetComponent<Transform>().eulerAngles.z;
-        StartCoroutine(LerpRotation(rotaterZ, targetZ, Duration));
+        _lerpRotation = StartCoroutine(LerpRotation(rotaterZ, targetZ, Duration));
 
         Vector3 rotaterScale = _rotaterTransform.localScale;
         Vector3 targetScale = _currentTargetTransform.localScale;
-        StartCoroutine(LerpScale(rotaterScale, targetScale, Duration));
+        _lerpScale = StartCoroutine(LerpScale(rotaterScale, targetScale, Duration));
     }
     IEnumerator LerpRotation(float start, float end, float duration) 
     {
@@ -85,10 +104,10 @@ public class BossTargetRepositioner : MonoBehaviour
         {
             float t = time / duration;
             t = t * t * (3f - 2f * t); //equation helps smooth the interpolation
-            _rotaterTransform.localScale = Vector3.Lerp(start, end, t); //only rotates on y axis
+            _rotaterTransform.localScale = Vector3.Lerp(start, end, t); 
             time += Time.deltaTime;
             yield return null;
         }
-        _rotaterTransform.localScale = end; //ensure it fully reaches target angle
+        _rotaterTransform.localScale = end; 
     }
 }
