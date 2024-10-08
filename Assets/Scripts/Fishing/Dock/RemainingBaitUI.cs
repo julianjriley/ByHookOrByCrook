@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using static GameManager;
 
 /// <summary>
@@ -13,6 +14,8 @@ public class RemainingBaitUI : MonoBehaviour
     private GameObject _iconPrefab;
     [SerializeField, Tooltip("List of bait sprites for the possible types (in order)")]
     private List<Sprite> _baitSprites = new List<Sprite>();
+    [SerializeField, Tooltip("Used to load the subsequent scene once bait runs out.")]
+    private string _loadoutScene;
 
     private int baitLeft;
 
@@ -52,13 +55,21 @@ public class RemainingBaitUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ready to transition to next scene
+        if(baitLeft <= 0)
+        {
+            SceneManager.LoadScene(_loadoutScene);
+
+            // TODO: Handle this elsewhere. This will cut off the display of what fish you caught.
+        }
+
         // if a change needs to be made to UI
         if (GameManager.Instance.ScenePersistent.BaitList.Count < baitLeft)
         {
             baitLeft--;
 
             // Remove bait from the end of the list
-            transform.GetChild(transform.childCount - 1);
+            Destroy(transform.GetChild(transform.childCount - 1).gameObject);
         }
     }
 }

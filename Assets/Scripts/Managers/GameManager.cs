@@ -81,13 +81,14 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetScenePersistentData()
     {
-        ScenePersistentData newInventory = new ScenePersistentData();
+        ScenePersistentData newScenePersistent = new ScenePersistentData();
 
         // Initialize default values for scene persistent data
-        newInventory.BaitList = new List<BaitType>();
+        newScenePersistent.CaughtFish = new Inventory();
+        newScenePersistent.BaitList = new List<BaitType>();
 
         // Apply reset/initialized Inventory data to Instance
-        Instance.ScenePersistent = newInventory;
+        Instance.ScenePersistent = newScenePersistent;
     }
 
     /// <summary>

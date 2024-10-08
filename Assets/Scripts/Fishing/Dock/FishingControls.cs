@@ -236,11 +236,9 @@ public class FishingControls : MonoBehaviour
 
                 // determine combined fishing score
                 float combinedScore = (_castingScore + _reelingScore) / 2.0f;
+
                 // make catch with calculated odds
-                // TEMP: Debug scores until catch randomizer can be used
-                Debug.Log("Casting Score: " + _castingScore + "        Reeling Score: " + _reelingScore);
-                // TODO: CatchRandomizer CANNOT actually be called until there is at least one item implemented from each category (null reference issue)
-                // _catchRandomizer.CatchFish(combinedScore);
+                _catchRandomizer.CatchFish(combinedScore);
 
                 // disable reeling UI
                 _reelIndicator.SetActive(false);

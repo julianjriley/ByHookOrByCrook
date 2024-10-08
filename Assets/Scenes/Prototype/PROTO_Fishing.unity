@@ -1149,19 +1149,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxTrashRate: 0.75
   _specialBaitWeighting: 0.75
-  _tier1Weapons: []
+  _tier1Weapons:
+  - {fileID: 11400000, guid: 34c1a93d6ce2e9f45b973bd36719fdc1, type: 2}
   _tier2Weapons: []
   _tier3Weapons: []
-  _tier1Attack: []
+  _tier1Attack:
+  - {fileID: 11400000, guid: c8989ce00510e8244a8b5c5408777885, type: 2}
   _tier2Attack: []
   _tier3Attack: []
-  _tier1Support: []
+  _tier1Support:
+  - {fileID: 11400000, guid: c8989ce00510e8244a8b5c5408777885, type: 2}
   _tier2Support: []
   _tier3Support: []
-  _tier1Movement: []
+  _tier1Movement:
+  - {fileID: 11400000, guid: c8989ce00510e8244a8b5c5408777885, type: 2}
   _tier2Movement: []
   _tier3Movement: []
-  _junk: []
+  _junk:
+  - {fileID: 11400000, guid: 0343004882d96824abcb71d4c4e57242, type: 2}
 --- !u!1 &814783632
 GameObject:
   m_ObjectHideFlags: 0
@@ -2228,6 +2233,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9b6d886ec40aff94d881d0dc53a19871, type: 3}
   - {fileID: 21300000, guid: 89d62aa0ea1ac3b4fa8938b57d30e102, type: 3}
   - {fileID: 21300000, guid: 5ff21a902e4f3234582ede1fff4366c8, type: 3}
+  _loadoutScene: PROTO_LoadoutSelection
 --- !u!1 &1987197320
 GameObject:
   m_ObjectHideFlags: 0
