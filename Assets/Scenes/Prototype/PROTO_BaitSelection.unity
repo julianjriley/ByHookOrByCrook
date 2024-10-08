@@ -272,7 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baitSelector: {fileID: 877972556}
   _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
-  BaitType: 4
+  BaitType: 3
   _tooltipOffset: 19
 --- !u!114 &49326659
 MonoBehaviour:
@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baitSelector: {fileID: 877972556}
   _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
-  BaitType: 1
+  BaitType: 0
   _tooltipOffset: 19
 --- !u!1 &289665295
 GameObject:
@@ -1143,7 +1143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baitSelector: {fileID: 877972556}
   _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
-  BaitType: 3
+  BaitType: 2
   _tooltipOffset: 19
 --- !u!114 &932572949
 MonoBehaviour:
@@ -1377,7 +1377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baitSelector: {fileID: 877972556}
   _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
-  BaitType: 2
+  BaitType: 1
   _tooltipOffset: 19
 --- !u!114 &961592193
 MonoBehaviour:
@@ -1687,7 +1687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baitSelector: {fileID: 877972556}
   _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
-  BaitType: 5
+  BaitType: 4
   _tooltipOffset: 19
 --- !u!114 &1070592516
 MonoBehaviour:

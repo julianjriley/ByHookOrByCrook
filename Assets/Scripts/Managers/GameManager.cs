@@ -37,11 +37,11 @@ public class GameManager : MonoBehaviour
     public enum BaitType
     {
         Empty = -1,
-        Default = 1,
-        Weapon = 2,
-        Attack = 3,
-        Support = 4,
-        Movement = 5
+        Default = 0,
+        Weapon = 1,
+        Attack = 2,
+        Support = 3,
+        Movement = 4
     }
 
     // Bait, Inventory, Loadout, etc. (saved between scenes)
