@@ -1,68 +1,103 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BaitSelector : MonoBehaviour
 {
-    public List<Sprite> _baitSprites = new List<Sprite>();
-    public List<Button> _barrelList; // For now, I will manually add barrels to this list
-    
-    private GameManager _gameManager;
-    private BarrelScript _barrelScript;
+    [Header("Barrels")]
+    [Tooltip("List of barrel buttons for adding baits to bait list")]
+    public List<Button> BarrelList; // For now, I will manually add barrels to this list
+    [Tooltip("List of bait sprites for the possible types (in order)")]
+    public List<Sprite> BaitSprites = new List<Sprite>();
 
-    public GameObject baitSlotSpawn;
+    [Header("Locked Tooltips")]
+    [Tooltip("Used to make locked tooltip enable/disable appropriately.")]
+    public GameObject LockedTooltip;
 
-    private int baitSlots = 3;
+    [Header("Selected Bait")]
+    [SerializeField, Tooltip("Object to which selected bait objects are instantiated to.")]
+    public GameObject SelectedBaitParent;
 
-    public GameObject TooltipParent;
-    public GameObject TooltipSpawn;
-
-    public List<Vector2> ToolTipSpawnpoints;
+    private int _remainingBaitSlots;
 
     void Start()
     {
-        _gameManager = GameManager.Instance;
-        TooltipParent.SetActive(false);
+        // Initialize Selected baits capacity
+        _remainingBaitSlots = GameManager.Instance.GamePersistent.BaitInventorySize;
 
-        // Initialize each barrel as locked, shouldn't include the basic bait barrel
-        foreach (var button in _barrelList)
+        // Initialized locked tooltip
+        LockedTooltip.SetActive(false);
+
+        // Initialize each barrel
+        foreach (var barrel in BarrelList)
         {
-            if (button.GetComponent<BarrelScript>() == null)
-            {
-                _barrelScript = button.AddComponent<BarrelScript>();
-            }
-            _barrelScript = button.GetComponent<BarrelScript>();
+            // REQUIREMENT: BarrelScript Component
+            if (!barrel.TryGetComponent(out Barrel barrelScript))
+                throw new System.Exception("Each Barrel MUST have BarrelScript component.");
 
-            // Weapon bait unlocked for prototype
-            if (_barrelScript.gameObject.name != "Basic Bait"  && _barrelScript.gameObject.name != "Weapon Bait") {
-                _barrelScript.locked = true;
-            }
+            // REQUIREMENT: Button Component
+            if (!barrel.TryGetComponent(out Button button))
+                throw new System.Exception("Each Barrel MUST have a Button component.");
 
-            if (!_barrelScript.locked)
-            {
-                // Make barrel clickable
-                _barrelScript.GetComponent<Button>().interactable = true;
-            }
+            // set barrel button's interactable state based on whether specific bait type has been unlocked
+            if (barrelScript.BaitType == GameManager.BaitType.Default)
+                button.interactable = true; // always unlocked
+            else if (barrelScript.BaitType == GameManager.BaitType.Weapon)
+                button.interactable = GameManager.Instance.GamePersistent.WeaponBait;
+            else if (barrelScript.BaitType == GameManager.BaitType.Attack)
+                button.interactable = GameManager.Instance.GamePersistent.AttackBait;
+            else if (barrelScript.BaitType == GameManager.BaitType.Support)
+                button.interactable = GameManager.Instance.GamePersistent.SupportBait;
+            else if (barrelScript.BaitType == GameManager.BaitType.Movement)
+                button.interactable = GameManager.Instance.GamePersistent.MovementBait;
             else
-            {
-                _barrelScript.GetComponent<Button>().interactable = false;
-            }
+                throw new System.Exception("Barrel MUST be assigned to a valid BaitType.");
         }
     }
 
-    public int GetBaitSlots()
+    public int GetRemainingBaitSlots()
     {
-        return baitSlots;
+        return _remainingBaitSlots;
     }
 
-    public void DecreaseBaitSlot()
+    public void DecreaseRemainingBaitSlots()
     {
-        baitSlots--;
+        _remainingBaitSlots--;
+
+        if (_remainingBaitSlots < 0)
+            throw new System.Exception("Error: attempting to add a selected bait when no slots remain");
     }
-    public void increaseBaitSlot()
+    public void IncreaseRemainingBaitSlots()
     {
-        baitSlots++;
+        _remainingBaitSlots++;
+
+        if (_remainingBaitSlots > GameManager.Instance.GamePersistent.BaitInventorySize)
+            throw new System.Exception("Error: attempting to remove a selected bait when all are already removed.");
+    }
+
+    /// <summary>
+    /// Simple scene transition
+    /// </summary>
+    public void BackToHub(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    /// <summary>
+    /// Handles properly uploading finalized bait data to game manager, then loads next scene
+    /// </summary>
+    public void ContinueToFishing(string sceneName)
+    {
+        // TODO: Confirmation popup if player is attempting to continue without filling all of their bait slots
+
+        // Add selected baits to GameManager
+        SelectedBait[] selectedBaits = SelectedBaitParent.GetComponentsInChildren<SelectedBait>();
+        foreach (SelectedBait bait in selectedBaits)
+            GameManager.Instance.AddBait(bait.BaitType);
+
+        // Load fishing scene
+        SceneManager.LoadScene(sceneName);
     }
 }

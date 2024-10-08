@@ -209,9 +209,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 49326658}
-        m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
+        m_TargetAssemblyTypeName: Barrel, Assembly-CSharp
         m_MethodName: BaitToSlot
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -270,9 +270,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb334f31c8d48594ba419b6842ff38af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 1
-  baitSelector: {fileID: 877972556}
-  spawnedBait: {fileID: 769642767}
+  _baitSelector: {fileID: 877972556}
+  _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
+  BaitType: 4
+  _tooltipOffset: 19
 --- !u!114 &49326659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,18 +299,6 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 49326658}
-          m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
-          m_MethodName: AssignTooltipSpawn
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 2
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -415,9 +404,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 97118873}
-        m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
+        m_TargetAssemblyTypeName: Barrel, Assembly-CSharp
         m_MethodName: BaitToSlot
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -476,9 +465,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb334f31c8d48594ba419b6842ff38af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 0
-  baitSelector: {fileID: 877972556}
-  spawnedBait: {fileID: 769642767}
+  _baitSelector: {fileID: 877972556}
+  _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
+  BaitType: 1
+  _tooltipOffset: 19
 --- !u!1 &289665295
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,127 +856,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571027969}
   m_CullTransparentMesh: 1
---- !u!1 &769642761
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 769642762}
-  - component: {fileID: 769642766}
-  - component: {fileID: 769642765}
-  - component: {fileID: 769642767}
-  m_Layer: 5
-  m_Name: BaitPrefab
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &769642762
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769642761}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1318174483}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2415, y: -358.3073}
-  m_SizeDelta: {x: 165.1, y: 170.7}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &769642765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769642761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.39607844, g: 0.5904549, b: 0.9607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &769642766
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769642761}
-  m_CullTransparentMesh: 1
---- !u!114 &769642767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769642761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 769642765}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &848687152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,26 +980,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84936052575e9b14ab2bc8f9da333848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baitSprites:
-  - {fileID: -1687655841, guid: d2042fb82e1a38a4ca51185337ca34bb, type: 3}
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: -755468298, guid: 6dd305c4cb650214a9eb6252d4fdb748, type: 3}
-  - {fileID: -965522314, guid: 6dd305c4cb650214a9eb6252d4fdb748, type: 3}
-  _barrelList:
+  BarrelList:
   - {fileID: 97118870}
   - {fileID: 961592189}
   - {fileID: 932572945}
   - {fileID: 49326655}
   - {fileID: 1070592512}
-  baitSlotSpawn: {fileID: 999720807}
-  TooltipParent: {fileID: 951870367}
-  TooltipSpawn: {fileID: 0}
-  ToolTipSpawnpoints:
-  - {x: -153, y: -29}
-  - {x: 31, y: -29}
-  - {x: 299, y: -29}
-  - {x: 572, y: -29}
+  BaitSprites:
+  - {fileID: 21300000, guid: 963ef01018edb9543b5e10ba23f01908, type: 3}
+  - {fileID: -1687655841, guid: d2042fb82e1a38a4ca51185337ca34bb, type: 3}
+  - {fileID: 21300000, guid: 9b6d886ec40aff94d881d0dc53a19871, type: 3}
+  - {fileID: 21300000, guid: 89d62aa0ea1ac3b4fa8938b57d30e102, type: 3}
+  - {fileID: 21300000, guid: 5ff21a902e4f3234582ede1fff4366c8, type: 3}
+  LockedTooltip: {fileID: 951870367}
+  SelectedBaitParent: {fileID: 999720807}
 --- !u!1 &932572943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,9 +1080,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 932572948}
-        m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
+        m_TargetAssemblyTypeName: Barrel, Assembly-CSharp
         m_MethodName: BaitToSlot
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1278,9 +1141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb334f31c8d48594ba419b6842ff38af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 1
-  baitSelector: {fileID: 877972556}
-  spawnedBait: {fileID: 769642767}
+  _baitSelector: {fileID: 877972556}
+  _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
+  BaitType: 3
+  _tooltipOffset: 19
 --- !u!114 &932572949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1299,21 +1163,9 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 932572948}
-          m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
+          m_TargetAssemblyTypeName: Barrel, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 932572948}
-          m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
-          m_MethodName: AssignTooltipSpawn
-          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1462,9 +1314,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 961592192}
-        m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
+        m_TargetAssemblyTypeName: Barrel, Assembly-CSharp
         m_MethodName: BaitToSlot
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1523,9 +1375,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb334f31c8d48594ba419b6842ff38af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 0
-  baitSelector: {fileID: 877972556}
-  spawnedBait: {fileID: 769642767}
+  _baitSelector: {fileID: 877972556}
+  _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
+  BaitType: 2
+  _tooltipOffset: 19
 --- !u!114 &961592193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1544,21 +1397,9 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 961592192}
-          m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
+          m_TargetAssemblyTypeName: Barrel, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 961592192}
-          m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
-          m_MethodName: AssignTooltipSpawn
-          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1783,9 +1624,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1070592515}
-        m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
+        m_TargetAssemblyTypeName: Barrel, Assembly-CSharp
         m_MethodName: BaitToSlot
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1844,9 +1685,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb334f31c8d48594ba419b6842ff38af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 1
-  baitSelector: {fileID: 877972556}
-  spawnedBait: {fileID: 769642767}
+  _baitSelector: {fileID: 877972556}
+  _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
+  BaitType: 5
+  _tooltipOffset: 19
 --- !u!114 &1070592516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1872,18 +1714,6 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1070592515}
-          m_TargetAssemblyTypeName: BarrelScript, Assembly-CSharp
-          m_MethodName: AssignTooltipSpawn
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 3
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -2235,7 +2065,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2131990376}
-  - {fileID: 769642762}
   - {fileID: 2043735471}
   - {fileID: 951870368}
   - {fileID: 289665296}
@@ -2331,7 +2160,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1448079817}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 877972556}
+        m_TargetAssemblyTypeName: BaitSelector, Assembly-CSharp
+        m_MethodName: ContinueToFishing
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PROTO_Fishing
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1448079817
 MonoBehaviour:
   m_ObjectHideFlags: 0

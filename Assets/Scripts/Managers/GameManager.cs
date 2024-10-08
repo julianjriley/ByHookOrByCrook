@@ -36,12 +36,12 @@ public class GameManager : MonoBehaviour
     // used for storing scene persistent BaitType data
     public enum BaitType
     {
-        Empty,
-        Default,
-        Weapon,
-        Attack,
-        Support,
-        Movement
+        Empty = -1,
+        Default = 1,
+        Weapon = 2,
+        Attack = 3,
+        Support = 4,
+        Movement = 5
     }
 
     // Bait, Inventory, Loadout, etc. (saved between scenes)
@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
         newSaveData.AttackBait = false;
         newSaveData.MovementBait = false;
         newSaveData.SupportBait = false;
-        newSaveData.WeaponBait = false;
+        newSaveData.WeaponBait = true; // TEMPORARY: unlocked by defauly for prototype to make BaitSelection scene work
 
         newSaveData.IsConvoHadRod = new List<bool>();
         newSaveData.IsConvoHadBait = new List<bool>();
