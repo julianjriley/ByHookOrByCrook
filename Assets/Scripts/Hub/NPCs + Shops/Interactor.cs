@@ -36,8 +36,7 @@ public class Interactor : MonoBehaviour
     [Tooltip("The text box and text item that will be used for talking")]
     [SerializeField] private GameObject _convoBubble;
     [SerializeField] private TextMeshPro _convoText;
-    [Tooltip("The object that represents the conversation script")]
-    [SerializeField] private Conversation _conversation;
+    private Conversation _conversation;
     private int _convoIndex;
     [Tooltip("The main hub camera, and the camera focused on this specific interaction")]
     [SerializeField] private GameObject _mainCamera;
