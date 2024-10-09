@@ -1928,8 +1928,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4377531896990685056}
   - component: {fileID: 3835045658223980634}
-  - component: {fileID: 5725444573417243169}
   - component: {fileID: 5457958313915930277}
+  - component: {fileID: 5535744256013942160}
   - component: {fileID: 2912413853833242545}
   m_Layer: 0
   m_Name: NPC
@@ -1956,7 +1956,7 @@ Transform:
   - {fileID: 6882071875695949167}
   - {fileID: 1924133012050837369}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3835045658223980634
 SpriteRenderer:
@@ -2010,40 +2010,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5725444573417243169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6927218618917809108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca5cfd48744916468ebf478e708e51c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactPrompt: {fileID: 5379468106279391979}
-  IsNPC: 1
-  _cryerPrompt: {fileID: 8140772182228422777}
-  _convoBubble: {fileID: 6999762526886154468}
-  _convoText: {fileID: 1071608667017697015}
-  _conversation: {fileID: 11400000, guid: 62a4707aaf7af5e43ac7bfca4bb260fb, type: 2}
-  _mainCamera: {fileID: 0}
-  _interactCamera: {fileID: 8545834916902090843}
-  _player: {fileID: 0}
-  _multipurchase: 0
-  _costs: 
-  _titles: []
-  _descs: []
-  _sprites: []
-  _convos: []
-  _priceText: {fileID: 0}
-  _titleText: {fileID: 0}
-  _descText: {fileID: 0}
-  _itemSprite: {fileID: 0}
-  _shopAnim: {fileID: 0}
-  _npc: {fileID: 0}
-  GoodsSold: 0
 --- !u!61 &5457958313915930277
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2089,6 +2055,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5535744256013942160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927218618917809108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1653f23b8bb655241b75cc4f4ccb263d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactPrompt: {fileID: 5379468106279391979}
+  GoodsSold: 0
+  _cryerPrompt: {fileID: 8140772182228422777}
+  _convoBubble: {fileID: 6999762526886154468}
+  _convoText: {fileID: 1071608667017697015}
+  _mainCamera: {fileID: 0}
+  _interactCamera: {fileID: 8545834916902090843}
+  _player: {fileID: 0}
 --- !u!114 &2912413853833242545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2106,6 +2092,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 165e330f3f36d73489ec1633eb71dfa5, type: 2}
   - {fileID: 11400000, guid: 73ed44f17e951934d8a9a050b1915d1f, type: 2}
   - {fileID: 11400000, guid: d252ca0ffef18594fb8ea80afc4dc15e, type: 2}
+  NPCharaType: 0
 --- !u!1 &6999762526886154468
 GameObject:
   m_ObjectHideFlags: 0

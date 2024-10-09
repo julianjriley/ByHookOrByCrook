@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ConvoSelector : MonoBehaviour
 {
-    private Interactor _npcInteractor;
+    private NPCInteractor _npcInteractor;
     [Tooltip("The amount of failure that takes you beyond any of the programmed post-boss convos")]
     [SerializeField] private int maxTries;
     [Tooltip("The 3 books of conversations an NPC has for before boss 1 / 2 / 3")]
@@ -30,7 +30,7 @@ public class ConvoSelector : MonoBehaviour
             }
         }
 
-        _npcInteractor = GetComponent<Interactor>();
+        _npcInteractor = GetComponent<NPCInteractor>();
         Conversation convo = SelectConversation(_books[GameManager.Instance.GamePersistent.BossNumber]);
         _npcInteractor.SetConversation(convo, returnIndex);
     }

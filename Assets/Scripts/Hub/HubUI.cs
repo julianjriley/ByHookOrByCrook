@@ -23,14 +23,14 @@ public class HubUI : MonoBehaviour
 
     private void OnEnable()
     {
-        Interactor.onShopEnter += ShowGill;
-        Interactor.onShopExit += LeaveShop;
+        ShopInteractor.onShopEnter += ShowGill;
+        ShopInteractor.onShopExit += LeaveShop;
     }
 
     private void OnDisable()
     {
-        Interactor.onShopEnter -= ShowGill;
-        Interactor.onShopExit -= LeaveShop;
+        ShopInteractor.onShopEnter -= ShowGill;
+        ShopInteractor.onShopExit -= LeaveShop;
     }
 
     // Update is called once per frame

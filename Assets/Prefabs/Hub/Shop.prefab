@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1303212759213633894}
   - component: {fileID: 8691436818555030612}
-  - component: {fileID: 3334715211926264812}
   - component: {fileID: 2779378211716492642}
+  - component: {fileID: 2163190056312433008}
   m_Layer: 0
   m_Name: Shop
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 1163436003986926000}
   - {fileID: 1276965810791000496}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8691436818555030612
 SpriteRenderer:
@@ -88,48 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3334715211926264812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2295927049438266048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca5cfd48744916468ebf478e708e51c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactPrompt: {fileID: 3635001956020010312}
-  IsNPC: 0
-  _cryerPrompt: {fileID: 0}
-  _convoBubble: {fileID: 0}
-  _convoText: {fileID: 0}
-  _conversation: {fileID: 0}
-  _mainCamera: {fileID: 0}
-  _interactCamera: {fileID: 0}
-  _player: {fileID: 0}
-  _multipurchase: 0
-  _costs: 3200000009030000
-  _titles:
-  - SHARK DIO
-  - WORM WEAPON
-  _descs:
-  - Very approachable.
-  - Has a button for easy shootin'.
-  _sprites:
-  - {fileID: 21300000, guid: 5ff21a902e4f3234582ede1fff4366c8, type: 3}
-  - {fileID: 21300000, guid: 9b6d886ec40aff94d881d0dc53a19871, type: 3}
-  _convos:
-  - {fileID: 11400000, guid: ebf206b74439e5d47b8454051c50fd9e, type: 2}
-  - {fileID: 11400000, guid: c692dd1d5ecf5904eafd54871bb7f64d, type: 2}
-  _priceText: {fileID: 8687465488433231593}
-  _titleText: {fileID: 3330224675956542260}
-  _descText: {fileID: 2337706933682373468}
-  _itemSprite: {fileID: 7691146398192723980}
-  _shopAnim: {fileID: 781175553810421429}
-  _npc: {fileID: 0}
-  GoodsSold: 0
 --- !u!61 &2779378211716492642
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,6 +133,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2163190056312433008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2295927049438266048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8bc1ead68b77cf4a9f2b253785df34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactPrompt: {fileID: 3635001956020010312}
+  GoodsSold: 0
+  _multipurchase: 0
+  _costs: 
+  _titles: []
+  _descs: []
+  _sprites: []
+  _convos: []
+  _priceText: {fileID: 8687465488433231593}
+  _titleText: {fileID: 3330224675956542260}
+  _descText: {fileID: 2337706933682373468}
+  _itemSprite: {fileID: 7691146398192723980}
+  _shopAnim: {fileID: 781175553810421429}
+  _npc: {fileID: 0}
 --- !u!1 &2545246719735945414
 GameObject:
   m_ObjectHideFlags: 0
