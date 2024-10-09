@@ -47,10 +47,10 @@ public class GameManager : MonoBehaviour
     // Bait, Inventory, Loadout, etc. (saved between scenes)
     [Serializable]
     public class ScenePersistentData
-    {
-        public Inventory CaughtFish;   
-
+    { 
         public List<BaitType> BaitList;
+        public List<Item> CaughtFish;
+        public List<Item> Loadout;
     }
 
     // private stored inventory
@@ -84,8 +84,9 @@ public class GameManager : MonoBehaviour
         ScenePersistentData newScenePersistent = new ScenePersistentData();
 
         // Initialize default values for scene persistent data
-        newScenePersistent.CaughtFish = new Inventory();
         newScenePersistent.BaitList = new List<BaitType>();
+        newScenePersistent.CaughtFish = new List<Item>();
+        newScenePersistent.Loadout = new List<Item>();
 
         // Apply reset/initialized Inventory data to Instance
         Instance.ScenePersistent = newScenePersistent;
@@ -117,11 +118,35 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Adds new bait item to the end of the bait list.
+    /// Adds new bait type to the end of the bait list.
     /// </summary>
     public void AddBait(BaitType newBait)
     {
         ScenePersistent.BaitList.Add(newBait);
+    }
+
+    /// <summary>
+    /// Adds new fish item to the end of the caught fish list.
+    /// </summary>
+    public void AddCaughtFish(Item item)
+    {
+        ScenePersistent.CaughtFish.Add(item);
+    }
+
+    /// <summary>
+    /// Returns true if newItem is NOT already contained in the CaughtFish list.
+    /// </summary>
+    public bool IsNewCatch(Item newItem)
+    {
+        // check for duplicates
+        foreach (Item curr in ScenePersistent.CaughtFish)
+        {
+            if (curr.GetItemID() == newItem.GetItemID())
+                return false;
+        }
+
+        // item is unique
+        return true;
     }
     #endregion
 

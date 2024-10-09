@@ -23,7 +23,7 @@ public class LoadoutSelection : MonoBehaviour
     private List<Button> _chosenFishButtons;
 
     private GameManager _gameManager;
-    private Inventory _caughtFish;
+    //private Inventory _caughtFish;
 
     [SerializeField]
     private Button _buttonPrefab;
@@ -36,7 +36,7 @@ public class LoadoutSelection : MonoBehaviour
     void Start()
     {
         _gameManager = GameManager.Instance;
-        _caughtFish = _gameManager.ScenePersistent.CaughtFish;
+        //_caughtFish = _gameManager.ScenePersistent.CaughtFish;
 
         foreach (var item in TempListofFish) // Change list to GM list later 
         {
