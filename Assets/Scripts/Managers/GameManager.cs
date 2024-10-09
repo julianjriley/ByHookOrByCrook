@@ -157,6 +157,14 @@ public class GameManager : MonoBehaviour
         // item is unique
         return true;
     }
+
+    /// <summary>
+    /// Adds new fish item to the end of the loadout list
+    /// </summary>
+    public void AddLoadoutItem(Item item)
+    {
+        ScenePersistent.Loadout.Add(item);
+    }
     #endregion
 
     #region GAME PERSISTENT DATA

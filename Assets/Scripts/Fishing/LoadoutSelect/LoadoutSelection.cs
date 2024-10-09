@@ -52,18 +52,26 @@ public class LoadoutSelection : MonoBehaviour
     /// <summary>
     /// Transitions to next scene (either combat or practice arena)
     /// </summary>
-    public void NextScene(int sceneIndex)
+    public void NextScene(string sceneName)
     {
+        // TODO: Confirmation popup if player is attempting to continue without filling all of their bait slots
+
+        // Add selected loadout items to GameManager
+        FishButtons[] loadoutFish = LoadoutFishParent.GetComponentsInChildren<FishButtons>();
+        foreach (FishButtons fish in loadoutFish)
+            GameManager.Instance.AddLoadoutItem(fish.Item);
+
         // Use this function to transition to PRACTICE or COMBAT scene
-        StartCoroutine(Fadeout(sceneIndex));
+        StartCoroutine(Fadeout(sceneName));
     }
 
-    private IEnumerator Fadeout(int index)
+    private IEnumerator Fadeout(string sceneName)
     {
         // TODO: add actual smooth transition visual effects here
 
-        // Fadeout logic
+        // Fadeout logic/delay
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(index);
+
+        SceneManager.LoadScene(sceneName);
     }
 }

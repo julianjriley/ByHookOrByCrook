@@ -10,7 +10,14 @@ using UnityEngine.UI;
 /// </summary>
 public class FishButtons : MonoBehaviour
 {
+    private static int _selectedCount;
+
     private LoadoutSelection _loadoutSelection;
+
+    [HideInInspector]
+    public Item Item;
+    [SerializeField, Tooltip("Used for updating the sprite to match the selected fish item.")]
+    private Image _sprite;
 
     [Header("Tooltip")]
     [SerializeField, Tooltip("Used to enable/disable tooltip popup")]
@@ -19,11 +26,11 @@ public class FishButtons : MonoBehaviour
     private TextMeshProUGUI _itemName;
     [SerializeField, Tooltip("Used for setting item description in tooltip.")]
     private TextMeshProUGUI _itemDescription;
-    [SerializeField, Tooltip("Used for updating the sprite to match the selected fish item.")]
-    private Image _sprite;
 
     private void Start()
     {
+        _selectedCount = 0;
+
         _loadoutSelection= FindObjectOfType<LoadoutSelection>();
     }
 
@@ -32,6 +39,8 @@ public class FishButtons : MonoBehaviour
     /// </summary>
     public void Initialize(Item fishItem)
     {
+        Item = fishItem;
+
         _itemName.text = fishItem.GetItemName(); 
         _itemDescription.text = fishItem.GetItemDescription();
         _sprite.sprite = fishItem.GetSprite();
@@ -58,18 +67,33 @@ public class FishButtons : MonoBehaviour
     /// </summary>
     public void SwapFishButton()
     {
-        // hide tooltip
-        _tooltipObject.SetActive(false);
-
         // Swap from caught fish to loadout
         if(transform.parent.transform == _loadoutSelection.CaughtFishParent.transform)
         {
-            transform.SetParent(_loadoutSelection.LoadoutFishParent.transform);
+            // ensure loadout is not already full
+            if(_selectedCount < GameManager.Instance.GamePersistent.BattleInventorySize)
+            {
+                transform.SetParent(_loadoutSelection.LoadoutFishParent.transform);
+
+                _selectedCount++;
+
+                // hide tooltip
+                _tooltipObject.SetActive(false);
+            }
+            else
+            {
+                // TODO: negative feedback that you cannot add anymore items to the loadout since it is full
+            }
         }
         // Swap from loadout to caught fish
         else
         {
             transform.SetParent(_loadoutSelection.CaughtFishParent.transform);
+
+            _selectedCount--;
+
+            // hide tooltip
+            _tooltipObject.SetActive(false);
         }
     }
 }
