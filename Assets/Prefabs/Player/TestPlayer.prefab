@@ -184,6 +184,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d6c951e5ce76b49a2f111e74153ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxSpeed: 7
+  maxNumberOfJumps: 1
+  _coyoteMaxTime: 0.2
+  _jumpBufferMaxTime: 0.2
+  _jummpCancelForce: 0.5
+  jumpDurrationMaxTime: 0.2
+  jumpUpForce: 10
+  jumpFallingForce: 11
+  _maxGroundedDistance: 0.1
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _isGrounded: 0
+  _dashSpeed: 24
+  dashDistance: 0.2
+  _toggleGravityWhenDashing: 0
+  numberOfAirDashes: 1
 --- !u!54 &2997144428325384686
 Rigidbody:
   m_ObjectHideFlags: 0
