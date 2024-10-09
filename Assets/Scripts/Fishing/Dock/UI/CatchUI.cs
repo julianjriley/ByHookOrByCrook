@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Handles enabling and scaling catch UI after a catch.
+/// Also handles the check for if the scene is ready to transition
 /// </summary>
 public class CatchUI : MonoBehaviour
 {
@@ -24,6 +26,10 @@ public class CatchUI : MonoBehaviour
     [SerializeField, Tooltip("Time during which the popup stays at max scale before shrinking.")]
     private float _freezeTime;
 
+    [Header("Scene Transition")]
+    [SerializeField, Tooltip("Scene name of the loadout scene to follow this one")]
+    private string _loadoutSceneName;
+
     private int _catchCount = 0;
 
     // Update is called once per frame
@@ -36,6 +42,11 @@ public class CatchUI : MonoBehaviour
 
             _catchCount++;
         }
+
+        // TODO: smoother transition effect
+        // Scene transition to end fishing
+        if (GameManager.Instance.ScenePersistent.BaitList.Count == 0 && !IsPopupActive())
+            SceneManager.LoadScene(_loadoutSceneName);
     }
 
     /// <summary>
