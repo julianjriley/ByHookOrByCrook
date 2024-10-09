@@ -1,115 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-// ** CURRENT BUGS: 
-//      On click, the buttons are removed before onclick finishes. It causes an Event System Error. 
-//          Current workaround- starting a coroutine to let onclick finish while using SetActive = false.
-
+/// <summary>
+/// Handles Instantiation of FishButtons at start of scene.
+/// Stores relevant scene data used elsewhere.
+/// Contains button functionality for Practice and Fight buttons.
+/// </summary>
 public class LoadoutSelection : MonoBehaviour
 {
-    // This script will be used for the Weapon Loadout Screen
+    [Header("Object References")]
+    [SerializeField, Tooltip("Scriptable object reference to starter gun. Always added as button.")]
+    private Weapon _starterGun;
+    [SerializeField, Tooltip("Used for instantiating fish buttons.")]
+    private GameObject _fishButtonPrefab;
+    [SerializeField, Tooltip("Game object where caught fish buttons are created.")]
+    public GameObject CaughtFishParent;
+    [SerializeField, Tooltip("Game object where loadout fish buttons are created.")]
+    public GameObject LoadoutFishParent;
 
-    // Temporary list of scriptable objects
-    public List<Item> TempListofFish;
-    [SerializeField]
-    private List<Button> _caughtFishButtons; 
-    [SerializeField]
-    private List<Button> _chosenFishButtons;
+    [Header("Editor Only")]
+    [SerializeField, Tooltip("List of fish used when starting Unity within this scene. Instead of using GameManager.")]
+    private List<Item> _editorFishList;
 
-    private GameManager _gameManager;
-    //private Inventory _caughtFish;
-
-    [SerializeField]
-    private Button _buttonPrefab;
-
-    // Spawnpoints in the grid layout so our items follow a nice grid
-    public GameObject caughtItemsSpawn;
-    public GameObject chosenItemsSpawn;
-
-    private GameObject _tooltipChild;
     void Start()
     {
-        _gameManager = GameManager.Instance;
-        //_caughtFish = _gameManager.ScenePersistent.CaughtFish;
+        // Always add fish button for starter gun
+        CreateFishButton(_starterGun);
 
-        foreach (var item in TempListofFish) // Change list to GM list later 
+        // Spawn fish button for each caught fish (from GameManager)
+        foreach (Item item in GameManager.Instance.ScenePersistent.CaughtFish)
+            CreateFishButton(item);
+
+#if UNITY_EDITOR
+        if(GameManager.Instance.ScenePersistent.CaughtFish.Count == 0)
         {
-            // Spawns buttons into grid and assigns each to a scriptable objects' properties
-
-             Button _spawnedFish = Instantiate(_buttonPrefab, caughtItemsSpawn.transform);
-            _spawnedFish.GetComponent<FishButtons>().AssignItem(item);
-            _caughtFishButtons.Add(_spawnedFish.GetComponent<Button>());
+            foreach (Item item in _editorFishList)
+                CreateFishButton(item);
         }
+#endif
     }
-
-    public void OnHover(GameObject tooltipChild)
+    
+    // Creates a new fish button of the given item type
+    private void CreateFishButton(Item item)
     {
-        tooltipChild.SetActive(true);
-    }
-    public void OnExit(GameObject tooltipChild)
-    {
-        tooltipChild.SetActive(false);
+        GameObject _spawnedFish = Instantiate(_fishButtonPrefab, CaughtFishParent.transform);
+        _spawnedFish.GetComponent<FishButtons>().Initialize(item);
     }
 
-    public void MoveToLoadout(Button fish)
-    {
-        // This function moves the fish items between CAUGHT and CHOSEN slots
-        
-        fish.transform.GetChild(0).gameObject.SetActive(false);
-
-        if (fish.GetComponent<FishButtons>().isChosen) {
-            MoveBack(fish);
-        }
-        else
-        {
-            fish.GetComponent<FishButtons>().isChosen = true;
-            Button fishClone = Instantiate(fish, chosenItemsSpawn.transform);
-            _chosenFishButtons.Add(fishClone);
-                        
-            if (fish != null)
-            {
-                _caughtFishButtons.Remove(fish);
-                fish.gameObject.SetActive(false);
-                StartCoroutine(Waiting(fish.gameObject));
-            }
-        }
-    }
-
-    IEnumerator Waiting(GameObject _fishGameObject)
-    {
-        yield return new WaitForSeconds(3f);
-        Destroy(_fishGameObject);
-    }
-
-    public void MoveBack(Button fish)
-    {
-        fish.GetComponent<FishButtons>().isChosen = false;
-        Button fishClone = Instantiate(fish, caughtItemsSpawn.transform);
-        _caughtFishButtons.Add(fishClone);
-
-        if (fish != null)
-        {
-            _chosenFishButtons.Remove(fish);
-            fish.gameObject.SetActive(false);
-            StartCoroutine(Waiting(fish.gameObject));
-        }
-    }
-
-    void NextScene(int sceneIndex)
+    /// <summary>
+    /// Transitions to next scene (either combat or practice arena)
+    /// </summary>
+    public void NextScene(int sceneIndex)
     {
         // Use this function to transition to PRACTICE or COMBAT scene
         StartCoroutine(Fadeout(sceneIndex));
     }
 
-
-    public IEnumerator Fadeout(int index)
+    private IEnumerator Fadeout(int index)
     {
+        // TODO: add actual smooth transition visual effects here
+
         // Fadeout logic
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(index);
