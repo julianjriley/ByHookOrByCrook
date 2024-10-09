@@ -46,7 +46,7 @@ public class LoadoutSelection : MonoBehaviour
     private void CreateFishButton(Item item)
     {
         GameObject _spawnedFish = Instantiate(_fishButtonPrefab, CaughtFishParent.transform);
-        _spawnedFish.GetComponent<FishButtons>().Initialize(item);
+        _spawnedFish.GetComponent<FishButton>().Initialize(item);
     }
 
     /// <summary>
@@ -57,8 +57,8 @@ public class LoadoutSelection : MonoBehaviour
         // TODO: Confirmation popup if player is attempting to continue without filling all of their bait slots
 
         // Add selected loadout items to GameManager
-        FishButtons[] loadoutFish = LoadoutFishParent.GetComponentsInChildren<FishButtons>();
-        foreach (FishButtons fish in loadoutFish)
+        FishButton[] loadoutFish = LoadoutFishParent.GetComponentsInChildren<FishButton>();
+        foreach (FishButton fish in loadoutFish)
             GameManager.Instance.AddLoadoutItem(fish.Item);
 
         // Use this function to transition to PRACTICE or COMBAT scene

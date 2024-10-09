@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// On hover, tooltip shows.
 /// On button press, swaps which list button is contained in.
 /// </summary>
-public class FishButtons : MonoBehaviour
+public class FishButton : MonoBehaviour
 {
     private static int _selectedCount;
 
