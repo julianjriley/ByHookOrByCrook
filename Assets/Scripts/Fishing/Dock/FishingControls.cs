@@ -15,6 +15,8 @@ public class FishingControls : MonoBehaviour
     private BobberBehavior _bobber;
     [SerializeField, Tooltip("Handles randomization of caught fish based on relevant parameters.")]
     private CatchRandomizer _catchRandomizer;
+    [SerializeField, Tooltip("Used to lock controls until popup no longer on screen")]
+    private CatchUI _catchUI;
 
     // State management
     private bool _isReeling = false;
@@ -36,6 +38,10 @@ public class FishingControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Prevent ALL controls while popup still active
+        if (_catchUI.IsPopupActive())
+            return;
+
         // update inputs every frame
         ReadInputs();
 
@@ -236,6 +242,7 @@ public class FishingControls : MonoBehaviour
 
                 // determine combined fishing score
                 float combinedScore = (_castingScore + _reelingScore) / 2.0f;
+                Debug.Log("Score: " + combinedScore);
 
                 // make catch with calculated odds
                 _catchRandomizer.CatchFish(combinedScore);

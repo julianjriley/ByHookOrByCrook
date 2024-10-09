@@ -126,6 +126,15 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Returns item present on the top of the CaughtFish list (most recent).
+    /// </summary>
+    /// <returns></returns>
+    public Item PeekCaughtFish()
+    {
+        return ScenePersistent.CaughtFish[ScenePersistent.CaughtFish.Count - 1];
+    }
+
+    /// <summary>
     /// Adds new fish item to the end of the caught fish list.
     /// </summary>
     public void AddCaughtFish(Item item)

@@ -819,6 +819,7 @@ GameObject:
   - component: {fileID: 708627465}
   - component: {fileID: 708627467}
   - component: {fileID: 708627466}
+  - component: {fileID: 708627468}
   m_Layer: 5
   m_Name: Catch
   m_TagString: Untagged
@@ -884,6 +885,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708627464}
   m_CullTransparentMesh: 1
+--- !u!114 &708627468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708627464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45c3aea86b7ff342bd89b5df4ed434b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 708627466}
+  _rect: {fileID: 708627465}
+  _maxWidth: 500
+  _scaleSharpness: 5
+  _snappingThreshold: 10
+  _freezeTime: 1.5
 --- !u!1 &720727467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,6 +1218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bobber: {fileID: 1030159173}
   _catchRandomizer: {fileID: 801297451}
+  _catchUI: {fileID: 708627468}
   _castingIndicator: {fileID: 1024200912}
   _fillBar: {fileID: 131759564}
   _chargeRate: 1
