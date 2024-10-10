@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class Cashout : MonoBehaviour
@@ -60,6 +61,11 @@ public class Cashout : MonoBehaviour
         Debug.Log(intTotal);
         TotalText.text = total.ToString();
 
+    }
+
+    public void GoToHub()
+    {
+        SceneManager.LoadScene("PROTO_Hub");
     }
 
     // Update is called once per frame

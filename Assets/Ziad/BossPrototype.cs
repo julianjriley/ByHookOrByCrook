@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 
@@ -37,7 +38,9 @@ public class BossPrototype : MonoBehaviour
         PhaseSwitch();
         Debug.Log("Phase Counter = " + _phaseCounter);
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        _renderer = GetComponent<SpriteRenderer>(); 
+        _renderer = GetComponent<SpriteRenderer>();
+
+        PlayerCombat.playerDeath += GoToCashout;
     }
 
     // Update is called once per frame
@@ -142,7 +145,20 @@ public class BossPrototype : MonoBehaviour
         foreach (Transform child in _spawnLocation) { //delete all attacks to ensure player doesn't die after defeating the boss
             Destroy(child.gameObject);
         }
+        GoToCashout();
     }
+
+    public void TakeDamage(float damage)
+    {
+        BossHealth -= damage;
+    }
+
+    //ONLY FOR THE PROTOTYPE
+    public void GoToCashout()
+    {
+        SceneManager.LoadScene("PROTO_Cashout");
+    }
+
 }
 
 [Serializable]
