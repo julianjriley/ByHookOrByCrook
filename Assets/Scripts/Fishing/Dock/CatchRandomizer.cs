@@ -120,7 +120,7 @@ public class CatchRandomizer : MonoBehaviour
         Item item = _junk[rand];
          
         // add item to inventory
-        GameManager.Instance.ScenePersistent.CaughtFish.AddItem(item);
+        GameManager.Instance.AddCaughtFish(item);
     }
 
     /// <summary>
@@ -177,9 +177,9 @@ public class CatchRandomizer : MonoBehaviour
             Item item = items[rand];
 
             // add item and end execution if a unique item is selected
-            if (GameManager.Instance.ScenePersistent.CaughtFish.IsNewItem(item))
+            if (GameManager.Instance.IsNewCatch(item))
             {
-                GameManager.Instance.ScenePersistent.CaughtFish.AddItem(item);
+                GameManager.Instance.AddCaughtFish(item);
                 return; // catch randomizer complete
             }
             else
