@@ -42,6 +42,8 @@ public class Projectile : MonoBehaviour
     }
 
 
+    //The two collision functions are exactly the same its just safety honestly (some projectiles are triggers and others aren't)
+
     protected virtual void OnTriggerEnter(Collider collider)
     {
         //DO DAMAGE CODE HERE
@@ -70,27 +72,6 @@ public class Projectile : MonoBehaviour
             Debug.Log("gotHere");
         }
             
-
-
-        // TODO: handle damaging of boss projectiles (when contacting player projectiles / shields)
-        /*  if (collision.layer == BossProjectile)
-         *  {
-         *      if (collision.CompareTag("PlayerProjectile")
-         *      {
-         *          _health -= collision.GetComponent<Projectile>.damage;
-         *          Destroy(collision);
-         *      
-         *          if(_health < 0)
-         *             Destroy(gameObject);
-         *      }
-         *      if (collision.CompareTag("Player")
-         *      {
-         *          collision.GetComponent<PlayerHealth>().ApplyDamage(_damage);
-         *      
-         *          Destroy(gameObject);
-         *      }
-         *  }
-         */
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {
@@ -117,25 +98,5 @@ public class Projectile : MonoBehaviour
         if (_health <= 0)
             Destroy(gameObject);
 
-
-        // TODO: handle damaging of boss projectiles (when contacting player projectiles / shields)
-        /*  if (collision.layer == BossProjectile)
-         *  {
-         *      if (collision.CompareTag("PlayerProjectile")
-         *      {
-         *          _health -= collision.GetComponent<Projectile>.damage;
-         *          Destroy(collision);
-         *      
-         *          if(_health < 0)
-         *             Destroy(gameObject);
-         *      }
-         *      if (collision.CompareTag("Player")
-         *      {
-         *          collision.GetComponent<PlayerHealth>().ApplyDamage(_damage);
-         *      
-         *          Destroy(gameObject);
-         *      }
-         *  }
-         */
     }
 }

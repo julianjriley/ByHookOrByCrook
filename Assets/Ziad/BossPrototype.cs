@@ -20,6 +20,7 @@ public class BossPrototype : MonoBehaviour
 
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
+    public float MaxBossHealth;
     private int _phaseCounter = 0;
     private bool _defeated = false;
     private Transform _spawnLocation;
@@ -145,6 +146,7 @@ public class BossPrototype : MonoBehaviour
         foreach (Transform child in _spawnLocation) { //delete all attacks to ensure player doesn't die after defeating the boss
             Destroy(child.gameObject);
         }
+        CalculateBossBountyMultiplier();
         GoToCashout();
     }
 
@@ -156,7 +158,25 @@ public class BossPrototype : MonoBehaviour
     //ONLY FOR THE PROTOTYPE
     public void GoToCashout()
     {
+        
         SceneManager.LoadScene("PROTO_Cashout");
+    }
+
+    protected void CalculateBossBountyMultiplier()
+    {
+        float percentageOfHealthLeft = BossHealth / MaxBossHealth;
+        if(percentageOfHealthLeft <= 0)
+        {
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 6;
+        }
+        else if(percentageOfHealthLeft < 0.33f)
+        {
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 4;
+        }
+        else if(percentageOfHealthLeft < 0.66f)
+        {
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2.5f;
+        }
     }
 
 }

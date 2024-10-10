@@ -77,11 +77,15 @@ public class PlayerCombat : MonoBehaviour
         
 
         _inventory = new Inventory();
+        foreach(Item item in GameManager.Instance.ScenePersistent.Loadout)
+        {
+            AddItemToPlayer(item);
+        }
 
-        AddItemToPlayer(defaultWeapon);
+        //AddItemToPlayer(defaultWeapon);
 
         //Can Be gotten rid of whenever
-        AddItemToPlayer(testWeapon2);
+        //AddItemToPlayer(testWeapon2);
 
         StartCoroutine(EnableStartingWeaponVisual());
         
@@ -111,7 +115,8 @@ public class PlayerCombat : MonoBehaviour
 
     void ChangeWeapon(InputAction.CallbackContext context)
     {
-       
+        if (_weapons.Count < 2)
+            return;
         _equippedWeapon.CeaseFire();
         if(context.ReadValue<float>() > 0)
         {
