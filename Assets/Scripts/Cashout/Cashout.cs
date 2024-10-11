@@ -81,6 +81,9 @@ public class Cashout : MonoBehaviour
 
     public void GoToHub()
     {
+        // Clear all scene persistent data (bait, caught fish, loadout) for next run
+        GameManager.Instance.ResetScenePersistentData();
+
         SceneManager.LoadScene("PROTO_Hub");
     }
 
