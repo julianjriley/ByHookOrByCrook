@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 
@@ -19,6 +20,7 @@ public class BossPrototype : MonoBehaviour
 
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
+    public float MaxBossHealth;
     private int _phaseCounter = 0;
     private bool _defeated = false;
     private Transform _spawnLocation;
@@ -37,7 +39,9 @@ public class BossPrototype : MonoBehaviour
         PhaseSwitch();
         Debug.Log("Phase Counter = " + _phaseCounter);
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        _renderer = GetComponent<SpriteRenderer>(); 
+        _renderer = GetComponent<SpriteRenderer>();
+
+        PlayerCombat.playerDeath += GoToCashout;
     }
 
     // Update is called once per frame
@@ -142,7 +146,39 @@ public class BossPrototype : MonoBehaviour
         foreach (Transform child in _spawnLocation) { //delete all attacks to ensure player doesn't die after defeating the boss
             Destroy(child.gameObject);
         }
+        CalculateBossBountyMultiplier();
+        GoToCashout();
     }
+
+    public void TakeDamage(float damage)
+    {
+        BossHealth -= damage;
+    }
+
+    //ONLY FOR THE PROTOTYPE
+    public void GoToCashout()
+    {
+        
+        SceneManager.LoadScene("PROTO_Cashout");
+    }
+
+    protected void CalculateBossBountyMultiplier()
+    {
+        float percentageOfHealthLeft = BossHealth / MaxBossHealth;
+        if(percentageOfHealthLeft <= 0)
+        {
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 6;
+        }
+        else if(percentageOfHealthLeft < 0.33f)
+        {
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 4;
+        }
+        else if(percentageOfHealthLeft < 0.66f)
+        {
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2.5f;
+        }
+    }
+
 }
 
 [Serializable]

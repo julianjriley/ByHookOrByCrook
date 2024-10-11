@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
         public List<BaitType> BaitList;
         public List<Item> CaughtFish;
         public List<Item> Loadout;
+        public float BossPerformanceMultiplier;
     }
 
     // private stored inventory
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
         newScenePersistent.BaitList = new List<BaitType>();
         newScenePersistent.CaughtFish = new List<Item>();
         newScenePersistent.Loadout = new List<Item>();
+        newScenePersistent.BossPerformanceMultiplier = 1;
 
         // Apply reset/initialized Inventory data to Instance
         Instance.ScenePersistent = newScenePersistent;

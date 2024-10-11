@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ContactLoad : MonoBehaviour
 {
-    public int index;
+    public string SceneName;
     void Start()
     {
         
@@ -21,7 +21,7 @@ public class ContactLoad : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene(index);
+            SceneManager.LoadScene(SceneName);
         }
     }
 }

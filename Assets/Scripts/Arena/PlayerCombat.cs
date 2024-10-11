@@ -46,6 +46,12 @@ public class PlayerCombat : MonoBehaviour
 
     bool _facingLeft;
 
+    bool dead;
+
+
+    public delegate void PlayerDied();
+    public static event PlayerDied playerDeath;
+
     private void OnEnable()
     {
         cam = Camera.main;
@@ -71,15 +77,25 @@ public class PlayerCombat : MonoBehaviour
         
 
         _inventory = new Inventory();
+        foreach(Item item in GameManager.Instance.ScenePersistent.Loadout)
+        {
+            AddItemToPlayer(item);
+        }
 
-        AddItemToPlayer(defaultWeapon);
+        //AddItemToPlayer(defaultWeapon);
 
         //Can Be gotten rid of whenever
-        AddItemToPlayer(testWeapon2);
+        //AddItemToPlayer(testWeapon2);
 
         StartCoroutine(EnableStartingWeaponVisual());
         
         
+    }
+
+    private void OnDisable()
+    {
+        controls.Player.FireWeapon.Disable();
+        controls.Player.SwitchWeapon.Disable();
     }
 
 
@@ -92,7 +108,6 @@ public class PlayerCombat : MonoBehaviour
         }
         else if(_equippedWeapon != null && context.canceled)
         {
-            Debug.Log("NONO");
             CeaseFire();
         }
             
@@ -100,7 +115,8 @@ public class PlayerCombat : MonoBehaviour
 
     void ChangeWeapon(InputAction.CallbackContext context)
     {
-       
+        if (_weapons.Count < 2)
+            return;
         _equippedWeapon.CeaseFire();
         if(context.ReadValue<float>() > 0)
         {
@@ -205,6 +221,15 @@ public class PlayerCombat : MonoBehaviour
         set { _health = value; }
     }
 
+    public void TakeDamageLikeAGoodBoy()
+    {
+        Health -= 1;
+        if(Health <= 0)
+        {
+            playerDeath.Invoke();
+        }
+    }
+
     public Transform GetWeaponsTransform()
     {
         return _weaponsTransform;
@@ -257,4 +282,6 @@ public class PlayerCombat : MonoBehaviour
         _equippedWeapon = _weapons[0];
         _equippedWeapon.EnableRendering();
     }
+
+
 }
