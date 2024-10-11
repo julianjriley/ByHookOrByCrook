@@ -13,6 +13,8 @@ public class NPCInteractor : Interactor
     [SerializeField] private TextMeshPro _convoText;
     private Conversation _conversation;
     private int _convoIndex;
+    [Tooltip("Delay for re-interacting with an NPC")]
+    [SerializeField] private float _endDelay = 1f;
     [Tooltip("The main hub camera, and the camera focused on this specific interaction")]
     [SerializeField] private GameObject _mainCamera;
     [SerializeField] private GameObject _interactCamera;
@@ -117,7 +119,7 @@ public class NPCInteractor : Interactor
         // Give player movement back
         _player.IsIdle = false;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(_endDelay);
         _isActiveCoroutine = false;
         _col.enabled = true;
         yield return null;

@@ -34,6 +34,8 @@ public class ShopInteractor : Interactor
 
     public delegate void OnShopEnter();
     public static event OnShopEnter onShopEnter;
+    public delegate void OnShopPurchase(int cost);
+    public static event OnShopPurchase onShopPurchase;
     public delegate void OnShopExit();
     public static event OnShopExit onShopExit;
 
@@ -65,7 +67,7 @@ public class ShopInteractor : Interactor
         {
             // Remove the cost from their balance
             GameManager.Instance.GamePersistent.Gill -= _currentCost;
-
+            onShopPurchase?.Invoke(_currentCost);
             ShopConvo(); // Set the correct conversation
             ShopSell();  // Give them the item
 
