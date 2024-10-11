@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 79084d7c0830760489da6b45c1654ee1
+guid: fae354a7728a01f43b050a6e6ace96d7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,22 +123,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Main Menu Buttons 3_0
+      name: Main Menu B1_0
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 0
-        width: 800
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 28
+        y: 430
+        width: 500
+        height: 360
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ff5fde21e9491d4ea0a07b6de73369e
-      internalID: -1940312096
+      spriteID: 171fd6e84fa9d2f47b89821fb80ed8fe
+      internalID: 1598565521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Menu B1_1
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 30
+        width: 500
+        height: 360
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54cb8b1c44dea1544bfcb04f7205390b
+      internalID: -1658539370
       vertices: []
       indices: 
       edges: []
@@ -146,7 +167,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1d63495cc3b02794a8b71012f2e7c050
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -154,7 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Main Menu Buttons 3_0: -1940312096
+      Main Menu B1_0: 1598565521
+      Main Menu B1_1: -1658539370
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
