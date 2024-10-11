@@ -15,7 +15,8 @@ public class StartMenuManager : MonoBehaviour
 
     public void LoadOptionsScene()
     {
-        SceneManager.LoadScene(optionsScene);
+        // temporarily deactivated to prevent crash during prototype, since we don't have the scene yet
+        //SceneManager.LoadScene(optionsScene);
     }
 
     public void LoadCreditsScene()
