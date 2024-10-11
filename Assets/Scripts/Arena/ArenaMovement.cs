@@ -88,6 +88,9 @@ public class ArenaMovement : MonoBehaviour
     private Rigidbody rb;
     private Collider _collider;
 
+    //Platform Notifier
+    public float GoThroughPlatforms;
+
     void Start()
     {
         //Get Player Character components
@@ -149,6 +152,7 @@ public class ArenaMovement : MonoBehaviour
         } 
         Jump();
         Move();
+        GoThroughPlatforms = controls.Player.MoveArena.ReadValue<Vector2>().y;
     }
 
     /*  JumpInput: Runs when jump button is pressed
@@ -258,6 +262,7 @@ public class ArenaMovement : MonoBehaviour
         if (context.performed)
         {
             _horizontalMovemenet = context.ReadValue<Vector2>().x;
+            
         }
         else _horizontalMovemenet = 0f;
 
