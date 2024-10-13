@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -173,7 +173,7 @@ MonoBehaviour:
       Data2: 1197934392
       Data3: 793212856
       Data4: -627992051
-    Path: event:/FreakingMusic
+    Path: event:/TestSounds/FreakingMusic
 --- !u!1 &129804495
 GameObject:
   m_ObjectHideFlags: 0

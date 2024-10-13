@@ -87,6 +87,7 @@ public class BobberBehavior : MonoBehaviour
 
                     // done with launching state
                     State = BobberState.Bobbing;
+                    SoundManager.Instance.SetParameter(SoundManager.Instance.fishingEventInstance, "BobberState", 2);
                 }
 
                 break;
@@ -124,6 +125,7 @@ public class BobberBehavior : MonoBehaviour
                 {
                     transform.position = _returnGoal.transform.position;
                     State = BobberState.Waiting;
+                    SoundManager.Instance.SetParameter(SoundManager.Instance.fishingEventInstance, "BobberState", 0);
                 }
                 // smooth lerp back to return position
                 else
@@ -146,6 +148,7 @@ public class BobberBehavior : MonoBehaviour
 
         // start bobbing algorithm
         State = BobberState.Launching;
+        SoundManager.Instance.SetParameter(SoundManager.Instance.fishingEventInstance, "BobberState", 1);
     }
 
     /// <summary>
@@ -159,7 +162,8 @@ public class BobberBehavior : MonoBehaviour
             _rigidBody.gravityScale = 0; // stop gravity
             _rigidBody.velocity = Vector2.zero; // stop velocity-based motion
 
-            State = BobberState.Tugging;           
+            State = BobberState.Tugging;
+            SoundManager.Instance.SetParameter(SoundManager.Instance.fishingEventInstance, "BobberState", 3);
         }
         else
             throw new System.Exception("Incorrect usage of FishOnTheLine() function of BobberBehavior. Can only be called while bobber is currently in Bobbing State");
@@ -173,6 +177,7 @@ public class BobberBehavior : MonoBehaviour
         if (State == BobberState.Tugging)
         {
             State = BobberState.Returning;
+            SoundManager.Instance.SetParameter(SoundManager.Instance.fishingEventInstance, "BobberState", 4);
         }
         else
             throw new System.Exception("Incorrect usage of ReturnBobber() function of BobberBehavior. Can only be called while bobber is currently in Tugging State");
