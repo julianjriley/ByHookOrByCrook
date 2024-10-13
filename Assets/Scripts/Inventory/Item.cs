@@ -11,6 +11,7 @@ public class Item : ScriptableObject
     [SerializeField] protected string _itemDescription;
     [SerializeField] protected Sprite _sprite;
     [SerializeField] protected GameObject _itemPrefab;
+    [SerializeField] protected int _cost;
 
     protected PlayerCombat _player;
     
@@ -33,6 +34,11 @@ public class Item : ScriptableObject
     public Sprite GetSprite()
     {
         return _sprite;
+    }
+
+    public int GetCost()
+    {
+        return _cost;
     }
 
 

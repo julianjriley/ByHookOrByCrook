@@ -223,7 +223,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""49573d8a-e67c-4949-a73c-80ea6ea21cfb"",
-                    ""path"": ""none"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -278,7 +278,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""95c09b18-20bb-47ac-b047-18268ba36c8e"",
-                    ""path"": ""<Keyboard>/c"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

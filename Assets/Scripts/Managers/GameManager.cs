@@ -36,21 +36,22 @@ public class GameManager : MonoBehaviour
     // used for storing scene persistent BaitType data
     public enum BaitType
     {
-        Empty,
-        Default,
-        Weapon,
-        Attack,
-        Support,
-        Movement
+        Empty = -1,
+        Default = 0,
+        Weapon = 1,
+        Attack = 2,
+        Support = 3,
+        Movement = 4
     }
 
     // Bait, Inventory, Loadout, etc. (saved between scenes)
     [Serializable]
     public class ScenePersistentData
-    {
-        public Inventory CaughtFish;   
-
+    { 
         public List<BaitType> BaitList;
+        public List<Item> CaughtFish;
+        public List<Item> Loadout;
+        public float BossPerformanceMultiplier;
     }
 
     // private stored inventory
@@ -81,13 +82,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetScenePersistentData()
     {
-        ScenePersistentData newInventory = new ScenePersistentData();
+        ScenePersistentData newScenePersistent = new ScenePersistentData();
 
         // Initialize default values for scene persistent data
-        newInventory.BaitList = new List<BaitType>();
+        newScenePersistent.BaitList = new List<BaitType>();
+        newScenePersistent.CaughtFish = new List<Item>();
+        newScenePersistent.Loadout = new List<Item>();
+        newScenePersistent.BossPerformanceMultiplier = 1;
 
         // Apply reset/initialized Inventory data to Instance
-        Instance.ScenePersistent = newInventory;
+        Instance.ScenePersistent = newScenePersistent;
     }
 
     /// <summary>
@@ -116,11 +120,52 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Adds new bait item to the end of the bait list.
+    /// Adds new bait type to the end of the bait list.
     /// </summary>
     public void AddBait(BaitType newBait)
     {
         ScenePersistent.BaitList.Add(newBait);
+    }
+
+    /// <summary>
+    /// Returns item present on the top of the CaughtFish list (most recent).
+    /// </summary>
+    /// <returns></returns>
+    public Item PeekCaughtFish()
+    {
+        return ScenePersistent.CaughtFish[ScenePersistent.CaughtFish.Count - 1];
+    }
+
+    /// <summary>
+    /// Adds new fish item to the end of the caught fish list.
+    /// </summary>
+    public void AddCaughtFish(Item item)
+    {
+        ScenePersistent.CaughtFish.Add(item);
+    }
+
+    /// <summary>
+    /// Returns true if newItem is NOT already contained in the CaughtFish list.
+    /// </summary>
+    public bool IsNewCatch(Item newItem)
+    {
+        // check for duplicates
+        foreach (Item curr in ScenePersistent.CaughtFish)
+        {
+            if (curr.GetItemID() == newItem.GetItemID())
+                return false;
+        }
+
+        // item is unique
+        return true;
+    }
+
+    /// <summary>
+    /// Adds new fish item to the end of the loadout list
+    /// </summary>
+    public void AddLoadoutItem(Item item)
+    {
+        ScenePersistent.Loadout.Add(item);
     }
     #endregion
 
@@ -198,7 +243,7 @@ public class GameManager : MonoBehaviour
         newSaveData.AttackBait = false;
         newSaveData.MovementBait = false;
         newSaveData.SupportBait = false;
-        newSaveData.WeaponBait = false;
+        newSaveData.WeaponBait = true; // TEMPORARY: unlocked by defauly for prototype to make BaitSelection scene work
 
         newSaveData.IsConvoHadRod = new List<bool>();
         newSaveData.IsConvoHadBait = new List<bool>();
