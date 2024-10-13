@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
+using FMODUnity;
 
 /// <summary>
 /// Handles visual behavior of the bobber itself accompanying the actions of FishingControls.
@@ -42,6 +43,9 @@ public class BobberBehavior : MonoBehaviour
     [SerializeField, Tooltip("Vertical distance from water level that bobber will be pulled during tugging")]
     private float _tugVerticalDistance;
 
+    [Header("SFX")]
+    [SerializeField] EventReference fishing;
+
     private float _tugTimer = 0;
     private float _tugOrigin;
     private float _tugGoal;
@@ -53,6 +57,12 @@ public class BobberBehavior : MonoBehaviour
     private float _returnSharpness;
     [SerializeField, Tooltip("Distance at which bobber will snap to return goal and transition to waiting state.")]
     private float _returnSnapThreshold;
+
+    private void Start()
+    {
+        //Starts the Fishing EventInstance, which makes all of the sounds.
+        SoundManager.Instance.InitializeFishing(fishing);
+    }
 
     public enum BobberState
     {
