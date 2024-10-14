@@ -8,64 +8,13 @@
 [LOG] SystemI::init                            : Output requires a sample rate of 44100Hz, resampling will occur.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 00000212876FEC78 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000002382EF5B068 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] SoundI::release                          :  (00000211240A1A18)
-[LOG] SoundI::release                          :     FishPulling (0000021119965C28)
-[LOG] SoundI::release                          :  (0000021211474E18)
-[LOG] SoundI::release                          :     CastingLine (0000021119965408)
-[LOG] SoundI::release                          :  (00000211240A1FD8)
-[LOG] SoundI::release                          :     PullOut (00000211199655A8)
-[LOG] SoundI::release                          :  (0000021211475B08)
-[LOG] SoundI::release                          :     BobberSplash (0000021119965A88)
-[LOG] SoundI::release                          :  (0000021125265DB8)
-[LOG] SoundI::release                          :     RottenFish (0000021116AB3AB8)
-[LOG] SoundI::release                          :  (0000021125265F28)
-[LOG] SoundI::release                          :     Dash (0000021119C88BA8)
-[LOG] SoundI::release                          :  (0000021125265C48)
-[LOG] SoundI::release                          :     DoubleJump (0000021119C8A268)
-[LOG] SoundI::release                          :  (0000021125266378)
-[LOG] SoundI::release                          :     Jump (0000021116AB4478)
-[LOG] SoundI::release                          :  (0000021125266658)
-[LOG] SoundI::release                          :     Curtis (0000021116AB5178)
-[LOG] SoundI::release                          :  (00000211163F2B98)
-[LOG] SoundI::release                          :     Footstep1 (0000021119964088)
-[LOG] SoundI::release                          :  (00000211163F2D08)
-[LOG] SoundI::release                          :     Footstep2 (0000021116AB4E38)
-[LOG] SoundI::release                          :  (00000211163F2A28)
-[LOG] SoundI::release                          :     Footstep3 (0000021119964BE8)
-[LOG] SoundI::release                          :  (00000211163F2748)
-[LOG] SoundI::release                          :     Footstep4 (0000021116AB4FD8)
-[LOG] Thread::callback                         : FMOD Studio update thread finished.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] SystemI::close                           : Closed.
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 

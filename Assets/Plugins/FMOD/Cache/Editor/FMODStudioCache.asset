@@ -84,7 +84,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.bank
   Name: Desktop/Master
   StudioPath: bank:/Master
-  lastModified: 638645189493239898
+  lastModified: 638645199111922243
   FileSizes: []
   Exists: 1
 --- !u!114 &-6868424073436518390
@@ -364,8 +364,8 @@ MonoBehaviour:
     Data3: 1030287238
     Data4: 438342620
   Banks:
-  - {fileID: 3192530888448494684}
   - {fileID: 5643657575967579167}
+  - {fileID: 3192530888448494684}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -464,10 +464,10 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.strings.bank
   Name: Desktop/Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638645189493249901
+  lastModified: 638645199111932248
   FileSizes:
   - Name: 
-    Value: 1412
+    Value: 1458
   Exists: 1
 --- !u!114 &-1638578578308802202
 MonoBehaviour:
@@ -642,12 +642,13 @@ MonoBehaviour:
   - {fileID: 2424963322005215301}
   - {fileID: -6483912718076959962}
   - {fileID: 4546382495316032876}
+  - {fileID: 1989240402731576912}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7404969706684101970}
   StringsBanks:
   - {fileID: -1806595966905043249}
-  cacheTime: 638645192209919965
+  cacheTime: 638645199725988400
   cacheVersion: 131620
 --- !u!114 &59912387400323044
 MonoBehaviour:
@@ -718,6 +719,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &1989240402731576912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/PixelFight
+  m_EditorClassIdentifier: 
+  Path: event:/Music/PixelFight
+  Guid:
+    Data1: 817889303
+    Data2: 1287124787
+    Data3: 109520307
+    Data4: -1313791562
+  Banks:
+  - {fileID: 3192530888448494684}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 96000
 --- !u!114 &2424963322005215301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,7 +788,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Music.bank
   Name: Desktop/Music
   StudioPath: bank:/Music
-  lastModified: 638645189246947236
+  lastModified: 638645199725988400
   FileSizes: []
   Exists: 1
 --- !u!114 &3271265179535114801
@@ -964,7 +992,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/SFX.bank
   Name: Desktop/SFX
   StudioPath: bank:/SFX
-  lastModified: 638645192209919965
+  lastModified: 638645199126720313
   FileSizes: []
   Exists: 1
 --- !u!114 &5700709893652787270
