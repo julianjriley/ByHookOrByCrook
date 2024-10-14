@@ -621,8 +621,11 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Desktop/Master
+  Banks:
+  - Desktop/Music
+  - Desktop/SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
@@ -638,7 +641,6 @@ MonoBehaviour:
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131620
   Platforms:
-  - {fileID: 4811126380269771057}
   - {fileID: -9173218887651924786}
   - {fileID: -8087811426136071306}
   - {fileID: -7035309533700880350}
@@ -649,6 +651,7 @@ MonoBehaviour:
   - {fileID: -354042238459559946}
   - {fileID: 3013431821342625324}
   - {fileID: 4806517916898367732}
+  - {fileID: 4811126380269771057}
   - {fileID: 8928026004912787536}
   MigratedPlatforms: 080000001200000006000000050000000b000000000000000a000000090000000c000000150000000200000001000000
 --- !u!114 &3013431821342625324

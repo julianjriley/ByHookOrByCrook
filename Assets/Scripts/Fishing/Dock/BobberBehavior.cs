@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
 using FMODUnity;
+using FMOD.Studio;
 
 /// <summary>
 /// Handles visual behavior of the bobber itself accompanying the actions of FishingControls.

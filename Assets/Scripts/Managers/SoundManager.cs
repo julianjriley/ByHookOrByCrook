@@ -9,8 +9,9 @@ public class SoundManager : MonoBehaviour
     private EventInstance ambienceEventInstance;
     private EventInstance musicEventInstance;
     public EventInstance fishingEventInstance;
+    public EventInstance footstepsEventInstance;
 
-    private List<EventInstance> eventInstances;
+    public List<EventInstance> eventInstances;
 
     public static SoundManager Instance { get; private set; }
 
@@ -47,6 +48,12 @@ public class SoundManager : MonoBehaviour
     {
         musicEventInstance = CreateInstance(musicEventReference);
         musicEventInstance.start();
+    }
+
+    public void InitializeFootsteps(EventReference footstepsEventReference)
+    {
+        footstepsEventInstance = CreateInstance(footstepsEventReference);
+        footstepsEventInstance.start();
     }
 
     public void InitializeFishing(EventReference fishingEventReference)
