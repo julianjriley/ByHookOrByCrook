@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.bank
   Name: Desktop/Master
   StudioPath: bank:/Master
-  lastModified: 638644655768769630
+  lastModified: 638645059423661348
   FileSizes: []
   Exists: 1
 --- !u!114 &-7482722480553229423
@@ -60,7 +60,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Music.bank
   Name: Desktop/Music
   StudioPath: bank:/Music
-  lastModified: 638644381934952087
+  lastModified: 638645040706400035
   FileSizes: []
   Exists: 1
 --- !u!114 &-5119356467714240829
@@ -90,6 +90,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5167
+--- !u!114 &-3966439259222836303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Combat/General/Dash
+  m_EditorClassIdentifier: 
+  Path: event:/Combat/General/Dash
+  Guid:
+    Data1: 178764853
+    Data2: 1158191178
+    Data3: -898754407
+    Data4: -611155560
+  Banks:
+  - {fileID: 59912387400323044}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2727498082283453271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +144,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 160
+--- !u!114 &-1638578578308802202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Combat/Guns/RottenFish
+  m_EditorClassIdentifier: 
+  Path: event:/Combat/Guns/RottenFish
+  Guid:
+    Data1: 750242881
+    Data2: 1273948051
+    Data3: 284294323
+    Data4: -499286835
+  Banks:
+  - {fileID: 59912387400323044}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-536060392821450331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,11 +186,38 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.strings.bank
   Name: Desktop/Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638644655768779632
+  lastModified: 638645059423673457
   FileSizes:
   - Name: 
-    Value: 1170
+    Value: 1362
   Exists: 1
+--- !u!114 &-307345966280883846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Combat/General/Double Jump
+  m_EditorClassIdentifier: 
+  Path: event:/Combat/General/Double Jump
+  Guid:
+    Data1: 835371618
+    Data2: 1205676569
+    Data3: -2144726133
+    Data4: -552639163
+  Banks:
+  - {fileID: 59912387400323044}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,12 +241,16 @@ MonoBehaviour:
   - {fileID: -2727498082283453271}
   - {fileID: -7482722480553229423}
   - {fileID: 3271265179535114801}
+  - {fileID: -3966439259222836303}
+  - {fileID: 7768559727042248343}
+  - {fileID: -307345966280883846}
+  - {fileID: -1638578578308802202}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8571636878797048996}
   StringsBanks:
   - {fileID: -536060392821450331}
-  cacheTime: 638644655770020488
+  cacheTime: 638645060500579619
   cacheVersion: 131620
 --- !u!114 &59912387400323044
 MonoBehaviour:
@@ -182,7 +267,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/SFX.bank
   Name: Desktop/SFX
   StudioPath: bank:/SFX
-  lastModified: 638644655770020488
+  lastModified: 638645060500579619
   FileSizes: []
   Exists: 1
 --- !u!114 &1753441586562937466
@@ -290,3 +375,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 260000
+--- !u!114 &7768559727042248343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Combat/General/Jump
+  m_EditorClassIdentifier: 
+  Path: event:/Combat/General/Jump
+  Guid:
+    Data1: -760758620
+    Data2: 1202763696
+    Data3: 1908963248
+    Data4: -463986416
+  Banks:
+  - {fileID: 59912387400323044}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0

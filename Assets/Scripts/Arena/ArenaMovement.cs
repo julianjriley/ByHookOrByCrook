@@ -80,6 +80,9 @@ public class ArenaMovement : MonoBehaviour
     [Header("SFX")]
     [SerializeField] EventReference footstepsSound;
     private EventInstance footsteps;
+    [SerializeField] EventReference dashSound;
+    [SerializeField] EventReference jumpSound;
+    [SerializeField] EventReference doubleJumpSound;
 
     //Animations
     private Animator _anim;
@@ -225,6 +228,7 @@ public class ArenaMovement : MonoBehaviour
             //Initial Jump
             if (_coyoteTimer > 0f)
             {
+                SoundManager.Instance.PlayOneShot(jumpSound, gameObject.transform.position);
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(Vector2.up * jumpUpForce, ForceMode.Impulse);
 
@@ -234,7 +238,7 @@ public class ArenaMovement : MonoBehaviour
             //Other Jumps after 0th jump
             else if (!_isGrounded && _jumpCounterIndex < maxNumberOfJumps)
             {
-
+                SoundManager.Instance.PlayOneShot(doubleJumpSound, gameObject.transform.position);
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(Vector2.up * jumpUpForce, ForceMode.Impulse);
 
@@ -338,6 +342,7 @@ public class ArenaMovement : MonoBehaviour
             
             //Dash a certian distance
             _anim.SetBool("IsMoving", true);
+            SoundManager.Instance.PlayOneShot(dashSound, gameObject.transform.position);
             rb.velocity = new Vector2(transform.localScale.x * _dashSpeed * leftOrRightOrrientation * dashDirection, 0f);
             yield return new WaitForSeconds(dashDistance);
             _anim.SetBool("IsMoving", false);
