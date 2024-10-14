@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f02898fa2ab658c4db8a3059ab0c51a0
+guid: 47d48e3ab50d54c41ac30af06856fdcb
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -14,20 +14,14 @@ PluginImporter:
   - first:
       Any: 
     second:
-      enabled: 0
+      enabled: 1
       settings: {}
   - first:
       Editor: Editor
     second:
-      enabled: 1
+      enabled: 0
       settings:
-        CPU: x86_64
-        OS: Linux
-  - first:
-      Standalone: Linux64
-    second:
-      enabled: 1
-      settings: {}
+        DefaultValueInitialized: true
   userData: 
   assetBundleName: 
   assetBundleVariant: 
