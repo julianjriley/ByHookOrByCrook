@@ -991,6 +991,26 @@ PrefabInstance:
       propertyPath: _baseHealth
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: damageSound.Path
+      value: event:/Combat/General/PlayerHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: damageSound.Guid.Data1
+      value: 356839253
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: damageSound.Guid.Data2
+      value: 1146688558
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: damageSound.Guid.Data3
+      value: 232441227
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: damageSound.Guid.Data4
+      value: -1204494196
+      objectReference: {fileID: 0}
     - target: {fileID: 8367796524174305367, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -1796,6 +1816,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
+      propertyPath: damageSound.Path
+      value: event:/Combat/General/BossHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
+      propertyPath: damageSound.Guid.Data1
+      value: 1622638801
+      objectReference: {fileID: 0}
+    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
+      propertyPath: damageSound.Guid.Data2
+      value: 1278891993
+      objectReference: {fileID: 0}
+    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
+      propertyPath: damageSound.Guid.Data3
+      value: 1349586571
+      objectReference: {fileID: 0}
+    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
+      propertyPath: damageSound.Guid.Data4
+      value: -1696129653
+      objectReference: {fileID: 0}
     - target: {fileID: 2092733913198009465, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
       propertyPath: m_RootOrder
       value: 3

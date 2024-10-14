@@ -84,7 +84,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.bank
   Name: Desktop/Master
   StudioPath: bank:/Master
-  lastModified: 638645199111922243
+  lastModified: 638645276327481917
   FileSizes: []
   Exists: 1
 --- !u!114 &-6868424073436518390
@@ -213,6 +213,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5167
+--- !u!114 &-4097397636063593193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Combat/General/BossHit
+  m_EditorClassIdentifier: 
+  Path: event:/Combat/General/BossHit
+  Guid:
+    Data1: 1622638801
+    Data2: 1278891993
+    Data3: 1349586571
+    Data4: -1696129653
+  Banks:
+  - {fileID: 5643657575967579167}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3966439259222836303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,8 +391,8 @@ MonoBehaviour:
     Data3: 1030287238
     Data4: 438342620
   Banks:
-  - {fileID: 5643657575967579167}
   - {fileID: 3192530888448494684}
+  - {fileID: 5643657575967579167}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -464,10 +491,10 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.strings.bank
   Name: Desktop/Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638645199111932248
+  lastModified: 638645276327491925
   FileSizes:
   - Name: 
-    Value: 1458
+    Value: 1536
   Exists: 1
 --- !u!114 &-1638578578308802202
 MonoBehaviour:
@@ -643,12 +670,14 @@ MonoBehaviour:
   - {fileID: -6483912718076959962}
   - {fileID: 4546382495316032876}
   - {fileID: 1989240402731576912}
+  - {fileID: -4097397636063593193}
+  - {fileID: 5051324647584291033}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7404969706684101970}
   StringsBanks:
   - {fileID: -1806595966905043249}
-  cacheTime: 638645199725988400
+  cacheTime: 638645281243207364
   cacheVersion: 131620
 --- !u!114 &59912387400323044
 MonoBehaviour:
@@ -899,6 +928,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &5051324647584291033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Combat/General/PlayerHit
+  m_EditorClassIdentifier: 
+  Path: event:/Combat/General/PlayerHit
+  Guid:
+    Data1: 356839253
+    Data2: 1146688558
+    Data3: 232441227
+    Data4: -1204494196
+  Banks:
+  - {fileID: 5643657575967579167}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &5110659330567648631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,7 +1048,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/SFX.bank
   Name: Desktop/SFX
   StudioPath: bank:/SFX
-  lastModified: 638645199126720313
+  lastModified: 638645281243207364
   FileSizes: []
   Exists: 1
 --- !u!114 &5700709893652787270

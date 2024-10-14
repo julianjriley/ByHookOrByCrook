@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,6 +29,8 @@ public class BossPrototype : MonoBehaviour
     private PhaseInfo[] _phases;
     private int _lastChosenAttack = -1;
 
+    [Header ("Boss SFX")]
+    [SerializeField] EventReference damageSound;
     
 
     // Start is called before the first frame update
@@ -153,6 +156,7 @@ public class BossPrototype : MonoBehaviour
     public void TakeDamage(float damage)
     {
         BossHealth -= damage;
+        SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
     }
 
     //ONLY FOR THE PROTOTYPE
