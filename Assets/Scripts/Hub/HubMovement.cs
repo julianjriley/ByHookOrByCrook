@@ -62,18 +62,20 @@ public class HubMovement : MonoBehaviour
         if (!IsIdle)
         {
             _rb.velocity = _velocity;
-            if (!footstepsState.Equals(PLAYBACK_STATE.PLAYING))
+            if (_rb.velocity.magnitude != 0 && !footstepsState.Equals(PLAYBACK_STATE.PLAYING))
             {
                 footsteps.start();
+                Debug.Log("START");
+            }
+            if (_rb.velocity.magnitude == 0 && footstepsState.Equals(PLAYBACK_STATE.PLAYING))
+            {
+                footsteps.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                Debug.Log("STOP");
             }
         }
         else
         {
             _rb.velocity = Vector2.zero;
-            if (footstepsState.Equals(PLAYBACK_STATE.PLAYING))
-            {
-                footsteps.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            }
         }
         
     }

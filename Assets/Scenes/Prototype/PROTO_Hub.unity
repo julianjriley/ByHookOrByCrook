@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2570,6 +2570,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   IsIdle: 0
+  footstepsSound:
+    Guid:
+      Data1: -2083588618
+      Data2: 1298528903
+      Data3: -1898930814
+      Data4: 764914765
+    Path: event:/Combat/General/Footsteps
 --- !u!95 &1538144255
 Animator:
   serializedVersion: 5
