@@ -2,15 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestItem : PassiveItemInstance
+public class NurseShark : PassiveItemInstance
 {
-    
-
-    //Example Item. Makes the player ZOOM
     public override void ItemEffect()
     {
-
         base.ItemEffect();
-        _player.Speed += 10;
+        _player.Health += 1;
     }
 }

@@ -69,7 +69,7 @@ public class Projectile : MonoBehaviour
         if (_health <= 0)
         {
             Destroy(gameObject);
-            Debug.Log("gotHere");
+            //Debug.Log("gotHere");
         }
             
     }

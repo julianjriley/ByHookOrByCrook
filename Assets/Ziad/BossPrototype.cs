@@ -31,6 +31,10 @@ public class BossPrototype : MonoBehaviour
 
     [Header ("Boss SFX")]
     [SerializeField] EventReference damageSound;
+
+    //For UI Update
+    public delegate void HealthChange(float health);
+    public event HealthChange HealthChanged;
     
 
     // Start is called before the first frame update
@@ -73,7 +77,7 @@ public class BossPrototype : MonoBehaviour
     }
 
     void SpriteSwapCheck() {
-        Debug.Log("_right = " + _right);
+        //Debug.Log("_right = " + _right);
         if (transform.position.x >= _playerTransform.position.x) { //if boss is on the right of player
             if (_right == false) { //and was just on the left
                 StartCoroutine(SpriteSwapCheckTimer(_right)); 
@@ -107,7 +111,7 @@ public class BossPrototype : MonoBehaviour
 
     void AttackLogic() {
         //random choosing
-        Debug.Log("phasecounter = " + _phaseCounter);
+        //Debug.Log("phasecounter = " + _phaseCounter);
         GameObject chosenAttack = _phases[0].AttackPrefabs[0]; //default that will be overwritten
         switch (_phaseCounter) {
             case 0:
@@ -117,7 +121,7 @@ public class BossPrototype : MonoBehaviour
                 ChooseAttack(ref chosenAttack, 1);
             break;
         }
-        Debug.Log("Instantiating: " + chosenAttack.name);
+        //Debug.Log("Instantiating: " + chosenAttack.name);
         Instantiate(chosenAttack, _spawnLocation);
     }
 
@@ -132,7 +136,7 @@ public class BossPrototype : MonoBehaviour
             return;
         }
         _lastChosenAttack = rand;
-        Debug.Log("last chosen attack = " + _lastChosenAttack);
+        //Debug.Log("last chosen attack = " + _lastChosenAttack);
         choice = _phases[phaseNum].AttackPrefabs[rand];
     }
 
@@ -143,7 +147,7 @@ public class BossPrototype : MonoBehaviour
         _lastChosenAttack = -1; //reset last chosen attack bc it's a new phase now and no attacks have been chosen
     }
     void DefeatLogic() {
-        Debug.Log("Defeated!");
+        //Debug.Log("Defeated!");
         _defeated = true;
         CancelInvoke();
         foreach (Transform child in _spawnLocation) { //delete all attacks to ensure player doesn't die after defeating the boss
@@ -156,6 +160,7 @@ public class BossPrototype : MonoBehaviour
     public void TakeDamage(float damage)
     {
         BossHealth -= damage;
+        HealthChanged?.Invoke(BossHealth);
         SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
     }
 
@@ -180,6 +185,15 @@ public class BossPrototype : MonoBehaviour
         else if(percentageOfHealthLeft < 0.66f)
         {
             GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2.5f;
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject == _playerTransform.gameObject)
+        {
+            PlayerCombat player = collider.gameObject.GetComponent<PlayerCombat>();
+            player.TakeDamageLikeAGoodBoy();
         }
     }
 
