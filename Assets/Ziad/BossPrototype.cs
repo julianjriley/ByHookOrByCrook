@@ -31,6 +31,10 @@ public class BossPrototype : MonoBehaviour
 
     [Header ("Boss SFX")]
     [SerializeField] EventReference damageSound;
+
+    //For UI Update
+    public delegate void HealthChange(float health);
+    public event HealthChange HealthChanged;
     
 
     // Start is called before the first frame update
@@ -156,6 +160,7 @@ public class BossPrototype : MonoBehaviour
     public void TakeDamage(float damage)
     {
         BossHealth -= damage;
+        HealthChanged?.Invoke(BossHealth);
         SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
     }
 

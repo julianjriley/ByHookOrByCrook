@@ -48,10 +48,18 @@ public class PlayerCombat : MonoBehaviour
     bool _facingLeft;
 
     bool dead;
+    //Damage taking stuff
+    private bool _invulnerable;
+    private Collider _collider;
+    private LayerMask _invulnerabilityMask;
+
 
 
     public delegate void PlayerDied();
     public static event PlayerDied playerDeath;
+    public delegate void HealthChange(int health);
+    public event HealthChange HealthChanged;
+
 
     [SerializeField] EventReference damageSound;
 
@@ -77,7 +85,10 @@ public class PlayerCombat : MonoBehaviour
         ResetStats();
         _weapons = new List<WeaponInstance>();
         playerMovement = GetComponent<ArenaMovement>();
-        
+
+        _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
+
+        _collider = GetComponent<Collider>();
 
         _inventory = new Inventory();
         foreach(Item item in GameManager.Instance.ScenePersistent.Loadout)
@@ -171,7 +182,7 @@ public class PlayerCombat : MonoBehaviour
     private void Update()
     {
         mousePosition = Mouse.current.position.ReadValue();
-        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 11));
+        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 16.745f));
         if(_equippedWeapon != null)
             _equippedWeapon.SetAim(weaponDirection);
         if (worldPos.x < gameObject.transform.position.x)
@@ -229,12 +240,21 @@ public class PlayerCombat : MonoBehaviour
 
     public void TakeDamageLikeAGoodBoy()
     {
+        if (_invulnerable)
+            return;
         Health -= 1;
         SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
+        HealthChanged?.Invoke(Health);
+        
         if(Health <= 0)
         {
             playerDeath.Invoke();
         }
+        else
+        {
+            StartCoroutine(InvulnerabilityWindow());
+        }
+       
     }
 
     public Transform GetWeaponsTransform()
@@ -301,5 +321,13 @@ public class PlayerCombat : MonoBehaviour
         _equippedWeapon.EnableRendering();
     }
 
+    IEnumerator InvulnerabilityWindow()
+    {
+        _invulnerable = true;
+        _collider.excludeLayers = _invulnerabilityMask;
+        yield return new WaitForSeconds(1);
+        _collider.excludeLayers = 0;
+        _invulnerable = false;
+    }
 
 }
