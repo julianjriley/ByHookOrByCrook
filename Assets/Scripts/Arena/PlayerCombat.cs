@@ -15,7 +15,7 @@ public class PlayerCombat : MonoBehaviour
     //Stats
     [SerializeField] private int _baseHealth;
     private int _health;
-    [SerializeField] private float _baseSpeed;
+    //[SerializeField] private float _baseSpeed;
     private float _speed;
 
     //Children Transforms
@@ -34,7 +34,7 @@ public class PlayerCombat : MonoBehaviour
     int equippedWeaponindex = 0;
 
     //RottenFish Default Gun
-    [SerializeField] private Weapon defaultWeapon;
+    //[SerializeField] private Weapon defaultWeapon;
 
     //Testing purposes, can be disposed of whenever
     [SerializeField] private Weapon testWeapon2;
@@ -73,7 +73,7 @@ public class PlayerCombat : MonoBehaviour
         
         ResetStats();
         _weapons = new List<WeaponInstance>();
-
+        playerMovement = GetComponent<ArenaMovement>();
         
 
         _inventory = new Inventory();
@@ -212,7 +212,10 @@ public class PlayerCombat : MonoBehaviour
     public float Speed
     {
         get { return _speed; }
-        set { _speed = value; }
+        set { 
+                _speed = value;
+                playerMovement.MaxSpeed = value;
+            }
     }
 
     public int Health
@@ -240,10 +243,15 @@ public class PlayerCombat : MonoBehaviour
         return _passivesTransform;
     }
 
+    public Inventory GetInventory()
+    {
+        return _inventory;
+    }
+
     void ResetStats()
     {
         _health = _baseHealth;
-        _speed = _baseSpeed;
+        //_speed = _baseSpeed;
     }
 
     public void AppendItemToPassiveInstances(GameObject prefab)
@@ -267,6 +275,7 @@ public class PlayerCombat : MonoBehaviour
         {
             _inventory.AddItem(theItem);
             (theItem as Weapon).SetPlayer(this);
+            
         }
     }
 

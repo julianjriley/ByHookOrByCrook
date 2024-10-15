@@ -34,7 +34,7 @@ public class Cashout : MonoBehaviour
         fishImage = Fish.transform.Find("FishImage").GetComponent<Image>();
         
         Debug.Log(GameManager.Instance.ScenePersistent.Loadout.Count + " FISH AMOUNT");
-        foreach(Item item in GameManager.Instance.ScenePersistent.Loadout)
+        foreach(Item item in GameManager.Instance.ScenePersistent.CaughtFish)
         {
             
             fishName.text = item.GetItemName();
