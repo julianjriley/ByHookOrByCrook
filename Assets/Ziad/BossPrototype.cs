@@ -183,6 +183,15 @@ public class BossPrototype : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject == _playerTransform.gameObject)
+        {
+            PlayerCombat player = collider.gameObject.GetComponent<PlayerCombat>();
+            player.TakeDamageLikeAGoodBoy();
+        }
+    }
+
 }
 
 [Serializable]

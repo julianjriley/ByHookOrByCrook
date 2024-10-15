@@ -252,6 +252,11 @@ public class PlayerCombat : MonoBehaviour
         return _inventory;
     }
 
+    public ArenaMovement GetPlayerMovement()
+    {
+        return playerMovement;
+    }
+
     void ResetStats()
     {
         _health = _baseHealth;
