@@ -99,6 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0dca369da33814197ffc331018b3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 0
+  _size: 0
+  _speed: 0
+  _lifetime: 0
+  _health: 0
 --- !u!136 &4069988502811610014
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -109,7 +114,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1280
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

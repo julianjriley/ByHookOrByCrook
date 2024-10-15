@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
   m_Name: RottenFish
   m_EditorClassIdentifier: 
-  _itemID: 2
+  _itemID: 0
   _itemName: Rotten Salmon
   _itemDescription: You brought this with you, and it seems it's here to stay
   _sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   _itemPrefab: {fileID: 8942891787185002483, guid: 96c7762b2ac80984aa9987e0aaa581a8, type: 3}
+  _cost: 20
   _baseDamage: 2
   _baseFireRate: 3
   _baseSize: 1
@@ -25,3 +26,10 @@ MonoBehaviour:
   _baseHeatBuildup: 10
   _baseCoolingSpeed: 15
   _baseProjectileCount: 1
+  _fireSound:
+    Guid:
+      Data1: 750242881
+      Data2: 1273948051
+      Data3: 284294323
+      Data4: -499286835
+    Path: event:/Combat/Guns/RottenFish
