@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +52,8 @@ public class PlayerCombat : MonoBehaviour
 
     public delegate void PlayerDied();
     public static event PlayerDied playerDeath;
+
+    [SerializeField] EventReference damageSound;
 
     private void OnEnable()
     {
@@ -227,6 +230,7 @@ public class PlayerCombat : MonoBehaviour
     public void TakeDamageLikeAGoodBoy()
     {
         Health -= 1;
+        SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
         if(Health <= 0)
         {
             playerDeath.Invoke();
