@@ -293,12 +293,12 @@ public class ArenaMovement : MonoBehaviour
         if (_isGrounded && !isDashing && rb.velocity.x != 0f && !footstepsState.Equals(PLAYBACK_STATE.PLAYING))
         {
             footsteps.start();
-            Debug.Log("START");
+            //Debug.Log("START");
         }
         else if ((!_isGrounded || isDashing || rb.velocity.x == 0f) && footstepsState.Equals(PLAYBACK_STATE.PLAYING))
         {
             footsteps.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            Debug.Log("STOP");
+            //Debug.Log("STOP");
         }
     }
     /*  DashInput: Runs when dash button is pressed

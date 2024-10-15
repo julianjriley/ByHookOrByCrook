@@ -33,7 +33,7 @@ public class Cashout : MonoBehaviour
         fishAmount = Fish.transform.Find("FishNameBackground/MoneyBackground/FishAmount").GetComponent<TextMeshProUGUI>();
         fishImage = Fish.transform.Find("FishImage").GetComponent<Image>();
         
-        Debug.Log(GameManager.Instance.ScenePersistent.Loadout.Count + " FISH AMOUNT");
+        //Debug.Log(GameManager.Instance.ScenePersistent.Loadout.Count + " FISH AMOUNT");
         foreach(Item item in GameManager.Instance.ScenePersistent.CaughtFish)
         {
             
@@ -73,8 +73,8 @@ public class Cashout : MonoBehaviour
         BossBountyText.text = BossBounty.ToString("F1");
         total = (float)summary * BossBounty;
         intTotal = (int)total;
-        Debug.Log(total);
-        Debug.Log(intTotal);
+        //Debug.Log(total);
+       // Debug.Log(intTotal);
         TotalText.text = total.ToString();
         GameManager.Instance.GamePersistent.Gill += intTotal;
     }

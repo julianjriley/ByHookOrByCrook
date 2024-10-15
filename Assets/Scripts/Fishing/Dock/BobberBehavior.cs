@@ -61,7 +61,7 @@ public class BobberBehavior : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Fishing called");
+        //Debug.Log("Fishing called");
         //Starts the Fishing EventInstance, which makes all of the sounds.
         SoundManager.Instance.InitializeFishing(fishing);
     }

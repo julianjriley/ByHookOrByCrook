@@ -65,12 +65,12 @@ public class HubMovement : MonoBehaviour
             if (_rb.velocity.magnitude != 0 && !footstepsState.Equals(PLAYBACK_STATE.PLAYING))
             {
                 footsteps.start();
-                Debug.Log("START");
+                //Debug.Log("START");
             }
             if (_rb.velocity.magnitude == 0 && footstepsState.Equals(PLAYBACK_STATE.PLAYING))
             {
                 footsteps.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                Debug.Log("STOP");
+                //Debug.Log("STOP");
             }
         }
         else
