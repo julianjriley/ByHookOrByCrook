@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class RottenFish : WeaponInstance 
 {
     [SerializeField] GameObject _projectile;
+    [SerializeField] EventReference Cheating;
 
     public override void Fire(Vector3 direction)
     {
@@ -42,6 +44,7 @@ public class RottenFish : WeaponInstance
 
         if (_heatLevel >= 100)
             _overHeated = true;
+        SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
         StartCoroutine(FireRate());
         _autoFireCoroutine = StartCoroutine(FireAuto(_direction));
     }

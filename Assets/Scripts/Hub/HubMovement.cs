@@ -3,6 +3,8 @@
  * Up-down-left-right, classic top-down movement.
  */
 
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +23,9 @@ public class HubMovement : MonoBehaviour
     public float MoveSpeed = 7f;
     public bool IsIdle = false; // A toggle for forcing the bear to stand still
 
+    [SerializeField] EventReference footstepsSound;
+    private EventInstance footsteps;
+
     void Start()
     {
         _moveAction = InputSystem.actions.FindAction("Move Top-Down");
@@ -32,6 +37,7 @@ public class HubMovement : MonoBehaviour
         Camera camera = Camera.main;
         camera.transparencySortMode = TransparencySortMode.CustomAxis;
         camera.transparencySortAxis = new Vector3(0, 1, 1);
+        footsteps = SoundManager.Instance.CreateInstance(footstepsSound);
     }
 
     // Update is called once per frame
@@ -51,10 +57,21 @@ public class HubMovement : MonoBehaviour
 
     private void MovePlayer2D()
     {
+        PLAYBACK_STATE footstepsState;
+        footsteps.getPlaybackState(out footstepsState);
         if (!IsIdle)
         {
             _rb.velocity = _velocity;
-
+            if (_rb.velocity.magnitude != 0 && !footstepsState.Equals(PLAYBACK_STATE.PLAYING))
+            {
+                footsteps.start();
+                Debug.Log("START");
+            }
+            if (_rb.velocity.magnitude == 0 && footstepsState.Equals(PLAYBACK_STATE.PLAYING))
+            {
+                footsteps.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                Debug.Log("STOP");
+            }
         }
         else
         {

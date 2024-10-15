@@ -50,6 +50,7 @@ public class RainbowFish : WeaponInstance
 
         if (_heatLevel >= 100)
             _overHeated = true;
+        SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
         increasedFireRate += 0.3f;
         StartCoroutine(FireRate());
         _autoFireCoroutine = StartCoroutine(FireAuto(_direction));
