@@ -199,6 +199,10 @@ public class GameManager : MonoBehaviour
         public List<bool> IsConvoHadRod;
         public List<bool> IsConvoHadBait;
         public List<bool> IsConvoHadBag;
+
+        // Accessibility Settings
+        public CustomCrosshair Crosshair;
+        public Sprite crosshairSprite;
     }
 
     // private stored save data
