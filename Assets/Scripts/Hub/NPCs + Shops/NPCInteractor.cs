@@ -23,7 +23,7 @@ public class NPCInteractor : Interactor
 
     bool isSkippingLine;
 
-    void Start()
+    new void Start()
     {
         base.Start();
     }
@@ -134,13 +134,13 @@ public class NPCInteractor : Interactor
 
     #endregion
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private new void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
         _cryerPrompt.SetActive(false);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private new void OnTriggerExit2D(Collider2D collision)
     {
         base.OnTriggerExit2D (collision);
     }

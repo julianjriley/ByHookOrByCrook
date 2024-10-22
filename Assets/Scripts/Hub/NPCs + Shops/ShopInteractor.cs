@@ -39,7 +39,7 @@ public class ShopInteractor : Interactor
     public delegate void OnShopExit();
     public static event OnShopExit onShopExit;
 
-    void Start()
+    new void Start()
     {
         base.Start();
         ShopSpawn();
@@ -98,8 +98,8 @@ public class ShopInteractor : Interactor
             // emphasize to the player that they are poor
 
             _shopAnim.Play("NotEnough", 0, 0);
-            yield return new WaitForSeconds(.5f);
-            _shopAnim.Play("Static", 0, 0);
+            //yield return new WaitForSeconds(.5f);
+            //_shopAnim.Play("Static", 0, 0);
         }
         yield return null;
 
@@ -262,13 +262,13 @@ public class ShopInteractor : Interactor
     }
     #endregion
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private new void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
         onShopEnter?.Invoke();
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private new void OnTriggerExit2D(Collider2D collision)
     {
         base.OnTriggerExit2D(collision);
         onShopExit?.Invoke();

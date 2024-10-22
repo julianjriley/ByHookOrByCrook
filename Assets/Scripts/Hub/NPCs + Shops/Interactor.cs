@@ -11,12 +11,6 @@ using UnityEngine.InputSystem;
 using Cinemachine;
 using TMPro;
 
-// TODO
-// Figure out how to store an NPC's icon and script so they can be called up
-// Set up UI for conversations
-// Set up UI so that the amount of gold you have is displayed only when in front of a shop, DKC style
-// Purchases will have to wait for the GameManager so I can understand how all of this is being stored.
-
 public class Interactor : MonoBehaviour
 {
     protected InputAction _interactAction;
@@ -31,10 +25,18 @@ public class Interactor : MonoBehaviour
 
     protected bool _isActiveCoroutine;
 
+    private Animator _interactAnim;
+
     protected void Start()
     {
         _interactAction = InputSystem.actions.FindAction("Interact");
         _col = GetComponent<BoxCollider2D>();  
+
+        _interactAnim = _interactPrompt.GetComponentInChildren<Animator>();
+
+        _interactPrompt.SetActive(true);
+        _interactAnim.Play("Disappear", 0, 0);
+        _interactPrompt.SetActive(false);
     }
 
     // Update is called once per frame
@@ -51,6 +53,7 @@ public class Interactor : MonoBehaviour
         {
             _canInteract = true;
             _interactPrompt.SetActive(true);
+            _interactAnim.Play("Appear", 0, 0);
         }
     }
 
@@ -59,8 +62,15 @@ public class Interactor : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _canInteract = false;
-            _interactPrompt.SetActive(false);
+            StartCoroutine(DoDisappear());
         }
+    }
+
+    private IEnumerator DoDisappear()
+    {
+        _interactAnim.Play("Disappear", 0, 0);
+        yield return new WaitForSeconds(.2f);
+        _interactPrompt.SetActive(false);
     }
     #endregion
 
