@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
                 GameObject newManager = new();
                 newManager.name = "Game Manager";
                 newManager.AddComponent<GameManager>();
-                newManager.AddComponent<SoundManager>();
-                //Debug.Log("SoundManager created");
                 DontDestroyOnLoad(newManager);
                 _instance = newManager.GetComponent<GameManager>();
             }
