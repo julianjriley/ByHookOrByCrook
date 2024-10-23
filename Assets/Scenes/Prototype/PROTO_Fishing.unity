@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxTrashRate: 0.75
-  _specialBaitWeighting: 0.75
+  _specialBaitWeighting: 0.5
   _tier1Weapons:
   - {fileID: 11400000, guid: 34c1a93d6ce2e9f45b973bd36719fdc1, type: 2}
   _tier2Weapons: []
