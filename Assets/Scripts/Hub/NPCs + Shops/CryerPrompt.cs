@@ -12,6 +12,9 @@ public class CryerPrompt : MonoBehaviour
     private void Start()
     {
         _cryerAnim = GetComponentInChildren<Animator>();
+        _cryerPrompt.SetActive(true);
+        _cryerAnim.Play("Disappear", 0, 0);
+        _cryerPrompt.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,14 +22,15 @@ public class CryerPrompt : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _cryerPrompt.SetActive(true);
+            _cryerAnim.Play("Appear", 0, 0);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && _cryerPrompt.activeInHierarchy)  
         {
-            _cryerPrompt.SetActive(false);
+            _cryerAnim.Play("Disappear", 0, 0);
         }
     }
 }
