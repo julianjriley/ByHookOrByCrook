@@ -40,8 +40,6 @@ public class BossPrototype : MonoBehaviour
         Debug.Log("Phase Counter = " + _phaseCounter);
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         _renderer = GetComponent<SpriteRenderer>(); 
-
-        //SetNewTarget(GameObject.Find("testTransform").transform, -1f);
     }
 
     // Update is called once per frame
@@ -77,9 +75,15 @@ public class BossPrototype : MonoBehaviour
         }
         StartCoroutine(ChangeTargetBack(duration));
     }
+    public void SetSpeed(float newSpeed) {
+        Speed = newSpeed;
+    }
 
     IEnumerator ChangeTargetBack(float duration) {
         yield return new WaitForSeconds(duration);
+        SetDefaultTarget();
+    }
+    public void SetDefaultTarget() {
         _target = _defaultTarget;
     }
 
