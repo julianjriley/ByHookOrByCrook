@@ -1,13 +1,10 @@
 using System;
 using System.Collections;
 using Unity.VisualScripting;
-using UnityEditor.PackageManager.UI;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using UnityEngine.XR;
-
+using FMOD.Studio;
+using FMODUnity;
 
 public class ArenaMovement : MonoBehaviour
 {
@@ -75,7 +72,14 @@ public class ArenaMovement : MonoBehaviour
     [SerializeField, Tooltip("Amount of air dashes in quick succession")]
     public int numberOfAirDashes = 1;
     private int _dashCount;
-    
+
+    [Header("SFX")]
+    [SerializeField] EventReference footstepsSound;
+    private EventInstance footsteps;
+    [SerializeField] EventReference dashSound;
+    [SerializeField] EventReference jumpSound;
+    [SerializeField] EventReference doubleJumpSound;
+
     //Animations
     private Animator _anim;
     private SpriteRenderer _sr;
@@ -87,6 +91,9 @@ public class ArenaMovement : MonoBehaviour
     //Player Components
     private Rigidbody rb;
     private Collider _collider;
+
+    //Platform Notifier
+    public float GoThroughPlatforms;
 
     void Start()
     {
@@ -116,6 +123,9 @@ public class ArenaMovement : MonoBehaviour
         //Bind DashInput
         //controls.Player.Dash.Enable();
         controls.Player.Dash.started += DashInput;
+
+        //Create Footsteps EventInstance
+        footsteps = SoundManager.Instance.CreateInstance(footstepsSound);
     }
     //
     private void Awake()
@@ -130,7 +140,7 @@ public class ArenaMovement : MonoBehaviour
     //Update: used to dcrement/Increment Timers only
     void Update()
     {
-        Debug.Log(gameObject.transform.localScale.x);
+        //Debug.Log(gameObject.transform.localScale.x);
         if (isDashing)
             return;
         //Check Comment Above Function Header
@@ -149,6 +159,7 @@ public class ArenaMovement : MonoBehaviour
         } 
         Jump();
         Move();
+        GoThroughPlatforms = controls.Player.MoveArena.ReadValue<Vector2>().y;
     }
 
     /*  JumpInput: Runs when jump button is pressed
@@ -213,6 +224,7 @@ public class ArenaMovement : MonoBehaviour
             //Initial Jump
             if (_coyoteTimer > 0f)
             {
+                SoundManager.Instance.PlayOneShot(jumpSound, gameObject.transform.position);
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(Vector2.up * jumpUpForce, ForceMode.Impulse);
 
@@ -222,7 +234,7 @@ public class ArenaMovement : MonoBehaviour
             //Other Jumps after 0th jump
             else if (!_isGrounded && _jumpCounterIndex < maxNumberOfJumps)
             {
-
+                SoundManager.Instance.PlayOneShot(doubleJumpSound, gameObject.transform.position);
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(Vector2.up * jumpUpForce, ForceMode.Impulse);
 
@@ -258,6 +270,7 @@ public class ArenaMovement : MonoBehaviour
         if (context.performed)
         {
             _horizontalMovemenet = context.ReadValue<Vector2>().x;
+            
         }
         else _horizontalMovemenet = 0f;
 
@@ -269,6 +282,24 @@ public class ArenaMovement : MonoBehaviour
     {
         //Character Velocity
         rb.velocity = new Vector2(_horizontalMovemenet * MaxSpeed, rb.velocity.y);
+        //Debug.Log("Grounded: " + _isGrounded);
+        //Debug.Log("Dashing: " + isDashing);
+        //Debug.Log("Movement Velocity: " + _horizontalMovemenet);
+        //Debug.Log("Footsteps: " + footsteps.getPlaybackState(out PLAYBACK_STATE state));
+
+        //Footsteps Sound Control
+        PLAYBACK_STATE footstepsState;
+        footsteps.getPlaybackState(out footstepsState);
+        if (_isGrounded && !isDashing && rb.velocity.x != 0f && !footstepsState.Equals(PLAYBACK_STATE.PLAYING))
+        {
+            footsteps.start();
+            //Debug.Log("START");
+        }
+        else if ((!_isGrounded || isDashing || rb.velocity.x == 0f) && footstepsState.Equals(PLAYBACK_STATE.PLAYING))
+        {
+            footsteps.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            //Debug.Log("STOP");
+        }
     }
     /*  DashInput: Runs when dash button is pressed
      *      - Has a cooldown so players cant spam the button
@@ -307,6 +338,7 @@ public class ArenaMovement : MonoBehaviour
             
             //Dash a certian distance
             _anim.SetBool("IsMoving", true);
+            SoundManager.Instance.PlayOneShot(dashSound, gameObject.transform.position);
             rb.velocity = new Vector2(transform.localScale.x * _dashSpeed * leftOrRightOrrientation * dashDirection, 0f);
             yield return new WaitForSeconds(dashDistance);
             _anim.SetBool("IsMoving", false);

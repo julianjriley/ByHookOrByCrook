@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,7 @@ public class Weapon : Item
     private float _coolingSpeed;
     [SerializeField] protected int _baseProjectileCount;
     private int _projectileCount;
+    [SerializeField] private EventReference _fireSound;
 
     
 
@@ -110,6 +112,12 @@ public class Weapon : Item
     {
         get { return _projectileCount; }
         set { _projectileCount = value; }
+    }
+
+    public EventReference FireSound
+    {
+        get { return _fireSound; }
+        set { _fireSound = value; }
     }
 
     private void OnEnable()

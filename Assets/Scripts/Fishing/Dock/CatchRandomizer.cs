@@ -72,36 +72,37 @@ public class CatchRandomizer : MonoBehaviour
         // Fish (any type)
         else
         {
-            switch(GameManager.Instance.PeekBait())
+            // Determine whether to ignore bait type
+            random = UnityEngine.Random.Range(0f, 1f);
+
+            // Ignore bait type
+            if (random > _specialBaitWeighting)
             {
-                case GameManager.BaitType.Empty:
-                    throw new System.Exception("static CatchFish() function of CatchRandomizer should ONLY be called if the player still has more bait.");
-                case GameManager.BaitType.Default:
-
-                    // randomly select one of four buff types
-                    random = UnityEngine.Random.Range(0f, 1f);
-                    if (random < 0.25f)
-                        CatchRandomWeapon();
-                    else if (random < 0.5f)
-                        CatchRandomAttack();
-                    else if (random < 0.75f)
-                        CatchRandomSupport();
-                    else
-                        CatchRandomMovement();
-
-                    break;
-                case GameManager.BaitType.Weapon:
-                    CatchRandomWeapon();
-                    break;
-                case GameManager.BaitType.Attack:
-                    CatchRandomAttack();
-                    break;
-                case GameManager.BaitType.Support:
-                    CatchRandomSupport();
-                    break;
-                case GameManager.BaitType.Movement:
-                    CatchRandomMovement();
-                    break;
+                CatchAnyItem();
+            }
+            // Catch based on bait type
+            else
+            {
+                switch (GameManager.Instance.PeekBait())
+                {
+                    case GameManager.BaitType.Empty:
+                        throw new System.Exception("static CatchFish() function of CatchRandomizer should ONLY be called if the player still has more bait.");
+                    case GameManager.BaitType.Default:
+                        CatchAnyItem();
+                        break;
+                    case GameManager.BaitType.Weapon:
+                        CatchRandomFromLists(_tier1Weapons, _tier2Weapons, _tier3Weapons);
+                        break;
+                    case GameManager.BaitType.Attack:
+                        CatchRandomFromLists(_tier1Attack, _tier2Attack, _tier3Attack);
+                        break;
+                    case GameManager.BaitType.Support:
+                        CatchRandomFromLists(_tier1Support, _tier2Support, _tier3Support);
+                        break;
+                    case GameManager.BaitType.Movement:
+                        CatchRandomFromLists(_tier1Movement, _tier2Movement, _tier3Movement);
+                        break;
+                }
             }
         }
 
@@ -124,43 +125,41 @@ public class CatchRandomizer : MonoBehaviour
     }
 
     /// <summary>
-    /// Interfaces with game manager to add random weapon item.
+    /// Attempts to catch any item at all from the total pool, with no favoring of any particular type.
+    /// Used by generic bait AND as a fallback when no more catches of a specific type remain.
     /// </summary>
-    private void CatchRandomWeapon()
+    private void CatchAnyItem()
     {
-        CatchRandomItem(_tier1Weapons, _tier2Weapons, _tier3Weapons);
+        // all tier 1 items
+        List<Item> tier1 = new List<Item>(_tier1Weapons);
+        tier1.AddRange(_tier1Attack);
+        tier1.AddRange(_tier1Support);
+        tier1.AddRange(_tier1Movement);
+        Item[] tier1List = tier1.ToArray();
+
+        // all tier 2 items
+        List<Item> tier2 = new List<Item>(_tier2Weapons);
+        tier2.AddRange(_tier2Attack);
+        tier2.AddRange(_tier2Support);
+        tier2.AddRange(_tier2Movement);
+        Item[] tier2List = tier2.ToArray();
+
+        // all tier 3 items
+        List<Item> tier3 = new List<Item>(_tier3Weapons);
+        tier3.AddRange(_tier3Attack);
+        tier3.AddRange(_tier3Support);
+        tier3.AddRange(_tier3Movement);
+        Item[] tier3List = tier3.ToArray();
+
+        CatchRandomFromLists(tier1List, tier2List, tier3List, true);
     }
 
     /// <summary>
-    /// Interfaces with game manager to add random attack buff item.
+    /// General item randomization function that picks a random item from input lists.
+    /// Accounts for rod upgrade level to determine item pool.
+    /// Prevents adding of duplicate items; If no more unique items detected, try to catch a different item type - otherwise junk.
     /// </summary>
-    private void CatchRandomAttack()
-    {
-        CatchRandomItem(_tier1Attack, _tier2Attack, _tier3Attack);
-    }
-
-    /// <summary>
-    /// Interfaces with game manager to add random support buff item.
-    /// </summary>
-    private void CatchRandomSupport()
-    {
-        CatchRandomItem(_tier1Support, _tier2Support, _tier3Support);
-    }
-
-    /// <summary>
-    /// Interfaces with game manager to add random movement buff item.
-    /// </summary>
-    private void CatchRandomMovement()
-    {
-        CatchRandomItem(_tier1Movement, _tier2Movement, _tier3Movement);
-    }
-
-    /// <summary>
-    /// General item randomization function called by specific CatchRandom[Type]() functions.
-    /// Requires three tiers of item lists as inputs.
-    /// Prevents adding of duplicate items; If no more unique items detected, player will catch junk instead.
-    /// </summary>
-    private void CatchRandomItem(Item[] tier1Items, Item[] tier2Items, Item[] tier3Items)
+    private void CatchRandomFromLists(Item[] tier1Items, Item[] tier2Items, Item[] tier3Items, bool includesAll = false)
     {
         // Determine list of items to randomize within
         List<Item> items = new List<Item>(tier1Items);
@@ -187,7 +186,11 @@ public class CatchRandomizer : MonoBehaviour
                 items.Remove(item);
         }
 
-        // No more unique items of this type remain. Just give them junk.
-        CatchRandomJunk();
+        // no more of any item remain - so just catch some junk
+        if (includesAll)
+            CatchRandomJunk();
+        // no more items of the selected type remain - so catch some other item instead
+        else
+            CatchAnyItem();
     }
 }

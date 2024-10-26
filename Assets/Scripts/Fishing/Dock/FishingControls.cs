@@ -180,12 +180,12 @@ public class FishingControls : MonoBehaviour
     private GameObject _shrinkingRing;
     [SerializeField, Tooltip("Total time it takes from the ring to appear to when it fully shrinks.")]
     private float _totalShrinkTime;
-    [SerializeField, Tooltip("Scale of shrinking ring at which a click starts to become a perfect success.")]
-    private float _maxPerfectCutoff;
-    [SerializeField, Tooltip("Scale of shrinking ring at which the click is no longer a perfect success.")]
-    private float _minPerfectCutoff;
-    [SerializeField, Tooltip("Scale of shrinking ring at which an early failure will start contributing some points to reeling score.")]
-    private float _maxFailureCutoff;
+    [SerializeField, Tooltip("Ideal scale for shrinking ring to match the outer edge of the goal circle.")]
+    private float _perfectScale;
+    [SerializeField, Tooltip("Distance from perfect scale that still counts as a perfect score.")]
+    private float _perfectThreshold;
+    [SerializeField, Tooltip("Distance from perfect scale at which score becomes a max failure.")]
+    private float _failureThreshold;
 
     private float _reelingTimer;
     private Vector3 _initialShrinkingRingScale;
@@ -213,64 +213,53 @@ public class FishingControls : MonoBehaviour
         // Timing click controls
         if(_bobber.State == BobberBehavior.BobberState.Tugging)
         {
-            // if you click ANY time during tugging it will activate (early, perfect, late)
+            // Assign reeling score (either when the player clicks OR waits too long)
             if(_fishingClick || _reelingTimer <= 0)
             {
-                if(_currentShrinkingScale < _minPerfectCutoff) // late clicks
-                {   
-                    if (_reelingTimer <= 0)
-                        // SUPER late (never clicked)
-                        _reelingScore = 0;
-                    else
-                        // variable score based on how late the press was
-                        _reelingScore = math.remap(_minPerfectCutoff, 0, 1, 0, _currentShrinkingScale);
-                }
-                else if(_currentShrinkingScale > _maxPerfectCutoff) // early click
-                {
-                    if (_currentShrinkingScale > _maxFailureCutoff)
-                        // SUPER early
-                        _reelingScore = 0;
-                    else
-                        // variable score based on how early the press was
-                        _reelingScore = math.remap(_maxFailureCutoff, _maxPerfectCutoff, 0, 1, _currentShrinkingScale);
-                }
-                else
-                {
-                    // perfect! (between min and max perfect cutoffs)
+                // no click was ever made - default to max fail
+                if (_reelingTimer <= 0)
+                    _reelingScore = 0;
+                // max failure (either very  early or very late)
+                else if (_currentShrinkingScale > _perfectScale + _failureThreshold || _currentShrinkingScale < _perfectScale - _failureThreshold)
+                    _reelingScore = 0;
+                // perfect success (close to perfect scale)
+                else if (_currentShrinkingScale > _perfectScale - _perfectThreshold && _currentShrinkingScale < _perfectScale + _perfectThreshold)
                     _reelingScore = 1;
-                }
-
+                // slightly early click (score between 0 and 1)
+                else if (_currentShrinkingScale > _perfectScale)
+                    _reelingScore = math.remap(_perfectScale + _failureThreshold, _perfectScale + _perfectThreshold, 0, 1, _currentShrinkingScale);
+                // slightly late click (score between 0 and 1)
+                else if (_currentShrinkingScale < _perfectScale)
+                    _reelingScore = math.remap(_perfectScale - _failureThreshold, _perfectScale - _perfectThreshold, 0, 1, _currentShrinkingScale);
+                
                 // determine combined fishing score
                 float combinedScore = (_castingScore + _reelingScore) / 2.0f;
+
+                // useful debugs for balancing
+                //Debug.Log("Casting Score: " + _castingScore + "  Reeling Score: " + _reelingScore);
                 Debug.Log("Score: " + combinedScore);
 
-                // make catch with calculated odds
+                // actually catch fish
                 _catchRandomizer.CatchFish(combinedScore);
 
-                // disable reeling UI
+                // reset fishing for next cast
                 _reelIndicator.SetActive(false);
-
-                // return bobber
                 _bobber.ReturnBobber();
-
-                // pick new casting goal pos
                 _castingGoal.RandomizeCastingGoal();
-
-                // return back to casting controls
                 _isReeling = false;
                 _isWaiting = true;
             }
-
-            // update reeling timer
-            _reelingTimer -= Time.deltaTime;
-            if (_reelingTimer < 0)
-                _reelingTimer = 0;
-
-            // update scale based on timer
-            _currentShrinkingScale = math.remap(_totalShrinkTime, 0, _initialShrinkingRingScale.x, 0, _reelingTimer);
-            // update scale based on calculated value
-            _shrinkingRing.transform.localScale = _initialShrinkingRingScale * (_currentShrinkingScale / _initialShrinkingRingScale.x);
         }
+
+        // update reeling timer
+        _reelingTimer -= Time.deltaTime;
+        if (_reelingTimer < 0)
+            _reelingTimer = 0;
+
+        // update scale based on timer
+        _currentShrinkingScale = math.remap(_totalShrinkTime, 0, _initialShrinkingRingScale.x, 0, _reelingTimer);
+        // update scale based on calculated value
+        _shrinkingRing.transform.localScale = _initialShrinkingRingScale * (_currentShrinkingScale / _initialShrinkingRingScale.x);
     }
     #endregion
 }
