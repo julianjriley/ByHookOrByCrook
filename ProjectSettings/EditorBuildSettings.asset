@@ -6,40 +6,40 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Menu_Start.unity
+    path: Assets/Scenes/2_Prototype/PROTO_Menu_Start.unity
     guid: 31e43b3379a52ec4bb60cdc6f6131bc6
   - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Menu_Credits.unity
+    path: Assets/Scenes/2_Prototype/PROTO_Menu_Credits.unity
     guid: d5f2bb1c25ff020418e2bbdc2873c3ee
   - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Menu_Options.unity
+    path: Assets/Scenes/2_Prototype/PROTO_Menu_Options.unity
     guid: bc9cea1d2ba36d34b80073f0a92f4168
   - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Hub.unity
+    path: Assets/Scenes/2_Prototype/PROTO_Hub.unity
     guid: 4c4221357da2e8d4f865290187778667
   - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_BaitSelection.unity
+    path: Assets/Scenes/2_Prototype/PROTO_BaitSelection.unity
     guid: 1831fafca37eb7443886e3d7249b5446
   - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Fishing.unity
+    path: Assets/Scenes/2_Prototype/PROTO_Fishing.unity
     guid: 3475ba68b40803a46b6cbf3d13163df7
   - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_LoadoutSelection.unity
+    path: Assets/Scenes/2_Prototype/PROTO_LoadoutSelection.unity
     guid: 4264b1417bd851e42ac3b7939b546a45
   - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Boss.unity
+    path: Assets/Scenes/2_Prototype/PROTO_Boss.unity
     guid: 5a407d57dd59449428a8e63c123c25d1
   - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Cashout.unity
+    path: Assets/Scenes/2_Prototype/PROTO_Cashout.unity
     guid: 3f2d910ca0ce19b498c6a5533dac2d47
   - enabled: 1
     path: Assets/Scenes/Anne_Scene.unity
     guid: 86892d424ea3f4241903103095c99f0a
   - enabled: 1
-    path: Assets/Scenes/Development/TEST_SceneSwap.unity
+    path: Assets/Scenes/1_Development/TEST_SceneSwap.unity
     guid: a934548c310ce744884c40ea68276dcc
   - enabled: 1
-    path: Assets/Scenes/Development/TEST_Hub.unity
+    path: Assets/Scenes/1_Development/TEST_Hub.unity
     guid: de7a89803f9b47a428ea1dcb88b6a0ec
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 384bcd4988928974aa114b62e3df7c6c, type: 2}
