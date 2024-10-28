@@ -12,6 +12,7 @@ public class BossPrototype : MonoBehaviour
 {
     [Header ("Boss Movement")]
     private Transform _target;
+    private Transform _defaultTarget;
     private Rigidbody _rb;
     public float Speed = 50f;
     private bool _right = true;
@@ -43,6 +44,7 @@ public class BossPrototype : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();
         _target = GameObject.Find("Boss Target").GetComponent<Transform>();
+        _defaultTarget = _target;
         PhaseSwitch();
         Debug.Log("Phase Counter = " + _phaseCounter);
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
@@ -76,20 +78,38 @@ public class BossPrototype : MonoBehaviour
         } 
     }
 
+    public void SetNewTarget(Transform newTarget, float duration) {
+        _target = newTarget;
+        StopCoroutine("ChangeTargetBack"); //ensure two resets are not counting down concurrently
+        if (duration == -1) { //-1 duration means set the target indefinitely, so avoid resetting the target to default below
+            return;
+        }
+        StartCoroutine(ChangeTargetBack(duration));
+    }
+    public void SetSpeed(float newSpeed) {
+        Speed = newSpeed;
+    }
+
+    IEnumerator ChangeTargetBack(float duration) {
+        yield return new WaitForSeconds(duration);
+        SetDefaultTarget();
+    }
+    public void SetDefaultTarget() {
+        _target = _defaultTarget;
+    }
+
     void SpriteSwapCheck() {
         //Debug.Log("_right = " + _right);
         if (transform.position.x >= _playerTransform.position.x) { //if boss is on the right of player
             if (_right == false) { //and was just on the left
                 StartCoroutine(SpriteSwapCheckTimer(_right)); 
-            }// else {
-                _right = true;
-            //}
-        } else { //if boss is on the left
-            if (_right == true) { //and was just on the right
+            }
+            _right = true;
+        } else { 
+            if (_right == true) { 
                 StartCoroutine(SpriteSwapCheckTimer(_right)); 
-            } //else {
-                _right = false;
-            //}
+            } 
+            _right = false;
         }
     }
 
