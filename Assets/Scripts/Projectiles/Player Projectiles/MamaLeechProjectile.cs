@@ -6,17 +6,16 @@ public class MamaLeechProjectile : Projectile
 {
     [SerializeField, Tooltip("Poison repeat time")]
     private float _repeatTime;
-    private float _damage;
-    private float _health;
-    private float _damageDealt;
-    private float _maxDamage;
+    private float _damageDealt = 0;
+    private float _maxDamage = 10;
+    private Collision _bossCollision;
+    private Collider _bossCollider;
 
     //The two collision functions are exactly the same its just safety honestly (some projectiles are triggers and others aren't)
 
     protected virtual new void OnTriggerEnter(Collider collider)
     {
         //DO DAMAGE CODE HERE
-        //Destroy(gameObject);
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
@@ -26,8 +25,11 @@ public class MamaLeechProjectile : Projectile
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            StartCoroutine(ApplyPoison(collider));
-            Destroy(gameObject);
+            _bossCollider = collider;
+            Debug.Log("invoke poison");
+            InvokeRepeating("ApplyPoison", 0, _repeatTime);
+            Debug.Log("repeat time - " + _repeatTime);
+           // Destroy(gameObject);
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collider.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
@@ -38,14 +40,11 @@ public class MamaLeechProjectile : Projectile
         if (_health <= 0)
         {
             Destroy(gameObject);
-            //Debug.Log("gotHere");
         }
 
     }
     protected virtual new void OnCollisionEnter(Collision collision)
     {
-        //DO DAMAGE CODE HERE
-        //Destroy(gameObject);
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
@@ -55,8 +54,10 @@ public class MamaLeechProjectile : Projectile
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            StartCoroutine(ApplyPoison(collision));
-            Destroy(gameObject);
+            _bossCollision = collision;
+            Debug.Log("invoke poison");
+            InvokeRepeating("ApplyPoisonCollision", 0, _repeatTime);
+            //Destroy(gameObject);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
@@ -69,22 +70,25 @@ public class MamaLeechProjectile : Projectile
 
     }
 
-    IEnumerator ApplyPoison(Collider collision)
+     void ApplyPoison()
     {
-        while (_damageDealt < _maxDamage)
+        Debug.Log("Applying poison");
+        if (_damageDealt <= _maxDamage)
         {
             _damageDealt += _damage;
-            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
-            yield return new WaitForSeconds(_repeatTime);
+            Debug.Log("Damage Dealt" + _damageDealt);
+            _bossCollider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
         }
     }
-    IEnumerator ApplyPoison(Collision collision)
+     void ApplyPoisonCollision()
     {
-        while (_damageDealt < _maxDamage)
+        Debug.Log("Applying poison");
+
+        if (_damageDealt <= _maxDamage)
         {
             _damageDealt += _damage;
-            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
-            yield return new WaitForSeconds(_repeatTime);
+            Debug.Log("Damage Dealt" + _damageDealt);
+            _bossCollision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
         }
     }
 }

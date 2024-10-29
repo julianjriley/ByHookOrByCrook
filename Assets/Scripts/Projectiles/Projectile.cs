@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField, Tooltip("Amount of damage projectile deals on contact.")]
-    private float _damage;
+    protected float _damage;
     [SerializeField, Tooltip("Scale of projectile hitbox.")]
     private float _size;
     [SerializeField, Tooltip("Move speed of projectile")]
@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
     [SerializeField, Tooltip("Time until projectile is automatically destroyed")]
     private float _lifetime;
     [SerializeField, Tooltip("Amount of damage required to destroy the projectile")] 
-    private float _health;
+    protected float _health;
 
     protected Rigidbody _rb;
 
