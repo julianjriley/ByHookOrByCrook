@@ -1,6 +1,7 @@
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -38,7 +39,7 @@ public class PlayerCombat : MonoBehaviour
     //[SerializeField] private Weapon defaultWeapon;
 
     //Testing purposes, can be disposed of whenever
-    [SerializeField] private Weapon testWeapon2;
+    //[SerializeField] private Weapon testWeapon2;
 
     //Firing Stuff
     Vector2 mousePosition;
@@ -60,8 +61,19 @@ public class PlayerCombat : MonoBehaviour
     public delegate void HealthChange(int health);
     public event HealthChange HealthChanged;
 
+    //Buff Specific Variables
+    public bool useShortRangeDamage = false;
 
     [SerializeField] EventReference damageSound;
+
+#if UNITY_EDITOR 
+    [Header("Unity Editor Only")]
+    [SerializeField] PassiveItem[] testItems;
+    [SerializeField] Weapon[] testWeapons;
+#endif
+
+
+  
 
     private void OnEnable()
     {
@@ -96,6 +108,12 @@ public class PlayerCombat : MonoBehaviour
             AddItemToPlayer(item);
         }
 
+#if UNITY_EDITOR
+        foreach(PassiveItem passiveItem in testItems)
+            AddItemToPlayer(passiveItem);
+        foreach (Weapon weapon in testWeapons)
+            AddItemToPlayer(weapon);
+#endif
         //AddItemToPlayer(defaultWeapon);
 
         //Can Be gotten rid of whenever
@@ -312,6 +330,8 @@ public class PlayerCombat : MonoBehaviour
     
     IEnumerator EnableStartingWeaponVisual()
     {
+        if (_weaponsTransform.childCount < 1)
+            yield break;
         yield return new WaitForSeconds(0.1f);
         foreach (WeaponInstance weaponInstance in _weaponsTransform.GetComponentsInChildren<WeaponInstance>())
         {

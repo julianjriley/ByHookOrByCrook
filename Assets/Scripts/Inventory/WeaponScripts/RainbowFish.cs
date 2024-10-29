@@ -29,7 +29,7 @@ public class RainbowFish : WeaponInstance
             {
                 GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, _direction));
                 projectile.GetComponent<Rigidbody>().AddForce(_direction * _weapon.Speed, ForceMode.Impulse);
-                projectile.transform.localScale = new Vector3(_weapon.Size, _weapon.Size, 1);
+                projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
                 RottenFishProjectile rottenFishProjectile = projectile.GetComponent<RottenFishProjectile>();
                 rottenFishProjectile.AssignStats(_weapon);
                 _heatLevel += _weapon.HeatBuildup;

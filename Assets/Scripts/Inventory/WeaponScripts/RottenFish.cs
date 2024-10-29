@@ -22,7 +22,7 @@ public class RottenFish : WeaponInstance
             for (int i = 0; i < _weapon.ProjectileCount; i++)
             {
                 GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, _direction));
-                projectile.transform.localScale = new Vector3(_weapon.Size, _weapon.Size, 1);
+                projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
                 projectile.GetComponent<Rigidbody>().AddForce(_direction * _weapon.Speed, ForceMode.Impulse);
                 RottenFishProjectile rottenFishProjectile = projectile.GetComponent<RottenFishProjectile>();
                 rottenFishProjectile.AssignStats(_weapon);
