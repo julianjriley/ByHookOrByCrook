@@ -1430,6 +1430,10 @@ PrefabInstance:
       propertyPath: damageSound.Guid.Data4
       value: -1204494196
       objectReference: {fileID: 0}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: orbitingPufferfishTest
+      value: 
+      objectReference: {fileID: 11400000, guid: 0536c0f834178bb4ba6fb64bcc8331f8, type: 2}
     - target: {fileID: 8367796524174305367, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0

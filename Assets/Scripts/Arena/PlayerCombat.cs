@@ -39,6 +39,7 @@ public class PlayerCombat : MonoBehaviour
 
     //Testing purposes, can be disposed of whenever
     [SerializeField] private Weapon testWeapon2;
+    [SerializeField] private PassiveItem orbitingPufferfishTest;
 
     //Firing Stuff
     Vector2 mousePosition;
@@ -100,6 +101,8 @@ public class PlayerCombat : MonoBehaviour
 
         //Can Be gotten rid of whenever
        AddItemToPlayer(testWeapon2);
+
+        AddItemToPlayer(orbitingPufferfishTest);
 
         StartCoroutine(EnableStartingWeaponVisual());
         

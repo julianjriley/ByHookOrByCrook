@@ -4,28 +4,31 @@ using UnityEngine;
 
 public class OrbitingPufferfish : PassiveItemInstance
 {
-    private float _damage;
-    private float _waitTime;
-    private float _speed;
+    private float _damage = 1;
+    private float _waitTime = 1;
+    private float _speed = 1;
 
     private GameObject _pivot;
 
     [SerializeField]
     GameObject prefab;
+
+    private GameObject PufferfishPrefab;
     public override void ItemEffect()
     {
         base.ItemEffect();
 
-        _pivot = _player.gameObject;
+        
 
         // Spawn another orbiting pufferfish
-        Instantiate(prefab, _pivot.transform);  
+        PufferfishPrefab = Instantiate(prefab, _pivot.transform);  
     }
 
     private void Update()
     {
+        _pivot = _player.gameObject;
         // Orbiting around the player
-        transform.RotateAround(_pivot.transform.position, new Vector3(0, 1, 0), _speed * Time.deltaTime);
+        PufferfishPrefab.transform.RotateAround(_pivot.transform.position, new Vector3(0, 1, 0), _speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)

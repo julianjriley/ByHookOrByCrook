@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class MamaLeech : WeaponInstance
 {
-    // damage the boss over time
-
     [SerializeField] GameObject _projectile;
 
-    private float waitTime = 1.7f;
+    [SerializeField, Tooltip("Fire rate wait time")]
+    private float waitTime;
 
     protected override void Start()
     {

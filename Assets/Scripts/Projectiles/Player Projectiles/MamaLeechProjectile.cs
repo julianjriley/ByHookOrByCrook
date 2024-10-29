@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class MamaLeechProjectile : Projectile
 {
-    [SerializeField, Tooltip("Poison repeat time")]
+    [SerializeField, Tooltip("How many times the poision repeats after hitting the boss")]
     private float _repeatTime;
+    [SerializeField, Tooltip("Start time for second InvokeRepeating() call")]
+    private float _startTime;
     private float _damageDealt = 0;
     private float _maxDamage = 10;
     private Collision _bossCollision;
     private Collider _bossCollider;
-
-    //The two collision functions are exactly the same its just safety honestly (some projectiles are triggers and others aren't)
+    
+    //The two collision functions and apply poision functions are exactly the same
 
     protected virtual new void OnTriggerEnter(Collider collider)
     {
-        //DO DAMAGE CODE HERE
-
         if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             collider.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
@@ -26,10 +26,7 @@ public class MamaLeechProjectile : Projectile
         if (collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
             _bossCollider = collider;
-            Debug.Log("invoke poison");
             InvokeRepeating("ApplyPoison", 0, _repeatTime);
-            Debug.Log("repeat time - " + _repeatTime);
-           // Destroy(gameObject);
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collider.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
@@ -55,9 +52,7 @@ public class MamaLeechProjectile : Projectile
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
             _bossCollision = collision;
-            Debug.Log("invoke poison");
             InvokeRepeating("ApplyPoisonCollision", 0, _repeatTime);
-            //Destroy(gameObject);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
@@ -69,26 +64,31 @@ public class MamaLeechProjectile : Projectile
             Destroy(gameObject);
 
     }
-
      void ApplyPoison()
-    {
-        Debug.Log("Applying poison");
+     {
         if (_damageDealt <= _maxDamage)
         {
             _damageDealt += _damage;
-            Debug.Log("Damage Dealt" + _damageDealt);
             _bossCollider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            InvokeRepeating("ApplyPoison", _startTime, _repeatTime);
         }
-    }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
+     }
      void ApplyPoisonCollision()
-    {
-        Debug.Log("Applying poison");
-
+     {
         if (_damageDealt <= _maxDamage)
         {
             _damageDealt += _damage;
-            Debug.Log("Damage Dealt" + _damageDealt);
             _bossCollision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            InvokeRepeating("ApplyPoisonCollision", _startTime, _repeatTime);
         }
+        else
+        {
+            Destroy(gameObject);
+        } 
     }
 }
