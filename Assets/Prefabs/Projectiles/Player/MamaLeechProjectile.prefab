@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3733085230713861334}
   - component: {fileID: 2830727031234648781}
+  - component: {fileID: 4149400724418778862}
   - component: {fileID: 4069988502811610014}
   - component: {fileID: 3222617611750216558}
-  - component: {fileID: 4149400724418778862}
   m_Layer: 7
   m_Name: MamaLeechProjectile
   m_TagString: Untagged
@@ -87,6 +87,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4149400724418778862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601086307551454052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab2122e903c1d74485b5dc39bc106df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 3
+  _baseDamage: 0
+  _size: 1
+  _speed: 1
+  _lifetime: 3
+  _health: 2
+  _repeatTime: 2
+  _startTime: 1
+  _renderer: {fileID: 2830727031234648781}
 --- !u!136 &4069988502811610014
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -137,22 +158,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &4149400724418778862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601086307551454052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fab2122e903c1d74485b5dc39bc106df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 3
-  _size: 1
-  _speed: 1
-  _lifetime: 3
-  _health: 2
-  _repeatTime: 2
-  _startTime: 1

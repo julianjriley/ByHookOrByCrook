@@ -12,6 +12,9 @@ public class MamaLeechProjectile : Projectile
     private float _maxDamage = 10;
     private Collision _bossCollision;
     private Collider _bossCollider;
+
+    [SerializeField, Tooltip("Sprite renderer to be disabled as if projectile was destroyed.")]
+    private SpriteRenderer _renderer;
     
     //The two collision functions and apply poision functions are exactly the same
 
@@ -27,6 +30,7 @@ public class MamaLeechProjectile : Projectile
         {
             _bossCollider = collider;
             InvokeRepeating("ApplyPoison", 0, _repeatTime);
+            _renderer.enabled = false;
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collider.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
@@ -53,6 +57,7 @@ public class MamaLeechProjectile : Projectile
         {
             _bossCollision = collision;
             InvokeRepeating("ApplyPoisonCollision", 0, _repeatTime);
+            _renderer.enabled = false;
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
