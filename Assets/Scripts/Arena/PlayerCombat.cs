@@ -38,9 +38,6 @@ public class PlayerCombat : MonoBehaviour
     //RottenFish Default Gun
     //[SerializeField] private Weapon defaultWeapon;
 
-    //Testing purposes, can be disposed of whenever
-    //[SerializeField] private Weapon testWeapon2;
-
     //Firing Stuff
     Vector2 mousePosition;
     Vector3 worldPos;

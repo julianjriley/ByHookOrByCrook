@@ -6,7 +6,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField, Tooltip("Amount of damage projectile deals on contact.")]
-    private float _damage;
+    protected float _damage;
     [SerializeField, Tooltip("Amount of damage projectile deals pre-buffs")]
     private float _baseDamage;
     [SerializeField, Tooltip("Scale of projectile hitbox.")]
@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
     [SerializeField, Tooltip("Time until projectile is automatically destroyed")]
     private float _lifetime;
     [SerializeField, Tooltip("Amount of damage required to destroy the projectile")] 
-    private float _health;
+    protected float _health;
 
     protected Rigidbody _rb;
     protected PlayerCombat _playerCombat;
