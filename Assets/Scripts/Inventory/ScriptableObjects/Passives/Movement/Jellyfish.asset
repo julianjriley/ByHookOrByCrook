@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
-  m_Name: Flying Fish
+  m_Name: Jellyfish
   m_EditorClassIdentifier: 
   _itemID: 9
-  _itemName: Flying Fish
-  _itemDescription: Increased Jump Height. Fish outta water!
-  _sprite: {fileID: 21300000, guid: 1ec035e40949f2142b3725e6661a7c8c, type: 3}
-  _itemPrefab: {fileID: 6977784947212119801, guid: fe01a00750801ad488b26d0d2a9995f9, type: 3}
+  _itemName: Jellyfish
+  _itemDescription: Double Jump. Fish outta water!
+  _sprite: {fileID: 1792032162, guid: 4ea41d87226872440a7417db85fe776b, type: 3}
+  _itemPrefab: {fileID: 6977784947212119801, guid: f8821aeec41814842ba5a8a51146842d, type: 3}
   _cost: 35

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingFish : PassiveItemInstance
+public class JellyFish : PassiveItemInstance
 {
     public override void ItemEffect()
     {
         base.ItemEffect();
-        _player.GetPlayerMovement().jumpUpForce += 2;
+        _player.GetPlayerMovement().maxNumberOfJumps += 1;
     }
 }
