@@ -1800,6 +1800,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6007157514595831849}
+  - component: {fileID: 2425401152705786540}
   m_Layer: 0
   m_Name: Interact Bubble
   m_TagString: Untagged
@@ -1823,6 +1824,18 @@ Transform:
   m_Father: {fileID: 4377531896990685056}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &2425401152705786540
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379468106279391979}
+  m_Enabled: 1
+  m_SortingLayerID: 1334251207
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &5484410894918962868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,6 +2226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6882071875695949167}
+  - component: {fileID: 3520805296217639048}
   m_Layer: 0
   m_Name: Talk Bubble
   m_TagString: Untagged
@@ -2241,6 +2255,18 @@ Transform:
   m_Father: {fileID: 4377531896990685056}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &3520805296217639048
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999762526886154468}
+  m_Enabled: 1
+  m_SortingLayerID: 1334251207
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &7353787166447848404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2367,6 +2393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4536785692499700026}
+  - component: {fileID: 4844315047070494957}
   m_Layer: 0
   m_Name: Cryer Bubble v2
   m_TagString: Untagged
@@ -2390,6 +2417,18 @@ Transform:
   m_Father: {fileID: 4364775879598736114}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &4844315047070494957
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140772182228422777}
+  m_Enabled: 1
+  m_SortingLayerID: 1334251207
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &8477364984311245741
 GameObject:
   m_ObjectHideFlags: 0
