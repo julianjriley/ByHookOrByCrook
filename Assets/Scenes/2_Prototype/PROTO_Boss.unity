@@ -1875,26 +1875,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
-      propertyPath: damageSound.Path
-      value: event:/Combat/General/BossHit
-      objectReference: {fileID: 0}
-    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
-      propertyPath: damageSound.Guid.Data1
-      value: 1622638801
-      objectReference: {fileID: 0}
-    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
-      propertyPath: damageSound.Guid.Data2
-      value: 1278891993
-      objectReference: {fileID: 0}
-    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
-      propertyPath: damageSound.Guid.Data3
-      value: 1349586571
-      objectReference: {fileID: 0}
-    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
-      propertyPath: damageSound.Guid.Data4
-      value: -1696129653
-      objectReference: {fileID: 0}
     - target: {fileID: 2092733913198009465, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1939,14 +1919,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5056964408842184468, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5644205269613603958, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6471947525389772445, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -1966,32 +1938,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6471947525389772445, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7071379696094070295}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
---- !u!1 &7071379696094070294 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6471947525389772445, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
-  m_PrefabInstance: {fileID: 7071379696094070293}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7071379696094070295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7071379696094070294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18bedda90d9e5de40a5e659956336b9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  music:
-    Guid:
-      Data1: 817889303
-      Data2: 1287124787
-      Data3: 109520307
-      Data4: -1313791562
-    Path: event:/Music/PixelFight
