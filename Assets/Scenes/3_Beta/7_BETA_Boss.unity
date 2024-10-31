@@ -1463,6 +1463,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
+      propertyPath: ScaleMax
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
+      propertyPath: ScaleMin
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1394876051387157243, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: m_Name
       value: BossTargetRepositioner
@@ -1710,6 +1718,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
+      propertyPath: Speed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
       propertyPath: m_Enabled
       value: 1
