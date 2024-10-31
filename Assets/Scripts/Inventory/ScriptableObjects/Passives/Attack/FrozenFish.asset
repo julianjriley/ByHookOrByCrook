@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
-  m_Name: TestingJunk
+  m_Name: FrozenFish
   m_EditorClassIdentifier: 
-  _itemID: -1
-  _itemName: Junk
-  _itemDescription: What's the point? Nothing Matters
-  _sprite: {fileID: 21300000, guid: b0c107d07f5bea54f83a74bc0b4c7c8a, type: 3}
-  _itemPrefab: {fileID: 8967266825293907742, guid: 5e5a22d15efdbd54eb91d4008151a828, type: 3}
-  _cost: 20
+  _itemID: 1
+  _itemName: Frozen Fish
+  _itemDescription: Cooled down !
+  _sprite: {fileID: 0}
+  _itemPrefab: {fileID: 194152881037602285, guid: 1996ba7f8919a4e439cd78e98574db37, type: 3}
+  _cost: 125
