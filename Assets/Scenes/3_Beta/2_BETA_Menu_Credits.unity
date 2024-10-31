@@ -957,10 +957,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e31c3199c597d4988f9bd58594efbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: PROTO_Hub
+  gameScene: 
   optionsScene: 
-  creditsScene: PROTO_Menu_Credits
-  startScene: PROTO_Menu_Start
+  creditsScene: 
+  startScene: 0_BETA_Menu_Start
 --- !u!4 &1448300996
 Transform:
   m_ObjectHideFlags: 0
