@@ -109,10 +109,14 @@ public class PlayerCombat : MonoBehaviour
         }
 
 #if UNITY_EDITOR
-        foreach(PassiveItem passiveItem in testItems)
-            AddItemToPlayer(passiveItem);
-        foreach (Weapon weapon in testWeapons)
-            AddItemToPlayer(weapon);
+        // only add testing loadout of stuff wasnt picked from loadout scene
+        if(GameManager.Instance.ScenePersistent.Loadout.Count == 0)
+        {
+            foreach (PassiveItem passiveItem in testItems)
+                AddItemToPlayer(passiveItem);
+            foreach (Weapon weapon in testWeapons)
+                AddItemToPlayer(weapon);
+        }
 #endif
         //AddItemToPlayer(defaultWeapon);
 
