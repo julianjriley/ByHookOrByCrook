@@ -77,9 +77,10 @@ GameObject:
   - component: {fileID: 2822287764505044261}
   - component: {fileID: 2997144428325384686}
   - component: {fileID: 2054334842378462304}
+  - component: {fileID: 2080369591844939098}
   m_Layer: 6
   m_Name: TestPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +100,7 @@ Transform:
   - {fileID: 8367796524174305367}
   - {fileID: 4413851721358271744}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6682747494233883687
 SpriteRenderer:
@@ -141,10 +142,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -1687655841, guid: d2042fb82e1a38a4ca51185337ca34bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
@@ -165,13 +166,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1399297865bb42c4e8fa8a9750d207b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseHealth: 2
-  _baseSpeed: 10
+  _baseHealth: 3
   _weaponsTransform: {fileID: 2227883122097606566}
   _passivesTransform: {fileID: 8367796524174305367}
   _aimPivot: {fileID: 4413851721358271744}
-  defaultWeapon: {fileID: 11400000, guid: a54f958a76eba9d4d9e9e4180bce0ce4, type: 2}
-  testWeapon2: {fileID: 11400000, guid: 34c1a93d6ce2e9f45b973bd36719fdc1, type: 2}
+  useShortRangeDamage: 0
+  damageSound:
+    Guid:
+      Data1: 356839253
+      Data2: 1146688558
+      Data3: 232441227
+      Data4: -1204494196
+    Path: event:/Combat/General/PlayerHit
+  testItems: []
+  testWeapons: []
 --- !u!114 &2822287764505044261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,12 +203,41 @@ MonoBehaviour:
   _maxGroundedDistance: 0.1
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   _isGrounded: 0
   _dashSpeed: 24
   dashDistance: 0.2
   _toggleGravityWhenDashing: 0
   numberOfAirDashes: 1
+  footstepsSound:
+    Guid:
+      Data1: -2083588618
+      Data2: 1298528903
+      Data3: -1898930814
+      Data4: 764914765
+    Path: event:/Combat/General/Footsteps
+  dashSound:
+    Guid:
+      Data1: 178764853
+      Data2: 1158191178
+      Data3: -898754407
+      Data4: -611155560
+    Path: event:/Combat/General/Dash
+  jumpSound:
+    Guid:
+      Data1: -760758620
+      Data2: 1202763696
+      Data3: 1908963248
+      Data4: -463986416
+    Path: event:/Combat/General/Jump
+  doubleJumpSound:
+    Guid:
+      Data1: 835371618
+      Data2: 1205676569
+      Data3: -2144726133
+      Data4: -552639163
+    Path: event:/Combat/General/Double Jump
+  GoThroughPlatforms: 0
 --- !u!54 &2997144428325384686
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -227,7 +264,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &2054334842378462304
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -235,7 +272,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3586478448919471552}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1fe2693a15f2fa24080fd6e5a91875ae, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -251,6 +288,27 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &2080369591844939098
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3586478448919471552}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e40f2a5a925b8d74da80408e2bbf9cff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9024668472524952715
 GameObject:
   m_ObjectHideFlags: 0
