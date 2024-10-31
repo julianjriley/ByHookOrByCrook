@@ -13,11 +13,11 @@ public class BossPrototype : MonoBehaviour
     [Header ("Boss Movement")]
     private Transform _target;
     private Transform _defaultTarget;
-    private Rigidbody _rb;
+    protected Rigidbody _rb;
     public float Speed = 50f;
     private bool _right = true;
     private bool _checkingSwap = false;
-    private Transform _playerTransform;
+    public Transform _playerTransform;
     private SpriteRenderer _renderer;
 
     [Header ("Boss Phases + Attacks")]
@@ -39,7 +39,7 @@ public class BossPrototype : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();
@@ -47,6 +47,7 @@ public class BossPrototype : MonoBehaviour
         _defaultTarget = _target;
         PhaseSwitch();
         Debug.Log("Phase Counter = " + _phaseCounter);
+        Debug.Log(GameObject.FindWithTag("Player").name + " name");
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         _renderer = GetComponent<SpriteRenderer>();
 
@@ -72,6 +73,14 @@ public class BossPrototype : MonoBehaviour
     }
 
     void Move() {
+        if (_rb == null) {
+            Debug.Log("No rigidbody");
+            return;
+        }
+        if (_target == null) {
+            Debug.Log("No target");
+            return;
+        }
         _rb.AddForce((_target.position - transform.position).normalized * Speed, ForceMode.Force);
         if (!(_checkingSwap)) { //ensure only one check is happening at a time
             SpriteSwapCheck();
