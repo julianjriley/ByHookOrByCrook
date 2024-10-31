@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
     [SerializeField, Tooltip("Amount of damage projectile deals on contact.")]
-    private float _damage;
+    protected float _damage;
+    [SerializeField, Tooltip("Amount of damage projectile deals pre-buffs")]
+    private float _baseDamage;
     [SerializeField, Tooltip("Scale of projectile hitbox.")]
     private float _size;
     [SerializeField, Tooltip("Move speed of projectile")]
@@ -13,23 +16,31 @@ public class Projectile : MonoBehaviour
     [SerializeField, Tooltip("Time until projectile is automatically destroyed")]
     private float _lifetime;
     [SerializeField, Tooltip("Amount of damage required to destroy the projectile")] 
-    private float _health;
+    protected float _health;
 
     protected Rigidbody _rb;
+    protected PlayerCombat _playerCombat;
+
+    bool shortRangeDamage;
+    float distanceToPlayer;
+
 
     virtual protected void Start()
     {
         _rb = GetComponent<Rigidbody>();
-
+        
         Destroy(gameObject, _lifetime);
     }
 
     public void AssignStats(Weapon weapon)
     {
         _damage = weapon.Damage;
+        _baseDamage = _damage;
         _size = weapon.Size;
         _speed = weapon.Speed; 
         _lifetime = weapon.Lifetime;
+        _playerCombat = weapon.GetPlayer();
+        shortRangeDamage = _playerCombat.useShortRangeDamage;
     }
 
     public void TakeDamage(float damage)
@@ -39,6 +50,19 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if(_playerCombat != null)
+        {
+            if(shortRangeDamage)
+            {
+                distanceToPlayer = Mathf.Abs((_playerCombat.gameObject.transform.position - gameObject.transform.position).magnitude);
+                _damage = _baseDamage * Mathf.Clamp(math.remap(0, 8, 2, 1, distanceToPlayer), 1, 2);
+            }
+        }
+
     }
 
 

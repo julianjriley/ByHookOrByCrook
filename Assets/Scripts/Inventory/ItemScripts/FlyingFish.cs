@@ -7,6 +7,6 @@ public class FlyingFish : PassiveItemInstance
     public override void ItemEffect()
     {
         base.ItemEffect();
-        _player.GetPlayerMovement().maxNumberOfJumps += 1;
+        _player.GetPlayerMovement().jumpUpForce += 2;
     }
 }

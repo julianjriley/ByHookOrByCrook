@@ -33,6 +33,10 @@ public class BossPrototype : MonoBehaviour
     [Header ("Boss SFX")]
     [SerializeField] EventReference damageSound;
 
+    [Header("Scene Transitions")]
+    [SerializeField, Tooltip("Scene name of cashout scene that follows boss fight.")]
+    private string _cashoutSceneName;
+
     //For UI Update
     public delegate void HealthChange(float health);
     public event HealthChange HealthChanged;
@@ -197,7 +201,7 @@ public class BossPrototype : MonoBehaviour
     public void GoToCashout()
     {
         
-        SceneManager.LoadScene("PROTO_Cashout");
+        SceneManager.LoadScene(_cashoutSceneName);
     }
 
     protected void CalculateBossBountyMultiplier()
