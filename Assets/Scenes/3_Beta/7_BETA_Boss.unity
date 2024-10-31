@@ -1880,6 +1880,10 @@ PrefabInstance:
       value: event:/Combat/General/BossHit
       objectReference: {fileID: 0}
     - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
+      propertyPath: _cashoutSceneName
+      value: 8_BETA_Cashout
+      objectReference: {fileID: 0}
+    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
       propertyPath: damageSound.Guid.Data1
       value: 1622638801
       objectReference: {fileID: 0}

@@ -6,6 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/3_Beta/0_BETA_Menu_Start.unity
+    guid: 5247a4e390a3ff843a3a3ee2468b3582
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/1_BETA_Menu_Options.unity
+    guid: 94fbdcc9336ceaa438ec0d81599c2a97
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/2_BETA_Menu_Credits.unity
+    guid: 6fcbb781f8baa0b40bca2cf1cfd89e8f
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/4_BETA_BaitSelection.unity
+    guid: 106e532723f831e4085ee40f64fcebae
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/5_BETA_Fishing.unity
+    guid: fcf52efdb5fb1f94ea04e5d498992d04
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/6_BETA_LoadoutSelection.unity
+    guid: 7265d050fe61d9e40a23639cfbea5aaa
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/7_BETA_Boss.unity
+    guid: a37c56bc534cff54494a62713102fcba
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/8_BETA_Cashout.unity
+    guid: 84972cb594635334ab898020826dcaa5
+  - enabled: 1
     path: Assets/Scenes/2_Prototype/PROTO_Menu_Start.unity
     guid: 31e43b3379a52ec4bb60cdc6f6131bc6
   - enabled: 1
