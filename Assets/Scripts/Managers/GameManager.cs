@@ -193,6 +193,10 @@ public class GameManager : MonoBehaviour
         public bool SupportBait;
         public bool WeaponBait;
 
+        // Accessibility
+        public bool IsSkipper;
+        public bool IsBobber;
+
         // Hub related stats
         public List<bool> IsConvoHadRod;
         public List<bool> IsConvoHadBait;
@@ -236,7 +240,7 @@ public class GameManager : MonoBehaviour
         newSaveData.BossNumber = 0;
         newSaveData.LossCounter = 3;
 
-        newSaveData.Gill = 9999;
+        newSaveData.Gill = 999;
         newSaveData.BaitInventorySize = 3;
         newSaveData.BattleInventorySize = 3;
         newSaveData.RodLevel = 0;
@@ -244,6 +248,9 @@ public class GameManager : MonoBehaviour
         newSaveData.MovementBait = false;
         newSaveData.SupportBait = false;
         newSaveData.WeaponBait = true; // TEMPORARY: unlocked by defauly for prototype to make BaitSelection scene work
+
+        newSaveData.IsSkipper = false;
+        newSaveData.IsBobber = false;
 
         newSaveData.IsConvoHadRod = new List<bool>();
         newSaveData.IsConvoHadBait = new List<bool>();
