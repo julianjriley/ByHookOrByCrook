@@ -69,12 +69,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1343199916894103230}
-  - {fileID: 6644807896022140283}
-  - {fileID: 8270864230849608467}
+  - {fileID: 6616769010129541708}
+  - {fileID: 8480663348059530406}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5428390923154201834
+--- !u!1 &3549646258599777458
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,47 +82,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6644807896022140283}
-  m_Layer: 0
-  m_Name: Middle Row
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6644807896022140283
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5428390923154201834}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1501969431395826065}
-  - {fileID: 1014624170405395831}
-  - {fileID: 6246932573156172631}
-  - {fileID: 4327977372214017810}
-  - {fileID: 2752574874424357424}
-  - {fileID: 4823528271459663952}
-  - {fileID: 8080483144910780109}
-  - {fileID: 3041720796815589509}
-  - {fileID: 502125488165292297}
-  m_Father: {fileID: 7135324985938292111}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8675951672382052908
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8270864230849608467}
+  - component: {fileID: 8480663348059530406}
   m_Layer: 0
   m_Name: Bottom Row
   m_TagString: Untagged
@@ -130,27 +90,67 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8270864230849608467
+--- !u!4 &8480663348059530406
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8675951672382052908}
+  m_GameObject: {fileID: 3549646258599777458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2428204361449165397}
+  - {fileID: 4540391326685691541}
+  - {fileID: 1029091967813936996}
+  - {fileID: 8521548605713755481}
+  - {fileID: 1510467035127836895}
+  - {fileID: 54192184448670473}
+  - {fileID: 4300449034220059487}
+  - {fileID: 8727743351578334769}
+  - {fileID: 7553425893357660516}
+  m_Father: {fileID: 7135324985938292111}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9194707897640900963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6616769010129541708}
+  m_Layer: 0
+  m_Name: Moddle Row
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6616769010129541708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194707897640900963}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2583684413041081325}
-  - {fileID: 5690215821674823072}
-  - {fileID: 8087361286309838701}
-  - {fileID: 5655336932044397812}
-  - {fileID: 2643876657066915610}
-  - {fileID: 2019187579979161408}
-  - {fileID: 2239837328454914227}
-  - {fileID: 6416034399178919568}
-  - {fileID: 3526474522643032398}
+  - {fileID: 7394968253359314713}
+  - {fileID: 1114873666820052822}
+  - {fileID: 8868612463945452625}
+  - {fileID: 3401593325633217460}
+  - {fileID: 6527565806454850197}
+  - {fileID: 5972734914847974428}
+  - {fileID: 1830431417285763837}
+  - {fileID: 3578817376883236135}
+  - {fileID: 2395256675349612271}
   m_Father: {fileID: 7135324985938292111}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -172,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.y
@@ -219,6 +219,72 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
   m_PrefabInstance: {fileID: 249764658572384648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &474083948992877524
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6616769010129541708}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &7394968253359314713 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 474083948992877524}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &482735424948635513
 PrefabInstance:
@@ -304,7 +370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.y
@@ -352,6 +418,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
   m_PrefabInstance: {fileID: 625206989147542703}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &641574313236409769
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8480663348059530406}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &7553425893357660516 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 641574313236409769}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &656023417374532585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -363,138 +495,6 @@ PrefabInstance:
     - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_Name
       value: Galaga Ship Projectile (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &7579229926823880484 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 656023417374532585}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1155288310878632864
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8270864230849608467}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &8087361286309838701 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 1155288310878632864}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1159633196017168896
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6644807896022140283}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile (9)
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_RootOrder
@@ -545,10 +545,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &8080483144910780109 stripped
+--- !u!4 &7579229926823880484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 1159633196017168896}
+  m_PrefabInstance: {fileID: 656023417374532585}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1443360356019935034
 PrefabInstance:
@@ -568,7 +568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.y
@@ -634,7 +634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.y
@@ -682,6 +682,138 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
   m_PrefabInstance: {fileID: 1617219399071669671}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1618731710455851412
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8480663348059530406}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &8521548605713755481 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 1618731710455851412}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1813632279389410044
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8480663348059530406}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &8727743351578334769 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 1813632279389410044}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1862622266146960570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -700,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.y
@@ -748,17 +880,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
   m_PrefabInstance: {fileID: 1862622266146960570}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2505375562902717597
+--- !u!1001 &1956770781526001820
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6644807896022140283}
+    m_TransformParent: {fileID: 6616769010129541708}
     m_Modifications:
     - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_Name
-      value: Galaga Ship Projectile (8)
+      value: Galaga Ship Projectile (2)
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_RootOrder
@@ -766,7 +898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.y
@@ -809,10 +941,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &4823528271459663952 stripped
+--- !u!4 &8868612463945452625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 2505375562902717597}
+  m_PrefabInstance: {fileID: 1956770781526001820}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3294212618445535893
 PrefabInstance:
@@ -832,7 +964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.y
@@ -880,13 +1012,343 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
   m_PrefabInstance: {fileID: 3294212618445535893}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3337086360259254329
+--- !u!1001 &3663421450821083345
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8270864230849608467}
+    m_TransformParent: {fileID: 6616769010129541708}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &5972734914847974428 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 3663421450821083345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4225201225694496344
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6616769010129541708}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &6527565806454850197 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 4225201225694496344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4686512069861851682
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6616769010129541708}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &2395256675349612271 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 4686512069861851682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4721685167290308248
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8480663348059530406}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &2428204361449165397 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 4721685167290308248}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5273752235103771627
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1343199916894103230}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &2955589594221043494 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 5273752235103771627}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5692725574689073017
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6616769010129541708}
     m_Modifications:
     - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_Name
@@ -898,7 +1360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.y
@@ -941,22 +1403,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &5655336932044397812 stripped
+--- !u!4 &3401593325633217460 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 3337086360259254329}
+  m_PrefabInstance: {fileID: 5692725574689073017}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3369758500171725165
+--- !u!1001 &5881419456482400746
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8270864230849608467}
+    m_TransformParent: {fileID: 6616769010129541708}
     m_Modifications:
     - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_Name
-      value: Galaga Ship Projectile (1)
+      value: Galaga Ship Projectile (10)
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_RootOrder
@@ -964,7 +1426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1007,22 +1469,88 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &5690215821674823072 stripped
+--- !u!4 &3578817376883236135 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 3369758500171725165}
+  m_PrefabInstance: {fileID: 5881419456482400746}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3928806521099577242
+--- !u!1001 &6600657715309133714
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6644807896022140283}
+    m_TransformParent: {fileID: 8480663348059530406}
     m_Modifications:
     - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_Name
-      value: Galaga Ship Projectile (2)
+      value: Galaga Ship Projectile (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &4300449034220059487 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 6600657715309133714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6860892633132694104
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8480663348059530406}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_RootOrder
@@ -1073,744 +1601,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &6246932573156172631 stripped
+--- !u!4 &4540391326685691541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 3928806521099577242}
+  m_PrefabInstance: {fileID: 6860892633132694104}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4124780411334527581
+--- !u!1001 &6986485062183215044
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 8270864230849608467}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile (10)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &6416034399178919568 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 4124780411334527581}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &4895249981946756896
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8270864230849608467}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &2583684413041081325 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 4895249981946756896}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &4937233179439346647
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8270864230849608467}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &2643876657066915610 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 4937233179439346647}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &5046108454625752829
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6644807896022140283}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &2752574874424357424 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 5046108454625752829}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &5273752235103771627
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1343199916894103230}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &2955589594221043494 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 5273752235103771627}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &5332860463434040392
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6644807896022140283}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile (10)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &3041720796815589509 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 5332860463434040392}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &5820041876324019587
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8270864230849608467}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile (11)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &3526474522643032398 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 5820041876324019587}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &6639551432281570271
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6644807896022140283}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &4327977372214017810 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 6639551432281570271}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &7404925886508142020
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6644807896022140283}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile (11)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &502125488165292297 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 7404925886508142020}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &7935579945296951738
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6644807896022140283}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &1014624170405395831 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 7935579945296951738}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8425229509795347804
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6644807896022140283}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &1501969431395826065 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 8425229509795347804}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8949185461270829965
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8270864230849608467}
+    m_TransformParent: {fileID: 8480663348059530406}
     m_Modifications:
     - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_Name
@@ -1822,72 +1624,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &2019187579979161408 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 8949185461270829965}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &9160880787130520702
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8270864230849608467}
-    m_Modifications:
-    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_Name
-      value: Galaga Ship Projectile (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-      propertyPath: m_LocalPosition.x
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
@@ -1931,8 +1667,272 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
---- !u!4 &2239837328454914227 stripped
+--- !u!4 &54192184448670473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
-  m_PrefabInstance: {fileID: 9160880787130520702}
+  m_PrefabInstance: {fileID: 6986485062183215044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7961358182430499753
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8480663348059530406}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &1029091967813936996 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 7961358182430499753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8019977544249217947
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6616769010129541708}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &1114873666820052822 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 8019977544249217947}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8413354539730727954
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8480663348059530406}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &1510467035127836895 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 8413354539730727954}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8742193904757171760
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6616769010129541708}
+    m_Modifications:
+    - target: {fileID: 4781669278737496937, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_Name
+      value: Galaga Ship Projectile (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+--- !u!4 &1830431417285763837 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6932302773596357837, guid: 4d5840044da7a0f4dac710aa47580750, type: 3}
+  m_PrefabInstance: {fileID: 8742193904757171760}
   m_PrefabAsset: {fileID: 0}
