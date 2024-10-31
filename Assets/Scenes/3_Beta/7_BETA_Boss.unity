@@ -844,7 +844,7 @@ PrefabInstance:
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: cbae0445f69e26243ab9f30476c91350, type: 2}
+      objectReference: {fileID: 11400000, guid: fc294db336f08694cb0952e8f866e7b4, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[0]
       value: 
@@ -1414,6 +1414,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4280917721184096600, guid: a3e2bc219eea2854ca70022c2a960c4c, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4662044445024671601, guid: a3e2bc219eea2854ca70022c2a960c4c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4891995385933044637, guid: a3e2bc219eea2854ca70022c2a960c4c, type: 3}
@@ -1575,6 +1579,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524261643316257706, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
       propertyPath: damageSound.Path
       value: event:/Combat/General/BossHit
       objectReference: {fileID: 0}
@@ -1660,7 +1668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6471947525389772445, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6471947525389772445, guid: 0f7cba3c19ef4c34eae8691973c7dd81, type: 3}
       propertyPath: m_TagString

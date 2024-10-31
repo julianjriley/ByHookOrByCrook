@@ -197,16 +197,16 @@ MonoBehaviour:
   _coyoteMaxTime: 0.2
   _jumpBufferMaxTime: 0.2
   _jummpCancelForce: 0.5
-  jumpDurrationMaxTime: 0.2
-  jumpUpForce: 10
-  jumpFallingForce: 11
+  jumpDurrationMaxTime: 0.1
+  jumpUpForce: 14
+  jumpFallingForce: 12
   _maxGroundedDistance: 0.1
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
   _isGrounded: 0
-  _dashSpeed: 24
-  dashDistance: 0.2
+  _dashSpeed: 20
+  DashDuration: 0.2
   _toggleGravityWhenDashing: 0
   numberOfAirDashes: 1
   footstepsSound:
