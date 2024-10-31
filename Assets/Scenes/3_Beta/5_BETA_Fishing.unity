@@ -417,7 +417,7 @@ MonoBehaviour:
   _scaleSharpness: 5
   _snappingThreshold: 10
   _freezeTime: 1.5
-  _loadoutSceneName: PROTO_LoadoutSelection
+  _loadoutSceneName: 6_BETA_LoadoutSelection
 --- !u!1 &720727467
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,14 +800,12 @@ MonoBehaviour:
   _specialBaitWeighting: 0.5
   _tier1Weapons:
   - {fileID: 11400000, guid: 34c1a93d6ce2e9f45b973bd36719fdc1, type: 2}
-  - {fileID: 11400000, guid: 982044697c72fc04a84e011dc3416cdf, type: 2}
   _tier2Weapons: []
   _tier3Weapons: []
   _tier1Attack:
   - {fileID: 11400000, guid: f58fe4e8aa1949e489d8318041853c70, type: 2}
   - {fileID: 11400000, guid: fc294db336f08694cb0952e8f866e7b4, type: 2}
   - {fileID: 11400000, guid: cf2ab5144c2961e4a89689074585bffe, type: 2}
-  - {fileID: 11400000, guid: c864491a20f4c03468fbb910eb5d2eba, type: 2}
   _tier2Attack: []
   _tier3Attack: []
   _tier1Support:
@@ -818,10 +816,15 @@ MonoBehaviour:
   _tier1Movement:
   - {fileID: 11400000, guid: c8989ce00510e8244a8b5c5408777885, type: 2}
   - {fileID: 11400000, guid: 0c565f0eac3eb7641bbf287734f2b8ca, type: 2}
+  - {fileID: 11400000, guid: 9b8baa48bb43c564594a74755d429f68, type: 2}
   _tier2Movement: []
   _tier3Movement: []
   _junk:
   - {fileID: 11400000, guid: 0343004882d96824abcb71d4c4e57242, type: 2}
+  - {fileID: 11400000, guid: d5f478a077f6bef42a88108f9c27cdfe, type: 2}
+  - {fileID: 11400000, guid: 1669dad4d848a9f4fb6707556f9ff610, type: 2}
+  - {fileID: 11400000, guid: 633290f02b82efe4fa0b326badd044ed, type: 2}
+  - {fileID: 11400000, guid: e29d771798d3d2d428acc02661d3a7d1, type: 2}
 --- !u!1 &814783632
 GameObject:
   m_ObjectHideFlags: 0

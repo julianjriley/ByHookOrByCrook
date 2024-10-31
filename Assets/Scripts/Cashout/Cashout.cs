@@ -79,12 +79,12 @@ public class Cashout : MonoBehaviour
         GameManager.Instance.GamePersistent.Gill += intTotal;
     }
 
-    public void GoToHub()
+    public void GoToHub(string hubSceneName)
     {
         // Clear all scene persistent data (bait, caught fish, loadout) for next run
         GameManager.Instance.ResetScenePersistentData();
 
-        SceneManager.LoadScene("PROTO_Hub");
+        SceneManager.LoadScene(hubSceneName);
     }
 
     // Update is called once per frame

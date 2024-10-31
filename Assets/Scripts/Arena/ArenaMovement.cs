@@ -64,7 +64,7 @@ public class ArenaMovement : MonoBehaviour
     [SerializeField, Tooltip("How Fast the player Dashes")]
     private float _dashSpeed = 24f;
     [SerializeField, Tooltip("How Far the player Dashes")]
-    public float dashDistance = 0.2f;
+    public float DashDuration = 0.2f;
     //Flag for the cooldown is done so the player can press dash again
     private bool IsDashingInAir;
     [SerializeField, Tooltip("Dash With and Without Gravity can be toggled for feel")]
@@ -186,12 +186,16 @@ public class ArenaMovement : MonoBehaviour
         //If jump is relaesed pull the charcter down so it doesn't float
         if (context.canceled )
         {
-            //If character is going down with more jumps pull down
-            if (rb.velocity.y > 0 && _jumpCounterIndex < maxNumberOfJumps) {
+            //If character is going down with more jumps pull down 
+            // AND: only apply downward force burst if the player cancelled jump early
+            if (rb.velocity.y > 0 && _jumpCounterIndex < maxNumberOfJumps && jumpDurrationTimer < jumpDurrationMaxTime) {
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(Vector2.down *_jummpCancelForce , ForceMode.Impulse);
                 _coyoteTimer = 0f;
             }
+
+            // ensure we start applyingprocessing falling speed
+            jumpDurrationTimer = jumpDurrationMaxTime;
         }
        
     }
@@ -210,11 +214,11 @@ public class ArenaMovement : MonoBehaviour
         //Durration while space is held
         if (jumpDurrationTimer < jumpDurrationMaxTime && jumpDurrationTimer > 0)
         {
-            rb.useGravity = false;
+            //rb.useGravity = false;
         }
         else
         {
-            rb.useGravity = true;
+            //rb.useGravity = true;
             rb.AddForce(Vector2.down * jumpFallingForce, ForceMode.Force);
         }
 
@@ -250,7 +254,7 @@ public class ArenaMovement : MonoBehaviour
         }
 
         //Fall Speed Force downward
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < 0 || jumpDurrationTimer > jumpDurrationMaxTime)
         {
            rb.AddForce(Vector2.down * jumpFallingForce, ForceMode.Force);
 
@@ -340,7 +344,7 @@ public class ArenaMovement : MonoBehaviour
             _anim.SetBool("IsMoving", true);
             SoundManager.Instance.PlayOneShot(dashSound, gameObject.transform.position);
             rb.velocity = new Vector2(transform.localScale.x * _dashSpeed * leftOrRightOrrientation * dashDirection, 0f);
-            yield return new WaitForSeconds(dashDistance);
+            yield return new WaitForSeconds(DashDuration);
             _anim.SetBool("IsMoving", false);
 
             //Reset Values/Flags after to original state
