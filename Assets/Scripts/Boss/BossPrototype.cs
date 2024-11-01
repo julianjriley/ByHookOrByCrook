@@ -58,7 +58,7 @@ public class BossPrototype : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
         if (!_defeated) {
             Move();
