@@ -25,4 +25,13 @@ public class CirclingTarget : MonoBehaviour
         float yPos = Mathf.Sin(_timeCounter * Speed * _direction);
         transform.position = new Vector3((xPos * Radius) + _xOffset, (yPos * Radius) + _yOffset, transform.position.z); //offset value change by current x and y values
     }
+
+    /// <summary>
+    /// Updates origin around which target circles.
+    /// </summary>
+    public void SetNewCenter(float newX, float newY)
+    {
+        _xOffset = newX;
+        _yOffset = newY;
+    }
 }
