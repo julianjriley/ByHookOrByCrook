@@ -50,7 +50,7 @@ public class BossPrototype : MonoBehaviour
         _target = GameObject.Find("Boss Target").GetComponent<Transform>();
         _defaultTarget = _target;
         PhaseSwitch();
-        Debug.Log("Phase Counter = " + _phaseCounter);
+        //Debug.Log("Phase Counter = " + _phaseCounter);
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         _renderer = GetComponent<SpriteRenderer>();
 
@@ -68,7 +68,7 @@ public class BossPrototype : MonoBehaviour
             } else if (_phaseCounter == _phases.Length - 1) { 
                 return; //if it's the last phase, don't check ahead and avoid error
             } else if (BossHealth < _phases[_phaseCounter + 1].Threshold) {
-                Debug.Log("Initiating new phase");
+                //Debug.Log("Initiating new phase");
                 _phaseCounter++; //if under next phase Threshold meet, up the phase counter and switch phases
                 PhaseSwitch();
             }

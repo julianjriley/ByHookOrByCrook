@@ -34,7 +34,7 @@ public class BossTargetRepositioner : MonoBehaviour
 
         if (_currentTargetTransform != null) {
             //_currentTargetTransform.localPosition = Vector3.zero;
-            Debug.Log("CurrentTargetTransform != null");
+            //Debug.Log("CurrentTargetTransform != null");
             if (_bounds.bounds.Contains(_currentTargetTransform.GetChild(0).position) != true) { //if target goes outside of bounds, regenerate a new one and restart the invokerepeating
                 StopCoroutine(_lerpScale);
                 StopCoroutine(_lerpRotation);
@@ -63,7 +63,7 @@ public class BossTargetRepositioner : MonoBehaviour
         //check if position of new target is in the bounds
         //BUG: I think if it keeps generating targets that our out of bounds, it overloads the stack
         if (_bounds.bounds.Contains(newTransform.GetChild(0).position) != true) {
-            Debug.Log("Target outside of bounds, making new target");
+            //Debug.Log("Target outside of bounds, making new target");
             MakeNewTarget();
             Destroy(newTarget);
             return;
