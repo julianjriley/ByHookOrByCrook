@@ -14,37 +14,59 @@ public class BouncyMiku : Projectile
     private float _force;
 
     private Vector3 currentPosition;
+    public GameObject _topright;
+    public GameObject _bottomleft;
+    private RaycastHit[] _hitArray;
+    private Ray ray;
+    
+    private LayerMask _layer = LayerMask.GetMask("MikuWall");
     // TODO: Get boundaries of screen
     // TODO: Make projectile bounce within those boundaries
 
-    void Start()
+    override protected void Start()
     {
         base.Start();
 
         //SetBoundaries();
 
-        direction = Vector3.up * _force;
+        direction = Vector3.right;
+        _rb.velocity = transform.right * _speed;
     }
 
-    // Update is called once per frame
-    private void FixedUpdate()
+    override protected void OnCollisionEnter(Collision collision)
     {
-        _rb.AddForce(direction, ForceMode.Force);
+        base.OnCollisionEnter(collision);
+        _hitArray = Physics.RaycastAll(ray, direction, _layer);
 
-        if(currentPosition.x < 0 || currentPosition.x > Screen.width || currentPosition.y < 0 || currentPosition.y > Screen.height)
+        foreach (RaycastHit hit in _hitArray)
         {
-            direction = Vector3.Reflect(_rb.velocity, direction);
+            if (hit.transform.CompareTag("MikuWall"))
+            {
+                direction = Vector3.Reflect(_rb.velocity * _speed, direction); // change direction
+            }
         }
-
     }
 
-    void SetBoundaries()
-    {
-        _rightTop.transform.position = Camera.main.WorldToViewportPoint(new Vector3(1,1,0));
-        _leftTop.transform.position = Camera.main.WorldToViewportPoint(new Vector3(0, 1, 0));
-        _rightBottom.transform.position = Camera.main.WorldToViewportPoint(new Vector3(1,0,0));
-        _leftBottom.transform.position = Camera.main.WorldToViewportPoint(new Vector3(0,0,0));
 
+    //// Update is called once per frame
+    //private void FixedUpdate()
+    //{
+    //    if (currentPosition.x < 0 || currentPosition.x > Screen.width || currentPosition.y < 0 || currentPosition.y > Screen.height)
+    //    {
+    //       
+    //        _rb.AddForce(Vector3.Reflect(_rb.velocity * _speed, direction), ForceMode.Force);
+    //    }
+    //    _rb.AddForce(Vector3.down, ForceMode.Force);
+    //}
 
-    }
+    //void SetBoundaries()
+    //{
+    //    Vector3 point = new Vector3();
+
+    //    point = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,Screen.height, Camera.main.nearClipPlane));
+    //    _topright.transform.position = point;
+
+    //    point = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane));
+    //    _topright.transform.position = point;
+    //}
 }
