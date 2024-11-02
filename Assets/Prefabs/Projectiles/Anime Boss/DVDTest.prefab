@@ -120,7 +120,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -166,9 +166,7 @@ MonoBehaviour:
   _damage: 1
   _baseDamage: 0
   _size: 1
-  _speed: 4
-  _lifetime: 10
+  _speed: 5
+  _lifetime: 30
   _health: 1
-  _force: 4
-  _topright: {fileID: 7075595522131476954, guid: ed8df404b204d3e449d979e6674eaeee, type: 3}
-  _bottomleft: {fileID: 973747073948396947, guid: 5c9a59126b44ccd4ebb2650d38acb599, type: 3}
+  _force: 6
