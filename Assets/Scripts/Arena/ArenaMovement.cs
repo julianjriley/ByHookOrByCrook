@@ -91,6 +91,11 @@ public class ArenaMovement : MonoBehaviour
     //Player Components
     private Rigidbody rb;
     private Collider _collider;
+    private PlayerCombat _playerCombat;
+
+
+    //Buff Specific Variables
+    public bool dashRestricted = false; 
 
     //Platform Notifier
     public float GoThroughPlatforms;
@@ -102,6 +107,7 @@ public class ArenaMovement : MonoBehaviour
         _anim = GetComponent<Animator>();
         _sr = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider>();
+        _playerCombat = GetComponent<PlayerCombat>();
 
         //Set Global variables
         _jumpCounterIndex = maxNumberOfJumps;
@@ -315,7 +321,7 @@ public class ArenaMovement : MonoBehaviour
         //Flag for the cooldown is done so the player can press dash again
             //As well as there's a dashCount for amount of dashes that can be done in succesion
             //How long it takes for the play to press dash agian (Used so the player can't spam the button)
-        if (!IsDashingInAir && _dashCount > 0)
+        if (!IsDashingInAir && _dashCount > 0 && !dashRestricted)
             StartCoroutine(Dash());
     }
 
@@ -344,6 +350,7 @@ public class ArenaMovement : MonoBehaviour
             _anim.SetBool("IsMoving", true);
             SoundManager.Instance.PlayOneShot(dashSound, gameObject.transform.position);
             rb.velocity = new Vector2(transform.localScale.x * _dashSpeed * leftOrRightOrrientation * dashDirection, 0f);
+            _playerCombat.InvincibleDash(DashDuration - 0.3f);
             yield return new WaitForSeconds(DashDuration);
             _anim.SetBool("IsMoving", false);
 
