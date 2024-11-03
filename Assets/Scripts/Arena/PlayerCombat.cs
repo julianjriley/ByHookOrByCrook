@@ -118,7 +118,7 @@ public class PlayerCombat : MonoBehaviour
         //AddItemToPlayer(defaultWeapon);
 
         //Can Be gotten rid of whenever
-        AddItemToPlayer(testWeapon2);
+        //AddItemToPlayer(testWeapon2);
 
         StartCoroutine(EnableStartingWeaponVisual());
         
