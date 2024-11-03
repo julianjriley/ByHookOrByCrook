@@ -2274,7 +2274,7 @@ GameObject:
   - component: {fileID: 1076660034506469117}
   m_Layer: 11
   m_Name: Ceiling
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2500,8 +2500,7 @@ MonoBehaviour:
     StartDelay: 1.5
     RepeatRate: 5
     AttackPrefabs:
-    - {fileID: 2123999255432267849, guid: 66f8bc184e1252f4591f60b6e1760125, type: 3}
-    - {fileID: 7378992784451185382, guid: d1f8d128c611dfa41ad72be2c28cb4c2, type: 3}
+    - {fileID: 7378992784451185382, guid: a9f4712dd3f5c8746b48e8dfb37a0ccc, type: 3}
   - Threshold: 50
     StartEvent:
       m_PersistentCalls:

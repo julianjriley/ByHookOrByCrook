@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7151161189939041623}
   - component: {fileID: 5308727306712629826}
   - component: {fileID: 3717053446057670138}
-  - component: {fileID: 2522131353199799858}
+  - component: {fileID: -3825279290709488291}
   m_Layer: 8
   m_Name: LoveLetter
   m_TagString: Untagged
@@ -126,7 +126,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 64
   m_CollisionDetection: 1
 --- !u!136 &3717053446057670138
 CapsuleCollider:
@@ -151,7 +151,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2522131353199799858
+--- !u!114 &-3825279290709488291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,12 +160,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3147431625062083812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcc0b44fbff76df49ba72104a7708653, type: 3}
+  m_Script: {fileID: 11500000, guid: b2265c6453d380c41aa29e379be67b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _baseDamage: 0
+  _baseDamage: 1
   _size: 1
-  _speed: 5
-  _lifetime: 30
-  _health: 1
+  _speed: 4
+  _lifetime: 6
+  _health: 5
+  _timeTillExplosion: 3
+  _maxDistance: 2
