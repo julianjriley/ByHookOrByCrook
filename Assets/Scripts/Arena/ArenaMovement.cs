@@ -350,7 +350,7 @@ public class ArenaMovement : MonoBehaviour
             _anim.SetBool("IsMoving", true);
             SoundManager.Instance.PlayOneShot(dashSound, gameObject.transform.position);
             rb.velocity = new Vector2(transform.localScale.x * _dashSpeed * leftOrRightOrrientation * dashDirection, 0f);
-            _playerCombat.InvincibleDash(DashDuration - 0.3f);
+            _playerCombat.InvincibleDash(DashDuration - 0.1f);
             yield return new WaitForSeconds(DashDuration);
             _anim.SetBool("IsMoving", false);
 

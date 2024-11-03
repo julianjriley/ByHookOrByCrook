@@ -8,5 +8,6 @@ public class Brickfish : PassiveItemInstance
     {
         base.ItemEffect();
         _player.BaseHealth *= 2;
+        _player.ActivateBrickfish();
     }
 }
