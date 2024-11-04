@@ -84,6 +84,13 @@ public class GameManager : MonoBehaviour
     {
         ScenePersistentData newScenePersistent = new ScenePersistentData();
 
+        //Reset All Gun Stats
+        foreach(Item item in _scenePersistent.Loadout)
+        {
+            if(item is Weapon)
+                (item as Weapon).ResetStats();
+        }
+
         // Initialize default values for scene persistent data
         newScenePersistent.BaitList = new List<BaitType>();
         newScenePersistent.CaughtFish = new List<Item>();
