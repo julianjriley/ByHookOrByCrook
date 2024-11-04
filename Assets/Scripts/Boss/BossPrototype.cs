@@ -164,7 +164,7 @@ public class BossPrototype : MonoBehaviour
             return;
         }
         _lastChosenAttack = rand;
-        Debug.Log("last chosen attack = " + _lastChosenAttack);
+        //Debug.Log("last chosen attack = " + _lastChosenAttack);
         choice = _phases[phaseNum].AttackPrefabs[rand];
     }
 

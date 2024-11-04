@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: _isHoppingRight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5565403296360854682, guid: 431ab02f3cd0c4f43946850275859401, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565403296360854682, guid: 431ab02f3cd0c4f43946850275859401, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1669246187
+      objectReference: {fileID: 0}
     - target: {fileID: 5824145095176316402, guid: 431ab02f3cd0c4f43946850275859401, type: 3}
       propertyPath: m_Name
       value: Frog (Left)
