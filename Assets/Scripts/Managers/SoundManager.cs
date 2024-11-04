@@ -13,25 +13,32 @@ public class SoundManager : MonoBehaviour
 
     public List<EventInstance> eventInstances;
 
-    public static SoundManager Instance { get; private set; }
+    // private singleton instance
+    private static SoundManager _instance;
 
-    private void Awake()
+    // public accessor of instance
+    public static SoundManager Instance
     {
-        if (Instance != null)
+        get
         {
-            Debug.LogError("Found more than one Audio Manager in the scene.");
+            // setup SoundManager as a singleton class
+            if (_instance == null)
+            {
+                // create new game manager object
+                GameObject newManager = new();
+                newManager.name = "Sound Manager";
+                newManager.AddComponent<SoundManager>();
+                DontDestroyOnLoad(newManager);
+                _instance = newManager.GetComponent<SoundManager>();
+                
+                // some setup for sound instances list
+                _instance.eventInstances = new List<EventInstance>();
+            }
+            // return new/existing instance
+            return _instance;
         }
-        Instance = this;
-
-        eventInstances = new List<EventInstance>();
-        
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
-    }
     public EventInstance CreateInstance(EventReference eventReference)
     {
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
@@ -71,12 +78,6 @@ public class SoundManager : MonoBehaviour
     {
         ambienceEventInstance = CreateInstance(ambienceEventReference);
         ambienceEventInstance.start();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void CleanUp()

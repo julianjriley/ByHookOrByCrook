@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
+  m_Name: Dolphin
+  m_EditorClassIdentifier: 
+  _itemID: 6
+  _itemName: Dolphin
+  _itemDescription: Increased Move Speed. Gotta Go Fast
+  _sprite: {fileID: 21300000, guid: 458d347eada876c45a77ca87a4da4a8d, type: 3}
+  _itemPrefab: {fileID: 2392109855590519132, guid: f62b759ad8e89294ea9986f14fe5c9bf, type: 3}
+  _cost: 40

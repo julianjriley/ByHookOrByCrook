@@ -7,11 +7,12 @@ using UnityEngine;
 /// </summary>
 public class GalagaShip : Projectile
 {
-    [SerializeField, Tooltip("Duration of each movement phase.")]
+    [SerializeField, Tooltip("Duration of each movement phase. each horizontal phase is twice the duration.")]
     private float _movePhaseDuration;
 
     Vector2 _moveDir = Vector2.down;
     bool _isRightNext = true;
+    bool _isFirstDone = false;
 
     // Start is called before the first frame update
     override protected void Start()
@@ -46,7 +47,14 @@ public class GalagaShip : Projectile
         // swap from right/left to down
         else
         {
-            _moveDir = Vector2.down;
+            // ensure horizontal phases are twice as long
+            if (_isFirstDone)
+            {
+                _moveDir = Vector2.down;
+                _isFirstDone = false;
+            }
+
+            _isFirstDone = true;
         }
     }
 }

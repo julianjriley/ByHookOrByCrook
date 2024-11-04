@@ -1,6 +1,7 @@
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,7 +17,7 @@ public class PlayerCombat : MonoBehaviour
     //Stats
     [SerializeField] private int _baseHealth;
     private int _health;
-    [SerializeField] private float _baseSpeed;
+    //[SerializeField] private float _baseSpeed;
     private float _speed;
 
     //Children Transforms
@@ -35,10 +36,7 @@ public class PlayerCombat : MonoBehaviour
     int equippedWeaponindex = 0;
 
     //RottenFish Default Gun
-    [SerializeField] private Weapon defaultWeapon;
-
-    //Testing purposes, can be disposed of whenever
-    [SerializeField] private Weapon testWeapon2;
+    //[SerializeField] private Weapon defaultWeapon;
 
     //Firing Stuff
     Vector2 mousePosition;
@@ -48,12 +46,31 @@ public class PlayerCombat : MonoBehaviour
     bool _facingLeft;
 
     bool dead;
+    //Damage taking stuff
+    private bool _invulnerable;
+    private Collider _collider;
+    private LayerMask _invulnerabilityMask;
+
 
 
     public delegate void PlayerDied();
     public static event PlayerDied playerDeath;
+    public delegate void HealthChange(int health);
+    public event HealthChange HealthChanged;
+
+    //Buff Specific Variables
+    public bool useShortRangeDamage = false;
 
     [SerializeField] EventReference damageSound;
+
+#if UNITY_EDITOR 
+    [Header("Unity Editor Only")]
+    [SerializeField] PassiveItem[] testItems;
+    [SerializeField] Weapon[] testWeapons;
+#endif
+
+
+  
 
     private void OnEnable()
     {
@@ -76,8 +93,11 @@ public class PlayerCombat : MonoBehaviour
         
         ResetStats();
         _weapons = new List<WeaponInstance>();
+        playerMovement = GetComponent<ArenaMovement>();
 
-        
+        _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
+
+        _collider = GetComponent<Collider>();
 
         _inventory = new Inventory();
         foreach(Item item in GameManager.Instance.ScenePersistent.Loadout)
@@ -85,6 +105,16 @@ public class PlayerCombat : MonoBehaviour
             AddItemToPlayer(item);
         }
 
+#if UNITY_EDITOR
+        // only add testing loadout of stuff wasnt picked from loadout scene
+        if(GameManager.Instance.ScenePersistent.Loadout.Count == 0)
+        {
+            foreach (PassiveItem passiveItem in testItems)
+                AddItemToPlayer(passiveItem);
+            foreach (Weapon weapon in testWeapons)
+                AddItemToPlayer(weapon);
+        }
+#endif
         //AddItemToPlayer(defaultWeapon);
 
         //Can Be gotten rid of whenever
@@ -171,7 +201,7 @@ public class PlayerCombat : MonoBehaviour
     private void Update()
     {
         mousePosition = Mouse.current.position.ReadValue();
-        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 11));
+        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 16.745f));
         if(_equippedWeapon != null)
             _equippedWeapon.SetAim(weaponDirection);
         if (worldPos.x < gameObject.transform.position.x)
@@ -215,7 +245,10 @@ public class PlayerCombat : MonoBehaviour
     public float Speed
     {
         get { return _speed; }
-        set { _speed = value; }
+        set { 
+                _speed = value;
+                playerMovement.MaxSpeed = value;
+            }
     }
 
     public int Health
@@ -226,12 +259,21 @@ public class PlayerCombat : MonoBehaviour
 
     public void TakeDamageLikeAGoodBoy()
     {
+        if (_invulnerable)
+            return;
         Health -= 1;
         SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
+        HealthChanged?.Invoke(Health);
+        
         if(Health <= 0)
         {
             playerDeath.Invoke();
         }
+        else
+        {
+            StartCoroutine(InvulnerabilityWindow());
+        }
+       
     }
 
     public Transform GetWeaponsTransform()
@@ -244,10 +286,20 @@ public class PlayerCombat : MonoBehaviour
         return _passivesTransform;
     }
 
+    public Inventory GetInventory()
+    {
+        return _inventory;
+    }
+
+    public ArenaMovement GetPlayerMovement()
+    {
+        return playerMovement;
+    }
+
     void ResetStats()
     {
         _health = _baseHealth;
-        _speed = _baseSpeed;
+        //_speed = _baseSpeed;
     }
 
     public void AppendItemToPassiveInstances(GameObject prefab)
@@ -271,6 +323,7 @@ public class PlayerCombat : MonoBehaviour
         {
             _inventory.AddItem(theItem);
             (theItem as Weapon).SetPlayer(this);
+            
         }
     }
 
@@ -278,6 +331,8 @@ public class PlayerCombat : MonoBehaviour
     
     IEnumerator EnableStartingWeaponVisual()
     {
+        if (_weaponsTransform.childCount < 1)
+            yield break;
         yield return new WaitForSeconds(0.1f);
         foreach (WeaponInstance weaponInstance in _weaponsTransform.GetComponentsInChildren<WeaponInstance>())
         {
@@ -287,5 +342,13 @@ public class PlayerCombat : MonoBehaviour
         _equippedWeapon.EnableRendering();
     }
 
+    IEnumerator InvulnerabilityWindow()
+    {
+        _invulnerable = true;
+        _collider.excludeLayers = _invulnerabilityMask;
+        yield return new WaitForSeconds(1);
+        _collider.excludeLayers = 0;
+        _invulnerable = false;
+    }
 
 }
