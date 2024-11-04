@@ -11,6 +11,8 @@ public class Bird : Projectile
     [Header("Bird Movement")]
     [SerializeField, Tooltip("horizontal distance from the center of the screen at which the bird will turn around")]
     private float _turnAroundDistance;
+    [SerializeField, Tooltip("whether the bird is flying right by default.")]
+    private bool _isFlyingRight;
     [SerializeField, Tooltip("Used for flipping sprite on turn around")]
     private SpriteRenderer _renderer;
 
@@ -45,8 +47,10 @@ public class Bird : Projectile
 
         // ensure gravity is disabled
         _rb.useGravity = false;
-        // set initial velocity
-        _rb.velocity = transform.right * _speed;
+
+        // set initial velocity and sprite direction
+        _renderer.flipX = !_isFlyingRight;
+        _rb.velocity = (_isFlyingRight ? 1 : -1) * transform.right * _speed;
 
         // no delay on initial dropping
         _spawnDelayTimer = _spawnDelayInterval.y;
@@ -72,6 +76,7 @@ public class Bird : Projectile
             // set sprite scale and velocity
             _renderer.flipX = true;
             _rb.velocity = -transform.right * _speed;
+            _isFlyingRight = false;
         }
         // turn right at left edge
         else if (_rb.position.x < -_turnAroundDistance)
@@ -79,6 +84,7 @@ public class Bird : Projectile
             // set sprite scale and velocity
             _renderer.flipX = false;
             _rb.velocity = transform.right * _speed;
+            _isFlyingRight = true;
         }
     }
 

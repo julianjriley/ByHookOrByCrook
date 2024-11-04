@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9205754366837232019}
   m_Layer: 8
-  m_Name: Bird
+  m_Name: Bird (Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,10 +114,11 @@ MonoBehaviour:
   _damage: 1
   _baseDamage: 1
   _size: 1
-  _speed: 2
+  _speed: 3
   _lifetime: -1
   _health: 4
   _turnAroundDistance: 15
+  _isFlyingRight: 1
   _renderer: {fileID: 3287847125607731142}
   _droppingPrefab: {fileID: 5299787899045936185, guid: ff1a85a5751061646a2da029fc785512, type: 3}
   _defecationLocation: {fileID: 4938514379716408499}
