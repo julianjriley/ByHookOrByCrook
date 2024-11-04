@@ -148,14 +148,7 @@ public class BossPrototype : MonoBehaviour
         //random choosing
         //Debug.Log("phasecounter = " + _phaseCounter);
         GameObject chosenAttack = _phases[0].AttackPrefabs[0]; //default that will be overwritten
-        switch (_phaseCounter) {
-            case 0:
-                ChooseAttack(ref chosenAttack, 0); //pass in a reference to chosenAttack and the phase #
-            break;
-            case 1:
-                ChooseAttack(ref chosenAttack, 1);
-            break;
-        }
+        ChooseAttack(ref chosenAttack, _phaseCounter);
         //Debug.Log("Instantiating: " + chosenAttack.name);
         Instantiate(chosenAttack, _spawnLocation);
     }
@@ -171,7 +164,7 @@ public class BossPrototype : MonoBehaviour
             return;
         }
         _lastChosenAttack = rand;
-        //Debug.Log("last chosen attack = " + _lastChosenAttack);
+        Debug.Log("last chosen attack = " + _lastChosenAttack);
         choice = _phases[phaseNum].AttackPrefabs[rand];
     }
 

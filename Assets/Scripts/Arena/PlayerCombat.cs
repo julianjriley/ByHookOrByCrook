@@ -178,7 +178,7 @@ public class PlayerCombat : MonoBehaviour
             FireFunctionality();
         }
             
-        Debug.Log(equippedWeaponindex);
+        //Debug.Log(equippedWeaponindex);
 
     }
 

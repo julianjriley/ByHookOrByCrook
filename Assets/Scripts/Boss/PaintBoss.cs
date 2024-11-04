@@ -84,16 +84,9 @@ public class PaintBoss : BossPrototype
     {
         //random choosing
         GameObject chosenAttack = _phases[0].AttackPrefabs[0]; //default that will be overwritten
-        switch (_phaseCounter)
-        {
-            case 0:
-                ChooseAttack(ref chosenAttack, 0); //pass in a reference to chosenAttack and the phase #
-                break;
-            case 1:
-                ChooseAttack(ref chosenAttack, 1);
-                break;
-        }
+        ChooseAttack(ref chosenAttack, _phaseCounter);
 
+        // create attack
         GameObject attack = Instantiate(chosenAttack, _spawnLocation);
 
         // Add object to spawners list ONLY if it is a PainterlySpawner (i.e. ignore ink portals)
