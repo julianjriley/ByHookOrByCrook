@@ -23,11 +23,11 @@ public class BossPrototype : MonoBehaviour
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
     public float MaxBossHealth;
-    private int _phaseCounter = 0;
+    protected private int _phaseCounter = 0;
     private bool _defeated = false;
-    private Transform _spawnLocation;
+    protected private Transform _spawnLocation;
     [SerializeField]
-    private PhaseInfo[] _phases;
+    protected private PhaseInfo[] _phases;
     private int _lastChosenAttack = -1;
 
     [Header ("Boss SFX")]
@@ -43,7 +43,7 @@ public class BossPrototype : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();
@@ -58,7 +58,7 @@ public class BossPrototype : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
         if (!_defeated) {
             Move();
@@ -133,7 +133,7 @@ public class BossPrototype : MonoBehaviour
         _checkingSwap = false;
     }
 
-    void AttackLogic() {
+    virtual protected void AttackLogic() {
         //random choosing
         //Debug.Log("phasecounter = " + _phaseCounter);
         GameObject chosenAttack = _phases[0].AttackPrefabs[0]; //default that will be overwritten
@@ -149,11 +149,11 @@ public class BossPrototype : MonoBehaviour
         Instantiate(chosenAttack, _spawnLocation);
     }
 
-    public void SpawnAttackOnce(GameObject gameObj) {
+    public virtual void SpawnAttackOnce(GameObject gameObj) {
         Instantiate(gameObj, _spawnLocation);
     }
 
-    void ChooseAttack(ref GameObject choice, int phaseNum) {
+    protected void ChooseAttack(ref GameObject choice, int phaseNum) {
         int rand = UnityEngine.Random.Range(0, _phases[phaseNum].AttackPrefabs.Length); //special attack
         if (rand == _lastChosenAttack && _phases[phaseNum].AttackPrefabs.Length > 1) { //avoid choosing the same attack if there is more than 1 option
             ChooseAttack(ref choice, phaseNum);

@@ -63,7 +63,7 @@ public class BossTargetRepositioner : MonoBehaviour
         //check if position of new target is in the bounds
         //BUG: I think if it keeps generating targets that our out of bounds, it overloads the stack
         if (_bounds.bounds.Contains(newTransform.GetChild(0).position) != true) {
-            Debug.Log("Target outside of bounds, making new target");
+            //Debug.Log("Target outside of bounds, making new target");
             MakeNewTarget();
             Destroy(newTarget);
             return;
