@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles hopping motion of frog 'enemy' on random intervals
+/// </summary>
 public class HoppingFrog : Projectile
 {
     [SerializeField, Tooltip("Velocity at which frog hops each step at.")]
@@ -59,7 +62,7 @@ public class HoppingFrog : Projectile
             Invoke("Hop", Random.Range(_hopDelayInterval.x, _hopDelayInterval.y));
         }
         else
-            _hopStartTimer += Time.deltaTime; // to make sure frog is not instantly grounded when it starts jumping
+            _hopStartTimer += Time.fixedDeltaTime; // to make sure frog is not instantly grounded when it starts jumping
     }
 
     private void Hop()
