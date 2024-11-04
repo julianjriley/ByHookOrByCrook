@@ -54,7 +54,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
         if(_playerCombat != null)
         {
