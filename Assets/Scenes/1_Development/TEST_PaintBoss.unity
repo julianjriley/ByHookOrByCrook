@@ -2096,6 +2096,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1415612301997833308, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: _paintingTarget
       value: 
@@ -2111,6 +2115,30 @@ PrefabInstance:
     - target: {fileID: 3695964017896055347, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: m_Name
       value: Paint Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213038031034226478, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213038031034226478, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213038031034226478, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487432822219608408, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487432822219608408, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487432822219608408, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8615570964884101335, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: m_RootOrder
