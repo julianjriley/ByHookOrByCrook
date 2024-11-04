@@ -2009,7 +2009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: _phases.Array.data[0].AttackPrefabs.Array.size
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[0]
@@ -2035,6 +2035,30 @@ PrefabInstance:
       propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[5]
       value: 
       objectReference: {fileID: 3806577360476351805, guid: 45c4655b9dd3a1c43bbaa5565a859fb6, type: 3}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 5105178758937047329, guid: b6337ba59e43f5a42a1a82ad5d6187be, type: 3}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 2063246374788781618, guid: 6dcce72a0d90b6d4596fbdfb1ea6f1a9, type: 3}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 2051226306448543378, guid: d222b30d0355b814c99c04c0d8c928ed, type: 3}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 3280511294006090596, guid: 4520a45f82ec53c42a6177d093c86da4, type: 3}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 2871260702754699802, guid: 2b8fef7d94201e046bde43a48fc0311d, type: 3}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[11]
+      value: 
+      objectReference: {fileID: 6765333738582648175, guid: 999c6a7ebc8c3ee40b59e5683f500e02, type: 3}
     - target: {fileID: 3695964017896055347, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: m_Name
       value: Paint Boss
