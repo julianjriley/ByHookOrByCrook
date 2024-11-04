@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bird (Left) Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3287847125607731142, guid: ac1853530ecb40d458b485102556f14f, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8941547074034424146, guid: ac1853530ecb40d458b485102556f14f, type: 3}
       propertyPath: _isFlyingRight
       value: 0
