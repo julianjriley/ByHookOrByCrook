@@ -51,6 +51,7 @@ public class BossPrototype : MonoBehaviour
         _target = GameObject.Find("Boss Target").GetComponent<Transform>();
         _defaultTarget = _target;
         _defaultSpeed = Speed;
+        MaxBossHealth = BossHealth;
         PhaseSwitch();
         //Debug.Log("Phase Counter = " + _phaseCounter);
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
