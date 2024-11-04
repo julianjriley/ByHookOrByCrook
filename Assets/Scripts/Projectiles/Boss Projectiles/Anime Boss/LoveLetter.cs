@@ -47,6 +47,8 @@ public class LoveLetter : Projectile
         }
         else
         {
+            // TODO: MAKE RADIUS 
+
             // cause damage
             _player.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
             _hasExploded = true;

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+/// <summary>
+/// Note: Ground needs a CHILD gameobject with a box collider with a Layer set to MikuWall.
+/// </summary>
 public class BouncyMiku : Projectile
 {
     private Vector3 _direction;
@@ -20,7 +22,7 @@ public class BouncyMiku : Projectile
     {
         base.OnCollisionEnter(collision);
 
-        if (collision.transform.gameObject.layer == 11)
+        if (collision.gameObject.CompareTag("Ground") || collision.transform.gameObject.layer == 11)
         {
             if(collision.gameObject.name == "Wall")
             {
@@ -32,5 +34,23 @@ public class BouncyMiku : Projectile
             }
             _rb.velocity = _direction * _speed;
         }
-    } 
+    }
+
+    override protected void OnTriggerEnter(Collider collider)
+    {
+        base.OnTriggerEnter(collider);
+
+        if (collider.gameObject.CompareTag("Ground") || collider.transform.gameObject.layer == 11)
+        {
+            if (collider.gameObject.name == "Wall")
+            {
+                _direction.x *= -1;
+            }
+            else
+            {
+                _direction.y *= -1;
+            }
+            _rb.velocity = _direction * _speed;
+        }
+    }
 }
