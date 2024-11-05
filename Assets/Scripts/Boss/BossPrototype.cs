@@ -5,20 +5,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using static Unity.Mathematics.math;
 
 [RequireComponent(typeof(Rigidbody))]
 
 public class BossPrototype : MonoBehaviour
 {
     [Header ("Boss Movement")]
-    private Transform _target;
+    protected Transform _target;
     private Transform _defaultTarget;
     protected Rigidbody _rb;
     public float Speed = 50f;
     private bool _right = true;
-    private bool _checkingSwap = false;
+    protected bool _checkingSwap = false;
     public Transform _playerTransform;
-    private SpriteRenderer _renderer;
+    private protected SpriteRenderer _renderer;
 
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
@@ -76,7 +77,7 @@ public class BossPrototype : MonoBehaviour
         } 
     }
 
-    void Move() {
+    public virtual void Move() {
         if (_rb == null) {
             Debug.Log("No rigidbody");
             return;
@@ -85,9 +86,16 @@ public class BossPrototype : MonoBehaviour
             Debug.Log("No target");
             return;
         }
-        if (Mathf.Abs(_rb.velocity.x) < 13) {
-            transform.rotation = Quaternion.Euler(_rb.velocity.x, 0f, 0f);
+        
+        //makes the boss lean in the direction it's heading
+        //flipX has to be considered in testing
+        float rotationVal = remap(-13, 13, 20, -20, _rb.velocity.x);
+        if (_renderer.flipX == false) {
+            transform.rotation = Quaternion.Euler(rotationVal, 0f, 0f);
+        } else {
+            transform.rotation = Quaternion.Euler(-rotationVal, 0f, 0f);
         }
+            
         Debug.Log("Rigidbody velocity = " + _rb.velocity);
         _rb.AddForce((_target.position - transform.position).normalized * Speed, ForceMode.Force);
         if (!(_checkingSwap)) { //ensure only one check is happening at a time
@@ -115,7 +123,7 @@ public class BossPrototype : MonoBehaviour
         _target = _defaultTarget;
     }
 
-    void SpriteSwapCheck() {
+    protected void SpriteSwapCheck() {
         //Debug.Log("_right = " + _right);
         if (transform.position.x >= _playerTransform.position.x) { //if boss is on the right of player
             if (_right == false) { //and was just on the left

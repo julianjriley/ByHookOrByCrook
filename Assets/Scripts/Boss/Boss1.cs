@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 public class Boss1 : BossPrototype
 {
@@ -22,12 +23,13 @@ public class Boss1 : BossPrototype
     private Transform _spriteTransform;
     private BossTargetRepositioner _targetRepositioner;
     private CapsuleCollider _capsule;
+    private bool _isDrilling = false;
+
     void Start() {
         base.Start();
         _anim = GetComponent<Animator>();
         _capsule = GetComponent<CapsuleCollider>();
         _targetRepositioner = GameObject.Find("BossTargetRepositioner").GetComponent<BossTargetRepositioner>();
-        StartCharging();
     }
 
     public void StartCharging() {
@@ -54,7 +56,37 @@ public class Boss1 : BossPrototype
             }
         }
     }
-    IEnumerator LeftCharge() { //yield return new WaitForSeconds(rand);
+    public override void Move() {
+        if (_rb == null) {
+            Debug.Log("No rigidbody");
+            return;
+        }
+        if (_target == null) {
+            Debug.Log("No target");
+            return;
+        }
+        //if (Mathf.Abs(_rb.velocity.x) < 13) {
+        if (!_isDrilling) {
+            
+            float rotationVal = remap(-13, 13, 20, -20, _rb.velocity.x);
+            if (_renderer.flipX == false) {
+                transform.rotation = Quaternion.Euler(rotationVal, 0f, 0f);
+            } else {
+                transform.rotation = Quaternion.Euler(-rotationVal, 0f, 0f);
+            }
+            
+        }
+            //transform.rotation = Quaternion.Euler(_rb.velocity.x * 2, 0f, 0f); //Vector3.Magnitude(
+        //}
+        Debug.Log("Rigidbody velocity = " + _rb.velocity);
+        _rb.AddForce((_target.position - transform.position).normalized * Speed, ForceMode.Force);
+        if (!(_checkingSwap)) { //ensure only one check is happening at a time
+            SpriteSwapCheck();
+        } 
+    }
+
+    //no longer in use, see function below this one
+    /*IEnumerator LeftCharge() { //yield return new WaitForSeconds(rand);
         SetNewTarget(AboveLeft, -1);
         yield return new WaitForSeconds(0.5f);
         //adjust capsule collider to fit drill
@@ -82,10 +114,8 @@ public class Boss1 : BossPrototype
         yield return new WaitForSeconds(0.2f);
         _anim.SetBool("drillOut", false);
         _targetRepositioner.NewBossTarget(0, 16);
-    }
-    //IEnumerator RightCharge() {
-        //yield return new WaitForSeconds(0.5f);
-    //}
+    }*/
+    
     public IEnumerator ChargeLogic(Transform target1, Transform target2, Transform target3, Transform target4, int rotation, int scale) {
         //this function changes the bosses' targets to make it charge across the screen
         SetNewTarget(target1, -1);
@@ -96,6 +126,7 @@ public class Boss1 : BossPrototype
 
         SetNewTarget(target2, -1);
         yield return new WaitForSeconds(2f);
+        _isDrilling = true;
         //disable portal children bc drill animation includes the portal
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(false);
@@ -117,6 +148,7 @@ public class Boss1 : BossPrototype
         _anim.SetBool("drillIn", false);
         _anim.SetBool("drill", false);
         yield return new WaitForSeconds(0.2f);
+        _isDrilling = false;
         _anim.SetBool("drillOut", false);
         _targetRepositioner.NewBossTarget(rotation, scale);
         yield return new WaitForSeconds(0.4f);
