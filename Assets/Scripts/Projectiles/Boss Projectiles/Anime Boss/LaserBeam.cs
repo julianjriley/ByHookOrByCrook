@@ -13,7 +13,7 @@ public class LaserBeam : Projectile
         base.Start();
         // TODO: When Spawned, set pivot to bosss and SPIN
         transform.position = _pivotPoint.GetComponent<Transform>().position;
-        _rb.AddTorque(new Vector3(0, 0, _zForce), ForceMode.Impulse);
+        _rb.AddTorque(new Vector3(0, 0, _zForce), ForceMode.VelocityChange);
     }
 
     override protected void OnTriggerEnter(Collider collider)

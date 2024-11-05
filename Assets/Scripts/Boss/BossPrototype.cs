@@ -153,7 +153,7 @@ public class BossPrototype : MonoBehaviour
         Instantiate(gameObj, _spawnLocation);
     }
 
-    protected void ChooseAttack(ref GameObject choice, int phaseNum) {
+        protected void ChooseAttack(ref GameObject choice, int phaseNum) {
         int rand = UnityEngine.Random.Range(0, _phases[phaseNum].AttackPrefabs.Length); //special attack
         if (rand == _lastChosenAttack && _phases[phaseNum].AttackPrefabs.Length > 1) { //avoid choosing the same attack if there is more than 1 option
             ChooseAttack(ref choice, phaseNum);
