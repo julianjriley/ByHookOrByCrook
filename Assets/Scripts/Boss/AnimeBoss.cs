@@ -50,25 +50,21 @@ public class AnimeBoss : BossPrototype
         // TODO: fix how boss doesn't move to point
         // TODO: fix how the laserbeam is spawning
         Debug.Log("Setting target at location " + _spawnLocation);
-        SetNewTarget(_spawnLocation, -1);
-        new WaitForSeconds(10);
-        SpawnLaserBeam();
+        SetNewTarget(_spawnLocation, 10f);
+        StartCoroutine(SpawnLaserBeam());
     }
 
-    private void SpawnLaserBeam()
+    IEnumerator SpawnLaserBeam()
     {
+        yield return new WaitForSeconds(3);
         Debug.Log("Spawning laser beam at " + _spawnLocation);
         
-
         for (int i = 0; i < 5; i++)
         {
             GameObject laser = Instantiate(laserbeamPrefab, _spawnLocation);
-            new WaitForSeconds(1);
+            new WaitForSeconds(2);
             laser.GetComponent<Transform>().Rotate(0,0, 10*i);
         }
-        new WaitForSeconds(15f);
-
-        //SetDefaultTarget();
     }
     override protected void AttackLogic()
     {
