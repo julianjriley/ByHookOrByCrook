@@ -135,7 +135,7 @@ public class Weapon : Item
         _projectileCount = _baseProjectileCount;
     }
 
-    void ResetStats()
+    public void ResetStats()
     {
         _damage = _baseDamage;
         _fireRate = _baseFireRate;
