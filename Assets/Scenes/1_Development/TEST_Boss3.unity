@@ -1313,6 +1313,7 @@ GameObject:
   - component: {fileID: 944371975}
   - component: {fileID: 944371977}
   - component: {fileID: 944371976}
+  - component: {fileID: 944371978}
   m_Layer: 3
   m_Name: Water
   m_TagString: Ground
@@ -1408,6 +1409,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &944371978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944371974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2a31922eaff044181c6472c884915b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _launchSpeed: 22
 --- !u!1 &996133660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,6 +1593,7 @@ MonoBehaviour:
   - You can do it, little bear!
   - We lend you our power, bear! Pierce the heavens!
   - Why the @#!$ am I so big!?
+  begin: 0
 --- !u!1 &1132279398
 GameObject:
   m_ObjectHideFlags: 0
