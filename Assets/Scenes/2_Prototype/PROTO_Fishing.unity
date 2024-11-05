@@ -800,15 +800,19 @@ MonoBehaviour:
   _specialBaitWeighting: 0.5
   _tier1Weapons:
   - {fileID: 11400000, guid: 34c1a93d6ce2e9f45b973bd36719fdc1, type: 2}
+  - {fileID: 11400000, guid: 982044697c72fc04a84e011dc3416cdf, type: 2}
   _tier2Weapons: []
   _tier3Weapons: []
   _tier1Attack:
   - {fileID: 11400000, guid: f58fe4e8aa1949e489d8318041853c70, type: 2}
   - {fileID: 11400000, guid: fc294db336f08694cb0952e8f866e7b4, type: 2}
+  - {fileID: 11400000, guid: cf2ab5144c2961e4a89689074585bffe, type: 2}
+  - {fileID: 11400000, guid: c864491a20f4c03468fbb910eb5d2eba, type: 2}
   _tier2Attack: []
   _tier3Attack: []
   _tier1Support:
   - {fileID: 11400000, guid: 67b3170d6996e554c8542845050f8f96, type: 2}
+  - {fileID: 11400000, guid: cbae0445f69e26243ab9f30476c91350, type: 2}
   _tier2Support: []
   _tier3Support: []
   _tier1Movement:

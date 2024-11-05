@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
+  m_Name: GreenArmyFish
+  m_EditorClassIdentifier: 
+  _itemID: -9932
+  _itemName: Green Army Fish
+  _itemDescription: FIRE IN THE HOLE
+  _sprite: {fileID: 167958159, guid: a33d2bac5fbe6a74e987afd45705be2d, type: 3}
+  _itemPrefab: {fileID: 5923885967642778696, guid: 7da6849b2e810bc429ca654c107549fa, type: 3}
+  _cost: 40
+  _baseDamage: 5
+  _baseFireRate: 0.5
+  _baseSize: 1
+  _baseSpeed: 10
+  _baseLifetime: 4
+  _baseHeatBuildup: 20
+  _baseCoolingSpeed: 8
+  _baseProjectileCount: 1
+  _fireSound:
+    Guid:
+      Data1: -1752919729
+      Data2: 1194486151
+      Data3: -1089694024
+      Data4: 1266214298
+    Path: event:/Combat/Guns/Curtis
