@@ -85,10 +85,13 @@ public class GameManager : MonoBehaviour
         ScenePersistentData newScenePersistent = new ScenePersistentData();
 
         //Reset All Gun Stats
-        foreach(Item item in _scenePersistent.Loadout)
+        if(_scenePersistent is not null) // ensure no issues on first loop or in editor
         {
-            if(item is Weapon)
-                (item as Weapon).ResetStats();
+            foreach (Item item in _scenePersistent.Loadout)
+            {
+                if (item is Weapon)
+                    (item as Weapon).ResetStats();
+            }
         }
 
         // Initialize default values for scene persistent data
