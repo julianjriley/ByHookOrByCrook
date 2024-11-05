@@ -85,6 +85,10 @@ public class BossPrototype : MonoBehaviour
             Debug.Log("No target");
             return;
         }
+        if (Mathf.Abs(_rb.velocity.x) < 13) {
+            transform.rotation = Quaternion.Euler(_rb.velocity.x, 0f, 0f);
+        }
+        Debug.Log("Rigidbody velocity = " + _rb.velocity);
         _rb.AddForce((_target.position - transform.position).normalized * Speed, ForceMode.Force);
         if (!(_checkingSwap)) { //ensure only one check is happening at a time
             SpriteSwapCheck();
@@ -144,16 +148,16 @@ public class BossPrototype : MonoBehaviour
 
     void AttackLogic() {
         //random choosing
-        //Debug.Log("phasecounter = " + _phaseCounter);
         GameObject chosenAttack = _phases[0].AttackPrefabs[0]; //default that will be overwritten
-        switch (_phaseCounter) {
+        /*switch (_phaseCounter) {
             case 0:
                 ChooseAttack(ref chosenAttack, 0); //pass in a reference to chosenAttack and the phase #
             break;
             case 1:
                 ChooseAttack(ref chosenAttack, 1);
             break;
-        }
+        }*/
+        ChooseAttack(ref chosenAttack, _phaseCounter);
         //Debug.Log("Instantiating: " + chosenAttack.name);
         Instantiate(chosenAttack, _spawnLocation);
     }
