@@ -122,8 +122,8 @@ MonoBehaviour:
   _renderer: {fileID: 3287847125607731142}
   _droppingPrefab: {fileID: 5299787899045936185, guid: ff1a85a5751061646a2da029fc785512, type: 3}
   _defecationLocation: {fileID: 4938514379716408499}
-  _droppingSpeed: 1
-  _spawnDelayInterval: {x: 2, y: 4}
+  _droppingSpeed: 2
+  _spawnDelayInterval: {x: 1, y: 2.5}
   _attackDistance: 1
 --- !u!54 &3471614574033692694
 Rigidbody:
