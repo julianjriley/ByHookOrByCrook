@@ -11,10 +11,11 @@ using UnityEngine.SceneManagement;
 public class BossPrototype : MonoBehaviour
 {
     [Header ("Boss Movement")]
-    private Transform _target;
+    protected Transform _target;
     private Transform _defaultTarget;
     private Rigidbody _rb;
     public float Speed = 50f;
+    private float _defaultSpeed;
     private bool _right = true;
     private bool _checkingSwap = false;
     private Transform _playerTransform;
@@ -23,11 +24,11 @@ public class BossPrototype : MonoBehaviour
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
     public float MaxBossHealth;
-    private int _phaseCounter = 0;
+    protected int _phaseCounter = 0;
     private bool _defeated = false;
-    private Transform _spawnLocation;
+    protected Transform _spawnLocation;
     [SerializeField]
-    private PhaseInfo[] _phases;
+    protected PhaseInfo[] _phases;
     private int _lastChosenAttack = -1;
 
     [Header ("Boss SFX")]
@@ -49,8 +50,10 @@ public class BossPrototype : MonoBehaviour
         _spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();
         _target = GameObject.Find("Boss Target").GetComponent<Transform>();
         _defaultTarget = _target;
+        _defaultSpeed = Speed;
+        MaxBossHealth = BossHealth;
         PhaseSwitch();
-        Debug.Log("Phase Counter = " + _phaseCounter);
+        //Debug.Log("Phase Counter = " + _phaseCounter);
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         _renderer = GetComponent<SpriteRenderer>();
 
@@ -58,7 +61,7 @@ public class BossPrototype : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
         if (!_defeated) {
             Move();
@@ -68,7 +71,7 @@ public class BossPrototype : MonoBehaviour
             } else if (_phaseCounter == _phases.Length - 1) { 
                 return; //if it's the last phase, don't check ahead and avoid error
             } else if (BossHealth < _phases[_phaseCounter + 1].Threshold) {
-                Debug.Log("Initiating new phase");
+                //Debug.Log("Initiating new phase");
                 _phaseCounter++; //if under next phase Threshold meet, up the phase counter and switch phases
                 PhaseSwitch();
             }
@@ -82,7 +85,7 @@ public class BossPrototype : MonoBehaviour
         } 
     }
 
-    public void SetNewTarget(Transform newTarget, float duration) {
+    public void SetNewTarget(Transform newTarget, float duration = -1) {
         _target = newTarget;
         StopCoroutine("ChangeTargetBack"); //ensure two resets are not counting down concurrently
         if (duration == -1) { //-1 duration means set the target indefinitely, so avoid resetting the target to default below
@@ -92,6 +95,14 @@ public class BossPrototype : MonoBehaviour
     }
     public void SetSpeed(float newSpeed) {
         Speed = newSpeed;
+    }
+
+    /// <summary>
+    /// Sets speed back to default (where it was at the start of the scene).
+    /// </summary>
+    protected void SetDefaultSpeed()
+    {
+        Speed = _defaultSpeed;
     }
 
     IEnumerator ChangeTargetBack(float duration) {
@@ -133,18 +144,11 @@ public class BossPrototype : MonoBehaviour
         _checkingSwap = false;
     }
 
-    void AttackLogic() {
+    virtual protected void AttackLogic() {
         //random choosing
         //Debug.Log("phasecounter = " + _phaseCounter);
         GameObject chosenAttack = _phases[0].AttackPrefabs[0]; //default that will be overwritten
-        switch (_phaseCounter) {
-            case 0:
-                ChooseAttack(ref chosenAttack, 0); //pass in a reference to chosenAttack and the phase #
-            break;
-            case 1:
-                ChooseAttack(ref chosenAttack, 1);
-            break;
-        }
+        ChooseAttack(ref chosenAttack, _phaseCounter);
         //Debug.Log("Instantiating: " + chosenAttack.name);
         Instantiate(chosenAttack, _spawnLocation);
     }
@@ -153,7 +157,7 @@ public class BossPrototype : MonoBehaviour
         Instantiate(gameObj, _spawnLocation);
     }
 
-    void ChooseAttack(ref GameObject choice, int phaseNum) {
+    protected void ChooseAttack(ref GameObject choice, int phaseNum) {
         int rand = UnityEngine.Random.Range(0, _phases[phaseNum].AttackPrefabs.Length); //special attack
         if (rand == _lastChosenAttack && _phases[phaseNum].AttackPrefabs.Length > 1) { //avoid choosing the same attack if there is more than 1 option
             ChooseAttack(ref choice, phaseNum);
