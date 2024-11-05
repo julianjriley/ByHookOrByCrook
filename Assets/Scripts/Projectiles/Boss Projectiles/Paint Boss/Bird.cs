@@ -40,7 +40,7 @@ public class Bird : Projectile
         // find reference to player - used for seeking
         _player = GameObject.FindWithTag("Player");
         if (_player is null)
-            throw new System.Exception("No player is present in the scene, but you are trying to create PinkMan.");
+            throw new System.Exception("No player is present in the scene, but you are trying to create Bird.");
 
         // invoke first repeating dropping call
         Invoke("DropDropping", Random.Range(_spawnDelayInterval.x, _spawnDelayInterval.y));
