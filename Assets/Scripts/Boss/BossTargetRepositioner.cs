@@ -68,7 +68,6 @@ public class BossTargetRepositioner : MonoBehaviour
             Destroy(newTarget);
             return;
         }
-
         //if code reaches this point, change the target and delete old one
         GameObject oldTarget = _currentTarget;
         _currentTarget = newTarget;
