@@ -6,13 +6,13 @@ using UnityEngine.UIElements;
 public class LaserBeam : Projectile
 {
     [SerializeField]
-    private GameObject _pivotPoint;
+    private Transform _pivotPoint;
     private float _zForce = 360f;
     override protected void Start()
     {
         base.Start();
         // TODO: When Spawned, set pivot to bosss and SPIN
-        transform.position = _pivotPoint.GetComponent<Transform>().position;
+        transform.position = _pivotPoint.position;
         _rb.AddTorque(new Vector3(0, 0, _zForce), ForceMode.VelocityChange);
     }
 

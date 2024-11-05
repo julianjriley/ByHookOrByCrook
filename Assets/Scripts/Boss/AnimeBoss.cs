@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AnimeBoss : BossPrototype
 {
     [SerializeField]
     private float _laserBeamDuration = 10;
-    [SerializeField]
-    private Transform _pivotPoint;
     [SerializeField]
     private Transform _newSpawnLocation;
 
@@ -16,7 +15,7 @@ public class AnimeBoss : BossPrototype
     // Phase 2
     // TODO: Make boss static
     // TODO: Laser Beam - part of Start Event() 
-    // set target to player, then stop
+    // set target to middle, then laser spin
     // TODO: Heart AoE - part of Attack prefabs
     //set target to player, then stop and have a damage radius when exploding
     // TODO: Can't spawn ink while in this phase
@@ -42,20 +41,34 @@ public class AnimeBoss : BossPrototype
     public override void SpawnAttackOnce(GameObject gameObj)
     {
         laserbeamPrefab = gameObj;
-        InvokeRepeating("StartLaserBeam", 0, _laserBeamDuration);
-       
+        InvokeRepeating("StartLaserBeam", 1f, 30f);
     }
     private void StartLaserBeam()
     {
         // need to make it spawn in the middle with set new target function
-        Debug.Log("setting new location ");
-        SetNewTarget(_spawnLocation, _laserBeamDuration);
+
+        // TODO: fix how boss doesn't move to point
+        // TODO: fix how the laserbeam is spawning
+        Debug.Log("Setting target at location " + _spawnLocation);
+        SetNewTarget(_spawnLocation, -1);
+        new WaitForSeconds(10);
         SpawnLaserBeam();
     }
 
     private void SpawnLaserBeam()
     {
-        Instantiate(laserbeamPrefab, _spawnLocation);
+        Debug.Log("Spawning laser beam at " + _spawnLocation);
+        
+
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject laser = Instantiate(laserbeamPrefab, _spawnLocation);
+            new WaitForSeconds(1);
+            laser.GetComponent<Transform>().Rotate(0,0, 10*i);
+        }
+        new WaitForSeconds(15f);
+
+        //SetDefaultTarget();
     }
     override protected void AttackLogic()
     {
