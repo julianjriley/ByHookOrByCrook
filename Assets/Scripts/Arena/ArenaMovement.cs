@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using FMOD.Studio;
 using FMODUnity;
+//using FMOD;
 
 public class ArenaMovement : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class ArenaMovement : MonoBehaviour
     public float MaxSpeed = 7f;
     //Read Input for x-movement
     private float _horizontalMovemenet;
+    private float _movementTimer = 0.1f;
+    private float _movementMaxTime = 0.1f;
 
     //Jumping
     [Header("Jump Variables")]
@@ -72,6 +75,7 @@ public class ArenaMovement : MonoBehaviour
     [SerializeField, Tooltip("Amount of air dashes in quick succession")]
     public int numberOfAirDashes = 1;
     private int _dashCount;
+    [SerializeField]TrailRenderer _trailRender;
 
     [Header("SFX")]
     [SerializeField] EventReference footstepsSound;
@@ -108,6 +112,8 @@ public class ArenaMovement : MonoBehaviour
         _sr = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider>();
         _playerCombat = GetComponent<PlayerCombat>();
+        _trailRender = GetComponent<TrailRenderer>();
+        _trailRender.emitting = false;
 
         //Set Global variables
         _jumpCounterIndex = maxNumberOfJumps;
@@ -151,6 +157,7 @@ public class ArenaMovement : MonoBehaviour
             return;
         //Check Comment Above Function Header
         _coyoteTimer -= Time.deltaTime;
+        _movementTimer -= Time.deltaTime;
         AnimatePlayer2D();
     }
     
@@ -197,6 +204,7 @@ public class ArenaMovement : MonoBehaviour
             if (rb.velocity.y > 0 && _jumpCounterIndex < maxNumberOfJumps && jumpDurrationTimer < jumpDurrationMaxTime) {
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(Vector2.down *_jummpCancelForce , ForceMode.Impulse);
+                _anim.Play("Idle");
                 _coyoteTimer = 0f;
             }
 
@@ -220,7 +228,9 @@ public class ArenaMovement : MonoBehaviour
         //Durration while space is held
         if (jumpDurrationTimer < jumpDurrationMaxTime && jumpDurrationTimer > 0)
         {
-            //rb.useGravity = false;
+            rb.useGravity = false;
+            _anim.Play("Jump");
+
         }
         else
         {
@@ -236,8 +246,9 @@ public class ArenaMovement : MonoBehaviour
             {
                 SoundManager.Instance.PlayOneShot(jumpSound, gameObject.transform.position);
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-                rb.AddForce(Vector2.up * jumpUpForce, ForceMode.Impulse);
 
+                rb.AddForce(Vector2.up * jumpUpForce, ForceMode.Impulse);
+                Debug.Log("Jump1");
                 // prevent high jump with no control
                 _jumpBufferTimer = 0;
             }
@@ -247,7 +258,8 @@ public class ArenaMovement : MonoBehaviour
                 SoundManager.Instance.PlayOneShot(doubleJumpSound, gameObject.transform.position);
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(Vector2.up * jumpUpForce, ForceMode.Impulse);
-
+                _anim.Play("Jump");
+                Debug.Log("Jump2");
                 // prevent high jump with no control
                 _jumpBufferTimer = 0;
             }
@@ -263,7 +275,7 @@ public class ArenaMovement : MonoBehaviour
         if (rb.velocity.y < 0 || jumpDurrationTimer > jumpDurrationMaxTime)
         {
            rb.AddForce(Vector2.down * jumpFallingForce, ForceMode.Force);
-
+            _anim.Play("Idle");
             jumpDurrationTimer = 0;
         }
 
@@ -279,11 +291,14 @@ public class ArenaMovement : MonoBehaviour
         //Reads x-distence if character can move
         if (context.performed)
         {
-            _horizontalMovemenet = context.ReadValue<Vector2>().x;
-            
+            _horizontalMovemenet = context.ReadValue<Vector2>().x;            
         }
-        else _horizontalMovemenet = 0f;
 
+        if (context.canceled)
+        {
+            _movementTimer = _movementMaxTime;
+            _horizontalMovemenet = 0;
+        }
     }
     /*  MoveInput: Moves player based on read value from button press
      *          - Moves at constant velocity
@@ -341,19 +356,22 @@ public class ArenaMovement : MonoBehaviour
             isDashing = true;
             int leftOrRightOrrientation =  gameObject.transform.localScale.x > 0 ? 1 : -1;
             rb.useGravity = !_toggleGravityWhenDashing;
+            _trailRender.emitting = true;
 
             float dashDirection = _horizontalMovemenet;
             if (_horizontalMovemenet == 0)
                 dashDirection = gameObject.transform.localScale.x;  
             
             //Dash a certian distance
-            _anim.SetBool("IsMoving", true);
+            //_anim.SetBool("IsMoving", true);
             SoundManager.Instance.PlayOneShot(dashSound, gameObject.transform.position);
+            _anim.Play("Dash");
             rb.velocity = new Vector2(transform.localScale.x * _dashSpeed * leftOrRightOrrientation * dashDirection, 0f);
+
             _playerCombat.InvincibleDash(DashDuration - 0.1f);
             yield return new WaitForSeconds(DashDuration);
-            _anim.SetBool("IsMoving", false);
-
+            _trailRender.emitting = false;
+            _anim.Play("Idle");
             //Reset Values/Flags after to original state
             isDashing = false;
             rb.useGravity = true;
@@ -419,25 +437,52 @@ public class ArenaMovement : MonoBehaviour
     */
     private void AnimatePlayer2D()
     {
+        MovementAnimator();
+    }
 
-        if (_anim == null)
-            return;
-        if ((_horizontalMovemenet != 0 || _horizontalMovemenet != 0) && !_isIdle)
-            _anim.SetBool("IsMoving", true);
-        else
-            _anim.SetBool("IsMoving", false);
+    public void MovementAnimator()
+    {
 
-        if (!_isIdle)
+        int leftOrRightOrrientation = gameObject.transform.localScale.x > 0 ? 1 : -1;
+        if (leftOrRightOrrientation < 0 && _isGrounded)
         {
             if (_horizontalMovemenet > 0)
             {
-                _isFacingRight = 1;
+                _anim.SetBool("isMovingForward", true);
+                _anim.SetBool("isMoving", true);
+
             }
             else if (_horizontalMovemenet < 0)
             {
-                _isFacingRight = -1;
+                _anim.SetBool("isMovingForward", false);
+                _anim.SetBool("isMoving", true);
+            }
+            else
+            {
+                if (_movementTimer < 0)
+                    _anim.SetBool("isMoving", false);
             }
         }
+        else if (leftOrRightOrrientation > 0 && _isGrounded) 
+        {
+            if (_horizontalMovemenet < 0)
+            {
+                _anim.SetBool("isMovingForward", true);
+                _anim.SetBool("isMoving", true);
+
+            }
+            else if (_horizontalMovemenet > 0)
+            {
+                _anim.SetBool("isMovingForward", false);
+                _anim.SetBool("isMoving", true);
+            }
+            else
+            {
+                if (_movementTimer < 0)
+                    _anim.SetBool("isMoving", false);
+            }
+        }else
+            _anim.SetBool("isMoving", false);
 
     }
 
