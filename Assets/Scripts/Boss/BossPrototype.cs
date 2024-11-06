@@ -45,7 +45,7 @@ public class BossPrototype : MonoBehaviour
     
 
     // Start is called before the first frame update
-    protected void Start()
+    virtual protected void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();

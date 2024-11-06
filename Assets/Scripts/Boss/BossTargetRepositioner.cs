@@ -140,7 +140,7 @@ public class BossTargetRepositioner : MonoBehaviour
         Vector3 rotaterScale = _rotaterTransform.localScale;
         Vector3 targetScale = _currentTargetTransform.localScale;
         _lerpScale = StartCoroutine(LerpScale(rotaterScale, targetScale, Duration));
-        Debug.Log("NewBossTarget finished");
+        // Debug.Log("NewBossTarget finished");
         //restart invoke repeating
         InvokeRepeating("MakeNewTarget", TimeBetweenRepositions, TimeBetweenRepositions);
     }

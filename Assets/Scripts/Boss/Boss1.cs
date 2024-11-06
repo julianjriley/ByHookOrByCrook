@@ -25,8 +25,9 @@ public class Boss1 : BossPrototype
     private CapsuleCollider _capsule;
     private bool _isDrilling = false;
 
-    void Start() {
+    override protected void Start() {
         base.Start();
+
         _anim = GetComponent<Animator>();
         _capsule = GetComponent<CapsuleCollider>();
         _targetRepositioner = GameObject.Find("BossTargetRepositioner").GetComponent<BossTargetRepositioner>();
@@ -78,7 +79,7 @@ public class Boss1 : BossPrototype
         }
             //transform.rotation = Quaternion.Euler(_rb.velocity.x * 2, 0f, 0f); //Vector3.Magnitude(
         //}
-        Debug.Log("Rigidbody velocity = " + _rb.velocity);
+        //Debug.Log("Rigidbody velocity = " + _rb.velocity);
         _rb.AddForce((_target.position - transform.position).normalized * Speed, ForceMode.Force);
         if (!(_checkingSwap)) { //ensure only one check is happening at a time
             SpriteSwapCheck();
@@ -136,7 +137,7 @@ public class Boss1 : BossPrototype
         yield return new WaitForSeconds(0.7f);
         _anim.SetBool("drill", true);
         SetSpeed(125f);
-        Debug.Log("Speed" + Speed);
+        //Debug.Log("Speed" + Speed);
         SetNewTarget(target4, 2.5f);
         yield return new WaitForSeconds(1.75f);
         //reset capsule collider to normal
