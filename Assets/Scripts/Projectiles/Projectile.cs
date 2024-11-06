@@ -29,7 +29,9 @@ public class Projectile : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         
-        Destroy(gameObject, _lifetime);
+        // allows negative lifetime projectiles to have indefinite lifetime (useful on painterly boss)
+        if(_lifetime > 0)
+            Destroy(gameObject, _lifetime);
     }
 
     public void AssignStats(Weapon weapon)
@@ -52,7 +54,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
         if(_playerCombat != null)
         {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,10 @@ public class WeaponInstance : MonoBehaviour
     [SerializeField] protected Transform _firePoint;
     [SerializeField] protected bool _overHeated;
     [SerializeField] protected bool _canFire = true;
-    protected SpriteRenderer spriteRenderer; 
+    protected SpriteRenderer spriteRenderer;
+
+    public static event Action WeaponOverheated;
+    public static event Action WeaponCooledOff;
 
     //Constantly retrieved from the player
     protected Vector3 _direction;
@@ -52,10 +56,23 @@ public class WeaponInstance : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        if(_overHeated == true && _heatLevel >= 100)
+        {
+            WeaponOverheated?.Invoke();
+        }
         _heatLevel = Mathf.Clamp(_heatLevel - _weapon.CoolingTime * Time.deltaTime, 0, 100);
         
+
+
         if (_heatLevel <= 0)
+        {
+            if(_overHeated == true)
+            {
+                WeaponCooledOff?.Invoke();
+            }
             _overHeated = false;
+        }
+            
  
     }
 
