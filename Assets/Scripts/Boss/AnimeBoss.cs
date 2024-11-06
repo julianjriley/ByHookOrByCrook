@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,6 +12,9 @@ public class AnimeBoss : BossPrototype
     private Transform _newSpawnLocation;
 
     private GameObject laserbeamPrefab;
+
+    private float currentTime = 0;
+    private float _numberOflasers = 4;
 
     // Phase 2
     // TODO: Make boss static
@@ -30,9 +34,8 @@ public class AnimeBoss : BossPrototype
     {
         base.FixedUpdate();
 
-
     }
-    
+
     private void SetSpawnLocation()
     {
         _spawnLocation = _newSpawnLocation;
@@ -41,31 +44,29 @@ public class AnimeBoss : BossPrototype
     public override void SpawnAttackOnce(GameObject gameObj)
     {
         laserbeamPrefab = gameObj;
-        InvokeRepeating("StartLaserBeam", 1f, 30f);
+        InvokeRepeating("StartLaserBeam", 1f, 25f);
     }
     private void StartLaserBeam()
     {
-        // need to make it spawn in the middle with set new target function
-
-        // TODO: fix how boss doesn't move to point
+    
         // TODO: fix how the laserbeam is spawning
         Debug.Log("Setting target at location " + _spawnLocation);
-        SetNewTarget(_spawnLocation, 10f);
+        SetNewTarget(_spawnLocation, 13f);
+        
         StartCoroutine(SpawnLaserBeam());
     }
 
     IEnumerator SpawnLaserBeam()
     {
-        yield return new WaitForSeconds(3);
-        Debug.Log("Spawning laser beam at " + _spawnLocation);
-        
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             GameObject laser = Instantiate(laserbeamPrefab, _spawnLocation);
-            new WaitForSeconds(2);
-            laser.GetComponent<Transform>().Rotate(0,0, 10*i);
+            laser.transform.rotation = Quaternion.Euler(0, 0, 30f);
+            yield return new WaitForSeconds(4f);
         }
+       
     }
+
     override protected void AttackLogic()
     {
         // for instantiating attacks separate from the boss (like projectiles)
