@@ -79,4 +79,9 @@ public class WeaponInstance : MonoBehaviour
         spriteRenderer.enabled = true;
     }
 
+
+    void TryApplyRecoil()
+    {
+
+    }
 }
