@@ -450,7 +450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773001639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.035, y: -2.02, z: -11.745}
+  m_LocalPosition: {x: -2.035, y: -2.02, z: -16.745}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -819,7 +819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2822287764505044261, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: maxNumberOfJumps
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2822287764505044261, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: _groundLayer.m_Bits
@@ -905,6 +905,38 @@ PrefabInstance:
       propertyPath: _baseHealth
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: testItems.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: testWeapons.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: testItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 663e2597d1bcb2542a3cf228b5b6b381, type: 2}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: testWeapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e44b83933400354fb8bcc92f28a9c67, type: 2}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: testWeapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: bab4439b729ca644c959afcb9565ad58, type: 2}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: testWeapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 982044697c72fc04a84e011dc3416cdf, type: 2}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: testWeapons.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 34c1a93d6ce2e9f45b973bd36719fdc1, type: 2}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: testWeapons.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: a54f958a76eba9d4d9e9e4180bce0ce4, type: 2}
     - target: {fileID: 8367796524174305367, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -1619,7 +1651,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9148157772144281723, guid: 5520f045af8668b4f88c9011515db8dd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9148157772144281723, guid: 5520f045af8668b4f88c9011515db8dd, type: 3}
       propertyPath: m_LocalRotation.w
