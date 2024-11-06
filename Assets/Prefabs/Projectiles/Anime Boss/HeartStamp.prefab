@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7151161189939041623}
   - component: {fileID: 5308727306712629826}
   - component: {fileID: 3717053446057670138}
-  - component: {fileID: -3825279290709488291}
+  - component: {fileID: 4719840994955665694}
   m_Layer: 8
   m_Name: HeartStamp
   m_TagString: Untagged
@@ -30,8 +30,8 @@ RectTransform:
   m_GameObject: {fileID: 3147431625062083812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: -1
@@ -91,7 +91,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 71483b8e4b63621449628d033100e5dd, type: 3}
-  m_Color: {r: 0.30981508, g: 0.010679938, b: 0.754717, a: 1}
+  m_Color: {r: 0.7529412, g: 0.011764706, b: 0.16653249, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -147,11 +147,11 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 6.555603
+  m_Height: 13.111206
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-3825279290709488291
+  m_Center: {x: -0.15063477, y: 0.24101257, z: 0}
+--- !u!114 &4719840994955665694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,14 +160,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3147431625062083812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2265c6453d380c41aa29e379be67b89, type: 3}
+  m_Script: {fileID: 11500000, guid: 348de207d53197141bded837bfd88099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _baseDamage: 1
+  _baseDamage: 0
   _size: 1
-  _speed: 4
-  _lifetime: 6
-  _health: 5
-  _timeTillExplosion: 3
-  _maxDistance: 2
+  _speed: 1
+  _lifetime: 3
+  _health: 0

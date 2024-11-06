@@ -6,16 +6,32 @@ using UnityEngine.UIElements;
 public class LaserBeam : Projectile
 {
     [SerializeField]
-    private Transform _pivotPoint;
+    //private Transform _pivotPoint;
     private float _zForce = 360f;
+    private Animator _animator;
+    private Collider _collider;
+
     override protected void Start()
     {
         base.Start();
-        // TODO: When Spawned, set pivot to bosss and SPIN
-        transform.position = _pivotPoint.position;
-        _rb.AddTorque(new Vector3(0, 0, _zForce), ForceMode.VelocityChange);
+        Color color = GetComponent<SpriteRenderer>().color;
+        _animator = GetComponent<Animator>();
+        _collider = GetComponent<Collider>();
+
+        StartCoroutine(StartGimmick());
     }
 
+    IEnumerator StartGimmick()
+    {
+        _collider.enabled = false;
+        yield return new WaitForSeconds(2f);
+        _collider.enabled = true;
+        _animator.Play("ChangeLaserColor");
+        yield return new WaitForSeconds(2f);
+        _collider.enabled = false;
+        _animator.Play("DefaultLaser");
+
+    }
     override protected void OnTriggerEnter(Collider collider)
     {
         //DO DAMAGE CODE HERE

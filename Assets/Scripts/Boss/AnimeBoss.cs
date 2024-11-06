@@ -16,6 +16,8 @@ public class AnimeBoss : BossPrototype
     private float currentTime = 0;
     private float _numberOflasers = 4;
 
+    [SerializeField]
+    private List<GameObject> laserList;
     // Phase 2
     // TODO: Make boss static
     // TODO: Laser Beam - part of Start Event() 
@@ -34,6 +36,7 @@ public class AnimeBoss : BossPrototype
     {
         base.FixedUpdate();
 
+        UpdateLaserRotation();
     }
 
     private void SetSpawnLocation()
@@ -45,6 +48,22 @@ public class AnimeBoss : BossPrototype
     {
         laserbeamPrefab = gameObj;
         InvokeRepeating("StartLaserBeam", 1f, 25f);
+    }
+
+    private void UpdateLaserRotation()
+    {
+        if (laserList.Count == 0)
+        {
+            return;
+        }
+        foreach (GameObject laser in laserList)
+        {
+            if (laser)
+            {
+                laser.transform.Rotate(0, 0, 1f);
+            }
+        }
+
     }
     private void StartLaserBeam()
     {
@@ -61,7 +80,8 @@ public class AnimeBoss : BossPrototype
         for (int i = 0; i < 4; i++)
         {
             GameObject laser = Instantiate(laserbeamPrefab, _spawnLocation);
-            laser.transform.rotation = Quaternion.Euler(0, 0, 30f);
+            laserList.Add(laser);
+            laser.transform.Rotate(0, 0, .5f); 
             yield return new WaitForSeconds(4f);
         }
        
