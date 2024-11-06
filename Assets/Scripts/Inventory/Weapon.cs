@@ -28,7 +28,10 @@ public class Weapon : Item
 
     [SerializeField] private EventReference _fireSound;
 
-    
+    //Buff Specific Variable
+    public bool canRecoil;
+
+
 
     public float BaseDamage
     {
@@ -141,6 +144,7 @@ public class Weapon : Item
         _heatBuildup = _baseHeatBuildup;
         _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
+        _recoilAmount = _baseRecoilAmount;
     }
 
     public void ResetStats()
@@ -153,6 +157,7 @@ public class Weapon : Item
         _heatBuildup = _baseHeatBuildup;
         _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
+        _recoilAmount = _baseRecoilAmount;
     }
 
     public override void SetPlayer(PlayerCombat player)

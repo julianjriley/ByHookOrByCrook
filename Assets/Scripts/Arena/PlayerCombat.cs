@@ -15,6 +15,7 @@ public class PlayerCombat : MonoBehaviour
 
     //Player Movement Script
     ArenaMovement playerMovement;
+    Rigidbody rb;
 
     //Stats
     [SerializeField] private int _baseHealth;
@@ -100,6 +101,7 @@ public class PlayerCombat : MonoBehaviour
         ResetStats();
         _weapons = new List<WeaponInstance>();
         playerMovement = GetComponent<ArenaMovement>();
+        rb = GetComponent<Rigidbody>();
 
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
 
@@ -413,6 +415,15 @@ public class PlayerCombat : MonoBehaviour
     public void ActivateBrickfish()
     {
         playerMovement.dashRestricted = true;
+    }
+
+    #endregion
+
+    #region Recoral Code
+
+    public void ApplyRecoil(float amount)
+    {
+        rb.AddForce(-weaponDirection * amount, ForceMode.Impulse);
     }
 
     #endregion
