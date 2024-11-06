@@ -1047,6 +1047,7 @@ MonoBehaviour:
   _spawnDelay: 6.6
   _spawnHeightDistance: 17
   _camera: {fileID: 2072145338}
+  Activate: 0
   IsFinalSpawn: 0
 --- !u!1 &720521607
 GameObject:
@@ -1396,7 +1397,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1334251207
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.082353115, g: 0, b: 1, a: 1}
@@ -1515,7 +1516,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1334251207
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.082353115, g: 0, b: 1, a: 1}
@@ -3444,7 +3445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96e3f673d5e61dc4f8ab07202ef57d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 2
+  _cameraSpeed: 2
 --- !u!1 &2100931496
 GameObject:
   m_ObjectHideFlags: 0

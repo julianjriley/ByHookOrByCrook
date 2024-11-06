@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Boss3Camera : MonoBehaviour
 {
-    [SerializeField] private float cameraSpeed = .5f;
+    [SerializeField] private float _cameraSpeed = .5f;
+
+    private float _currentCameraSpeed = 0;
 
     private float _finalStop = -1;
     private bool _fullStop = false;
@@ -24,11 +26,16 @@ public class Boss3Camera : MonoBehaviour
         }
 
         if(!_fullStop)
-            this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + (cameraSpeed * Time.deltaTime), transform.position.z);
+            this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + (_currentCameraSpeed * Time.deltaTime), transform.position.z);
     }
 
     public void SetRestingPlace(float yVal)
     {
         _finalStop = yVal;
+    }
+
+    public void SetCamMoving()
+    {
+        _currentCameraSpeed = _cameraSpeed;
     }
 }
