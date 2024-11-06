@@ -68,7 +68,6 @@ public class BossTargetRepositioner : MonoBehaviour
             Destroy(newTarget);
             return;
         }
-
         //if code reaches this point, change the target and delete old one
         GameObject oldTarget = _currentTarget;
         _currentTarget = newTarget;
@@ -110,5 +109,39 @@ public class BossTargetRepositioner : MonoBehaviour
             yield return null;
         }
         _rotaterTransform.localScale = end; 
+    }
+    public void NewBossTarget(int rotation, int scale) {
+        CancelInvoke();
+        //make new rotator and target
+        GameObject newTarget;
+        newTarget = (GameObject) Instantiate((Object) _rotater, transform);
+        Transform newTransform = newTarget.GetComponent<Transform>();
+
+        //scale new rotator and target
+        Vector3 newScale = new Vector3(scale, scale, scale);
+        newTransform.localScale = newScale;
+
+        //set rotation of new rotator and target
+        newTransform.localRotation = Quaternion.Euler(0, 0, 0);
+        newTransform.Rotate(0f, 0f, rotation, Space.World);
+
+        //if code reaches this point, change the target and delete old one
+        GameObject oldTarget = _currentTarget;
+        _currentTarget = newTarget;
+        _currentTargetTransform = _currentTarget.GetComponent<Transform>();
+        _currentTarget.GetComponent<SpriteRenderer>().color = Color.red;
+        Destroy(oldTarget);
+
+        //lerp rotater to newTarget scale and rotation over time
+        float rotaterZ = _rotaterTransform.eulerAngles.z;
+        float targetZ = _currentTarget.GetComponent<Transform>().eulerAngles.z;
+        _lerpRotation = StartCoroutine(LerpRotation(rotaterZ, targetZ, Duration));
+
+        Vector3 rotaterScale = _rotaterTransform.localScale;
+        Vector3 targetScale = _currentTargetTransform.localScale;
+        _lerpScale = StartCoroutine(LerpScale(rotaterScale, targetScale, Duration));
+        // Debug.Log("NewBossTarget finished");
+        //restart invoke repeating
+        InvokeRepeating("MakeNewTarget", TimeBetweenRepositions, TimeBetweenRepositions);
     }
 }
