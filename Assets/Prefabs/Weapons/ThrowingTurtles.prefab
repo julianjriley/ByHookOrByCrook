@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 3883435316962486559}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &6890568265168165665
 SpriteRenderer:
@@ -103,6 +103,7 @@ MonoBehaviour:
   _overHeated: 0
   _canFire: 1
   _projectile: {fileID: 972570253955624266, guid: 0d4de7061e6b2414cbf7fa67c87618aa, type: 3}
+  _tripleForwardOffset: 1.25
 --- !u!1 &3966853862337208302
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3966853862337208302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.55, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

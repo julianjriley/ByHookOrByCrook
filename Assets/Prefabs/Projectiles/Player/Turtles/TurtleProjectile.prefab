@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59b58bcb25c2584080b09ed788f77fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0.5
-  _baseDamage: 0.5
+  _damage: 1
+  _baseDamage: 1
   _size: 1
   _speed: 1
-  _lifetime: 120
+  _lifetime: 1
   _health: 1
   _isRespawning: 0
   _respawnDelay: 0

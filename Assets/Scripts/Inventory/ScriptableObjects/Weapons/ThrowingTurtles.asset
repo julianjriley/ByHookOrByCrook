@@ -19,9 +19,9 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: 0a63a57345f9ac14a81a29d63fafad63, type: 3}
   _itemPrefab: {fileID: 3217987424760453924, guid: 287bbfdc1eead254e951ababebf30a2a, type: 3}
   _cost: 20
-  _baseDamage: 1
-  _baseFireRate: 0.5
-  _baseSize: 2
+  _baseDamage: 1.5
+  _baseFireRate: 0.4
+  _baseSize: 1.5
   _baseSpeed: 1
   _baseLifetime: 120
   _baseHeatBuildup: 10

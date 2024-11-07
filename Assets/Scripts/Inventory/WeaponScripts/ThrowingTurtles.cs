@@ -9,6 +9,8 @@ public class ThrowingTurtles : WeaponInstance
 {
     [SerializeField, Tooltip("Projectile prefab to be spawned")] 
     private GameObject _projectile;
+    [SerializeField, Tooltip("Distance forward the projectile actually spawns at (triple show only). makes them not spawn all overlapping weird.")]
+    private float _tripleForwardOffset;
 
     public override void Fire(Vector3 direction)
     {
@@ -36,8 +38,9 @@ public class ThrowingTurtles : WeaponInstance
 
             for (int i = -1; i < _weapon.ProjectileCount - 1; i++)
             {
-                Vector3 aimingDir = Quaternion.Euler(0, 0, 8 * i) * _direction;
-                GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, aimingDir));
+                Vector3 aimingDir = Quaternion.Euler(0, 0, 90 * i) * _direction;
+                Quaternion rot = Quaternion.FromToRotation(Vector3.up, aimingDir);
+                GameObject projectile = Instantiate(_projectile, _firePoint.position + aimingDir * _tripleForwardOffset, rot);
                 projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
                 projectile.GetComponent<Rigidbody>().AddForce(aimingDir * _weapon.Speed, ForceMode.Impulse);
                 TurtleProjectile turtleProjectile = projectile.GetComponent<TurtleProjectile>();
