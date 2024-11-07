@@ -250,14 +250,14 @@ public class GameManager : MonoBehaviour
         newSaveData.BossNumber = 0;
         newSaveData.LossCounter = 3;
 
-        newSaveData.Gill = 999;
+        newSaveData.Gill = 0;
         newSaveData.BaitInventorySize = 3;
-        newSaveData.BattleInventorySize = 3;
+        newSaveData.BattleInventorySize = 2;
         newSaveData.RodLevel = 0;
         newSaveData.AttackBait = false;
         newSaveData.MovementBait = false;
         newSaveData.SupportBait = false;
-        newSaveData.WeaponBait = true; // TEMPORARY: unlocked by defauly for prototype to make BaitSelection scene work
+        newSaveData.WeaponBait = false; 
 
         newSaveData.IsSkipper = false;
         newSaveData.IsBobber = false;

@@ -223,16 +223,20 @@ public class BossPrototype : MonoBehaviour
         float percentageOfHealthLeft = BossHealth / MaxBossHealth;
         if(percentageOfHealthLeft <= 0)
         {
-            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 6;
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2;
         }
-        else if(percentageOfHealthLeft < 0.33f)
+        else
+        {
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 1 - percentageOfHealthLeft;
+        }
+        /*else if(percentageOfHealthLeft < 0.33f)
         {
             GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 4;
         }
         else if(percentageOfHealthLeft < 0.66f)
         {
             GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2.5f;
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider collider)
