@@ -96,4 +96,9 @@ public class WeaponInstance : MonoBehaviour
         spriteRenderer.enabled = true;
     }
 
+    public bool GetOverHeatedState()
+    {
+        return _overHeated;
+    }
+
 }

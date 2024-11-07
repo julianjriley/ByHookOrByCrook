@@ -146,7 +146,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -629780277, guid: 8ffea9864860e264f9a9835fd52e5395, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
@@ -199,10 +199,9 @@ MonoBehaviour:
   maxNumberOfJumps: 1
   _coyoteMaxTime: 0.2
   _jumpBufferMaxTime: 0.2
-  _jummpCancelForce: 0.5
-  jumpDurrationMaxTime: 0.1
-  jumpUpForce: 14
-  jumpFallingForce: 12
+  jumpDuration: 0.25
+  jumpImpulseUP: 15
+  jummpImpulseDown: 1
   _maxGroundedDistance: 0.1
   _groundLayer:
     serializedVersion: 2
