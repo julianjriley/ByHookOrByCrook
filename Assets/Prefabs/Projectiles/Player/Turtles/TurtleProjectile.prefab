@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4781941689343798578}
   - component: {fileID: 6912731805100314428}
   - component: {fileID: 4041732331809835321}
-  - component: {fileID: 1769856774905387403}
+  - component: {fileID: 4140487640695764767}
   - component: {fileID: 609930676501711058}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: TurtleProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,11 +29,11 @@ Transform:
   m_GameObject: {fileID: 972570253955624266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.17212501, y: 1.11, z: 1}
+  m_LocalScale: {x: 1.5, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6912731805100314428
 SpriteRenderer:
@@ -102,15 +102,15 @@ MonoBehaviour:
   _damage: 0.5
   _baseDamage: 0.5
   _size: 1
-  _speed: 0.25
+  _speed: 1
   _lifetime: 120
   _health: 1
   _isRespawning: 0
   _respawnDelay: 0
-  _collider: {fileID: 1769856774905387403}
+  _collider: {fileID: 0}
   _sprite: {fileID: 6912731805100314428}
---- !u!136 &1769856774905387403
-CapsuleCollider:
+--- !u!65 &4140487640695764767
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -119,7 +119,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -127,10 +127,8 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.49999997
-  m_Height: 0.99999994
-  m_Direction: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &609930676501711058
 Rigidbody:

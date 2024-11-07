@@ -26,8 +26,8 @@ public class ThrowingTurtles : WeaponInstance
                 GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, _direction));
                 projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
                 projectile.GetComponent<Rigidbody>().AddForce(_direction * _weapon.Speed, ForceMode.Impulse);
-                RottenFishProjectile rottenFishProjectile = projectile.GetComponent<RottenFishProjectile>();
-                rottenFishProjectile.AssignStats(_weapon);
+                TurtleProjectile turtleProjectile = projectile.GetComponent<TurtleProjectile>();
+                turtleProjectile.AssignStats(_weapon);
                 _heatLevel += _weapon.HeatBuildup;
             }
         }
@@ -40,8 +40,8 @@ public class ThrowingTurtles : WeaponInstance
                 GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, aimingDir));
                 projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
                 projectile.GetComponent<Rigidbody>().AddForce(aimingDir * _weapon.Speed, ForceMode.Impulse);
-                RottenFishProjectile rottenFishProjectile = projectile.GetComponent<RottenFishProjectile>();
-                rottenFishProjectile.AssignStats(_weapon);
+                TurtleProjectile turtleProjectile = projectile.GetComponent<TurtleProjectile>();
+                turtleProjectile.AssignStats(_weapon);
             }
             _heatLevel += _weapon.HeatBuildup;
         }
