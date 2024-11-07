@@ -13,16 +13,28 @@ PrefabInstance:
       value: TurtleShield
       objectReference: {fileID: 0}
     - target: {fileID: 4041732331809835321, guid: 0d4de7061e6b2414cbf7fa67c87618aa, type: 3}
+      propertyPath: _lifetime
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041732331809835321, guid: 0d4de7061e6b2414cbf7fa67c87618aa, type: 3}
       propertyPath: _isRespawning
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4041732331809835321, guid: 0d4de7061e6b2414cbf7fa67c87618aa, type: 3}
       propertyPath: _respawnDelay
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4781941689343798578, guid: 0d4de7061e6b2414cbf7fa67c87618aa, type: 3}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4781941689343798578, guid: 0d4de7061e6b2414cbf7fa67c87618aa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4781941689343798578, guid: 0d4de7061e6b2414cbf7fa67c87618aa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.375
       objectReference: {fileID: 0}
     - target: {fileID: 4781941689343798578, guid: 0d4de7061e6b2414cbf7fa67c87618aa, type: 3}
       propertyPath: m_LocalPosition.x

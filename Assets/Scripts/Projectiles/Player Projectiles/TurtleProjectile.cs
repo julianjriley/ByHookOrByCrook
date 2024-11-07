@@ -65,18 +65,18 @@ public class TurtleProjectile : Projectile
     protected override void OnCollisionEnter(Collision collision)
     {
         // apply damage to boss normally
-        if (GetComponent<Collider>().gameObject.layer == LayerMask.NameToLayer("Boss"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            GetComponent<Collider>().gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
 
             DestroyOrDisable();
         }
 
         // destroy BOTH breakable and non-breakable projectiles
-        if (GetComponent<Collider>().gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || GetComponent<Collider>().gameObject.layer == LayerMask.NameToLayer("BossProjectile"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("BossProjectile"))
         {
             // destroy projectile regardless of its health value
-            Destroy(GetComponent<Collider>().gameObject);
+            Destroy(collision.gameObject);
 
             DestroyOrDisable();
         }
