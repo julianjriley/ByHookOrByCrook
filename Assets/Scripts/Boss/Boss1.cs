@@ -7,7 +7,6 @@ public class Boss1 : BossPrototype
 {
     [Header ("Charge Attack")]
     public float StartDelay = 0f;
-    public float DelayBetween = 0f;
     public Transform AboveRight;
     public Transform AboveLeft;
     public Transform Right;
@@ -33,8 +32,11 @@ public class Boss1 : BossPrototype
         _targetRepositioner = GameObject.Find("BossTargetRepositioner").GetComponent<BossTargetRepositioner>();
     }
 
-    public void StartCharging() {
-        InvokeRepeating("ChargeAttack", StartDelay, DelayBetween);
+    public void StartCharging(float delayBetween) {
+        // allows next phase to reset the invoke repeating to happen with a different delay
+        CancelInvoke("ChargeAttack");
+        // start repeating attack
+        InvokeRepeating("ChargeAttack", StartDelay, delayBetween);        
     }
 
     void ChargeAttack() {

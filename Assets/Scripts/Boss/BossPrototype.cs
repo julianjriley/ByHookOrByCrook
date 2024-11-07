@@ -24,6 +24,7 @@ public class BossPrototype : MonoBehaviour
 
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
+    [HideInInspector]
     public float MaxBossHealth;
     protected int _phaseCounter = 0;
     private bool _defeated = false;
