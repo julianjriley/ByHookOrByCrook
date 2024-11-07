@@ -19,9 +19,7 @@ public class AnimeBoss : BossPrototype
     [SerializeField]
     private List<GameObject> laserList;
     // Phase 2
-    // TODO: Make boss static
-    // TODO: Laser Beam - part of Start Event() 
-    // set target to middle, then laser spin
+    // TODO: MAKE BOSS STATIC while A o
     // TODO: Heart AoE - part of Attack prefabs
     //set target to player, then stop and have a damage radius when exploding
     // TODO: Can't spawn ink while in this phase
@@ -37,6 +35,7 @@ public class AnimeBoss : BossPrototype
         base.FixedUpdate();
 
         UpdateLaserRotation();
+        _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
     private void SetSpawnLocation()
@@ -91,6 +90,72 @@ public class AnimeBoss : BossPrototype
     {
         // for instantiating attacks separate from the boss (like projectiles)
 
-        base.AttackLogic();
+        GameObject chosenAttack = _phases[0].AttackPrefabs[0]; //default that will be overwritten
+        switch (_phaseCounter)
+        {
+            case 0:
+                ChooseAttack(ref chosenAttack, 0); //pass in a reference to chosenAttack and the phase #
+                if (chosenAttack.GetComponent<HeartAoE>()) StartCoroutine(HeartAttack(chosenAttack));
+                else Instantiate(chosenAttack, _spawnLocation);
+                break;
+            case 1:
+                ChooseAttack(ref chosenAttack, 1); // spawning hearts
+                if (chosenAttack.GetComponent<HeartAoE>()) StartCoroutine(HeartAttack(chosenAttack));
+                else Instantiate(chosenAttack, _spawnLocation);
+                break;
+        }
+    }
+    void SpawnHearts(GameObject heartPrefab)
+    {
+        // When spawned, spawn multiple in a line based on player's position
+        // if player is on left side, spawn 3 to the right
+        // if player is on right side, spawn 3 to the left
+       
+
+        if (_playerTransform.position.x < Screen.width / 2)
+        {
+            // SetNewTarget() // Left side
+            GameObject newHearts;
+            for (int i = 0; i < 2; i++)
+            {
+                newHearts = Instantiate(heartPrefab, GameObject.Find("AttackHolderEmpty").GetComponent<Transform>());
+                
+                newHearts.transform.position = new(newHearts.transform.position.x + 5 * i, _playerTransform.position.y, newHearts.transform.position.z);
+            }
+            
+        }
+        else
+        {
+            // SetNewTarget() // Right side
+            GameObject newHearts;
+            for (int i = 0; i < 2; i++)
+            {
+                newHearts = Instantiate(heartPrefab, GameObject.Find("AttackHolderEmpty").GetComponent<Transform>());
+                
+                newHearts.transform.position = new(newHearts.transform.position.x - 50 * i, _playerTransform.position.y, newHearts.transform.position.z);
+            }
+        }
+        //    for (int i = 0; i < 2; i++)
+        //{
+        //    Debug.Log("Spawn the hearts: " + i);
+        //    GameObject newHearts = Instantiate(heartPrefab, GameObject.Find("AttackHolderEmpty").GetComponent<Transform>());
+
+        //    //newHearts.transform.position = new(newHearts.transform.position.x + i, _playerTransform.position.y, _playerTransform.position.z);
+        //    if (_playerTransform.position.x < Screen.width / 2)
+        //    {
+        //        newHearts.transform.position = new(newHearts.transform.position.x + 5 * i, _playerTransform.position.y, newHearts.transform.position.z);
+        //    }
+        //    else
+        //    {
+        //        newHearts.transform.position = new(newHearts.transform.position.x - 50 * i, _playerTransform.position.y, newHearts.transform.position.z);
+        //    }
+        //}
+
+    }
+    IEnumerator HeartAttack(GameObject heartPrefab)
+    {
+        Debug.Log("Starting Heart Attack");
+        SpawnHearts(heartPrefab);
+        yield return new WaitForSeconds(4);
     }
 }

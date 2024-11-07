@@ -17,7 +17,7 @@ public class BossPrototype : MonoBehaviour
     public float Speed = 50f;
     private bool _right = true;
     private bool _checkingSwap = false;
-    private Transform _playerTransform;
+    protected private Transform _playerTransform;
     private SpriteRenderer _renderer;
 
     [Header ("Boss Phases + Attacks")]
