@@ -295,6 +295,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
+--- !u!1001 &517824537
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 600498861368864705, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
+      propertyPath: m_Name
+      value: Spawn Galaga Fleet - 3 Row
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
 --- !u!1 &678178531
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.size
@@ -573,15 +634,19 @@ PrefabInstance:
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: c864491a20f4c03468fbb910eb5d2eba, type: 2}
+      objectReference: {fileID: 11400000, guid: cbae0445f69e26243ab9f30476c91350, type: 2}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: testItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f58fe4e8aa1949e489d8318041853c70, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 982044697c72fc04a84e011dc3416cdf, type: 2}
+      objectReference: {fileID: 11400000, guid: 34c1a93d6ce2e9f45b973bd36719fdc1, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 34c1a93d6ce2e9f45b973bd36719fdc1, type: 2}
+      objectReference: {fileID: 11400000, guid: a54f958a76eba9d4d9e9e4180bce0ce4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2469,7 +2534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699e3cde89cff58418a351343687bb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 50
+  Speed: 35
   _playerTransform: {fileID: 0}
   BossHealth: 350
   MaxBossHealth: 300
@@ -2496,7 +2561,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     StartDelay: 1.5
-    RepeatRate: 4
+    RepeatRate: 4.5
     AttackPrefabs:
     - {fileID: 5174075213898676460, guid: 666a99072d5137547b3ed808cb4793f6, type: 3}
     - {fileID: 2245313482442108623, guid: 5eec40f5c27d41448bc2d9babeee591f, type: 3}
@@ -2510,8 +2575,8 @@ MonoBehaviour:
     - {fileID: 7543316190970275734, guid: 5bfff73a4a7f7b0478d9a4ae7b6bf638, type: 3}
     - {fileID: 3525953262652235345, guid: 284d35d112b2178428fad86639e1c9d8, type: 3}
     - {fileID: 42549769295459493, guid: f8b61c02c2348484fa12f81cbc67dcb4, type: 3}
-    - {fileID: 1444297331218433624, guid: edb884ad32b1278428f6ff2ca688397b, type: 3}
-    - {fileID: 5896165265373424421, guid: d875fc4a34a40c84f8b317e18d07b6c0, type: 3}
+    - {fileID: 2431936270671152785, guid: e5f0fd77412a3ce4cb1d38ff67d35c71, type: 3}
+    - {fileID: 7848507025822695964, guid: 2d0852970ac39ea488588868ebc4ed35, type: 3}
   - Threshold: 200
     StartEvent:
       m_PersistentCalls:
@@ -2524,7 +2589,7 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 10
+            m_FloatArgument: 20
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
@@ -2541,7 +2606,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     StartDelay: 1.5
-    RepeatRate: 3
+    RepeatRate: 5
     AttackPrefabs:
     - {fileID: 5174075213898676460, guid: 666a99072d5137547b3ed808cb4793f6, type: 3}
     - {fileID: 2245313482442108623, guid: 5eec40f5c27d41448bc2d9babeee591f, type: 3}
@@ -2575,7 +2640,7 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 5
+            m_FloatArgument: 10
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
@@ -2592,7 +2657,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     StartDelay: 1.5
-    RepeatRate: 2.5
+    RepeatRate: 5
     AttackPrefabs:
     - {fileID: 850685932503919938, guid: 9c016230cc12cbe4b8c89e65161f7c8d, type: 3}
     - {fileID: 7028366390126123068, guid: d5d6957ffd1e62a45a3ab98315b5d0c6, type: 3}
@@ -2616,7 +2681,7 @@ MonoBehaviour:
       Data4: -1696129653
     Path: event:/Combat/General/BossHit
   _cashoutSceneName: 8_BETA_Cashout
-  StartDelay: 1
+  StartDelay: 7.5
   AboveRight: {fileID: 1517270293709762514}
   AboveLeft: {fileID: 766797457780795459}
   Right: {fileID: 7571242884630749606}
@@ -2627,5 +2692,5 @@ MonoBehaviour:
   Left_2: {fileID: 3702243628436604528}
   LowerLeft: {fileID: 6464634708673677635}
   LowerLeft_2: {fileID: 1609405318736233358}
-  _galaga2: {fileID: 0}
-  _galaga3: {fileID: 0}
+  _galaga2: {fileID: 2756887739364431807, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+  _galaga3: {fileID: 600498861368864705, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}

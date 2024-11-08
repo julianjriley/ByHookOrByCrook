@@ -10,9 +10,9 @@ public class GalagaShip : Projectile
     [SerializeField, Tooltip("Duration of each downward movement phase. each horizontal phase is some multiple of this.")]
     private float _movePhaseDuration;
 
-    Vector2 _moveDir = Vector2.down;
-    bool _isRightNext = true;
-    int _stepCounter = 3;
+    Vector2 _moveDir = Vector3.right;
+    bool _isRightNext = false;
+    int _stepCounter = 4;
 
     // Start is called before the first frame update
     override protected void Start()
@@ -48,7 +48,7 @@ public class GalagaShip : Projectile
         else
         {
             // ensure horizontal phases multiple steps longer
-            if (_stepCounter == 5)
+            if (_stepCounter == 7)
             {
                 _moveDir = Vector2.down;
                 _stepCounter = 0;
