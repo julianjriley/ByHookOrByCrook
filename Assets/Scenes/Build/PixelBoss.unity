@@ -2471,10 +2471,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 50
   _playerTransform: {fileID: 0}
-  BossHealth: 300
+  BossHealth: 350
   MaxBossHealth: 300
   _phases:
-  - Threshold: 300
+  - Threshold: 350
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -2485,12 +2485,18 @@ MonoBehaviour:
     - {fileID: 5278445766019214962, guid: 12085202431caa44086c49d37fe4eb87, type: 3}
     - {fileID: 5174075213898676460, guid: 666a99072d5137547b3ed808cb4793f6, type: 3}
     - {fileID: 2245313482442108623, guid: 5eec40f5c27d41448bc2d9babeee591f, type: 3}
-  - Threshold: 250
+    - {fileID: 3069284727476684809, guid: 724f3aa46168dcd43b740d4d4100ba33, type: 3}
+    - {fileID: 5558515061596363505, guid: 97614169c918a0346b4a07e419365300, type: 3}
+    - {fileID: 1193616944378889241, guid: 4181fa9683c53674d9fd9c4ee70da193, type: 3}
+    - {fileID: 6009391072256267611, guid: 4104b7b31b4680d44bb7ad4b919f1a2d, type: 3}
+    - {fileID: 8330140974199374096, guid: 8bc0999cc5bee5f4986c0f25b848a665, type: 3}
+    - {fileID: 8415670438557660229, guid: 442201c762ad9344f8602e679ba0036b, type: 3}
+  - Threshold: 300
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
     StartDelay: 1.5
-    RepeatRate: 5
+    RepeatRate: 4
     AttackPrefabs:
     - {fileID: 5174075213898676460, guid: 666a99072d5137547b3ed808cb4793f6, type: 3}
     - {fileID: 2245313482442108623, guid: 5eec40f5c27d41448bc2d9babeee591f, type: 3}
@@ -2498,6 +2504,14 @@ MonoBehaviour:
     - {fileID: 5278445766019214962, guid: 12085202431caa44086c49d37fe4eb87, type: 3}
     - {fileID: 850685932503919938, guid: 9c016230cc12cbe4b8c89e65161f7c8d, type: 3}
     - {fileID: 261407755109188003, guid: 424f3ea1c81fb4a47b8ee432f6494f7d, type: 3}
+    - {fileID: 4883731495452578171, guid: a7b8a5529086ca34d9eff254ee5e279a, type: 3}
+    - {fileID: 8464523043721956308, guid: dc7711d7428cbfb4887b6ab2adc40068, type: 3}
+    - {fileID: 1147046491332165389, guid: 514c8530d6a913146975c7b4b725d9da, type: 3}
+    - {fileID: 7543316190970275734, guid: 5bfff73a4a7f7b0478d9a4ae7b6bf638, type: 3}
+    - {fileID: 3525953262652235345, guid: 284d35d112b2178428fad86639e1c9d8, type: 3}
+    - {fileID: 42549769295459493, guid: f8b61c02c2348484fa12f81cbc67dcb4, type: 3}
+    - {fileID: 1444297331218433624, guid: edb884ad32b1278428f6ff2ca688397b, type: 3}
+    - {fileID: 5896165265373424421, guid: d875fc4a34a40c84f8b317e18d07b6c0, type: 3}
   - Threshold: 200
     StartEvent:
       m_PersistentCalls:
@@ -2527,7 +2541,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     StartDelay: 1.5
-    RepeatRate: 2.5
+    RepeatRate: 3
     AttackPrefabs:
     - {fileID: 5174075213898676460, guid: 666a99072d5137547b3ed808cb4793f6, type: 3}
     - {fileID: 2245313482442108623, guid: 5eec40f5c27d41448bc2d9babeee591f, type: 3}
@@ -2537,6 +2551,18 @@ MonoBehaviour:
     - {fileID: 217949852803997897, guid: 99c9cf6926d876340b75320605cd2d40, type: 3}
     - {fileID: 5278445766019214962, guid: 12085202431caa44086c49d37fe4eb87, type: 3}
     - {fileID: 261407755109188003, guid: 424f3ea1c81fb4a47b8ee432f6494f7d, type: 3}
+    - {fileID: 2431936270671152785, guid: e5f0fd77412a3ce4cb1d38ff67d35c71, type: 3}
+    - {fileID: 7848507025822695964, guid: 2d0852970ac39ea488588868ebc4ed35, type: 3}
+    - {fileID: 1444297331218433624, guid: edb884ad32b1278428f6ff2ca688397b, type: 3}
+    - {fileID: 5896165265373424421, guid: d875fc4a34a40c84f8b317e18d07b6c0, type: 3}
+    - {fileID: 2293411667683733598, guid: 10d8ec4887ec7a848ae16656f63db55f, type: 3}
+    - {fileID: 8397518867249516584, guid: 6772468c6b4464e44bdd0a68bc504c3b, type: 3}
+    - {fileID: 8148212622956089137, guid: f32f1a6f7ac53cd408ccb93661f84799, type: 3}
+    - {fileID: 68329928745087466, guid: e37be1db12f5fc64fb9e0a3392abea12, type: 3}
+    - {fileID: 4883731495452578171, guid: a7b8a5529086ca34d9eff254ee5e279a, type: 3}
+    - {fileID: 8464523043721956308, guid: dc7711d7428cbfb4887b6ab2adc40068, type: 3}
+    - {fileID: 7543316190970275734, guid: 5bfff73a4a7f7b0478d9a4ae7b6bf638, type: 3}
+    - {fileID: 3525953262652235345, guid: 284d35d112b2178428fad86639e1c9d8, type: 3}
   - Threshold: 200
     StartEvent:
       m_PersistentCalls:
@@ -2566,7 +2592,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     StartDelay: 1.5
-    RepeatRate: 1.5
+    RepeatRate: 2.5
     AttackPrefabs:
     - {fileID: 850685932503919938, guid: 9c016230cc12cbe4b8c89e65161f7c8d, type: 3}
     - {fileID: 7028366390126123068, guid: d5d6957ffd1e62a45a3ab98315b5d0c6, type: 3}
@@ -2574,6 +2600,14 @@ MonoBehaviour:
     - {fileID: 217949852803997897, guid: 99c9cf6926d876340b75320605cd2d40, type: 3}
     - {fileID: 5125870349895606486, guid: f799887cedfaa49479db9b722d18f035, type: 3}
     - {fileID: 261407755109188003, guid: 424f3ea1c81fb4a47b8ee432f6494f7d, type: 3}
+    - {fileID: 2431936270671152785, guid: e5f0fd77412a3ce4cb1d38ff67d35c71, type: 3}
+    - {fileID: 7848507025822695964, guid: 2d0852970ac39ea488588868ebc4ed35, type: 3}
+    - {fileID: 1444297331218433624, guid: edb884ad32b1278428f6ff2ca688397b, type: 3}
+    - {fileID: 5896165265373424421, guid: d875fc4a34a40c84f8b317e18d07b6c0, type: 3}
+    - {fileID: 2293411667683733598, guid: 10d8ec4887ec7a848ae16656f63db55f, type: 3}
+    - {fileID: 8397518867249516584, guid: 6772468c6b4464e44bdd0a68bc504c3b, type: 3}
+    - {fileID: 8148212622956089137, guid: f32f1a6f7ac53cd408ccb93661f84799, type: 3}
+    - {fileID: 68329928745087466, guid: e37be1db12f5fc64fb9e0a3392abea12, type: 3}
   damageSound:
     Guid:
       Data1: 1622638801
