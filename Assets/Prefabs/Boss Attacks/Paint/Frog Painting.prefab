@@ -182,5 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d320d4e9d620429438a7c7533ff2f703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _goalPos: {x: 0, y: 0}
+  _movementSpeed: 2
+  _movementDistanceFactor: 0.3
   _paintEffect: {fileID: 7349346699400200136}
   _enemyToSpawn: {fileID: 5824145095176316402, guid: 431ab02f3cd0c4f43946850275859401, type: 3}
+  isReady: 0

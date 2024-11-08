@@ -12,10 +12,10 @@ public class PainterlySpawner : MonoBehaviour
     [Header("Moving")]
     [SerializeField, Tooltip("Position painting is moving towards before it is ready to be painted on.")]
     private Vector2 _goalPos;
-    [SerializeField, Tooltip("Snappinesss of portrait moving to goal position.")]
-    private float _movementSharpness;
-    [SerializeField, Tooltip("Distance from goal at which painting snaps to goal")]
-    private float _snappingDistance;
+    [SerializeField, Tooltip("Speed of portrait moving to goal position.")]
+    private float _movementSpeed;
+    [SerializeField, Tooltip("Higher value = faster move speed while farther away")]
+    private float _movementDistanceFactor;
 
     [Header("Painting/Spawning")]
     [SerializeField, Tooltip("Renderer with paint effect.")]
@@ -32,16 +32,17 @@ public class PainterlySpawner : MonoBehaviour
         if (isReady)
             return;
 
-        // snap to goal
-        if(Vector3.Distance(transform.position, (Vector3) _goalPos) < _snappingDistance)
+        // Motion towards goal - faster speed when farther away
+        float distanceFactor = Vector3.Distance(transform.position, _goalPos) * _movementDistanceFactor;
+        if (distanceFactor < 1) // prevent approaching but never reaching the target
+            distanceFactor = 1;
+        transform.position = transform.position + Vector3.down * _movementSpeed * distanceFactor * Time.fixedDeltaTime;
+
+        // snap to goal if it would overshoot
+        if (transform.position.y < _goalPos.y)
         {
             transform.position = _goalPos;
             isReady = true;
-        }
-        // smoothly lerp towards goal
-        else
-        {
-            transform.position = Vector3.Lerp(transform.position, _goalPos, 1f - Mathf.Exp(-_movementSharpness * Time.fixedDeltaTime));
         }
     }
 
