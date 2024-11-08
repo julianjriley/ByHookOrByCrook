@@ -19,6 +19,7 @@ public class PaintBoss : BossPrototype
     private CirclingTarget _paintingTarget;
 
     // queue of spawners the boss must track to
+    private List<PainterlySpawner> _preparingSpawners = new();
     private List<PainterlySpawner> _spawners = new();
     private bool _isPainting;
 
@@ -30,6 +31,16 @@ public class PaintBoss : BossPrototype
         // don't handle target tracking behavior if currently in the process of painting already.
         if (_isPainting)
             return;
+
+        // check for adding preparing spawners to spawners list once they are ready
+        for (int i = _preparingSpawners.Count - 1; i >= 0; i--)
+        {
+            if(_preparingSpawners[i].isReady)
+            {
+                _spawners.Add(_preparingSpawners[i]);
+                _preparingSpawners.RemoveAt(i);
+            }
+        }
 
         // track to first spawner in list (like queue)
         if (_spawners.Count > 0)
@@ -91,6 +102,6 @@ public class PaintBoss : BossPrototype
 
         // Add object to spawners list ONLY if it is a PainterlySpawner (i.e. ignore ink portals)
         if (attack.TryGetComponent(out PainterlySpawner spawner))
-            _spawners.Add(spawner);
+            _preparingSpawners.Add(spawner);
     }
 }
