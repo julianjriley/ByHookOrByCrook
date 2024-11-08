@@ -87,6 +87,7 @@ public class PaintBoss : BossPrototype
         // return to non-painting movement behavior
         SetDefaultTarget();
         SetDefaultSpeed();
+        // TODO: return to idle animation
 
         _isPainting = false;
     }
