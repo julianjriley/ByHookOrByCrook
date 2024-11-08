@@ -20,6 +20,8 @@ public class Boss1 : BossPrototype
     private Animator _anim;
 
     [Header("Galaga Attacks")]
+    [SerializeField, Tooltip("Galaga attack with one rows")]
+    private GameObject _galaga1;
     [SerializeField, Tooltip("Galaga attack with two rows")]
     private GameObject _galaga2;
     [SerializeField, Tooltip("Galaga attack with three rows")]
@@ -173,6 +175,14 @@ public class Boss1 : BossPrototype
         //reenable portals
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// Used at start of phase 1
+    /// </summary>
+    public void SpawnGalaga1()
+    {
+        SpawnAttackOnce(_galaga1);
     }
 
     /// <summary>

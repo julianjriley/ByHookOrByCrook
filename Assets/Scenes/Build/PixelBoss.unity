@@ -2506,7 +2506,19 @@ MonoBehaviour:
   - Threshold: 250
     StartEvent:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 9162701217834228333}
+          m_TargetAssemblyTypeName: Boss1, Assembly-CSharp
+          m_MethodName: SpawnGalaga1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     StartDelay: 1.5
     RepeatRate: 4.5
     AttackPrefabs:
@@ -2639,5 +2651,6 @@ MonoBehaviour:
   Left_2: {fileID: 3702243628436604528}
   LowerLeft: {fileID: 6464634708673677635}
   LowerLeft_2: {fileID: 1609405318736233358}
+  _galaga1: {fileID: 6370692336463082751, guid: 871976578ca5ec640937e33049395277, type: 3}
   _galaga2: {fileID: 2756887739364431807, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
   _galaga3: {fileID: 600498861368864705, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
