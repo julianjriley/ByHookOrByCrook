@@ -11,6 +11,8 @@ public class PinkMan : Projectile
     private float _phaseTwoSpeedMultiplier;
     [SerializeField, Tooltip("Max distance from the player's x-pos that it is acceptable to turn within.")]
     private float _xDetectDistance; // prevents auto turning if it spawned on wrong side of player (i.e. player near edge)
+    [SerializeField, Tooltip("Used to set charging animation")]
+    private Animator _anim;
 
     private GameObject _player;
     private bool _movingRight;
@@ -40,7 +42,7 @@ public class PinkMan : Projectile
             throw new System.Exception("No player is present in the scene, but you are trying to create PinkMan.");
     }
 
-    private void FixedUpdate()
+    override protected void FixedUpdate()
     {
         if (_hasTurned)
             return;
@@ -68,6 +70,9 @@ public class PinkMan : Projectile
             }
 
             _hasTurned = true;
+
+            // start charging animation
+            _anim.SetTrigger("Charge");
         }
     }
 }
