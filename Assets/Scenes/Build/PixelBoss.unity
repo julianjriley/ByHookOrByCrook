@@ -2479,17 +2479,25 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     StartDelay: 1.5
-    RepeatRate: 2.5
+    RepeatRate: 5
     AttackPrefabs:
     - {fileID: 2767629165609645250, guid: f9b8f8d9a692228448998d1acbb7034e, type: 3}
     - {fileID: 5278445766019214962, guid: 12085202431caa44086c49d37fe4eb87, type: 3}
+    - {fileID: 5174075213898676460, guid: 666a99072d5137547b3ed808cb4793f6, type: 3}
+    - {fileID: 2245313482442108623, guid: 5eec40f5c27d41448bc2d9babeee591f, type: 3}
   - Threshold: 250
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
     StartDelay: 1.5
     RepeatRate: 5
-    AttackPrefabs: []
+    AttackPrefabs:
+    - {fileID: 5174075213898676460, guid: 666a99072d5137547b3ed808cb4793f6, type: 3}
+    - {fileID: 2245313482442108623, guid: 5eec40f5c27d41448bc2d9babeee591f, type: 3}
+    - {fileID: 2767629165609645250, guid: f9b8f8d9a692228448998d1acbb7034e, type: 3}
+    - {fileID: 5278445766019214962, guid: 12085202431caa44086c49d37fe4eb87, type: 3}
+    - {fileID: 850685932503919938, guid: 9c016230cc12cbe4b8c89e65161f7c8d, type: 3}
+    - {fileID: 261407755109188003, guid: 424f3ea1c81fb4a47b8ee432f6494f7d, type: 3}
   - Threshold: 200
     StartEvent:
       m_PersistentCalls:
@@ -2521,7 +2529,14 @@ MonoBehaviour:
     StartDelay: 1.5
     RepeatRate: 2.5
     AttackPrefabs:
-    - {fileID: 2175190183606077555, guid: ce91313cb3a78864892702d27a416a0c, type: 3}
+    - {fileID: 5174075213898676460, guid: 666a99072d5137547b3ed808cb4793f6, type: 3}
+    - {fileID: 2245313482442108623, guid: 5eec40f5c27d41448bc2d9babeee591f, type: 3}
+    - {fileID: 2767629165609645250, guid: f9b8f8d9a692228448998d1acbb7034e, type: 3}
+    - {fileID: 850685932503919938, guid: 9c016230cc12cbe4b8c89e65161f7c8d, type: 3}
+    - {fileID: 2895350736654961075, guid: b95ba366754f06345b7a0e128767bc2d, type: 3}
+    - {fileID: 217949852803997897, guid: 99c9cf6926d876340b75320605cd2d40, type: 3}
+    - {fileID: 5278445766019214962, guid: 12085202431caa44086c49d37fe4eb87, type: 3}
+    - {fileID: 261407755109188003, guid: 424f3ea1c81fb4a47b8ee432f6494f7d, type: 3}
   - Threshold: 200
     StartEvent:
       m_PersistentCalls:
@@ -2551,9 +2566,14 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     StartDelay: 1.5
-    RepeatRate: 2.5
+    RepeatRate: 1.5
     AttackPrefabs:
-    - {fileID: 2175190183606077555, guid: ce91313cb3a78864892702d27a416a0c, type: 3}
+    - {fileID: 850685932503919938, guid: 9c016230cc12cbe4b8c89e65161f7c8d, type: 3}
+    - {fileID: 7028366390126123068, guid: d5d6957ffd1e62a45a3ab98315b5d0c6, type: 3}
+    - {fileID: 2895350736654961075, guid: b95ba366754f06345b7a0e128767bc2d, type: 3}
+    - {fileID: 217949852803997897, guid: 99c9cf6926d876340b75320605cd2d40, type: 3}
+    - {fileID: 5125870349895606486, guid: f799887cedfaa49479db9b722d18f035, type: 3}
+    - {fileID: 261407755109188003, guid: 424f3ea1c81fb4a47b8ee432f6494f7d, type: 3}
   damageSound:
     Guid:
       Data1: 1622638801
