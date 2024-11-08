@@ -141,9 +141,18 @@ public class Boss1 : BossPrototype
         transform.GetChild(1).gameObject.SetActive(false);
 
         _anim.SetBool("drillIn", true);
-        SetNewTarget(target3, -1);
+
+
         yield return new WaitForSeconds(0.7f);
         _anim.SetBool("drill", true);
+
+        // drill for 2 seconds before actually starting motion as a strong visual cue
+        yield return new WaitForSeconds(2f);
+
+        // pull back before lunging across
+        SetNewTarget(target3, -1);
+        yield return new WaitForSeconds(1f);
+
         SetSpeed(125f);
         //Debug.Log("Speed" + Speed);
         SetNewTarget(target4, 2.5f);

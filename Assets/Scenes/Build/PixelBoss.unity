@@ -295,67 +295,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
---- !u!1001 &517824537
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 600498861368864705, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
-      propertyPath: m_Name
-      value: Spawn Galaga Fleet - 3 Row
-      objectReference: {fileID: 0}
-    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6979565100884295497, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}
 --- !u!1 &678178531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,12 +1078,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
+      propertyPath: Duration
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: ScaleMax
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: ScaleMin
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
+      propertyPath: TimeBetweenRepositions
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1394876051387157243, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: m_Name
@@ -2513,7 +2460,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4319637734953820296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 10.3, y: 3.78, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2536,10 +2483,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 35
   _playerTransform: {fileID: 0}
-  BossHealth: 350
+  BossHealth: 300
   MaxBossHealth: 300
   _phases:
-  - Threshold: 350
+  - Threshold: 300
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -2556,7 +2503,7 @@ MonoBehaviour:
     - {fileID: 6009391072256267611, guid: 4104b7b31b4680d44bb7ad4b919f1a2d, type: 3}
     - {fileID: 8330140974199374096, guid: 8bc0999cc5bee5f4986c0f25b848a665, type: 3}
     - {fileID: 8415670438557660229, guid: 442201c762ad9344f8602e679ba0036b, type: 3}
-  - Threshold: 300
+  - Threshold: 250
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -2577,7 +2524,7 @@ MonoBehaviour:
     - {fileID: 42549769295459493, guid: f8b61c02c2348484fa12f81cbc67dcb4, type: 3}
     - {fileID: 2431936270671152785, guid: e5f0fd77412a3ce4cb1d38ff67d35c71, type: 3}
     - {fileID: 7848507025822695964, guid: 2d0852970ac39ea488588868ebc4ed35, type: 3}
-  - Threshold: 200
+  - Threshold: 175
     StartEvent:
       m_PersistentCalls:
         m_Calls:
@@ -2606,7 +2553,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     StartDelay: 1.5
-    RepeatRate: 5
+    RepeatRate: 4.5
     AttackPrefabs:
     - {fileID: 5174075213898676460, guid: 666a99072d5137547b3ed808cb4793f6, type: 3}
     - {fileID: 2245313482442108623, guid: 5eec40f5c27d41448bc2d9babeee591f, type: 3}
@@ -2628,7 +2575,7 @@ MonoBehaviour:
     - {fileID: 8464523043721956308, guid: dc7711d7428cbfb4887b6ab2adc40068, type: 3}
     - {fileID: 7543316190970275734, guid: 5bfff73a4a7f7b0478d9a4ae7b6bf638, type: 3}
     - {fileID: 3525953262652235345, guid: 284d35d112b2178428fad86639e1c9d8, type: 3}
-  - Threshold: 200
+  - Threshold: 100
     StartEvent:
       m_PersistentCalls:
         m_Calls:
@@ -2657,7 +2604,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     StartDelay: 1.5
-    RepeatRate: 5
+    RepeatRate: 4.5
     AttackPrefabs:
     - {fileID: 850685932503919938, guid: 9c016230cc12cbe4b8c89e65161f7c8d, type: 3}
     - {fileID: 7028366390126123068, guid: d5d6957ffd1e62a45a3ab98315b5d0c6, type: 3}
