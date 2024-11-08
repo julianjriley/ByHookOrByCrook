@@ -43,7 +43,7 @@ public class PaintBoss : BossPrototype
         }
 
         // track to first spawner in list (like queue)
-        if (_spawners.Count > 0)
+        if (_spawners.Count > 0 && !_isPainting)
         {
             // update where boss tracks towards
             if (_target != _paintingTarget.transform)
@@ -52,7 +52,7 @@ public class PaintBoss : BossPrototype
                 SetNewTarget(_paintingTarget.transform);
                 SetSpeed(_paintingTrackSpeed);
             }
-
+            
             // Check for in range to start 'painting' enemy
             Vector2 bossPos = new Vector2(transform.position.x, transform.position.y);
             Vector2 targetPos = new Vector2(_target.position.x, _target.position.y);
