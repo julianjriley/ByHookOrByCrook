@@ -53,8 +53,8 @@ MonoBehaviour:
   _size: 1
   _speed: 5
   _lifetime: 10
-  _health: 1
-  _phaseTwoSpeedMultiplier: 2.5
+  _health: 3
+  _phaseTwoSpeedMultiplier: 4
   _detectDistance: 0.25
   _initialDirection: {x: 1, y: 0}
   _anim: {fileID: -4962938994937857213}
