@@ -131,12 +131,14 @@ public class Boss1 : BossPrototype
         //this function changes the bosses' targets to make it charge across the screen
         SetNewTarget(target1, -1);
         yield return new WaitForSeconds(0.5f);
-        //adjust capsule collider to fit drill
-        _capsule.direction = 0;
-        _capsule.center = new Vector3(0f, -0.45f, 0f);
 
         SetNewTarget(target2, -1);
         yield return new WaitForSeconds(2f);
+
+        //adjust capsule collider to fit drill better
+        _capsule.direction = 0;
+        _capsule.center = new Vector3(0f, -0.45f, 0f);
+
         _isDrilling = true;
         //disable portal children bc drill animation includes the portal
         transform.GetChild(0).gameObject.SetActive(false);
