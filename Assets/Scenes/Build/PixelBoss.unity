@@ -123,6 +123,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &153611159
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2756887739364431807, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+      propertyPath: m_Name
+      value: Spawn Galaga Fleet - 2 Row
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677751844352509751, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677751844352509751, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677751844352509751, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677751844352509751, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677751844352509751, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677751844352509751, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677751844352509751, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677751844352509751, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677751844352509751, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677751844352509751, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677751844352509751, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
 --- !u!1001 &153793738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,38 +250,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2816929413548509376, guid: df07c7ca8d1e02b42ad46c886e29d00d, type: 3}
   m_PrefabInstance: {fileID: 153793738}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &373709393
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 373709394}
-  m_Layer: 0
-  m_Name: Galaga Fleet
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &373709394
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 373709393}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.84, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1661944569}
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &478509301
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,72 +566,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2816929413548509376, guid: df07c7ca8d1e02b42ad46c886e29d00d, type: 3}
   m_PrefabInstance: {fileID: 926515694}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1661944568
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 373709394}
-    m_Modifications:
-    - target: {fileID: 304496015051119341, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 304496015051119341, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 304496015051119341, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 304496015051119341, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 304496015051119341, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 304496015051119341, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 304496015051119341, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 304496015051119341, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 304496015051119341, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 304496015051119341, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 304496015051119341, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8745604044826464000, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-      propertyPath: m_Name
-      value: Spawn Galaga Fleet
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
---- !u!4 &1661944569 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 304496015051119341, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
-  m_PrefabInstance: {fileID: 1661944568}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1673396114
 PrefabInstance:
@@ -1275,10 +1238,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.99
-  m_Height: 3.01
+  m_Radius: 0.78436106
+  m_Height: 2.7482784
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.0037389756, y: -0.145817, z: 0}
 --- !u!1001 &1435887812646945555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2577,9 +2540,16 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     StartDelay: 1.5
-    RepeatRate: 5
+    RepeatRate: 2.5
     AttackPrefabs:
     - {fileID: 2175190183606077555, guid: ce91313cb3a78864892702d27a416a0c, type: 3}
+  - Threshold: 250
+    StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    StartDelay: 1.5
+    RepeatRate: 5
+    AttackPrefabs: []
   - Threshold: 200
     StartEvent:
       m_PersistentCalls:
@@ -2588,6 +2558,18 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: Boss1, Assembly-CSharp
           m_MethodName: StartCharging
           m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 10
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 9162701217834228333}
+          m_TargetAssemblyTypeName: Boss1, Assembly-CSharp
+          m_MethodName: SpawnGalaga2
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2618,8 +2600,8 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 9162701217834228333}
           m_TargetAssemblyTypeName: Boss1, Assembly-CSharp
-          m_MethodName: StartCharging
-          m_Mode: 4
+          m_MethodName: SpawnGalaga3
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2651,3 +2633,5 @@ MonoBehaviour:
   Left_2: {fileID: 3702243628436604528}
   LowerLeft: {fileID: 6464634708673677635}
   LowerLeft_2: {fileID: 1609405318736233358}
+  _galaga2: {fileID: 2756887739364431807, guid: 95b0d405a8aec0d4193effe3f36abd2a, type: 3}
+  _galaga3: {fileID: 600498861368864705, guid: c58b899abc8e56946977e8dcd08d7561, type: 3}

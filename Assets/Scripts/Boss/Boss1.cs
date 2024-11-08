@@ -19,6 +19,12 @@ public class Boss1 : BossPrototype
     public Transform LowerLeft_2;
     private Animator _anim;
 
+    [Header("Galaga Attacks")]
+    [SerializeField, Tooltip("Galaga attack with two rows")]
+    private GameObject _galaga2;
+    [SerializeField, Tooltip("Galaga attack with three rows")]
+    private GameObject _galaga3;
+
     private Transform _spriteTransform;
     private BossTargetRepositioner _targetRepositioner;
     private CapsuleCollider _capsule;
@@ -158,5 +164,21 @@ public class Boss1 : BossPrototype
         //reenable portals
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// Used at start of phase 2
+    /// </summary>
+    public void SpawnGalaga2()
+    {
+        SpawnAttackOnce(_galaga2);
+    }
+
+    /// <summary>
+    /// Used at start of phase 3
+    /// </summary>
+    public void SpawnGalaga3()
+    {
+        SpawnAttackOnce(_galaga3);
     }
 }
