@@ -2481,7 +2481,8 @@ MonoBehaviour:
     StartDelay: 1.5
     RepeatRate: 2.5
     AttackPrefabs:
-    - {fileID: 2175190183606077555, guid: ce91313cb3a78864892702d27a416a0c, type: 3}
+    - {fileID: 2767629165609645250, guid: f9b8f8d9a692228448998d1acbb7034e, type: 3}
+    - {fileID: 5278445766019214962, guid: 12085202431caa44086c49d37fe4eb87, type: 3}
   - Threshold: 250
     StartEvent:
       m_PersistentCalls:
