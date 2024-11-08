@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4962938994937857213}
   - component: {fileID: 6032463255159157445}
   m_Layer: 8
-  m_Name: PinkMan Projectile
+  m_Name: PinkMan (right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,8 +55,10 @@ MonoBehaviour:
   _lifetime: 10
   _health: 1
   _phaseTwoSpeedMultiplier: 2.5
-  _xDetectDistance: 0.5
+  _detectDistance: 0.25
+  _initialDirection: {x: 1, y: 0}
   _anim: {fileID: -4962938994937857213}
+  _renderer: {fileID: 6260900643170913913}
 --- !u!54 &6842412529798106262
 Rigidbody:
   m_ObjectHideFlags: 0
