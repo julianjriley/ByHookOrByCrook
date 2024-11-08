@@ -86,6 +86,7 @@ public class PaintBoss : BossPrototype
 
         // return to non-painting movement behavior
         SetDefaultTarget();
+        SetDefaultSpeed();
 
         _isPainting = false;
     }

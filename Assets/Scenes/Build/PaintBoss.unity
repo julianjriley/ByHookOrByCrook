@@ -2117,6 +2117,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 218604091}
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: _paintingTrackSpeed
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[17]
       value: 
       objectReference: {fileID: 4624723995477108583, guid: 5f6fd6c3714bd4f4f9828af42d008b6e, type: 3}
