@@ -34,7 +34,7 @@ public class BossTargetRepositioner : MonoBehaviour
 
         if (_currentTargetTransform != null) {
             //_currentTargetTransform.localPosition = Vector3.zero;
-            Debug.Log("CurrentTargetTransform != null");
+            //Debug.Log("CurrentTargetTransform != null");
             if (_bounds.bounds.Contains(_currentTargetTransform.GetChild(0).position) != true) { //if target goes outside of bounds, regenerate a new one and restart the invokerepeating
                 StopCoroutine(_lerpScale);
                 StopCoroutine(_lerpRotation);
@@ -63,12 +63,11 @@ public class BossTargetRepositioner : MonoBehaviour
         //check if position of new target is in the bounds
         //BUG: I think if it keeps generating targets that our out of bounds, it overloads the stack
         if (_bounds.bounds.Contains(newTransform.GetChild(0).position) != true) {
-            Debug.Log("Target outside of bounds, making new target");
+            //Debug.Log("Target outside of bounds, making new target");
             MakeNewTarget();
             Destroy(newTarget);
             return;
         }
-
         //if code reaches this point, change the target and delete old one
         GameObject oldTarget = _currentTarget;
         _currentTarget = newTarget;
@@ -110,5 +109,39 @@ public class BossTargetRepositioner : MonoBehaviour
             yield return null;
         }
         _rotaterTransform.localScale = end; 
+    }
+    public void NewBossTarget(int rotation, int scale) {
+        CancelInvoke();
+        //make new rotator and target
+        GameObject newTarget;
+        newTarget = (GameObject) Instantiate((Object) _rotater, transform);
+        Transform newTransform = newTarget.GetComponent<Transform>();
+
+        //scale new rotator and target
+        Vector3 newScale = new Vector3(scale, scale, scale);
+        newTransform.localScale = newScale;
+
+        //set rotation of new rotator and target
+        newTransform.localRotation = Quaternion.Euler(0, 0, 0);
+        newTransform.Rotate(0f, 0f, rotation, Space.World);
+
+        //if code reaches this point, change the target and delete old one
+        GameObject oldTarget = _currentTarget;
+        _currentTarget = newTarget;
+        _currentTargetTransform = _currentTarget.GetComponent<Transform>();
+        _currentTarget.GetComponent<SpriteRenderer>().color = Color.red;
+        Destroy(oldTarget);
+
+        //lerp rotater to newTarget scale and rotation over time
+        float rotaterZ = _rotaterTransform.eulerAngles.z;
+        float targetZ = _currentTarget.GetComponent<Transform>().eulerAngles.z;
+        _lerpRotation = StartCoroutine(LerpRotation(rotaterZ, targetZ, Duration));
+
+        Vector3 rotaterScale = _rotaterTransform.localScale;
+        Vector3 targetScale = _currentTargetTransform.localScale;
+        _lerpScale = StartCoroutine(LerpScale(rotaterScale, targetScale, Duration));
+        // Debug.Log("NewBossTarget finished");
+        //restart invoke repeating
+        InvokeRepeating("MakeNewTarget", TimeBetweenRepositions, TimeBetweenRepositions);
     }
 }
