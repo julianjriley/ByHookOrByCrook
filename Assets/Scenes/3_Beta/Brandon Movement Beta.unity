@@ -210,14 +210,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7634665789629104108, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
-      propertyPath: lengthInSec
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 7634665789629104108, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key0.a
-      value: 0.11764706
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
