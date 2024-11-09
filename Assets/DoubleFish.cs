@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingFish : PassiveItemInstance
+public class DoubleFish : PassiveItemInstance
 {
     public override void ItemEffect()
     {
         base.ItemEffect();
-        _player.GetPlayerMovement().jumpImpulseUP += 8;
+        _player.GetPlayerMovement().numberOfAirDashes = 2;
     }
 }

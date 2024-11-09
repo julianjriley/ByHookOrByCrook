@@ -312,6 +312,11 @@ public class PlayerCombat : MonoBehaviour
         return playerMovement;
     }
 
+    public WeaponInstance GetWeaponInstance()
+    {
+        return _equippedWeapon;
+    }
+
     void ResetStats()
     {
         _health = _baseHealth;

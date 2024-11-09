@@ -11,6 +11,13 @@ public class ArenaMovement : MonoBehaviour
 {
     private ActionControls controls;
 
+    [Header("OverHeated Buff Info")]
+    private bool _isOverHeated;
+    [SerializeField, Tooltip("Is gun OverHeated")]
+    public bool infiniJumpFish = false;
+    private bool _canInfiniJump = false;
+
+
     //X-Movement
     [Header("Movment Variables")]
     [SerializeField, Tooltip("Speed of Character Movement")]
@@ -25,7 +32,7 @@ public class ArenaMovement : MonoBehaviour
     [SerializeField, Tooltip("Amount of jumps before player is grounded")]
     public int maxNumberOfJumps = 1;
     //Amount of Jumps starting from 0 to 1-maxNumberOfJumps
-    private int _jumpCounterIndex = 0;  
+    public int _jumpCounterIndex = 0;  
     [SerializeField, Tooltip("Cyote Time: Time Player Has to jump when Leaving the edge of a platform")]
     private float _coyoteMaxTime = 0.3f;
     private float _coyoteTimer;
@@ -68,6 +75,8 @@ public class ArenaMovement : MonoBehaviour
     [SerializeField, Tooltip("Amount of air dashes in quick succession")]
     public int numberOfAirDashes = 1;
     private int _dashCount;
+    private bool _cyoteDash = true;
+    public bool canDashResetJump = false;
     [SerializeField]TrailRenderer _trailRender;
 
     [Header("SFX")]
@@ -96,6 +105,8 @@ public class ArenaMovement : MonoBehaviour
 
     //Platform Notifier
     public float GoThroughPlatforms;
+
+   
 
     void Start()
     {
@@ -153,6 +164,14 @@ public class ArenaMovement : MonoBehaviour
         _movementTimer -= Time.deltaTime;
         //Debug.Log("Jump Durration: " + _jumpDurrationTimer);
         AnimatePlayer2D();
+
+        //Checks If Gun is Over Heated
+        Debug.Log(_coyoteTimer);
+        _isOverHeated =  _playerCombat.GetWeaponInstance().GetOverHeatedState();
+        if (_isOverHeated && infiniJumpFish)
+            _canInfiniJump = true;
+        else
+            _canInfiniJump = false;
     }
     
     void FixedUpdate()
@@ -222,7 +241,7 @@ public class ArenaMovement : MonoBehaviour
         //Durration while space is held
         if (_jumpDurrationTimer < jumpDuration && _jumpDurrationTimer > 0)
         {
-            _anim.Play("Jump");
+            //_anim.Play("Jump");
         }
 
         //Apply Force Down When timer finishes
@@ -235,18 +254,18 @@ public class ArenaMovement : MonoBehaviour
         if (_jumpBufferTimer > 0f)
         {   
             //Initial Jump
-            if (_coyoteTimer > 0f)
+            if (_coyoteTimer > 0f || _canInfiniJump)
             {
                 SoundManager.Instance.PlayOneShot(jumpSound, gameObject.transform.position);
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
                 rb.AddForce(Vector2.up * jumpImpulseUP, ForceMode.Impulse);
-
+                _anim.Play("Jump", -1, 0f);
                 // prevent high jump with no control
                 _jumpBufferTimer = 0;
             }
             //Other Jumps after 0th jump
-            else if (!_isGrounded && _jumpCounterIndex < maxNumberOfJumps)
+            else if ((!_isGrounded && _jumpCounterIndex < maxNumberOfJumps) && !_canInfiniJump)
             {
                 SoundManager.Instance.PlayOneShot(doubleJumpSound, gameObject.transform.position);
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -267,8 +286,6 @@ public class ArenaMovement : MonoBehaviour
         //Reset Durration
         if (rb.velocity.y < 0 || _jumpDurrationTimer > jumpDuration)
         {
-            //rb.AddForce(Vector2.down * jumpFallingForce, ForceMode.Force);
-            Debug.Log(rb.velocity.y);
             _jumpDurrationTimer = 0;
         }
 
@@ -329,10 +346,18 @@ public class ArenaMovement : MonoBehaviour
     public void DashInput(InputAction.CallbackContext context)
     {
         //Flag for the cooldown is done so the player can press dash again
-            //As well as there's a dashCount for amount of dashes that can be done in succesion
-            //How long it takes for the play to press dash agian (Used so the player can't spam the button)
+        //As well as there's a dashCount for amount of dashes that can be done in succesion
+        //How long it takes for the play to press dash agian (Used so the player can't spam the button)
         if (!IsDashingInAir && _dashCount > 0 && !dashRestricted)
+        {
             StartCoroutine(Dash());
+            //if We Have the "Dash Rests Jump Counter Fish"
+            if (canDashResetJump)
+            {
+                //Set Jump Count index to 0;
+                _jumpCounterIndex = -1;
+            }
+        }
     }
 
     /* COROUTINE: 
@@ -346,6 +371,10 @@ public class ArenaMovement : MonoBehaviour
     {
         if (canDash)
         {
+            //Dash Succession Logic For MultiDash
+            if (!_isGrounded || !_cyoteDash)
+                _dashCount--;
+
             //Set Values/Flags Before Dashing
             IsDashingInAir = true;
             isDashing = true;
@@ -355,7 +384,7 @@ public class ArenaMovement : MonoBehaviour
 
             float dashDirection = _horizontalMovemenet;
             if (_horizontalMovemenet == 0)
-                dashDirection = -1 * gameObject.transform.localScale.x;  
+                dashDirection = gameObject.transform.localScale.x;  
             
             //Dash a certian distance
             //_anim.SetBool("IsMoving", true);
@@ -370,9 +399,6 @@ public class ArenaMovement : MonoBehaviour
             //Reset Values/Flags after to original state
             isDashing = false;
             rb.useGravity = true;
-
-            //Dash Succession Logic For MultiDash
-            _dashCount--;
             //If there are no  more dashes left
             if (_dashCount <= 0 )
             {
@@ -412,8 +438,10 @@ public class ArenaMovement : MonoBehaviour
         //Reset Some values when cyote time is still Active
         if (_coyoteTimer > 0)
         {
+            _cyoteDash = true;
             _jumpCounterIndex = 0;
-        }
+        }else
+            _cyoteDash = false;
 
         //Update Values while in the air
         if (!_isGrounded)
@@ -441,25 +469,6 @@ public class ArenaMovement : MonoBehaviour
         int leftOrRightOrrientation = gameObject.transform.localScale.x > 0 ? 1 : -1;
         if (leftOrRightOrrientation < 0 && _isGrounded)
         {
-            if (_horizontalMovemenet > 0)
-            {
-                _anim.SetBool("isMovingForward", true);
-                _anim.SetBool("isMoving", true);
-
-            }
-            else if (_horizontalMovemenet < 0)
-            {
-                _anim.SetBool("isMovingForward", false);
-                _anim.SetBool("isMoving", true);
-            }
-            else
-            {
-                if (_movementTimer < 0)
-                    _anim.SetBool("isMoving", false);
-            }
-        }
-        else if (leftOrRightOrrientation > 0 && _isGrounded) 
-        {
             if (_horizontalMovemenet < 0)
             {
                 _anim.SetBool("isMovingForward", true);
@@ -474,6 +483,25 @@ public class ArenaMovement : MonoBehaviour
             else
             {
                 if (_movementTimer < 0)
+                    _anim.SetBool("isMoving", false);
+            }
+        }
+        else if (leftOrRightOrrientation > 0 && _isGrounded) 
+        {
+            if (_horizontalMovemenet > 0)
+            {
+                _anim.SetBool("isMovingForward", true);
+                _anim.SetBool("isMoving", true);
+
+            }
+            else if (_horizontalMovemenet < 0)
+            {
+                _anim.SetBool("isMovingForward", false);
+                _anim.SetBool("isMoving", true);
+            }
+            else
+            {
+                if (_movementTimer > 0)
                     _anim.SetBool("isMoving", false);
             }
         }else
