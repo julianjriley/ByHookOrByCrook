@@ -85,6 +85,7 @@ public class ArenaMovement : MonoBehaviour
     [SerializeField] EventReference dashSound;
     [SerializeField] EventReference jumpSound;
     [SerializeField] EventReference doubleJumpSound;
+    [SerializeField] ParticleSystem dust;
 
     //Animations
     private Animator _anim;
@@ -106,7 +107,6 @@ public class ArenaMovement : MonoBehaviour
     //Platform Notifier
     public float GoThroughPlatforms;
 
-   
 
     void Start()
     {
@@ -260,6 +260,7 @@ public class ArenaMovement : MonoBehaviour
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
                 rb.AddForce(Vector2.up * jumpImpulseUP, ForceMode.Impulse);
+                dust.Play();
                 _anim.Play("Jump", -1, 0f);
                 // prevent high jump with no control
                 _jumpBufferTimer = 0;
@@ -271,7 +272,7 @@ public class ArenaMovement : MonoBehaviour
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(Vector2.up * jumpImpulseUP, ForceMode.Impulse);
                 _anim.Play("Jump");
-
+                dust.Play();
                 // prevent high jump with no control
                 _jumpBufferTimer = 0;
             }
@@ -305,7 +306,9 @@ public class ArenaMovement : MonoBehaviour
         //Reads x-distence if character can move
         if (context.performed)
         {
-            _horizontalMovemenet = context.ReadValue<Vector2>().x;            
+            _horizontalMovemenet = context.ReadValue<Vector2>().x; 
+            if(_isGrounded)
+                dust.Play();
         }
 
         if (context.canceled)
@@ -394,6 +397,8 @@ public class ArenaMovement : MonoBehaviour
 
             _playerCombat.InvincibleDash(DashDuration - 0.1f);
             yield return new WaitForSeconds(DashDuration);
+            if(_isGrounded)
+                dust.Play();
             _trailRender.emitting = false;
             _anim.Play("Idle");
             //Reset Values/Flags after to original state
@@ -519,5 +524,6 @@ public class ArenaMovement : MonoBehaviour
             controls.Player.Dash.Disable();
         }
     }
+
 }
 
