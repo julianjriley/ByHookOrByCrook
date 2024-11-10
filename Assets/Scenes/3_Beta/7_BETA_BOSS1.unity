@@ -626,6 +626,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: skipper
+      value: 
+      objectReference: {fileID: 7216816289842264639, guid: a67c020a2a112bd47a8b515e7f4c785b, type: 3}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.size
       value: 3
       objectReference: {fileID: 0}
