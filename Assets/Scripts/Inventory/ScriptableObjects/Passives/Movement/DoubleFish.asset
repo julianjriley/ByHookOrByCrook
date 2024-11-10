@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
+  m_Name: DoubleFish
+  m_EditorClassIdentifier: 
+  _itemID: 7
+  _itemName: Double Fish
+  _itemDescription: Something
+  _sprite: {fileID: 21300000, guid: 0a63a57345f9ac14a81a29d63fafad63, type: 3}
+  _itemPrefab: {fileID: 8626136960340420629, guid: 8ad4c7eb8de447841a70afe6c9920d4d, type: 3}
+  _cost: 0

@@ -44,6 +44,7 @@ public class AnapesticTetra : WeaponInstance
             }
             _heatLevel += _weapon.HeatBuildup;
         }
+        TryApplyRecoil();
         if(_projectileIndex >= _projectiles.Length - 1)
             _projectileIndex = 0;
         else

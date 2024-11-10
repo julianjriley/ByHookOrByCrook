@@ -5,10 +5,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using FMOD.Studio;
 using FMODUnity;
+//using FMOD;
 
 public class ArenaMovement : MonoBehaviour
 {
     private ActionControls controls;
+
+    [Header("OverHeated Buff Info")]
+    private bool _isOverHeated;
+    [SerializeField, Tooltip("Is gun OverHeated")]
+    public bool infiniJumpFish = false;
+    private bool _canInfiniJump = false;
+
 
     //X-Movement
     [Header("Movment Variables")]
@@ -16,33 +24,28 @@ public class ArenaMovement : MonoBehaviour
     public float MaxSpeed = 7f;
     //Read Input for x-movement
     private float _horizontalMovemenet;
+    private float _movementTimer = 0.1f;
+    private float _movementMaxTime = 0.1f;
 
     //Jumping
     [Header("Jump Variables")]
     [SerializeField, Tooltip("Amount of jumps before player is grounded")]
     public int maxNumberOfJumps = 1;
     //Amount of Jumps starting from 0 to 1-maxNumberOfJumps
-    private int _jumpCounterIndex = 0;
-    
+    public int _jumpCounterIndex = 0;  
     [SerializeField, Tooltip("Cyote Time: Time Player Has to jump when Leaving the edge of a platform")]
     private float _coyoteMaxTime = 0.3f;
     private float _coyoteTimer;
-   
     [SerializeField, Tooltip("Jump Buffer: The time window for players to jump again right before they land on the ground")]
     private float _jumpBufferMaxTime = 0.5f;
     private float _jumpBufferTimer;
-
-    [SerializeField, Tooltip("Amount of force exerted downward upon the release of the Jump Button")]
-    private float _jummpCancelForce = 0.5f;
-
-    [Header("Jump Height: A Combination of Jump Force and Durration and Fall Speed can \nbe tuned to create the player's optimal jump Height\n")]
-    [SerializeField, Tooltip("How long the player is in the air for, Longer the Durration the higher charater goes at the same speed")]
-    public float jumpDurrationMaxTime = .2f;
-    [SerializeField, Tooltip("How much force upward to apply to the character upon jump press.\n\n More force makes the character jump faster and higher")]
-    public float jumpUpForce = 10f;
-    private float jumpDurrationTimer;
-    [SerializeField, Tooltip("How much force is exerting downward after Jump Durration is over. \n\n The more force the faster the player will fall. \n\n If the Falling Force > JumpUp Force, the player will go down after the durration ends")]
-    public float jumpFallingForce = 11f;
+    [SerializeField, Tooltip("How long the player is in the air for, Longer the Durration the higher charater goes")]
+    public float jumpDuration = .2f;
+    private float _jumpDurrationTimer;
+    [SerializeField, Tooltip("How much force upward to apply to the character upon jump press.\n\n More force makes the character jump faster")]
+    public float jumpImpulseUP = 10f;
+    [SerializeField, Tooltip("Amount of force exerted downward upon the release of the Jump Button or Full Jump Duration\n\n More force makes the character fall faster")]
+    public float jummpImpulseDown = 0.5f;
 
 
     // Grounded
@@ -72,6 +75,9 @@ public class ArenaMovement : MonoBehaviour
     [SerializeField, Tooltip("Amount of air dashes in quick succession")]
     public int numberOfAirDashes = 1;
     private int _dashCount;
+    private bool _cyoteDash = true;
+    public bool canDashResetJump = false;
+    [SerializeField]TrailRenderer _trailRender;
 
     [Header("SFX")]
     [SerializeField] EventReference footstepsSound;
@@ -79,6 +85,7 @@ public class ArenaMovement : MonoBehaviour
     [SerializeField] EventReference dashSound;
     [SerializeField] EventReference jumpSound;
     [SerializeField] EventReference doubleJumpSound;
+    [SerializeField] ParticleSystem dust;
 
     //Animations
     private Animator _anim;
@@ -100,6 +107,7 @@ public class ArenaMovement : MonoBehaviour
     //Platform Notifier
     public float GoThroughPlatforms;
 
+
     void Start()
     {
         //Get Player Character components
@@ -108,6 +116,8 @@ public class ArenaMovement : MonoBehaviour
         _sr = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider>();
         _playerCombat = GetComponent<PlayerCombat>();
+        _trailRender = GetComponent<TrailRenderer>();
+        _trailRender.emitting = false;
 
         //Set Global variables
         _jumpCounterIndex = maxNumberOfJumps;
@@ -151,7 +161,21 @@ public class ArenaMovement : MonoBehaviour
             return;
         //Check Comment Above Function Header
         _coyoteTimer -= Time.deltaTime;
+        _movementTimer -= Time.deltaTime;
+        //Debug.Log("Jump Durration: " + _jumpDurrationTimer);
         AnimatePlayer2D();
+
+        //Checks If Gun is Over Heated
+        Debug.Log(_coyoteTimer);
+        if (_playerCombat.GetWeaponInstance() != null) // Null ref check just to be safe
+            _isOverHeated = _playerCombat.GetWeaponInstance().GetOverHeatedState();
+        else
+            _isOverHeated = false;
+
+        if (_isOverHeated && infiniJumpFish)
+            _canInfiniJump = true;
+        else
+            _canInfiniJump = false;
     }
     
     void FixedUpdate()
@@ -184,24 +208,24 @@ public class ArenaMovement : MonoBehaviour
             if(!_isGrounded)
                 _jumpCounterIndex++;
 
-            jumpDurrationTimer = jumpDurrationMaxTime;
+            _jumpDurrationTimer = jumpDuration;
 
         }
 
-        
         //If jump is relaesed pull the charcter down so it doesn't float
-        if (context.canceled )
+        if (context.canceled && _jumpDurrationTimer > 0)
         {
             //If character is going down with more jumps pull down 
             // AND: only apply downward force burst if the player cancelled jump early
-            if (rb.velocity.y > 0 && _jumpCounterIndex < maxNumberOfJumps && jumpDurrationTimer < jumpDurrationMaxTime) {
+            if (rb.velocity.y > 0 && _jumpCounterIndex < maxNumberOfJumps && _jumpDurrationTimer < jumpDuration) {
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-                rb.AddForce(Vector2.down *_jummpCancelForce , ForceMode.Impulse);
+                rb.AddForce(Vector2.down *jummpImpulseDown , ForceMode.Impulse);
+                _anim.Play("Idle");
                 _coyoteTimer = 0f;
             }
 
             // ensure we start applyingprocessing falling speed
-            jumpDurrationTimer = jumpDurrationMaxTime;
+            _jumpDurrationTimer = jumpDuration;
         }
        
     }
@@ -211,6 +235,7 @@ public class ArenaMovement : MonoBehaviour
      *      - Handles when to jump based off of
      *              - Jump buffer time
      *              - Amount of Jumps
+     *              - Durration of Jump
      *              - CyoteTime
      *      - Handles how fast the player falls after the apex of the jump
      */
@@ -218,36 +243,40 @@ public class ArenaMovement : MonoBehaviour
     {
         //Allows for the player to jump higher with constant force applied up for a set 
         //Durration while space is held
-        if (jumpDurrationTimer < jumpDurrationMaxTime && jumpDurrationTimer > 0)
+        if (_jumpDurrationTimer < jumpDuration && _jumpDurrationTimer > 0)
         {
-            //rb.useGravity = false;
+            //_anim.Play("Jump");
         }
-        else
+
+        //Apply Force Down When timer finishes
+        if (_jumpDurrationTimer <= 0)
         {
-            //rb.useGravity = true;
-            rb.AddForce(Vector2.down * jumpFallingForce, ForceMode.Force);
+            rb.AddForce(Vector2.down * jummpImpulseDown, ForceMode.Impulse);
         }
 
         //Jump Logic
         if (_jumpBufferTimer > 0f)
         {   
             //Initial Jump
-            if (_coyoteTimer > 0f)
+            if (_coyoteTimer > 0f || _canInfiniJump)
             {
                 SoundManager.Instance.PlayOneShot(jumpSound, gameObject.transform.position);
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-                rb.AddForce(Vector2.up * jumpUpForce, ForceMode.Impulse);
 
+                rb.AddForce(Vector2.up * jumpImpulseUP, ForceMode.Impulse);
+                dust.Play();
+                _anim.Play("Jump", -1, 0f);
                 // prevent high jump with no control
                 _jumpBufferTimer = 0;
             }
             //Other Jumps after 0th jump
-            else if (!_isGrounded && _jumpCounterIndex < maxNumberOfJumps)
+            else if ((!_isGrounded && _jumpCounterIndex < maxNumberOfJumps) && !_canInfiniJump)
             {
                 SoundManager.Instance.PlayOneShot(doubleJumpSound, gameObject.transform.position);
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-                rb.AddForce(Vector2.up * jumpUpForce, ForceMode.Impulse);
-
+                rb.AddForce(Vector2.up * jumpImpulseUP, ForceMode.Impulse);
+                _anim.Play("Jump");
+                dust.Play();
                 // prevent high jump with no control
                 _jumpBufferTimer = 0;
             }
@@ -259,13 +288,15 @@ public class ArenaMovement : MonoBehaviour
             }
         }
 
-        //Fall Speed Force downward
-        if (rb.velocity.y < 0 || jumpDurrationTimer > jumpDurrationMaxTime)
+        //Reset Durration
+        if (rb.velocity.y < 0 || _jumpDurrationTimer > jumpDuration)
         {
-           rb.AddForce(Vector2.down * jumpFallingForce, ForceMode.Force);
-
-            jumpDurrationTimer = 0;
+            _jumpDurrationTimer = 0;
         }
+
+        //Play Idle Anim
+        if (rb.velocity.y < -0.001 || _jumpDurrationTimer > jumpDuration)
+            _anim.Play("Idle");
 
     }
 
@@ -279,11 +310,24 @@ public class ArenaMovement : MonoBehaviour
         //Reads x-distence if character can move
         if (context.performed)
         {
-            _horizontalMovemenet = context.ReadValue<Vector2>().x;
-            
+            _horizontalMovemenet = context.ReadValue<Vector2>().x; 
+            if(_isGrounded)
+                dust.Play();
         }
+        // Additions for fixed one way plats ----
         else _horizontalMovemenet = 0f;
+        if(context.ReadValue<Vector2>().y < 0f && _isGrounded && context.started)
+        {
+            //Debug.Log("Im minging");
+            rb.AddForce(Vector2.down * 10, ForceMode.Impulse);
+        }
+        // ------
 
+        if (context.canceled)
+        {
+            _movementTimer = _movementMaxTime;
+            _horizontalMovemenet = 0;
+        }
     }
     /*  MoveInput: Moves player based on read value from button press
      *          - Moves at constant velocity
@@ -303,12 +347,10 @@ public class ArenaMovement : MonoBehaviour
         if (_isGrounded && !isDashing && rb.velocity.x != 0f && !footstepsState.Equals(PLAYBACK_STATE.PLAYING))
         {
             footsteps.start();
-            //Debug.Log("START");
         }
         else if ((!_isGrounded || isDashing || rb.velocity.x == 0f) && footstepsState.Equals(PLAYBACK_STATE.PLAYING))
         {
             footsteps.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            //Debug.Log("STOP");
         }
     }
     /*  DashInput: Runs when dash button is pressed
@@ -319,10 +361,18 @@ public class ArenaMovement : MonoBehaviour
     public void DashInput(InputAction.CallbackContext context)
     {
         //Flag for the cooldown is done so the player can press dash again
-            //As well as there's a dashCount for amount of dashes that can be done in succesion
-            //How long it takes for the play to press dash agian (Used so the player can't spam the button)
+        //As well as there's a dashCount for amount of dashes that can be done in succesion
+        //How long it takes for the play to press dash agian (Used so the player can't spam the button)
         if (!IsDashingInAir && _dashCount > 0 && !dashRestricted)
+        {
             StartCoroutine(Dash());
+            //if We Have the "Dash Rests Jump Counter Fish"
+            if (canDashResetJump)
+            {
+                //Set Jump Count index to 0;
+                _jumpCounterIndex = -1;
+            }
+        }
     }
 
     /* COROUTINE: 
@@ -336,30 +386,36 @@ public class ArenaMovement : MonoBehaviour
     {
         if (canDash)
         {
+            //Dash Succession Logic For MultiDash
+            if (!_isGrounded || !_cyoteDash)
+                _dashCount--;
+
             //Set Values/Flags Before Dashing
             IsDashingInAir = true;
             isDashing = true;
             int leftOrRightOrrientation =  gameObject.transform.localScale.x > 0 ? 1 : -1;
             rb.useGravity = !_toggleGravityWhenDashing;
+            _trailRender.emitting = true;
 
             float dashDirection = _horizontalMovemenet;
             if (_horizontalMovemenet == 0)
                 dashDirection = gameObject.transform.localScale.x;  
             
             //Dash a certian distance
-            _anim.SetBool("IsMoving", true);
+            //_anim.SetBool("IsMoving", true);
             SoundManager.Instance.PlayOneShot(dashSound, gameObject.transform.position);
-            rb.velocity = new Vector2(transform.localScale.x * _dashSpeed * leftOrRightOrrientation * dashDirection, 0f);
+            _anim.Play("Dash");
+            rb.velocity = new Vector2(transform.localScale.x * _dashSpeed  * leftOrRightOrrientation * dashDirection, 0f);
+
             _playerCombat.InvincibleDash(DashDuration - 0.1f);
             yield return new WaitForSeconds(DashDuration);
-            _anim.SetBool("IsMoving", false);
-
+            if(_isGrounded)
+                dust.Play();
+            _trailRender.emitting = false;
+            _anim.Play("Idle");
             //Reset Values/Flags after to original state
             isDashing = false;
             rb.useGravity = true;
-
-            //Dash Succession Logic For MultiDash
-            _dashCount--;
             //If there are no  more dashes left
             if (_dashCount <= 0 )
             {
@@ -392,52 +448,81 @@ public class ArenaMovement : MonoBehaviour
         {
             _coyoteTimer = _coyoteMaxTime;
             canDash = true;
-            jumpDurrationTimer = jumpDurrationMaxTime;
+            _jumpDurrationTimer = jumpDuration;
+
         }
 
         //Reset Some values when cyote time is still Active
         if (_coyoteTimer > 0)
         {
+            _cyoteDash = true;
             _jumpCounterIndex = 0;
-        }
+        }else
+            _cyoteDash = false;
 
         //Update Values while in the air
         if (!_isGrounded)
         {
             _jumpBufferTimer -= Time.deltaTime;
-            jumpDurrationTimer -= Time.deltaTime;
+            _jumpDurrationTimer -= Time.deltaTime;
         }
 
     }
 
-   //Bellow can be commented out depending on other scripts
     
-    /* Player Animation Function if ever Needed Can Be Commented out after Pull request
+    /* Player Animation Functions if ever Needed Can Be Commented out after Pull request
             - I'm only keeping it in my code right now because dash Coroutine needs the orientation of
                 of the Sprite to know which way to dash, since the combat script handles that then I can 
                 take out the animation after its pushed so I can still test my code
     */
     private void AnimatePlayer2D()
     {
+        MovementAnimator();
+    }
 
-        if (_anim == null)
-            return;
-        if ((_horizontalMovemenet != 0 || _horizontalMovemenet != 0) && !_isIdle)
-            _anim.SetBool("IsMoving", true);
-        else
-            _anim.SetBool("IsMoving", false);
+    public void MovementAnimator()
+    {
 
-        if (!_isIdle)
+        int leftOrRightOrrientation = gameObject.transform.localScale.x > 0 ? 1 : -1;
+        if (leftOrRightOrrientation < 0 && _isGrounded)
+        {
+            if (_horizontalMovemenet < 0)
+            {
+                _anim.SetBool("isMovingForward", true);
+                _anim.SetBool("isMoving", true);
+
+            }
+            else if (_horizontalMovemenet > 0)
+            {
+                _anim.SetBool("isMovingForward", false);
+                _anim.SetBool("isMoving", true);
+            }
+            else
+            {
+                if (_movementTimer < 0)
+                    _anim.SetBool("isMoving", false);
+            }
+        }
+        else if (leftOrRightOrrientation > 0 && _isGrounded) 
         {
             if (_horizontalMovemenet > 0)
             {
-                _isFacingRight = 1;
+                _anim.SetBool("isMovingForward", true);
+                _anim.SetBool("isMoving", true);
+
             }
             else if (_horizontalMovemenet < 0)
             {
-                _isFacingRight = -1;
+                _anim.SetBool("isMovingForward", false);
+                _anim.SetBool("isMoving", true);
             }
-        }
+            else
+            {
+                if (_movementTimer > 0)
+                    _anim.SetBool("isMoving", false);
+            }
+        }else
+            _anim.SetBool("isMoving", false);
 
     }
 
@@ -451,5 +536,6 @@ public class ArenaMovement : MonoBehaviour
             controls.Player.Dash.Disable();
         }
     }
+
 }
 

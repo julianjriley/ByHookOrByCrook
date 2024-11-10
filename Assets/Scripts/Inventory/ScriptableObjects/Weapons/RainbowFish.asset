@@ -26,6 +26,7 @@ MonoBehaviour:
   _baseHeatBuildup: 3
   _baseCoolingSpeed: 15
   _baseProjectileCount: 1
+  _baseRecoilAmount: 2
   _fireSound:
     Guid:
       Data1: -1752919729
@@ -33,3 +34,4 @@ MonoBehaviour:
       Data3: -1089694024
       Data4: 1266214298
     Path: event:/Curtis
+  canRecoil: 0
