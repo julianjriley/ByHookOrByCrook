@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/3_Beta/2_BETA_Menu_Credits.unity
     guid: 6fcbb781f8baa0b40bca2cf1cfd89e8f
   - enabled: 1
-    path: Assets/Scenes/3_Beta/3_OLDBETA_Hub.unity
-    guid: 9b9f6d07b2f348245a926b82edbd9d21
+    path: Assets/Scenes/3_Beta/3_BETA_Hub.unity
+    guid: 9e72fd2ed2a27114fa7b75296159bf5f
   - enabled: 1
     path: Assets/Scenes/3_Beta/4_BETA_BaitSelection.unity
     guid: 106e532723f831e4085ee40f64fcebae
@@ -26,12 +26,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/3_Beta/6_BETA_LoadoutSelection.unity
     guid: 7265d050fe61d9e40a23639cfbea5aaa
-  - enabled: 0
-    path: Assets/Scenes/3_Beta/Old Beta/7_BETA_Boss_Old.unity
-    guid: a37c56bc534cff54494a62713102fcba
   - enabled: 1
     path: Assets/Scenes/3_Beta/8_BETA_Cashout.unity
     guid: 84972cb594635334ab898020826dcaa5
+  - enabled: 0
+    path: Assets/Scenes/3_Beta/Old Beta/3_OLDBETA_Hub.unity
+    guid: 9b9f6d07b2f348245a926b82edbd9d21
+  - enabled: 0
+    path: Assets/Scenes/3_Beta/Old Beta/7_BETA_Boss_Old.unity
+    guid: a37c56bc534cff54494a62713102fcba
   - enabled: 0
     path: Assets/Scenes/2_Prototype/PROTO_Menu_Start.unity
     guid: 31e43b3379a52ec4bb60cdc6f6131bc6
