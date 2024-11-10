@@ -167,7 +167,11 @@ public class ArenaMovement : MonoBehaviour
 
         //Checks If Gun is Over Heated
         Debug.Log(_coyoteTimer);
-        _isOverHeated =  _playerCombat.GetWeaponInstance().GetOverHeatedState();
+        if (_playerCombat.GetWeaponInstance() != null) // Null ref check just to be safe
+            _isOverHeated = _playerCombat.GetWeaponInstance().GetOverHeatedState();
+        else
+            _isOverHeated = false;
+
         if (_isOverHeated && infiniJumpFish)
             _canInfiniJump = true;
         else
