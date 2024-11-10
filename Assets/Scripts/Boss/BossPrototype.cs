@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using static Unity.Mathematics.math;
 
 [RequireComponent(typeof(Rigidbody))]
 
@@ -13,16 +14,17 @@ public class BossPrototype : MonoBehaviour
     [Header ("Boss Movement")]
     protected Transform _target;
     private Transform _defaultTarget;
-    private Rigidbody _rb;
+    protected Rigidbody _rb;
     public float Speed = 50f;
     private float _defaultSpeed;
     private bool _right = true;
-    private bool _checkingSwap = false;
-    private Transform _playerTransform;
-    private SpriteRenderer _renderer;
+    protected bool _checkingSwap = false;
+    public Transform _playerTransform;
+    private protected SpriteRenderer _renderer;
 
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
+    [HideInInspector]
     public float MaxBossHealth;
     protected int _phaseCounter = 0;
     private bool _defeated = false;
@@ -44,7 +46,7 @@ public class BossPrototype : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start()
+    virtual protected void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();
@@ -78,7 +80,26 @@ public class BossPrototype : MonoBehaviour
         } 
     }
 
-    void Move() {
+    public virtual void Move() {
+        if (_rb == null) {
+            Debug.Log("No rigidbody");
+            return;
+        }
+        if (_target == null) {
+            Debug.Log("No target");
+            return;
+        }
+        
+        //makes the boss lean in the direction it's heading
+        //flipX has to be considered in testing
+        float rotationVal = remap(-13, 13, 20, -20, _rb.velocity.x);
+        if (_renderer.flipX == false) {
+            transform.rotation = Quaternion.Euler(rotationVal, 0f, 0f);
+        } else {
+            transform.rotation = Quaternion.Euler(-rotationVal, 0f, 0f);
+        }
+            
+        //Debug.Log("Rigidbody velocity = " + _rb.velocity);
         _rb.AddForce((_target.position - transform.position).normalized * Speed, ForceMode.Force);
         if (!(_checkingSwap)) { //ensure only one check is happening at a time
             SpriteSwapCheck();
@@ -113,7 +134,7 @@ public class BossPrototype : MonoBehaviour
         _target = _defaultTarget;
     }
 
-    void SpriteSwapCheck() {
+    protected void SpriteSwapCheck() {
         //Debug.Log("_right = " + _right);
         if (transform.position.x >= _playerTransform.position.x) { //if boss is on the right of player
             if (_right == false) { //and was just on the left
@@ -146,7 +167,6 @@ public class BossPrototype : MonoBehaviour
 
     virtual protected void AttackLogic() {
         //random choosing
-        //Debug.Log("phasecounter = " + _phaseCounter);
         GameObject chosenAttack = _phases[0].AttackPrefabs[0]; //default that will be overwritten
         ChooseAttack(ref chosenAttack, _phaseCounter);
         //Debug.Log("Instantiating: " + chosenAttack.name);
