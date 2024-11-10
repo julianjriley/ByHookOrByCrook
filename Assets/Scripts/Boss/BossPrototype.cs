@@ -201,7 +201,7 @@ public class BossPrototype : MonoBehaviour
         foreach (Transform child in _spawnLocation) { //delete all attacks to ensure player doesn't die after defeating the boss
             Destroy(child.gameObject);
         }
-        CalculateBossBountyMultiplier();
+        //CalculateBossBountyMultiplier();
         GoToCashout();
     }
 
@@ -215,7 +215,7 @@ public class BossPrototype : MonoBehaviour
     //ONLY FOR THE PROTOTYPE
     public void GoToCashout()
     {
-        
+        CalculateBossBountyMultiplier();
         SceneManager.LoadScene(_cashoutSceneName);
     }
 
@@ -228,7 +228,7 @@ public class BossPrototype : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 1 - percentageOfHealthLeft;
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 1f - percentageOfHealthLeft;
         }
         /*else if(percentageOfHealthLeft < 0.33f)
         {
