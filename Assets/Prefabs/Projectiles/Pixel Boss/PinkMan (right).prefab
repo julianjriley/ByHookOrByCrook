@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 726050167403061494}
   - component: {fileID: 6842412529798106262}
   - component: {fileID: 6260900643170913913}
-  - component: {fileID: 7686244914717821744}
   - component: {fileID: -4962938994937857213}
+  - component: {fileID: 6032463255159157445}
   m_Layer: 8
-  m_Name: PinkMan Projectile
+  m_Name: PinkMan (right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 229213657047126727}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,9 +53,12 @@ MonoBehaviour:
   _size: 1
   _speed: 5
   _lifetime: 10
-  _health: 1
-  _phaseTwoSpeedMultiplier: 2.5
-  _xDetectDistance: 0.5
+  _health: 3
+  _phaseTwoSpeedMultiplier: 4
+  _detectDistance: 0.5
+  _initialDirection: {x: 1, y: 0}
+  _anim: {fileID: -4962938994937857213}
+  _renderer: {fileID: 6260900643170913913}
 --- !u!54 &6842412529798106262
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,33 +132,12 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.8636364}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &7686244914717821744
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 229213657047126727}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.4, z: 0.2}
-  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!95 &-4962938994937857213
 Animator:
   serializedVersion: 5
@@ -177,3 +159,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!135 &6032463255159157445
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229213657047126727}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.3793388
+  m_Center: {x: 0, y: 0, z: 0}

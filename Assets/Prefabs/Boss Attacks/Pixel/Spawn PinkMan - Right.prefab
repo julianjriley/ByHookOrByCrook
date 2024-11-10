@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4743431473151345990}
   - component: {fileID: 5720073915931229098}
   m_Layer: 0
-  m_Name: Spawn PinkMan
+  m_Name: Spawn PinkMan - Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnTime: 2
   _projectilePrefab: {fileID: 229213657047126727, guid: abfcd689c15814444a0cfdb9d9cf21e1, type: 3}
+  _useProjectileRotation: 1
 --- !u!212 &5720073915931229098
 SpriteRenderer:
   m_ObjectHideFlags: 0

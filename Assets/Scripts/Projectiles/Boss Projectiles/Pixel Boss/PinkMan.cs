@@ -9,11 +9,16 @@ public class PinkMan : Projectile
 {
     [SerializeField, Tooltip("Multiplier for speed after direction change")]
     private float _phaseTwoSpeedMultiplier;
-    [SerializeField, Tooltip("Max distance from the player's x-pos that it is acceptable to turn within.")]
-    private float _xDetectDistance; // prevents auto turning if it spawned on wrong side of player (i.e. player near edge)
+    [SerializeField, Tooltip("Max distance from the player's other axis pos that it is acceptable to turn within.")]
+    private float _detectDistance; // prevents auto turning if it spawned on wrong side of player (i.e. player near edge)
+    [SerializeField, Tooltip("Direction of initial motion. Should be a unit vector in a cardinal direction.")]
+    private Vector2 _initialDirection;
+    [SerializeField, Tooltip("Used to set charging animation")]
+    private Animator _anim;
+    [SerializeField, Tooltip("Used to orient the sprite according to move directions")]
+    private SpriteRenderer _renderer;
 
     private GameObject _player;
-    private bool _movingRight;
     private bool _hasTurned = false;
 
     // Start is called before the first frame update
@@ -27,12 +32,11 @@ public class PinkMan : Projectile
         // set initial speed (in appropriate direction)
         _rb.velocity = transform.right * _speed;
 
-        // moving right
-        if (_rb.velocity.x > 0)
-            _movingRight = true;
-        // moving left
-        else
-            _movingRight = false;
+        // flipY to account for moving left variant and moving down variant coming from the right side of screen
+        if (_rb.velocity.x < -0.01 || (_rb.velocity.y < -0.01 && _rb.position.x > 0))
+        {
+            _renderer.flipY = true;
+        }
 
         // find reference to player - used for seeking
         _player = GameObject.FindWithTag("Player");
@@ -40,34 +44,74 @@ public class PinkMan : Projectile
             throw new System.Exception("No player is present in the scene, but you are trying to create PinkMan.");
     }
 
-    private void FixedUpdate()
+    override protected void FixedUpdate()
     {
+        // only rotate and increase speed once
         if (_hasTurned)
             return;
 
-        // positive = player right of projectile
-        // negative = projectile right of player
-        float xDiff = _player.transform.position.x - transform.position.x;
+        // determine current direction of motion
+        float posDiff;
+        bool xDir;
+        // moving in x-direction
+        if (Mathf.Abs(_rb.velocity.x) > 0.01f)
+        {
+            posDiff = _player.transform.position.x - transform.position.x;
+            xDir = true;
+        }
+        else // moving in y-direction
+        {
+            posDiff = _player.transform.position.y - transform.position.y;
+            xDir = false;
+        }
 
         // if PinkMan must switch direction now
-        if(Mathf.Abs(xDiff) < _xDetectDistance && ((_movingRight && xDiff < 0) || (!_movingRight && xDiff > 0)))
+        if(Mathf.Abs(posDiff) < _detectDistance)
         {
-            // rotate up
-            if (_player.transform.position.y > transform.position.y)
+            if(xDir)
             {
-                transform.Rotate(Vector3.forward, 90);
-                // increase speed
-                _rb.velocity = transform.right * _speed * _phaseTwoSpeedMultiplier;
+                bool isRight = _rb.velocity.x > 0.01f;
+
+                // right -> up, left -> down
+                if ((_player.transform.position.y > transform.position.y && isRight) || (_player.transform.position.y < transform.position.y && !isRight)) 
+                {
+                    transform.Rotate(Vector3.forward, 90);
+                    // increase speed
+                    _rb.velocity = transform.right * _speed * _phaseTwoSpeedMultiplier;
+                }
+                // right -> down, left -> up
+                else
+                {
+                    transform.Rotate(Vector3.forward, -90);
+                    // increase speed
+                    _rb.velocity = transform.right * _speed * _phaseTwoSpeedMultiplier;
+                }
             }
-            // rotate down
             else
             {
-                transform.Rotate(Vector3.forward, -90);
-                // increase speed
-                _rb.velocity = transform.right * _speed * _phaseTwoSpeedMultiplier;
+                bool isUp = _rb.velocity.y > 0.01f;
+
+                // up -> left, down -> right
+                if ((_player.transform.position.x > transform.position.x && !isUp) || (_player.transform.position.x < transform.position.x && isUp))
+                {
+                    transform.Rotate(Vector3.forward, 90);
+                    // increase speed
+                    _rb.velocity = transform.right * _speed * _phaseTwoSpeedMultiplier;
+                }
+                // up -> right, down -> left
+                else
+                {
+                    transform.Rotate(Vector3.forward, -90);
+                    // increase speed
+                    _rb.velocity = transform.right * _speed * _phaseTwoSpeedMultiplier;
+                }
             }
+            
 
             _hasTurned = true;
+
+            // start charging animation
+            _anim.SetTrigger("Charge");
         }
     }
 }
