@@ -99,7 +99,7 @@ public class BossPrototype : MonoBehaviour
             transform.rotation = Quaternion.Euler(-rotationVal, 0f, 0f);
         }
             
-        Debug.Log("Rigidbody velocity = " + _rb.velocity);
+        //Debug.Log("Rigidbody velocity = " + _rb.velocity);
         _rb.AddForce((_target.position - transform.position).normalized * Speed, ForceMode.Force);
         if (!(_checkingSwap)) { //ensure only one check is happening at a time
             SpriteSwapCheck();

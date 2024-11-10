@@ -312,6 +312,15 @@ public class PlayerCombat : MonoBehaviour
         return playerMovement;
     }
 
+    /// <summary>
+    /// The direction that the player is aiming. The vector from the player to the mouse.
+    /// Direction vector is normalized.
+    /// </summary>
+    public Vector2 GetAimDirection()
+    {
+        return weaponDirection.normalized;
+    }
+
     void ResetStats()
     {
         _health = _baseHealth;
