@@ -43,6 +43,9 @@ public class BossPrototype : MonoBehaviour
     //For UI Update
     public delegate void HealthChange(float health);
     public event HealthChange HealthChanged;
+
+    //For GameManager; Should be set to the next one
+    [SerializeField] protected int _bossProgressionNumber = 0;
     
 
     // Start is called before the first frame update
@@ -202,6 +205,7 @@ public class BossPrototype : MonoBehaviour
             Destroy(child.gameObject);
         }
         CalculateBossBountyMultiplier();
+        GameManager.Instance.GamePersistent.BossNumber = _bossProgressionNumber;
         GoToCashout();
     }
 
@@ -215,7 +219,7 @@ public class BossPrototype : MonoBehaviour
     //ONLY FOR THE PROTOTYPE
     public void GoToCashout()
     {
-        
+        CalculateBossBountyMultiplier();
         SceneManager.LoadScene(_cashoutSceneName);
     }
 
