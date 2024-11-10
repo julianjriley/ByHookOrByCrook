@@ -26,6 +26,7 @@ MonoBehaviour:
   _baseHeatBuildup: 3
   _baseCoolingSpeed: 1
   _baseProjectileCount: 1
+  _baseRecoilAmount: 6
   _fireSound:
     Guid:
       Data1: 0
@@ -33,3 +34,4 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  canRecoil: 0

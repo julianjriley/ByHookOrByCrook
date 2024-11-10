@@ -9,12 +9,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5134162004101223534, guid: 53c18d22cb56af845bce099f0b4828b9, type: 3}
+      propertyPath: _goalPos.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5134162004101223534, guid: 53c18d22cb56af845bce099f0b4828b9, type: 3}
+      propertyPath: _goalPos.y
+      value: -5.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5134162004101223534, guid: 53c18d22cb56af845bce099f0b4828b9, type: 3}
       propertyPath: _enemyToSpawn
       value: 
       objectReference: {fileID: 4586242717154873727, guid: 8a733335130fef64a8de963a4693ba55, type: 3}
     - target: {fileID: 6339377622423109345, guid: 53c18d22cb56af845bce099f0b4828b9, type: 3}
       propertyPath: m_Name
-      value: Frog Painting (Ground 4)
+      value: Frog Painting (Ground 2) - Left
       objectReference: {fileID: 0}
     - target: {fileID: 7829546957904969190, guid: 53c18d22cb56af845bce099f0b4828b9, type: 3}
       propertyPath: m_RootOrder
@@ -22,11 +30,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7829546957904969190, guid: 53c18d22cb56af845bce099f0b4828b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7829546957904969190, guid: 53c18d22cb56af845bce099f0b4828b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.25
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7829546957904969190, guid: 53c18d22cb56af845bce099f0b4828b9, type: 3}
       propertyPath: m_LocalPosition.z
