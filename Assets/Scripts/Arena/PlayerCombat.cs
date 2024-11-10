@@ -68,6 +68,11 @@ public class PlayerCombat : MonoBehaviour
     private bool _hasRevived = false;
     public bool canInvincibleDash = false;
 
+
+    //Skipper
+    [SerializeField] GameObject skipper;
+    
+
     [SerializeField] EventReference damageSound;
 
 #if UNITY_EDITOR 
@@ -130,6 +135,10 @@ public class PlayerCombat : MonoBehaviour
 
         StartCoroutine(EnableStartingWeaponVisual());
         
+        if(GameManager.Instance.GamePersistent.IsSkipper)
+        {
+            Instantiate(skipper, new Vector3(0,0,0), Quaternion.identity);
+        }
         
     }
 
