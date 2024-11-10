@@ -96,4 +96,14 @@ public class WeaponInstance : MonoBehaviour
         spriteRenderer.enabled = true;
     }
 
+    public float GetHeatLevel()
+    {
+        return _heatLevel;
+    }
+
+    public Weapon GetWeapon()
+    {
+        return _weapon;
+    }
+
 }
