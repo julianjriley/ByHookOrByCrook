@@ -43,7 +43,7 @@ public class RottenFish : WeaponInstance
             }
             _heatLevel += _weapon.HeatBuildup;
         }
-
+        TryApplyRecoil();
         if (_heatLevel >= 100)
             _overHeated = true;
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);

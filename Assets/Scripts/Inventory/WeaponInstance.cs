@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,8 +13,15 @@ public class WeaponInstance : MonoBehaviour
     [SerializeField] protected bool _canFire = true;
     protected SpriteRenderer spriteRenderer;
 
+    PlayerCombat _player;
+
+    
+
     public static event Action WeaponOverheated;
     public static event Action WeaponCooledOff;
+
+    //Buff Specific Variables
+    float lookAngle;
 
     //Constantly retrieved from the player
     protected Vector3 _direction;
@@ -27,6 +35,7 @@ public class WeaponInstance : MonoBehaviour
     protected virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        _player = _weapon.GetPlayer();
     }
 
     public virtual void Fire(Vector3 direction)
@@ -60,6 +69,8 @@ public class WeaponInstance : MonoBehaviour
         {
             WeaponOverheated?.Invoke();
         }
+        if (_direction != null && _direction != Vector3.zero)
+            lookAngle = Vector3.Angle(Vector3.up, _direction);
         _heatLevel = Mathf.Clamp(_heatLevel - _weapon.CoolingTime * Time.deltaTime, 0, 100);
         
 
@@ -78,7 +89,8 @@ public class WeaponInstance : MonoBehaviour
 
     public void UpdateRotation(Vector2 lookAt)
     {
-        gameObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, lookAt);
+
+        Debug.Log(lookAngle);
     }
 
     public void SetAim(Vector3 direction)
@@ -101,4 +113,14 @@ public class WeaponInstance : MonoBehaviour
         return _overHeated;
     }
 
+
+    protected void TryApplyRecoil()
+    {
+        if (!_weapon.canRecoil)
+            return;
+        if(lookAngle > 150 && lookAngle < 210)
+        {
+            _player.ApplyRecoil(_weapon.RecoilAmount);
+        }
+    }
 }
