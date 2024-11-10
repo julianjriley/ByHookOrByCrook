@@ -323,6 +323,10 @@ public class PlayerCombat : MonoBehaviour
         return playerMovement;
     }
 
+    public WeaponInstance GetWeaponInstance()
+    {
+        return _equippedWeapon;
+    }
     /// <summary>
     /// The direction that the player is aiming. The vector from the player to the mouse.
     /// Direction vector is normalized.
