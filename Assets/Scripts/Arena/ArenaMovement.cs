@@ -283,6 +283,11 @@ public class ArenaMovement : MonoBehaviour
             
         }
         else _horizontalMovemenet = 0f;
+        if(context.ReadValue<Vector2>().y < 0f && _isGrounded && context.started)
+        {
+            //Debug.Log("Im minging");
+            rb.AddForce(Vector2.down * 10, ForceMode.Impulse);
+        }
 
     }
     /*  MoveInput: Moves player based on read value from button press
