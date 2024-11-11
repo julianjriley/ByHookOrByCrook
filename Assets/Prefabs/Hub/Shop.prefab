@@ -35,7 +35,7 @@ Transform:
   - {fileID: 1163436003986926000}
   - {fileID: 1276965810791000496}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8691436818555030612
 SpriteRenderer:
@@ -149,19 +149,19 @@ MonoBehaviour:
   _interactPrompt: {fileID: 3635001956020010312}
   GoodsSold: 2
   _multipurchase: 0
-  _costs: dc050000e02e0000
+  _costs: 2c010000bc020000
   _titles:
-  - Rod 1
-  - Rod 2
+  - +1 Inventory Space
+  - +1 Inventory Space
   _descs:
-  - The first rod, desc needed
-  - The second rod, desc needed
+  - One more space for catches.
+  - One MORE space for catches.
   _sprites:
-  - {fileID: 21300000, guid: 3f86a348e0fda70479d431a04223b628, type: 3}
-  - {fileID: 21300000, guid: 3f86a348e0fda70479d431a04223b628, type: 3}
+  - {fileID: 21300000, guid: 02cebbd1be021c54a8be8905cdb7ebfa, type: 3}
+  - {fileID: 21300000, guid: 02cebbd1be021c54a8be8905cdb7ebfa, type: 3}
   _convos:
-  - {fileID: 11400000, guid: d21a9ba81bb7b1a45979d380014cf4f8, type: 2}
-  - {fileID: 11400000, guid: 3aca5f59ef46a7a46a0c1a88e9227485, type: 2}
+  - {fileID: 11400000, guid: 61dfa439964887d4684959c19ece62d2, type: 2}
+  - {fileID: 11400000, guid: 61dfa439964887d4684959c19ece62d2, type: 2}
   _priceText: {fileID: 8687465488433231593}
   _titleText: {fileID: 3330224675956542260}
   _descText: {fileID: 2337706933682373468}
@@ -170,18 +170,18 @@ MonoBehaviour:
   _npc: {fileID: 0}
   purchaseSound:
     Guid:
-      Data1: -867108775
-      Data2: 1117955784
-      Data3: 1396166557
-      Data4: -195442670
-    Path: event:/Hub/Purchase
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   tooPoorSound:
     Guid:
-      Data1: -1808635281
-      Data2: 1229730467
-      Data3: 2053126310
-      Data4: -582312650
-    Path: event:/Hub/TooPoor
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!70 &-5751409612997846943
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -317,7 +317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1163436003986926000
 Transform:
   m_ObjectHideFlags: 0
@@ -419,7 +419,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3f86a348e0fda70479d431a04223b628, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 02cebbd1be021c54a8be8905cdb7ebfa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
