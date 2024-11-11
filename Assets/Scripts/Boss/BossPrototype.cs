@@ -24,6 +24,7 @@ public class BossPrototype : MonoBehaviour
 
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
+    [HideInInspector]
     public float MaxBossHealth;
     protected int _phaseCounter = 0;
     private bool _defeated = false;
@@ -42,6 +43,9 @@ public class BossPrototype : MonoBehaviour
     //For UI Update
     public delegate void HealthChange(float health);
     public event HealthChange HealthChanged;
+
+    //For GameManager; Should be set to the next one
+    [SerializeField] protected int _bossProgressionNumber = 0;
     
 
     // Start is called before the first frame update
@@ -98,7 +102,7 @@ public class BossPrototype : MonoBehaviour
             transform.rotation = Quaternion.Euler(-rotationVal, 0f, 0f);
         }
             
-        Debug.Log("Rigidbody velocity = " + _rb.velocity);
+        //Debug.Log("Rigidbody velocity = " + _rb.velocity);
         _rb.AddForce((_target.position - transform.position).normalized * Speed, ForceMode.Force);
         if (!(_checkingSwap)) { //ensure only one check is happening at a time
             SpriteSwapCheck();
@@ -201,6 +205,7 @@ public class BossPrototype : MonoBehaviour
             Destroy(child.gameObject);
         }
         CalculateBossBountyMultiplier();
+        GameManager.Instance.GamePersistent.BossNumber = _bossProgressionNumber;
         GoToCashout();
     }
 
@@ -214,7 +219,7 @@ public class BossPrototype : MonoBehaviour
     //ONLY FOR THE PROTOTYPE
     public void GoToCashout()
     {
-        
+        CalculateBossBountyMultiplier();
         SceneManager.LoadScene(_cashoutSceneName);
     }
 

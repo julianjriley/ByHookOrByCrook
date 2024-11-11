@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 7
   m_Sprite: {fileID: -1883506656, guid: 9b04e42b108d89a4d9cac601c00ec54d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -179,7 +179,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 9
   m_Sprite: {fileID: -1182070177, guid: 43d7fabf238f07846a08b09c8edbceb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -292,7 +292,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1334251207
   m_SortingLayer: 2
-  m_SortingOrder: 5
+  m_SortingOrder: 8
   m_Sprite: {fileID: 143874562, guid: c3309123c468c0444a1f4eb04c22acc0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 20
+  _playerTransform: {fileID: 0}
   BossHealth: 100
   MaxBossHealth: 100
   _phases:
@@ -385,6 +386,7 @@ MonoBehaviour:
       Data4: -1696129653
     Path: event:/Combat/General/BossHit
   _cashoutSceneName: 8_BETA_Cashout
+  _bossProgressionNumber: 1
 --- !u!95 &3478655693882918306
 Animator:
   serializedVersion: 5

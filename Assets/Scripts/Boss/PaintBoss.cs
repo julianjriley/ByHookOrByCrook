@@ -19,6 +19,7 @@ public class PaintBoss : BossPrototype
     private CirclingTarget _paintingTarget;
 
     // queue of spawners the boss must track to
+    private List<PainterlySpawner> _preparingSpawners = new();
     private List<PainterlySpawner> _spawners = new();
     private bool _isPainting;
 
@@ -31,8 +32,18 @@ public class PaintBoss : BossPrototype
         if (_isPainting)
             return;
 
+        // check for adding preparing spawners to spawners list once they are ready
+        for (int i = _preparingSpawners.Count - 1; i >= 0; i--)
+        {
+            if(_preparingSpawners[i].isReady)
+            {
+                _spawners.Add(_preparingSpawners[i]);
+                _preparingSpawners.RemoveAt(i);
+            }
+        }
+
         // track to first spawner in list (like queue)
-        if (_spawners.Count > 0)
+        if (_spawners.Count > 0 && !_isPainting)
         {
             // update where boss tracks towards
             if (_target != _paintingTarget.transform)
@@ -41,7 +52,7 @@ public class PaintBoss : BossPrototype
                 SetNewTarget(_paintingTarget.transform);
                 SetSpeed(_paintingTrackSpeed);
             }
-
+            
             // Check for in range to start 'painting' enemy
             Vector2 bossPos = new Vector2(transform.position.x, transform.position.y);
             Vector2 targetPos = new Vector2(_target.position.x, _target.position.y);
@@ -75,6 +86,8 @@ public class PaintBoss : BossPrototype
 
         // return to non-painting movement behavior
         SetDefaultTarget();
+        SetDefaultSpeed();
+        // TODO: return to idle animation
 
         _isPainting = false;
     }
@@ -91,6 +104,6 @@ public class PaintBoss : BossPrototype
 
         // Add object to spawners list ONLY if it is a PainterlySpawner (i.e. ignore ink portals)
         if (attack.TryGetComponent(out PainterlySpawner spawner))
-            _spawners.Add(spawner);
+            _preparingSpawners.Add(spawner);
     }
 }

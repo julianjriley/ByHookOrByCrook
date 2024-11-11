@@ -33,5 +33,8 @@ public class CirclingTarget : MonoBehaviour
     {
         _xOffset = newX;
         _yOffset = newY;
+
+        // ensure instant responsiveness - will be overriden in first frame with circling values
+        transform.position = new Vector3(newX, newY, 0);
     }
 }
