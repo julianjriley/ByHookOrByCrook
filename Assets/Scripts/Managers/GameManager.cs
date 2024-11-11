@@ -287,7 +287,6 @@ public class GameManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         // TODO: SAVE PersistentData to PlayerPrefs
-
         /*****************************************************************
         // JSON functionality. To be replaced with PlayerPrefs
 
@@ -296,4 +295,6 @@ public class GameManager : MonoBehaviour
         *****************************************************************/
     }
     #endregion
+
+ 
 }
