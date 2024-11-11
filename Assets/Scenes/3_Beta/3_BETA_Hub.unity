@@ -599,6 +599,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Path
+      value: event:/Hub/Purchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: _sprites.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -622,6 +626,22 @@ PrefabInstance:
       propertyPath: _sprites.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: 963ef01018edb9543b5e10ba23f01908, type: 3}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data1
+      value: -867108775
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data2
+      value: 1117955784
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data3
+      value: 1396166557
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data4
+      value: -195442670
+      objectReference: {fileID: 0}
     - target: {fileID: 2295927049438266048, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: m_Name
       value: Attack Bait Shop
@@ -788,6 +808,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Path
+      value: event:/Hub/Purchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: _sprites.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -811,6 +835,22 @@ PrefabInstance:
       propertyPath: _sprites.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: 963ef01018edb9543b5e10ba23f01908, type: 3}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data1
+      value: -867108775
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data2
+      value: 1117955784
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data3
+      value: 1396166557
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data4
+      value: -195442670
+      objectReference: {fileID: 0}
     - target: {fileID: 2295927049438266048, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: m_Name
       value: Weapon Bait Shop
@@ -1021,6 +1061,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Path
+      value: event:/Hub/Purchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: _sprites.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1064,6 +1108,22 @@ PrefabInstance:
       propertyPath: _sprites.Array.data[1]
       value: 
       objectReference: {fileID: 21300000, guid: 02cebbd1be021c54a8be8905cdb7ebfa, type: 3}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data1
+      value: -867108775
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data2
+      value: 1117955784
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data3
+      value: 1396166557
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data4
+      value: -195442670
+      objectReference: {fileID: 0}
     - target: {fileID: 2295927049438266048, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: m_Name
       value: Bait Space Shop
@@ -3081,6 +3141,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Path
+      value: event:/Hub/Purchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: _sprites.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3104,6 +3168,22 @@ PrefabInstance:
       propertyPath: _sprites.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: 963ef01018edb9543b5e10ba23f01908, type: 3}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data1
+      value: -867108775
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data2
+      value: 1117955784
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data3
+      value: 1396166557
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data4
+      value: -195442670
+      objectReference: {fileID: 0}
     - target: {fileID: 2295927049438266048, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: m_Name
       value: Movement Bait Shop
@@ -3981,6 +4061,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Path
+      value: event:/Hub/Purchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: _sprites.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4004,6 +4088,22 @@ PrefabInstance:
       propertyPath: _sprites.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: 963ef01018edb9543b5e10ba23f01908, type: 3}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data1
+      value: -867108775
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data2
+      value: 1117955784
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data3
+      value: 1396166557
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data4
+      value: -195442670
+      objectReference: {fileID: 0}
     - target: {fileID: 2295927049438266048, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: m_Name
       value: Support Bait Shop
@@ -4509,6 +4609,26 @@ PrefabInstance:
       propertyPath: _npc
       value: 
       objectReference: {fileID: 1734619573}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Path
+      value: event:/Hub/Purchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data1
+      value: -867108775
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data2
+      value: 1117955784
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data3
+      value: 1396166557
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data4
+      value: -195442670
+      objectReference: {fileID: 0}
     - target: {fileID: 2295927049438266048, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: m_Name
       value: Bag Space Shop
@@ -5210,7 +5330,7 @@ PrefabInstance:
     - target: {fileID: 5535744256013942160, guid: fd513ca90511eb24ea33fdc84351ca33, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1967916980}
     - target: {fileID: 5535744256013942160, guid: fd513ca90511eb24ea33fdc84351ca33, type: 3}
       propertyPath: GoodsSold
       value: 2
@@ -5219,6 +5339,26 @@ PrefabInstance:
       propertyPath: _mainCamera
       value: 
       objectReference: {fileID: 1960224164}
+    - target: {fileID: 5535744256013942160, guid: fd513ca90511eb24ea33fdc84351ca33, type: 3}
+      propertyPath: dialogueSound.Path
+      value: event:/Hub/SockDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535744256013942160, guid: fd513ca90511eb24ea33fdc84351ca33, type: 3}
+      propertyPath: dialogueSound.Guid.Data1
+      value: 1917300555
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535744256013942160, guid: fd513ca90511eb24ea33fdc84351ca33, type: 3}
+      propertyPath: dialogueSound.Guid.Data2
+      value: 1116734875
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535744256013942160, guid: fd513ca90511eb24ea33fdc84351ca33, type: 3}
+      propertyPath: dialogueSound.Guid.Data3
+      value: -684639099
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535744256013942160, guid: fd513ca90511eb24ea33fdc84351ca33, type: 3}
+      propertyPath: dialogueSound.Guid.Data4
+      value: 1503794041
+      objectReference: {fileID: 0}
     - target: {fileID: 5725444573417243169, guid: fd513ca90511eb24ea33fdc84351ca33, type: 3}
       propertyPath: _player
       value: 
@@ -5790,6 +5930,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1875721228318228639, guid: 3e3a79db1d7215a4793951d9c0046357, type: 3}
   m_PrefabInstance: {fileID: 1967916975}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1967916980 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9150888889759207841, guid: 3e3a79db1d7215a4793951d9c0046357, type: 3}
+  m_PrefabInstance: {fileID: 1967916975}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421c8a7152521b74895f32b51a98846d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1998458812
 GameObject:
   m_ObjectHideFlags: 0
@@ -8670,6 +8821,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Path
+      value: event:/Hub/Purchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: _sprites.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -8713,6 +8868,22 @@ PrefabInstance:
       propertyPath: _sprites.Array.data[1]
       value: 
       objectReference: {fileID: 21300000, guid: 3f86a348e0fda70479d431a04223b628, type: 3}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data1
+      value: -867108775
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data2
+      value: 1117955784
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data3
+      value: 1396166557
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163190056312433008, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
+      propertyPath: purchaseSound.Guid.Data4
+      value: -195442670
+      objectReference: {fileID: 0}
     - target: {fileID: 2295927049438266048, guid: 9d1c2ca6e49fb2749ad4379188570b79, type: 3}
       propertyPath: m_Name
       value: Rod Shop
@@ -11436,7 +11607,14 @@ MonoBehaviour:
   _endDelay: 1
   _mainCamera: {fileID: 1960224164}
   _interactCamera: {fileID: 8545834916240151488}
-  _player: {fileID: 0}
+  _player: {fileID: 1967916980}
+  dialogueSound:
+    Guid:
+      Data1: -231985873
+      Data2: 1144061750
+      Data3: 480963994
+      Data4: 1031163156
+    Path: event:/Hub/WormDialogue
 --- !u!4 &6935905409367854490
 Transform:
   m_ObjectHideFlags: 3
@@ -12412,7 +12590,14 @@ MonoBehaviour:
   _endDelay: 1
   _mainCamera: {fileID: 1960224164}
   _interactCamera: {fileID: 9063728318855519088}
-  _player: {fileID: 0}
+  _player: {fileID: 1967916980}
+  dialogueSound:
+    Guid:
+      Data1: -1331516153
+      Data2: 1243744316
+      Data3: -1424421719
+      Data4: 78880174
+    Path: event:/Hub/GirlDialogue
 --- !u!224 &7764142259057128815
 RectTransform:
   m_ObjectHideFlags: 0

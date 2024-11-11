@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using FMOD.Studio;
+using FMODUnity;
 
 public class ShopInteractor : Interactor
 {
@@ -31,6 +33,7 @@ public class ShopInteractor : Interactor
     [SerializeField] private Animator _shopAnim;
     [Tooltip("The NPC selling the item")]
     [SerializeField] private NPCInteractor _npc;
+    [SerializeField] private EventReference purchaseSound;
 
     public delegate void OnShopEnter();
     public static event OnShopEnter onShopEnter;
@@ -70,6 +73,7 @@ public class ShopInteractor : Interactor
             onShopPurchase?.Invoke(_currentCost);
             ShopConvo(); // Set the correct conversation
             ShopSell();  // Give them the item
+            SoundManager.Instance.PlayOneShot(purchaseSound, gameObject.transform.position);
 
             if (!_multipurchase) // If it's one purchase per load, destroy this thing
             {

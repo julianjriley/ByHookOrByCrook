@@ -8,7 +8,7 @@ public class CleanButSpare : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.Instance.CleanButSpare(spare);
+        SoundManager.Instance.CleanButSpare(spare, true);
     }
 
     // Update is called once per frame

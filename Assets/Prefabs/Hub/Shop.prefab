@@ -168,6 +168,13 @@ MonoBehaviour:
   _itemSprite: {fileID: 7691146398192723980}
   _shopAnim: {fileID: 3536334093870549798}
   _npc: {fileID: 0}
+  purchaseSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!70 &-5751409612997846943
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
