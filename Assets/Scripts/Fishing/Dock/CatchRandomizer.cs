@@ -12,6 +12,8 @@ public class CatchRandomizer : MonoBehaviour
     [Header("Randomization Parameters")]
     [SerializeField, Tooltip("Trash catch rate (percent chance) when you fail both tasks as badly as possible.")]
     private float _maxTrashRate;
+    [SerializeField, Tooltip("Trash catch rate (percent chance) WITH ACCESSIBILITY BOBBER when you fail both tasks as badly as possible.")]
+    private float _maxAccessibilityTrashRate;
     [SerializeField, Tooltip("Catch rate of a specific fish type, when the corresponding bait is being used.")]
     private float _specialBaitWeighting;
 
@@ -57,11 +59,14 @@ public class CatchRandomizer : MonoBehaviour
     /// <param name="score">0 to 1 value for proficiency on casting & reeling tasks (0 = worst fail, 1 = perfect success)</param>
     public void CatchFish(float score)
     {
+        // determine whether to use accessibility values
+        float maxRate = GameManager.Instance.GamePersistent.IsBobber ? _maxAccessibilityTrashRate : _maxTrashRate;
+
         // determine percent chance of catching trash based on performance
         // 0 score = max trash rate
         // 1 score = 0% trash rate
-        float trashRate = math.remap(0, 1, _maxTrashRate, 0, score);
-
+        float trashRate = math.remap(0, 1, maxRate, 0, score);
+        Debug.Log("Rate: " + trashRate);
         // Determine Trash vs. Fish odds
         float random = UnityEngine.Random.Range(0f, 1f);
         // Junk

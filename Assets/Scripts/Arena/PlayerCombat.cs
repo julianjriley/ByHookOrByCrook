@@ -15,6 +15,7 @@ public class PlayerCombat : MonoBehaviour
 
     //Player Movement Script
     ArenaMovement playerMovement;
+    Rigidbody rb;
 
     //Stats
     [SerializeField] private int _baseHealth;
@@ -67,6 +68,11 @@ public class PlayerCombat : MonoBehaviour
     private bool _hasRevived = false;
     public bool canInvincibleDash = false;
 
+
+    //Skipper
+    [SerializeField] GameObject skipper;
+    
+
     [SerializeField] EventReference damageSound;
 
 #if UNITY_EDITOR 
@@ -100,6 +106,7 @@ public class PlayerCombat : MonoBehaviour
         ResetStats();
         _weapons = new List<WeaponInstance>();
         playerMovement = GetComponent<ArenaMovement>();
+        rb = GetComponent<Rigidbody>();
 
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
 
@@ -128,6 +135,10 @@ public class PlayerCombat : MonoBehaviour
 
         StartCoroutine(EnableStartingWeaponVisual());
         
+        if(GameManager.Instance.GamePersistent.IsSkipper)
+        {
+            Instantiate(skipper, new Vector3(0,0,0), Quaternion.identity);
+        }
         
     }
 
@@ -312,6 +323,19 @@ public class PlayerCombat : MonoBehaviour
         return playerMovement;
     }
 
+    public WeaponInstance GetWeaponInstance()
+    {
+        return _equippedWeapon;
+    }
+    /// <summary>
+    /// The direction that the player is aiming. The vector from the player to the mouse.
+    /// Direction vector is normalized.
+    /// </summary>
+    public Vector2 GetAimDirection()
+    {
+        return weaponDirection.normalized;
+    }
+
     void ResetStats()
     {
         _health = _baseHealth;
@@ -413,6 +437,15 @@ public class PlayerCombat : MonoBehaviour
     public void ActivateBrickfish()
     {
         playerMovement.dashRestricted = true;
+    }
+
+    #endregion
+
+    #region Recoral Code
+
+    public void ApplyRecoil(float amount)
+    {
+        rb.AddForce(-weaponDirection * amount, ForceMode.Impulse);
     }
 
     #endregion

@@ -22,11 +22,16 @@ public class Weapon : Item
     private float _coolingSpeed;
     [SerializeField] protected int _baseProjectileCount;
     private int _projectileCount;
+    [SerializeField] protected float _baseRecoilAmount;
+    private float _recoilAmount;
 
 
     [SerializeField] private EventReference _fireSound;
 
-    
+    //Buff Specific Variable
+    public bool canRecoil;
+
+
 
     public float BaseDamage
     {
@@ -116,6 +121,12 @@ public class Weapon : Item
         set { _projectileCount = value; }
     }
 
+    public float RecoilAmount
+    {
+        get { return _recoilAmount; }
+        set { _recoilAmount = value; }
+    }
+
     public EventReference FireSound
     {
         get { return _fireSound; }
@@ -133,6 +144,7 @@ public class Weapon : Item
         _heatBuildup = _baseHeatBuildup;
         _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
+        _recoilAmount = _baseRecoilAmount;
     }
 
     public void ResetStats()
@@ -145,6 +157,7 @@ public class Weapon : Item
         _heatBuildup = _baseHeatBuildup;
         _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
+        _recoilAmount = _baseRecoilAmount;
     }
 
     public override void SetPlayer(PlayerCombat player)
@@ -157,5 +170,7 @@ public class Weapon : Item
     {
         _player.AppendItemToWeaponInstances(_itemPrefab);
     }
+
+    
 
 }
