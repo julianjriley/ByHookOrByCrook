@@ -34,6 +34,7 @@ public class ShopInteractor : Interactor
     [Tooltip("The NPC selling the item")]
     [SerializeField] private NPCInteractor _npc;
     [SerializeField] private EventReference purchaseSound;
+    [SerializeField] private EventReference tooPoorSound;
 
     public delegate void OnShopEnter();
     public static event OnShopEnter onShopEnter;
@@ -41,6 +42,8 @@ public class ShopInteractor : Interactor
     public static event OnShopPurchase onShopPurchase;
     public delegate void OnShopExit();
     public static event OnShopExit onShopExit;
+
+    private bool shopActiveCoroutine;
 
     new void Start()
     {
@@ -56,15 +59,15 @@ public class ShopInteractor : Interactor
     // Update is called once per frame
     void Update()
     {
-        if (_interactAction.IsPressed() && !_isActiveCoroutine && _canInteract)
+        if (_interactAction.IsPressed() && !_isActiveCoroutine && _canInteract && !shopActiveCoroutine) //added last bool to keep sound effect from triggering infinitely when holding button
         {
 
                 StartCoroutine(DoInteractionShop());
         }
     }
-
     private IEnumerator DoInteractionShop()
     {
+        shopActiveCoroutine = true;
         // Check if they have enough money
         if (GameManager.Instance.GamePersistent.Gill >= _currentCost)
         {
@@ -97,14 +100,18 @@ public class ShopInteractor : Interactor
         }
         else
         {
-            // If not, [LOUD INCORRECT BUZZER NOISE]
+            // If not, [LOUD INCORRECT BUZZER NOISE] -- got u lol -Andres
             // We can put a little sound effect and a little text box animation here to really
             // emphasize to the player that they are poor
 
+            SoundManager.Instance.PlayOneShot(tooPoorSound, gameObject.transform.position);
             _shopAnim.Play("NotEnough", 0, 0);
+            yield return new WaitUntil(() => !_interactAction.IsPressed());
+
             //yield return new WaitForSeconds(.5f);
             //_shopAnim.Play("Static", 0, 0);
         }
+        shopActiveCoroutine = false;
         yield return null;
 
     }
