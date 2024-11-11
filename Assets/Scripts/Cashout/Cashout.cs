@@ -77,7 +77,7 @@ public class Cashout : MonoBehaviour
         intTotal = (int)total;
         //Debug.Log(total);
        // Debug.Log(intTotal);
-        TotalText.text = intTotal.ToString();
+        TotalText.text = total.ToString();
         GameManager.Instance.GamePersistent.Gill += intTotal;
     }
 
