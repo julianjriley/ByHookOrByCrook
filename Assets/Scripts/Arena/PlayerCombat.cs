@@ -61,6 +61,7 @@ public class PlayerCombat : MonoBehaviour
     public delegate void HealthChange(int health);
     public event HealthChange HealthChanged;
     public static event Action<bool> PlayerIsZombie;
+    public static event Action<int> WeaponSwitched;
 
     //Buff Specific Variables
     public bool useShortRangeDamage = false;
@@ -194,6 +195,8 @@ public class PlayerCombat : MonoBehaviour
             _equippedWeapon.SetAim(weaponDirection);
             FireFunctionality();
         }
+
+        WeaponSwitched?.Invoke(equippedWeaponindex);
             
         //Debug.Log(equippedWeaponindex);
 
