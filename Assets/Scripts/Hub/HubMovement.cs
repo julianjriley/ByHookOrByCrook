@@ -82,20 +82,54 @@ public class HubMovement : MonoBehaviour
 
     private void AnimatePlayer2D()
     {
-        if ((_moveValues.x != 0 || _moveValues.y != 0 ) && !IsIdle)
-            _anim.SetBool("IsMoving", true);
+        if ((_moveValues.x != 0) && !IsIdle)
+        {
+            _anim.SetBool("IsMovingSide", true);
+            _anim.SetBool("FacingSide", true);
+            _anim.SetBool("FacingUp", false);
+            _anim.SetBool("FacingDown", false);
+        }
         else
-            _anim.SetBool("IsMoving", false);
+        {
+            _anim.SetBool("IsMovingSide", false);
+        }
+
+
+        if ((_moveValues.y > 0 && _moveValues.x == 0) && !IsIdle)
+        {
+            _anim.SetBool("IsMovingUp", true);
+            _anim.SetBool("FacingUp", true);
+            _anim.SetBool("FacingSide", false);
+            _anim.SetBool("FacingDown", false);
+        }
+        else
+        {
+            _anim.SetBool("IsMovingUp", false);
+        }
+
+
+        if ((_moveValues.y < 0 && _moveValues.x == 0) && !IsIdle) 
+        {
+            _anim.SetBool("IsMovingDown", true);
+            _anim.SetBool("FacingDown", true);
+            _anim.SetBool("FacingUp", false);
+            _anim.SetBool("FacingSide", false);
+        }
+        else 
+        {
+            _anim.SetBool("IsMovingDown", false);
+        }
+        
 
         if (!IsIdle)
         {
             if (_moveValues.x > 0)
             {
-                _sr.flipX = true;
+                _sr.flipX = false;
             }
             else if (_moveValues.x < 0)
             {
-                _sr.flipX = false;
+                _sr.flipX = true;
             }
         }
         
