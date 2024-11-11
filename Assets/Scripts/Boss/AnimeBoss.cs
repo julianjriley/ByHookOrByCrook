@@ -46,7 +46,7 @@ public class AnimeBoss : BossPrototype
     public override void SpawnAttackOnce(GameObject gameObj)
     {
         laserbeamPrefab = gameObj;
-        InvokeRepeating("StartLaserBeam", 1f, 25f);
+        InvokeRepeating("StartLaserBeam", 1f, 30f);
     }
 
     private void UpdateLaserRotation()
@@ -59,7 +59,7 @@ public class AnimeBoss : BossPrototype
         {
             if (laser)
             {
-                laser.transform.Rotate(0, 0, 1f);
+                laser.transform.Rotate(0, 0, .7f);
             }
         }
 
@@ -69,19 +69,19 @@ public class AnimeBoss : BossPrototype
     
         // TODO: fix how the laserbeam is spawning
         Debug.Log("Setting target at location " + _spawnLocation);
-        SetNewTarget(_spawnLocation, 13f);
+        SetNewTarget(_spawnLocation, 20f);
         
         StartCoroutine(SpawnLaserBeam());
     }
 
-    IEnumerator SpawnLaserBeam()
+    IEnumerator SpawnLaserBeam() 
     {
         for (int i = 0; i < 4; i++)
         {
             GameObject laser = Instantiate(laserbeamPrefab, _spawnLocation);
             laserList.Add(laser);
-            laser.transform.Rotate(0, 0, .5f); 
-            yield return new WaitForSeconds(4f);
+            laser.transform.Rotate(0, 0, .7f); 
+            yield return new WaitForSeconds(1.5f);
         }
        
     }
@@ -116,46 +116,26 @@ public class AnimeBoss : BossPrototype
         {
             // SetNewTarget() // Left side
             GameObject newHearts;
-            for (int i = 0; i < 2; i++)
-            {
-                newHearts = Instantiate(heartPrefab, GameObject.Find("AttackHolderEmpty").GetComponent<Transform>());
-                
-                newHearts.transform.position = new(newHearts.transform.position.x + 5 * i, _playerTransform.position.y, newHearts.transform.position.z);
-            }
-            
+            newHearts = Instantiate(heartPrefab, GameObject.Find("AttackHolderEmpty").GetComponent<Transform>());
+
+            newHearts.transform.position = new(newHearts.transform.position.x + 10, _playerTransform.position.y, newHearts.transform.position.z);
+
         }
         else
         {
             // SetNewTarget() // Right side
             GameObject newHearts;
-            for (int i = 0; i < 2; i++)
-            {
-                newHearts = Instantiate(heartPrefab, GameObject.Find("AttackHolderEmpty").GetComponent<Transform>());
-                
-                newHearts.transform.position = new(newHearts.transform.position.x - 50 * i, _playerTransform.position.y, newHearts.transform.position.z);
-            }
-        }
-        //    for (int i = 0; i < 2; i++)
-        //{
-        //    Debug.Log("Spawn the hearts: " + i);
-        //    GameObject newHearts = Instantiate(heartPrefab, GameObject.Find("AttackHolderEmpty").GetComponent<Transform>());
+            newHearts = Instantiate(heartPrefab, GameObject.Find("AttackHolderEmpty").GetComponent<Transform>());
 
-        //    //newHearts.transform.position = new(newHearts.transform.position.x + i, _playerTransform.position.y, _playerTransform.position.z);
-        //    if (_playerTransform.position.x < Screen.width / 2)
-        //    {
-        //        newHearts.transform.position = new(newHearts.transform.position.x + 5 * i, _playerTransform.position.y, newHearts.transform.position.z);
-        //    }
-        //    else
-        //    {
-        //        newHearts.transform.position = new(newHearts.transform.position.x - 50 * i, _playerTransform.position.y, newHearts.transform.position.z);
-        //    }
-        //}
+            newHearts.transform.position = new(newHearts.transform.position.x - 10, _playerTransform.position.y, newHearts.transform.position.z);
+        }
 
     }
     IEnumerator HeartAttack(GameObject heartPrefab)
     {
+        SetNewTarget(_spawnLocation, 6f);
         Debug.Log("Starting Heart Attack");
         SpawnHearts(heartPrefab);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(1);
     }
 }

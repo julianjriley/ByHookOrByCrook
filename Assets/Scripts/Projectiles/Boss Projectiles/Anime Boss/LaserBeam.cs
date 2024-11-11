@@ -19,12 +19,19 @@ public class LaserBeam : Projectile
         _collider = GetComponent<Collider>();
 
         StartCoroutine(StartGimmick());
+       
     }
-
     IEnumerator StartGimmick()
     {
         _collider.enabled = false;
+        yield return new WaitForSeconds(1f);
+        _collider.enabled = true;
+        _animator.Play("ChangeLaserColor");
         yield return new WaitForSeconds(2f);
+        _collider.enabled = false;
+        _animator.Play("DefaultLaser");
+        _collider.enabled = false;
+        yield return new WaitForSeconds(1f);
         _collider.enabled = true;
         _animator.Play("ChangeLaserColor");
         yield return new WaitForSeconds(2f);
