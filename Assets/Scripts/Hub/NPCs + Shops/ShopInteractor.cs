@@ -261,7 +261,7 @@ public class ShopInteractor : Interactor
     private void ShopConvo() // Assigns the relevant conversation to the attached NPC
     {
         int minBaitSlots = 3;
-        int minBattleSlots = 3;
+        int minBattleSlots = 2;
         if (GoodsSold == ShopType.Rod)
         {
             _npc.SetConversation(_convos[GameManager.Instance.GamePersistent.RodLevel], -1);
