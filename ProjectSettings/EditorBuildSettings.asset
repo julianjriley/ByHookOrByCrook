@@ -68,6 +68,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/1_Development/TEST_Hub.unity
     guid: de7a89803f9b47a428ea1dcb88b6a0ec
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/7-1_BETA_Boss1.unity
+    guid: 9e96a5877645c0c4d8b5d0d1de0d8bfc
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/7-2_BETA_Boss2.unity
+    guid: 1bdf1f3e9d5d10f4cab308a255930932
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 384bcd4988928974aa114b62e3df7c6c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 32b4fa1732b70f44a80685895a7e2848, type: 3}
