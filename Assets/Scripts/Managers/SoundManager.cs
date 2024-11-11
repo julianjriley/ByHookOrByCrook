@@ -1,3 +1,4 @@
+using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
@@ -7,7 +8,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     private EventInstance ambienceEventInstance;
-    private EventInstance musicEventInstance;
+    public EventInstance musicEventInstance;
     public EventInstance fishingEventInstance;
     public EventInstance footstepsEventInstance;
 
@@ -95,4 +96,21 @@ public class SoundManager : MonoBehaviour
         }
         */
     }
-}
+    public void CleanButSpare(string spare)
+    {
+        foreach (EventInstance eventInstance in eventInstances)
+        {
+            EventDescription description;
+            string result;
+            eventInstance.getDescription(out description);
+            description.getPath(out result);
+            UnityEngine.Debug.Log(result);
+            if (result != spare) 
+            {
+                eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                eventInstance.release();
+            }
+            
+        }
+    }
+    }
