@@ -54,7 +54,7 @@ public class LoadoutSelection : MonoBehaviour
     /// <summary>
     /// Transitions to next scene (either combat or practice arena)
     /// </summary>
-    public void NextScene(string sceneName)
+    public void NextScene()
     {
         // TODO: Confirmation popup if player is attempting to continue without filling all of their bait slots
         
