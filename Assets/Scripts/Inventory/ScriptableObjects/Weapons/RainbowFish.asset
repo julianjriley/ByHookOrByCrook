@@ -17,7 +17,7 @@ MonoBehaviour:
   _itemDescription: Increased fire rate the longer you shoot. Curtis??
   _sprite: {fileID: 21300000, guid: 51eb13d94f4cca34ea1c4051d7ec7355, type: 3}
   _itemPrefab: {fileID: 7851906927572201638, guid: ee1f078fa65fa1e4e869094b4562c177, type: 3}
-  _cost: 30
+  _cost: 720
   _baseDamage: 0.5
   _baseFireRate: 2
   _baseSize: 1
@@ -26,6 +26,7 @@ MonoBehaviour:
   _baseHeatBuildup: 3
   _baseCoolingSpeed: 15
   _baseProjectileCount: 1
+  _baseRecoilAmount: 2
   _fireSound:
     Guid:
       Data1: -1752919729
@@ -33,3 +34,4 @@ MonoBehaviour:
       Data3: -1089694024
       Data4: 1266214298
     Path: event:/Curtis
+  canRecoil: 0

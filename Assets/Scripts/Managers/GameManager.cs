@@ -253,18 +253,26 @@ public class GameManager : MonoBehaviour
 
         // TODO: INITIALIZE DEFAULT VALUES FOR SAVE DATA
         // default data in case player prefs not found
+        string filePath = Application.persistentDataPath + "/GameData.json";
+        if (System.IO.File.Exists(filePath))
+        {
+            string saveData = System.IO.File.ReadAllText(filePath);
+            newSaveData = JsonUtility.FromJson<GamePersistentData>(saveData);
+            Instance.GamePersistent = newSaveData;
+            return;
+        }
         
         newSaveData.BossNumber = 0;
         newSaveData.LossCounter = 3;
 
         newSaveData.Gill = 0;
         newSaveData.BaitInventorySize = 3;
-        newSaveData.BattleInventorySize = 3;
+        newSaveData.BattleInventorySize = 2;
         newSaveData.RodLevel = 0;
         newSaveData.AttackBait = false;
         newSaveData.MovementBait = false;
         newSaveData.SupportBait = false;
-        newSaveData.WeaponBait = true; // TEMPORARY: unlocked by defauly for prototype to make BaitSelection scene work
+        newSaveData.WeaponBait = false; 
 
         newSaveData.IsSkipper = false;
         newSaveData.IsBobber = false;
@@ -300,7 +308,10 @@ public class GameManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         // TODO: SAVE PersistentData to PlayerPrefs
-
+        string saveData = JsonUtility.ToJson(GamePersistent);
+        string filePath = Application.persistentDataPath + "/GameData.json";
+        Debug.Log(filePath);
+        System.IO.File.WriteAllText(filePath, saveData);
         /*****************************************************************
         // JSON functionality. To be replaced with PlayerPrefs
 
@@ -309,4 +320,6 @@ public class GameManager : MonoBehaviour
         *****************************************************************/
     }
     #endregion
+
+ 
 }

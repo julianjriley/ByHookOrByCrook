@@ -1,3 +1,4 @@
+using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
@@ -7,9 +8,10 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     private EventInstance ambienceEventInstance;
-    private EventInstance musicEventInstance;
+    public EventInstance musicEventInstance;
     public EventInstance fishingEventInstance;
     public EventInstance footstepsEventInstance;
+    public EventInstance dialogueEventInstance;
 
     public List<EventInstance> eventInstances;
 
@@ -69,6 +71,11 @@ public class SoundManager : MonoBehaviour
         fishingEventInstance.start();
     }
 
+    public void SetGlobalParameter(string name, float value)
+    {
+        RuntimeManager.StudioSystem.setParameterByName(name, value);
+    }
+
     public void SetParameter(EventInstance sound, string name, float value)
     {
         sound.setParameterByName(name, value);
@@ -78,6 +85,17 @@ public class SoundManager : MonoBehaviour
     {
         ambienceEventInstance = CreateInstance(ambienceEventReference);
         ambienceEventInstance.start();
+    }
+
+    public void InitializeDialogue(EventReference dialogueEventReference)
+    {
+        dialogueEventInstance = CreateInstance(dialogueEventReference);
+        dialogueEventInstance.start();
+    }
+
+    public void StopDialogue()
+    {
+        dialogueEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
     public void CleanUp()
@@ -95,4 +113,23 @@ public class SoundManager : MonoBehaviour
         }
         */
     }
-}
+    public void CleanButSpare(string spare, bool complete)
+    {
+        foreach (EventInstance eventInstance in eventInstances)
+        {
+            EventDescription description;
+            string result;
+            eventInstance.getDescription(out description);
+            description.getPath(out result);
+            UnityEngine.Debug.Log(result);
+            if (!result.EndsWith(spare)) 
+            {
+                eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                if (complete)
+                {
+                    eventInstance.release();
+                }
+            }
+        }
+    }
+    }

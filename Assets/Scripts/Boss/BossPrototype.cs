@@ -24,6 +24,7 @@ public class BossPrototype : MonoBehaviour
 
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
+    [HideInInspector]
     public float MaxBossHealth;
     protected int _phaseCounter = 0;
     private bool _defeated = false;
@@ -42,6 +43,9 @@ public class BossPrototype : MonoBehaviour
     //For UI Update
     public delegate void HealthChange(float health);
     public event HealthChange HealthChanged;
+
+    //For GameManager; Should be set to the next one
+    [SerializeField] protected int _bossProgressionNumber = 0;
     
 
     // Start is called before the first frame update
@@ -98,7 +102,7 @@ public class BossPrototype : MonoBehaviour
             transform.rotation = Quaternion.Euler(-rotationVal, 0f, 0f);
         }
             
-        Debug.Log("Rigidbody velocity = " + _rb.velocity);
+        //Debug.Log("Rigidbody velocity = " + _rb.velocity);
         _rb.AddForce((_target.position - transform.position).normalized * Speed, ForceMode.Force);
         if (!(_checkingSwap)) { //ensure only one check is happening at a time
             SpriteSwapCheck();
@@ -200,7 +204,7 @@ public class BossPrototype : MonoBehaviour
         foreach (Transform child in _spawnLocation) { //delete all attacks to ensure player doesn't die after defeating the boss
             Destroy(child.gameObject);
         }
-        CalculateBossBountyMultiplier();
+        GameManager.Instance.GamePersistent.BossNumber = _bossProgressionNumber;
         GoToCashout();
     }
 
@@ -214,7 +218,7 @@ public class BossPrototype : MonoBehaviour
     //ONLY FOR THE PROTOTYPE
     public void GoToCashout()
     {
-        
+        CalculateBossBountyMultiplier();
         SceneManager.LoadScene(_cashoutSceneName);
     }
 
@@ -223,16 +227,20 @@ public class BossPrototype : MonoBehaviour
         float percentageOfHealthLeft = BossHealth / MaxBossHealth;
         if(percentageOfHealthLeft <= 0)
         {
-            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 6;
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2;
         }
-        else if(percentageOfHealthLeft < 0.33f)
+        else
+        {
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 1f - percentageOfHealthLeft;
+        }
+        /*else if(percentageOfHealthLeft < 0.33f)
         {
             GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 4;
         }
         else if(percentageOfHealthLeft < 0.66f)
         {
             GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2.5f;
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider collider)
