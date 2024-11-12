@@ -16,11 +16,49 @@ public class OptionsMenuManager : MonoBehaviour
     [SerializeField]
     private GameObject Controls, Gameplay, Audio, Graphics;
 
-    [SerializeField]
+    [SerializeField, Tooltip("Saturation slider")]
+    private Slider _saturationSlider;
+    [SerializeField, Tooltip("Brightness slider")]
     private Slider _brightnessSlider;
+    [SerializeField, Tooltip("Brightness profile")]
     private PostProcessProfile _profile;
-    private PostProcessLayer _layer; 
+    [SerializeField, Tooltip("Pass in the main camera")]
+    private PostProcessLayer _layer;
+    private AutoExposure _exposure;
+    private ColorGrading _saturation;
 
+    private void Start()
+    {
+        _profile.TryGetSettings(out _exposure);
+        AdjustBrightness();
+
+        _profile.TryGetSettings(out _saturation);
+        AdjustSaturation();
+    }
+
+
+    public void AdjustSaturation()
+    {
+        if (_saturationSlider.value != 0)
+        {
+            _saturation.saturation.value = _saturationSlider.value;
+        }
+        else
+        {
+            _saturation.saturation.value = .05f; // lowest saturation setting
+        }
+    }
+    public void AdjustBrightness()
+    {
+        if (_brightnessSlider.value != 0)
+        {
+            _exposure.keyValue.value = _brightnessSlider.value;
+        }
+        else
+        {
+            _exposure.keyValue.value = .05f; // the lowest brightenss setting
+        } 
+    }
     public void LoadStartScene()
     {
         SceneManager.LoadScene(_startScene);
