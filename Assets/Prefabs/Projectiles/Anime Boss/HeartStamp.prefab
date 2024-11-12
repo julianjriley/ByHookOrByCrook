@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5308727306712629826}
   - component: {fileID: 3717053446057670138}
   - component: {fileID: 4719840994955665694}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: HeartStamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,4 +168,4 @@ MonoBehaviour:
   _size: 1
   _speed: 1
   _lifetime: 3
-  _health: 0
+  _health: 10000

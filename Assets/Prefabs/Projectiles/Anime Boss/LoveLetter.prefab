@@ -109,7 +109,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3147431625062083812}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -126,7 +126,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 64
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!136 &3717053446057670138
 CapsuleCollider:
@@ -167,7 +167,7 @@ MonoBehaviour:
   _baseDamage: 1
   _size: 1
   _speed: 4
-  _lifetime: 6
+  _lifetime: 4
   _health: 5
   _timeTillExplosion: 3
   _maxDistance: 2

@@ -5,7 +5,6 @@ using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 // Notes: love letter explodes within x distance to the player but also after y seconds
-// Suggestion: use Unity animator to deal with projectile movement? it sounds easier.
 
 public class LoveLetter : Projectile
 {
@@ -47,14 +46,13 @@ public class LoveLetter : Projectile
         }
         else
         {
-            // TODO: MAKE RADIUS 
+            // make collider radius bigger
+            this.GetComponent<CapsuleCollider>().radius = GetComponent<CapsuleCollider>().radius * 2;
 
-            // cause damage
-            _player.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
             _hasExploded = true;
-            Debug.Log("Explode");
+            Debug.Log("Explode!");
 
-            // play animation here
+            // play animation here?
 
             Destroy(gameObject);
         }
@@ -63,7 +61,7 @@ public class LoveLetter : Projectile
     {
         float distanceBetween = Vector3.Distance(_player.transform.position, transform.position);
 
-        if (_player.transform.position.x < Screen.width/2)
+        if (_player.transform.position.x < Screen.width / 2)
         {
             // switch letter direction if player is on the left side of the screen
             _direction.x *= -1;

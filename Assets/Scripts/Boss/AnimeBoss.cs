@@ -18,11 +18,6 @@ public class AnimeBoss : BossPrototype
 
     [SerializeField]
     private List<GameObject> laserList;
-    // Phase 2
-    // TODO: MAKE BOSS STATIC while A o
-    // TODO: Heart AoE - part of Attack prefabs
-    //set target to player, then stop and have a damage radius when exploding
-    // TODO: Can't spawn ink while in this phase
 
     override protected void Start()
     {
@@ -34,6 +29,7 @@ public class AnimeBoss : BossPrototype
     {
         base.FixedUpdate();
 
+        // Continues to give existing lasers a rotation
         UpdateLaserRotation();
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
@@ -67,10 +63,9 @@ public class AnimeBoss : BossPrototype
     private void StartLaserBeam()
     {
     
-        // TODO: fix how the laserbeam is spawning
-        Debug.Log("Setting target at location " + _spawnLocation);
         SetNewTarget(_spawnLocation, 20f);
         
+        // Actually spawn the lasers
         StartCoroutine(SpawnLaserBeam());
     }
 
@@ -83,59 +78,34 @@ public class AnimeBoss : BossPrototype
             laser.transform.Rotate(0, 0, .7f); 
             yield return new WaitForSeconds(1.5f);
         }
-       
     }
 
     override protected void AttackLogic()
     {
-        // for instantiating attacks separate from the boss (like projectiles)
-
         GameObject chosenAttack = _phases[0].AttackPrefabs[0]; //default that will be overwritten
         switch (_phaseCounter)
         {
             case 0:
                 ChooseAttack(ref chosenAttack, 0); //pass in a reference to chosenAttack and the phase #
-                if (chosenAttack.GetComponent<HeartAoE>()) StartCoroutine(HeartAttack(chosenAttack));
-                else Instantiate(chosenAttack, _spawnLocation);
+                Instantiate(chosenAttack, _spawnLocation);
                 break;
             case 1:
-                ChooseAttack(ref chosenAttack, 1); // spawning hearts
-                if (chosenAttack.GetComponent<HeartAoE>()) StartCoroutine(HeartAttack(chosenAttack));
+                ChooseAttack(ref chosenAttack, 1);
+                if (chosenAttack.GetComponent<HeartAoE>())
+                {
+                    // Stop the laserbeams if the attack is hearts next
+                    StopCoroutine(SpawnLaserBeam());
+                    StartCoroutine(HeartAttack(chosenAttack));
+                    Instantiate(chosenAttack, _spawnLocation);
+                }
                 else Instantiate(chosenAttack, _spawnLocation);
                 break;
         }
     }
-    void SpawnHearts(GameObject heartPrefab)
-    {
-        // When spawned, spawn multiple in a line based on player's position
-        // if player is on left side, spawn 3 to the right
-        // if player is on right side, spawn 3 to the left
-       
 
-        if (_playerTransform.position.x < Screen.width / 2)
-        {
-            // SetNewTarget() // Left side
-            GameObject newHearts;
-            newHearts = Instantiate(heartPrefab, GameObject.Find("AttackHolderEmpty").GetComponent<Transform>());
-
-            newHearts.transform.position = new(newHearts.transform.position.x + 10, _playerTransform.position.y, newHearts.transform.position.z);
-
-        }
-        else
-        {
-            // SetNewTarget() // Right side
-            GameObject newHearts;
-            newHearts = Instantiate(heartPrefab, GameObject.Find("AttackHolderEmpty").GetComponent<Transform>());
-
-            newHearts.transform.position = new(newHearts.transform.position.x - 10, _playerTransform.position.y, newHearts.transform.position.z);
-        }
-
-    }
     IEnumerator HeartAttack(GameObject heartPrefab)
     {
-        SetNewTarget(_spawnLocation, 6f);
-        Debug.Log("Starting Heart Attack");
-        SpawnHearts(heartPrefab);
+        SetNewTarget(_spawnLocation, 4f);
         yield return new WaitForSeconds(1);
     }
 }
