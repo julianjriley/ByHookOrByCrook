@@ -1,3 +1,4 @@
+using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
@@ -7,31 +8,39 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     private EventInstance ambienceEventInstance;
-    private EventInstance musicEventInstance;
+    public EventInstance musicEventInstance;
     public EventInstance fishingEventInstance;
     public EventInstance footstepsEventInstance;
+    public EventInstance dialogueEventInstance;
 
     public List<EventInstance> eventInstances;
 
-    public static SoundManager Instance { get; private set; }
+    // private singleton instance
+    private static SoundManager _instance;
 
-    private void Awake()
+    // public accessor of instance
+    public static SoundManager Instance
     {
-        if (Instance != null)
+        get
         {
-            Debug.LogError("Found more than one Audio Manager in the scene.");
+            // setup SoundManager as a singleton class
+            if (_instance == null)
+            {
+                // create new game manager object
+                GameObject newManager = new();
+                newManager.name = "Sound Manager";
+                newManager.AddComponent<SoundManager>();
+                DontDestroyOnLoad(newManager);
+                _instance = newManager.GetComponent<SoundManager>();
+                
+                // some setup for sound instances list
+                _instance.eventInstances = new List<EventInstance>();
+            }
+            // return new/existing instance
+            return _instance;
         }
-        Instance = this;
-
-        eventInstances = new List<EventInstance>();
-        
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
-    }
     public EventInstance CreateInstance(EventReference eventReference)
     {
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
@@ -62,6 +71,11 @@ public class SoundManager : MonoBehaviour
         fishingEventInstance.start();
     }
 
+    public void SetGlobalParameter(string name, float value)
+    {
+        RuntimeManager.StudioSystem.setParameterByName(name, value);
+    }
+
     public void SetParameter(EventInstance sound, string name, float value)
     {
         sound.setParameterByName(name, value);
@@ -73,10 +87,15 @@ public class SoundManager : MonoBehaviour
         ambienceEventInstance.start();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InitializeDialogue(EventReference dialogueEventReference)
     {
-        
+        dialogueEventInstance = CreateInstance(dialogueEventReference);
+        dialogueEventInstance.start();
+    }
+
+    public void StopDialogue()
+    {
+        dialogueEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
     public void CleanUp()
@@ -94,4 +113,23 @@ public class SoundManager : MonoBehaviour
         }
         */
     }
-}
+    public void CleanButSpare(string spare, bool complete)
+    {
+        foreach (EventInstance eventInstance in eventInstances)
+        {
+            EventDescription description;
+            string result;
+            eventInstance.getDescription(out description);
+            description.getPath(out result);
+            UnityEngine.Debug.Log(result);
+            if (!result.EndsWith(spare)) 
+            {
+                eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                if (complete)
+                {
+                    eventInstance.release();
+                }
+            }
+        }
+    }
+    }

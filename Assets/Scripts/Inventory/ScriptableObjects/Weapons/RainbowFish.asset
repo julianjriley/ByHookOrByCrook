@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
   m_Name: RainbowFish
   m_EditorClassIdentifier: 
-  _itemID: 2
+  _itemID: 1
   _itemName: Rainbow Fish
-  _itemDescription: Curtis??
-  _sprite: {fileID: 21300000, guid: 9b6d886ec40aff94d881d0dc53a19871, type: 3}
+  _itemDescription: Increased fire rate the longer you shoot. Curtis??
+  _sprite: {fileID: 21300000, guid: 51eb13d94f4cca34ea1c4051d7ec7355, type: 3}
   _itemPrefab: {fileID: 7851906927572201638, guid: ee1f078fa65fa1e4e869094b4562c177, type: 3}
-  _cost: 30
-  _baseDamage: 2
+  _cost: 720
+  _baseDamage: 0.5
   _baseFireRate: 2
   _baseSize: 1
   _baseSpeed: 20
@@ -26,6 +26,7 @@ MonoBehaviour:
   _baseHeatBuildup: 3
   _baseCoolingSpeed: 15
   _baseProjectileCount: 1
+  _baseRecoilAmount: 2
   _fireSound:
     Guid:
       Data1: -1752919729
@@ -33,3 +34,4 @@ MonoBehaviour:
       Data3: -1089694024
       Data4: 1266214298
     Path: event:/Curtis
+  canRecoil: 0

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 536557675426058991}
-  - component: {fileID: 5273081520760477853}
+  - component: {fileID: 2735052954589898614}
   m_Layer: 0
   m_Name: Flying Fish
   m_TagString: Untagged
@@ -30,9 +30,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5273081520760477853
+--- !u!114 &2735052954589898614
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6977784947212119801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f57951410fe064d9017ed2673e7dd9, type: 3}
+  m_Script: {fileID: 11500000, guid: d921c021aedfb874898903252e6f57a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _passiveItem: {fileID: 11400000, guid: 0c565f0eac3eb7641bbf287734f2b8ca, type: 2}
+  _passiveItem: {fileID: 11400000, guid: 9b8baa48bb43c564594a74755d429f68, type: 2}

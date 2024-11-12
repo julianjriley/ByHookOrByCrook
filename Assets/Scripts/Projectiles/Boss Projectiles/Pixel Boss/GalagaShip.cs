@@ -7,11 +7,12 @@ using UnityEngine;
 /// </summary>
 public class GalagaShip : Projectile
 {
-    [SerializeField, Tooltip("Duration of each movement phase.")]
+    [SerializeField, Tooltip("Duration of each downward movement phase. each horizontal phase is some multiple of this.")]
     private float _movePhaseDuration;
 
-    Vector2 _moveDir = Vector2.down;
-    bool _isRightNext = true;
+    Vector2 _moveDir = Vector3.right;
+    bool _isRightNext = false;
+    int _stepCounter = 4;
 
     // Start is called before the first frame update
     override protected void Start()
@@ -26,7 +27,7 @@ public class GalagaShip : Projectile
     }
 
     // FixedUpdate is called once per physics frame
-    void FixedUpdate()
+    override protected void FixedUpdate()
     {
         // set speed to match move direction
         _rb.velocity = _moveDir * _speed;
@@ -46,7 +47,14 @@ public class GalagaShip : Projectile
         // swap from right/left to down
         else
         {
-            _moveDir = Vector2.down;
+            // ensure horizontal phases multiple steps longer
+            if (_stepCounter == 7)
+            {
+                _moveDir = Vector2.down;
+                _stepCounter = 0;
+            }
+            else
+                _stepCounter++; ;
         }
     }
 }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
+  m_Name: FrozenFish
+  m_EditorClassIdentifier: 
+  _itemID: 1
+  _itemName: Frozen Fish
+  _itemDescription: Cooled down !
+  _sprite: {fileID: 0}
+  _itemPrefab: {fileID: 194152881037602285, guid: 1996ba7f8919a4e439cd78e98574db37, type: 3}
+  _cost: 150

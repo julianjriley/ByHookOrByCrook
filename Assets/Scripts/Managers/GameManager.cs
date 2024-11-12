@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
                 GameObject newManager = new();
                 newManager.name = "Game Manager";
                 newManager.AddComponent<GameManager>();
-                newManager.AddComponent<SoundManager>();
-                //Debug.Log("SoundManager created");
                 DontDestroyOnLoad(newManager);
                 _instance = newManager.GetComponent<GameManager>();
             }
@@ -85,6 +83,16 @@ public class GameManager : MonoBehaviour
     public void ResetScenePersistentData()
     {
         ScenePersistentData newScenePersistent = new ScenePersistentData();
+
+        //Reset All Gun Stats
+        if(_scenePersistent is not null) // ensure no issues on first loop or in editor
+        {
+            foreach (Item item in _scenePersistent.Loadout)
+            {
+                if (item is Weapon)
+                    (item as Weapon).ResetStats();
+            }
+        }
 
         // Initialize default values for scene persistent data
         newScenePersistent.BaitList = new List<BaitType>();
@@ -195,6 +203,10 @@ public class GameManager : MonoBehaviour
         public bool SupportBait;
         public bool WeaponBait;
 
+        // Accessibility
+        public bool IsSkipper;
+        public bool IsBobber;
+
         // Hub related stats
         public List<bool> IsConvoHadRod;
         public List<bool> IsConvoHadBait;
@@ -238,18 +250,29 @@ public class GameManager : MonoBehaviour
 
         // TODO: INITIALIZE DEFAULT VALUES FOR SAVE DATA
         // default data in case player prefs not found
+        string filePath = Application.persistentDataPath + "/GameData.json";
+        if (System.IO.File.Exists(filePath))
+        {
+            string saveData = System.IO.File.ReadAllText(filePath);
+            newSaveData = JsonUtility.FromJson<GamePersistentData>(saveData);
+            Instance.GamePersistent = newSaveData;
+            return;
+        }
         
         newSaveData.BossNumber = 0;
         newSaveData.LossCounter = 3;
 
-        newSaveData.Gill = 9999;
+        newSaveData.Gill = 0;
         newSaveData.BaitInventorySize = 3;
-        newSaveData.BattleInventorySize = 3;
+        newSaveData.BattleInventorySize = 2;
         newSaveData.RodLevel = 0;
         newSaveData.AttackBait = false;
         newSaveData.MovementBait = false;
         newSaveData.SupportBait = false;
-        newSaveData.WeaponBait = true; // TEMPORARY: unlocked by defauly for prototype to make BaitSelection scene work
+        newSaveData.WeaponBait = false; 
+
+        newSaveData.IsSkipper = false;
+        newSaveData.IsBobber = false;
 
         newSaveData.IsConvoHadRod = new List<bool>();
         newSaveData.IsConvoHadBait = new List<bool>();
@@ -276,7 +299,10 @@ public class GameManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         // TODO: SAVE PersistentData to PlayerPrefs
-
+        string saveData = JsonUtility.ToJson(GamePersistent);
+        string filePath = Application.persistentDataPath + "/GameData.json";
+        Debug.Log(filePath);
+        System.IO.File.WriteAllText(filePath, saveData);
         /*****************************************************************
         // JSON functionality. To be replaced with PlayerPrefs
 
@@ -285,4 +311,6 @@ public class GameManager : MonoBehaviour
         *****************************************************************/
     }
     #endregion
+
+ 
 }

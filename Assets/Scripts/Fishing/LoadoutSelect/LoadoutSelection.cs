@@ -24,6 +24,8 @@ public class LoadoutSelection : MonoBehaviour
     [SerializeField, Tooltip("List of fish used when starting Unity within this scene. Instead of using GameManager.")]
     private List<Item> _editorFishList;
 
+    [Header("Boss Scenes")]
+    [SerializeField] string[] _bossScenes;
     void Start()
     {
         // Always add fish button for starter gun
@@ -52,17 +54,30 @@ public class LoadoutSelection : MonoBehaviour
     /// <summary>
     /// Transitions to next scene (either combat or practice arena)
     /// </summary>
-    public void NextScene(string sceneName)
+    public void NextScene()
     {
         // TODO: Confirmation popup if player is attempting to continue without filling all of their bait slots
-
+        
         // Add selected loadout items to GameManager
         FishButton[] loadoutFish = LoadoutFishParent.GetComponentsInChildren<FishButton>();
         foreach (FishButton fish in loadoutFish)
             GameManager.Instance.AddLoadoutItem(fish.Item);
 
         // Use this function to transition to PRACTICE or COMBAT scene
-        StartCoroutine(Fadeout(sceneName));
+        string sceneToSwitchTo;
+        switch (GameManager.Instance.GamePersistent.BossNumber)
+        { 
+            case 0:
+                sceneToSwitchTo = _bossScenes[0]; break;
+            case 1:
+                sceneToSwitchTo= _bossScenes[1]; break;
+            case 2:
+                sceneToSwitchTo=_bossScenes[2]; break;
+            default:
+                sceneToSwitchTo = _bossScenes[0]; break;
+        }
+
+        StartCoroutine(Fadeout(sceneToSwitchTo));
     }
 
     private IEnumerator Fadeout(string sceneName)

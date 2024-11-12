@@ -6,41 +6,80 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Menu_Start.unity
+    path: Assets/Scenes/3_Beta/0_BETA_Menu_Start.unity
+    guid: 5247a4e390a3ff843a3a3ee2468b3582
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/1_BETA_Menu_Options.unity
+    guid: 94fbdcc9336ceaa438ec0d81599c2a97
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/2_BETA_Menu_Credits.unity
+    guid: 6fcbb781f8baa0b40bca2cf1cfd89e8f
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/3_BETA_Hub.unity
+    guid: 9e72fd2ed2a27114fa7b75296159bf5f
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/4_BETA_BaitSelection.unity
+    guid: 106e532723f831e4085ee40f64fcebae
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/5_BETA_Fishing.unity
+    guid: fcf52efdb5fb1f94ea04e5d498992d04
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/6_BETA_LoadoutSelection.unity
+    guid: 7265d050fe61d9e40a23639cfbea5aaa
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/7-1_BETA_Boss1.unity
+    guid: 9e96a5877645c0c4d8b5d0d1de0d8bfc
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/8_BETA_Cashout.unity
+    guid: 84972cb594635334ab898020826dcaa5
+  - enabled: 0
+    path: Assets/Scenes/3_Beta/Old Beta/3_OLDBETA_Hub.unity
+    guid: 9b9f6d07b2f348245a926b82edbd9d21
+  - enabled: 0
+    path: Assets/Scenes/3_Beta/Old Beta/7_BETA_Boss_Old.unity
+    guid: a37c56bc534cff54494a62713102fcba
+  - enabled: 0
+    path: Assets/Scenes/2_Prototype/PROTO_Menu_Start.unity
     guid: 31e43b3379a52ec4bb60cdc6f6131bc6
-  - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Menu_Credits.unity
+  - enabled: 0
+    path: Assets/Scenes/2_Prototype/PROTO_Menu_Credits.unity
     guid: d5f2bb1c25ff020418e2bbdc2873c3ee
-  - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Menu_Options.unity
+  - enabled: 0
+    path: Assets/Scenes/2_Prototype/PROTO_Menu_Options.unity
     guid: bc9cea1d2ba36d34b80073f0a92f4168
-  - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Hub.unity
+  - enabled: 0
+    path: Assets/Scenes/2_Prototype/PROTO_Hub.unity
     guid: 4c4221357da2e8d4f865290187778667
-  - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_BaitSelection.unity
+  - enabled: 0
+    path: Assets/Scenes/2_Prototype/PROTO_BaitSelection.unity
     guid: 1831fafca37eb7443886e3d7249b5446
-  - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Fishing.unity
+  - enabled: 0
+    path: Assets/Scenes/2_Prototype/PROTO_Fishing.unity
     guid: 3475ba68b40803a46b6cbf3d13163df7
-  - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_LoadoutSelection.unity
+  - enabled: 0
+    path: Assets/Scenes/2_Prototype/PROTO_LoadoutSelection.unity
     guid: 4264b1417bd851e42ac3b7939b546a45
-  - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Boss.unity
+  - enabled: 0
+    path: Assets/Scenes/2_Prototype/PROTO_Boss.unity
     guid: 5a407d57dd59449428a8e63c123c25d1
-  - enabled: 1
-    path: Assets/Scenes/Prototype/PROTO_Cashout.unity
+  - enabled: 0
+    path: Assets/Scenes/2_Prototype/PROTO_Cashout.unity
     guid: 3f2d910ca0ce19b498c6a5533dac2d47
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Anne_Scene.unity
     guid: 86892d424ea3f4241903103095c99f0a
-  - enabled: 1
-    path: Assets/Scenes/Development/TEST_SceneSwap.unity
+  - enabled: 0
+    path: Assets/Scenes/1_Development/TEST_SceneSwap.unity
     guid: a934548c310ce744884c40ea68276dcc
-  - enabled: 1
-    path: Assets/Scenes/Development/TEST_Hub.unity
+  - enabled: 0
+    path: Assets/Scenes/1_Development/TEST_Hub.unity
     guid: de7a89803f9b47a428ea1dcb88b6a0ec
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/7-1_BETA_Boss1.unity
+    guid: 9e96a5877645c0c4d8b5d0d1de0d8bfc
+  - enabled: 1
+    path: Assets/Scenes/3_Beta/7-2_BETA_Boss2.unity
+    guid: 1bdf1f3e9d5d10f4cab308a255930932
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 384bcd4988928974aa114b62e3df7c6c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 32b4fa1732b70f44a80685895a7e2848, type: 3}
