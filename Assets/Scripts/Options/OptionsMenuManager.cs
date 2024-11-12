@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class OptionsMenuManager : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class OptionsMenuManager : MonoBehaviour
 
     [SerializeField]
     private GameObject Controls, Gameplay, Audio, Graphics;
+
+    [SerializeField]
+    private Slider _brightnessSlider;
+    private PostProcessProfile _profile;
+    private PostProcessLayer _layer; 
+
     public void LoadStartScene()
     {
         SceneManager.LoadScene(_startScene);
