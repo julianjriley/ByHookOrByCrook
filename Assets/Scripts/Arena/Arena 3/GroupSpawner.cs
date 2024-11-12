@@ -6,8 +6,6 @@ public class GroupSpawner : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _possibleGroups;
     [SerializeField] private GameObject _finalGroup;
-    [Tooltip("How long it takes before a new set of platforms is spawned (should be = to platGroup lifetime)")]
-    [SerializeField] private float _spawnDelay = 15f; // How long it takes for a new set of platforms to spawn
 
     [Tooltip("Height of a single platform group (and how far up the next will be spawned from the last")]
     [SerializeField] private float _spawnHeightDistance;
@@ -16,17 +14,21 @@ public class GroupSpawner : MonoBehaviour
     public bool Activate = false; // Toggling this boolean starts everything (plat gen and camera movement)
 
     private float _currentSpawnHeight = 17;
-    private float _currentTimeToSpawn;
 
-    public bool IsFinalSpawn; // Toggling this boolean halts generation after spawning one final configuration                   
+
+    public bool IsFinalSpawn; // Toggling this boolean halts generation after spawning one final configuration
+
+    private float _lastCamPosY;
     
 
     void Start()
     {
-        Instantiate(selectPlatGroup(), new Vector3(0, _currentSpawnHeight, 0), Quaternion.identity); // Make the first set of platforms for a buffer
+        Instantiate(selectPlatGroup(), new Vector3(0, _currentSpawnHeight, 0), Quaternion.identity); // Make the first and second set of platforms for a buffer
+        _currentSpawnHeight += _spawnHeightDistance;
+        Instantiate(selectPlatGroup(), new Vector3(0, _currentSpawnHeight, 0), Quaternion.identity); 
         _currentSpawnHeight += _spawnHeightDistance;
 
-        _currentTimeToSpawn = _spawnDelay;
+        _lastCamPosY = 0;
     }
 
     // Update is called once per frame
@@ -37,13 +39,13 @@ public class GroupSpawner : MonoBehaviour
             _camera.SetCamMoving();
             if (!IsFinalSpawn)
             {
-                _currentTimeToSpawn -= Time.deltaTime;
-                if (_currentTimeToSpawn <= 0)
+
+                if (_camera.transform.position.y > _spawnHeightDistance +_lastCamPosY)
                 {
                     Instantiate(selectPlatGroup(), new Vector3(0, _currentSpawnHeight, 0), Quaternion.identity); // Create the platform
                     _currentSpawnHeight += _spawnHeightDistance;    // Change where the next one will spawn
 
-                    _currentTimeToSpawn = _spawnDelay;
+                    _lastCamPosY += _spawnHeightDistance;
                 }
             }
             else
