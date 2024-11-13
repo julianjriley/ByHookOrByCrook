@@ -47,6 +47,7 @@ public class HubTTRLManager : MonoBehaviour
     {
         if (GameManager.Instance.GamePersistent.IsTutorialHub)
         {
+            _tutorialView.SetActive(true);
             _interactAction = InputSystem.actions.FindAction("Interact");
             _pMovement = _hubPlayer.GetComponent<HubMovement>();
 
@@ -68,6 +69,7 @@ public class HubTTRLManager : MonoBehaviour
         // Grouping the NPCs into "Active NPCs"
         // Making a new group that's "Hiding NPCs"
         // Camera bounds
+        // Tutorial view disabled on start
 
     private IEnumerator DoTutorial()
     {
