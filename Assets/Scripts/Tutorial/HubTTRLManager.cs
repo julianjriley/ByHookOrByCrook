@@ -18,6 +18,8 @@ public class HubTTRLManager : MonoBehaviour
     [SerializeField] EventReference dialogueSound;
     [SerializeField] private GameObject _skipper;
     [SerializeField] private GameObject _sign;
+    [SerializeField] private GameObject _poof;
+
 
     [Header("NPCs")]
     [SerializeField] private GameObject _activeNPCs;
@@ -52,10 +54,6 @@ public class HubTTRLManager : MonoBehaviour
             _activeNPCs.SetActive(false);
             _hidingNPCs.SetActive(true);
 
-            
-            
-            
-
             StartCoroutine(DoTutorial());
         }
     }
@@ -69,10 +67,7 @@ public class HubTTRLManager : MonoBehaviour
     // SCENE CHANGE LOG
         // Grouping the NPCs into "Active NPCs"
         // Making a new group that's "Hiding NPCs"
-
-    // TODO
-        // Skipper disappears and the sign appears
-        // Turn off the accessibility points
+        // Camera bounds
 
     private IEnumerator DoTutorial()
     {
@@ -173,6 +168,10 @@ public class HubTTRLManager : MonoBehaviour
         // Skipper disappears, leaving a sign behind --------------------------
         _skipper.SetActive(false);
         _sign.SetActive(true);
+        _poof.SetActive(true);
+        _poof.GetComponent<Animator>().Play("Poof", 0, 0);
+        yield return new WaitForSeconds(7f / 12f);
+        _poof.SetActive(false);
 
         // Player is allowed to walk to the dock, explore, all that; hub portion of the tutorial is over
         yield return null;
