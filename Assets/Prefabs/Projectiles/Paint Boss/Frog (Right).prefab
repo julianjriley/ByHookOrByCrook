@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3865715145068073961}
   - component: {fileID: 4376544497517564726}
   - component: {fileID: 5565403296360854682}
+  - component: {fileID: 8273449813463403512}
   m_Layer: 8
   m_Name: Frog Object
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4681971807665894128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6922702029102905494}
@@ -53,6 +54,8 @@ MonoBehaviour:
   _speed: 1
   _lifetime: -1
   _health: 4
+  _anim: {fileID: 8273449813463403512}
+  _sprite: {fileID: 5565403296360854682}
   _hopSpeed: {x: 5, y: 3}
   _hopDelayInterval: {x: 1, y: 2}
   _turnAroundDistance: 15
@@ -103,8 +106,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9, y: 0.9, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58150375, y: 0.49288282, z: 0.2}
+  m_Center: {x: -0.030170739, y: -0.023772758, z: 0}
 --- !u!212 &5565403296360854682
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -146,7 +149,7 @@ SpriteRenderer:
   m_SortingLayerID: -1669246187
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0a63a57345f9ac14a81a29d63fafad63, type: 3}
+  m_Sprite: {fileID: -1457573448, guid: 804078091bd4372428549e4790dd96e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -157,6 +160,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8273449813463403512
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681971807665894128}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4d586bae8fa1ca479b60aa8550be646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5824145095176316402
 GameObject:
   m_ObjectHideFlags: 0

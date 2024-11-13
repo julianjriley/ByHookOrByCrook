@@ -7,6 +7,13 @@ using UnityEngine;
 /// </summary>
 public class HoppingFrog : Projectile
 {
+    [Header("Components")]
+    [SerializeField, Tooltip("To trigger hop/idle animations.")]
+    private Animator _anim;
+    [SerializeField, Tooltip("To flip sprite when turning.")]
+    private SpriteRenderer _sprite;
+
+    [Header("Behavior")]
     [SerializeField, Tooltip("Velocity at which frog hops each step at.")]
     private Vector2 _hopSpeed;
     [SerializeField, Tooltip("min and max value between frog hops. Randomly chosen")]
@@ -30,6 +37,8 @@ public class HoppingFrog : Projectile
 
         _initY = _rb.position.y;
 
+        _sprite.flipX = !_isHoppingRight;
+
         // first hop
         Invoke("Hop", Random.Range(_hopDelayInterval.x, _hopDelayInterval.y));
     }
@@ -41,9 +50,15 @@ public class HoppingFrog : Projectile
 
         // check for turn around
         if (_rb.position.x >= _turnAroundDistance)
+        {
             _isHoppingRight = false;
+            _sprite.flipX = true;
+        }
         else if (_rb.position.x <= -_turnAroundDistance)
+        {
             _isHoppingRight = true;
+            _sprite.flipX = false;
+        }
 
         // landing check
         if (_isHopping && _hopStartTimer > HOP_START_DELAY && _rb.position.y <= _initY)
@@ -75,5 +90,7 @@ public class HoppingFrog : Projectile
 
         _isHopping = true;
         _hopStartTimer = 0f;
+
+        _anim.SetTrigger("Hop");
     }
 }
