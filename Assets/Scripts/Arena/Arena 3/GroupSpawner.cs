@@ -51,7 +51,7 @@ public class GroupSpawner : MonoBehaviour
             else
             {
                 GameObject lastPlat = Instantiate(_finalGroup, new Vector3(0, _currentSpawnHeight, 0), Quaternion.identity); // Create the last platform
-                _camera.SetRestingPlace(lastPlat.transform.position.y + _spawnHeightDistance / 2);      // Send over the final y-value the camera needs to stop at 
+                _camera.SetRestingPlace(lastPlat.transform.position.y + _spawnHeightDistance / 2.2f);      // Send over the final y-value the camera needs to stop at 
                 this.enabled = false; // Turn this off! No longer needed
             }
         }
