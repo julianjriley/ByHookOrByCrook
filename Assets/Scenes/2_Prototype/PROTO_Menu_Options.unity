@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 13361963}
   - component: {fileID: 13361962}
   m_Layer: 5
-  m_Name: 'Percent '
+  m_Name: Opacity Percent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -142.55482, y: 0, z: -827.1092, w: -781.32556}
+  m_margin: {x: -142.55482, y: 392.59113, z: -827.1092, w: -371.4144}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 44451870}
   - component: {fileID: 44451869}
   m_Layer: 5
-  m_Name: B Percent
+  m_Name: Blue Percent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,7 +475,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 0%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54d51136d6dd21b4ba8cf9a1b5788f08, type: 2}
   m_sharedMaterial: {fileID: -2868218746737290071, guid: 54d51136d6dd21b4ba8cf9a1b5788f08, type: 2}
@@ -538,7 +538,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -142.55482, y: 0, z: -827.1092, w: -781.32556}
+  m_margin: {x: -142.55482, y: 395.32486, z: -827.1092, w: -376.43582}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 54367927}
   - component: {fileID: 54367926}
   m_Layer: 5
-  m_Name: Percent
+  m_Name: Green Percent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -673,7 +673,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -142.55482, y: 0, z: -827.1092, w: -781.32556}
+  m_margin: {x: -142.55482, y: 394.0538, z: -827.1092, w: -368.9164}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1282,7 +1282,7 @@ GameObject:
   - component: {fileID: 257748813}
   - component: {fileID: 257748812}
   m_Layer: 5
-  m_Name: Percent
+  m_Name: SFX Percent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1589,10 +1589,10 @@ MonoBehaviour:
       - m_Target: {fileID: 265703921}
         m_TargetAssemblyTypeName: SliderPercentages, Assembly-CSharp
         m_MethodName: UpdateText
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 44451869}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1610,6 +1610,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c40812264d44440a8a37beaeadc8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _optionsMenuManager: {fileID: 1448300997}
+  _index: 5
 --- !u!1 &290755219
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,14 +2022,14 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 381434652}
+        m_TargetAssemblyTypeName: SliderPercentages, Assembly-CSharp
+        m_MethodName: UpdateText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2044,6 +2046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c40812264d44440a8a37beaeadc8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _optionsMenuManager: {fileID: 1448300997}
+  _index: 10
 --- !u!1 &381434950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,7 +2356,7 @@ GameObject:
   - component: {fileID: 480928218}
   - component: {fileID: 480928217}
   m_Layer: 5
-  m_Name: Percent
+  m_Name: Music Percent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2803,10 +2807,10 @@ MonoBehaviour:
       - m_Target: {fileID: 560391058}
         m_TargetAssemblyTypeName: SliderPercentages, Assembly-CSharp
         m_MethodName: UpdateText
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1169761881}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2824,6 +2828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c40812264d44440a8a37beaeadc8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _optionsMenuManager: {fileID: 1448300997}
+  _index: 3
 --- !u!1 &593665083
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,7 +2842,7 @@ GameObject:
   - component: {fileID: 593665086}
   - component: {fileID: 593665085}
   m_Layer: 5
-  m_Name: Percent
+  m_Name: Mouse Sens Percent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3105,8 +3111,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 54d51136d6dd21b4ba8cf9a1b5788f08, type: 2}
+  m_sharedMaterial: {fileID: -2868218746737290071, guid: 54d51136d6dd21b4ba8cf9a1b5788f08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3130,8 +3136,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3481,7 +3487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 401.8, y: -207.4}
+  m_AnchoredPosition: {x: 401.8, y: -134.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &801179546
@@ -3502,10 +3508,6 @@ MonoBehaviour:
   Blue: {fileID: 265703920}
   Opacity: {fileID: 1692296661}
   Size: {fileID: 1927739940}
-  RPercent: {fileID: 1169761881}
-  GPercent: {fileID: 54367926}
-  BPercent: {fileID: 44451869}
-  OPercent: {fileID: 13361962}
 --- !u!114 &801179547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3556,7 +3558,7 @@ GameObject:
   - component: {fileID: 807241149}
   - component: {fileID: 807241148}
   m_Layer: 5
-  m_Name: 'Percent '
+  m_Name: 'Size Percent '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3665,7 +3667,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -142.55482, y: 0, z: -827.1092, w: -781.32556}
+  m_margin: {x: -142.55482, y: 395.2899, z: -827.1092, w: -386.03568}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3787,11 +3789,11 @@ MonoBehaviour:
       - m_Target: {fileID: 848835935}
         m_TargetAssemblyTypeName: SliderPercentages, Assembly-CSharp
         m_MethodName: UpdateText
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1817278776}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3808,6 +3810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c40812264d44440a8a37beaeadc8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _optionsMenuManager: {fileID: 1448300997}
+  _index: 8
 --- !u!1 &869576129
 GameObject:
   m_ObjectHideFlags: 0
@@ -4020,8 +4024,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Controls
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 54d51136d6dd21b4ba8cf9a1b5788f08, type: 2}
+  m_sharedMaterial: {fileID: -2868218746737290071, guid: 54d51136d6dd21b4ba8cf9a1b5788f08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4045,8 +4049,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4155,8 +4159,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Audio
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 54d51136d6dd21b4ba8cf9a1b5788f08, type: 2}
+  m_sharedMaterial: {fileID: -2868218746737290071, guid: 54d51136d6dd21b4ba8cf9a1b5788f08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4180,8 +4184,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4662,7 +4666,7 @@ GameObject:
   - component: {fileID: 1169761882}
   - component: {fileID: 1169761881}
   m_Layer: 5
-  m_Name: Percent
+  m_Name: Red Percent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4771,7 +4775,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -142.55482, y: 0, z: -827.1092, w: -781.32556}
+  m_margin: {x: -142.55482, y: 392.51294, z: -827.1092, w: -374.9512}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5500,8 +5504,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 54d51136d6dd21b4ba8cf9a1b5788f08, type: 2}
+  m_sharedMaterial: {fileID: -2868218746737290071, guid: 54d51136d6dd21b4ba8cf9a1b5788f08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5525,8 +5529,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5919,11 +5923,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1399879748}
         m_TargetAssemblyTypeName: SliderPercentages, Assembly-CSharp
         m_MethodName: UpdateText
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 257748812}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5940,6 +5944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c40812264d44440a8a37beaeadc8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _optionsMenuManager: {fileID: 1448300997}
+  _index: 7
 --- !u!1 &1400709901
 GameObject:
   m_ObjectHideFlags: 0
@@ -6183,6 +6189,28 @@ MonoBehaviour:
   _brightnessSlider: {fileID: 848835934}
   _profile: {fileID: 11400000, guid: e5f7d3360abda8d48a20d97175994bc4, type: 2}
   _layer: {fileID: 0}
+  _tmpList:
+  - {fileID: 593665085}
+  - {fileID: 13361962}
+  - {fileID: 807241148}
+  - {fileID: 1169761881}
+  - {fileID: 54367926}
+  - {fileID: 44451869}
+  - {fileID: 480928217}
+  - {fileID: 257748812}
+  - {fileID: 1817278776}
+  - {fileID: 2035594525}
+  _sliderList:
+  - {fileID: 1633905787}
+  - {fileID: 1692296661}
+  - {fileID: 1927739940}
+  - {fileID: 560391057}
+  - {fileID: 1687474764}
+  - {fileID: 265703920}
+  - {fileID: 381434651}
+  - {fileID: 1399879747}
+  - {fileID: 848835934}
+  - {fileID: 1668832348}
 --- !u!1 &1454629360
 GameObject:
   m_ObjectHideFlags: 0
@@ -6807,10 +6835,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1633905788}
         m_TargetAssemblyTypeName: SliderPercentages, Assembly-CSharp
         m_MethodName: UpdateText
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 593665085}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6828,6 +6856,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c40812264d44440a8a37beaeadc8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _optionsMenuManager: {fileID: 1448300997}
+  _index: 0
 --- !u!1 &1640505806
 GameObject:
   m_ObjectHideFlags: 0
@@ -6973,11 +7003,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1668832349}
         m_TargetAssemblyTypeName: SliderPercentages, Assembly-CSharp
         m_MethodName: UpdateText
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 2035594525}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 9
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6994,6 +7024,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c40812264d44440a8a37beaeadc8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _optionsMenuManager: {fileID: 1448300997}
+  _index: 9
 --- !u!1 &1687474762
 GameObject:
   m_ObjectHideFlags: 0
@@ -7102,10 +7134,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1687474765}
         m_TargetAssemblyTypeName: SliderPercentages, Assembly-CSharp
         m_MethodName: UpdateText
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 54367926}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7123,6 +7155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c40812264d44440a8a37beaeadc8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _optionsMenuManager: {fileID: 1448300997}
+  _index: 4
 --- !u!1 &1692296659
 GameObject:
   m_ObjectHideFlags: 0
@@ -7231,11 +7265,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1692296662}
         m_TargetAssemblyTypeName: SliderPercentages, Assembly-CSharp
         m_MethodName: UpdateText
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 13361962}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7252,6 +7286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c40812264d44440a8a37beaeadc8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _optionsMenuManager: {fileID: 1448300997}
+  _index: 1
 --- !u!1 &1700358306
 GameObject:
   m_ObjectHideFlags: 0
@@ -7815,7 +7851,7 @@ GameObject:
   - component: {fileID: 1817278777}
   - component: {fileID: 1817278776}
   m_Layer: 5
-  m_Name: Percent
+  m_Name: Brightness Percent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8387,11 +8423,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1927739941}
         m_TargetAssemblyTypeName: SliderPercentages, Assembly-CSharp
         m_MethodName: UpdateText
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 807241148}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8408,6 +8444,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c40812264d44440a8a37beaeadc8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _optionsMenuManager: {fileID: 1448300997}
+  _index: 2
 --- !u!1 &1960700769
 GameObject:
   m_ObjectHideFlags: 0
@@ -8616,8 +8654,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Gameplay
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 54d51136d6dd21b4ba8cf9a1b5788f08, type: 2}
+  m_sharedMaterial: {fileID: -2868218746737290071, guid: 54d51136d6dd21b4ba8cf9a1b5788f08, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8641,8 +8679,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8862,7 +8900,7 @@ GameObject:
   - component: {fileID: 2035594526}
   - component: {fileID: 2035594525}
   m_Layer: 5
-  m_Name: Percent
+  m_Name: Saturation Percent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

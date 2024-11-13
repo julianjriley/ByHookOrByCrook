@@ -14,7 +14,6 @@ public class CustomCrosshair : MonoBehaviour
     public Image DefaultCrosshair;
 
     public Slider Red, Green, Blue, Opacity, Size;
-    public TextMeshProUGUI RPercent, GPercent, BPercent, OPercent;
 
     private void Start()
     {
@@ -36,14 +35,6 @@ public class CustomCrosshair : MonoBehaviour
     public void ChangeColor()
     {
         DefaultCrosshair.color = new Color(Red.value, Green.value, Blue.value, Opacity.value);
-
-        // Change percents
-
-        RPercent.text = ((int)Red.value * 100).ToString() + " %";
-        GPercent.text = ((int)Green.value * 100).ToString() + " %";
-        BPercent.text = ((int)Blue.value * 100).ToString() + " %";
-        OPercent.text = ((int)Opacity.value * 100).ToString() + " %";
-
 
     }
     public void ChangeSize()

@@ -33,21 +33,18 @@ public class OptionsMenuManager : MonoBehaviour
     private AutoExposure _exposure;
     private ColorGrading _saturation;
 
+   
+    public List<TextMeshProUGUI> _tmpList;
+
+    public List<Slider> _sliderList;
+
     private void Start()
     {
-        //_listOfPercentages.Add(GameObject.Find("Percent").GetComponent<TextMeshProUGUI>());
         _profile.TryGetSettings(out _exposure);
         AdjustBrightness();
 
         _profile.TryGetSettings(out _saturation);
         AdjustSaturation();
-    }
-
-    // how to sync text to slider values?
-
-    protected virtual void UpdateText(TextMeshProUGUI textRef)
-    {
-        
     }
 
     public void AdjustSaturation()

@@ -4,25 +4,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using System;
 
 
 // BUG: Percentages don't stay the same after clicking on another slider. 
 public class SliderPercentages : MonoBehaviour
 {
-    private Slider _slider;
-   // private TextMeshProUGUI _tmp;
+    [SerializeField]
+    private OptionsMenuManager _optionsMenuManager;
 
-    private void Start()
+    [SerializeField]
+    private int _index;
+
+
+    public void UpdateText()
     {
-        _slider = gameObject.GetComponent<Slider>();
-        Debug.Log("Slider = " + _slider);
-    }
-    public void UpdateText(TextMeshProUGUI textRef)
-    {
-        //_tmp = textRef;
-       // textRef.text = "0 %";
-        Debug.Log("Text ref = " + textRef);
-        textRef.text = Mathf.RoundToInt(_slider.value * 100) + "%";
-        Debug.Log("New values on " + _slider + ": " + textRef.text);
+        _optionsMenuManager._tmpList[_index].text = Mathf.RoundToInt(_optionsMenuManager._sliderList[_index].value * 100) + "%";
     }
 }
