@@ -4,9 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using TMPro;
 
 public class OptionsMenuManager : MonoBehaviour
 {
+    //[SerializeField]
+    //private List<TextMeshProUGUI> _listOfPercentages;
+
+    //private TextMeshProUGUI _textTMP;
+
     [SerializeField]
     private string _startScene;
 
@@ -29,6 +35,7 @@ public class OptionsMenuManager : MonoBehaviour
 
     private void Start()
     {
+        //_listOfPercentages.Add(GameObject.Find("Percent").GetComponent<TextMeshProUGUI>());
         _profile.TryGetSettings(out _exposure);
         AdjustBrightness();
 
@@ -36,6 +43,12 @@ public class OptionsMenuManager : MonoBehaviour
         AdjustSaturation();
     }
 
+    // how to sync text to slider values?
+
+    protected virtual void UpdateText(TextMeshProUGUI textRef)
+    {
+        
+    }
 
     public void AdjustSaturation()
     {
