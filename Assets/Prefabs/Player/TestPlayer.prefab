@@ -144,7 +144,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: -629780277, guid: 8ffea9864860e264f9a9835fd52e5395, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   _aimPivot: {fileID: 4413851721358271744}
   useShortRangeDamage: 0
   canRevive: 0
-  canInvincibleDash: 1
+  canInvincibleDash: 0
   skipper: {fileID: 7216816289842264639, guid: a67c020a2a112bd47a8b515e7f4c785b, type: 3}
   damageSound:
     Guid:
