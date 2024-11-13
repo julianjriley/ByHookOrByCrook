@@ -639,7 +639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[0]
@@ -664,7 +664,7 @@ PrefabInstance:
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 8e44b83933400354fb8bcc92f28a9c67, type: 2}
+      objectReference: {fileID: 11400000, guid: 982044697c72fc04a84e011dc3416cdf, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[3]
       value: 
@@ -1107,6 +1107,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3986277634790609888, guid: c7bf435f6cebb2749841337e3e476b21, type: 3}
+      propertyPath: m_Size.x
+      value: 31.81306
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986277634790609888, guid: c7bf435f6cebb2749841337e3e476b21, type: 3}
+      propertyPath: m_Size.y
+      value: 15.5894375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986277634790609888, guid: c7bf435f6cebb2749841337e3e476b21, type: 3}
+      propertyPath: m_Center.x
+      value: 0.048944473
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986277634790609888, guid: c7bf435f6cebb2749841337e3e476b21, type: 3}
+      propertyPath: m_Center.y
+      value: 0.8030386
+      objectReference: {fileID: 0}
     - target: {fileID: 6423747674264421804, guid: c7bf435f6cebb2749841337e3e476b21, type: 3}
       propertyPath: m_Name
       value: TargetBoundingBox
@@ -1170,7 +1186,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: Duration
-      value: 2.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: ScaleMax
@@ -1254,7 +1270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7749514503417560160, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2574,7 +2590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 35
   _playerTransform: {fileID: 0}
-  BossHealth: 300
+  BossHealth: 350
   MaxBossHealth: 300
   _phases:
   - Threshold: 300
@@ -2688,7 +2704,7 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 10
+            m_FloatArgument: 12
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
