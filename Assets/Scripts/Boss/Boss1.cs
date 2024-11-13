@@ -78,10 +78,24 @@ public class Boss1 : BossPrototype
         }
         //if (Mathf.Abs(_rb.velocity.x) < 13) {
         if (!_isDrilling) {
-            float rotationVal = remap(-13, 13, 20, -20, _rb.velocity.x);
-            transform.rotation = Quaternion.Euler(0f, 0f, rotationVal); 
-            
-        }else {
+
+            // makes the boss lean in the direction it's heading
+            // remapped/clamped in such a way that it does not jitter when it has a low velocity but rather stabilizes around 0 degree rotation
+            float rotationVal;
+            if (_rb.velocity.x < 0)
+            {
+                rotationVal = remap(-13, -2, 20, 0, _rb.velocity.x);
+                rotationVal = Mathf.Clamp(rotationVal, 0, 20);
+            }
+            else
+            {
+                rotationVal = remap(2, 13, 0, -20, _rb.velocity.x);
+                rotationVal = Mathf.Clamp(rotationVal, -20, 0);
+            }
+            transform.rotation = Quaternion.Euler(0f, 0f, rotationVal);
+
+        }
+        else {
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
             //transform.rotation = Quaternion.Euler(_rb.velocity.x * 2, 0f, 0f); //Vector3.Magnitude(
