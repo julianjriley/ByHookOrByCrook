@@ -78,14 +78,25 @@ public class Boss1 : BossPrototype
         }
         //if (Mathf.Abs(_rb.velocity.x) < 13) {
         if (!_isDrilling) {
-            
-            float rotationVal = remap(-13, 13, 20, -20, _rb.velocity.x);
-            if (_renderer.flipX == false) {
-                transform.rotation = Quaternion.Euler(rotationVal, 0f, 0f);
-            } else {
-                transform.rotation = Quaternion.Euler(-rotationVal, 0f, 0f);
+
+            // makes the boss lean in the direction it's heading
+            // remapped/clamped in such a way that it does not jitter when it has a low velocity but rather stabilizes around 0 degree rotation
+            float rotationVal;
+            if (_rb.velocity.x < 0)
+            {
+                rotationVal = remap(-13, -2, 20, 0, _rb.velocity.x);
+                rotationVal = Mathf.Clamp(rotationVal, 0, 20);
             }
-            
+            else
+            {
+                rotationVal = remap(2, 13, 0, -20, _rb.velocity.x);
+                rotationVal = Mathf.Clamp(rotationVal, -20, 0);
+            }
+            transform.rotation = Quaternion.Euler(0f, 0f, rotationVal);
+
+        }
+        else {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
             //transform.rotation = Quaternion.Euler(_rb.velocity.x * 2, 0f, 0f); //Vector3.Magnitude(
         //}
@@ -159,7 +170,7 @@ public class Boss1 : BossPrototype
 
         SetSpeed(125f);
         //Debug.Log("Speed" + Speed);
-        SetNewTarget(target4, 2.5f);
+        SetNewTarget(target4, -1); //originally 2.5f
         yield return new WaitForSeconds(1.75f);
         //reset capsule collider to normal
         _capsule.direction = 1;
@@ -172,6 +183,7 @@ public class Boss1 : BossPrototype
         yield return new WaitForSeconds(0.2f);
         _isDrilling = false;
         _anim.SetBool("drillOut", false);
+        SetDefaultTarget();
         _targetRepositioner.NewBossTarget(rotation, scale);
         yield return new WaitForSeconds(0.4f);
         //reenable portals
