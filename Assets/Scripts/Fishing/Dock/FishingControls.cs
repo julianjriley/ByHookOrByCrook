@@ -79,6 +79,8 @@ public class FishingControls : MonoBehaviour
     private float _chargeRate;
     [SerializeField, Tooltip("Casting goal is used to determine proficiency score for casting portion of fishing.")]
     private CastingGoalMover _castingGoal;
+    [SerializeField, Tooltip("Used for indicating performance of casting task")]
+    private PerformancePopup _castingPopup;
 
     private float _initFillScaleX;
     private float _currCharge = 0; // 0 is minimum charge; 1 is maximum charge
@@ -161,6 +163,19 @@ public class FishingControls : MonoBehaviour
         if (_bobber.State == BobberBehavior.BobberState.Bobbing)
         {
             _castingScore = _castingGoal.GetCastingScore();
+
+            // trigger popup
+            if (_castingScore == 1)
+            {
+                _castingPopup.PopUp(0);
+            }
+            else
+            {
+                if (_bobber.transform.position.x < _castingGoal.transform.position.x)
+                    _castingPopup.PopUp(-1);
+                else
+                    _castingPopup.PopUp(1);
+            }
 
             _isReeling = true;
             _fishBiteTimer = UnityEngine.Random.Range(_minFishBiteTime, _maxFishBiteTime);
