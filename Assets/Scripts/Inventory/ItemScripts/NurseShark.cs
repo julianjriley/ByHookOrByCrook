@@ -7,6 +7,6 @@ public class NurseShark : PassiveItemInstance
     public override void ItemEffect()
     {
         base.ItemEffect();
-        _player.Health += 1;
+        _player.BaseHealth += _player.Health/3;
     }
 }

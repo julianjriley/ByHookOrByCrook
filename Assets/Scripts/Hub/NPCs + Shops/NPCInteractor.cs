@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using FMODUnity;
 
 public class NPCInteractor : Interactor
 {
@@ -20,6 +21,7 @@ public class NPCInteractor : Interactor
     [SerializeField] private GameObject _interactCamera;
     [Tooltip("The player's movement script")]
     [SerializeField] private HubMovement _player;
+    [SerializeField] EventReference dialogueSound;
 
     bool isSkippingLine;
 
@@ -75,6 +77,9 @@ public class NPCInteractor : Interactor
         // Stop player movement
         _player.IsIdle = true;
 
+        // Stop other SFX
+        SoundManager.Instance.CleanButSpare("Hub", false);
+
         // Show the discussion box
         _convoBubble.SetActive(true);
 
@@ -84,6 +89,8 @@ public class NPCInteractor : Interactor
         foreach (string line in _conversation.lines)
         {
             isSkippingLine = false;
+            SoundManager.Instance.InitializeDialogue(dialogueSound); //start dialogue sound
+            SoundManager.Instance.SetGlobalParameter("MusicDown", 1);//turn music down
             StartCoroutine(DoTextEscapeSubroutine());
             for (int i = 0; i < line.Length; i++)
             {
@@ -104,6 +111,7 @@ public class NPCInteractor : Interactor
                 }
 
             }
+            SoundManager.Instance.StopDialogue();//stop dialogue sound
             StopCoroutine(DoTextEscapeSubroutine());
             _convoText.text = line;
             yield return new WaitUntil(() => !_interactAction.IsPressed()); // Make the player lift the button so they don't hold through
@@ -118,6 +126,9 @@ public class NPCInteractor : Interactor
 
         // Give player movement back
         _player.IsIdle = false;
+        
+        // Bring music back to full volume
+        SoundManager.Instance.SetGlobalParameter("MusicDown", 0);
 
         yield return new WaitForSeconds(_endDelay);
         _isActiveCoroutine = false;

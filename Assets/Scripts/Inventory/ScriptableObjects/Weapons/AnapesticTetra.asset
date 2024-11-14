@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
+  m_Name: AnapesticTetra
+  m_EditorClassIdentifier: 
+  _itemID: 234
+  _itemName: Anapestic Tetra
+  _itemDescription: One fish two fish
+  _sprite: {fileID: 1250833714, guid: 448c100d49a9a98448693d05617c1692, type: 3}
+  _itemPrefab: {fileID: 666468142319288933, guid: fbdeb3cbd497ee143bdd684cead43e32, type: 3}
+  _cost: 120
+  _baseDamage: 3
+  _baseFireRate: 2.5
+  _baseSize: 1
+  _baseSpeed: 12
+  _baseLifetime: 3
+  _baseHeatBuildup: 10
+  _baseCoolingSpeed: 10
+  _baseProjectileCount: 1
+  _baseRecoilAmount: 5
+  _fireSound:
+    Guid:
+      Data1: 750242881
+      Data2: 1273948051
+      Data3: 284294323
+      Data4: -499286835
+    Path: event:/Combat/Guns/RottenFish
+  canRecoil: 0

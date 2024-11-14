@@ -12,7 +12,7 @@ public class Archerfish : PassiveItemInstance
         {
             if(item is Weapon)
             {
-                (item as Weapon).FireRate += _fireRateIncrease;
+                (item as Weapon).FireRate *= _fireRateIncrease;
             }
 
         }

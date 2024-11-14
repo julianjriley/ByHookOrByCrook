@@ -2,6 +2,7 @@ using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [CreateAssetMenuAttribute(fileName = "Weapon", menuName = "Assets/Item/Weapon")]
 public class Weapon : Item
@@ -20,13 +21,20 @@ public class Weapon : Item
     private float _heatBuildup;
     [SerializeField] protected float _baseCoolingSpeed;
     private float _coolingSpeed;
+    [SerializeField] protected float _overHeatCoolingSpeedMultiplier = 1;
     [SerializeField] protected int _baseProjectileCount;
     private int _projectileCount;
+    [SerializeField] protected float _baseRecoilAmount;
+    private float _recoilAmount;
+
 
 
     [SerializeField] private EventReference _fireSound;
 
-    
+    //Buff Specific Variable
+    public bool canRecoil = false;
+
+
 
     public float BaseDamage
     {
@@ -45,7 +53,7 @@ public class Weapon : Item
 
     public float BaseSpeed
     {
-        get { return _speed; }
+        get { return _baseSpeed; }
     }
 
     public float BaseLifetime
@@ -55,12 +63,12 @@ public class Weapon : Item
 
     public float BaseHeatBuildup
     {
-        get { return _heatBuildup; }
+        get { return _baseHeatBuildup; }
     }
 
     public float BaseCoolingTime
     {
-        get { return _coolingSpeed; }
+        get { return _baseCoolingSpeed; }
     }
 
     public int BaseProjectileCount
@@ -116,10 +124,22 @@ public class Weapon : Item
         set { _projectileCount = value; }
     }
 
+    public float RecoilAmount
+    {
+        get { return _recoilAmount; }
+        set { _recoilAmount = value; }
+    }
+
     public EventReference FireSound
     {
         get { return _fireSound; }
         set { _fireSound = value; }
+    }
+
+    public float OverheatCoolingSpeedMultiplier
+    {
+        get { return _overHeatCoolingSpeedMultiplier; }
+        set { _overHeatCoolingSpeedMultiplier = value;}
     }
 
 
@@ -133,9 +153,10 @@ public class Weapon : Item
         _heatBuildup = _baseHeatBuildup;
         _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
+        _recoilAmount = _baseRecoilAmount;
     }
 
-    void ResetStats()
+    public void ResetStats()
     {
         _damage = _baseDamage;
         _fireRate = _baseFireRate;
@@ -145,6 +166,8 @@ public class Weapon : Item
         _heatBuildup = _baseHeatBuildup;
         _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
+        _recoilAmount = _baseRecoilAmount;
+        canRecoil = false;
     }
 
     public override void SetPlayer(PlayerCombat player)
@@ -157,5 +180,7 @@ public class Weapon : Item
     {
         _player.AppendItemToWeaponInstances(_itemPrefab);
     }
+
+    
 
 }

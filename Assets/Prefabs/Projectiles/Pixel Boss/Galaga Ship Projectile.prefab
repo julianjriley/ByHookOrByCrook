@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4048634101156911699}
   - component: {fileID: 1660747544691372021}
   - component: {fileID: 5014166430516571187}
-  - component: {fileID: 5314878324870095476}
   - component: {fileID: 8471065988062238467}
+  - component: {fileID: 7170983032163388198}
   m_Layer: 8
   m_Name: Galaga Ship Projectile
   m_TagString: Untagged
@@ -51,10 +51,10 @@ MonoBehaviour:
   _damage: 1
   _baseDamage: 0
   _size: 1
-  _speed: 1
+  _speed: 1.5
   _lifetime: 100
-  _health: 1
-  _movePhaseDuration: 2
+  _health: 2
+  _movePhaseDuration: 1
 --- !u!54 &1660747544691372021
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -120,41 +120,20 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1669246187
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: -268365588, guid: d8e0296976866f14694f74e2c2970ab8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.66, y: 0.66}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &5314878324870095476
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4781669278737496937}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.58, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &8471065988062238467
 Animator:
   serializedVersion: 5
@@ -176,3 +155,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &7170983032163388198
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4781669278737496937}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.32
+  m_Height: 0.95
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.03, z: 0}
