@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8330450284753511297}
   m_Layer: 8
-  m_Name: DefecationLocation
+  m_Name: DefecationLocation (moving right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4938514379716408499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: -0.16, z: 0}
+  m_LocalPosition: {x: -0.15, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -93,10 +93,11 @@ Transform:
   m_GameObject: {fileID: 5521726063813682892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8330450284753511297}
+  - {fileID: 1561886799482722877}
   m_Father: {fileID: 9205754366837232019}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -122,7 +123,9 @@ MonoBehaviour:
   _isFlyingRight: 1
   _renderer: {fileID: 3287847125607731142}
   _droppingPrefab: {fileID: 5299787899045936185, guid: ff1a85a5751061646a2da029fc785512, type: 3}
-  _defecationLocation: {fileID: 4938514379716408499}
+  _defecationLocations:
+  - {fileID: 4938514379716408499}
+  - {fileID: 6414275156353832806}
   _droppingSpeed: 2
   _spawnDelayInterval: {x: 1, y: 2.5}
   _attackDistance: 1
@@ -247,3 +250,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &6414275156353832806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1561886799482722877}
+  m_Layer: 8
+  m_Name: DefecationLocation (moving left)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1561886799482722877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6414275156353832806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.15, y: -0.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5652248781833165002}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
