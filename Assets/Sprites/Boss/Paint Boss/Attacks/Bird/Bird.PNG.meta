@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2rowSpriteSheet_0
+      name: Bird_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,7 +118,7 @@ TextureImporter:
         width: 1920
         height: 1920
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -131,7 +131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2rowSpriteSheet_1
+      name: Bird_1
       rect:
         serializedVersion: 2
         x: 1920
@@ -139,7 +139,7 @@ TextureImporter:
         width: 1920
         height: 1920
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,7 +152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2rowSpriteSheet_2
+      name: Bird_2
       rect:
         serializedVersion: 2
         x: 3840
@@ -160,7 +160,7 @@ TextureImporter:
         width: 1920
         height: 1920
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,7 +173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2rowSpriteSheet_3
+      name: Bird_3
       rect:
         serializedVersion: 2
         x: 5760
@@ -181,7 +181,7 @@ TextureImporter:
         width: 1920
         height: 1920
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,7 +194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2rowSpriteSheet_4
+      name: Bird_4
       rect:
         serializedVersion: 2
         x: 0
@@ -202,7 +202,7 @@ TextureImporter:
         width: 1920
         height: 1920
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,15 +215,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2rowSpriteSheet_5
+      name: Bird_5
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 0
+        x: 1933
+        y: 13
         width: 1920
         height: 1920
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2rowSpriteSheet_6
+      name: Bird_6
       rect:
         serializedVersion: 2
         x: 3840
@@ -244,7 +244,7 @@ TextureImporter:
         width: 1920
         height: 1920
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -267,13 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      2rowSpriteSheet_0: 2043345656
-      2rowSpriteSheet_1: 999866367
-      2rowSpriteSheet_2: 173399783
-      2rowSpriteSheet_3: 1357995338
-      2rowSpriteSheet_4: 1899964111
-      2rowSpriteSheet_5: -532675952
-      2rowSpriteSheet_6: 924526302
+      Bird_0: 2043345656
+      Bird_1: 999866367
+      Bird_2: 173399783
+      Bird_3: 1357995338
+      Bird_4: 1899964111
+      Bird_5: -532675952
+      Bird_6: 924526302
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
