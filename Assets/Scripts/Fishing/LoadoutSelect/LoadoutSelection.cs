@@ -67,6 +67,19 @@ public class LoadoutSelection : MonoBehaviour
         foreach (FishButton fish in loadoutFish)
             GameManager.Instance.AddLoadoutItem(fish.Item);
 
+        // Add plush gun if no gun found in current loadout
+        bool isWeaponFound = false;
+        foreach (Item item in GameManager.Instance.ScenePersistent.Loadout)
+        {
+            if(item.GetItemType() == Item.ItemType.WEAPON)
+            {
+                isWeaponFound = true;
+                break;
+            }
+        }
+        if(!isWeaponFound)
+            GameManager.Instance.AddLoadoutItem(_starterGun);
+
         // Use this function to transition to PRACTICE or COMBAT scene
         string sceneToSwitchTo;
         switch (GameManager.Instance.GamePersistent.BossNumber)
