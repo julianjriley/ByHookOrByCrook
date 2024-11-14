@@ -27,6 +27,10 @@ public class AccessInteractor : Interactor
         base.Start();
         AccessDisplaySprite();
         AccessDisplayText();
+        if (GameManager.Instance.GamePersistent.IsTutorialHub)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
