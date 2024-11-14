@@ -21,8 +21,10 @@ public class ConvoSelector : MonoBehaviour
     private void Awake()
     {
         // If the tracker list in save data is empty
-        if(getIsConvoHad().Count == 0)
+        if(getIsConvoHad().Count == 0 || GameManager.Instance.GamePersistent.NPCBossNumber != GameManager.Instance.GamePersistent.BossNumber)
         {
+            GameManager.Instance.GamePersistent.NPCBossNumber = GameManager.Instance.GamePersistent.BossNumber;
+            clearIsConvoHad();
             int fullConvoCount = _books[GameManager.Instance.GamePersistent.BossNumber].generalConvos.Count + _books[GameManager.Instance.GamePersistent.BossNumber].postBossLossConvos.Count;
             for (int i = 0; i < fullConvoCount; i++)
             {
@@ -133,6 +135,22 @@ public class ConvoSelector : MonoBehaviour
         else
         {
             return GameManager.Instance.GamePersistent.IsConvoHadBag;
+        }
+    }
+
+    private void clearIsConvoHad()
+    {
+        if (NPCharaType == NPCType.Rod)
+        {
+            GameManager.Instance.GamePersistent.IsConvoHadRod = new List<bool>();
+        }
+        else if (NPCharaType == NPCType.Bait)
+        {
+            GameManager.Instance.GamePersistent.IsConvoHadBait = new List<bool>();
+        }
+        else
+        {
+            GameManager.Instance.GamePersistent.IsConvoHadBag = new List<bool>();
         }
     }
 
