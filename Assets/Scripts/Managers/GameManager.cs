@@ -264,7 +264,7 @@ public class GameManager : MonoBehaviour
         }
         
         newSaveData.BossNumber = 0;
-        newSaveData.LossCounter = 3;
+        newSaveData.LossCounter = 0;
 
         newSaveData.Gill = 0;
         newSaveData.BaitInventorySize = 3;
