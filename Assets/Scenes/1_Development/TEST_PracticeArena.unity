@@ -1945,6 +1945,7 @@ MonoBehaviour:
       Data4: -1696129653
     Path: event:/Combat/General/BossHit
   _cashoutSceneName: 8_BETA_Cashout
+  _bossProgressionNumber: 0
 --- !u!114 &2822287763997252279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1957,14 +1958,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d6c951e5ce76b49a2f111e74153ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infiniJumpFish: 0
   MaxSpeed: 7
   maxNumberOfJumps: 1
+  _jumpCounterIndex: 0
   _coyoteMaxTime: 0.2
   _jumpBufferMaxTime: 0.2
-  _jummpCancelForce: 0.5
-  jumpDurrationMaxTime: 0.1
-  jumpUpForce: 14
-  jumpFallingForce: 12
+  jumpDuration: 0.2
+  jumpImpulseUP: 10
+  jummpImpulseDown: 0.5
   _maxGroundedDistance: 0.1
   _groundLayer:
     serializedVersion: 2
@@ -1974,6 +1976,8 @@ MonoBehaviour:
   DashDuration: 0.2
   _toggleGravityWhenDashing: 0
   numberOfAirDashes: 1
+  canDashResetJump: 0
+  _trailRender: {fileID: 0}
   footstepsSound:
     Guid:
       Data1: -2083588618
@@ -2002,6 +2006,7 @@ MonoBehaviour:
       Data3: -2144726133
       Data4: -552639163
     Path: event:/Combat/General/Double Jump
+  dust: {fileID: 0}
   dashRestricted: 0
   GoThroughPlatforms: 0
 --- !u!54 &2997144427763191420
@@ -2632,6 +2637,7 @@ MonoBehaviour:
   useShortRangeDamage: 0
   canRevive: 0
   canInvincibleDash: 0
+  skipper: {fileID: 0}
   damageSound:
     Guid:
       Data1: 356839253
