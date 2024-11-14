@@ -106,4 +106,12 @@ public class BaitSelector : MonoBehaviour
         // Load fishing scene
         SceneManager.LoadScene(sceneName);
     }
+
+    /// <summary>
+    /// Returns current number of slots that are full.
+    /// </summary>
+    public int GetCurrentFullSlots()
+    {
+        return GameManager.Instance.GamePersistent.BaitInventorySize - _remainingBaitSlots;
+    }
 }
