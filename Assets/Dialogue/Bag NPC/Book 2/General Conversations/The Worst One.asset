@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
+  m_Name: The Worst One
+  m_EditorClassIdentifier: 
+  lines:
+  - "This paint freak you\u2019re tusslin with looks like I could clean it up with
+    a mop.\r"
+  - "But lemme tell ya, bear, looks ain\u2019t everything."
+  - "You know the tentacle we\u2019ve seen the most fighters die to?"
+  - "It was made of freakin\u2019 gummy."
+  - "I got a taste early on when we were all laughin\u2019 about it - lime flavored."
+  - "But by the time someone finally put it down, you\u2019d swear to your mother
+    it looked like dark cherry."
+  RequiredBossLossCount: 0
+  GeneralPriority: 0

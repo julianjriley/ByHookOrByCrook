@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
+  m_Name: First Meeting
+  m_EditorClassIdentifier: 
+  lines:
+  - "Greetings! Welcome to my shelter for underprivileged worms, where I seek to
+    give each and every one of my comrades a safe and happy home! \r"
+  - 'You seem quite determined to slay the remaining tendrils. Such a tenacity about
+    you. '
+  - "Well may I just say these worms have trained long and hard to make themselves
+    useful. \r"
+  - "Passing heroes always seem to desire them for their dangerous battles with the
+    creature. \r \r"
+  - "They even have their own specialities!\r"
+  - "Simply walk over to the barrel of your choice and have a look. \r\r"
+  - "There will just be a small fee, of course. Maintenance, living expenses, and
+    all that.  \r\r"
+  RequiredBossLossCount: 0
+  GeneralPriority: 2
