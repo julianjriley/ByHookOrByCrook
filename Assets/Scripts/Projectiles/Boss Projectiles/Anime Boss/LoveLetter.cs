@@ -12,17 +12,15 @@ public class LoveLetter : Projectile
     private float _timeTillExplosion;
     [SerializeField, Tooltip("Max distance from the player's position that the love letter explodes from.")]
     private float _maxDistance;
+    [SerializeField, Tooltip("Kaboom prefab")]
+    private GameObject _explosion;
 
     private Vector3 _direction;
-    private bool _hasExploded;
     private GameObject _player;
 
     protected override void Start()
     {
         base.Start();
-        
-        // ensures bool starts false
-        _hasExploded = false;
         
         // find player ref used to hone projectile in on player
         _player = GameObject.FindWithTag("Player");
@@ -34,28 +32,14 @@ public class LoveLetter : Projectile
         _rb.velocity = _direction * _speed;
        
         // explodes after a given time
-        Invoke("Explode()", _timeTillExplosion);        
+        Invoke("Explode", _timeTillExplosion);        
     }
 
     private void Explode()
     {
-        if (_hasExploded)
-        {
-            // shouldnt reach this because projectile should have been destroyed already
-            return;
-        }
-        else
-        {
-            // make collider radius bigger
-            this.GetComponent<CapsuleCollider>().radius = GetComponent<CapsuleCollider>().radius * 2;
-
-            _hasExploded = true;
-            Debug.Log("Explode!");
-
-            // play animation here?
-
-            Destroy(gameObject);
-        }
+        Instantiate(Resources.Load("Explosion"), this.transform.position, this.transform.rotation);
+        Destroy(gameObject);
+        
     }
     private void FixedUpdate()
     {
