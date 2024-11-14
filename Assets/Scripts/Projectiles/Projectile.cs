@@ -45,7 +45,7 @@ public class Projectile : MonoBehaviour
         shortRangeDamage = _playerCombat.useShortRangeDamage;
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         _health -= damage;
         if(_health <= 0)
