@@ -15,7 +15,7 @@ public class WeaponInstance : MonoBehaviour
 
     PlayerCombat _player;
 
-    
+    public static float mult;
 
     public static event Action WeaponOverheated;
     public static event Action WeaponCooledOff;
@@ -36,6 +36,9 @@ public class WeaponInstance : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         _player = _weapon.GetPlayer();
+        mult = 1.0f;
+        WeaponCooledOff += SubtractOverheatMult;
+        WeaponOverheated += AddOverheatMult;
     }
 
     public virtual void Fire(Vector3 direction)
@@ -72,6 +75,7 @@ public class WeaponInstance : MonoBehaviour
             _heatLevel = 99;
         }
         _heatLevel = Mathf.Clamp(_heatLevel - _weapon.CoolingTime * Time.deltaTime, 0, 100);
+
         if (_heatLevel <= 0)
         {
             if (_overHeated == true)
@@ -83,18 +87,13 @@ public class WeaponInstance : MonoBehaviour
         }
     }
 
+
     protected virtual void FixedUpdate()
     {
-
+        
         if (_direction != null && _direction != Vector3.zero)
             lookAngle = Vector3.Angle(Vector3.up, _direction);
-
         
-
-
-
-            
- 
     }
 
     public void UpdateRotation(Vector2 lookAt)
@@ -142,5 +141,23 @@ public class WeaponInstance : MonoBehaviour
         {
             _player.ApplyRecoil(_weapon.RecoilAmount);
         }
+    }
+
+    protected void CheckOverheat()
+    {
+        if (_weapon.overheatShot && (_heatLevel + _weapon.HeatBuildup) > 100)
+            _weapon.Damage *= 4f;
+    }
+
+    void AddOverheatMult()
+    {
+        if (_weapon.overheatDamageBonus)
+            mult += 1f;
+    }
+
+    void SubtractOverheatMult()
+    {
+        if (_weapon.overheatDamageBonus)
+            mult -= 1f;
     }
 }

@@ -24,7 +24,8 @@ public class MantisShrimp : WeaponInstance
 
 
         // Fire function is the same for both triple shot and regular shots
-        
+        CheckOverheat();
+        _weapon.Damage *= mult;
         int shotDirectionMod = Random.Range(0, 5);
         Vector3 aimingDir = Quaternion.Euler(0, 0, 18 * (2 - shotDirectionMod)) * _direction;
         GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, aimingDir));
@@ -32,7 +33,7 @@ public class MantisShrimp : WeaponInstance
         projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
         MantisShrimpProjectile mantisShrimpProjectile = projectile.GetComponent<MantisShrimpProjectile>();
         mantisShrimpProjectile.AssignStats(_weapon);
-
+        _weapon.Damage /= mult;
         _heatLevel += _weapon.HeatBuildup;
 
         if (_heatLevel >= 100)
