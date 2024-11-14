@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadoutTTRLManager : MonoBehaviour
 {
@@ -33,14 +34,14 @@ public class LoadoutTTRLManager : MonoBehaviour
     {
         if (GameManager.Instance.GamePersistent.IsTutorialCombat)
         {
-            /*if (_bs.GetRemainingBaitSlots() == 0)
+            if (_bs.GetCurrentLoadoutSize() == GameManager.Instance.GamePersistent.BattleInventorySize)
             {
                 _practiceButton.SetActive(true);
             }
             else
             {
                 _practiceButton.SetActive(false);
-            }*/
+            }
         }
 
 
@@ -60,8 +61,10 @@ public class LoadoutTTRLManager : MonoBehaviour
         _signAnim.Play("Disappear", 0, 0);
         yield return new WaitForSeconds(7f / 12f);
         _foregroundScreen.SetActive(false);
+    }
 
-
-
+    public void PracButton()
+    {
+        SceneManager.LoadScene("6.5PracTut");
     }
 }
