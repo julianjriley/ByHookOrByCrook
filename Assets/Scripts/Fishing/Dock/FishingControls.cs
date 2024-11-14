@@ -85,11 +85,21 @@ public class FishingControls : MonoBehaviour
     private bool _isWaiting = true;
     private float _castingScore = 0; // min 0; max 1
 
+    // Tutorial stuff
+    public delegate void OnFirstCast();
+    public static event OnFirstCast onFirstCast;
+    public delegate void OnFirstBobberLand();
+    public static event OnFirstBobberLand onFirstBobberLand;
+    private bool _firstCastEvent = false;
+    private bool _firstBobEvent = false;
+    public bool IsFishingLoopDone = false;
+
     private void HandleCastingControls()
     {
         // CONTROLS LOGIC
         if(_bobber.State == BobberBehavior.BobberState.Waiting) // ensure you can only cast once bobber has fully returned
         {
+            IsFishingLoopDone = !IsFishingLoopDone;
             // start showing indicator and reset charge
             if (_fishingClick && _isWaiting)
             {
@@ -103,6 +113,11 @@ public class FishingControls : MonoBehaviour
             // holding down
             else if (_fishingClick)
             {
+                if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstCastEvent)
+                {
+                    onFirstCast?.Invoke();
+                    _firstCastEvent = true;
+                }
                 if (_isIncreasing) // bar increasing
                 {
                     _currCharge += _chargeRate * Time.deltaTime;
@@ -145,6 +160,12 @@ public class FishingControls : MonoBehaviour
             {
                 // launch bobber
                 _bobber.LaunchBobber(_currCharge);
+
+                if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstBobEvent)
+                {
+                    onFirstBobberLand?.Invoke();
+                    _firstBobEvent = true;
+                }
 
                 // TODO: make this fade out instead
                 _castingIndicator.SetActive(false);
@@ -192,22 +213,45 @@ public class FishingControls : MonoBehaviour
     private float _currentShrinkingScale = 0;
     private float _reelingScore = 0; // min 0; max 1
 
+    private bool _tutorialAllowedToReel = false;
+
     private void HandleReelingControls()
     {
         // Wait for fish to bite
         if (_bobber.State == BobberBehavior.BobberState.Bobbing)
         {
-            if (_fishBiteTimer < 0)
+            if (GameManager.Instance.GamePersistent.IsTutorialFish)
             {
-                // restart all reeling parameters
-                _bobber.StartTugging();
-                _reelingTimer = _totalShrinkTime;
-                _shrinkingRing.transform.localScale = _initialShrinkingRingScale;
-                _reelIndicator.SetActive(true);
-                _currentShrinkingScale = _initialShrinkingRingScale.x;
+                if (_tutorialAllowedToReel)
+                {
+                    if (_fishBiteTimer < 0)
+                    {
+                        // restart all reeling parameters
+                        _bobber.StartTugging();
+                        _reelingTimer = _totalShrinkTime;
+                        _shrinkingRing.transform.localScale = _initialShrinkingRingScale;
+                        _reelIndicator.SetActive(true);
+                        _currentShrinkingScale = _initialShrinkingRingScale.x;
+                    }
+                    else
+                        _fishBiteTimer -= Time.deltaTime;
+                }
             }
             else
-                _fishBiteTimer -= Time.deltaTime;
+            {
+                if (_fishBiteTimer < 0)
+                {
+                    // restart all reeling parameters
+                    _bobber.StartTugging();
+                    _reelingTimer = _totalShrinkTime;
+                    _shrinkingRing.transform.localScale = _initialShrinkingRingScale;
+                    _reelIndicator.SetActive(true);
+                    _currentShrinkingScale = _initialShrinkingRingScale.x;
+                }
+                else
+                    _fishBiteTimer -= Time.deltaTime;
+            }
+            
         }
 
         // Timing click controls
@@ -260,6 +304,11 @@ public class FishingControls : MonoBehaviour
         _currentShrinkingScale = math.remap(_totalShrinkTime, 0, _initialShrinkingRingScale.x, 0, _reelingTimer);
         // update scale based on calculated value
         _shrinkingRing.transform.localScale = _initialShrinkingRingScale * (_currentShrinkingScale / _initialShrinkingRingScale.x);
+    }
+
+    public void SetTutorialReeling()
+    {
+        _tutorialAllowedToReel = true;
     }
     #endregion
 }
