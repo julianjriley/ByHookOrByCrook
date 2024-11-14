@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// Handles Instantiation of FishButtons at start of scene.
@@ -19,6 +20,8 @@ public class LoadoutSelection : MonoBehaviour
     public GameObject CaughtFishParent;
     [SerializeField, Tooltip("Game object where loadout fish buttons are created.")]
     public GameObject LoadoutFishParent;
+    [SerializeField, Tooltip("Used to determine if player wants to take plush.")]
+    private Toggle _defaultFishToggle;
 
     [Header("Editor Only")]
     [SerializeField, Tooltip("List of fish used when starting Unity within this scene. Instead of using GameManager.")]
@@ -28,9 +31,6 @@ public class LoadoutSelection : MonoBehaviour
     [SerializeField] string[] _bossScenes;
     void Start()
     {
-        // Always add fish button for starter gun
-        CreateFishButton(_starterGun);
-
         // Spawn fish button for each caught fish (from GameManager)
         foreach (Item item in GameManager.Instance.ScenePersistent.CaughtFish)
             CreateFishButton(item);
@@ -57,6 +57,10 @@ public class LoadoutSelection : MonoBehaviour
     public void NextScene()
     {
         // TODO: Confirmation popup if player is attempting to continue without filling all of their bait slots
+
+        // add plush if toggle is on
+        if (_defaultFishToggle.isOn)
+            GameManager.Instance.AddLoadoutItem(_starterGun);
         
         // Add selected loadout items to GameManager
         FishButton[] loadoutFish = LoadoutFishParent.GetComponentsInChildren<FishButton>();
