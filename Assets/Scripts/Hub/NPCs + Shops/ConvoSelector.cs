@@ -26,9 +26,10 @@ public class ConvoSelector : MonoBehaviour
             GameManager.Instance.GamePersistent.NPCBossNumber = GameManager.Instance.GamePersistent.BossNumber;
             clearIsConvoHad();
             int fullConvoCount = _books[GameManager.Instance.GamePersistent.BossNumber].generalConvos.Count + _books[GameManager.Instance.GamePersistent.BossNumber].postBossLossConvos.Count;
-            for (int i = 0; i < fullConvoCount; i++)
+            for (int i = 0; i < fullConvoCount + 1; i++)
             {
                 getIsConvoHad().Add(false); // Fill it to the brim
+                Debug.Log(NPCharaType + " " + i);
             }
         }
 
@@ -87,7 +88,7 @@ public class ConvoSelector : MonoBehaviour
             {
                 int index = book.generalConvos.FindIndex(x => x == conversation);
                 // If this is a high priority conversation we haven't had, add it to the tempList
-                if(conversation.GeneralPriority == k && !getIsConvoHad()[book.postBossLossConvos.Count + index])
+                if(conversation.GeneralPriority == k && !getIsConvoHad()[book.postBossLossConvos.Count + index]) 
                 {
                     tempList.Add(conversation);
                 }

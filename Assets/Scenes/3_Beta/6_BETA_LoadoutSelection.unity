@@ -1330,6 +1330,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loadout Tutorial View
       objectReference: {fileID: 0}
+    - target: {fileID: 7076737409075221914, guid: 3b04a935e31120e428bf997bfb7979f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8322043569932368188, guid: 3b04a935e31120e428bf997bfb7979f7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
