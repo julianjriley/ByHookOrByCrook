@@ -584,7 +584,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &730887072
 MonoBehaviour:
@@ -631,7 +631,7 @@ Transform:
   - {fileID: 1192687974}
   - {fileID: 1358619428}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &790663015
 GameObject:
@@ -755,7 +755,7 @@ Transform:
   - {fileID: 1030159170}
   - {fileID: 947386211}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &801297450
 MonoBehaviour:
@@ -923,7 +923,7 @@ RectTransform:
   - {fileID: 1856506941}
   - {fileID: 708627465}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2189,7 +2189,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1861220501}
-  - component: {fileID: 1861220500}
   - component: {fileID: 1861220502}
   m_Layer: 0
   m_Name: Audio
@@ -2198,18 +2197,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1861220500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861220499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ce22089a0bd72418d737747f35980d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1861220501
 Transform:
   m_ObjectHideFlags: 0
@@ -2223,7 +2210,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1861220502
 MonoBehaviour:
@@ -2239,11 +2226,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1322940718
+      Data2: 1133600117
+      Data3: 1858083493
+      Data4: -1396798980
+    Path: event:/Music/FishingMusic
 --- !u!1 &1919899604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,7 +2361,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1987197324
 MonoBehaviour:

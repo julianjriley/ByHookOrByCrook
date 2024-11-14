@@ -96,6 +96,7 @@ public class BaitSelector : MonoBehaviour
         SelectedBait[] selectedBaits = SelectedBaitParent.GetComponentsInChildren<SelectedBait>();
         foreach (SelectedBait bait in selectedBaits)
             GameManager.Instance.AddBait(bait.BaitType);
+        SoundManager.Instance.CleanUp(); //stops the music
 
         // Load fishing scene
         SceneManager.LoadScene(sceneName);
