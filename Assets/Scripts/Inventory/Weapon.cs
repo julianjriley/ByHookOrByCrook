@@ -30,6 +30,8 @@ public class Weapon : Item
 
     //Buff Specific Variable
     public bool canRecoil;
+    public bool overheatShot;
+    public bool overheatDamageBonus;
 
 
 
