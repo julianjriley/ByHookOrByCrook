@@ -56,6 +56,10 @@ public class BaitSelector : MonoBehaviour
                 button.interactable = GameManager.Instance.GamePersistent.MovementBait;
             else
                 throw new System.Exception("Barrel MUST be assigned to a valid BaitType.");
+
+            // update lock visual
+            if(barrelScript.BaitType != GameManager.BaitType.Default)
+                barrelScript.SetLockVisual(!button.interactable);
         }
     }
 
