@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using FMOD.Studio;
+using FMODUnity;
 
 public class ShopInteractor : Interactor
 {
@@ -31,6 +33,8 @@ public class ShopInteractor : Interactor
     [SerializeField] private Animator _shopAnim;
     [Tooltip("The NPC selling the item")]
     [SerializeField] private NPCInteractor _npc;
+    [SerializeField] private EventReference purchaseSound;
+    [SerializeField] private EventReference tooPoorSound;
 
     public delegate void OnShopEnter();
     public static event OnShopEnter onShopEnter;
@@ -41,6 +45,8 @@ public class ShopInteractor : Interactor
 
     public delegate void OnBaitPurchase();
     public static event OnBaitPurchase onBaitPurchase;
+
+    private bool shopActiveCoroutine;
 
     new void Start()
     {
@@ -66,15 +72,15 @@ public class ShopInteractor : Interactor
     // Update is called once per frame
     void Update()
     {
-        if (_interactAction.IsPressed() && !_isActiveCoroutine && _canInteract)
+        if (_interactAction.IsPressed() && !_isActiveCoroutine && _canInteract && !shopActiveCoroutine) //added last bool to keep sound effect from triggering infinitely when holding button
         {
 
                 StartCoroutine(DoInteractionShop());
         }
     }
-
     private IEnumerator DoInteractionShop()
     {
+        shopActiveCoroutine = true;
         // Check if they have enough money
         if (GameManager.Instance.GamePersistent.Gill >= _currentCost)
         {
@@ -83,6 +89,7 @@ public class ShopInteractor : Interactor
             onShopPurchase?.Invoke(_currentCost);
             ShopConvo(); // Set the correct conversation
             ShopSell();  // Give them the item
+            SoundManager.Instance.PlayOneShot(purchaseSound, gameObject.transform.position);
 
             if (!_multipurchase) // If it's one purchase per load, destroy this thing
             {
@@ -106,14 +113,18 @@ public class ShopInteractor : Interactor
         }
         else
         {
-            // If not, [LOUD INCORRECT BUZZER NOISE]
+            // If not, [LOUD INCORRECT BUZZER NOISE] -- got u lol -Andres
             // We can put a little sound effect and a little text box animation here to really
             // emphasize to the player that they are poor
 
+            SoundManager.Instance.PlayOneShot(tooPoorSound, gameObject.transform.position);
             _shopAnim.Play("NotEnough", 0, 0);
+            yield return new WaitUntil(() => !_interactAction.IsPressed());
+
             //yield return new WaitForSeconds(.5f);
             //_shopAnim.Play("Static", 0, 0);
         }
+        shopActiveCoroutine = false;
         yield return null;
 
     }

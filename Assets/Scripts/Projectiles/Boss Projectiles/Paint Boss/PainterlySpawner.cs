@@ -16,6 +16,8 @@ public class PainterlySpawner : MonoBehaviour
     private float _movementSpeed;
     [SerializeField, Tooltip("Higher value = faster move speed while farther away")]
     private float _movementDistanceFactor;
+    [SerializeField, Tooltip("Speed of portrait retracting after spawn completes.")]
+    private float _retractSpeed;
 
     [Header("Painting/Spawning")]
     [SerializeField, Tooltip("Renderer with paint effect.")]
@@ -25,6 +27,12 @@ public class PainterlySpawner : MonoBehaviour
 
     [HideInInspector]
     public bool isReady = false;
+    private float _startingY;
+
+    private void Start()
+    {
+        _startingY = transform.position.y;
+    }
 
     private void FixedUpdate()
     {
@@ -61,7 +69,23 @@ public class PainterlySpawner : MonoBehaviour
     {
         Instantiate(_enemyToSpawn, transform.position, transform.rotation);
 
-        // destroy painterlySpawner on spawn
+        // start retracting painterly spawner
+        StartCoroutine(DoRetract());
+    }
+
+    /// <summary>
+    /// Moves portrait up until it is off screen, then destroy it.
+    /// </summary>
+    private IEnumerator DoRetract()
+    {
+        // move it up at constant retract speed until its far enough up
+        while (transform.position.y < _startingY)
+        {
+            transform.position = transform.position + Vector3.up * _retractSpeed * Time.fixedDeltaTime;
+
+            yield return null;
+        }
+
         Destroy(gameObject);
     }
 }

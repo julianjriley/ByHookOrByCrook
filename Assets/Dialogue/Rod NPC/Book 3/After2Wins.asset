@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
+  m_Name: After2Wins
+  m_EditorClassIdentifier: 
+  lines:
+  - You must be thinking pretty highly of yourself, having taken down two tentacles.
+  - But the last tentacle on the chopping block is the most fearsome one of all.
+  - Terrormoon.
+  - That menace wormed its way into my home dimension.
+  - "Don\u2019t be fooled by the hearts and sparkles."
+  - Those magical girl types will haunt your nightmares.
+  RequiredBossLossCount: 0
+  GeneralPriority: 3
