@@ -22,6 +22,7 @@ public class Boss3Camera : MonoBehaviour
             if(this.transform.position.y >= _finalStop)
             {
                 _fullStop = true;
+                this.transform.position = new Vector3(this.transform.position.x, _finalStop, this.transform.position.z);
             }
         }
 

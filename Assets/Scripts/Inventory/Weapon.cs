@@ -2,6 +2,7 @@ using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [CreateAssetMenuAttribute(fileName = "Weapon", menuName = "Assets/Item/Weapon")]
 public class Weapon : Item
@@ -20,10 +21,12 @@ public class Weapon : Item
     private float _heatBuildup;
     [SerializeField] protected float _baseCoolingSpeed;
     private float _coolingSpeed;
+    [SerializeField] protected float _overHeatCoolingSpeedMultiplier = 1;
     [SerializeField] protected int _baseProjectileCount;
     private int _projectileCount;
     [SerializeField] protected float _baseRecoilAmount;
     private float _recoilAmount;
+
 
 
     [SerializeField] private EventReference _fireSound;
@@ -52,7 +55,7 @@ public class Weapon : Item
 
     public float BaseSpeed
     {
-        get { return _speed; }
+        get { return _baseSpeed; }
     }
 
     public float BaseLifetime
@@ -62,12 +65,12 @@ public class Weapon : Item
 
     public float BaseHeatBuildup
     {
-        get { return _heatBuildup; }
+        get { return _baseHeatBuildup; }
     }
 
     public float BaseCoolingTime
     {
-        get { return _coolingSpeed; }
+        get { return _baseCoolingSpeed; }
     }
 
     public int BaseProjectileCount
@@ -135,6 +138,12 @@ public class Weapon : Item
         set { _fireSound = value; }
     }
 
+    public float OverheatCoolingSpeedMultiplier
+    {
+        get { return _overHeatCoolingSpeedMultiplier; }
+        set { _overHeatCoolingSpeedMultiplier = value;}
+    }
+
 
     private void OnEnable()
     {
@@ -160,6 +169,7 @@ public class Weapon : Item
         _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
         _recoilAmount = _baseRecoilAmount;
+        canRecoil = false;
     }
 
     public override void SetPlayer(PlayerCombat player)

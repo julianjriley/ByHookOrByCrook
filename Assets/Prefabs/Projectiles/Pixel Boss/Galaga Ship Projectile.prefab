@@ -51,10 +51,10 @@ MonoBehaviour:
   _damage: 1
   _baseDamage: 0
   _size: 1
-  _speed: 1
+  _speed: 1.5
   _lifetime: 100
-  _health: 3
-  _movePhaseDuration: 1.5
+  _health: 2
+  _movePhaseDuration: 1
 --- !u!54 &1660747544691372021
 Rigidbody:
   m_ObjectHideFlags: 0

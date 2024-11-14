@@ -71,6 +71,7 @@ public class WeaponInstance : MonoBehaviour
         if (_overHeated == true && _heatLevel >= 100)
         {
             WeaponOverheated?.Invoke();
+            _weapon.CoolingTime *= _weapon.OverheatCoolingSpeedMultiplier;
             _heatLevel = 99;
         }
         _heatLevel = Mathf.Clamp(_heatLevel - _weapon.CoolingTime * Time.deltaTime, 0, 100);
@@ -80,6 +81,7 @@ public class WeaponInstance : MonoBehaviour
             if (_overHeated == true)
             {
                 WeaponCooledOff?.Invoke();
+                _weapon.CoolingTime /= _weapon.OverheatCoolingSpeedMultiplier;
             }
             _overHeated = false;
         }
