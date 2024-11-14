@@ -2617,10 +2617,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8908784778821407292}
-        m_TargetAssemblyTypeName: OptionsMenuManager, Assembly-CSharp
-        m_MethodName: LoadStartScene
-        m_Mode: 1
+      - m_Target: {fileID: 8383193027965903464}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8413,7 +8413,7 @@ Transform:
   - {fileID: 6579363917755332806}
   - {fileID: 5913280430292871919}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8860901348306839732
 GameObject:
