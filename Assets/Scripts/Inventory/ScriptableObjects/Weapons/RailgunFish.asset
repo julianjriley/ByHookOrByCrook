@@ -15,7 +15,7 @@ MonoBehaviour:
   _itemID: 6
   _itemName: Barra-cute-a
   _itemDescription: Railgun? more like Rail"fun"
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 666f10fb0a2781545a7969c07ec2a7bd, type: 3}
   _itemPrefab: {fileID: 738137400646751251, guid: eb3bfa6cb04da524a8c3add99461c9c6, type: 3}
   _cost: 60
   _baseDamage: 4
@@ -36,3 +36,5 @@ MonoBehaviour:
       Data4: -499286835
     Path: event:/Combat/Guns/RottenFish
   canRecoil: 0
+  overheatShot: 0
+  overheatDamageBonus: 0

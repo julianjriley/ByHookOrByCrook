@@ -146,7 +146,7 @@ public class WeaponInstance : MonoBehaviour
     protected void CheckOverheat()
     {
         if (_weapon.overheatShot && (_heatLevel + _weapon.HeatBuildup) > 100)
-            _weapon.Damage *= 10f;
+            _weapon.Damage *= 4f;
     }
 
     void AddOverheatMult()

@@ -1,6 +1,7 @@
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -156,6 +157,9 @@ public class Weapon : Item
         _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
         _recoilAmount = _baseRecoilAmount;
+        overheatDamageBonus = false;
+        overheatShot = false;
+        canRecoil = false;
     }
 
     public void ResetStats()
@@ -169,7 +173,10 @@ public class Weapon : Item
         _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
         _recoilAmount = _baseRecoilAmount;
+        overheatDamageBonus = false;
+        overheatShot = false;
         canRecoil = false;
+        
     }
 
     public override void SetPlayer(PlayerCombat player)
