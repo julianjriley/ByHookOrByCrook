@@ -643,6 +643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 790663016}
   - component: {fileID: 790663017}
+  - component: {fileID: 790663018}
   m_Layer: 0
   m_Name: Player Sprite
   m_TagString: Untagged
@@ -658,8 +659,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790663015}
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.2596661, y: 0.2596661, z: 0.2596661}
+  m_LocalPosition: {x: 0.075, y: 0.075, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 801297449}
@@ -706,7 +707,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1687655841, guid: d2042fb82e1a38a4ca51185337ca34bb, type: 3}
+  m_Sprite: {fileID: -601622039, guid: 02ae2b4006bab5d4cabfcb6898335355, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -717,6 +718,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &790663018
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790663015}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3717f79032166594e9acfc1f160a6b67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &801297447
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +750,6 @@ GameObject:
   - component: {fileID: 801297449}
   - component: {fileID: 801297450}
   - component: {fileID: 801297451}
-  - component: {fileID: 801297452}
   - component: {fileID: 801297453}
   m_Layer: 0
   m_Name: Player
@@ -828,27 +849,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1669dad4d848a9f4fb6707556f9ff610, type: 2}
   - {fileID: 11400000, guid: 633290f02b82efe4fa0b326badd044ed, type: 2}
   - {fileID: 11400000, guid: e29d771798d3d2d428acc02661d3a7d1, type: 2}
---- !u!95 &801297452
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801297447}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1e2016b3e0676bd4c80e6f46319c97a7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &801297453
 SpriteRenderer:
   m_ObjectHideFlags: 0
