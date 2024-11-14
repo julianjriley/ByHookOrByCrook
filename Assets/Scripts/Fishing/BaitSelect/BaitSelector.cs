@@ -11,6 +11,8 @@ public class BaitSelector : MonoBehaviour
     public List<Button> BarrelList; // For now, I will manually add barrels to this list
     [Tooltip("List of bait sprites for the possible types (in order)")]
     public List<Sprite> BaitSprites = new List<Sprite>();
+    [Tooltip("List of type sprites for possible types (in order)")]
+    public List<Sprite> TypeSprites = new List<Sprite>();
 
     [Header("Locked Tooltips")]
     [Tooltip("Used to make locked tooltip enable/disable appropriately.")]

@@ -13,6 +13,7 @@ public class SelectedBait : MonoBehaviour
 
     private BaitSelector _baitSelector;
     private Image _img;
+    private Image _imgIcon;
  
     public void Initialize(BaitType baitType)
     {
@@ -25,11 +26,18 @@ public class SelectedBait : MonoBehaviour
         if (!transform.GetChild(0).TryGetComponent(out _img))
             throw new System.Exception("Selected Bait prefab MUST have Image Component.");
 
+        // REQUIREMENT: prefab must have Image Component
+        if (!transform.GetChild(1).TryGetComponent(out _imgIcon))
+            throw new System.Exception("Selected Bait prefab MUST have Image Component.");
+
         // set bait type
         BaitType = baitType;
 
         // set image to match bait
         _img.sprite = _baitSelector.BaitSprites[(int) BaitType];
+        _imgIcon.sprite = _baitSelector.TypeSprites[(int) BaitType];
+        // account for no icon
+        if (BaitType == BaitType.Default) _imgIcon.enabled = false;
     }
 
     /// <summary>
