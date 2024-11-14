@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 using TMPro;
+using UnityEngine.InputSystem.Users;
+using UnityEngine.InputSystem;
 
 public class OptionsMenuManager : MonoBehaviour
 {
@@ -22,10 +24,19 @@ public class OptionsMenuManager : MonoBehaviour
     [SerializeField]
     private GameObject Controls, Gameplay, Audio, Graphics;
 
+    [SerializeField, Tooltip("SFX slider")]
+    private Slider _sensitivitySlider;
+
+    [SerializeField, Tooltip("SFX slider")]
+    private Slider _sfxSlider;
+    [SerializeField, Tooltip("Music slider")]
+    private Slider _musicSlider;
+
     [SerializeField, Tooltip("Saturation slider")]
     private Slider _saturationSlider;
     [SerializeField, Tooltip("Brightness slider")]
     private Slider _brightnessSlider;
+
     [SerializeField, Tooltip("Brightness profile")]
     private PostProcessProfile _profile;
     [SerializeField, Tooltip("Pass in the main camera")]
@@ -45,8 +56,27 @@ public class OptionsMenuManager : MonoBehaviour
 
         _profile.TryGetSettings(out _saturation);
         AdjustSaturation();
+
+        
+        if (_currentTab != null)
+        {
+            _currentTab.GetComponentInParent<Button>().interactable = false;
+        }
+    }
+    
+    public void AdjustSensivity()
+    {
+        // won't be in for Beta due to crappy documentation
     }
 
+    public void AdjustSFX()
+    {
+        GameManager.Instance.GamePersistent.SFXVolume = _sfxSlider.value;
+    }
+    public void AdjustMusic()
+    {
+        GameManager.Instance.GamePersistent.MusicVolume = _musicSlider.value;
+    }
     public void AdjustSaturation()
     {
         if (_saturationSlider.value != 0)

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Stores and manages player data saved between scenes.
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
                 newManager.AddComponent<GameManager>();
                 DontDestroyOnLoad(newManager);
                 _instance = newManager.GetComponent<GameManager>();
+
             }
             // return new/existing instance
             return _instance;
@@ -215,6 +218,10 @@ public class GameManager : MonoBehaviour
         // Accessibility Settings
         public CustomCrosshair Crosshair;
         public Sprite crosshairSprite;
+        public float SFXVolume;
+        public float MusicVolume;
+
+        //public float MouseSentivity; // revist after BETA
     }
 
     // private stored save data
@@ -277,6 +284,11 @@ public class GameManager : MonoBehaviour
         newSaveData.IsConvoHadRod = new List<bool>();
         newSaveData.IsConvoHadBait = new List<bool>();
         newSaveData.IsConvoHadBag = new List<bool>();
+
+        newSaveData.SFXVolume = 0.5f;
+        newSaveData.MusicVolume = 0.5f;
+
+        //newSaveData.MouseSentivity = 0.5f; // revist after BETA
 
         // TODO: read existing save data (if it exists) from PlayerPrefs
 

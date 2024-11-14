@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 /// Handles Instantiation of FishButtons at start of scene.
 /// Stores relevant scene data used elsewhere.
 /// Contains button functionality for Practice and Fight buttons.
+/// TEMPORARY: Crosshair stuff for the BETA
 /// </summary>
 public class LoadoutSelection : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class LoadoutSelection : MonoBehaviour
     [SerializeField] string[] _bossScenes;
     void Start()
     {
+        //Cursor.visible = false;
+
         // Always add fish button for starter gun
         CreateFishButton(_starterGun);
 
