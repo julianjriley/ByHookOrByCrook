@@ -73,9 +73,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -120,9 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Atkinson-Hyperlegible-Regular
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 628926859
   material: {fileID: -2868218746737290071}
-  materialHashCode: 0
+  materialHashCode: 1278239819
   m_Version: 1.1.0
   m_SourceFontFileGUID: 98d87410d92e79c4480b88895fcd1515
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 98d87410d92e79c4480b88895fcd1515, type: 3}
@@ -137,8 +137,8 @@ MonoBehaviour:
     m_UnitsPerEM: 1000
     m_LineHeight: 77.478
     m_AscentLine: 58.904
-    m_CapLine: 0
-    m_MeanLine: 0
+    m_CapLine: 49.4375
+    m_MeanLine: 36.703125
     m_Baseline: 0
     m_DescentLine: -18.574
     m_SuperscriptOffset: 58.904
@@ -147,7 +147,7 @@ MonoBehaviour:
     m_SubscriptSize: 0.5
     m_UnderlineOffset: -7.4
     m_UnderlineThickness: 3.7
-    m_StrikethroughOffset: 0
+    m_StrikethroughOffset: 19.775
     m_StrikethroughThickness: 3.7
     m_TabWidth: 0
   m_GlyphTable:

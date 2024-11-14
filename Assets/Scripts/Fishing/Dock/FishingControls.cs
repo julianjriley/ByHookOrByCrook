@@ -17,6 +17,8 @@ public class FishingControls : MonoBehaviour
     private CatchRandomizer _catchRandomizer;
     [SerializeField, Tooltip("Used to lock controls until popup no longer on screen")]
     private CatchUI _catchUI;
+    [SerializeField, Tooltip("Used to trigger player animations corresponding to actions.")]
+    private Animator _anim;
 
     // State management
     private bool _isReeling = false;
@@ -77,6 +79,8 @@ public class FishingControls : MonoBehaviour
     private float _chargeRate;
     [SerializeField, Tooltip("Casting goal is used to determine proficiency score for casting portion of fishing.")]
     private CastingGoalMover _castingGoal;
+    [SerializeField, Tooltip("Used for indicating performance of casting task")]
+    private PerformancePopup _castingPopup;
 
     private float _initFillScaleX;
     private float _currCharge = 0; // 0 is minimum charge; 1 is maximum charge
@@ -99,6 +103,8 @@ public class FishingControls : MonoBehaviour
                 _isWaiting = false;
 
                 _castingIndicator.SetActive(true);
+
+                _anim.SetTrigger("WindUp");
             }
             // holding down
             else if (_fishingClick)
@@ -148,6 +154,8 @@ public class FishingControls : MonoBehaviour
 
                 // TODO: make this fade out instead
                 _castingIndicator.SetActive(false);
+
+                _anim.SetTrigger("Cast");
             }
         }
         
@@ -155,6 +163,19 @@ public class FishingControls : MonoBehaviour
         if (_bobber.State == BobberBehavior.BobberState.Bobbing)
         {
             _castingScore = _castingGoal.GetCastingScore();
+
+            // trigger casting popup
+            if (_castingScore == 1)
+                _castingPopup.PopUp(0);
+            else if (_castingGoal.IsSuperFar())
+                _castingPopup.PopUp(999);
+            else
+            {
+                if (_bobber.transform.position.x < _castingGoal.transform.position.x)
+                    _castingPopup.PopUp(-1);
+                else
+                    _castingPopup.PopUp(1);
+            }
 
             _isReeling = true;
             _fishBiteTimer = UnityEngine.Random.Range(_minFishBiteTime, _maxFishBiteTime);
@@ -186,6 +207,8 @@ public class FishingControls : MonoBehaviour
     private float _perfectThreshold;
     [SerializeField, Tooltip("Distance from perfect scale at which score becomes a max failure.")]
     private float _failureThreshold;
+    [SerializeField, Tooltip("Used for indicating performance of reeling task")]
+    private PerformancePopup _reelingPopup;
 
     private float _reelingTimer;
     private Vector3 _initialShrinkingRingScale;
@@ -205,6 +228,8 @@ public class FishingControls : MonoBehaviour
                 _shrinkingRing.transform.localScale = _initialShrinkingRingScale;
                 _reelIndicator.SetActive(true);
                 _currentShrinkingScale = _initialShrinkingRingScale.x;
+
+                _anim.SetTrigger("Reeling");
             }
             else
                 _fishBiteTimer -= Time.deltaTime;
@@ -218,20 +243,35 @@ public class FishingControls : MonoBehaviour
             {
                 // no click was ever made - default to max fail
                 if (_reelingTimer <= 0)
+                {
                     _reelingScore = 0;
+                    _reelingPopup.PopUp(999);
+                }
                 // max failure (either very  early or very late)
                 else if (_currentShrinkingScale > _perfectScale + _failureThreshold || _currentShrinkingScale < _perfectScale - _failureThreshold)
+                {
                     _reelingScore = 0;
+                    _reelingPopup.PopUp(999);
+                }
                 // perfect success (close to perfect scale)
                 else if (_currentShrinkingScale > _perfectScale - _perfectThreshold && _currentShrinkingScale < _perfectScale + _perfectThreshold)
+                {
                     _reelingScore = 1;
+                    _reelingPopup.PopUp(0);
+                }
                 // slightly early click (score between 0 and 1)
                 else if (_currentShrinkingScale > _perfectScale)
+                {
                     _reelingScore = math.remap(_perfectScale + _failureThreshold, _perfectScale + _perfectThreshold, 0, 1, _currentShrinkingScale);
+                    _reelingPopup.PopUp(-1);
+                }
                 // slightly late click (score between 0 and 1)
                 else if (_currentShrinkingScale < _perfectScale)
+                {
                     _reelingScore = math.remap(_perfectScale - _failureThreshold, _perfectScale - _perfectThreshold, 0, 1, _currentShrinkingScale);
-                
+                    _reelingPopup.PopUp(1);
+                }
+
                 // determine combined fishing score
                 float combinedScore = (_castingScore + _reelingScore) / 2.0f;
 
@@ -248,6 +288,8 @@ public class FishingControls : MonoBehaviour
                 _castingGoal.RandomizeCastingGoal();
                 _isReeling = false;
                 _isWaiting = true;
+
+                _anim.SetTrigger("Yank");
             }
         }
 
