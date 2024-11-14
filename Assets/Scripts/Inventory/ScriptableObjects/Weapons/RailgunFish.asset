@@ -23,9 +23,11 @@ MonoBehaviour:
   _baseSize: 1
   _baseSpeed: 80
   _baseLifetime: 3
-  _baseHeatBuildup: 10
-  _baseCoolingSpeed: 2
+  _baseHeatBuildup: 30
+  _baseCoolingSpeed: 10
+  _overHeatCoolingSpeedMultiplier: 1
   _baseProjectileCount: 1
+  _baseRecoilAmount: 0
   _fireSound:
     Guid:
       Data1: 750242881
@@ -33,3 +35,4 @@ MonoBehaviour:
       Data3: 284294323
       Data4: -499286835
     Path: event:/Combat/Guns/RottenFish
+  canRecoil: 0
