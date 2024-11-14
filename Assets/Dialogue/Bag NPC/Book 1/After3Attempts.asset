@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
-  m_Name: Bag1-Purch
+  m_Name: After3Attempts
   m_EditorClassIdentifier: 
   lines:
-  - "Hey, how\u2019s that feel, bear?\r"
-  - 'Roomier already, right? Go out and give it a try. '
-  - "I bet 10 shells you\u2019ll want another.\r"
-  RequiredBossLossCount: 0
+  - "\u2026you know, bear, I like you an\u2019 all, but I was hopin\u2019 to win
+    a bet. Miss Tragedy over there\u2019s gonna hold this over me for e-goddamn-ternity."
+  - Just buy somethin, will ya?
+  RequiredBossLossCount: 3
   GeneralPriority: 0

@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
-  m_Name: Bag1-Purch
+  m_Name: BucketHat
   m_EditorClassIdentifier: 
   lines:
-  - "Hey, how\u2019s that feel, bear?\r"
-  - 'Roomier already, right? Go out and give it a try. '
-  - "I bet 10 shells you\u2019ll want another.\r"
+  - What are you looking at?
+  - Huh? You want to know about my hat?
+  - "Well\u2026"
+  - "It was a gift from my brother before\u2026"
+  - "Hmph. Why am I even telling you this? Don\u2019t you have bigger octopi to fry?"
   RequiredBossLossCount: 0
-  GeneralPriority: 0
+  GeneralPriority: 1

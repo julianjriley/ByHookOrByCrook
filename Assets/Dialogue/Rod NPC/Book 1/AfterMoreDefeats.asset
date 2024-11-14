@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
-  m_Name: Bag1-Purch
+  m_Name: AfterMoreDefeats
   m_EditorClassIdentifier: 
   lines:
-  - "Hey, how\u2019s that feel, bear?\r"
-  - 'Roomier already, right? Go out and give it a try. '
-  - "I bet 10 shells you\u2019ll want another.\r"
-  RequiredBossLossCount: 0
+  - This is just sad
+  - No amount of friendship power will help your pathetic self.
+  - Not that you probably have any friends
+  RequiredBossLossCount: 5
   GeneralPriority: 0

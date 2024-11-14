@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
-  m_Name: Bag1-Purch
+  m_Name: After3Defeats_2
   m_EditorClassIdentifier: 
   lines:
-  - "Hey, how\u2019s that feel, bear?\r"
-  - 'Roomier already, right? Go out and give it a try. '
-  - "I bet 10 shells you\u2019ll want another.\r"
-  RequiredBossLossCount: 0
+  - "You\u2019ve got determination, I\u2019ll give you that."
+  - But determination will only get you so far.
+  RequiredBossLossCount: 3
   GeneralPriority: 0
