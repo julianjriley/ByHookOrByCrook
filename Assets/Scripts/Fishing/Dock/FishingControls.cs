@@ -164,11 +164,11 @@ public class FishingControls : MonoBehaviour
         {
             _castingScore = _castingGoal.GetCastingScore();
 
-            // trigger popup
+            // trigger casting popup
             if (_castingScore == 1)
-            {
                 _castingPopup.PopUp(0);
-            }
+            else if (_castingGoal.IsSuperFar())
+                _castingPopup.PopUp(999);
             else
             {
                 if (_bobber.transform.position.x < _castingGoal.transform.position.x)
@@ -207,6 +207,8 @@ public class FishingControls : MonoBehaviour
     private float _perfectThreshold;
     [SerializeField, Tooltip("Distance from perfect scale at which score becomes a max failure.")]
     private float _failureThreshold;
+    [SerializeField, Tooltip("Used for indicating performance of reeling task")]
+    private PerformancePopup _reelingPopup;
 
     private float _reelingTimer;
     private Vector3 _initialShrinkingRingScale;
@@ -241,20 +243,35 @@ public class FishingControls : MonoBehaviour
             {
                 // no click was ever made - default to max fail
                 if (_reelingTimer <= 0)
+                {
                     _reelingScore = 0;
+                    _reelingPopup.PopUp(999);
+                }
                 // max failure (either very  early or very late)
                 else if (_currentShrinkingScale > _perfectScale + _failureThreshold || _currentShrinkingScale < _perfectScale - _failureThreshold)
+                {
                     _reelingScore = 0;
+                    _reelingPopup.PopUp(999);
+                }
                 // perfect success (close to perfect scale)
                 else if (_currentShrinkingScale > _perfectScale - _perfectThreshold && _currentShrinkingScale < _perfectScale + _perfectThreshold)
+                {
                     _reelingScore = 1;
+                    _reelingPopup.PopUp(0);
+                }
                 // slightly early click (score between 0 and 1)
                 else if (_currentShrinkingScale > _perfectScale)
+                {
                     _reelingScore = math.remap(_perfectScale + _failureThreshold, _perfectScale + _perfectThreshold, 0, 1, _currentShrinkingScale);
+                    _reelingPopup.PopUp(-1);
+                }
                 // slightly late click (score between 0 and 1)
                 else if (_currentShrinkingScale < _perfectScale)
+                {
                     _reelingScore = math.remap(_perfectScale - _failureThreshold, _perfectScale - _perfectThreshold, 0, 1, _currentShrinkingScale);
-                
+                    _reelingPopup.PopUp(1);
+                }
+
                 // determine combined fishing score
                 float combinedScore = (_castingScore + _reelingScore) / 2.0f;
 

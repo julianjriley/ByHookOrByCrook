@@ -37,6 +37,8 @@ public class PerformancePopup : MonoBehaviour
         // set sprite based on performance
         if (value == 0)
             _renderer.sprite = _popupSprites[0]; // perfect
+        else if (value == 999)
+            _renderer.sprite = _popupSprites[5]; // Okay
         else if(_isCasting)
         {
             if (value < 0)
