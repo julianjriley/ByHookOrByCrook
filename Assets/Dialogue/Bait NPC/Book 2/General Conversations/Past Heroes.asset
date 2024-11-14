@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
+  m_Name: Past Heroes
+  m_EditorClassIdentifier: 
+  lines:
+  - "Not many brave passers-by in this collage of reality have made it past even
+    one of the horrors. \r"
+  - "The Cosmoctopus, as we\u2019ve come to know him, is a powerful and mysterious
+    creature. "
+  - 'Some have been desperate enough to just sail away in search for escape into
+    the waters of the void. '
+  - 'However, Beyond Reality, there is no way of knowing where you shall find yourself
+    next. '
+  - 'Many were never seen again. '
+  - 'Some we see passing by the shore every so often, trapped in an endless loop. '
+  RequiredBossLossCount: 0
+  GeneralPriority: 0
