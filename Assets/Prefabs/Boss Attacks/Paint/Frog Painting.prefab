@@ -525,6 +525,7 @@ MonoBehaviour:
   _goalPos: {x: 0, y: 0}
   _movementSpeed: 2
   _movementDistanceFactor: 0.3
+  _retractSpeed: 2.5
   _paintEffect: {fileID: 7349346699400200136}
   _enemyToSpawn: {fileID: 5824145095176316402, guid: 431ab02f3cd0c4f43946850275859401, type: 3}
   isReady: 0
