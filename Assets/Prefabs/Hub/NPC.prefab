@@ -1833,7 +1833,7 @@ SortingGroup:
   m_GameObject: {fileID: 5379468106279391979}
   m_Enabled: 1
   m_SortingLayerID: 1334251207
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!1 &5484410894918962868
@@ -2199,6 +2199,13 @@ MonoBehaviour:
   _mainCamera: {fileID: 0}
   _interactCamera: {fileID: 8545834916902090843}
   _player: {fileID: 0}
+  dialogueSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &2912413853833242545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2264,7 +2271,7 @@ SortingGroup:
   m_GameObject: {fileID: 6999762526886154468}
   m_Enabled: 1
   m_SortingLayerID: 1334251207
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!1 &7353787166447848404
@@ -2426,7 +2433,7 @@ SortingGroup:
   m_GameObject: {fileID: 8140772182228422777}
   m_Enabled: 1
   m_SortingLayerID: 1334251207
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!1 &8477364984311245741

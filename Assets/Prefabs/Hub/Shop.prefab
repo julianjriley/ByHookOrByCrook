@@ -168,6 +168,20 @@ MonoBehaviour:
   _itemSprite: {fileID: 7691146398192723980}
   _shopAnim: {fileID: 3536334093870549798}
   _npc: {fileID: 0}
+  purchaseSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  tooPoorSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!70 &-5751409612997846943
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -329,7 +343,7 @@ SortingGroup:
   m_GameObject: {fileID: 3635001956020010312}
   m_Enabled: 1
   m_SortingLayerID: 1334251207
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!1 &3984333792279378452

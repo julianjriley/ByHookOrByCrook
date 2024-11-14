@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
+  m_Name: After Y Boss 1 Defeats
+  m_EditorClassIdentifier: 
+  lines:
+  - 'Chin up, my dear bear. Success comes with time just as much as it comes with
+    effort. '
+  - "The very Van Gogh himself wasn\u2019t appreciated for his genius until after
+    his death!\r"
+  - "Of course your goal does include staying alive, but the principle holds nonetheless.
+    \r"
+  RequiredBossLossCount: 5
+  GeneralPriority: 0

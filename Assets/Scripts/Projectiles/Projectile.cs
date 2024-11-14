@@ -8,13 +8,13 @@ public class Projectile : MonoBehaviour
     [SerializeField, Tooltip("Amount of damage projectile deals on contact.")]
     protected float _damage;
     [SerializeField, Tooltip("Amount of damage projectile deals pre-buffs")]
-    private float _baseDamage;
+    protected float _baseDamage;
     [SerializeField, Tooltip("Scale of projectile hitbox.")]
-    private float _size;
+    protected float _size;
     [SerializeField, Tooltip("Move speed of projectile")]
     protected float _speed;
     [SerializeField, Tooltip("Time until projectile is automatically destroyed")]
-    private float _lifetime;
+    protected float _lifetime;
     [SerializeField, Tooltip("Amount of damage required to destroy the projectile")] 
     protected float _health;
 
@@ -29,10 +29,12 @@ public class Projectile : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         
-        Destroy(gameObject, _lifetime);
+        // allows negative lifetime projectiles to have indefinite lifetime (useful on painterly boss)
+        if(_lifetime > 0)
+            Destroy(gameObject, _lifetime);
     }
 
-    public void AssignStats(Weapon weapon)
+    public  virtual void AssignStats(Weapon weapon)
     {
         _damage = weapon.Damage;
         _baseDamage = _damage;
@@ -52,7 +54,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
         if(_playerCombat != null)
         {

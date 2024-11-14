@@ -65,6 +65,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2822287764505044261, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: jumpDurrationMaxTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822287764505044261, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: _jumpDurrationMaxTime
       value: 0.2
       objectReference: {fileID: 0}
@@ -124,10 +128,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6682747494233883687, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1687655841, guid: d2042fb82e1a38a4ca51185337ca34bb, type: 3}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: _testItem
       value: 
@@ -256,7 +256,7 @@ Animator:
   m_GameObject: {fileID: 3172697505544042395}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e40f2a5a925b8d74da80408e2bbf9cff, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1795e2261036f824c99bfdb6755e6457, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

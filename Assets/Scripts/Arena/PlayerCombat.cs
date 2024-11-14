@@ -1,6 +1,8 @@
 using FMODUnity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +15,7 @@ public class PlayerCombat : MonoBehaviour
 
     //Player Movement Script
     ArenaMovement playerMovement;
+    Rigidbody rb;
 
     //Stats
     [SerializeField] private int _baseHealth;
@@ -57,9 +60,19 @@ public class PlayerCombat : MonoBehaviour
     public static event PlayerDied playerDeath;
     public delegate void HealthChange(int health);
     public event HealthChange HealthChanged;
+    public static event Action<bool> PlayerIsZombie;
+    public static event Action<int> WeaponSwitched;
 
     //Buff Specific Variables
     public bool useShortRangeDamage = false;
+    public bool canRevive = false;
+    private bool _hasRevived = false;
+    public bool canInvincibleDash = false;
+
+
+    //Skipper
+    [SerializeField] GameObject skipper;
+    
 
     [SerializeField] EventReference damageSound;
 
@@ -94,6 +107,7 @@ public class PlayerCombat : MonoBehaviour
         ResetStats();
         _weapons = new List<WeaponInstance>();
         playerMovement = GetComponent<ArenaMovement>();
+        rb = GetComponent<Rigidbody>();
 
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
 
@@ -122,6 +136,10 @@ public class PlayerCombat : MonoBehaviour
 
         StartCoroutine(EnableStartingWeaponVisual());
         
+        if(GameManager.Instance.GamePersistent.IsSkipper)
+        {
+            Instantiate(skipper, new Vector3(0,0,0), Quaternion.identity);
+        }
         
     }
 
@@ -177,8 +195,10 @@ public class PlayerCombat : MonoBehaviour
             _equippedWeapon.SetAim(weaponDirection);
             FireFunctionality();
         }
+
+        WeaponSwitched?.Invoke(equippedWeaponindex);
             
-        Debug.Log(equippedWeaponindex);
+        //Debug.Log(equippedWeaponindex);
 
     }
 
@@ -251,6 +271,15 @@ public class PlayerCombat : MonoBehaviour
             }
     }
 
+    public int BaseHealth
+    {
+        get { return _baseHealth; }
+        set { 
+            _baseHealth = value;
+            _health = value;
+            }
+    }
+
     public int Health
     {
         get { return _health; }
@@ -267,11 +296,12 @@ public class PlayerCombat : MonoBehaviour
         
         if(Health <= 0)
         {
-            playerDeath.Invoke();
+            if(!ZombieTime())
+                playerDeath.Invoke();
         }
         else
         {
-            StartCoroutine(InvulnerabilityWindow());
+            StartCoroutine(InvulnerabilityWindow(1));
         }
        
     }
@@ -294,6 +324,19 @@ public class PlayerCombat : MonoBehaviour
     public ArenaMovement GetPlayerMovement()
     {
         return playerMovement;
+    }
+
+    public WeaponInstance GetWeaponInstance()
+    {
+        return _equippedWeapon;
+    }
+    /// <summary>
+    /// The direction that the player is aiming. The vector from the player to the mouse.
+    /// Direction vector is normalized.
+    /// </summary>
+    public Vector2 GetAimDirection()
+    {
+        return weaponDirection.normalized;
     }
 
     void ResetStats()
@@ -342,13 +385,72 @@ public class PlayerCombat : MonoBehaviour
         _equippedWeapon.EnableRendering();
     }
 
-    IEnumerator InvulnerabilityWindow()
+    public IEnumerator InvulnerabilityWindow(float duration)
     {
+        if (duration <= 0)
+            yield break;
         _invulnerable = true;
         _collider.excludeLayers = _invulnerabilityMask;
         yield return new WaitForSeconds(1);
         _collider.excludeLayers = 0;
         _invulnerable = false;
     }
+
+    #region Zombie Mode Code
+
+    //Revive Functionality
+    //TODO: Sprite change maybe?
+    bool ZombieTime()
+    {
+        if (canRevive && !_hasRevived)
+        {
+            PlayerIsZombie?.Invoke(true);
+            Health = BaseHealth;
+            HealthChanged?.Invoke(Health);
+            canRevive = false;
+            _hasRevived = true;
+            StartCoroutine(ZombieDeathTimer());
+            return true;
+        }
+        return false;
+    }
+
+    IEnumerator ZombieDeathTimer()
+    {
+        yield return new WaitForSeconds(30);
+        playerDeath?.Invoke();
+    }
+
+    #endregion
+
+    #region Invincible Dash Code
+
+    public void InvincibleDash(float duration)
+    {
+        if(canInvincibleDash)
+        {
+            StartCoroutine(InvulnerabilityWindow(duration));
+        }
+    }
+
+    #endregion
+
+    #region Brickfish Code
+
+    public void ActivateBrickfish()
+    {
+        playerMovement.dashRestricted = true;
+    }
+
+    #endregion
+
+    #region Recoral Code
+
+    public void ApplyRecoil(float amount)
+    {
+        rb.AddForce(-weaponDirection * amount, ForceMode.Impulse);
+    }
+
+    #endregion
 
 }
