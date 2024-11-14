@@ -5,6 +5,9 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class OrbitingPufferfishProjectile : Projectile
 {
+    [SerializeField, Tooltip("Used to trigger animiations.")]
+    private Animator _anim;
+
     // Start is called before the first frame update
     float resetInterval = 4f;
     Collider _collider;
@@ -22,7 +25,7 @@ public class OrbitingPufferfishProjectile : Projectile
     {
         if (_player == null)
             return;
-        _parent.transform.RotateAround(_player.transform.position, new Vector3(0, 0, 1), 40 * Time.deltaTime);
+        _parent.transform.RotateAround(_player.transform.position, new Vector3(0, 0, 1), 60 * Time.deltaTime);
         _parent.transform.position = _player.transform.position;
     }
   
@@ -89,8 +92,10 @@ public class OrbitingPufferfishProjectile : Projectile
 
     IEnumerator WaitForReactivation()
     {
+        _anim.SetTrigger("Deflate");
         _collider.enabled = false;
         yield return new WaitForSeconds(resetInterval);
+        _anim.SetTrigger("Inflate");
         _collider.enabled = true;
     }
 }
