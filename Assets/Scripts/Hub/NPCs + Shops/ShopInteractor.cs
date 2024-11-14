@@ -57,6 +57,10 @@ public class ShopInteractor : Interactor
             ShopCost();
             _priceText.text = "S " + _currentCost;
         }
+        if (GameManager.Instance.GamePersistent.IsTutorialHub)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnEnable()
