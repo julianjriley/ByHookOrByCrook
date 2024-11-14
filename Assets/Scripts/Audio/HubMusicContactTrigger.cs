@@ -9,6 +9,6 @@ public class HubMusicContactTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         SoundManager.Instance.SetParameter(SoundManager.Instance.musicEventInstance, "BaitSelect", 1);
-        SoundManager.Instance.CleanButSpare("event:/Music/Hub", true);
+        SoundManager.Instance.CleanButSpare("Hub", true);
     }
 }

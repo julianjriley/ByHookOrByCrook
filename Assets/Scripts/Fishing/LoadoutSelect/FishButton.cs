@@ -18,6 +18,10 @@ public class FishButton : MonoBehaviour
     public Item Item;
     [SerializeField, Tooltip("Used for updating the sprite to match the selected fish item.")]
     private Image _sprite;
+    [SerializeField, Tooltip("to update the icon sprite")]
+    private Image _iconSprite;
+    [SerializeField, Tooltip("The sprites to choose from for the icons")]
+    private Sprite[] _iconSprites;
 
     [Header("Tooltip")]
     [SerializeField, Tooltip("Used to enable/disable tooltip popup")]
@@ -44,6 +48,7 @@ public class FishButton : MonoBehaviour
         _itemName.text = fishItem.GetItemName(); 
         _itemDescription.text = fishItem.GetItemDescription();
         _sprite.sprite = fishItem.GetSprite();
+        _iconSprite.sprite = _iconSprites[(int) fishItem.GetItemType()];
     }
 
     /// <summary>

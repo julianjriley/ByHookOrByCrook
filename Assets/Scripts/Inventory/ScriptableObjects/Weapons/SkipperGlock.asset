@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
   m_Name: SkipperGlock
   m_EditorClassIdentifier: 
-  _itemID: -12
+  _itemID: 35
   _itemName: SkipperGLock
   _itemDescription: Too wired to die, too under fire to think
   _sprite: {fileID: 21300000, guid: b66ae52b7ef3c4f479934303f1b873e1, type: 3}
   _itemPrefab: {fileID: 6649438581085363950, guid: 5b6546bd9ba9b8d48917431fd47e5832, type: 3}
   _cost: 10000000
+  itemType: 0
   _baseDamage: 3
   _baseFireRate: 1
   _baseSize: 1
@@ -25,6 +26,7 @@ MonoBehaviour:
   _baseLifetime: 3
   _baseHeatBuildup: 0
   _baseCoolingSpeed: 2
+  _overHeatCoolingSpeedMultiplier: 1
   _baseProjectileCount: 1
   _baseRecoilAmount: 0
   _fireSound:
@@ -35,3 +37,5 @@ MonoBehaviour:
       Data4: 1266214298
     Path: event:/Combat/Guns/Curtis
   canRecoil: 0
+  overheatShot: 0
+  overheatDamageBonus: 0

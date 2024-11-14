@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: OrbitingPufferfish
   m_EditorClassIdentifier: 
-  _itemID: 4
+  _itemID: 9
   _itemName: Orbiting Pufferfish
   _itemDescription: puffs and deflates
   _sprite: {fileID: 21300000, guid: a9a7ba42a554dd541bb2295e584630da, type: 3}
   _itemPrefab: {fileID: 1240969855628062292, guid: c7d036546e9df1d47ac5bde7097317f0, type: 3}
   _cost: 345
+  itemType: 0
