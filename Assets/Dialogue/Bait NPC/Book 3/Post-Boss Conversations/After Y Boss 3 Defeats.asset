@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
+  m_Name: After Y Boss 3 Defeats
+  m_EditorClassIdentifier: 
+  lines:
+  - 'Sometimes it is when we are closest to victory that it seems the farthest away. '
+  - It is now when you have to dig deep, because only you can find the strength within
+    yourself to keep going!
+  - 'I attended a motivational seminar once back home. '
+  - "Maybe that\u2019s where the support worms get it. "
+  RequiredBossLossCount: 5
+  GeneralPriority: 0

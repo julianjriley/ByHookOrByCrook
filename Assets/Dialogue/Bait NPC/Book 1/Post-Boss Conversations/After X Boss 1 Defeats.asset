@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
+  m_Name: After X Boss 1 Defeats
+  m_EditorClassIdentifier: 
+  lines:
+  - "I\u2019ve heard of your latest defeat. I trust my former comrades died fighting
+    valiantly right beside you. \r \r\n"
+  - 'I salute their bravery. '
+  - "Do you think I could visit them sometime or another?\r"
+  - "You\u2019re right. It's for the best that they embrace their independence, spread
+    their tiny little wings. "
+  - I know you're taking good care of them.
+  RequiredBossLossCount: 3
+  GeneralPriority: 0

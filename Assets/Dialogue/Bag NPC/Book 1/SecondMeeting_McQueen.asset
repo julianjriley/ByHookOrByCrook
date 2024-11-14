@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
+  m_Name: SecondMeeting_McQueen
+  m_EditorClassIdentifier: 
+  lines:
+  - So, figured it out yet?
+  - "That undercooked sushi buffet out there brought you here, just like it brought
+    me an\u2019 Alf and the girl."
+  - "We\u2019ve tried just about everything, but the most productive answer always
+    comes back to knockin\u2019 that thing\u2019s jaw loose."
+  - "Seems like you skipped all the tryin\u2019 to go home on your own nonsense and
+    got right to brass tacks."
+  - Good on you, bear. Been a while since we got a fisher and a fighter all in one.
+  RequiredBossLossCount: 0
+  GeneralPriority: 2
