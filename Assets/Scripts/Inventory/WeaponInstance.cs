@@ -63,26 +63,36 @@ public class WeaponInstance : MonoBehaviour
         Fire(direction);
     }
 
-    protected virtual void FixedUpdate()
+    protected virtual void Update()
     {
-        if(_overHeated == true && _heatLevel >= 100)
+        if (_overHeated == true && _heatLevel >= 100)
         {
             WeaponOverheated?.Invoke();
+            _weapon.CoolingTime *= _weapon.OverheatCoolingSpeedMultiplier;
+            _heatLevel = 99;
         }
-        if (_direction != null && _direction != Vector3.zero)
-            lookAngle = Vector3.Angle(Vector3.up, _direction);
         _heatLevel = Mathf.Clamp(_heatLevel - _weapon.CoolingTime * Time.deltaTime, 0, 100);
-        
-
-
         if (_heatLevel <= 0)
         {
-            if(_overHeated == true)
+            if (_overHeated == true)
             {
                 WeaponCooledOff?.Invoke();
+                _weapon.CoolingTime /= _weapon.OverheatCoolingSpeedMultiplier;
             }
             _overHeated = false;
         }
+    }
+
+    protected virtual void FixedUpdate()
+    {
+
+        if (_direction != null && _direction != Vector3.zero)
+            lookAngle = Vector3.Angle(Vector3.up, _direction);
+
+        
+
+
+
             
  
     }
