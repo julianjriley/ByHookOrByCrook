@@ -280,6 +280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: One-Way Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 2752317716568876329, guid: df07c7ca8d1e02b42ad46c886e29d00d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2816929413548509376, guid: df07c7ca8d1e02b42ad46c886e29d00d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -322,6 +326,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2816929413548509376, guid: df07c7ca8d1e02b42ad46c886e29d00d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3939864767945218721, guid: df07c7ca8d1e02b42ad46c886e29d00d, type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6008622839817625900, guid: df07c7ca8d1e02b42ad46c886e29d00d, type: 3}
@@ -624,6 +632,14 @@ PrefabInstance:
       propertyPath: bottomOfFeet
       value: 
       objectReference: {fileID: 1529329120}
+    - target: {fileID: 2997144428325384686, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997144428325384686, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3586478448919471552, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: m_Name
       value: TestArenaPlayer
@@ -638,7 +654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5674411772940638152, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.63
+      value: -1.07
       objectReference: {fileID: 0}
     - target: {fileID: 5674411772940638152, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -677,8 +693,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7216816289842264639, guid: a67c020a2a112bd47a8b515e7f4c785b, type: 3}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: canInvincibleDash
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.size
@@ -695,7 +715,11 @@ PrefabInstance:
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 663e2597d1bcb2542a3cf228b5b6b381, type: 2}
+      objectReference: {fileID: 11400000, guid: 0536c0f834178bb4ba6fb64bcc8331f8, type: 2}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: testItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: a0e1df28473940a4588fb564f9027070, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[0]
       value: 
@@ -707,7 +731,7 @@ PrefabInstance:
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 8e44b83933400354fb8bcc92f28a9c67, type: 2}
+      objectReference: {fileID: 11400000, guid: a54f958a76eba9d4d9e9e4180bce0ce4, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[3]
       value: 
@@ -1434,6 +1458,10 @@ PrefabInstance:
     - target: {fileID: 4891995385933044637, guid: a3e2bc219eea2854ca70022c2a960c4c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6415383095149884214, guid: a3e2bc219eea2854ca70022c2a960c4c, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.501
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
