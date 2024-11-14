@@ -17,6 +17,8 @@ public class FishingControls : MonoBehaviour
     private CatchRandomizer _catchRandomizer;
     [SerializeField, Tooltip("Used to lock controls until popup no longer on screen")]
     private CatchUI _catchUI;
+    [SerializeField, Tooltip("Used to trigger player animations corresponding to actions.")]
+    private Animator _anim;
 
     // State management
     private bool _isReeling = false;
@@ -99,6 +101,8 @@ public class FishingControls : MonoBehaviour
                 _isWaiting = false;
 
                 _castingIndicator.SetActive(true);
+
+                _anim.SetTrigger("WindUp");
             }
             // holding down
             else if (_fishingClick)
@@ -148,6 +152,8 @@ public class FishingControls : MonoBehaviour
 
                 // TODO: make this fade out instead
                 _castingIndicator.SetActive(false);
+
+                _anim.SetTrigger("Cast");
             }
         }
         
@@ -205,6 +211,8 @@ public class FishingControls : MonoBehaviour
                 _shrinkingRing.transform.localScale = _initialShrinkingRingScale;
                 _reelIndicator.SetActive(true);
                 _currentShrinkingScale = _initialShrinkingRingScale.x;
+
+                _anim.SetTrigger("Reeling");
             }
             else
                 _fishBiteTimer -= Time.deltaTime;
@@ -248,6 +256,8 @@ public class FishingControls : MonoBehaviour
                 _castingGoal.RandomizeCastingGoal();
                 _isReeling = false;
                 _isWaiting = true;
+
+                _anim.SetTrigger("Yank");
             }
         }
 
