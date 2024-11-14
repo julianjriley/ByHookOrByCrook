@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
-  m_Name: Bag1-Purch
+  m_Name: AboutTheBet
   m_EditorClassIdentifier: 
   lines:
-  - "Hey, how\u2019s that feel, bear?\r"
-  - 'Roomier already, right? Go out and give it a try. '
-  - "I bet 10 shells you\u2019ll want another.\r"
+  - I guess I should thank you for helping me pry a few shells off that greedy sales-sock.
+  - "If you had turned out to be a semi-decent hero, I never would\u2019ve won the
+    bet."
+  - "Oh, don\u2019t take it to heart. I bet against everyone."
+  - Realist, remember?
   RequiredBossLossCount: 0
-  GeneralPriority: 0
+  GeneralPriority: 1

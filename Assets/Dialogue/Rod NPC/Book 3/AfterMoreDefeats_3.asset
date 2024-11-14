@@ -10,11 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
-  m_Name: Bag1-Purch
+  m_Name: AfterMoreDefeats_3
   m_EditorClassIdentifier: 
   lines:
-  - "Hey, how\u2019s that feel, bear?\r"
-  - 'Roomier already, right? Go out and give it a try. '
-  - "I bet 10 shells you\u2019ll want another.\r"
-  RequiredBossLossCount: 0
+  - You can do it! I believe in you.
+  - ...
+  - Ew. Nope, that was gross.
+  - "McQueen suggested I try being more optimistic around the customers. I figured
+    it wouldn\u2019t kill me to try."
+  - But it actually just might.
+  - I was not built for those levels of optimism.
+  - Ugh, I think I might throw up.
+  RequiredBossLossCount: 5
   GeneralPriority: 0

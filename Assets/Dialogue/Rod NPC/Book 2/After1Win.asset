@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
-  m_Name: Bag1-Purch
+  m_Name: After1Win
   m_EditorClassIdentifier: 
   lines:
-  - "Hey, how\u2019s that feel, bear?\r"
-  - 'Roomier already, right? Go out and give it a try. '
-  - "I bet 10 shells you\u2019ll want another.\r"
+  - "So\u2026 you managed to delete that 8-bit nightmare."
+  - "I\u2019m impressed. And I don\u2019t impress easily. Just ask McQueen."
+  - "Anyway, guess it\u2019s time for your next duel."
+  - Keep this up and you may even surpass him.
+  - As unlikely as that is, I may just be starting to believe it.
   RequiredBossLossCount: 0
-  GeneralPriority: 0
+  GeneralPriority: 3

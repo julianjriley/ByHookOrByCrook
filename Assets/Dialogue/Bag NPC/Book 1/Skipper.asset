@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
-  m_Name: Bag1-Purch
+  m_Name: Skipper
   m_EditorClassIdentifier: 
   lines:
-  - "Hey, how\u2019s that feel, bear?\r"
-  - 'Roomier already, right? Go out and give it a try. '
-  - "I bet 10 shells you\u2019ll want another.\r"
+  - "You wanna know about Skipper? Yeah, we know him. Or rather, we don\u2019t."
+  - "Never buys nothin\u2019, but somehow he\u2019s always loaded for bear, if you\u2019ll
+    pardon the sayin\u2019."
+  - "Weird little thing. Don\u2019t look nothin\u2019 like any of the dimensions
+    that got opened up either."
+  - You think he lives out here?
   RequiredBossLossCount: 0
-  GeneralPriority: 0
+  GeneralPriority: 1
