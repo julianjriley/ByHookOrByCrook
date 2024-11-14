@@ -58,4 +58,13 @@ public class CastingGoalMover : MonoBehaviour
         // start at random location
         RandomizeCastingGoal();
     }
+
+    /// <summary>
+    /// Whether the bobber was so far it is a max failure.
+    /// </summary>
+    /// <returns></returns>
+    public bool IsSuperFar()
+    {
+        return Mathf.Abs(_bobber.transform.localPosition.x - transform.localPosition.x) > _maxFailureDistance;
+    }
 }

@@ -206,6 +206,7 @@ public class GameManager : MonoBehaviour
         // Accessibility
         public bool IsSkipper;
         public bool IsBobber;
+        public bool IsInvulnerable = false;
 
         // Hub related stats
         public List<bool> IsConvoHadRod;

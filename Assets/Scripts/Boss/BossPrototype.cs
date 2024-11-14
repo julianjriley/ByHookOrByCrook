@@ -92,15 +92,21 @@ public class BossPrototype : MonoBehaviour
             Debug.Log("No target");
             return;
         }
-        
-        //makes the boss lean in the direction it's heading
-        //flipX has to be considered in testing
-        float rotationVal = remap(-13, 13, 20, -20, _rb.velocity.x);
-        if (_renderer.flipX == false) {
-            transform.rotation = Quaternion.Euler(rotationVal, 0f, 0f);
-        } else {
-            transform.rotation = Quaternion.Euler(-rotationVal, 0f, 0f);
+
+        // makes the boss lean in the direction it's heading
+        // remapped/clamped in such a way that it does not jitter when it has a low velocity but rather stabilizes around 0 degree rotation
+        float rotationVal;
+        if (_rb.velocity.x < 0)
+        {
+            rotationVal = remap(-13, -2, 20, 0, _rb.velocity.x);
+            rotationVal = Mathf.Clamp(rotationVal, 0, 20);
         }
+        else
+        {
+            rotationVal = remap(2, 13, 0, -20, _rb.velocity.x);
+            rotationVal = Mathf.Clamp(rotationVal,-20, 0);
+        }
+        transform.rotation = Quaternion.Euler(0f, 0f, rotationVal); 
             
         //Debug.Log("Rigidbody velocity = " + _rb.velocity);
         _rb.AddForce((_target.position - transform.position).normalized * Speed, ForceMode.Force);

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
+  m_Name: RailgunFish
+  m_EditorClassIdentifier: 
+  _itemID: 6
+  _itemName: Barra-cute-a
+  _itemDescription: Railgun? more like Rail"fun"
+  _sprite: {fileID: 21300000, guid: 666f10fb0a2781545a7969c07ec2a7bd, type: 3}
+  _itemPrefab: {fileID: 738137400646751251, guid: eb3bfa6cb04da524a8c3add99461c9c6, type: 3}
+  _cost: 60
+  _baseDamage: 4
+  _baseFireRate: 1
+  _baseSize: 1
+  _baseSpeed: 80
+  _baseLifetime: 3
+  _baseHeatBuildup: 30
+  _baseCoolingSpeed: 10
+  _overHeatCoolingSpeedMultiplier: 1
+  _baseProjectileCount: 1
+  _baseRecoilAmount: 0
+  _fireSound:
+    Guid:
+      Data1: 750242881
+      Data2: 1273948051
+      Data3: 284294323
+      Data4: -499286835
+    Path: event:/Combat/Guns/RottenFish
+  canRecoil: 0
+  overheatShot: 0
+  overheatDamageBonus: 0

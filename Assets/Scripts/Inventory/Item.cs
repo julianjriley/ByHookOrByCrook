@@ -14,7 +14,15 @@ public class Item : ScriptableObject
     [SerializeField] protected int _cost;
 
     protected PlayerCombat _player;
-    
+
+    public enum ItemType { ATTACK = 0, SUPPORT = 1, MOVEMENT = 2, WEAPON = 3, JUNK = 4 };
+    public ItemType itemType;
+
+
+    public ItemType GetItemType()
+    {
+        return itemType;
+    }
 
     public int GetItemID()
     {
