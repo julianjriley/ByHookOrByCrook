@@ -17,7 +17,6 @@ public class BobberRotater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_rb.velocity.x);
         float rotationVal = math.remap(-_maxSpeed, _maxSpeed, -_maxRotation, _maxRotation, _rb.velocity.x);
         rotationVal = Mathf.Clamp(rotationVal, -_maxRotation, _maxRotation);
         _bobberSprite.transform.rotation = Quaternion.Euler(0f, 0f, rotationVal);
