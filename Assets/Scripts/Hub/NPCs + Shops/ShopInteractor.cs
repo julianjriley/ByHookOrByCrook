@@ -43,6 +43,9 @@ public class ShopInteractor : Interactor
     public delegate void OnShopExit();
     public static event OnShopExit onShopExit;
 
+    public delegate void OnBaitPurchase();
+    public static event OnBaitPurchase onBaitPurchase;
+
     private bool shopActiveCoroutine;
 
     new void Start()
@@ -52,8 +55,18 @@ public class ShopInteractor : Interactor
         if (this.isActiveAndEnabled)
         {
             ShopCost();
-            _priceText.text = "G " + _currentCost;
+            _priceText.text = "S " + _currentCost;
         }
+    }
+
+    private void OnEnable()
+    {
+        onBaitPurchase += BaitCost;
+    }
+
+    private void OnDisable()
+    {
+        onBaitPurchase -= BaitCost;
     }
 
     // Update is called once per frame
@@ -89,7 +102,7 @@ public class ShopInteractor : Interactor
                 if (this.isActiveAndEnabled)
                 {
                     ShopCost();
-                    _priceText.text = "G " + _currentCost;
+                    _priceText.text = "S " + _currentCost;
                 }
                 yield return new WaitUntil(() => !_interactAction.IsPressed());
                 _col.enabled = true;
@@ -199,25 +212,29 @@ public class ShopInteractor : Interactor
         else if (GoodsSold == ShopType.WeaponBait)
         {
             GameManager.Instance.GamePersistent.WeaponBait = true;
+            onBaitPurchase?.Invoke();
         }
         else if (GoodsSold == ShopType.AttackBait)
         {
             GameManager.Instance.GamePersistent.AttackBait = true;
+            onBaitPurchase?.Invoke();
         }
         else if (GoodsSold == ShopType.SupportBait)
         {
             GameManager.Instance.GamePersistent.SupportBait = true;
+            onBaitPurchase?.Invoke();
         }
         else if (GoodsSold == ShopType.MovementBait)
         {
             GameManager.Instance.GamePersistent.MovementBait = true;
+            onBaitPurchase?.Invoke();
         }
     }
 
     private void ShopCost() // Sets the price, title, and desc. for the shop
     {
         int minBaitSlots = 3;
-        int minBattleSlots = 3;
+        int minBattleSlots = 2;
         // If you have rod 0, this'll get the cost for rod 1
         if (GoodsSold == ShopType.Rod)
         {
@@ -243,7 +260,9 @@ public class ShopInteractor : Interactor
         }
         else
         {
+            
             _currentCost = _costs[0];
+            BaitCost();
             _titleText.text = _titles[0];
             _descText.text = _descs[0];
             _itemSprite.sprite = _sprites[0];
@@ -253,7 +272,7 @@ public class ShopInteractor : Interactor
     private void ShopConvo() // Assigns the relevant conversation to the attached NPC
     {
         int minBaitSlots = 3;
-        int minBattleSlots = 3;
+        int minBattleSlots = 2;
         if (GoodsSold == ShopType.Rod)
         {
             _npc.SetConversation(_convos[GameManager.Instance.GamePersistent.RodLevel], -1);
@@ -269,6 +288,28 @@ public class ShopInteractor : Interactor
         else
         {
             _npc.SetConversation(_convos[0], -1);
+        }
+    }
+
+    private void BaitCost()
+    {
+        // If this is a bait shop, we need to recalc
+        if (GoodsSold == ShopType.WeaponBait || GoodsSold == ShopType.MovementBait || GoodsSold == ShopType.AttackBait || GoodsSold == ShopType.SupportBait)
+        {
+            int baitCount = 0;
+            if(GameManager.Instance.GamePersistent.WeaponBait == true)
+                baitCount++;
+            if (GameManager.Instance.GamePersistent.AttackBait == true)
+                baitCount++;
+            if (GameManager.Instance.GamePersistent.SupportBait == true)
+                baitCount++;
+            if (GameManager.Instance.GamePersistent.MovementBait == true)
+                baitCount++;
+
+            if(baitCount < 4)
+                _currentCost = _costs[baitCount];
+
+            _priceText.text = "S " + _currentCost;
         }
     }
     #endregion

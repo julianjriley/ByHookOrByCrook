@@ -29,7 +29,7 @@ public class Cashout : MonoBehaviour
     void Start()
     {
 
-
+        
         BossBounty = GameManager.Instance.ScenePersistent.BossPerformanceMultiplier;
         fishName = Fish.transform.Find("FishNameBackground/FishName").GetComponent<TextMeshProUGUI>();
         fishAmount = Fish.transform.Find("FishNameBackground/MoneyBackground/FishAmount").GetComponent<TextMeshProUGUI>();
