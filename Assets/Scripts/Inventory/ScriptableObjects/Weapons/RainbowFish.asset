@@ -25,6 +25,7 @@ MonoBehaviour:
   _baseLifetime: 3
   _baseHeatBuildup: 3
   _baseCoolingSpeed: 15
+  _overHeatCoolingSpeedMultiplier: 1
   _baseProjectileCount: 1
   _baseRecoilAmount: 2
   _fireSound:
@@ -35,3 +36,5 @@ MonoBehaviour:
       Data4: 1266214298
     Path: event:/Curtis
   canRecoil: 0
+  overheatShot: 0
+  overheatDamageBonus: 0
