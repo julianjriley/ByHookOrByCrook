@@ -17,17 +17,17 @@ public class BossPrototype : MonoBehaviour
     public float Speed = 50f;
     private bool _right = true;
     private bool _checkingSwap = false;
-    protected private Transform _playerTransform;
+    protected Transform _playerTransform;
     private SpriteRenderer _renderer;
 
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
     public float MaxBossHealth;
-    protected private int _phaseCounter = 0;
+    protected int _phaseCounter = 0;
     private bool _defeated = false;
-    protected private Transform _spawnLocation;
+    protected Transform _spawnLocation;
     [SerializeField]
-    protected private PhaseInfo[] _phases;
+    protected PhaseInfo[] _phases;
     private int _lastChosenAttack = -1;
 
     [Header ("Boss SFX")]
