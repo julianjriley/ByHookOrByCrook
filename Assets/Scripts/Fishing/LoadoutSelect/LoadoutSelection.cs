@@ -89,4 +89,12 @@ public class LoadoutSelection : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
     }
+
+    /// <summary>
+    /// Current number of selected fish.
+    /// </summary>
+    public int GetCurrentLoadoutSize()
+    {
+        return LoadoutFishParent.transform.childCount;
+    }
 }
