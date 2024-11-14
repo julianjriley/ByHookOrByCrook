@@ -84,7 +84,9 @@ public class BobberBehavior : MonoBehaviour
         switch(State)
         {
             case BobberState.Waiting:
-                // TODO: may need some system here to actually match the position of the bobber with the rod during the animation
+                // keep bobber locked to rod end
+                transform.position = Vector3.Lerp(transform.position, _returnGoal.transform.position, 1f - Mathf.Exp(-_returnSharpness * Time.deltaTime));
+
                 break;
             case BobberState.Launching:
 

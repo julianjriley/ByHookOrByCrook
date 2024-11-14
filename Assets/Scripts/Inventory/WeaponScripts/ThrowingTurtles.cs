@@ -23,6 +23,8 @@ public class ThrowingTurtles : WeaponInstance
         }
         if (_weapon.ProjectileCount < 2)
         {
+            CheckOverheat();
+            _weapon.Damage *= mult;
             for (int i = 0; i < _weapon.ProjectileCount; i++)
             {
                 GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, _direction));
@@ -32,10 +34,12 @@ public class ThrowingTurtles : WeaponInstance
                 turtleProjectile.AssignStats(_weapon);
                 _heatLevel += _weapon.HeatBuildup;
             }
+            _weapon.Damage /= mult;
         }
         else
         {
-
+            CheckOverheat();
+            _weapon.Damage *= mult;
             for (int i = -1; i < _weapon.ProjectileCount - 1; i++)
             {
                 Vector3 aimingDir = Quaternion.Euler(0, 0, 90 * i) * _direction;
@@ -46,11 +50,16 @@ public class ThrowingTurtles : WeaponInstance
                 TurtleProjectile turtleProjectile = projectile.GetComponent<TurtleProjectile>();
                 turtleProjectile.AssignStats(_weapon);
             }
+            _weapon.Damage /= mult;
             _heatLevel += _weapon.HeatBuildup;
         }
         TryApplyRecoil();
         if (_heatLevel >= 100)
+        {
+            if (_weapon.overheatShot)
+                _weapon.Damage /= 10f;
             _overHeated = true;
+        }  
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
         StartCoroutine(FireRate());
         _autoFireCoroutine = StartCoroutine(FireAuto(_direction));
