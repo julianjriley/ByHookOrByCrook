@@ -623,8 +623,11 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Desktop/Master
+  - Desktop/Master
   Banks:
   - Desktop/Music
+  - Desktop/Music
+  - Desktop/SFX
   - Desktop/SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
