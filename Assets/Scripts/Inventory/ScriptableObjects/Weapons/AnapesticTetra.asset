@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
   m_Name: AnapesticTetra
   m_EditorClassIdentifier: 
-  _itemID: 234
+  _itemID: 28
   _itemName: Anapestic Tetra
   _itemDescription: One fish two fish
   _sprite: {fileID: 1250833714, guid: 448c100d49a9a98448693d05617c1692, type: 3}
@@ -26,6 +26,7 @@ MonoBehaviour:
   _baseLifetime: 3
   _baseHeatBuildup: 10
   _baseCoolingSpeed: 10
+  _overHeatCoolingSpeedMultiplier: 1
   _baseProjectileCount: 1
   _baseRecoilAmount: 5
   _fireSound:
@@ -36,3 +37,5 @@ MonoBehaviour:
       Data4: -499286835
     Path: event:/Combat/Guns/RottenFish
   canRecoil: 0
+  overheatShot: 0
+  overheatDamageBonus: 0

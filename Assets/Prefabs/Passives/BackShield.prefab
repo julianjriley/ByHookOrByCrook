@@ -16,10 +16,6 @@ PrefabInstance:
       propertyPath: _passiveItem
       value: 
       objectReference: {fileID: 11400000, guid: 27e37667ed5aa35498b5434861937dca, type: 2}
-    - target: {fileID: 1572889235285164940, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2479792823354273039, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
       propertyPath: m_Name
       value: BackShield
@@ -27,18 +23,6 @@ PrefabInstance:
     - target: {fileID: 2957001004970498890, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2957001004970498890, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.3094
-      objectReference: {fileID: 0}
-    - target: {fileID: 2957001004970498890, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.3094
-      objectReference: {fileID: 0}
-    - target: {fileID: 2957001004970498890, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.3094
       objectReference: {fileID: 0}
     - target: {fileID: 2957001004970498890, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -78,22 +62,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2957001004970498890, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7997600594343909793, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7997600594343909793, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7997600594343909793, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7997600594343909793, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
-      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8308865390749498287, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
   m_Name: GreenArmyFish
   m_EditorClassIdentifier: 
-  _itemID: -9932
+  _itemID: 29
   _itemName: Green Army Fish
   _itemDescription: FIRE IN THE HOLE
   _sprite: {fileID: 167958159, guid: a33d2bac5fbe6a74e987afd45705be2d, type: 3}
@@ -26,6 +26,7 @@ MonoBehaviour:
   _baseLifetime: 4
   _baseHeatBuildup: 20
   _baseCoolingSpeed: 3
+  _overHeatCoolingSpeedMultiplier: 1
   _baseProjectileCount: 1
   _baseRecoilAmount: 12
   _fireSound:
@@ -36,3 +37,5 @@ MonoBehaviour:
       Data4: 1266214298
     Path: event:/Combat/Guns/Curtis
   canRecoil: 0
+  overheatShot: 0
+  overheatDamageBonus: 0

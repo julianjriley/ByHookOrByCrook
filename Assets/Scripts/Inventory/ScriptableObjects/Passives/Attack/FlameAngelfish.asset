@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: FlameAngelfish
   m_EditorClassIdentifier: 
-  _itemID: 2
+  _itemID: 7
   _itemName: Flame Angelfish
   _itemDescription: your last shot crits
   _sprite: {fileID: 21300000, guid: aa08b5eca534eb343b7dd1889d3d089f, type: 3}
   _itemPrefab: {fileID: 7043957249453934173, guid: b98990bd8b2f94545a921e84d8bc3fa3, type: 3}
   _cost: 250
+  itemType: 0
