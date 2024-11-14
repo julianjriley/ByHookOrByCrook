@@ -13,5 +13,14 @@ MonoBehaviour:
   m_Name: RodBook2
   m_EditorClassIdentifier: 
   bookNumber: 1
-  postBossLossConvos: []
-  generalConvos: []
+  postBossLossConvos:
+  - {fileID: 11400000, guid: fb4c0f8e0edb0ef44a389b3af7a534fc, type: 2}
+  - {fileID: 11400000, guid: 409b1d38492fca641accdf39d092ad36, type: 2}
+  - {fileID: 11400000, guid: 1eb520dff86b0184490bd33fb91df9b4, type: 2}
+  generalConvos:
+  - {fileID: 11400000, guid: fef02aa9a6ef03e40b2cf5b6f1580b32, type: 2}
+  - {fileID: 11400000, guid: fdd59f5cb25ddc0469f97a7a7350f413, type: 2}
+  - {fileID: 11400000, guid: d649cf84d2d145c41a343b36e8dfa9fb, type: 2}
+  - {fileID: 11400000, guid: 44f338a8256bddb4e831baa1f9235ef1, type: 2}
+  - {fileID: 11400000, guid: d1649a45bf67d9d4b84026c4249feacb, type: 2}
+  - {fileID: 11400000, guid: 94301c4905af93841bcb0e0123db475f, type: 2}

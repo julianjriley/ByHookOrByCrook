@@ -13,5 +13,17 @@ MonoBehaviour:
   m_Name: BagBook2
   m_EditorClassIdentifier: 
   bookNumber: 1
-  postBossLossConvos: []
-  generalConvos: []
+  postBossLossConvos:
+  - {fileID: 11400000, guid: 77f88c89086fd5b449b4367eaf1eaa07, type: 2}
+  - {fileID: 11400000, guid: 8dd97c27cbac804478321d087be7c262, type: 2}
+  - {fileID: 11400000, guid: 8d44d4305ea133f4b82bb1e31953f7ba, type: 2}
+  generalConvos:
+  - {fileID: 11400000, guid: 7f76e6585c37fb641804d91b6fa59063, type: 2}
+  - {fileID: 11400000, guid: a24a857dcf162624f8d07eb192875afd, type: 2}
+  - {fileID: 11400000, guid: 903cc94c98be4f24f8513b24acb8f2b4, type: 2}
+  - {fileID: 11400000, guid: aec4879da509c934e85969bb8aedc2e8, type: 2}
+  - {fileID: 11400000, guid: 10d87cfdc42df2e45b49e5e76d98dbf8, type: 2}
+  - {fileID: 11400000, guid: ad4781154a807024ba435761e34e0fa2, type: 2}
+  - {fileID: 11400000, guid: 545c70c5e42fb8e48b27426a07ddde17, type: 2}
+  - {fileID: 11400000, guid: a9688f4fcacdeab48b473d2d7acc3494, type: 2}
+  - {fileID: 11400000, guid: 4f910de524a81114ab05304f4e9d7bde, type: 2}
