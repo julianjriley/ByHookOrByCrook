@@ -40,9 +40,14 @@ public class PauseManager : MonoBehaviour
             }
         }
 
-        if (Keyboard.current.escapeKey.wasPressedThisFrame && (SceneManager.GetActiveScene().buildIndex != 0 
-            || SceneManager.GetActiveScene().buildIndex != 1 || SceneManager.GetActiveScene().buildIndex != 2))
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
+
+            if (SceneManager.GetActiveScene().buildIndex == 0
+            || SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                return;
+            }
             if (_isPaused == false)
                 Pause();
             else
