@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
-  m_Name: BaitTemp1
+  m_Name: After X Boss 3 Defeats
   m_EditorClassIdentifier: 
   lines:
-  - Welcome to the fun test, little one!
-  - I hope what you see in these builds gets you HOOKED, hoho!
-  RequiredBossLossCount: 0
-  GeneralPriority: 2
+  - You shall not be discouraged, for success cannot exist without failure!
+  - "Don\u2019t be afraid to let my worms aid you in battle. \r"
+  - "I don\u2019t call them BAIT for nothing: Battle-Attuned Interdimensional Teammates!\r\n\r"
+  - "Unfortunately that wouldn\u2019t fit on the sign. "
+  RequiredBossLossCount: 3
+  GeneralPriority: 0
