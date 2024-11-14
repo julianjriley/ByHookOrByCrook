@@ -635,7 +635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.size
@@ -652,7 +652,7 @@ PrefabInstance:
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 663e2597d1bcb2542a3cf228b5b6b381, type: 2}
+      objectReference: {fileID: 11400000, guid: 83cc3916edb49b2409f176caa59ea512, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[0]
       value: 
@@ -1170,7 +1170,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: Duration
-      value: 3.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: ScaleMax
@@ -1295,6 +1295,10 @@ PrefabInstance:
     - target: {fileID: 1087850627287187445, guid: a3e2bc219eea2854ca70022c2a960c4c, type: 3}
       propertyPath: m_Name
       value: Boss Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280917721184096600, guid: a3e2bc219eea2854ca70022c2a960c4c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4280917721184096600, guid: a3e2bc219eea2854ca70022c2a960c4c, type: 3}
       propertyPath: m_AnchorMax.y
