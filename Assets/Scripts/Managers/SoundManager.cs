@@ -122,14 +122,20 @@ public class SoundManager : MonoBehaviour
             eventInstance.getDescription(out description);
             description.getPath(out result);
             UnityEngine.Debug.Log(result);
-            if (!result.EndsWith(spare) && result != null) 
+            if (result != null)
             {
-                eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                if (complete)
+                if (!result.EndsWith(spare))
                 {
-                    eventInstance.release();
+                    eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                    if (complete)
+                    {
+                        eventInstance.release();
+                    }
                 }
-            }
+            } 
+            
+                
+            
         }
     }
     }
