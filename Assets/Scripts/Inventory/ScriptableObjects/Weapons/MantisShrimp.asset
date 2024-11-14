@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
   m_Name: MantisShrimp
   m_EditorClassIdentifier: 
-  _itemID: 5
+  _itemID: 31
   _itemName: Mantis Shrimp
   _itemDescription: It punches incredibly fast (and frequently)
   _sprite: {fileID: 21300000, guid: 054cf861e8d25ad4e9951094479e5133, type: 3}
   _itemPrefab: {fileID: 5533852075674413634, guid: 64584fe0510449c4697ffdea7ca4b3f7, type: 3}
   _cost: 40
+  itemType: 0
   _baseDamage: 0.4
   _baseFireRate: 15
   _baseSize: 1
@@ -36,5 +37,5 @@ MonoBehaviour:
       Data4: -499286835
     Path: event:/Combat/Guns/RottenFish
   canRecoil: 0
-  overheatShot: 1
+  overheatShot: 0
   overheatDamageBonus: 0

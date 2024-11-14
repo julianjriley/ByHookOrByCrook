@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
   m_Name: RailgunFish
   m_EditorClassIdentifier: 
-  _itemID: 6
+  _itemID: 32
   _itemName: Barra-cute-a
   _itemDescription: Railgun? more like Rail"fun"
   _sprite: {fileID: 21300000, guid: 666f10fb0a2781545a7969c07ec2a7bd, type: 3}
   _itemPrefab: {fileID: 738137400646751251, guid: eb3bfa6cb04da524a8c3add99461c9c6, type: 3}
   _cost: 60
+  itemType: 0
   _baseDamage: 4
   _baseFireRate: 1
   _baseSize: 1
