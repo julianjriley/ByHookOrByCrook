@@ -22,7 +22,7 @@ public class SelectedBait : MonoBehaviour
             throw new System.Exception("BaitSelector object MUST be present in bait select scene.");
 
         // REQUIREMENT: prefab must have Image Component
-        if (!TryGetComponent(out _img))
+        if (!transform.GetChild(0).TryGetComponent(out _img))
             throw new System.Exception("Selected Bait prefab MUST have Image Component.");
 
         // set bait type
