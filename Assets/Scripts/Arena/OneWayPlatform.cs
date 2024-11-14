@@ -17,7 +17,7 @@ public class OneWayPlatform : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerMovement = _player.GetComponent<ArenaMovement>();
         //This is needed just trust me
-        topOfPlatform.localPosition = new Vector3(0, 1.9f, 0);
+        topOfPlatform.localPosition = new Vector3(0, 1.7f, 0);
     }
 
     private void Update()
