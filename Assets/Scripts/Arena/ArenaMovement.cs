@@ -106,6 +106,7 @@ public class ArenaMovement : MonoBehaviour
 
     //Platform Notifier
     public float GoThroughPlatforms;
+    public Transform bottomOfFeet;
 
 
     void Start()
@@ -316,10 +317,10 @@ public class ArenaMovement : MonoBehaviour
         }
         // Additions for fixed one way plats ----
         else _horizontalMovemenet = 0f;
-        if(context.ReadValue<Vector2>().y < 0f && _isGrounded && context.started)
+        
+        if(context.ReadValue<Vector2>().y < 0.0f && _isGrounded && context.started)
         {
-            //Debug.Log("Im minging");
-            rb.AddForce(Vector2.down * 10, ForceMode.Impulse);
+
         }
         // ------
 
@@ -441,7 +442,9 @@ public class ArenaMovement : MonoBehaviour
 
         // Update grounded state //
         Vector3 castOrigin = transform.position + new Vector3(0, _maxGroundedDistance / 2f, 0);
-        _isGrounded = Physics.BoxCast(castOrigin, _collider.bounds.extents, Vector3.down, transform.rotation, _maxGroundedDistance * 1.5f, _groundLayer);
+        if (Physics.BoxCast(castOrigin, _collider.bounds.extents, Vector3.down, transform.rotation, _maxGroundedDistance * 1.5f, _groundLayer, QueryTriggerInteraction.Ignore) && rb.velocity.y < 0.01f)
+            _isGrounded = true;
+        else _isGrounded = false;
 
         //Rest some values when player touches the ground
         if (_isGrounded)

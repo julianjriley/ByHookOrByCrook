@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
   m_Name: ThrowingTurtles
   m_EditorClassIdentifier: 
-  _itemID: 0
+  _itemID: 36
   _itemName: Throwing Turtles
   _itemDescription: Turtles will cover you, blocking whatever may be coming your
     way.
@@ -22,11 +22,12 @@ MonoBehaviour:
   itemType: 3
   _baseDamage: 1.5
   _baseFireRate: 0.4
-  _baseSize: 1.5
+  _baseSize: 1
   _baseSpeed: 1
   _baseLifetime: 120
   _baseHeatBuildup: 10
   _baseCoolingSpeed: 15
+  _overHeatCoolingSpeedMultiplier: 1
   _baseProjectileCount: 1
   _baseRecoilAmount: 20
   _fireSound:
@@ -37,3 +38,5 @@ MonoBehaviour:
       Data4: -499286835
     Path: event:/Combat/Guns/RottenFish
   canRecoil: 0
+  overheatShot: 0
+  overheatDamageBonus: 0
