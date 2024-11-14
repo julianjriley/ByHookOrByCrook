@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43354076, g: 0.47028798, b: 0.5063641, a: 1}
+  m_IndirectSpecularColor: {r: 0.43354046, g: 0.47028756, b: 0.50636315, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1939,7 +1939,6 @@ GameObject:
   - component: {fileID: 601137835593887851}
   - component: {fileID: 5936936945733125047}
   - component: {fileID: 1183962011684666013}
-  - component: {fileID: 6567379113465441319}
   - component: {fileID: 7071379696094070295}
   m_Layer: 10
   m_Name: Pixel Boss
@@ -2337,25 +2336,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6567379113465441319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4319637734953820296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18bedda90d9e5de40a5e659956336b9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  music:
-    Guid:
-      Data1: 817889303
-      Data2: 1287124787
-      Data3: 109520307
-      Data4: -1313791562
-    Path: event:/Music/PixelFight
 --- !u!114 &7071379696094070295
 MonoBehaviour:
   m_ObjectHideFlags: 0

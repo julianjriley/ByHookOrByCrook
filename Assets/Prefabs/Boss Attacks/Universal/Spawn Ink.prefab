@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9014502619438345740}
   - component: {fileID: 8210276117154856281}
+  - component: {fileID: -6764019455906831723}
   m_Layer: 0
   m_Name: Spawn Ink
   m_TagString: Untagged
@@ -132,6 +133,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnTime: 2
   _projectilePrefab: {fileID: 7080548220480504319, guid: ce091a55604cbc049b0f35d6e9d80ea5, type: 3}
+--- !u!114 &-6764019455906831723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123999255432267849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05059003bc11a4d4295b5514ecea48bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot:
+    Guid:
+      Data1: -1202773248
+      Data2: 1131926027
+      Data3: -434561657
+      Data4: 389001563
+    Path: event:/Combat/General/PortalOpen
 --- !u!1 &4804637981021511443
 GameObject:
   m_ObjectHideFlags: 0
