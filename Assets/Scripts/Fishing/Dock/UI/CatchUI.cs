@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 /// <summary>
 /// Handles enabling and scaling catch UI after a catch.
@@ -13,8 +14,16 @@ public class CatchUI : MonoBehaviour
     [Header("Components")]
     [SerializeField, Tooltip("Used for setting sprite properly upon new catch.")]
     private Image _image;
+    [SerializeField, Tooltip("Text for caught fish to be updated upon new catch.")]
+    private TextMeshProUGUI _text;
+    [SerializeField, Tooltip("Used to enable/disable")]
+    private Image _textBacker;
+    [SerializeField, Tooltip("Image for indicating icon type to be updated upon new catch.")]
+    private Image _iconImage;
     [SerializeField, Tooltip("Used for changing size of popup.")]
     private RectTransform _rect;
+    [SerializeField, Tooltip("Ordered sprites for icon types.")]
+    private Sprite[] _iconSprites;
 
     [Header("Behavior")]
     [SerializeField, Tooltip("Height and width of sprite at maximum scale.")]
@@ -71,13 +80,21 @@ public class CatchUI : MonoBehaviour
         // ensure snapped to full max size
         _rect.sizeDelta = new Vector2(_maxWidth, _maxWidth);
 
+        // TODO: some wiggle effect when popup is actually shown at full scale.
+
+        // update text and show only at full scale
+        _text.text = GameManager.Instance.PeekCaughtFish().GetItemName();
+        _text.enabled = true;
+        _textBacker.enabled = true;
+        // update icon asset only at full scale
+        _iconImage.sprite = _iconSprites[(int)GameManager.Instance.PeekCaughtFish().GetItemType()];
+        _iconImage.enabled = true;
+
         // pause while max scale
         yield return new WaitForSeconds(_freezeTime);
 
-        // TODO: some wiggle effect when popup is actually shown at full scale.
-
         // decreasing scale
-        while(_rect.sizeDelta.x > _snappingThreshold)
+        while (_rect.sizeDelta.x > _snappingThreshold)
         {
             // smoothly lerp width size UP
             float newWidth = Mathf.Lerp(_rect.sizeDelta.x, 0, 1f - Mathf.Exp(-_scaleSharpness * Time.deltaTime));
@@ -90,6 +107,9 @@ public class CatchUI : MonoBehaviour
 
         // Done - disable image
         _image.enabled = false;
+        _iconImage.enabled = false;
+        _text.enabled = false;
+        _textBacker.enabled = false;
     }
 
     /// <summary>

@@ -2,8 +2,6 @@ using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -53,6 +51,7 @@ public class PlayerCombat : MonoBehaviour
     private bool _invulnerable;
     private Collider _collider;
     private LayerMask _invulnerabilityMask;
+    private Coroutine _invulnerableWindow;
 
 
 
@@ -82,7 +81,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] Weapon[] testWeapons;
 #endif
 
-
+    
   
 
     private void OnEnable()
@@ -103,6 +102,8 @@ public class PlayerCombat : MonoBehaviour
         controls.Player.SwitchWeapon.Enable();
         controls.Player.SwitchWeapon.performed += ChangeWeapon;
         
+        controls.Player.InvulnToggle.Enable();
+        controls.Player.InvulnToggle.performed += ToggleInvuln;
         
         ResetStats();
         _weapons = new List<WeaponInstance>();
@@ -140,7 +141,7 @@ public class PlayerCombat : MonoBehaviour
         {
             Instantiate(skipper, new Vector3(0,0,0), Quaternion.identity);
         }
-        
+        InvulnCheckStart();
     }
 
     private void OnDisable()
@@ -216,6 +217,18 @@ public class PlayerCombat : MonoBehaviour
         {
             _equippedWeapon.CeaseFire();
         }
+    }
+
+    private void InvulnCheckStart() { //ensure invincibility setting is same at start
+        _invulnerable = GameManager.Instance.GamePersistent.IsInvulnerable;
+    }
+
+    private void ToggleInvuln(InputAction.CallbackContext context) { //if changing setting in pause menu call this
+        if (_invulnerableWindow != null) {
+            StopCoroutine(_invulnerableWindow);
+        }
+        _invulnerable = !_invulnerable;
+        GameManager.Instance.GamePersistent.IsInvulnerable = _invulnerable;
     }
 
     private void Update()
@@ -301,7 +314,7 @@ public class PlayerCombat : MonoBehaviour
         }
         else
         {
-            StartCoroutine(InvulnerabilityWindow(1));
+            _invulnerableWindow = StartCoroutine(InvulnerabilityWindow(1));
         }
        
     }

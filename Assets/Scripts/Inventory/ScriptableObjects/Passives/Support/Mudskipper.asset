@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: Mudskipper
   m_EditorClassIdentifier: 
-  _itemID: -145
+  _itemID: 24
   _itemName: Mudskipper
   _itemDescription: Slipped away!
-  _sprite: {fileID: 21300000, guid: 3979ddc284fc18f4aaf6194e46f17bb6, type: 3}
+  _sprite: {fileID: 21300000, guid: 018c4fb35f81d3342aa8f45d98c49182, type: 3}
   _itemPrefab: {fileID: 6271789753032670721, guid: e623bbf53c05eef4783bba72872c1f20, type: 3}
   _cost: 680
+  itemType: 1

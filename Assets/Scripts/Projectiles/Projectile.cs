@@ -45,7 +45,7 @@ public class Projectile : MonoBehaviour
         shortRangeDamage = _playerCombat.useShortRangeDamage;
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         _health -= damage;
         if(_health <= 0)
@@ -89,6 +89,11 @@ public class Projectile : MonoBehaviour
             collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
         }
 
+        if (collider.gameObject.layer == LayerMask.NameToLayer("PracticeTargets"))
+        {
+            collider.gameObject.GetComponent<PracticeTarg>().GetHit();
+        }
+
         if (_health <= 0)
         {
             Destroy(gameObject);
@@ -112,6 +117,11 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
         {
             collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PracticeTargets"))
+        {
+            collision.gameObject.GetComponent<PracticeTarg>().GetHit();
         }
 
         if (_health <= 0)

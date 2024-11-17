@@ -206,11 +206,19 @@ public class GameManager : MonoBehaviour
         // Accessibility
         public bool IsSkipper;
         public bool IsBobber;
+        public bool IsInvulnerable = false;
 
         // Hub related stats
         public List<bool> IsConvoHadRod;
         public List<bool> IsConvoHadBait;
         public List<bool> IsConvoHadBag;
+
+        // Actual player settings
+        public bool IsTutorialHub;  // Toggles for the 4 main sections of the tutorial
+        public bool IsTutorialBait;
+        public bool IsTutorialFish;
+        public bool IsTutorialCombat;
+        public bool IsTutorialComplete; // Keeps track of whether the mandatory tutorial run is done
     }
 
     // private stored save data
@@ -256,7 +264,7 @@ public class GameManager : MonoBehaviour
         }
         
         newSaveData.BossNumber = 0;
-        newSaveData.LossCounter = 3;
+        newSaveData.LossCounter = 0;
 
         newSaveData.Gill = 0;
         newSaveData.BaitInventorySize = 3;
@@ -273,6 +281,12 @@ public class GameManager : MonoBehaviour
         newSaveData.IsConvoHadRod = new List<bool>();
         newSaveData.IsConvoHadBait = new List<bool>();
         newSaveData.IsConvoHadBag = new List<bool>();
+
+        newSaveData.IsTutorialHub = true;
+        newSaveData.IsTutorialBait = true;
+        newSaveData.IsTutorialFish = true;
+        newSaveData.IsTutorialCombat = true;
+        newSaveData.IsTutorialComplete = false;
 
         // TODO: read existing save data (if it exists) from PlayerPrefs
 

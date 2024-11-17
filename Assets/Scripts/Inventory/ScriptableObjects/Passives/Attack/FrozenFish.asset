@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: FrozenFish
   m_EditorClassIdentifier: 
-  _itemID: 1
+  _itemID: 8
   _itemName: Frozen Fish
   _itemDescription: Cooled down !
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 1a03aa3c94588dc4880f95102c7d1715, type: 3}
   _itemPrefab: {fileID: 194152881037602285, guid: 1996ba7f8919a4e439cd78e98574db37, type: 3}
   _cost: 150
+  itemType: 0
