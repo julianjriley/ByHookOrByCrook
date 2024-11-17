@@ -16,7 +16,7 @@ public class HeartAoE : Projectile
     protected override void Start()
     {
         base.Start();
-
+        _anim = GetComponent<Animator>();
         // make them float up and down 
         //Float();
         StartCoroutine(DoAttack());
@@ -32,10 +32,10 @@ public class HeartAoE : Projectile
     
     IEnumerator DoAttack()
     {
-        _anim.Play("HeartATK", 0, 0);
+        _anim.Play("Attack", 0, 0);
         yield return new WaitForSeconds(2f); // Initial anim plays
         _ps.Play();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.3f);
         Destroy(this);
     }
 }

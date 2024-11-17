@@ -501,7 +501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7248781632990475724, guid: f1417725501dd6944ba75b6e2869bdeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.28
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 7248781632990475724, guid: f1417725501dd6944ba75b6e2869bdeb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1123,7 +1123,7 @@ PrefabInstance:
     - target: {fileID: 1655653055108667798, guid: 208d10de5235ba143a0d4e5cb667d819, type: 3}
       propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 4411414301606924776, guid: f66bb555535ffab44ba6cd6088a02aca, type: 3}
+      objectReference: {fileID: 3147431625062083812, guid: f1417725501dd6944ba75b6e2869bdeb, type: 3}
     - target: {fileID: 1655653055108667798, guid: 208d10de5235ba143a0d4e5cb667d819, type: 3}
       propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[1]
       value: 
