@@ -63,8 +63,13 @@ public class MamaLeechProjectile : Projectile
         if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
         {
             collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+            Destroy(gameObject);
         }
 
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
         if (_health <= 0)
             Destroy(gameObject);
 
