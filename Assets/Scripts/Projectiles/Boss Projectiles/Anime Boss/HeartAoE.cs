@@ -6,8 +6,9 @@ using UnityEngine.UIElements;
 
 public class HeartAoE : Projectile
 {
-    private Color _heartColor;
-    float _lerpSpeed = 3f;
+    private Animator _anim;
+    private float _lerpSpeed = 3f;
+    [SerializeField] ParticleSystem _ps;
 
     // TODO: plug in animation
     // TODO: slowly appears then fully appears (timer of some sort is needed)
@@ -16,12 +17,9 @@ public class HeartAoE : Projectile
     {
         base.Start();
 
-        _heartColor = GetComponent<SpriteRenderer>().color;
-        _heartColor.a = 0;
-
         // make them float up and down 
         //Float();
-        StartCoroutine(ChangeOpacity());
+        StartCoroutine(DoAttack());
     }
 
     void Float()
@@ -32,9 +30,12 @@ public class HeartAoE : Projectile
         transform.position = temp;
     }
     
-    IEnumerator ChangeOpacity()
+    IEnumerator DoAttack()
     {
-        _heartColor.a = Mathf.MoveTowards(1, 0, 5f);
-        yield return new WaitForSeconds(1);
+        _anim.Play("HeartATK", 0, 0);
+        yield return new WaitForSeconds(2f); // Initial anim plays
+        _ps.Play();
+        yield return new WaitForSeconds(3f);
+        Destroy(this);
     }
 }
