@@ -109,9 +109,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pause"",
+                    ""name"": ""InvulnToggle"",
                     ""type"": ""Button"",
-                    ""id"": ""460de833-15ad-42c3-ad84-59b875009ec4"",
+                    ""id"": ""a4143287-adf5-4029-b900-1fb10c6a9bff"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -363,12 +363,12 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""71f526b4-8cae-42c6-bde0-91de2e6d1cdd"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""id"": ""b8d4cacb-8ebb-4fcc-985c-27a3d1de6dd6"",
+                    ""path"": ""<Keyboard>/i"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
+                    ""groups"": "";Keyboard Config"",
+                    ""action"": ""InvulnToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -400,7 +400,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         m_Player_JumpAction = m_Player.FindAction("JumpAction", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
-        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_InvulnToggle = m_Player.FindAction("InvulnToggle", throwIfNotFound: true);
     }
 
     ~@ActionControls()
@@ -476,7 +476,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_JumpAction;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_SwitchWeapon;
-    private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_InvulnToggle;
     public struct PlayerActions
     {
         private @ActionControls m_Wrapper;
@@ -490,7 +490,7 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         public InputAction @JumpAction => m_Wrapper.m_Player_JumpAction;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
-        public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @InvulnToggle => m_Wrapper.m_Player_InvulnToggle;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -527,9 +527,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @SwitchWeapon.started += instance.OnSwitchWeapon;
             @SwitchWeapon.performed += instance.OnSwitchWeapon;
             @SwitchWeapon.canceled += instance.OnSwitchWeapon;
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
+            @InvulnToggle.started += instance.OnInvulnToggle;
+            @InvulnToggle.performed += instance.OnInvulnToggle;
+            @InvulnToggle.canceled += instance.OnInvulnToggle;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -561,9 +561,9 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
             @SwitchWeapon.started -= instance.OnSwitchWeapon;
             @SwitchWeapon.performed -= instance.OnSwitchWeapon;
             @SwitchWeapon.canceled -= instance.OnSwitchWeapon;
-            @Pause.started -= instance.OnPause;
-            @Pause.performed -= instance.OnPause;
-            @Pause.canceled -= instance.OnPause;
+            @InvulnToggle.started -= instance.OnInvulnToggle;
+            @InvulnToggle.performed -= instance.OnInvulnToggle;
+            @InvulnToggle.canceled -= instance.OnInvulnToggle;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -601,6 +601,6 @@ public partial class @ActionControls: IInputActionCollection2, IDisposable
         void OnJumpAction(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
+        void OnInvulnToggle(InputAction.CallbackContext context);
     }
 }

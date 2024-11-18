@@ -13,5 +13,13 @@ MonoBehaviour:
   m_Name: BaitBook2
   m_EditorClassIdentifier: 
   bookNumber: 1
-  postBossLossConvos: []
-  generalConvos: []
+  postBossLossConvos:
+  - {fileID: 11400000, guid: 432c0f866134bb743b0486da792bdc47, type: 2}
+  - {fileID: 11400000, guid: 948540be25ba96647bcbff83694f8be6, type: 2}
+  generalConvos:
+  - {fileID: 11400000, guid: b536b25c4f469244abea1d0aeaf47bc4, type: 2}
+  - {fileID: 11400000, guid: 6db024e285677224eba1bc10937b48e6, type: 2}
+  - {fileID: 11400000, guid: 1a9affeecf32d6245806f1247fbd152e, type: 2}
+  - {fileID: 11400000, guid: 64d323c504f7cb14fbbfcf642f96d9aa, type: 2}
+  - {fileID: 11400000, guid: 409af520722ef094bb64b1ddcfb72434, type: 2}
+  - {fileID: 11400000, guid: 4bd03e04151892e48aa3e289d3df12f2, type: 2}

@@ -14,6 +14,8 @@ public class Barrel : MonoBehaviour
     private BaitSelector _baitSelector;
     [SerializeField, Tooltip("Used to spawn selected bait in layout group.")]
     private GameObject _selectedBaitPrefab;
+    [SerializeField, Tooltip("used to enable or disable the lock sprite.")]
+    private GameObject _lock;
 
     private Button _barrelButton;
 
@@ -82,5 +84,10 @@ public class Barrel : MonoBehaviour
     {
         // Ensure tooltip is hidden
         _baitSelector.LockedTooltip.SetActive(false);
+    }
+
+    public void SetLockVisual(bool newState)
+    {
+        _lock.SetActive(newState);
     }
 }

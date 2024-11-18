@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 /// <summary>
 /// Stores and manages player data saved between scenes.
@@ -28,7 +26,6 @@ public class GameManager : MonoBehaviour
                 newManager.AddComponent<GameManager>();
                 DontDestroyOnLoad(newManager);
                 _instance = newManager.GetComponent<GameManager>();
-
             }
             // return new/existing instance
             return _instance;
@@ -209,19 +206,19 @@ public class GameManager : MonoBehaviour
         // Accessibility
         public bool IsSkipper;
         public bool IsBobber;
+        public bool IsInvulnerable = false;
 
         // Hub related stats
         public List<bool> IsConvoHadRod;
         public List<bool> IsConvoHadBait;
         public List<bool> IsConvoHadBag;
 
-        // Accessibility Settings
-        public CustomCrosshair Crosshair;
-        public Sprite crosshairSprite;
-        public float SFXVolume;
-        public float MusicVolume;
-
-        //public float MouseSentivity; // revist after BETA
+        // Actual player settings
+        public bool IsTutorialHub;  // Toggles for the 4 main sections of the tutorial
+        public bool IsTutorialBait;
+        public bool IsTutorialFish;
+        public bool IsTutorialCombat;
+        public bool IsTutorialComplete; // Keeps track of whether the mandatory tutorial run is done
     }
 
     // private stored save data
@@ -267,7 +264,7 @@ public class GameManager : MonoBehaviour
         }
         
         newSaveData.BossNumber = 0;
-        newSaveData.LossCounter = 3;
+        newSaveData.LossCounter = 0;
 
         newSaveData.Gill = 0;
         newSaveData.BaitInventorySize = 3;
@@ -285,10 +282,11 @@ public class GameManager : MonoBehaviour
         newSaveData.IsConvoHadBait = new List<bool>();
         newSaveData.IsConvoHadBag = new List<bool>();
 
-        newSaveData.SFXVolume = 0.5f;
-        newSaveData.MusicVolume = 0.5f;
-
-        //newSaveData.MouseSentivity = 0.5f; // revist after BETA
+        newSaveData.IsTutorialHub = true;
+        newSaveData.IsTutorialBait = true;
+        newSaveData.IsTutorialFish = true;
+        newSaveData.IsTutorialCombat = true;
+        newSaveData.IsTutorialComplete = false;
 
         // TODO: read existing save data (if it exists) from PlayerPrefs
 

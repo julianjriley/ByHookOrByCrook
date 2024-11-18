@@ -87,9 +87,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pause",
+                    "name": "InvulnToggle",
                     "type": "Button",
-                    "id": "460de833-15ad-42c3-ad84-59b875009ec4",
+                    "id": "a4143287-adf5-4029-b900-1fb10c6a9bff",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -341,12 +341,12 @@
                 },
                 {
                     "name": "",
-                    "id": "71f526b4-8cae-42c6-bde0-91de2e6d1cdd",
-                    "path": "<Keyboard>/escape",
+                    "id": "b8d4cacb-8ebb-4fcc-985c-27a3d1de6dd6",
+                    "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Pause",
+                    "groups": ";Keyboard Config",
+                    "action": "InvulnToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
