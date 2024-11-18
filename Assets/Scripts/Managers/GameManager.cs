@@ -213,6 +213,9 @@ public class GameManager : MonoBehaviour
         public List<bool> IsConvoHadBait;
         public List<bool> IsConvoHadBag;
 
+        public float SFXVolume;
+        public float MusicVolume;
+
         // Actual player settings
         public bool IsTutorialHub;  // Toggles for the 4 main sections of the tutorial
         public bool IsTutorialBait;
@@ -281,6 +284,9 @@ public class GameManager : MonoBehaviour
         newSaveData.IsConvoHadRod = new List<bool>();
         newSaveData.IsConvoHadBait = new List<bool>();
         newSaveData.IsConvoHadBag = new List<bool>();
+
+        newSaveData.SFXVolume = 0.5f;
+        newSaveData.MusicVolume = 0.5f;
 
         newSaveData.IsTutorialHub = true;
         newSaveData.IsTutorialBait = true;

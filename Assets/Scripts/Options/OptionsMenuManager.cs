@@ -37,7 +37,7 @@ public class OptionsMenuManager : MonoBehaviour
     [SerializeField, Tooltip("Brightness slider")]
     private Slider _brightnessSlider;
 
-    [SerializeField, Tooltip("Brightness profile")]
+    [SerializeField, Tooltip("Profile")]
     private PostProcessProfile _profile;
     [SerializeField, Tooltip("Pass in the main camera")]
     private PostProcessLayer _layer;
@@ -79,14 +79,8 @@ public class OptionsMenuManager : MonoBehaviour
     }
     public void AdjustSaturation()
     {
-        if (_saturationSlider.value != 0)
-        {
-            _saturation.saturation.value = _saturationSlider.value;
-        }
-        else
-        {
-            _saturation.saturation.value = .05f; // lowest saturation setting
-        }
+        _profile.TryGetSettings(out _saturation);
+        _saturation.saturation.value = _saturationSlider.value;
     }
     public void AdjustBrightness()
     {

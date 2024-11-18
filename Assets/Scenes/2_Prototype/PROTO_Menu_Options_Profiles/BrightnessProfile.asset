@@ -27,7 +27,7 @@ MonoBehaviour:
     value: 0
   keyValue:
     overrideState: 1
-    value: 0.5486079
+    value: 1
   eyeAdaptation:
     overrideState: 1
     value: 1
@@ -69,8 +69,8 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   gradingMode:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0
   externalLut:
     overrideState: 0
     value: {fileID: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: 60.66104
+    value: 8
   brightness:
     overrideState: 0
     value: 0

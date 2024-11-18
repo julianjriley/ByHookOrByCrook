@@ -9,32 +9,44 @@ using UnityEngine.UI;
 
 public class CustomCrosshair : MonoBehaviour
 {
-
+    Cursor cursor;
     // private SpriteRenderer _renderer;
     public Image DefaultCrosshair;
+    public Texture2D Crosshair;
 
     public Slider Red, Green, Blue, Opacity, Size;
 
+    private Color newColor;
+
     private void Start()
     {
+        
         //Cursor.visible = false;
         DefaultCrosshair = GetComponent<Image>();
-       // _renderer = GetComponent<SpriteRenderer>();
+         // _renderer = GetComponent<SpriteRenderer>();
         
 
         //Cursor.SetCursor(DefaultCrosshair.texture,new Vector2(0,0), CursorMode.ForceSoftware);
     }
 
-    private void Update()
+    private void OnGUI()
     {
-        Vector2 _cursorPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        GameManager.Instance.GamePersistent.Crosshair = this;
-        GameManager.Instance.GamePersistent.crosshairSprite = DefaultCrosshair.sprite;
+        GUI.skin.settings.cursorColor = newColor;
     }
 
-    public void ChangeColor()
+    private void Update()
+    {
+        //Vector2 _cursorPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        //Cursor.SetCursor(Crosshair, new Vector2(30, 25), CursorMode.ForceSoftware);
+        //GameManager.Instance.GamePersistent.Crosshair = this;
+        //GameManager.Instance.GamePersistent.crosshairSprite = DefaultCrosshair.sprite;
+    }
+
+    public void UpdateCrosshair()
     {
         DefaultCrosshair.color = new Color(Red.value, Green.value, Blue.value, Opacity.value);
+        newColor = new Color(Red.value, Green.value, Blue.value, Opacity.value);
+
 
     }
     public void ChangeSize()

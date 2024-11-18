@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,13 +15,13 @@ public class PauseManager : MonoBehaviour
     [SerializeField]
     private GameObject _optionsMenu;
 
+    private InputActionAsset _actions;
+
     // --------README--------
     // PauseMenuController MUST appear in all scenes for the sake of resetting the time scale.
     // Main Menu OPTION button needs an updated OnClick() Function that passes in the prefab instead of loading a scene.
     // The solution right now is scuffed, but should be enough for the beta.
     // You will have to update the first IF statement conditions if you're adding MORE build scenes.
-
-
 
     private void Start()
     {
@@ -58,9 +59,11 @@ public class PauseManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
+        
         _isPaused = true;
         _pauseMenu.SetActive(true);
-       
+        Debug.Log("disabling input");
+
     }
 
     public void Resume()
@@ -76,6 +79,9 @@ public class PauseManager : MonoBehaviour
 
         Time.timeScale = 1f;
         _isPaused = false;
+
+        // STOPPED HERE 1:25pm 11/18
+        _actions.actionMaps[0].FindAction("FireWeapon");
         yield return new WaitForSeconds(3);
 
     }
