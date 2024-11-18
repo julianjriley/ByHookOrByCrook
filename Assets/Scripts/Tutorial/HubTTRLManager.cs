@@ -57,6 +57,11 @@ public class HubTTRLManager : MonoBehaviour
 
             StartCoroutine(DoTutorial());
         }
+        else
+        {
+            _tutorialView.SetActive(false);
+            this.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
