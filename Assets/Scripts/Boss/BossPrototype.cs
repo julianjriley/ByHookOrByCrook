@@ -182,7 +182,7 @@ public class BossPrototype : MonoBehaviour
         Instantiate(chosenAttack, _spawnLocation);
     }
 
-    public void SpawnAttackOnce(GameObject gameObj) {
+    public virtual void SpawnAttackOnce(GameObject gameObj) {
         Instantiate(gameObj, _spawnLocation);
     }
 

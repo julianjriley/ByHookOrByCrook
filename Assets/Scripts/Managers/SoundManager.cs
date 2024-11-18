@@ -45,6 +45,9 @@ public class SoundManager : MonoBehaviour
     {
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
         eventInstances.Add(eventInstance);
+        eventInstance.getDescription(out EventDescription description);
+        description.getPath(out string result);
+        UnityEngine.Debug.Log(result);
         return eventInstance;
     }
 
@@ -113,29 +116,45 @@ public class SoundManager : MonoBehaviour
         }
         */
     }
+    public void CleanButSpareMusic()
+    {/*
+        foreach (EventInstance eventInstance in eventInstances)
+        {
+            eventInstance.getDescription(out EventDescription description);
+            UnityEngine.Debug.Log(description);
+            if (eventInstance != musicEventInstance) 
+            {
+                eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                if (complete)
+                {
+                    eventInstance.release();
+                }
+            }
+        }*/
+    }
     public void CleanButSpare(string spare, bool complete)
     {
         foreach (EventInstance eventInstance in eventInstances)
         {
-            EventDescription description;
-            string result;
-            eventInstance.getDescription(out description);
-            description.getPath(out result);
+            eventInstance.getDescription(out EventDescription description);
+            description.getPath(out string result);
             UnityEngine.Debug.Log(result);
-            if (result != null)
+            if (result != null && !result.EndsWith(spare)) 
             {
-                if (!result.EndsWith(spare))
-                {
-                    eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                    if (complete)
-                    {
-                        eventInstance.release();
-                    }
-                }
-            } 
-            
-                
-            
+                eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                eventInstance.release();
+            }
         }
     }
+
+    public void CheckEventInstances()
+    {
+        foreach (EventInstance eventInstance in eventInstances)
+        {
+            eventInstance.getDescription(out EventDescription description);
+            description.getPath(out string result);
+            UnityEngine.Debug.Log(result);
+        }
+    }
+
     }

@@ -72,9 +72,6 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
-        //DO DAMAGE CODE HERE
-        //Destroy(gameObject);
-
         if(collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
            collider.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
@@ -100,15 +97,11 @@ public class Projectile : MonoBehaviour
         if (_health <= 0)
         {
             Destroy(gameObject);
-            //Debug.Log("gotHere");
         }
             
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        //DO DAMAGE CODE HERE
-        //Destroy(gameObject);
-
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             collision.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
