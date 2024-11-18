@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: BulletBlueWhale
   m_EditorClassIdentifier: 
-  _itemID: 30
+  _itemID: 21
   _itemName: Bullet Blue Whale
   _itemDescription: Bigger bullets. Large and in charge
-  _sprite: {fileID: 21300000, guid: 89d62aa0ea1ac3b4fa8938b57d30e102, type: 3}
+  _sprite: {fileID: 21300000, guid: 88779a7daae36234288ad498ba477466, type: 3}
   _itemPrefab: {fileID: 4606452701454391085, guid: 4b24b0d9504a5ac498d7030e860c04dc, type: 3}
   _cost: 190
+  itemType: 1

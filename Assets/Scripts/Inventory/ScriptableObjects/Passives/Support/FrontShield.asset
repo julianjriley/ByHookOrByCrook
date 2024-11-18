@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: FrontShield
   m_EditorClassIdentifier: 
-  _itemID: -13453
+  _itemID: 23
   _itemName: Front Shield
   _itemDescription: It's got you covered.
   _sprite: {fileID: -1251328663, guid: a530b8fa038085746ab5938e566a709f, type: 3}
   _itemPrefab: {fileID: 2479792823354273039, guid: 7daa872e64e34c04d9a3f28fb812f4ac, type: 3}
   _cost: 354
+  itemType: 1

@@ -5,6 +5,11 @@ using UnityEngine;
 public class WaterDamager : MonoBehaviour
 {
     [SerializeField] private float _launchSpeed = 30f;
+    private void Start()
+    {
+        Animator animator = GetComponent<Animator>();
+        animator.Play("OceanMotion", 0, 0);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
