@@ -138,8 +138,8 @@ public class ShopInteractor : Interactor
     {
         // This is the only place in the game we will EVER need to check current sizes against a max,
         // so this is where the max rod level, max bait inventory size, and max battle inventory size are stored.
-        int maxBaitSlots = 5;
-        int maxBattleSlots = 5;
+        int maxBaitSlots = 10;
+        int maxBattleSlots = 8;
         if (GoodsSold == ShopType.Rod)
         {
             if (GameManager.Instance.GamePersistent.RodLevel >= 2)
