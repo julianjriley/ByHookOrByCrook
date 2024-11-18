@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 49326655}
   - component: {fileID: 49326658}
   - component: {fileID: 49326659}
+  - component: {fileID: 49326660}
   m_Layer: 5
   m_Name: Support Bait
   m_TagString: Untagged
@@ -218,6 +219,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 49326660}
+        m_TargetAssemblyTypeName: AudioOnClick, Assembly-CSharp
+        m_MethodName: PlayAudioOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -322,6 +335,33 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &49326660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49326653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d30b0deb75990479342fb7d53c782b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound:
+    Guid:
+      Data1: -1471503404
+      Data2: 1334579685
+      Data3: 844366476
+      Data4: 1736897153
+    Path: event:/Hub/Squish
+  cantClickSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  thisButton: {fileID: 0}
 --- !u!1 &97118868
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +375,7 @@ GameObject:
   - component: {fileID: 97118871}
   - component: {fileID: 97118870}
   - component: {fileID: 97118873}
+  - component: {fileID: 97118874}
   m_Layer: 5
   m_Name: Basic Bait
   m_TagString: Untagged
@@ -414,6 +455,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 49326660}
+        m_TargetAssemblyTypeName: AudioOnClick, Assembly-CSharp
+        m_MethodName: PlayAudioOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -868,68 +921,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571027969}
   m_CullTransparentMesh: 1
---- !u!1 &587062516
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 587062518}
-  - component: {fileID: 587062519}
-  - component: {fileID: 587062520}
-  m_Layer: 0
-  m_Name: Audio
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &587062518
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 587062516}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &587062519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 587062516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf488237eab781840b4b07f25e7d6417, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spare: event:/Music/Hub
---- !u!114 &587062520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 587062516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852c310ed3325ff4a9ef4b6c420b318d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parameterName: BaitSelect
-  parameterValue: 1
-  isGlobal: 0
-  eventName: Hub
 --- !u!1 &590725873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,6 +1455,7 @@ GameObject:
   - component: {fileID: 932572945}
   - component: {fileID: 932572948}
   - component: {fileID: 932572949}
+  - component: {fileID: 932572950}
   m_Layer: 5
   m_Name: Attack Bait
   m_TagString: Untagged
@@ -1545,6 +1537,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 49326660}
+        m_TargetAssemblyTypeName: AudioOnClick, Assembly-CSharp
+        m_MethodName: PlayAudioOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1649,6 +1653,33 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &932572950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932572943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d30b0deb75990479342fb7d53c782b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound:
+    Guid:
+      Data1: -1471503404
+      Data2: 1334579685
+      Data3: 844366476
+      Data4: 1736897153
+    Path: event:/Hub/Squish
+  cantClickSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  thisButton: {fileID: 0}
 --- !u!1 &951870367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,6 +1732,7 @@ GameObject:
   - component: {fileID: 961592189}
   - component: {fileID: 961592192}
   - component: {fileID: 961592193}
+  - component: {fileID: 961592194}
   m_Layer: 5
   m_Name: Weapon Bait
   m_TagString: Untagged
@@ -1782,6 +1814,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 49326660}
+        m_TargetAssemblyTypeName: AudioOnClick, Assembly-CSharp
+        m_MethodName: PlayAudioOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1886,6 +1930,33 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &961592194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961592187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d30b0deb75990479342fb7d53c782b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound:
+    Guid:
+      Data1: -1471503404
+      Data2: 1334579685
+      Data3: 844366476
+      Data4: 1736897153
+    Path: event:/Hub/Squish
+  cantClickSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  thisButton: {fileID: 0}
 --- !u!1 &999720807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,6 +2100,7 @@ GameObject:
   - component: {fileID: 1070592512}
   - component: {fileID: 1070592515}
   - component: {fileID: 1070592516}
+  - component: {fileID: 1070592517}
   m_Layer: 5
   m_Name: Movement Bait
   m_TagString: Untagged
@@ -2110,6 +2182,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 49326660}
+        m_TargetAssemblyTypeName: AudioOnClick, Assembly-CSharp
+        m_MethodName: PlayAudioOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2214,6 +2298,33 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1070592517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070592510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d30b0deb75990479342fb7d53c782b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound:
+    Guid:
+      Data1: -1471503404
+      Data2: 1334579685
+      Data3: 844366476
+      Data4: 1736897153
+    Path: event:/Hub/Squish
+  cantClickSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  thisButton: {fileID: 0}
 --- !u!1 &1216488675
 GameObject:
   m_ObjectHideFlags: 0
@@ -2916,6 +3027,7 @@ GameObject:
   - component: {fileID: 1448079818}
   - component: {fileID: 1448079817}
   - component: {fileID: 1448079816}
+  - component: {fileID: 1448079819}
   m_Layer: 5
   m_Name: Confirm (To Fishing)
   m_TagString: Untagged
@@ -2997,6 +3109,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 5_BETA_Fishing
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1448079819}
+        m_TargetAssemblyTypeName: AudioCleanUp, Assembly-CSharp
+        m_MethodName: Start
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1448079817

@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 304496015051119341}
   - component: {fileID: 1918608116347947761}
   - component: {fileID: 8668220848546993176}
+  - component: {fileID: -4823736640827909078}
   m_Layer: 0
   m_Name: Spawn Galaga Fleet
   m_TagString: Untagged
@@ -206,3 +207,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4823736640827909078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8745604044826464000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05059003bc11a4d4295b5514ecea48bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot:
+    Guid:
+      Data1: -1202773248
+      Data2: 1131926027
+      Data3: -434561657
+      Data4: 389001563
+    Path: event:/Combat/General/PortalOpen
