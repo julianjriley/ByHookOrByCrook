@@ -57,7 +57,7 @@ public class ShopInteractor : Interactor
             ShopCost();
             _priceText.text = "S " + _currentCost;
         }
-        if (GameManager.Instance.GamePersistent.IsTutorialHub)
+        if (GameManager.Instance.GamePersistent.IsTutorialHub && GoodsSold != ShopType.Nothing)
         {
             Destroy(gameObject);
         }
@@ -91,7 +91,8 @@ public class ShopInteractor : Interactor
             // Remove the cost from their balance
             GameManager.Instance.GamePersistent.Gill -= _currentCost;
             onShopPurchase?.Invoke(_currentCost);
-            ShopConvo(); // Set the correct conversation
+            if(GoodsSold != ShopType.Nothing)
+                ShopConvo(); // Set the correct conversation
             ShopSell();  // Give them the item
             SoundManager.Instance.PlayOneShot(purchaseSound, gameObject.transform.position);
 
