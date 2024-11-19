@@ -9,7 +9,7 @@ using static Unity.Mathematics.math;
 
 [RequireComponent(typeof(Rigidbody))]
 
-public class BossPrototype : MonoBehaviour
+public class BossPrototype : MonoBehaviour, IDamageable
 {
     [Header ("Boss Movement")]
     protected Transform _target;
@@ -61,7 +61,7 @@ public class BossPrototype : MonoBehaviour
         //Debug.Log("Phase Counter = " + _phaseCounter);
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         _renderer = GetComponent<SpriteRenderer>();
-
+        gameObject.AddComponent<EffectManager>();
         PlayerCombat.playerDeath += GoToCashout;
     }
 
@@ -254,8 +254,13 @@ public class BossPrototype : MonoBehaviour
         if(collider.gameObject == _playerTransform.gameObject)
         {
             PlayerCombat player = collider.gameObject.GetComponent<PlayerCombat>();
-            player.TakeDamageLikeAGoodBoy();
+            player.TakeDamage(20000);
         }
+    }
+
+    public void PassEffect(EffectData effectData)
+    {
+        GetComponent<EffectManager>().PassEffect(effectData);
     }
 
 }

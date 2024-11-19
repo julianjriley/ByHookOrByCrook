@@ -46,7 +46,7 @@ public class OrbitingPufferfishProjectile : Projectile
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collider.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
+            collider.gameObject.GetComponent<PlayerCombat>().TakeDamage(_damage);
 
         }
 
@@ -70,7 +70,7 @@ public class OrbitingPufferfishProjectile : Projectile
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
+            collision.gameObject.GetComponent<PlayerCombat>().TakeDamage(_damage);
 
         }
 

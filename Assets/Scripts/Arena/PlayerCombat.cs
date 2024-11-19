@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : MonoBehaviour, IDamageable
 {
 
     private ActionControls controls;
@@ -109,6 +109,7 @@ public class PlayerCombat : MonoBehaviour
         _weapons = new List<WeaponInstance>();
         playerMovement = GetComponent<ArenaMovement>();
         rb = GetComponent<Rigidbody>();
+        gameObject.AddComponent<EffectManager>();
 
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
 
@@ -299,7 +300,8 @@ public class PlayerCombat : MonoBehaviour
         set { _health = value; }
     }
 
-    public void TakeDamageLikeAGoodBoy()
+    //the damage parameter can be ignored here its just how the interfacing works to make things easier
+    public void TakeDamage(float damage)
     {
         if (_invulnerable)
             return;
@@ -407,6 +409,11 @@ public class PlayerCombat : MonoBehaviour
         yield return new WaitForSeconds(1);
         _collider.excludeLayers = 0;
         _invulnerable = false;
+    }
+
+    public void PassEffect(EffectData effectData)
+    {
+        GetComponent<EffectManager>().PassEffect(effectData);
     }
 
     #region Zombie Mode Code

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IDamageable
 {
     [SerializeField, Tooltip("Amount of damage projectile deals on contact.")]
     protected float _damage;
@@ -27,6 +27,7 @@ public class Projectile : MonoBehaviour
 
     virtual protected void Start()
     {
+        gameObject.AddComponent<EffectManager>();
         _rb = GetComponent<Rigidbody>();
         
         // allows negative lifetime projectiles to have indefinite lifetime (useful on painterly boss)
@@ -72,26 +73,11 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
-        if(collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if(collider.TryGetComponent<IDamageable>(out IDamageable component))
         {
-           collider.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
-           Destroy(gameObject);
-        }
-
-        if(collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
-        {
-           collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
-           Destroy(gameObject);
-        }
-
-        if(collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collider.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
-        {
-            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
-        }
-
-        if (collider.gameObject.layer == LayerMask.NameToLayer("PracticeTargets"))
-        {
-            collider.gameObject.GetComponent<PracticeTarg>().GetHit();
+            component.TakeDamage(_damage);
+            if(collider.gameObject.layer == LayerMask.NameToLayer("Player") || collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
+                Destroy(gameObject);
         }
 
         if (_health <= 0)
@@ -102,30 +88,20 @@ public class Projectile : MonoBehaviour
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable component))
         {
-            collision.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
-        {
-            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
-        {
-            collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
-        }
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("PracticeTargets"))
-        {
-            collision.gameObject.GetComponent<PracticeTarg>().GetHit();
+            component.TakeDamage(_damage);
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
+                Destroy(gameObject);
         }
 
         if (_health <= 0)
             Destroy(gameObject);
 
+    }
+
+    public void PassEffect(EffectData effectData)
+    {
+        GetComponent<EffectManager>().PassEffect(effectData);
     }
 }

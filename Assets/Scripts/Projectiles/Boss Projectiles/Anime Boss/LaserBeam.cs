@@ -44,7 +44,7 @@ public class LaserBeam : Projectile
     {
         if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collider.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
+            collider.gameObject.GetComponent<PlayerCombat>().TakeDamage(2);
             // Colliding with the player does not destroy the laser
         }
 
@@ -70,7 +70,7 @@ public class LaserBeam : Projectile
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
+            collision.gameObject.GetComponent<PlayerCombat>().TakeDamage(2);
             // Colliding with the player does not destroy the laser
         }
 

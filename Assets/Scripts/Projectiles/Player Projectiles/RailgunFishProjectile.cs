@@ -17,7 +17,7 @@ public class RailgunFishProjectile : Projectile
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collider.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
+            collider.gameObject.GetComponent<PlayerCombat>().TakeDamage(2);
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
@@ -38,7 +38,7 @@ public class RailgunFishProjectile : Projectile
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
+            collision.gameObject.GetComponent<PlayerCombat>().TakeDamage(4);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
