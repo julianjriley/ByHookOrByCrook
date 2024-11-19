@@ -81,9 +81,6 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] Weapon[] testWeapons;
 #endif
 
-    
-  
-
     private void OnEnable()
     {
         cam = Camera.main;
@@ -104,15 +101,6 @@ public class PlayerCombat : MonoBehaviour
 
         controls.FindAction("InvulnToggle").Enable();
         controls.FindAction("InvulnToggle").performed += ToggleInvuln;
-
-        //controls.Player.FireWeapon.canceled += FireWeapon;
-        //controls.Player.FireWeapon.Enable();
-
-        //controls.Player.SwitchWeapon.Enable();
-        //controls.Player.SwitchWeapon.performed += ChangeWeapon;
-
-        //controls.Player.InvulnToggle.Enable();
-        //controls.Player.InvulnToggle.performed += ToggleInvuln;
 
         ResetStats();
         _weapons = new List<WeaponInstance>();
@@ -157,8 +145,6 @@ public class PlayerCombat : MonoBehaviour
     {
         controls.FindAction("FireWeapon").Disable();
         controls.FindAction("SwitchWeapon").Disable();
-        //controls.Player.FireWeapon.Disable();
-        //controls.Player.SwitchWeapon.Disable();
     }
 
 

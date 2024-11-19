@@ -19,9 +19,10 @@ public class PauseManager : MonoBehaviour
     private ActionControls _controls;
     private PlayerCombat _player;
 
+    private float _startTime;
+    private float _endTime;
+
     // --------README--------
-    // PauseMenuController MUST appear in all scenes for the sake of resetting the time scale.
-    // Main Menu OPTION button needs an updated OnClick() Function that passes in the prefab instead of loading a scene.
     // The solution right now is scuffed, but should be enough for the beta.
     // You will have to update the first IF statement conditions if you're adding MORE build scenes.
 
@@ -33,23 +34,22 @@ public class PauseManager : MonoBehaviour
 
     private void Start()
     {
-       // _controls = InputSystem.actions;
         _isPaused = false;
         _player = FindAnyObjectByType<PlayerCombat>();
     }
     private void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 1
-            || SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4
-            || SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6
-            | SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8
-            || SceneManager.GetActiveScene().buildIndex == 9 || SceneManager.GetActiveScene().buildIndex == 10)
-        {
-            if (Time.timeScale < 1f)
-            {
-                Time.timeScale = 1f;
-            }
-        }
+        //if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 1
+        //    || SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4
+        //    || SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6
+        //    | SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8
+        //    || SceneManager.GetActiveScene().buildIndex == 9 || SceneManager.GetActiveScene().buildIndex == 10)
+        //{
+        //    if (Time.timeScale < 1f)
+        //    {
+        //        Time.timeScale = 1f;
+        //    }
+        //}
 
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
@@ -57,8 +57,10 @@ public class PauseManager : MonoBehaviour
             if (SceneManager.GetActiveScene().buildIndex == 0
             || SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
             {
+                // Prevents pausing in main menu, credits and something else
                 return;
             }
+
             if (_isPaused == false)
                 Pause();
             else
@@ -81,20 +83,35 @@ public class PauseManager : MonoBehaviour
     {
         _pauseMenu.SetActive(false);
         actions.Enable();
-        StartCoroutine(Countdown());
+
+
+        Countdown(); // remove later, just testing for now
+
+        // uncomment if statement below after testing and getting all build indicies
+
+        //if (SceneManager.GetActiveScene().buildIndex > 9 && SceneManager.GetActiveScene().buildIndex < 12)
+        //{
+        //    // In combat scenes we countdown 
+        //    Countdown();
+        //}
 
     }
 
-    IEnumerator Countdown()
+    void Countdown()
     {
-        // TODO: doesn't give us the 3-2-1 countdown we need before continuing the game
+        _startTime = Time.unscaledTime;
+        Debug.Log("Start Time = " + _startTime);
+        _endTime = _startTime + 3f;
+        Debug.Log("Emd Time = " + _endTime);
 
-        Time.timeScale = 1f;
-        _isPaused = false;
+        Debug.Log("Unscaled time is = " + Time.unscaledTime);
 
-        // STOPPED HERE 1:25pm 11/18
-     //   _actions.actionMaps[0].FindAction("FireWeapon");
-        yield return new WaitForSeconds(3);
+        if (Time.unscaledTime >= _endTime)
+        {
+            Debug.Log("Unscaled time == endtime");
+            Time.timeScale = 1f;
+            _isPaused = false;
+        }
 
     }
 
@@ -105,10 +122,12 @@ public class PauseManager : MonoBehaviour
 
     public void MainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
     public void Hub()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(3);
     }
 }
