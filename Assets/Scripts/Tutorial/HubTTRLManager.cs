@@ -116,7 +116,7 @@ public class HubTTRLManager : MonoBehaviour
         foreach (string line in _conversation.lines)
         {
             
-            if (line.StartsWith("Y"))
+            if (line.StartsWith("You're"))
             {
                 while (_void.alpha > 0f)
                 {
@@ -124,7 +124,7 @@ public class HubTTRLManager : MonoBehaviour
                     yield return null;
                 }
             }
-            if (line.StartsWith("W"))
+            if (line.StartsWith("You'll"))
             {
                 _speaker.text = "Skipper";
             }

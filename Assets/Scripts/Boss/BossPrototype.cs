@@ -239,7 +239,7 @@ public class BossPrototype : MonoBehaviour
         else
         {
             double x = ((double)percentageOfHealthLeft);
-            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = (float)(math.remap(0, 1, 1, 1.5, x));
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = (float)(math.remap(0, 1, 1.5, 1, x));
         }
         /*else if(percentageOfHealthLeft < 0.33f)
         {

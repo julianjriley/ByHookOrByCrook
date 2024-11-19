@@ -168,9 +168,9 @@ public class CatchRandomizer : MonoBehaviour
     {
         // Determine list of items to randomize within
         List<Item> items = new List<Item>(tier1Items);
-        if (GameManager.Instance.GamePersistent.RodLevel >= 2)
+        if (GameManager.Instance.GamePersistent.RodLevel >= 1)
             items.AddRange(tier2Items);
-        if (GameManager.Instance.GamePersistent.RodLevel >= 3)
+        if (GameManager.Instance.GamePersistent.RodLevel >= 2)
             items.AddRange(tier3Items);
 
         // Prevent infinite loop if player already has ALL possible items of this type
