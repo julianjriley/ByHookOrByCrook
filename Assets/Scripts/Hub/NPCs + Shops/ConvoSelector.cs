@@ -111,6 +111,7 @@ public class ConvoSelector : MonoBehaviour
 
         // If we get here, to the very end, without any conversation returned, we clear the Had booleans of ALL the 0 priorities
         // and just return the first one
+        markNoNewGenConvos();
         for(int l = 0; l < book.generalConvos.Count; l++)
         {
             if(book.generalConvos[l].GeneralPriority == 0)
@@ -139,19 +140,38 @@ public class ConvoSelector : MonoBehaviour
         }
     }
 
+    private void markNoNewGenConvos()
+    {
+        if (NPCharaType == NPCType.Rod)
+        {
+            GameManager.Instance.GamePersistent.AllConvosHadRod = true;
+        }
+        else if (NPCharaType == NPCType.Bait)
+        {
+            GameManager.Instance.GamePersistent.AllConvosHadBait = true;
+        }
+        else
+        {
+            GameManager.Instance.GamePersistent.AllConvosHadBag = true;
+        }
+    }
+
     private void clearIsConvoHad()
     {
         if (NPCharaType == NPCType.Rod)
         {
             GameManager.Instance.GamePersistent.IsConvoHadRod = new List<bool>();
+            GameManager.Instance.GamePersistent.AllConvosHadRod = false;
         }
         else if (NPCharaType == NPCType.Bait)
         {
             GameManager.Instance.GamePersistent.IsConvoHadBait = new List<bool>();
+            GameManager.Instance.GamePersistent.AllConvosHadBait = false;
         }
         else
         {
             GameManager.Instance.GamePersistent.IsConvoHadBag = new List<bool>();
+            GameManager.Instance.GamePersistent.AllConvosHadBag = false;
         }
     }
 

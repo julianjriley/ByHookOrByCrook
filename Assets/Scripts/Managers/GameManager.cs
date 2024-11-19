@@ -211,8 +211,11 @@ public class GameManager : MonoBehaviour
 
         // Hub related stats
         public List<bool> IsConvoHadRod;
+        public bool AllConvosHadRod;
         public List<bool> IsConvoHadBait;
+        public bool AllConvosHadBait;
         public List<bool> IsConvoHadBag;
+        public bool AllConvosHadBag;
 
         // Actual player settings
         public bool IsTutorialHub;  // Toggles for the 4 main sections of the tutorial
@@ -281,8 +284,11 @@ public class GameManager : MonoBehaviour
         newSaveData.IsBobber = false;
 
         newSaveData.IsConvoHadRod = new List<bool>();
+        newSaveData.AllConvosHadRod = false;
         newSaveData.IsConvoHadBait = new List<bool>();
+        newSaveData.AllConvosHadBait = false;
         newSaveData.IsConvoHadBag = new List<bool>();
+        newSaveData.AllConvosHadBag = false;
 
         newSaveData.IsTutorialHub = true;
         newSaveData.IsTutorialBait = true;

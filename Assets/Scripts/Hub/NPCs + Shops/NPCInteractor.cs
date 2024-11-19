@@ -9,6 +9,8 @@ public class NPCInteractor : Interactor
     [Header("NPC Interaction Variables")]
     [Tooltip("The text box that will show when the player is farther away from the NPC")]
     [SerializeField] private GameObject _cryerPrompt;
+    [Tooltip("The script for that text box")]
+    [SerializeField] private CryerPrompt _cryerScript;
     [Tooltip("The text box and text item that will be used for talking")]
     [SerializeField] private GameObject _convoBubble;
     [SerializeField] private TextMeshPro _convoText;
@@ -43,6 +45,7 @@ public class NPCInteractor : Interactor
     {
         _conversation = convo;
         _convoIndex = index;
+        _cryerScript.IsCurrentConvoHad = false;
     }
     private List<bool> getIsConvoHad()
     {
@@ -86,6 +89,8 @@ public class NPCInteractor : Interactor
         // Set up the conversation
         if (_convoIndex >= 0)
             getIsConvoHad()[_convoIndex] = true;
+        _cryerScript.IsCurrentConvoHad = true;
+
         foreach (string line in _conversation.lines)
         {
             isSkippingLine = false;
@@ -141,6 +146,27 @@ public class NPCInteractor : Interactor
         yield return new WaitUntil(() => !_interactAction.IsPressed()); // Make the player lift the button so they don't hold through
         yield return new WaitUntil(() => _interactAction.IsPressed());
         isSkippingLine = true;
+    }
+
+    public Conversation getSetConvo()
+    {
+        return _conversation;
+    }
+
+    public bool getNPCConvoExhausted()
+    {
+            if (GoodsSold == ShopType.Rod)
+            {
+                return GameManager.Instance.GamePersistent.AllConvosHadRod;
+            }
+            else if (GoodsSold == ShopType.WeaponBait)
+            {
+                return GameManager.Instance.GamePersistent.AllConvosHadBait;
+            }
+            else
+            {
+                return GameManager.Instance.GamePersistent.AllConvosHadBag;
+            }
     }
 
     #endregion
