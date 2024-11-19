@@ -29,7 +29,6 @@ public class ConvoSelector : MonoBehaviour
             for (int i = 0; i < fullConvoCount + 1; i++)
             {
                 getIsConvoHad().Add(false); // Fill it to the brim
-                Debug.Log(NPCharaType + " " + i);
             }
         }
 
