@@ -419,7 +419,7 @@ public class FishingControls : MonoBehaviour
 
                 // useful debugs for balancing
                 //Debug.Log("Casting Score: " + _castingScore + "  Reeling Score: " + _reelingScore);
-                Debug.Log("Score: " + combinedScore);
+                //Debug.Log("Score: " + combinedScore);
 
                 // actually catch fish
                 _catchRandomizer.CatchFish(combinedScore);

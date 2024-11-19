@@ -66,7 +66,7 @@ public class CatchRandomizer : MonoBehaviour
         // 0 score = max trash rate
         // 1 score = 0% trash rate
         float trashRate = math.remap(0, 1, maxRate, 0, score);
-        Debug.Log("Rate: " + trashRate);
+        
         // Determine Trash vs. Fish odds
         float random = UnityEngine.Random.Range(0f, 1f);
         // Junk
