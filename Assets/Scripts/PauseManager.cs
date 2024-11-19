@@ -15,7 +15,9 @@ public class PauseManager : MonoBehaviour
     [SerializeField]
     private GameObject _optionsMenu;
 
-    private InputActionAsset _actions;
+    private InputActionAsset actions;
+    private ActionControls _controls;
+    private PlayerCombat _player;
 
     // --------README--------
     // PauseMenuController MUST appear in all scenes for the sake of resetting the time scale.
@@ -23,9 +25,17 @@ public class PauseManager : MonoBehaviour
     // The solution right now is scuffed, but should be enough for the beta.
     // You will have to update the first IF statement conditions if you're adding MORE build scenes.
 
+    private void Awake()
+    {
+        actions = InputSystem.actions;
+       
+    }
+
     private void Start()
     {
+       // _controls = InputSystem.actions;
         _isPaused = false;
+        _player = FindAnyObjectByType<PlayerCombat>();
     }
     private void Update()
     {
@@ -59,16 +69,18 @@ public class PauseManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
-        
+        actions.Disable();
         _isPaused = true;
         _pauseMenu.SetActive(true);
         Debug.Log("disabling input");
 
     }
 
+
     public void Resume()
     {
         _pauseMenu.SetActive(false);
+        actions.Enable();
         StartCoroutine(Countdown());
 
     }
@@ -81,7 +93,7 @@ public class PauseManager : MonoBehaviour
         _isPaused = false;
 
         // STOPPED HERE 1:25pm 11/18
-        _actions.actionMaps[0].FindAction("FireWeapon");
+     //   _actions.actionMaps[0].FindAction("FireWeapon");
         yield return new WaitForSeconds(3);
 
     }
