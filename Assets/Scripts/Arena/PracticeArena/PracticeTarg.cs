@@ -20,7 +20,6 @@ public class PracticeTarg : MonoBehaviour
 
     public void GetHit()
     {
-        
         _anim.Play("Bobble", 0, 0);
     }
 }

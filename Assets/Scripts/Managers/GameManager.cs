@@ -189,6 +189,7 @@ public class GameManager : MonoBehaviour
         
         // Boss-related stats
         public int BossNumber;  // Whether the player is on the first, second, or third boss (0, 1, 2)
+        public int NPCBossNumber;
         public int LossCounter; // How many times you've lost to a boss (resets on victory)
 
         // Money
@@ -268,6 +269,7 @@ public class GameManager : MonoBehaviour
         
         newSaveData.BossNumber = 0;
         newSaveData.LossCounter = 0;
+        newSaveData.NPCBossNumber = 0;
 
         newSaveData.Gill = 0;
         newSaveData.BaitInventorySize = 3;
