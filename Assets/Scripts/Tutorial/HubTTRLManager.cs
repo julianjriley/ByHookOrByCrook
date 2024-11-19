@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 using FMODUnity;
@@ -60,6 +59,7 @@ public class HubTTRLManager : MonoBehaviour
         else
         {
             _tutorialView.SetActive(false);
+            GameManager.Instance.GamePersistent.IsTutorialCombat = false;
             this.gameObject.SetActive(false);
         }
     }

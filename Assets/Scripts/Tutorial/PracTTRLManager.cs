@@ -20,6 +20,10 @@ public class PracTTRLManager : MonoBehaviour
             _tutorialView.SetActive(true);
             _fightButton.SetActive(false);
         }
+        else
+        {
+            _tutorialView.SetActive(false);
+        }
     }
 
     // Update is called once per frame
