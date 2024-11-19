@@ -53,8 +53,9 @@ public class FishTTRLManager : MonoBehaviour
         _sign1.Play("Appear", 0, 0);    // Show how to hold and release, and then let them
         yield return new WaitUntil(() => _hasConfirmed);
         _sign1.Play("Disappear", 0, 0);
+        
+        yield return new WaitForSeconds(.5f);
         _void.SetActive(false);
-        yield return new WaitForSeconds(.25f);
         _fControls.SetTutorialCasting();
         yield return new WaitUntil(() => _hasCast);
         yield return new WaitForSeconds(1f);

@@ -105,83 +105,87 @@ public class FishingControls : MonoBehaviour
         // CONTROLS LOGIC
         if(_bobber.State == BobberBehavior.BobberState.Waiting) // ensure you can only cast once bobber has fully returned
         {
-            if (GameManager.Instance.GamePersistent.IsTutorialFish && _tutorialAllowedToReel) // If it's the tutorial
+            if (GameManager.Instance.GamePersistent.IsTutorialFish) // If it's the tutorial
             {
-                IsFishingLoopDone = !IsFishingLoopDone;
-                // start showing indicator and reset charge
-                if (_fishingClick && _isWaiting)
+                if (_tutorialAllowedToCast)
                 {
-                    // reset bar
-                    _currCharge = 0;
-                    _isIncreasing = true;
-                    _isWaiting = false;
-
-                    _castingIndicator.SetActive(true);
-
-                    _anim.SetTrigger("WindUp");
-                }
-                // holding down
-                else if (_fishingClick)
-                {
-                    if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstCastEvent)
+                    IsFishingLoopDone = !IsFishingLoopDone;
+                    // start showing indicator and reset charge
+                    if (_fishingClick && _isWaiting)
                     {
-                        onFirstCast?.Invoke();
-                        _firstCastEvent = true;
+                        // reset bar
+                        _currCharge = 0;
+                        _isIncreasing = true;
+                        _isWaiting = false;
+
+                        _castingIndicator.SetActive(true);
+
+                        _anim.SetTrigger("WindUp");
                     }
-                    if (_isIncreasing) // bar increasing
+                    // holding down
+                    else if (_fishingClick)
                     {
-                        _currCharge += _chargeRate * Time.deltaTime;
-
-                        // flip direction, if necessary
-                        if (_currCharge > 1)
+                        if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstCastEvent)
                         {
-                            _currCharge = 1;
-                            _isIncreasing = false;
+                            onFirstCast?.Invoke();
+                            _firstCastEvent = true;
                         }
-                    }
-                    else // bar decreasing
-                    {
-                        _currCharge -= _chargeRate * Time.deltaTime;
-
-                        // flip direction, if necessary
-                        if (_currCharge < 0)
+                        if (_isIncreasing) // bar increasing
                         {
-                            _currCharge = 0;
-                            _isIncreasing = true;
+                            _currCharge += _chargeRate * Time.deltaTime;
+
+                            // flip direction, if necessary
+                            if (_currCharge > 1)
+                            {
+                                _currCharge = 1;
+                                _isIncreasing = false;
+                            }
                         }
+                        else // bar decreasing
+                        {
+                            _currCharge -= _chargeRate * Time.deltaTime;
+
+                            // flip direction, if necessary
+                            if (_currCharge < 0)
+                            {
+                                _currCharge = 0;
+                                _isIncreasing = true;
+                            }
+                        }
+
+                        // UPDATE FILLING BAR
+                        // determine new fill bar scale
+                        Vector3 newBarScale = _fillBar.transform.localScale;
+                        newBarScale.x = math.remap(0, 1, 0, _initFillScaleX, _currCharge);
+
+                        // determine new fill bar pos (to keep indicator left-aligned)
+                        Vector3 newBarPos = _fillBar.transform.localPosition;
+                        float scaleDiff = _fillBar.transform.localScale.x - newBarScale.x;
+                        newBarPos.x = newBarPos.x - (scaleDiff / 2f);
+
+                        // set new fill bar values
+                        _fillBar.transform.localScale = newBarScale;
+                        _fillBar.transform.localPosition = newBarPos;
                     }
-
-                    // UPDATE FILLING BAR
-                    // determine new fill bar scale
-                    Vector3 newBarScale = _fillBar.transform.localScale;
-                    newBarScale.x = math.remap(0, 1, 0, _initFillScaleX, _currCharge);
-
-                    // determine new fill bar pos (to keep indicator left-aligned)
-                    Vector3 newBarPos = _fillBar.transform.localPosition;
-                    float scaleDiff = _fillBar.transform.localScale.x - newBarScale.x;
-                    newBarPos.x = newBarPos.x - (scaleDiff / 2f);
-
-                    // set new fill bar values
-                    _fillBar.transform.localScale = newBarScale;
-                    _fillBar.transform.localPosition = newBarPos;
-                }
-                // mouse released (launch bobber)
-                else if (!_fishingClick && _prevClick)
-                {
-                    // launch bobber
-                    _bobber.LaunchBobber(_currCharge);
-
-                    if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstBobEvent)
+                    // mouse released (launch bobber)
+                    else if (!_fishingClick && _prevClick)
                     {
-                        onFirstBobberLand?.Invoke();
-                        _firstBobEvent = true;
+                        // launch bobber
+                        _bobber.LaunchBobber(_currCharge);
+
+                        if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstBobEvent)
+                        {
+                            onFirstBobberLand?.Invoke();
+                            _firstBobEvent = true;
+                        }
+
+                        // TODO: make this fade out instead
+                        _castingIndicator.SetActive(false);
+
+                        _anim.SetTrigger("Cast");
                     }
-
-                    // TODO: make this fade out instead
-                    _castingIndicator.SetActive(false);
-
-                    _anim.SetTrigger("Cast");
                 }
+                
             }
             else
             {
