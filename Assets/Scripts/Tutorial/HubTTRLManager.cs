@@ -23,6 +23,7 @@ public class HubTTRLManager : MonoBehaviour
     [Header("NPCs")]
     [SerializeField] private GameObject _activeNPCs;
     [SerializeField] private GameObject _hidingNPCs;
+    [SerializeField] private BoxCollider2D _hubMusicTrigger;
 
     [Header("UI")]
     [SerializeField] private GameObject _tutorialView;
@@ -47,6 +48,7 @@ public class HubTTRLManager : MonoBehaviour
         if (GameManager.Instance.GamePersistent.IsTutorialHub)
         {
             _tutorialView.SetActive(true);
+            _hubMusicTrigger.enabled = false;
             _interactAction = InputSystem.actions.FindAction("Interact");
             _pMovement = _hubPlayer.GetComponent<HubMovement>();
 
