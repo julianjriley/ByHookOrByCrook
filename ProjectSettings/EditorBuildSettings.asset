@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/3_Beta/6_BETA_LoadoutSelection.unity
     guid: 7265d050fe61d9e40a23639cfbea5aaa
   - enabled: 1
+    path: Assets/Scenes/3_Beta/6.5PracTut.unity
+    guid: 9d3707af8fdd8184589fb9839acb486d
+  - enabled: 1
     path: Assets/Scenes/3_Beta/7-1_BETA_Boss1.unity
     guid: 9e96a5877645c0c4d8b5d0d1de0d8bfc
   - enabled: 1
@@ -80,7 +83,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/3_Beta/7-2_BETA_Boss2.unity
     guid: 1bdf1f3e9d5d10f4cab308a255930932
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TutorialImp/5_FishTut.unity
     guid: 99c217709ae7367479e848a4399d5e3b
   m_configObjects:

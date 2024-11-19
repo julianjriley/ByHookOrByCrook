@@ -65,6 +65,7 @@ public class LoadoutTTRLManager : MonoBehaviour
 
     public void PracButton()
     {
+        _bs.AddFish();
         SceneManager.LoadScene("6.5PracTut");
     }
 }
