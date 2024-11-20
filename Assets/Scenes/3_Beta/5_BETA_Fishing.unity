@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95501886}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.232, y: 0.357, z: 0}
+  m_LocalPosition: {x: 0.232, y: 0.488, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1355,8 +1355,8 @@ MonoBehaviour:
   _reelIndicator: {fileID: 1369762304}
   _shrinkingRing: {fileID: 2125606062}
   _totalShrinkTime: 2
-  _perfectScale: 0.955
-  _perfectThreshold: 0.045
+  _perfectScale: 0.95
+  _perfectThreshold: 0.05
   _failureThreshold: 0.15
   _reelingPopup: {fileID: 95501888}
 --- !u!114 &801297451
@@ -2752,7 +2752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1369762305
 Transform:
   m_ObjectHideFlags: 0
