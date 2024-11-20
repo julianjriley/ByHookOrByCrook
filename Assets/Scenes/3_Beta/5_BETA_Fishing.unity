@@ -1980,8 +1980,8 @@ MonoBehaviour:
   _minXPos: 0.8
   _maxXPos: 3.4
   _bobber: {fileID: 1030159169}
-  _maxPerfectDistance: 0.25
-  _maxFailureDistance: 0.8
+  _maxPerfectDistance: 0.2
+  _maxFailureDistance: 0.65
 --- !u!95 &947386214
 Animator:
   serializedVersion: 5
