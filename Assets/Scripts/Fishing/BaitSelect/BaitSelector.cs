@@ -59,7 +59,7 @@ public class BaitSelector : MonoBehaviour
 
             // update lock visual
             if(barrelScript.BaitType != GameManager.BaitType.Default)
-                barrelScript.SetLockVisual(!button.interactable);
+                barrelScript.SetLocked(!button.interactable);
         }
     }
 
