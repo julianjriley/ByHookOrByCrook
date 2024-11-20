@@ -83,21 +83,51 @@ public class BaitSelector : MonoBehaviour
             throw new System.Exception("Error: attempting to remove a selected bait when all are already removed.");
     }
 
+    #region SCENE TRANSITIONS
+    [Header("Scene Transitions")]
+    [SerializeField, Tooltip("Name of hub scene to transition back to.")]
+    private string _hubSceneName;
+    [SerializeField, Tooltip("Name of fishing scene to transition to.")]
+    private string _fishingSceneName;
+    [SerializeField, Tooltip("Game object to be activated for confirming bait selection when all slots are not full.")]
+    private GameObject _confirmationPopup;
+
     /// <summary>
-    /// Simple scene transition
+    /// Simple scene transition back to hub
     /// </summary>
-    public void BackToHub(string sceneName)
+    public void BackToHub()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(_hubSceneName);
+    }
+
+    /// <summary>
+    /// Continues if bait slots are full. Otherwise, brings up Confirmation Popup.
+    /// </summary>
+    public void TryContinueToFishing()
+    {
+        // continue if slots are full
+        if (_remainingBaitSlots == 0)
+            ContinueToFishing();
+        // confirm popup
+        else
+        {
+            _confirmationPopup.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Used to go back from the confirmation popup menu
+    /// </summary>
+    public void CancelConfirmationPopup()
+    {
+        _confirmationPopup.SetActive(false);
     }
 
     /// <summary>
     /// Handles properly uploading finalized bait data to game manager, then loads next scene
     /// </summary>
-    public void ContinueToFishing(string sceneName)
+    public void ContinueToFishing()
     {
-        // TODO: Confirmation popup if player is attempting to continue without filling all of their bait slots
-
         // Add selected baits to GameManager
         SelectedBait[] selectedBaits = SelectedBaitParent.GetComponentsInChildren<SelectedBait>();
         foreach (SelectedBait bait in selectedBaits)
@@ -105,7 +135,7 @@ public class BaitSelector : MonoBehaviour
         SoundManager.Instance.CleanUp(); //stops the music
 
         // Load fishing scene
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(_fishingSceneName);
     }
 
     /// <summary>
@@ -115,4 +145,5 @@ public class BaitSelector : MonoBehaviour
     {
         return GameManager.Instance.GamePersistent.BaitInventorySize - _remainingBaitSlots;
     }
+    #endregion
 }

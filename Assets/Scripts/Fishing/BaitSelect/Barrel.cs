@@ -55,6 +55,9 @@ public class Barrel : MonoBehaviour
 
             // one less slot that can be filled
             _baitSelector.DecreaseRemainingBaitSlots();
+
+            // clicking a barrel will automatically close the confirmation popup
+            _baitSelector.CancelConfirmationPopup();
         }
         else
         {
