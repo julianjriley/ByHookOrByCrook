@@ -600,7 +600,7 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 0
   sourceProjectPath: 
-  sourceBankPath: Assets/FMOD Banks/Desktop
+  sourceBankPath: Assets/FMOD Banks
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -623,11 +623,8 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Desktop/Master
-  - Desktop/Master
   Banks:
   - Desktop/Music
-  - Desktop/Music
-  - Desktop/SFX
   - Desktop/SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
