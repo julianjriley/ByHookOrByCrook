@@ -8,6 +8,7 @@ public class EffectData
     public enum EffectType { POISON, DEFENSEDOWN, SLOW};
     public EffectType type;
     public float effectStrength;
+    public GameObject effectVisual;
 
     public EffectData(EffectType _type, float _effectStrength)
     {

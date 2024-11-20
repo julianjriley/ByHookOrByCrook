@@ -28,7 +28,7 @@ public class PoisonEffect : MonoBehaviour
         _entitySpriteRenderer.color = Color.green;
         for(int i = 0; i < 5; i++)
         {
-            _entity.TakeDamage(_damage);
+            _entity.TakeDamage(_damage, false);
             yield return new WaitForSeconds(_repeatInterval);
         }
         _entitySpriteRenderer.color = Color.white;

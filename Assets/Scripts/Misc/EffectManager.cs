@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class EffectManager : MonoBehaviour 
 {
     IDamageable _entity;
-    public int poisonCounter;
+    public int poisonCounter = 0;
     SpriteRenderer _spriteRenderer;
 
     private void Start()
@@ -20,23 +21,26 @@ public class EffectManager : MonoBehaviour
         switch (effectData.type)
         {
             case EffectData.EffectType.POISON:
-                StartCoroutine(TakePoisonDamage(effectData.effectStrength));
+                if (poisonCounter > 3)
+                    break;
+                StartCoroutine(TakePoisonDamage(effectData));
                 break;
         }
 
     }
 
-    IEnumerator TakePoisonDamage(float damage)
+    IEnumerator TakePoisonDamage(EffectData effectData)
     {
-        if (poisonCounter > 0)
-            yield break;
+        GameObject poisonVisual = Instantiate(effectData.effectVisual, gameObject.transform);
         poisonCounter += 1;
-        for (int i = 0; i < 7; i++)
+        _spriteRenderer.color = new Color((255f - 85f * poisonCounter)/255f, 1, (255f - 85f * poisonCounter)/255f);
+        for (int i = 0; i < 14; i++)
         {
-            _entity.TakeDamage(damage);
-            yield return new WaitForSeconds(damage);
+            yield return new WaitForSeconds(0.5f);
+            _entity.TakeDamage(effectData.effectStrength, true);
         }
-
-        poisonCounter -= 0; 
+        Destroy(poisonVisual);
+        poisonCounter -= 1;
+        _spriteRenderer.color = new Color((255f - 85f * poisonCounter) / 255f, 1, (255f - 85f * poisonCounter) / 255f);
     }
 }

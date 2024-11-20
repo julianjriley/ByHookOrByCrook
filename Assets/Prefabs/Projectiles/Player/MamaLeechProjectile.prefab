@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab2122e903c1d74485b5dc39bc106df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 3
+  _damage: 0.8
   _baseDamage: 0
   _size: 1
   _speed: 1
@@ -110,7 +110,8 @@ MonoBehaviour:
   _startTime: 1
   _effectData:
     type: 0
-    effectStrength: 2
+    effectStrength: 1
+    effectVisual: {fileID: 7268858134994037512, guid: b5aa0588aa3bd4a48b4054296e855e25, type: 3}
   _renderer: {fileID: 2830727031234648781}
 --- !u!136 &4069988502811610014
 CapsuleCollider:

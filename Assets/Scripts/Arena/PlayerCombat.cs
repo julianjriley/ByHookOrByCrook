@@ -235,7 +235,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private void Update()
     {
         mousePosition = Mouse.current.position.ReadValue();
-        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 16.745f));
+        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, -cam.transform.position.z));
         if(_equippedWeapon != null)
             _equippedWeapon.SetAim(weaponDirection);
         if (worldPos.x < gameObject.transform.position.x)
@@ -301,7 +301,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     }
 
     //the damage parameter can be ignored here its just how the interfacing works to make things easier
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool dontUseSound = false)
     {
         if (_invulnerable)
             return;
@@ -415,6 +415,16 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     {
         GetComponent<EffectManager>().PassEffect(effectData);
     }
+
+#if UNITY_EDITOR
+    private void OnApplicationQuit()
+    {
+        foreach(Weapon weapon in testWeapons)
+        {
+            weapon.ResetStats();
+        }
+    }
+#endif
 
     #region Zombie Mode Code
 

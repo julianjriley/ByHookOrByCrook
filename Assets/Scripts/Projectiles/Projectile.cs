@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour, IDamageable
         shortRangeDamage = _playerCombat.useShortRangeDamage;
     }
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage, bool dontUseSound = false)
     {
         _health -= damage;
         if(_health <= 0)
@@ -75,7 +75,7 @@ public class Projectile : MonoBehaviour, IDamageable
     {
         if(collider.TryGetComponent<IDamageable>(out IDamageable component))
         {
-            component.TakeDamage(_damage);
+            component.TakeDamage(_damage, false);
             if(collider.gameObject.layer == LayerMask.NameToLayer("Player") || collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
                 Destroy(gameObject);
         }
@@ -90,7 +90,7 @@ public class Projectile : MonoBehaviour, IDamageable
     {
         if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable component))
         {
-            component.TakeDamage(_damage);
+            component.TakeDamage(_damage, false);
             if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
                 Destroy(gameObject);
         }

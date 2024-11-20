@@ -23,7 +23,7 @@ public class MamaLeechProjectile : Projectile
     {
         if (collider.TryGetComponent<IDamageable>(out IDamageable component))
         {
-            component.TakeDamage(_damage);
+            component.TakeDamage(_damage, false);
             component.PassEffect(_effectData);
             if (collider.gameObject.layer == LayerMask.NameToLayer("Player") || collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
                 Destroy(gameObject);
@@ -39,7 +39,7 @@ public class MamaLeechProjectile : Projectile
     {
         if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable component))
         {
-            component.TakeDamage(_damage);
+            component.TakeDamage(_damage, false);
             if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
                 Destroy(gameObject);
         }
@@ -53,7 +53,7 @@ public class MamaLeechProjectile : Projectile
         if (_damageDealt <= _maxDamage)
         {
             _damageDealt += _damage;
-            _bossCollider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            _bossCollider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
             InvokeRepeating("ApplyPoison", _startTime, _repeatTime);
         }
         else
@@ -67,7 +67,7 @@ public class MamaLeechProjectile : Projectile
         if (_damageDealt <= _maxDamage)
         {
             _damageDealt += _damage;
-            _bossCollision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            _bossCollision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
             InvokeRepeating("ApplyPoisonCollision", _startTime, _repeatTime);
         }
         else

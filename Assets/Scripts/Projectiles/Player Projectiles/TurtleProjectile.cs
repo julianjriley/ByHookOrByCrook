@@ -48,7 +48,7 @@ public class TurtleProjectile : Projectile
         // apply damage to boss normally
         if (collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
 
             DestroyOrDisable();
         }
@@ -67,7 +67,7 @@ public class TurtleProjectile : Projectile
         // apply damage to boss normally
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
 
             DestroyOrDisable();
         }

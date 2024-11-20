@@ -20,7 +20,7 @@ public class PracticeTarg : MonoBehaviour, IDamageable
     }
 
     //Damage parameter is useless here but helps interfaces
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool dontUseSound = false)
     {
         
         _anim.Play("Bobble", 0, 0);

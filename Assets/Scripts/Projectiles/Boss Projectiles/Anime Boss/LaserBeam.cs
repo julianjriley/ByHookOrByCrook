@@ -44,19 +44,19 @@ public class LaserBeam : Projectile
     {
         if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collider.gameObject.GetComponent<PlayerCombat>().TakeDamage(2);
+            collider.gameObject.GetComponent<PlayerCombat>().TakeDamage(2, false);
             // Colliding with the player does not destroy the laser
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
             Destroy(gameObject);
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collider.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
         {
-            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
         }
 
         if (_health <= 0)
@@ -70,19 +70,19 @@ public class LaserBeam : Projectile
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<PlayerCombat>().TakeDamage(2);
+            collision.gameObject.GetComponent<PlayerCombat>().TakeDamage(2, false);
             // Colliding with the player does not destroy the laser
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
             Destroy(gameObject);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
         {
-            collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+            collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
         }
 
         if (_health <= 0)
