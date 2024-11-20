@@ -13,6 +13,7 @@ public class NPCInteractor : Interactor
     [SerializeField] private CryerPrompt _cryerScript;
     [Tooltip("The text box and text item that will be used for talking")]
     [SerializeField] private GameObject _convoBubble;
+    [SerializeField] private GameObject _newConvoNotif;
     [SerializeField] private TextMeshPro _convoText;
     private Conversation _conversation;
     private int _convoIndex;
@@ -30,6 +31,7 @@ public class NPCInteractor : Interactor
     new void Start()
     {
         base.Start();
+        _newConvoNotif.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,6 +41,29 @@ public class NPCInteractor : Interactor
         {
           StartCoroutine(DoInteractionNPC());
         }
+
+
+        if (!getIsConvoHad()[_convoIndex])
+        {
+            if (getSetConvo().GeneralPriority == 0 && !getNPCConvoExhausted())
+            {
+                _newConvoNotif.SetActive(true);
+            }
+            else if (getSetConvo().GeneralPriority != 0 || getSetConvo().RequiredBossLossCount != 0)
+            {
+                _newConvoNotif.SetActive(true);
+            }
+            else
+            {
+                _newConvoNotif.SetActive(false);
+            }
+        }
+        else
+        {
+            _newConvoNotif.SetActive(false);
+        }
+
+
     }
 
     public void SetConversation(Conversation convo, int index)

@@ -12,6 +12,7 @@ public class LoadoutTTRLManager : MonoBehaviour
     [SerializeField] private GameObject _fightButton;
     [SerializeField] private GameObject _practiceButton;
     [SerializeField] private GameObject _foregroundScreen;
+    [SerializeField] private GameObject _caughtFishParent;
 
     [Header("Loadout Selector")]
     [SerializeField] private LoadoutSelection _bs;
@@ -34,7 +35,7 @@ public class LoadoutTTRLManager : MonoBehaviour
     {
         if (GameManager.Instance.GamePersistent.IsTutorialCombat)
         {
-            if (_bs.GetCurrentLoadoutSize() == GameManager.Instance.GamePersistent.BattleInventorySize)
+            if (_bs.GetCurrentLoadoutSize() == GameManager.Instance.GamePersistent.BattleInventorySize || _caughtFishParent.transform.childCount == 0)
             {
                 _practiceButton.SetActive(true);
             }
