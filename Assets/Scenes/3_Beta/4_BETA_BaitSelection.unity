@@ -1453,6 +1453,7 @@ MonoBehaviour:
   _hubSceneName: 3_BETA_Hub
   _fishingSceneName: 5_BETA_Fishing
   _confirmationPopup: {fileID: 10051123}
+  _continueButton: {fileID: 1448079814}
 --- !u!1 &915542088
 GameObject:
   m_ObjectHideFlags: 0
@@ -3333,7 +3334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1448079815
 RectTransform:
   m_ObjectHideFlags: 0
