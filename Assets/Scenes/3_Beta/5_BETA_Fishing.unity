@@ -1359,6 +1359,9 @@ MonoBehaviour:
   _perfectThreshold: 0.05
   _failureThreshold: 0.15
   _reelingPopup: {fileID: 95501888}
+  _perfectScaleAccessibility: 0.91
+  _perfectThresholdAccessibility: 0.09
+  _failureThresholdAccessibility: 0.35
 --- !u!114 &801297451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,7 +1375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxTrashRate: 0.75
-  _maxAccessibilityTrashRate: 0.4
+  _maxAccessibilityTrashRate: 0.5
   _specialBaitWeighting: 0.5
   _tier1Weapons:
   - {fileID: 11400000, guid: 8e44b83933400354fb8bcc92f28a9c67, type: 2}
@@ -2530,6 +2533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1231716279}
   - component: {fileID: 1231716280}
+  - component: {fileID: 1231716281}
   m_Layer: 0
   m_Name: Goal Circle
   m_TagString: Untagged
@@ -2606,6 +2610,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1231716281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231716278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004e52b00f8116b41a9efd89c4cd0b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shrinkingCircleImage: {fileID: 1231716280}
+  _innerBorderImage: {fileID: 463331141}
+  _outerBorderImage: {fileID: 359562261}
+  _thickerSprite: {fileID: 21300000, guid: fd7a0e8655b34434ca180363ad98e2c5, type: 3}
+  _thickSprite: {fileID: 21300000, guid: f256495aa6da4fe44a5bc65b96b5d8c5, type: 3}
 --- !u!1 &1308870640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3901,8 +3922,8 @@ Transform:
   m_GameObject: {fileID: 2125606062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2.352941}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 655572513}
   - {fileID: 136375461}

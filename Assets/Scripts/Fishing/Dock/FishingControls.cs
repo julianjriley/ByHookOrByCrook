@@ -321,6 +321,15 @@ public class FishingControls : MonoBehaviour
     [SerializeField, Tooltip("Used for indicating performance of reeling task")]
     private PerformancePopup _reelingPopup;
 
+    [Header("Accessibility")]
+    [SerializeField, Tooltip("Accessibility ideal scale for shrinking ring to match the outer edge of the goal circle.")]
+    private float _perfectScaleAccessibility;
+    [SerializeField, Tooltip("Accessibility distance from perfect scale that still counts as a perfect score.")]
+    private float _perfectThresholdAccessibility;
+    [SerializeField, Tooltip("Accessibility distance from perfect scale at which score becomes a max failure.")]
+    private float _failureThresholdAccessibility;
+
+
     private float _reelingTimer;
     private Vector3 _initialShrinkingRingScale;
     private float _currentShrinkingScale = 0;
@@ -384,6 +393,10 @@ public class FishingControls : MonoBehaviour
             // Assign reeling score (either when the player clicks OR waits too long)
             if(_fishingClick || _reelingTimer <= 0)
             {
+                float perfectScale = GameManager.Instance.GamePersistent.IsBobber ? _perfectScaleAccessibility : _perfectScale;
+                float perfectThreshold = GameManager.Instance.GamePersistent.IsBobber ? _perfectThresholdAccessibility : _perfectThreshold;
+                float failureThreshold = GameManager.Instance.GamePersistent.IsBobber ? _failureThresholdAccessibility : _failureThreshold;
+
                 // no click was ever made - default to max fail
                 if (_reelingTimer <= 0)
                 {
@@ -391,33 +404,33 @@ public class FishingControls : MonoBehaviour
                     _reelingPopup.PopUp(1); // late
                 }
                 // max failure (very early)
-                else if (_currentShrinkingScale > _perfectScale + _failureThreshold)
+                else if (_currentShrinkingScale > perfectScale + failureThreshold)
                 {
                     _reelingScore = 0;
                     _reelingPopup.PopUp(-1); // early
                 }
                 // max failure (very late)
-                else if (_currentShrinkingScale < _perfectScale - _failureThreshold)
+                else if (_currentShrinkingScale < perfectScale - failureThreshold)
                 {
                     _reelingScore = 0;
                     _reelingPopup.PopUp(1); // late
                 }
                 // perfect success (close to perfect scale)
-                else if (_currentShrinkingScale > _perfectScale - _perfectThreshold && _currentShrinkingScale < _perfectScale + _perfectThreshold)
+                else if (_currentShrinkingScale > perfectScale - perfectThreshold && _currentShrinkingScale < perfectScale + perfectThreshold)
                 {
                     _reelingScore = 1;
                     _reelingPopup.PopUp(0); // perfect
                 }
                 // slightly early click (score between 0 and 1)
-                else if (_currentShrinkingScale > _perfectScale)
+                else if (_currentShrinkingScale > perfectScale)
                 {
-                    _reelingScore = math.remap(_perfectScale + _failureThreshold, _perfectScale + _perfectThreshold, 0, 1, _currentShrinkingScale);
+                    _reelingScore = math.remap(perfectScale + failureThreshold, perfectScale + perfectThreshold, 0, 1, _currentShrinkingScale);
                     _reelingPopup.PopUp(999); // close
                 }
                 // slightly late click (score between 0 and 1)
-                else if (_currentShrinkingScale < _perfectScale)
+                else if (_currentShrinkingScale < perfectScale)
                 {
-                    _reelingScore = math.remap(_perfectScale - _failureThreshold, _perfectScale - _perfectThreshold, 0, 1, _currentShrinkingScale);
+                    _reelingScore = math.remap(perfectScale - failureThreshold, perfectScale - perfectThreshold, 0, 1, _currentShrinkingScale);
                     _reelingPopup.PopUp(999); // close
                 }
 
