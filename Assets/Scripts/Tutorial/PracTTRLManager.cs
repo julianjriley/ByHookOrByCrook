@@ -23,6 +23,7 @@ public class PracTTRLManager : MonoBehaviour
         else
         {
             _tutorialView.SetActive(false);
+            this.gameObject.SetActive(false);
         }
     }
 

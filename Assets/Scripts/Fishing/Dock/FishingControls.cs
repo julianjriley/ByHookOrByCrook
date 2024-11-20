@@ -98,86 +98,171 @@ public class FishingControls : MonoBehaviour
     private bool _firstBobEvent = false;
     public bool IsFishingLoopDone = false;
 
+    private bool _tutorialAllowedToCast = false;
+
     private void HandleCastingControls()
     {
         // CONTROLS LOGIC
         if(_bobber.State == BobberBehavior.BobberState.Waiting) // ensure you can only cast once bobber has fully returned
         {
-            IsFishingLoopDone = !IsFishingLoopDone;
-            // start showing indicator and reset charge
-            if (_fishingClick && _isWaiting)
+            if (GameManager.Instance.GamePersistent.IsTutorialFish) // If it's the tutorial
             {
-                // reset bar
-                _currCharge = 0;
-                _isIncreasing = true;
-                _isWaiting = false;
-
-                _castingIndicator.SetActive(true);
-
-                _anim.SetTrigger("WindUp");
-            }
-            // holding down
-            else if (_fishingClick)
-            {
-                if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstCastEvent)
+                if (_tutorialAllowedToCast)
                 {
-                    onFirstCast?.Invoke();
-                    _firstCastEvent = true;
-                }
-                if (_isIncreasing) // bar increasing
-                {
-                    _currCharge += _chargeRate * Time.deltaTime;
-
-                    // flip direction, if necessary
-                    if (_currCharge > 1)
+                    IsFishingLoopDone = !IsFishingLoopDone;
+                    // start showing indicator and reset charge
+                    if (_fishingClick && _isWaiting)
                     {
-                        _currCharge = 1;
-                        _isIncreasing = false;
-                    }
-                }
-                else // bar decreasing
-                {
-                    _currCharge -= _chargeRate * Time.deltaTime;
-
-                    // flip direction, if necessary
-                    if (_currCharge < 0)
-                    {
+                        // reset bar
                         _currCharge = 0;
                         _isIncreasing = true;
+                        _isWaiting = false;
+
+                        _castingIndicator.SetActive(true);
+
+                        _anim.SetTrigger("WindUp");
+                    }
+                    // holding down
+                    else if (_fishingClick)
+                    {
+                        if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstCastEvent)
+                        {
+                            onFirstCast?.Invoke();
+                            _firstCastEvent = true;
+                        }
+                        if (_isIncreasing) // bar increasing
+                        {
+                            _currCharge += _chargeRate * Time.deltaTime;
+
+                            // flip direction, if necessary
+                            if (_currCharge > 1)
+                            {
+                                _currCharge = 1;
+                                _isIncreasing = false;
+                            }
+                        }
+                        else // bar decreasing
+                        {
+                            _currCharge -= _chargeRate * Time.deltaTime;
+
+                            // flip direction, if necessary
+                            if (_currCharge < 0)
+                            {
+                                _currCharge = 0;
+                                _isIncreasing = true;
+                            }
+                        }
+
+                        // UPDATE FILLING BAR
+                        // determine new fill bar scale
+                        Vector3 newBarScale = _fillBar.transform.localScale;
+                        newBarScale.x = math.remap(0, 1, 0, _initFillScaleX, _currCharge);
+
+                        // determine new fill bar pos (to keep indicator left-aligned)
+                        Vector3 newBarPos = _fillBar.transform.localPosition;
+                        float scaleDiff = _fillBar.transform.localScale.x - newBarScale.x;
+                        newBarPos.x = newBarPos.x - (scaleDiff / 2f);
+
+                        // set new fill bar values
+                        _fillBar.transform.localScale = newBarScale;
+                        _fillBar.transform.localPosition = newBarPos;
+                    }
+                    // mouse released (launch bobber)
+                    else if (!_fishingClick && _prevClick)
+                    {
+                        // launch bobber
+                        _bobber.LaunchBobber(_currCharge);
+
+                        
+
+                        // TODO: make this fade out instead
+                        _castingIndicator.SetActive(false);
+
+                        _anim.SetTrigger("Cast");
                     }
                 }
-
-                // UPDATE FILLING BAR
-                // determine new fill bar scale
-                Vector3 newBarScale = _fillBar.transform.localScale;
-                newBarScale.x = math.remap(0, 1, 0, _initFillScaleX, _currCharge);
-
-                // determine new fill bar pos (to keep indicator left-aligned)
-                Vector3 newBarPos = _fillBar.transform.localPosition;
-                float scaleDiff = _fillBar.transform.localScale.x - newBarScale.x;
-                newBarPos.x = newBarPos.x - (scaleDiff / 2f);
-
-                // set new fill bar values
-                _fillBar.transform.localScale = newBarScale;
-                _fillBar.transform.localPosition = newBarPos;
+                
             }
-            // mouse released (launch bobber)
-            else if (!_fishingClick && _prevClick)
+            else
             {
-                // launch bobber
-                _bobber.LaunchBobber(_currCharge);
-
-                if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstBobEvent)
+                IsFishingLoopDone = !IsFishingLoopDone;
+                // start showing indicator and reset charge
+                if (_fishingClick && _isWaiting)
                 {
-                    onFirstBobberLand?.Invoke();
-                    _firstBobEvent = true;
+                    // reset bar
+                    _currCharge = 0;
+                    _isIncreasing = true;
+                    _isWaiting = false;
+
+                    _castingIndicator.SetActive(true);
+
+                    _anim.SetTrigger("WindUp");
                 }
+                // holding down
+                else if (_fishingClick)
+                {
+                    if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstCastEvent)
+                    {
+                        onFirstCast?.Invoke();
+                        _firstCastEvent = true;
+                    }
+                    if (_isIncreasing) // bar increasing
+                    {
+                        _currCharge += _chargeRate * Time.deltaTime;
 
-                // TODO: make this fade out instead
-                _castingIndicator.SetActive(false);
+                        // flip direction, if necessary
+                        if (_currCharge > 1)
+                        {
+                            _currCharge = 1;
+                            _isIncreasing = false;
+                        }
+                    }
+                    else // bar decreasing
+                    {
+                        _currCharge -= _chargeRate * Time.deltaTime;
 
-                _anim.SetTrigger("Cast");
+                        // flip direction, if necessary
+                        if (_currCharge < 0)
+                        {
+                            _currCharge = 0;
+                            _isIncreasing = true;
+                        }
+                    }
+
+                    // UPDATE FILLING BAR
+                    // determine new fill bar scale
+                    Vector3 newBarScale = _fillBar.transform.localScale;
+                    newBarScale.x = math.remap(0, 1, 0, _initFillScaleX, _currCharge);
+
+                    // determine new fill bar pos (to keep indicator left-aligned)
+                    Vector3 newBarPos = _fillBar.transform.localPosition;
+                    float scaleDiff = _fillBar.transform.localScale.x - newBarScale.x;
+                    newBarPos.x = newBarPos.x - (scaleDiff / 2f);
+
+                    // set new fill bar values
+                    _fillBar.transform.localScale = newBarScale;
+                    _fillBar.transform.localPosition = newBarPos;
+                }
+                // mouse released (launch bobber)
+                else if (!_fishingClick && _prevClick)
+                {
+                    // launch bobber
+                    _bobber.LaunchBobber(_currCharge);
+
+                    if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstBobEvent)
+                    {
+                        onFirstBobberLand?.Invoke();
+                        _firstBobEvent = true;
+                    }
+
+                    // TODO: make this fade out instead
+                    _castingIndicator.SetActive(false);
+
+                    _anim.SetTrigger("Cast");
+                }
             }
+
+            
         }
         
         // transition to reeling controls once bobber hits the water (enters bobbing)
@@ -203,6 +288,11 @@ public class FishingControls : MonoBehaviour
         }
 
         _prevClick = _fishingClick;
+    }
+
+    public void SetTutorialCasting()
+    {
+        _tutorialAllowedToCast = true;
     }
     #endregion
 
@@ -245,6 +335,11 @@ public class FishingControls : MonoBehaviour
         {
             if (GameManager.Instance.GamePersistent.IsTutorialFish)
             {
+                if (!_firstBobEvent)
+                {
+                    onFirstBobberLand?.Invoke();
+                    _firstBobEvent = true;
+                }
                 if (_tutorialAllowedToReel)
                 {
                     if (_fishBiteTimer < 0)
@@ -325,7 +420,7 @@ public class FishingControls : MonoBehaviour
 
                 // useful debugs for balancing
                 //Debug.Log("Casting Score: " + _castingScore + "  Reeling Score: " + _reelingScore);
-                Debug.Log("Score: " + combinedScore);
+                //Debug.Log("Score: " + combinedScore);
 
                 // actually catch fish
                 _catchRandomizer.CatchFish(combinedScore);

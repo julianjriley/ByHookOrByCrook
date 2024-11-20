@@ -34,6 +34,17 @@ public class Cashout : MonoBehaviour
         fishName = Fish.transform.Find("FishNameBackground/FishName").GetComponent<TextMeshProUGUI>();
         fishAmount = Fish.transform.Find("FishNameBackground/MoneyBackground/FishAmount").GetComponent<TextMeshProUGUI>();
         fishImage = Fish.transform.Find("FishImage").GetComponent<Image>();
+
+        // For the NPCs
+        if(BossBounty < 2)
+        {
+            GameManager.Instance.GamePersistent.LossCounter += 1;
+        }
+        else
+        {
+            GameManager.Instance.GamePersistent.LossCounter = 0;
+        }
+        
         
         //Debug.Log(GameManager.Instance.ScenePersistent.Loadout.Count + " FISH AMOUNT");
         foreach(Item item in GameManager.Instance.ScenePersistent.CaughtFish)

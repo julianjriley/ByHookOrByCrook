@@ -20,7 +20,7 @@ public class Interactor : MonoBehaviour
     [Tooltip("The prompt to interact with the object (press E)")]
     [SerializeField] protected GameObject _interactPrompt;
 
-    public enum ShopType { Rod, BaitSpace, BagSpace, WeaponBait, AttackBait, MovementBait, SupportBait, Skipper, Bobber };
+    public enum ShopType { Rod, BaitSpace, BagSpace, WeaponBait, AttackBait, MovementBait, SupportBait, Skipper, Bobber, Nothing };
     public ShopType GoodsSold;
 
     protected bool _isActiveCoroutine;
