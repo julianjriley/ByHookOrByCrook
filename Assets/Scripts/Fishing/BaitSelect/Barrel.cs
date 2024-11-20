@@ -16,6 +16,8 @@ public class Barrel : MonoBehaviour
     private GameObject _selectedBaitPrefab;
     [SerializeField, Tooltip("used to enable or disable the lock sprite.")]
     private GameObject _lock;
+    [SerializeField, Tooltip("Used to trigger unable to select animation.")]
+    private Animator _anim;
 
     private Button _barrelButton;
 
@@ -58,10 +60,14 @@ public class Barrel : MonoBehaviour
 
             // clicking a barrel will automatically close the confirmation popup
             _baitSelector.CancelConfirmationPopup();
+
+            // TODO: play select bait audio
         }
         else
         {
-            // TODO: some visual/audio feedback for being unable to add any more bait
+            _anim.SetTrigger("Shake");
+
+            // TODO: play negative feedback audio
         }
     }
 
@@ -76,8 +82,6 @@ public class Barrel : MonoBehaviour
             _baitSelector.LockedTooltip.transform.position = transform.position + Vector3.down * _tooltipOffset;
             _baitSelector.LockedTooltip.SetActive(true);
         }
-
-        // TODO: Visual indicator (i.e. shake?) that selected item can be picked
     }
 
     /// <summary>

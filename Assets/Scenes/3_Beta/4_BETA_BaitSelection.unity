@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 49326656}
   - component: {fileID: 49326655}
   - component: {fileID: 49326658}
+  - component: {fileID: 49326661}
   - component: {fileID: 49326659}
   - component: {fileID: 49326660}
   m_Layer: 5
@@ -328,6 +329,7 @@ MonoBehaviour:
   _baitSelector: {fileID: 877972556}
   _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
   _lock: {fileID: 926991202}
+  _anim: {fileID: 49326661}
   BaitType: 3
   _tooltipOffset: 5.5
 --- !u!114 &49326659
@@ -402,6 +404,27 @@ MonoBehaviour:
       Data4: 0
     Path: 
   thisButton: {fileID: 0}
+--- !u!95 &49326661
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49326653}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5aa6e671aa2b3dc41a48e281bc2e3aa2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &97118868
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +438,7 @@ GameObject:
   - component: {fileID: 97118871}
   - component: {fileID: 97118870}
   - component: {fileID: 97118873}
+  - component: {fileID: 97118874}
   m_Layer: 5
   m_Name: Basic Bait
   m_TagString: Untagged
@@ -563,8 +587,30 @@ MonoBehaviour:
   _baitSelector: {fileID: 877972556}
   _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
   _lock: {fileID: 0}
+  _anim: {fileID: 97118874}
   BaitType: 0
   _tooltipOffset: 5.5
+--- !u!95 &97118874
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97118868}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5aa6e671aa2b3dc41a48e281bc2e3aa2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &235568628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,6 +1798,7 @@ GameObject:
   - component: {fileID: 932572946}
   - component: {fileID: 932572945}
   - component: {fileID: 932572948}
+  - component: {fileID: 932572951}
   - component: {fileID: 932572949}
   - component: {fileID: 932572950}
   m_Layer: 5
@@ -1904,6 +1951,7 @@ MonoBehaviour:
   _baitSelector: {fileID: 877972556}
   _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
   _lock: {fileID: 915542088}
+  _anim: {fileID: 932572951}
   BaitType: 2
   _tooltipOffset: 5.5
 --- !u!114 &932572949
@@ -1978,6 +2026,27 @@ MonoBehaviour:
       Data4: 0
     Path: 
   thisButton: {fileID: 0}
+--- !u!95 &932572951
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932572943}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5aa6e671aa2b3dc41a48e281bc2e3aa2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &951870367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,6 +2098,7 @@ GameObject:
   - component: {fileID: 961592190}
   - component: {fileID: 961592189}
   - component: {fileID: 961592192}
+  - component: {fileID: 961592195}
   - component: {fileID: 961592193}
   - component: {fileID: 961592194}
   m_Layer: 5
@@ -2181,6 +2251,7 @@ MonoBehaviour:
   _baitSelector: {fileID: 877972556}
   _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
   _lock: {fileID: 235568628}
+  _anim: {fileID: 961592195}
   BaitType: 1
   _tooltipOffset: 5.5
 --- !u!114 &961592193
@@ -2255,6 +2326,27 @@ MonoBehaviour:
       Data4: 0
     Path: 
   thisButton: {fileID: 0}
+--- !u!95 &961592195
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961592187}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5aa6e671aa2b3dc41a48e281bc2e3aa2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &999720807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2532,6 +2624,7 @@ GameObject:
   - component: {fileID: 1070592513}
   - component: {fileID: 1070592512}
   - component: {fileID: 1070592515}
+  - component: {fileID: 1070592518}
   - component: {fileID: 1070592516}
   - component: {fileID: 1070592517}
   m_Layer: 5
@@ -2684,6 +2777,7 @@ MonoBehaviour:
   _baitSelector: {fileID: 877972556}
   _selectedBaitPrefab: {fileID: 677074688634372342, guid: 8aa7dcc001113dd489a4d4ba216c63a1, type: 3}
   _lock: {fileID: 1547286421}
+  _anim: {fileID: 1070592518}
   BaitType: 4
   _tooltipOffset: 5.5
 --- !u!114 &1070592516
@@ -2758,6 +2852,27 @@ MonoBehaviour:
       Data4: 0
     Path: 
   thisButton: {fileID: 0}
+--- !u!95 &1070592518
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070592510}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5aa6e671aa2b3dc41a48e281bc2e3aa2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1216488675
 GameObject:
   m_ObjectHideFlags: 0
