@@ -173,11 +173,7 @@ public class FishingControls : MonoBehaviour
                         // launch bobber
                         _bobber.LaunchBobber(_currCharge);
 
-                        if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstBobEvent)
-                        {
-                            onFirstBobberLand?.Invoke();
-                            _firstBobEvent = true;
-                        }
+                        
 
                         // TODO: make this fade out instead
                         _castingIndicator.SetActive(false);
@@ -339,6 +335,11 @@ public class FishingControls : MonoBehaviour
         {
             if (GameManager.Instance.GamePersistent.IsTutorialFish)
             {
+                if (!_firstBobEvent)
+                {
+                    onFirstBobberLand?.Invoke();
+                    _firstBobEvent = true;
+                }
                 if (_tutorialAllowedToReel)
                 {
                     if (_fishBiteTimer < 0)
