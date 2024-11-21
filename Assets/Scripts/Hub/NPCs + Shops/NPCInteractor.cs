@@ -43,20 +43,28 @@ public class NPCInteractor : Interactor
         }
 
 
-        if (!getIsConvoHad()[_convoIndex])
+        if (_convoIndex >= 0)
         {
-            if (getSetConvo().GeneralPriority == 0 && !getNPCConvoExhausted())
+            if (!getIsConvoHad()[_convoIndex])
             {
-                _newConvoNotif.SetActive(true);
+                if (getSetConvo().GeneralPriority == 0 && !getNPCConvoExhausted())
+                {
+                    _newConvoNotif.SetActive(true);
+                }
+                else if (getSetConvo().GeneralPriority != 0 || getSetConvo().RequiredBossLossCount != 0)
+                {
+                    _newConvoNotif.SetActive(true);
+                }
+                else
+                {
+                    _newConvoNotif.SetActive(false);
+                }
             }
-            else if (getSetConvo().GeneralPriority != 0 || getSetConvo().RequiredBossLossCount != 0)
-            {
-                _newConvoNotif.SetActive(true);
-            }
-            else
-            {
-                _newConvoNotif.SetActive(false);
-            }
+            
+        }
+        else if(_convoIndex < 0)
+        {
+            _newConvoNotif.SetActive(true);
         }
         else
         {
