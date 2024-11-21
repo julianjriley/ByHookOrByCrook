@@ -24,6 +24,8 @@ public class CatchUI : MonoBehaviour
     private Image _iconImage;
     [SerializeField, Tooltip("Ordered sprites for icon types.")]
     private Sprite[] _iconSprites;
+    [SerializeField, Tooltip("Used to do little wiggle effect at max scale.")]
+    private Animator _anim;
 
     [Header("Behavior")]
     [SerializeField, Tooltip("Height and width of sprite at maximum scale.")]
@@ -89,7 +91,8 @@ public class CatchUI : MonoBehaviour
         // ensure snapped to max scale
         _rect.localScale = new Vector3(_maxScale, _maxScale, 1);
 
-        // TODO: some wiggle effect when popup is actually shown at full scale.
+        // wiggle effect of icon at max scale
+        _anim.SetTrigger("Wiggle");
 
         // pause while max scale
         yield return new WaitForSeconds(_freezeTime);
