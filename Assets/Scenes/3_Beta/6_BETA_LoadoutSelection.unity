@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1768,6 +1768,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Loadout TTRL MGR]'
       objectReference: {fileID: 0}
+    - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+      propertyPath: _bs
+      value: 
+      objectReference: {fileID: 877972554}
+    - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+      propertyPath: _signAnim
+      value: 
+      objectReference: {fileID: 1351770374}
+    - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+      propertyPath: _fightButton
+      value: 
+      objectReference: {fileID: 1448079814}
+    - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+      propertyPath: _tutorialView
+      value: 
+      objectReference: {fileID: 1351770375}
+    - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+      propertyPath: _practiceButton
+      value: 
+      objectReference: {fileID: 571027969}
+    - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+      propertyPath: _caughtFishParent
+      value: 
+      objectReference: {fileID: 1227385808}
+    - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+      propertyPath: _foregroundScreen
+      value: 
+      objectReference: {fileID: 1351770373}
     - target: {fileID: 5923335221474725574, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1815,34 +1843,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2163185316151507351, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1874495655}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
---- !u!1 &1874495654 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2163185316151507351, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+--- !u!114 &1874495655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
   m_PrefabInstance: {fileID: 1874495653}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1874495655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874495654}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a107556e97ffaf41b1a0921fa09500b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutorialView: {fileID: 1351770375}
-  _signAnim: {fileID: 1351770374}
-  _fightButton: {fileID: 1448079814}
-  _practiceButton: {fileID: 571027969}
-  _foregroundScreen: {fileID: 1351770373}
-  _bs: {fileID: 877972554}
 --- !u!1 &1909493995
 GameObject:
   m_ObjectHideFlags: 0
