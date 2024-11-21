@@ -1341,7 +1341,6 @@ MonoBehaviour:
   _chargeRate: 1
   _castingGoal: {fileID: 947386213}
   _castingPopup: {fileID: 1543238234}
-  IsFishingLoopDone: 0
   _minFishBiteTime: 1
   _maxFishBiteTime: 2
   _reelIndicator: {fileID: 1369762304}
@@ -1415,6 +1414,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1669dad4d848a9f4fb6707556f9ff610, type: 2}
   - {fileID: 11400000, guid: 633290f02b82efe4fa0b326badd044ed, type: 2}
   - {fileID: 11400000, guid: e29d771798d3d2d428acc02661d3a7d1, type: 2}
+  _tutorialCatches:
+  - {fileID: 11400000, guid: 8e44b83933400354fb8bcc92f28a9c67, type: 2}
+  - {fileID: 11400000, guid: 67b3170d6996e554c8542845050f8f96, type: 2}
+  - {fileID: 11400000, guid: 982044697c72fc04a84e011dc3416cdf, type: 2}
 --- !u!212 &801297453
 SpriteRenderer:
   m_ObjectHideFlags: 0

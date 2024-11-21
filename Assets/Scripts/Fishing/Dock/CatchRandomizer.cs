@@ -53,12 +53,31 @@ public class CatchRandomizer : MonoBehaviour
     [SerializeField, Tooltip("Total pool of junk items.")]
     private Item[] _junk;
 
+    [Header("Tutorial Catches")]
+    [SerializeField, Tooltip("List of item catches to get during tutorial.")]
+    private Item[] _tutorialCatches;
+
+    private int _tutorialCatchIndex = 0;
+
     /// <summary>
     /// Handles randomization of caught fish and interfacing with inventory and bait list of game manager accordingly.
     /// </summary>
     /// <param name="score">0 to 1 value for proficiency on casting & reeling tasks (0 = worst fail, 1 = perfect success)</param>
     public void CatchFish(float score)
     {
+        // Tutorial logic: catch set fish
+        // goes through normal logic if there are no more fish in tutorialCatches (in case tutorial is replayed with more bait)/
+        if(GameManager.Instance.GamePersistent.IsTutorialFish && _tutorialCatchIndex < _tutorialCatches.Length)
+        {
+            // catch set fish, and consume bait
+            GameManager.Instance.AddCaughtFish(_tutorialCatches[_tutorialCatchIndex]);
+            GameManager.Instance.ConsumeBait();
+            _tutorialCatchIndex++;
+
+            // prevent handling normal logic
+            return;
+        }
+
         // determine whether to use accessibility values
         float maxRate = GameManager.Instance.GamePersistent.IsBobber ? _maxAccessibilityTrashRate : _maxTrashRate;
 
