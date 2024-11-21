@@ -58,14 +58,17 @@ public class FishingControls : MonoBehaviour
     private const string FISHING_INPUT_ACTION = "Fishing";
     private InputAction _inputAction;
     private bool _fishingClick = false;
+    private bool _prevFishingClick = false;
 
     private void ReadInputs()
     {
+        _prevFishingClick = _fishingClick;
+
         _fishingClick = false;
         // read input to determine if fishing click held during this frame
         float input = _inputAction.ReadValue<float>();
         if (input > InputSystem.settings.defaultDeadzoneMin)
-            _fishingClick = true;
+            _fishingClick = true;   
     }
     #endregion
 
@@ -172,8 +175,6 @@ public class FishingControls : MonoBehaviour
                     {
                         // launch bobber
                         _bobber.LaunchBobber(_currCharge);
-
-                        
 
                         // TODO: make this fade out instead
                         _castingIndicator.SetActive(false);
@@ -391,7 +392,7 @@ public class FishingControls : MonoBehaviour
         if(_bobber.State == BobberBehavior.BobberState.Tugging)
         {
             // Assign reeling score (either when the player clicks OR waits too long)
-            if(_fishingClick || _reelingTimer <= 0)
+            if((_fishingClick && !_prevFishingClick) || _reelingTimer <= 0)
             {
                 float perfectScale = GameManager.Instance.GamePersistent.IsBobber ? _perfectScaleAccessibility : _perfectScale;
                 float perfectThreshold = GameManager.Instance.GamePersistent.IsBobber ? _perfectThresholdAccessibility : _perfectThreshold;
