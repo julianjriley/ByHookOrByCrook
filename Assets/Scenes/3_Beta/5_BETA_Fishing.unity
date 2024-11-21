@@ -317,6 +317,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &403206624 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3366782796976410228, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
+  m_PrefabInstance: {fileID: 2059197987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &523853396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,21 +2601,25 @@ PrefabInstance:
       value: '[Fish TTRL MGR]'
       objectReference: {fileID: 0}
     - target: {fileID: 7379809715387080081, guid: aa31269b3c106784ba3b3d353d295d63, type: 3}
+      propertyPath: _void
+      value: 
+      objectReference: {fileID: 2059197989}
+    - target: {fileID: 7379809715387080081, guid: aa31269b3c106784ba3b3d353d295d63, type: 3}
       propertyPath: _sign1
       value: 
-      objectReference: {fileID: 2059197992}
+      objectReference: {fileID: 1740306476}
     - target: {fileID: 7379809715387080081, guid: aa31269b3c106784ba3b3d353d295d63, type: 3}
       propertyPath: _sign2
       value: 
-      objectReference: {fileID: 2059197991}
+      objectReference: {fileID: 403206624}
     - target: {fileID: 7379809715387080081, guid: aa31269b3c106784ba3b3d353d295d63, type: 3}
       propertyPath: _sign3
       value: 
-      objectReference: {fileID: 2059197990}
+      objectReference: {fileID: 0}
     - target: {fileID: 7379809715387080081, guid: aa31269b3c106784ba3b3d353d295d63, type: 3}
       propertyPath: _sign4
       value: 
-      objectReference: {fileID: 2059197989}
+      objectReference: {fileID: 0}
     - target: {fileID: 7379809715387080081, guid: aa31269b3c106784ba3b3d353d295d63, type: 3}
       propertyPath: _fControls
       value: 
@@ -2719,6 +2728,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1740306476 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2448545072890326000, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
+  m_PrefabInstance: {fileID: 2059197987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1799346637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2828,7 +2842,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817171626}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 9}
+  m_LocalPosition: {x: 0, y: 0, z: 7.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2875,9 +2889,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 920139169
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d18bbd375388f1c4abd341fd82f69a0b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.47058824}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3363,14 +3377,24 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 814783636}
     m_Modifications:
+    - target: {fileID: 1702692368450400930, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
+      propertyPath: m_text
+      value: Once you get a bite, two circles will appear. CLICK the LEFT MOUSE BUTTON
+        when it looks like the circles are the same size to get the best chance of
+        reeling in something useful.
+      objectReference: {fileID: 0}
     - target: {fileID: 5194014658336752141, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
       propertyPath: m_Name
       value: Fish Tutorial View
       objectReference: {fileID: 0}
-    - target: {fileID: 5194014658336752141, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 6120786113029185422, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1568851736}
+    - target: {fileID: 6747448478143554508, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1568851736}
     - target: {fileID: 7289946977912619130, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3455,14 +3479,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8546240007585426480, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1568851736}
-    - target: {fileID: 8546240007585426480, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Confirmation
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3473,24 +3489,9 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7289946977912619130, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
   m_PrefabInstance: {fileID: 2059197987}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &2059197989 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 648741592425444749, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
-  m_PrefabInstance: {fileID: 2059197987}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2059197990 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8617254314998162889, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
-  m_PrefabInstance: {fileID: 2059197987}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2059197991 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5333407940651351519, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
-  m_PrefabInstance: {fileID: 2059197987}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2059197992 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6044826882811743352, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
+--- !u!1 &2059197989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4371202002346801548, guid: 16a936e05efd97d4791c2532a4ce755f, type: 3}
   m_PrefabInstance: {fileID: 2059197987}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2059197993 stripped

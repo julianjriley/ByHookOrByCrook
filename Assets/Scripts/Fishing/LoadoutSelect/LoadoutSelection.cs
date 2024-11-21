@@ -58,27 +58,7 @@ public class LoadoutSelection : MonoBehaviour
     {
         // TODO: Confirmation popup if player is attempting to continue without filling all of their bait slots
 
-        // add plush if toggle is on
-        if (_defaultFishToggle.isOn)
-            GameManager.Instance.AddLoadoutItem(_starterGun);
-        
-        // Add selected loadout items to GameManager
-        FishButton[] loadoutFish = LoadoutFishParent.GetComponentsInChildren<FishButton>();
-        foreach (FishButton fish in loadoutFish)
-            GameManager.Instance.AddLoadoutItem(fish.Item);
-
-        // Add plush gun if no gun found in current loadout
-        bool isWeaponFound = false;
-        foreach (Item item in GameManager.Instance.ScenePersistent.Loadout)
-        {
-            if(item.GetItemType() == Item.ItemType.WEAPON)
-            {
-                isWeaponFound = true;
-                break;
-            }
-        }
-        if(!isWeaponFound)
-            GameManager.Instance.AddLoadoutItem(_starterGun);
+        AddFish();
 
         // Use this function to transition to PRACTICE or COMBAT scene
         string sceneToSwitchTo;
@@ -105,6 +85,31 @@ public class LoadoutSelection : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void AddFish()
+    {
+        // add plush if toggle is on
+        if (_defaultFishToggle.isOn)
+            GameManager.Instance.AddLoadoutItem(_starterGun);
+
+        // Add selected loadout items to GameManager
+        FishButton[] loadoutFish = LoadoutFishParent.GetComponentsInChildren<FishButton>();
+        foreach (FishButton fish in loadoutFish)
+            GameManager.Instance.AddLoadoutItem(fish.Item);
+
+        // Add plush gun if no gun found in current loadout
+        bool isWeaponFound = false;
+        foreach (Item item in GameManager.Instance.ScenePersistent.Loadout)
+        {
+            if (item.GetItemType() == Item.ItemType.WEAPON)
+            {
+                isWeaponFound = true;
+                break;
+            }
+        }
+        if (!isWeaponFound)
+            GameManager.Instance.AddLoadoutItem(_starterGun);
     }
 
     /// <summary>

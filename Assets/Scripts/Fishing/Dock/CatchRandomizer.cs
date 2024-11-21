@@ -66,7 +66,7 @@ public class CatchRandomizer : MonoBehaviour
         // 0 score = max trash rate
         // 1 score = 0% trash rate
         float trashRate = math.remap(0, 1, maxRate, 0, score);
-        Debug.Log("Rate: " + trashRate);
+        
         // Determine Trash vs. Fish odds
         float random = UnityEngine.Random.Range(0f, 1f);
         // Junk
@@ -168,9 +168,9 @@ public class CatchRandomizer : MonoBehaviour
     {
         // Determine list of items to randomize within
         List<Item> items = new List<Item>(tier1Items);
-        if (GameManager.Instance.GamePersistent.RodLevel >= 2)
+        if (GameManager.Instance.GamePersistent.RodLevel >= 1)
             items.AddRange(tier2Items);
-        if (GameManager.Instance.GamePersistent.RodLevel >= 3)
+        if (GameManager.Instance.GamePersistent.RodLevel >= 2)
             items.AddRange(tier3Items);
 
         // Prevent infinite loop if player already has ALL possible items of this type

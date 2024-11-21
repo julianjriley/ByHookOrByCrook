@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using static Unity.Mathematics.math;
@@ -238,7 +239,8 @@ public class BossPrototype : MonoBehaviour, IDamageable
         }
         else
         {
-            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 1f - percentageOfHealthLeft;
+            double x = ((double)percentageOfHealthLeft);
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = (float)(math.remap(0, 1, 1.5, 1, x));
         }
         /*else if(percentageOfHealthLeft < 0.33f)
         {
