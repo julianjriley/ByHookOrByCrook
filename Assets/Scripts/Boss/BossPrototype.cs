@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.InputSystem;
 using static Unity.Mathematics.math;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -21,6 +23,17 @@ public class BossPrototype : MonoBehaviour
     protected bool _checkingSwap = false;
     public Transform _playerTransform;
     private protected SpriteRenderer _renderer;
+
+    [Header ("Boss Intro")]
+    [SerializeField] private Transform _offscreenTarget;
+    [SerializeField] private Transform _entranceTarget;
+    [SerializeField] private GameObject _fightText;
+    [SerializeField] private GameObject _introUI;
+    private bool _introIsSkippable = false;
+    private Coroutine _part1Intro;
+    private GameObject _player;
+    private InputActionAsset _actions;
+    //private InputAction leftMouseClick;
 
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
@@ -47,7 +60,9 @@ public class BossPrototype : MonoBehaviour
     //For GameManager; Should be set to the next one
     [SerializeField] protected int _bossProgressionNumber = 0;
     
-
+    void Awake() {
+        _actions = InputSystem.actions;
+    }
     // Start is called before the first frame update
     virtual protected void Start()
     {
@@ -57,17 +72,61 @@ public class BossPrototype : MonoBehaviour
         _defaultTarget = _target;
         _defaultSpeed = Speed;
         MaxBossHealth = BossHealth;
-        PhaseSwitch();
+
         //Debug.Log("Phase Counter = " + _phaseCounter);
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         _renderer = GetComponent<SpriteRenderer>();
 
+        _part1Intro = StartCoroutine(TitleCard());
+
         PlayerCombat.playerDeath += GoToCashout;
+    }
+
+    private IEnumerator TitleCard() {
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("Title Card");
+        _fightText.SetActive(false);
+        //disable player combat and movement
+        _player = _playerTransform.gameObject;
+        _actions.Disable();
+        _introIsSkippable = true;
+        SetNewTarget(_offscreenTarget, -1);
+        yield return new WaitForSeconds(3f);
+        EndTitleCard();
+    }
+
+    private void EndTitleCard() {
+        _introIsSkippable = false;
+        Destroy(_introUI);
+        if (_part1Intro != null) {
+            StopCoroutine(_part1Intro);
+        }
+        StartCoroutine(BossEntrance());
+    }
+
+    private IEnumerator BossEntrance() {
+        Debug.Log("Boss Entrance");
+        //change boss target
+        SetNewTarget(_entranceTarget, 2f);
+        //wait
+        yield return new WaitForSeconds(2f);
+        //enable fight! text
+        _fightText.SetActive(true);
+        //enable player combat and movement
+        _actions.Enable();
+        PhaseSwitch();
+        SetDefaultTarget();
     }
 
     // Update is called once per frame
     virtual protected void FixedUpdate()
     {
+        if (_introIsSkippable) {
+            if (Mouse.current.leftButton.wasPressedThisFrame) {
+                EndTitleCard();
+            }
+        }
+
         if (!_defeated) {
             Move();
             //check for phase change
