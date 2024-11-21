@@ -111,7 +111,7 @@ public class FishingControls : MonoBehaviour
             && (!GameManager.Instance.GamePersistent.IsTutorialFish || _tutorialAllowedToCast)) 
         {
             // start showing indicator and reset charge
-            if (_fishingClick && _isWaiting)
+            if (_fishingClick && _isWaiting && GameManager.Instance.ScenePersistent.BaitList.Count != 0)
             {
                 // reset bar
                 _currCharge = 0;
