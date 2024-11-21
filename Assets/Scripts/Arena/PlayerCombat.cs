@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : MonoBehaviour, IDamageable
 {
 
     private ActionControls controls;
@@ -109,6 +109,7 @@ public class PlayerCombat : MonoBehaviour
         _weapons = new List<WeaponInstance>();
         playerMovement = GetComponent<ArenaMovement>();
         rb = GetComponent<Rigidbody>();
+        gameObject.AddComponent<EffectManager>();
 
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
 
@@ -234,7 +235,7 @@ public class PlayerCombat : MonoBehaviour
     private void Update()
     {
         mousePosition = Mouse.current.position.ReadValue();
-        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 16.745f));
+        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, -cam.transform.position.z));
         if(_equippedWeapon != null)
             _equippedWeapon.SetAim(weaponDirection);
         if (worldPos.x < gameObject.transform.position.x)
@@ -299,7 +300,8 @@ public class PlayerCombat : MonoBehaviour
         set { _health = value; }
     }
 
-    public void TakeDamageLikeAGoodBoy()
+    //the damage parameter can be ignored here its just how the interfacing works to make things easier
+    public void TakeDamage(float damage, bool dontUseSound = false)
     {
         if (_invulnerable)
             return;
@@ -408,6 +410,21 @@ public class PlayerCombat : MonoBehaviour
         _collider.excludeLayers = 0;
         _invulnerable = false;
     }
+
+    public void PassEffect(EffectData effectData)
+    {
+        GetComponent<EffectManager>().PassEffect(effectData);
+    }
+
+#if UNITY_EDITOR
+    private void OnApplicationQuit()
+    {
+        foreach(Weapon weapon in testWeapons)
+        {
+            weapon.ResetStats();
+        }
+    }
+#endif
 
     #region Zombie Mode Code
 
