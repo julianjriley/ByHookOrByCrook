@@ -2121,9 +2121,10 @@ MonoBehaviour:
   _verticalCastSpeed: 8
   _minHorizontalCastSpeed: 1.25
   _maxHorizontalCastSpeed: 8
-  _waterLevel: -0.4
+  _waterLevel: -0.3
   _verticalDampen: 0.07
   _bobbingGravity: 0.3
+  _maxBobbingSpeed: 1
   _minTugInterval: 0.15
   _maxTugInterval: 0.4
   _maxTugDistance: 0.75
