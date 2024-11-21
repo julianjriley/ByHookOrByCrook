@@ -20,9 +20,8 @@ public class CustomCrosshair : MonoBehaviour
 
     private void Start()
     {
-        
         //Cursor.visible = false;
-        DefaultCrosshair = GetComponent<Image>();
+        //DefaultCrosshair = GetComponent<Image>();
          // _renderer = GetComponent<SpriteRenderer>();
         
 
@@ -36,6 +35,7 @@ public class CustomCrosshair : MonoBehaviour
 
     private void Update()
     {
+        
         //Vector2 _cursorPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         //Cursor.SetCursor(Crosshair, new Vector2(30, 25), CursorMode.ForceSoftware);
         //GameManager.Instance.GamePersistent.Crosshair = this;
@@ -46,6 +46,11 @@ public class CustomCrosshair : MonoBehaviour
     {
         DefaultCrosshair.color = new Color(Red.value, Green.value, Blue.value, Opacity.value);
         newColor = new Color(Red.value, Green.value, Blue.value, Opacity.value);
+        // Texture2D texture = new Texture2D((int)Red.value, (int)Green.value, (int)Blue.value, (int)Opacity.value);
+
+        // TODO: Link to texture2D
+        // for loop through all pixels... 
+        // https://docs.unity3d.com/ScriptReference/Texture2D.SetPixel.html
 
 
     }
