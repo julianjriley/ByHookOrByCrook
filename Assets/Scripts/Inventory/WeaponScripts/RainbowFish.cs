@@ -18,6 +18,7 @@ public class RainbowFish : WeaponInstance
     {
         if (!_canFire)
         {
+            increasedFireRate = 0;
             return;
         }
             
@@ -64,6 +65,7 @@ public class RainbowFish : WeaponInstance
             if (_weapon.overheatShot)
                 _weapon.Damage /= 10f;
             _overHeated = true;
+            increasedFireRate = 0;
         }
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
         increasedFireRate += 0.3f;

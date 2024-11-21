@@ -59,7 +59,7 @@ public class BaitSelector : MonoBehaviour
 
             // update lock visual
             if(barrelScript.BaitType != GameManager.BaitType.Default)
-                barrelScript.SetLockVisual(!button.interactable);
+                barrelScript.SetLocked(!button.interactable);
         }
     }
 
@@ -68,36 +68,84 @@ public class BaitSelector : MonoBehaviour
         return _remainingBaitSlots;
     }
 
+    /// <summary>
+    /// Handles changes to remaining bait counter.
+    /// Also enables continue button.
+    /// </summary>
     public void DecreaseRemainingBaitSlots()
     {
         _remainingBaitSlots--;
 
         if (_remainingBaitSlots < 0)
             throw new System.Exception("Error: attempting to add a selected bait when no slots remain");
+
+        // since a bait was added, we know there is AT LEAST one bait
+        _continueButton.SetActive(true);
     }
+
+    /// <summary>
+    /// Handles changes to remaining bait counter.
+    /// Also handles disabling continue button if all bait deselected.
+    /// </summary>
     public void IncreaseRemainingBaitSlots()
     {
         _remainingBaitSlots++;
 
         if (_remainingBaitSlots > GameManager.Instance.GamePersistent.BaitInventorySize)
             throw new System.Exception("Error: attempting to remove a selected bait when all are already removed.");
+
+        // if we have ALL slots remaining, then no bait is selected
+        if (_remainingBaitSlots == GameManager.Instance.GamePersistent.BaitInventorySize)
+            _continueButton.SetActive(false);
+    }
+
+    #region SCENE TRANSITIONS
+    [Header("Scene Transitions")]
+    [SerializeField, Tooltip("Name of hub scene to transition back to.")]
+    private string _hubSceneName;
+    [SerializeField, Tooltip("Name of fishing scene to transition to.")]
+    private string _fishingSceneName;
+    [SerializeField, Tooltip("Game object to be activated for confirming bait selection when all slots are not full.")]
+    private GameObject _confirmationPopup;
+    [SerializeField, Tooltip("Game object to be activated to ensure player can only continue with AT LEAST one bait.")]
+    private GameObject _continueButton;
+
+    /// <summary>
+    /// Simple scene transition back to hub
+    /// </summary>
+    public void BackToHub()
+    {
+        SceneManager.LoadScene(_hubSceneName);
     }
 
     /// <summary>
-    /// Simple scene transition
+    /// Continues if bait slots are full. Otherwise, brings up Confirmation Popup.
     /// </summary>
-    public void BackToHub(string sceneName)
+    public void TryContinueToFishing()
     {
-        SceneManager.LoadScene(sceneName);
+        // continue if slots are full
+        if (_remainingBaitSlots == 0)
+            ContinueToFishing();
+        // confirm popup
+        else
+        {
+            _confirmationPopup.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Used to go back from the confirmation popup menu
+    /// </summary>
+    public void CancelConfirmationPopup()
+    {
+        _confirmationPopup.SetActive(false);
     }
 
     /// <summary>
     /// Handles properly uploading finalized bait data to game manager, then loads next scene
     /// </summary>
-    public void ContinueToFishing(string sceneName)
+    public void ContinueToFishing()
     {
-        // TODO: Confirmation popup if player is attempting to continue without filling all of their bait slots
-
         // Add selected baits to GameManager
         SelectedBait[] selectedBaits = SelectedBaitParent.GetComponentsInChildren<SelectedBait>();
         foreach (SelectedBait bait in selectedBaits)
@@ -105,7 +153,7 @@ public class BaitSelector : MonoBehaviour
         SoundManager.Instance.CleanUp(); //stops the music
 
         // Load fishing scene
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(_fishingSceneName);
     }
 
     /// <summary>
@@ -115,4 +163,5 @@ public class BaitSelector : MonoBehaviour
     {
         return GameManager.Instance.GamePersistent.BaitInventorySize - _remainingBaitSlots;
     }
+    #endregion
 }
