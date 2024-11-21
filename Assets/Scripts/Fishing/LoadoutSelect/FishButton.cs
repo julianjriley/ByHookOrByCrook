@@ -100,5 +100,9 @@ public class FishButton : MonoBehaviour
             // hide tooltip
             _tooltipObject.SetActive(false);
         }
+
+        // cancel confirmation popups since a different button was pressed.
+        _loadoutSelection.CancelCombatConfirmationPopup();
+        _loadoutSelection.CancelPracticeConfirmationPopup();
     }
 }
