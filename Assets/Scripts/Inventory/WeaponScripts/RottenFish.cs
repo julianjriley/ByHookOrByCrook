@@ -10,11 +10,13 @@ public class RottenFish : WeaponInstance
 
     public override void Fire(Vector3 direction)
     {
-        if(!_canFire) 
+        if(!_canFire)
+        {
             return;
+        }
+
         if(_overHeated)
         {
-            //Modify later if we wanna do cool stuff to the gun while overheated idk
             return;
         }
         if(_weapon.ProjectileCount < 2)

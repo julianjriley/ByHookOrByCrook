@@ -66,12 +66,4 @@ public class MamaLeech : WeaponInstance
         _autoFireCoroutine = StartCoroutine(FireAuto(_direction));
     }
 
-    protected override IEnumerator FireRate()
-    {
-        // Slower rate of fire
-
-        _canFire = false;
-        yield return new WaitForSeconds(waitTime);
-        _canFire = true;
-    }
 }

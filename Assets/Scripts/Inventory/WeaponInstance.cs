@@ -61,8 +61,11 @@ public class WeaponInstance : MonoBehaviour
 
     protected IEnumerator FireAuto(Vector3 direction)
     {
-        while (!_canFire)
+        while (!_canFire || _overHeated)
+        {
             yield return null;
+        }
+
         Fire(direction);
     }
 
