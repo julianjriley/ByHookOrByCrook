@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Bait5-Purch
   m_EditorClassIdentifier: 
   lines:
-  - That tackle box has a little more heft than the last one, right?
-  - Yeah, yeah, and you look better holding it, too!
+  - "Does Alf know what you\u2019re doin\u2019 with all of these bait slots?"
+  - "Ah, heck, whadamisayin. Alf doesn\u2019t know how to open a juice box right."
+  - He stabs the straw through the center.
   RequiredBossLossCount: 0
-  GeneralPriority: 0
+  GeneralPriority: -1

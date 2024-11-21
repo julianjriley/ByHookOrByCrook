@@ -27,8 +27,6 @@ public class LoadoutSelection : MonoBehaviour
     [SerializeField, Tooltip("List of fish used when starting Unity within this scene. Instead of using GameManager.")]
     private List<Item> _editorFishList;
 
-    [Header("Boss Scenes")]
-    [SerializeField] string[] _bossScenes;
     void Start()
     {
         // Spawn fish button for each caught fish (from GameManager)
@@ -52,39 +50,114 @@ public class LoadoutSelection : MonoBehaviour
     }
 
     /// <summary>
+    /// Current number of selected fish.
+    /// </summary>
+    public int GetCurrentLoadoutSize()
+    {
+        return LoadoutFishParent.transform.childCount;
+    }
+
+    /// <summary>
+    /// Current number of unselected fish.
+    /// </summary>
+    public int GetCurrentUnselectedFish()
+    {
+        return CaughtFishParent.transform.childCount;
+    }
+
+    #region SCENE TRANSITIONS
+    [Header("Scene Transitions")]
+    [SerializeField, Tooltip("Names of boss scenes to transition to.")] 
+    private string[] _bossScenes;
+    [SerializeField, Tooltip("Game object to activate for confirmation popup.")]
+    private GameObject _combatConfirmationPopup;
+    [SerializeField, Tooltip("Name of practice scene to transition to.")]
+    private string _practiceSceneName;
+    [SerializeField, Tooltip("Game object to activate for confirmation popup.")]
+    private GameObject _practiceConfirmationPopup;
+
+    /// <summary>
+    /// Continues if bait slots are full. Otherwise, brings up Confirmation Popup for combat.
+    /// </summary>
+    public void TryContinueToCombat()
+    {
+        // continue if slots are full OR there are no more fish to add to loadout
+        if (GetCurrentLoadoutSize() == GameManager.Instance.GamePersistent.BattleInventorySize || GetCurrentUnselectedFish() == 0)
+            ContinueToCombat();
+        // confirm popup
+        else
+        {
+            _combatConfirmationPopup.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Used to go back from the confirmation popup menu
+    /// </summary>
+    public void CancelCombatConfirmationPopup()
+    {
+        _combatConfirmationPopup.SetActive(false);
+    }
+
+    /// <summary>
     /// Transitions to next scene (either combat or practice arena)
     /// </summary>
-    public void NextScene()
+    public void ContinueToCombat()
     {
-        // TODO: Confirmation popup if player is attempting to continue without filling all of their bait slots
-
+        // add loadout to game manager
         AddFish();
 
         // Use this function to transition to PRACTICE or COMBAT scene
         string sceneToSwitchTo;
         switch (GameManager.Instance.GamePersistent.BossNumber)
-        { 
+        {
             case 0:
                 sceneToSwitchTo = _bossScenes[0]; break;
             case 1:
-                sceneToSwitchTo= _bossScenes[1]; break;
+                sceneToSwitchTo = _bossScenes[1]; break;
             case 2:
-                sceneToSwitchTo=_bossScenes[2]; break;
+                sceneToSwitchTo = _bossScenes[2]; break;
             default:
                 sceneToSwitchTo = _bossScenes[0]; break;
         }
 
-        StartCoroutine(Fadeout(sceneToSwitchTo));
+        // actually transition scene
+        SceneManager.LoadScene(sceneToSwitchTo);
     }
 
-    private IEnumerator Fadeout(string sceneName)
+    /// <summary>
+    /// Continues if bait slots are full. Otherwise, brings up Confirmation Popup for practice.
+    /// </summary>
+    public void TryContinueToPractice()
     {
-        // TODO: add actual smooth transition visual effects here
+        // continue if slots are full OR there are no more fish to add to loadout
+        if (GetCurrentLoadoutSize() == GameManager.Instance.GamePersistent.BattleInventorySize || GetCurrentUnselectedFish() == 0)
+            ContinueToPractice();
+        // confirm popup
+        else
+        {
+            _practiceConfirmationPopup.SetActive(true);
+        }
+    }
 
-        // Fadeout logic/delay
-        yield return new WaitForSeconds(1f);
+    /// <summary>
+    /// Used to go back from the confirmation popup menu
+    /// </summary>
+    public void CancelPracticeConfirmationPopup()
+    {
+        _practiceConfirmationPopup.SetActive(false);
+    }
 
-        SceneManager.LoadScene(sceneName);
+    /// <summary>
+    /// Transitions to next scene (either combat or practice arena)
+    /// </summary>
+    public void ContinueToPractice()
+    {
+        // add loadout to game manager
+        AddFish();
+
+        // actually transition scene
+        SceneManager.LoadScene(_practiceSceneName);
     }
 
     public void AddFish()
@@ -111,12 +184,5 @@ public class LoadoutSelection : MonoBehaviour
         if (!isWeaponFound)
             GameManager.Instance.AddLoadoutItem(_starterGun);
     }
-
-    /// <summary>
-    /// Current number of selected fish.
-    /// </summary>
-    public int GetCurrentLoadoutSize()
-    {
-        return LoadoutFishParent.transform.childCount;
-    }
+    #endregion
 }

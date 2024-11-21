@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Bait3-Purch
   m_EditorClassIdentifier: 
   lines:
-  - That tackle box has a little more heft than the last one, right?
-  - Yeah, yeah, and you look better holding it, too!
+  - "Now you\u2019re lookin\u2019 like a fisherman!"
+  - "My grandpairents always said if you can\u2019t deck someone with your tacklebox,
+    it ain\u2019t a real tacklebox."
   RequiredBossLossCount: 0
-  GeneralPriority: 0
+  GeneralPriority: -1

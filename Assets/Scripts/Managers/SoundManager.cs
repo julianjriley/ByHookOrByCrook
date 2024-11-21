@@ -47,7 +47,7 @@ public class SoundManager : MonoBehaviour
         eventInstances.Add(eventInstance);
         eventInstance.getDescription(out EventDescription description);
         description.getPath(out string result);
-        UnityEngine.Debug.Log(result);
+        //UnityEngine.Debug.Log(result);
         return eventInstance;
     }
 
@@ -138,7 +138,7 @@ public class SoundManager : MonoBehaviour
         {
             eventInstance.getDescription(out EventDescription description);
             description.getPath(out string result);
-            UnityEngine.Debug.Log(result);
+            //UnityEngine.Debug.Log(result);
             if (result != null && !result.EndsWith(spare)) 
             {
                 eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
@@ -153,7 +153,7 @@ public class SoundManager : MonoBehaviour
         {
             eventInstance.getDescription(out EventDescription description);
             description.getPath(out string result);
-            UnityEngine.Debug.Log(result);
+            //UnityEngine.Debug.Log(result);
         }
     }
 

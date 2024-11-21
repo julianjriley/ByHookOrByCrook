@@ -20,6 +20,16 @@ public class FishingControls : MonoBehaviour
     [SerializeField, Tooltip("Used to trigger player animations corresponding to actions.")]
     private Animator _anim;
 
+    // Tutorial stuff
+    public delegate void OnFirstCast();
+    public static event OnFirstCast onFirstCast;
+    public delegate void OnFirstBobberLand();
+    public static event OnFirstBobberLand onFirstBobberLand;
+    private bool _firstCastEvent = false;
+    private bool _firstBobEvent = false;
+    private bool _tutorialAllowedToCast = false;
+    private bool _tutorialAllowedToReel = false;
+
     // State management
     private bool _isReeling = false;
 
@@ -58,14 +68,17 @@ public class FishingControls : MonoBehaviour
     private const string FISHING_INPUT_ACTION = "Fishing";
     private InputAction _inputAction;
     private bool _fishingClick = false;
+    private bool _prevFishingClick = false;
 
     private void ReadInputs()
     {
+        _prevFishingClick = _fishingClick;
+
         _fishingClick = false;
         // read input to determine if fishing click held during this frame
         float input = _inputAction.ReadValue<float>();
         if (input > InputSystem.settings.defaultDeadzoneMin)
-            _fishingClick = true;
+            _fishingClick = true;   
     }
     #endregion
 
@@ -89,23 +102,16 @@ public class FishingControls : MonoBehaviour
     private bool _isWaiting = true;
     private float _castingScore = 0; // min 0; max 1
 
-    // Tutorial stuff
-    public delegate void OnFirstCast();
-    public static event OnFirstCast onFirstCast;
-    public delegate void OnFirstBobberLand();
-    public static event OnFirstBobberLand onFirstBobberLand;
-    private bool _firstCastEvent = false;
-    private bool _firstBobEvent = false;
-    public bool IsFishingLoopDone = false;
-
     private void HandleCastingControls()
     {
         // CONTROLS LOGIC
-        if(_bobber.State == BobberBehavior.BobberState.Waiting) // ensure you can only cast once bobber has fully returned
+        // ensure you can only cast once bobber has fully returned
+        // ALSO: only continue if NOT in tutorial , OR tutorial permits continuing
+        if (_bobber.State == BobberBehavior.BobberState.Waiting
+            && (!GameManager.Instance.GamePersistent.IsTutorialFish || _tutorialAllowedToCast)) 
         {
-            IsFishingLoopDone = !IsFishingLoopDone;
             // start showing indicator and reset charge
-            if (_fishingClick && _isWaiting)
+            if (_fishingClick && _isWaiting && GameManager.Instance.ScenePersistent.BaitList.Count != 0)
             {
                 // reset bar
                 _currCharge = 0;
@@ -167,12 +173,6 @@ public class FishingControls : MonoBehaviour
                 // launch bobber
                 _bobber.LaunchBobber(_currCharge);
 
-                if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstBobEvent)
-                {
-                    onFirstBobberLand?.Invoke();
-                    _firstBobEvent = true;
-                }
-
                 // TODO: make this fade out instead
                 _castingIndicator.SetActive(false);
 
@@ -187,22 +187,41 @@ public class FishingControls : MonoBehaviour
 
             // trigger casting popup
             if (_castingScore == 1)
-                _castingPopup.PopUp(0);
+            {
+                _castingPopup.PopUp(0); // perfect
+
+                // TODO: play perfect cast audio
+            }
             else if (_castingGoal.IsSuperFar())
-                _castingPopup.PopUp(999);
-            else
             {
                 if (_bobber.transform.position.x < _castingGoal.transform.position.x)
-                    _castingPopup.PopUp(-1);
+                    _castingPopup.PopUp(-1); // short
                 else
-                    _castingPopup.PopUp(1);
+                    _castingPopup.PopUp(1); // far
             }
+            else
+                _castingPopup.PopUp(999); // close
 
             _isReeling = true;
             _fishBiteTimer = UnityEngine.Random.Range(_minFishBiteTime, _maxFishBiteTime);
+
+            // handle tutorial first bobber event
+            if (GameManager.Instance.GamePersistent.IsTutorialFish && !_firstBobEvent)
+            {
+                onFirstBobberLand?.Invoke();
+                _firstBobEvent = true;
+            }
         }
 
         _prevClick = _fishingClick;
+    }
+
+    /// <summary>
+    /// Used by tutorial UI button to prompt fishing to return to normal casting behavior.
+    /// </summary>
+    public void SetTutorialCasting()
+    {
+        _tutorialAllowedToCast = true;
     }
     #endregion
 
@@ -231,93 +250,88 @@ public class FishingControls : MonoBehaviour
     [SerializeField, Tooltip("Used for indicating performance of reeling task")]
     private PerformancePopup _reelingPopup;
 
+    [Header("Accessibility")]
+    [SerializeField, Tooltip("Accessibility ideal scale for shrinking ring to match the outer edge of the goal circle.")]
+    private float _perfectScaleAccessibility;
+    [SerializeField, Tooltip("Accessibility distance from perfect scale that still counts as a perfect score.")]
+    private float _perfectThresholdAccessibility;
+    [SerializeField, Tooltip("Accessibility distance from perfect scale at which score becomes a max failure.")]
+    private float _failureThresholdAccessibility;
+
     private float _reelingTimer;
     private Vector3 _initialShrinkingRingScale;
     private float _currentShrinkingScale = 0;
     private float _reelingScore = 0; // min 0; max 1
 
-    private bool _tutorialAllowedToReel = false;
-
     private void HandleReelingControls()
     {
         // Wait for fish to bite
-        if (_bobber.State == BobberBehavior.BobberState.Bobbing)
+        // ALSO: only continue if NOT in tutorial , OR tutorial permits continuing
+        if (_bobber.State == BobberBehavior.BobberState.Bobbing
+            && (!GameManager.Instance.GamePersistent.IsTutorialFish || _tutorialAllowedToReel))
         {
-            if (GameManager.Instance.GamePersistent.IsTutorialFish)
+            if (_fishBiteTimer < 0)
             {
-                if (_tutorialAllowedToReel)
-                {
-                    if (_fishBiteTimer < 0)
-                    {
-                        // restart all reeling parameters
-                        _bobber.StartTugging();
-                        _reelingTimer = _totalShrinkTime;
-                        _shrinkingRing.transform.localScale = _initialShrinkingRingScale;
-                        _reelIndicator.SetActive(true);
-                        _currentShrinkingScale = _initialShrinkingRingScale.x;
+                // restart all reeling parameters
+                _bobber.StartTugging();
+                _reelingTimer = _totalShrinkTime;
+                _shrinkingRing.transform.localScale = _initialShrinkingRingScale;
+                _reelIndicator.SetActive(true);
+                _currentShrinkingScale = _initialShrinkingRingScale.x;
 
-                        _anim.SetTrigger("Reeling");
-                    }
-                    else
-                        _fishBiteTimer -= Time.deltaTime;
-                }
-
-                
+                _anim.SetTrigger("Reeling");
             }
             else
-            {
-                if (_fishBiteTimer < 0)
-                {
-                    // restart all reeling parameters
-                    _bobber.StartTugging();
-                    _reelingTimer = _totalShrinkTime;
-                    _shrinkingRing.transform.localScale = _initialShrinkingRingScale;
-                    _reelIndicator.SetActive(true);
-                    _currentShrinkingScale = _initialShrinkingRingScale.x;
-
-                    _anim.SetTrigger("Reeling");
-                }
-                else
-                    _fishBiteTimer -= Time.deltaTime;
-            }
-            
+                _fishBiteTimer -= Time.deltaTime;
         }
 
         // Timing click controls
         if(_bobber.State == BobberBehavior.BobberState.Tugging)
         {
             // Assign reeling score (either when the player clicks OR waits too long)
-            if(_fishingClick || _reelingTimer <= 0)
+            if((_fishingClick && !_prevFishingClick) || _reelingTimer <= 0)
             {
+                float perfectScale = GameManager.Instance.GamePersistent.IsBobber ? _perfectScaleAccessibility : _perfectScale;
+                float perfectThreshold = GameManager.Instance.GamePersistent.IsBobber ? _perfectThresholdAccessibility : _perfectThreshold;
+                float failureThreshold = GameManager.Instance.GamePersistent.IsBobber ? _failureThresholdAccessibility : _failureThreshold;
+
                 // no click was ever made - default to max fail
                 if (_reelingTimer <= 0)
                 {
                     _reelingScore = 0;
-                    _reelingPopup.PopUp(999);
+                    _reelingPopup.PopUp(1); // late
                 }
-                // max failure (either very  early or very late)
-                else if (_currentShrinkingScale > _perfectScale + _failureThreshold || _currentShrinkingScale < _perfectScale - _failureThreshold)
+                // max failure (very early)
+                else if (_currentShrinkingScale > perfectScale + failureThreshold)
                 {
                     _reelingScore = 0;
-                    _reelingPopup.PopUp(999);
+                    _reelingPopup.PopUp(-1); // early
+                }
+                // max failure (very late)
+                else if (_currentShrinkingScale < perfectScale - failureThreshold)
+                {
+                    _reelingScore = 0;
+                    _reelingPopup.PopUp(1); // late
                 }
                 // perfect success (close to perfect scale)
-                else if (_currentShrinkingScale > _perfectScale - _perfectThreshold && _currentShrinkingScale < _perfectScale + _perfectThreshold)
+                else if (_currentShrinkingScale > perfectScale - perfectThreshold && _currentShrinkingScale < perfectScale + perfectThreshold)
                 {
                     _reelingScore = 1;
-                    _reelingPopup.PopUp(0);
+                    _reelingPopup.PopUp(0); // perfect
+
+                    // TODO: play perfect reel audio
                 }
                 // slightly early click (score between 0 and 1)
-                else if (_currentShrinkingScale > _perfectScale)
+                else if (_currentShrinkingScale > perfectScale)
                 {
-                    _reelingScore = math.remap(_perfectScale + _failureThreshold, _perfectScale + _perfectThreshold, 0, 1, _currentShrinkingScale);
-                    _reelingPopup.PopUp(-1);
+                    _reelingScore = math.remap(perfectScale + failureThreshold, perfectScale + perfectThreshold, 0, 1, _currentShrinkingScale);
+                    _reelingPopup.PopUp(999); // close
                 }
                 // slightly late click (score between 0 and 1)
-                else if (_currentShrinkingScale < _perfectScale)
+                else if (_currentShrinkingScale < perfectScale)
                 {
-                    _reelingScore = math.remap(_perfectScale - _failureThreshold, _perfectScale - _perfectThreshold, 0, 1, _currentShrinkingScale);
-                    _reelingPopup.PopUp(1);
+                    _reelingScore = math.remap(perfectScale - failureThreshold, perfectScale - perfectThreshold, 0, 1, _currentShrinkingScale);
+                    _reelingPopup.PopUp(999); // close
                 }
 
                 // determine combined fishing score
@@ -325,7 +339,7 @@ public class FishingControls : MonoBehaviour
 
                 // useful debugs for balancing
                 //Debug.Log("Casting Score: " + _castingScore + "  Reeling Score: " + _reelingScore);
-                Debug.Log("Score: " + combinedScore);
+                //Debug.Log("Score: " + combinedScore);
 
                 // actually catch fish
                 _catchRandomizer.CatchFish(combinedScore);
@@ -352,6 +366,9 @@ public class FishingControls : MonoBehaviour
         _shrinkingRing.transform.localScale = _initialShrinkingRingScale * (_currentShrinkingScale / _initialShrinkingRingScale.x);
     }
 
+    /// <summary>
+    /// Used by tutorial UI to indicate ready to resume normal reeling controls/behavior.
+    /// </summary>
     public void SetTutorialReeling()
     {
         _tutorialAllowedToReel = true;

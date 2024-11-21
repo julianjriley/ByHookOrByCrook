@@ -19,25 +19,34 @@ public class CastingGoalMover : MonoBehaviour
     [SerializeField, Tooltip("Distance threshold from casting goal where fishing goal is treated as COMPLETE failure (min score of 0).")]
     private float _maxFailureDistance;
 
+    [Header("Accessibility")]
+    [SerializeField, Tooltip("Accessibility distance threshold from casting goal where fishing goal is treated as perfect (max score of 1).")]
+    private float _maxPerfectDistanceAccessibility;
+    [SerializeField, Tooltip("Accessibility distance threshold from casting goal where fishing goal is treated as COMPLETE failure (min score of 0).")]
+    private float _maxFailureDistanceAccessibility;
+
     /// <summary>
     /// Returns casting score based on distance from casting goal
     /// </summary>
-    /// <returns></returns>
     public float GetCastingScore()
     {
         // calculate distance from goal
         float distance = Mathf.Abs(_bobber.transform.localPosition.x - transform.localPosition.x);
 
+        // account for accessibility bobber
+        float maxPerfect = GameManager.Instance.GamePersistent.IsBobber ? _maxPerfectDistanceAccessibility : _maxPerfectDistance;
+        float maxFailure = GameManager.Instance.GamePersistent.IsBobber ? _maxFailureDistanceAccessibility : _maxFailureDistance;
+        
         // perfect cast
-        if (distance < _maxPerfectDistance)
+        if (distance < maxPerfect)
             return 1f;
 
         // complete failure cast
-        if (distance > _maxFailureDistance)
+        if (distance > maxFailure)
             return 0f;
 
         // Return some variable score based on where between thresholds the cast was.
-        return math.remap(_maxPerfectDistance, _maxFailureDistance, 1, 0, distance);
+        return math.remap(maxPerfect, maxFailure, 1, 0, distance);
     }
 
     /// <summary>
@@ -65,6 +74,9 @@ public class CastingGoalMover : MonoBehaviour
     /// <returns></returns>
     public bool IsSuperFar()
     {
-        return Mathf.Abs(_bobber.transform.localPosition.x - transform.localPosition.x) > _maxFailureDistance;
+        // account for accessibility bobber
+        float maxFailure = GameManager.Instance.GamePersistent.IsBobber ? _maxFailureDistanceAccessibility : _maxFailureDistance;
+
+        return Mathf.Abs(_bobber.transform.localPosition.x - transform.localPosition.x) > maxFailure;
     }
 }

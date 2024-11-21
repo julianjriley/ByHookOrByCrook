@@ -211,8 +211,11 @@ public class GameManager : MonoBehaviour
 
         // Hub related stats
         public List<bool> IsConvoHadRod;
+        public bool AllConvosHadRod;
         public List<bool> IsConvoHadBait;
+        public bool AllConvosHadBait;
         public List<bool> IsConvoHadBag;
+        public bool AllConvosHadBag;
 
         public float SFXVolume;
         public float MusicVolume;
@@ -271,7 +274,7 @@ public class GameManager : MonoBehaviour
         newSaveData.LossCounter = 0;
         newSaveData.NPCBossNumber = 0;
 
-        newSaveData.Gill = 0;
+        newSaveData.Gill = 5;
         newSaveData.BaitInventorySize = 3;
         newSaveData.BattleInventorySize = 2;
         newSaveData.RodLevel = 0;
@@ -284,8 +287,11 @@ public class GameManager : MonoBehaviour
         newSaveData.IsBobber = false;
 
         newSaveData.IsConvoHadRod = new List<bool>();
+        newSaveData.AllConvosHadRod = false;
         newSaveData.IsConvoHadBait = new List<bool>();
+        newSaveData.AllConvosHadBait = false;
         newSaveData.IsConvoHadBag = new List<bool>();
+        newSaveData.AllConvosHadBag = false;
 
         newSaveData.SFXVolume = 0.5f;
         newSaveData.MusicVolume = 0.5f;
@@ -319,7 +325,6 @@ public class GameManager : MonoBehaviour
         // TODO: SAVE PersistentData to PlayerPrefs
         string saveData = JsonUtility.ToJson(GamePersistent);
         string filePath = Application.persistentDataPath + "/GameData.json";
-        Debug.Log(filePath);
         System.IO.File.WriteAllText(filePath, saveData);
         /*****************************************************************
         // JSON functionality. To be replaced with PlayerPrefs

@@ -28,6 +28,11 @@ public class BaitTTRLManager : MonoBehaviour
             _backToHubButton.SetActive(false); // No going back to the hub during the tutorial
             StartCoroutine(DoTutorial());
         }
+        else
+        {
+            _tutorialView.SetActive(false);
+            this.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

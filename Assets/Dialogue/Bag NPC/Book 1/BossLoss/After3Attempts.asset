@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
+  m_Name: After3Attempts
+  m_EditorClassIdentifier: 
+  lines:
+  - "\u2026you know, bear, I like you an\u2019 all, but I was hopin\u2019 to win
+    a bet. Miss Tragedy over there\u2019s gonna hold this over me for e-goddamn-ternity."
+  - Just buy somethin, will ya?
+  RequiredBossLossCount: 4
+  GeneralPriority: 0
