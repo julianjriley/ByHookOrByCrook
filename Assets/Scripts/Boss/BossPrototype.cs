@@ -3,13 +3,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using static Unity.Mathematics.math;
 
 [RequireComponent(typeof(Rigidbody))]
 
-public class BossPrototype : MonoBehaviour
+public class BossPrototype : MonoBehaviour, IDamageable
 {
     [Header ("Boss Movement")]
     protected Transform _target;
@@ -61,7 +62,7 @@ public class BossPrototype : MonoBehaviour
         //Debug.Log("Phase Counter = " + _phaseCounter);
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         _renderer = GetComponent<SpriteRenderer>();
-
+        gameObject.AddComponent<EffectManager>();
         PlayerCombat.playerDeath += GoToCashout;
     }
 
@@ -214,11 +215,12 @@ public class BossPrototype : MonoBehaviour
         GoToCashout();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool dontUseSound)
     {
         BossHealth -= damage;
         HealthChanged?.Invoke(BossHealth);
-        SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
+        if(!dontUseSound)
+            SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
     }
 
     //ONLY FOR THE PROTOTYPE
@@ -237,7 +239,8 @@ public class BossPrototype : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 1f - percentageOfHealthLeft;
+            double x = ((double)percentageOfHealthLeft);
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = (float)(math.remap(0, 1, 1.5, 1, x));
         }
         /*else if(percentageOfHealthLeft < 0.33f)
         {
@@ -254,8 +257,13 @@ public class BossPrototype : MonoBehaviour
         if(collider.gameObject == _playerTransform.gameObject)
         {
             PlayerCombat player = collider.gameObject.GetComponent<PlayerCombat>();
-            player.TakeDamageLikeAGoodBoy();
+            player.TakeDamage(20000, false);
         }
+    }
+
+    public void PassEffect(EffectData effectData)
+    {
+        GetComponent<EffectManager>().PassEffect(effectData);
     }
 
 }

@@ -21,10 +21,12 @@ public class ConvoSelector : MonoBehaviour
     private void Awake()
     {
         // If the tracker list in save data is empty
-        if(getIsConvoHad().Count == 0)
+        if(getIsConvoHad().Count == 0 || GameManager.Instance.GamePersistent.NPCBossNumber != GameManager.Instance.GamePersistent.BossNumber)
         {
+            GameManager.Instance.GamePersistent.NPCBossNumber = GameManager.Instance.GamePersistent.BossNumber;
+            clearIsConvoHad();
             int fullConvoCount = _books[GameManager.Instance.GamePersistent.BossNumber].generalConvos.Count + _books[GameManager.Instance.GamePersistent.BossNumber].postBossLossConvos.Count;
-            for (int i = 0; i < fullConvoCount; i++)
+            for (int i = 0; i < fullConvoCount + 1; i++)
             {
                 getIsConvoHad().Add(false); // Fill it to the brim
             }
@@ -85,7 +87,7 @@ public class ConvoSelector : MonoBehaviour
             {
                 int index = book.generalConvos.FindIndex(x => x == conversation);
                 // If this is a high priority conversation we haven't had, add it to the tempList
-                if(conversation.GeneralPriority == k && !getIsConvoHad()[book.postBossLossConvos.Count + index])
+                if(conversation.GeneralPriority == k && !getIsConvoHad()[book.postBossLossConvos.Count + index]) 
                 {
                     tempList.Add(conversation);
                 }
@@ -108,6 +110,7 @@ public class ConvoSelector : MonoBehaviour
 
         // If we get here, to the very end, without any conversation returned, we clear the Had booleans of ALL the 0 priorities
         // and just return the first one
+        markNoNewGenConvos();
         for(int l = 0; l < book.generalConvos.Count; l++)
         {
             if(book.generalConvos[l].GeneralPriority == 0)
@@ -133,6 +136,41 @@ public class ConvoSelector : MonoBehaviour
         else
         {
             return GameManager.Instance.GamePersistent.IsConvoHadBag;
+        }
+    }
+
+    private void markNoNewGenConvos()
+    {
+        if (NPCharaType == NPCType.Rod)
+        {
+            GameManager.Instance.GamePersistent.AllConvosHadRod = true;
+        }
+        else if (NPCharaType == NPCType.Bait)
+        {
+            GameManager.Instance.GamePersistent.AllConvosHadBait = true;
+        }
+        else
+        {
+            GameManager.Instance.GamePersistent.AllConvosHadBag = true;
+        }
+    }
+
+    private void clearIsConvoHad()
+    {
+        if (NPCharaType == NPCType.Rod)
+        {
+            GameManager.Instance.GamePersistent.IsConvoHadRod = new List<bool>();
+            GameManager.Instance.GamePersistent.AllConvosHadRod = false;
+        }
+        else if (NPCharaType == NPCType.Bait)
+        {
+            GameManager.Instance.GamePersistent.IsConvoHadBait = new List<bool>();
+            GameManager.Instance.GamePersistent.AllConvosHadBait = false;
+        }
+        else
+        {
+            GameManager.Instance.GamePersistent.IsConvoHadBag = new List<bool>();
+            GameManager.Instance.GamePersistent.AllConvosHadBag = false;
         }
     }
 

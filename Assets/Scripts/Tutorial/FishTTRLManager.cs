@@ -9,24 +9,21 @@ public class FishTTRLManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private GameObject _tutorialView;
+    [SerializeField] private GameObject _void;
     [SerializeField] private Animator _sign1;
     [SerializeField] private Animator _sign2;
-    [SerializeField] private Animator _sign3;
-    [SerializeField] private Animator _sign4;
 
-    private bool _hasHeldDownCast = false;
     private bool _hasCast = false;
     private bool _hasConfirmed = false;
+    private bool _hasConfirmed2 = false;
 
     private void OnEnable()
     {
-        FishingControls.onFirstCast += HasPrepped;
         FishingControls.onFirstBobberLand += HasCast;
     }
 
     private void OnDisable()
     {
-        FishingControls.onFirstCast -= HasPrepped;
         FishingControls.onFirstBobberLand -= HasCast;
     }
 
@@ -38,6 +35,11 @@ public class FishTTRLManager : MonoBehaviour
             GameManager.Instance.GamePersistent.IsTutorialBait = false; // Turn it off behind you as you go
             StartCoroutine(DoTutorial());
         }
+        else
+        {
+            _tutorialView.SetActive(false);
+            this.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -48,37 +50,27 @@ public class FishTTRLManager : MonoBehaviour
 
     private IEnumerator DoTutorial()
     {
-        _sign1.Play("Appear", 0, 0);    // First non-fullscreen popup: Hold the mouse down
-
-        yield return new WaitUntil(()=>_hasHeldDownCast);
-        _sign2.Play("Appear", 0, 0);    // Second non-fullscreen popup: Let the mouse go
-
+        _sign1.Play("Appear", 0, 0);    // Show how to hold and release, and then let them
+        yield return new WaitUntil(() => _hasConfirmed);
+        _sign1.Play("Disappear", 0, 0);
+        
+        yield return new WaitForSeconds(.5f);
+        _void.SetActive(false);
+        _fControls.SetTutorialCasting();
         yield return new WaitUntil(() => _hasCast);
-        _sign3.Play("Appear", 0, 0);    // Third non-fullscreen popup: When it bites, do the thing!
+        yield return new WaitForSeconds(1f);
+        _void.SetActive(true);
+        _sign2.Play("Appear", 0, 0);    // Third non-fullscreen popup: When it bites, do the thing!
 
         // FREEZE THE BITE LOGIC
         // To continue, they click a button on that popup, which unfreezes the bite logic
 
-        yield return new WaitUntil(() => _hasConfirmed);
-        _sign1.Play("Disappear", 0, 0);
-        yield return new WaitForSeconds(.05f);
+        yield return new WaitUntil(() => _hasConfirmed2);
+        _void.SetActive(false);
         _sign2.Play("Disappear", 0, 0);
-        yield return new WaitForSeconds(.05f);
-        _sign3.Play("Disappear", 0, 0);
-        yield return new WaitForSeconds(2f);
         _fControls.SetTutorialReeling();
         // Once they reel it in, a fourth popup appears with a summary and telling them to keep going
-        yield return new WaitUntil(() => !_fControls.IsFishingLoopDone);
-        yield return new WaitForSeconds(6f);
-        _sign4.Play("Appear", 0, 0);
 
-        yield return null;
-
-    }
-
-    private void HasPrepped() // For events that trigger in FishingControls
-    {
-        _hasHeldDownCast = true;
     }
 
     private void HasCast()
@@ -90,4 +82,9 @@ public class FishTTRLManager : MonoBehaviour
     {
         _hasConfirmed = true;
     }
+    public void Confirmation2()
+    {
+        _hasConfirmed2 = true;
+    }
+
 }

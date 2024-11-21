@@ -15,7 +15,7 @@ public class WaterDamager : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy(); // Damage the player
+            collision.gameObject.GetComponent<PlayerCombat>().TakeDamage(40000, false); // Damage the player
             collision.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, _launchSpeed, 0), ForceMode.Impulse);
         }
 

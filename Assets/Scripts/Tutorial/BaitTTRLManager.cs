@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.UI;
+
 using TMPro;
 
 public class BaitTTRLManager : MonoBehaviour
@@ -27,6 +27,11 @@ public class BaitTTRLManager : MonoBehaviour
             GameManager.Instance.GamePersistent.IsTutorialHub = false; // Turn it off behind you as you go
             _backToHubButton.SetActive(false); // No going back to the hub during the tutorial
             StartCoroutine(DoTutorial());
+        }
+        else
+        {
+            _tutorialView.SetActive(false);
+            this.gameObject.SetActive(false);
         }
     }
 

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 using FMODUnity;
@@ -24,6 +23,7 @@ public class HubTTRLManager : MonoBehaviour
     [Header("NPCs")]
     [SerializeField] private GameObject _activeNPCs;
     [SerializeField] private GameObject _hidingNPCs;
+    [SerializeField] private BoxCollider2D _hubMusicTrigger;
 
     [Header("UI")]
     [SerializeField] private GameObject _tutorialView;
@@ -48,6 +48,7 @@ public class HubTTRLManager : MonoBehaviour
         if (GameManager.Instance.GamePersistent.IsTutorialHub)
         {
             _tutorialView.SetActive(true);
+            _hubMusicTrigger.enabled = false;
             _interactAction = InputSystem.actions.FindAction("Interact");
             _pMovement = _hubPlayer.GetComponent<HubMovement>();
 
@@ -56,6 +57,12 @@ public class HubTTRLManager : MonoBehaviour
             _hidingNPCs.SetActive(true);
 
             StartCoroutine(DoTutorial());
+        }
+        else
+        {
+            _tutorialView.SetActive(false);
+            GameManager.Instance.GamePersistent.IsTutorialCombat = false;
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -109,7 +116,7 @@ public class HubTTRLManager : MonoBehaviour
         foreach (string line in _conversation.lines)
         {
             
-            if (line.StartsWith("Y"))
+            if (line.StartsWith("You're"))
             {
                 while (_void.alpha > 0f)
                 {
@@ -117,7 +124,7 @@ public class HubTTRLManager : MonoBehaviour
                     yield return null;
                 }
             }
-            if (line.StartsWith("W"))
+            if (line.StartsWith("You'll"))
             {
                 _speaker.text = "Skipper";
             }
