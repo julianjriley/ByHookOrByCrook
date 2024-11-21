@@ -17,7 +17,10 @@ public class RainbowFish : WeaponInstance
     public override void Fire(Vector3 direction)
     {
         if (!_canFire)
+        {
             return;
+        }
+            
         if (_overHeated)
         {
             //Modify later if we wanna do cool stuff to the gun while overheated idk
