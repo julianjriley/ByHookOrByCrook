@@ -22,6 +22,8 @@ public class FishButton : MonoBehaviour
     private Image _iconSprite;
     [SerializeField, Tooltip("The sprites to choose from for the icons")]
     private Sprite[] _iconSprites;
+    [SerializeField, Tooltip("Used to trigger shake animation negative feedback")]
+    private Animator _anim;
 
     [Header("Tooltip")]
     [SerializeField, Tooltip("Used to enable/disable tooltip popup")]
@@ -84,10 +86,14 @@ public class FishButton : MonoBehaviour
 
                 // hide tooltip
                 _tooltipObject.SetActive(false);
+
+                // TODO: play add to loadout audio
             }
             else
             {
-                // TODO: negative feedback that you cannot add anymore items to the loadout since it is full
+                _anim.SetTrigger("Shake");
+
+                // TODO: play negative feedback audio
             }
         }
         // Swap from loadout to caught fish
@@ -99,6 +105,8 @@ public class FishButton : MonoBehaviour
 
             // hide tooltip
             _tooltipObject.SetActive(false);
+
+            // TODO: play remove from loadout audio
         }
 
         // cancel confirmation popups since a different button was pressed.
