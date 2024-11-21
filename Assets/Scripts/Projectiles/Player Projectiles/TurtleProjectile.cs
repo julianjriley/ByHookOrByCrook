@@ -81,4 +81,13 @@ public class TurtleProjectile : Projectile
             DestroyOrDisable();
         }
     }
+
+    public override void TakeDamage(float damage, bool dontUseSound = false)
+    {
+        /*_health -= damage;
+        if (_health <= 0)
+        {
+            DestroyOrDisable();
+        }*/
+    }
 }

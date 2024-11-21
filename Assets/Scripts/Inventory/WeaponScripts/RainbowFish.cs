@@ -24,6 +24,7 @@ public class RainbowFish : WeaponInstance
         if (_overHeated)
         {
             //Modify later if we wanna do cool stuff to the gun while overheated idk
+            increasedFireRate = 0;
             return;
         }
         if (_weapon.ProjectileCount < 2)
