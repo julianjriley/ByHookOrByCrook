@@ -187,7 +187,11 @@ public class FishingControls : MonoBehaviour
 
             // trigger casting popup
             if (_castingScore == 1)
+            {
                 _castingPopup.PopUp(0); // perfect
+
+                // TODO: play perfect cast audio
+            }
             else if (_castingGoal.IsSuperFar())
             {
                 if (_bobber.transform.position.x < _castingGoal.transform.position.x)
@@ -314,6 +318,8 @@ public class FishingControls : MonoBehaviour
                 {
                     _reelingScore = 1;
                     _reelingPopup.PopUp(0); // perfect
+
+                    // TODO: play perfect reel audio
                 }
                 // slightly early click (score between 0 and 1)
                 else if (_currentShrinkingScale > perfectScale)
