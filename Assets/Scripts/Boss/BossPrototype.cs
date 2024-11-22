@@ -29,10 +29,14 @@ public class BossPrototype : MonoBehaviour
     [SerializeField] private Transform _entranceTarget;
     [SerializeField] private GameObject _fightText;
     [SerializeField] private GameObject _introUI;
+    [SerializeField] private GameObject _victoryText;
+    [SerializeField] private GameObject _fadeOutPanel;
+    private InputAction _skipIntroAction;
     private bool _introIsSkippable = false;
     private Coroutine _part1Intro;
     private GameObject _player;
     private InputActionAsset _actions;
+
     //private InputAction leftMouseClick;
 
     [Header ("Boss Phases + Attacks")]
@@ -82,21 +86,32 @@ public class BossPrototype : MonoBehaviour
         PlayerCombat.playerDeath += GoToCashout;
     }
 
-    private IEnumerator TitleCard() {
+    protected IEnumerator TitleCard() {
         yield return new WaitForSeconds(0.1f);
-        Debug.Log("Title Card");
+
+        _skipIntroAction = new InputAction("skipIntro", binding: "<Mouse>/leftButton");
+        _skipIntroAction.AddBinding("<Mouse>/rightButton");
+        _skipIntroAction.AddBinding("<Keyboard>/space");
+        _skipIntroAction.AddBinding("<Keyboard>/w");
+        _skipIntroAction.AddBinding("<Keyboard>/a");
+        _skipIntroAction.AddBinding("<Keyboard>/s");
+        _skipIntroAction.AddBinding("<Keyboard>/d");
+        _skipIntroAction.Enable();
+        _skipIntroAction.performed += EndTitleCard;
+
         _fightText.SetActive(false);
         //disable player combat and movement
         _player = _playerTransform.gameObject;
         _actions.Disable();
         _introIsSkippable = true;
         SetNewTarget(_offscreenTarget, -1);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         EndTitleCard();
     }
 
-    private void EndTitleCard() {
+    protected void EndTitleCard() {
         _introIsSkippable = false;
+        _skipIntroAction.Disable();
         Destroy(_introUI);
         if (_part1Intro != null) {
             StopCoroutine(_part1Intro);
@@ -104,8 +119,17 @@ public class BossPrototype : MonoBehaviour
         StartCoroutine(BossEntrance());
     }
 
-    private IEnumerator BossEntrance() {
-        Debug.Log("Boss Entrance");
+    protected void EndTitleCard(InputAction.CallbackContext context) {
+        _introIsSkippable = false;
+        _skipIntroAction.Disable();
+        Destroy(_introUI);
+        if (_part1Intro != null) {
+            StopCoroutine(_part1Intro);
+        }
+        StartCoroutine(BossEntrance());
+    }
+
+    protected IEnumerator BossEntrance() {
         //change boss target
         SetNewTarget(_entranceTarget, 2f);
         //wait
@@ -121,12 +145,6 @@ public class BossPrototype : MonoBehaviour
     // Update is called once per frame
     virtual protected void FixedUpdate()
     {
-        if (_introIsSkippable) {
-            if (Mouse.current.leftButton.wasPressedThisFrame) {
-                EndTitleCard();
-            }
-        }
-
         if (!_defeated) {
             Move();
             //check for phase change
@@ -270,6 +288,14 @@ public class BossPrototype : MonoBehaviour
             Destroy(child.gameObject);
         }
         GameManager.Instance.GamePersistent.BossNumber = _bossProgressionNumber;
+        transform.Find("SmokeExplosionVFX_0").gameObject.SetActive(true);
+        _victoryText.SetActive(true);
+        _fadeOutPanel.SetActive(true);
+        StartCoroutine(NextSceneDelay());
+    }
+
+    IEnumerator NextSceneDelay() {
+        yield return new WaitForSeconds(2.5f);
         GoToCashout();
     }
 
