@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1334251207
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1883506656, guid: 9b04e42b108d89a4d9cac601c00ec54d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -178,7 +178,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1334251207
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: -1182070177, guid: 43d7fabf238f07846a08b09c8edbceb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -243,9 +243,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7536411905098285336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 5}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 10, y: 8.72, z: 0}
+  m_LocalScale: {x: 2.7, y: 2.7, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7904423402414943674}
   - {fileID: 375428711803303604}
@@ -291,7 +291,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1334251207
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 143874562, guid: c3309123c468c0444a1f4eb04c22acc0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 20
+  _playerTransform: {fileID: 0}
   BossHealth: 100
   MaxBossHealth: 100
   _phases:
@@ -416,8 +417,10 @@ MonoBehaviour:
       Data4: -1696129653
     Path: event:/Combat/General/BossHit
   _cashoutSceneName: 8_BETA_Cashout
+  _bossProgressionNumber: 0
+  _mikuAttackEmpty: {fileID: 0}
+  _laserAttackEmpty: {fileID: 0}
   _laserBeamDuration: 10
-  _newSpawnLocation: {fileID: 0}
   laserList: []
 --- !u!136 &557532399229161173
 CapsuleCollider:

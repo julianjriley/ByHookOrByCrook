@@ -22,7 +22,7 @@ public class BouncyMiku : Projectile
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        _sprite.transform.Rotate(0, 0, _direction.x * 5);
+        //_sprite.transform.Rotate(0, 0, _direction.x * 5);
     }
 
     override protected void OnCollisionEnter(Collision collision)
