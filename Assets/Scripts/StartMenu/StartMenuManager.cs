@@ -7,7 +7,8 @@ public class StartMenuManager : MonoBehaviour
 {
     [SerializeField]
     private string gameScene, creditsScene, startScene;
-
+    [SerializeField]
+    GameObject optionsScreen;
     //[SerializeField]
     //private GameObject optionsScene;
 
@@ -16,9 +17,9 @@ public class StartMenuManager : MonoBehaviour
         SceneManager.LoadScene(gameScene);
     }
 
-    public void LoadOptionsScene(GameObject optionsScene)
+    public void LoadOptionsScene()
     {
-        optionsScene.SetActive(true);
+        optionsScreen.SetActive(true);
     }
 
     public void LoadCreditsScene()

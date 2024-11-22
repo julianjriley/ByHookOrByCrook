@@ -18,11 +18,15 @@ public class OptionsMenuManager : MonoBehaviour
     [SerializeField]
     private string _startScene;
 
-    [SerializeField]
-    private GameObject _currentTab;
 
-    [SerializeField]
-    private GameObject Controls, Gameplay, Audio, Graphics;
+    [SerializeField] private GameObject _currentTab;
+    [SerializeField] private int _currentTabNum;
+
+    [SerializeField, Header("Tabs")]
+    private List<GameObject> _tabs;
+
+    [SerializeField, Header("Buttons")]
+    private List<Button> _buttons;
 
     [SerializeField, Tooltip("SFX slider")]
     private Slider _sensitivitySlider;
@@ -60,7 +64,7 @@ public class OptionsMenuManager : MonoBehaviour
         
         if (_currentTab != null)
         {
-            _currentTab.GetComponentInParent<Button>().interactable = false;
+            _buttons[_currentTabNum].interactable = false;
         }
     }
     
@@ -98,14 +102,15 @@ public class OptionsMenuManager : MonoBehaviour
         SceneManager.LoadScene(_startScene);
     }
 
-    public void SetCurrentTab(GameObject Tab)
+    public void SetCurrentTab(int tabNum)
     {
-        _currentTab = Tab;
+        _currentTabNum = tabNum;
+        _currentTab = _tabs[tabNum];
     }
 
     public void TurnOn()
-    {   
-        _currentTab.transform.parent.GetComponent<Button>().interactable = false;
+    {
+        _buttons[_currentTabNum].interactable = false;
         _currentTab.SetActive(true);
     }
 
@@ -113,7 +118,7 @@ public class OptionsMenuManager : MonoBehaviour
     {
         if (_currentTab != null)
         {
-            _currentTab.transform.parent.GetComponent<Button>().interactable = true;
+            _buttons[_currentTabNum].interactable = true;
             _currentTab.SetActive(false);
         }
     }
