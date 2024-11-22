@@ -12,6 +12,8 @@ using TMPro;
 public class CatchUI : MonoBehaviour
 {
     [Header("Components")]
+    [SerializeField, Tooltip("Used to scale the entire catch display.")]
+    private RectTransform _rect;
     [SerializeField, Tooltip("Used for setting sprite properly upon new catch.")]
     private Image _image;
     [SerializeField, Tooltip("Text for caught fish to be updated upon new catch.")]
@@ -20,14 +22,14 @@ public class CatchUI : MonoBehaviour
     private Image _textBacker;
     [SerializeField, Tooltip("Image for indicating icon type to be updated upon new catch.")]
     private Image _iconImage;
-    [SerializeField, Tooltip("Used for changing size of popup.")]
-    private RectTransform _rect;
     [SerializeField, Tooltip("Ordered sprites for icon types.")]
     private Sprite[] _iconSprites;
+    [SerializeField, Tooltip("Used to do little wiggle effect at max scale.")]
+    private Animator _anim;
 
     [Header("Behavior")]
     [SerializeField, Tooltip("Height and width of sprite at maximum scale.")]
-    private float _maxWidth;
+    private float _maxScale;
     [SerializeField, Tooltip("'Snappiness' of expanding and shrinking of popup.")]
     private float _scaleSharpness;
     [SerializeField, Tooltip("Distance from goal width at which smooth lerping will snap to goal.")]
@@ -64,46 +66,48 @@ public class CatchUI : MonoBehaviour
     private IEnumerator UIPopup()
     {
         // Configure / enable popup
-        _rect.sizeDelta = Vector2.zero;
+        // scale
+        _rect.localScale = new Vector3(0, 0, 1);
+        // fish
         _image.sprite = GameManager.Instance.PeekCaughtFish().GetSprite();
         _image.enabled = true;
-
-        // still increasing
-        while(_rect.sizeDelta.x < _maxWidth - _snappingThreshold)
-        {
-            // smoothly lerp width size UP
-            float newWidth = Mathf.Lerp(_rect.sizeDelta.x, _maxWidth, 1f - Mathf.Exp(-_scaleSharpness * Time.deltaTime));
-            _rect.sizeDelta = new Vector2(newWidth, newWidth);
-            
-            yield return null;
-        }
-        // ensure snapped to full max size
-        _rect.sizeDelta = new Vector2(_maxWidth, _maxWidth);
-
-        // TODO: some wiggle effect when popup is actually shown at full scale.
-
-        // update text and show only at full scale
+        // text
         _text.text = GameManager.Instance.PeekCaughtFish().GetItemName();
         _text.enabled = true;
         _textBacker.enabled = true;
-        // update icon asset only at full scale
+        // icon
         _iconImage.sprite = _iconSprites[(int)GameManager.Instance.PeekCaughtFish().GetItemType()];
         _iconImage.enabled = true;
+
+        // still increasing
+        while (_rect.localScale.x < _maxScale - _snappingThreshold)
+        {
+            // smoothly lerp scale
+            float newScale = Mathf.Lerp(_rect.localScale.x, _maxScale, 1f - Mathf.Exp(-_scaleSharpness * Time.deltaTime));
+            _rect.localScale = new Vector3(newScale, newScale, 1);
+            
+            yield return null;
+        }
+        // ensure snapped to max scale
+        _rect.localScale = new Vector3(_maxScale, _maxScale, 1);
+
+        // wiggle effect of icon at max scale
+        _anim.SetTrigger("Wiggle");
 
         // pause while max scale
         yield return new WaitForSeconds(_freezeTime);
 
         // decreasing scale
-        while (_rect.sizeDelta.x > _snappingThreshold)
+        while (_rect.localScale.x > _snappingThreshold)
         {
             // smoothly lerp width size UP
-            float newWidth = Mathf.Lerp(_rect.sizeDelta.x, 0, 1f - Mathf.Exp(-_scaleSharpness * Time.deltaTime));
-            _rect.sizeDelta = new Vector2(newWidth, newWidth);
+            float newScale = Mathf.Lerp(_rect.localScale.x, 0, 1f - Mathf.Exp(-_scaleSharpness * Time.deltaTime));
+            _rect.localScale = new Vector3(newScale, newScale, 1);
 
             yield return null;
         }
         // ensure snapped to full min size
-        _rect.sizeDelta = Vector2.zero;
+        _rect.localScale = new Vector3(0, 0, 1);
 
         // Done - disable image
         _image.enabled = false;

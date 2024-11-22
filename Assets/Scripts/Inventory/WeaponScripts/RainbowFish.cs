@@ -17,10 +17,15 @@ public class RainbowFish : WeaponInstance
     public override void Fire(Vector3 direction)
     {
         if (!_canFire)
+        {
+            increasedFireRate = 0;
             return;
+        }
+            
         if (_overHeated)
         {
             //Modify later if we wanna do cool stuff to the gun while overheated idk
+            increasedFireRate = 0;
             return;
         }
         if (_weapon.ProjectileCount < 2)
@@ -60,6 +65,7 @@ public class RainbowFish : WeaponInstance
             if (_weapon.overheatShot)
                 _weapon.Damage /= 10f;
             _overHeated = true;
+            increasedFireRate = 0;
         }
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
         increasedFireRate += 0.3f;

@@ -31,6 +31,8 @@ public class BobberBehavior : MonoBehaviour
     private float _verticalDampen;
     [SerializeField, Tooltip("Gravity Value of the bobbing bobber.")]
     private float _bobbingGravity;
+    [SerializeField, Tooltip("max vertical speed during bobbing phase.")]
+    private float _maxBobbingSpeed;
 
     [Header("Tugging")]
     [SerializeField, Tooltip("Smallest possible time between tugs on the line.")]
@@ -106,6 +108,14 @@ public class BobberBehavior : MonoBehaviour
 
                 break;
             case BobberState.Bobbing:
+
+                // clamp velocity (to prevent gaining height)
+                if (Mathf.Abs(_rigidBody.velocity.y) > _maxBobbingSpeed)
+                {
+                    Vector3 newVelocity = _rigidBody.velocity;
+                    newVelocity.y = newVelocity.y < 0 ? -_maxBobbingSpeed : _maxBobbingSpeed;
+                    _rigidBody.velocity = newVelocity;
+                }
 
                 // float up
                 if (transform.localPosition.y < _waterLevel)

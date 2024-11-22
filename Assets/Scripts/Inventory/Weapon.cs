@@ -162,6 +162,8 @@ public class Weapon : Item
         canRecoil = false;
     }
 
+
+
     public void ResetStats()
     {
         _damage = _baseDamage;
@@ -176,8 +178,25 @@ public class Weapon : Item
         overheatDamageBonus = false;
         overheatShot = false;
         canRecoil = false;
-        
     }
+
+    private void OnDisable()
+    {
+        _damage = _baseDamage;
+        _fireRate = _baseFireRate;
+        _size = _baseSize;
+        _speed = _baseSpeed;
+        _lifetime = _baseLifetime;
+        _heatBuildup = _baseHeatBuildup;
+        _coolingSpeed = _baseCoolingSpeed;
+        _projectileCount = _baseProjectileCount;
+        _recoilAmount = _baseRecoilAmount;
+        overheatDamageBonus = false;
+        overheatShot = false;
+        canRecoil = false;
+    }
+
+
 
     public override void SetPlayer(PlayerCombat player)
     {

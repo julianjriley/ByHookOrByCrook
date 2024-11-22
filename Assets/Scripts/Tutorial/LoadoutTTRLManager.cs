@@ -44,8 +44,6 @@ public class LoadoutTTRLManager : MonoBehaviour
                 _practiceButton.SetActive(false);
             }
         }
-
-
     }
 
     public void ReadTheSign()
@@ -62,11 +60,5 @@ public class LoadoutTTRLManager : MonoBehaviour
         _signAnim.Play("Disappear", 0, 0);
         yield return new WaitForSeconds(7f / 12f);
         _foregroundScreen.SetActive(false);
-    }
-
-    public void PracButton()
-    {
-        _bs.AddFish();
-        SceneManager.LoadScene("6.5PracTut");
     }
 }

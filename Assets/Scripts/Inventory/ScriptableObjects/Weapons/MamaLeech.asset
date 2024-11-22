@@ -19,13 +19,13 @@ MonoBehaviour:
   _itemPrefab: {fileID: 7851906927572201638, guid: 18dd6680215b29c43b77169b549474f8, type: 3}
   _cost: 180
   itemType: 3
-  _baseDamage: 3
-  _baseFireRate: 2.5
+  _baseDamage: 0.3
+  _baseFireRate: 1
   _baseSize: 1
   _baseSpeed: 15
   _baseLifetime: 3
-  _baseHeatBuildup: 3
-  _baseCoolingSpeed: 1
+  _baseHeatBuildup: 30
+  _baseCoolingSpeed: 10
   _overHeatCoolingSpeedMultiplier: 1
   _baseProjectileCount: 1
   _baseRecoilAmount: 6
