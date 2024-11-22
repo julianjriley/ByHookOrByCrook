@@ -106,4 +106,16 @@ public class PaintBoss : BossPrototype
         if (attack.TryGetComponent(out PainterlySpawner spawner))
             _preparingSpawners.Add(spawner);
     }
+
+    /// <summary>
+    /// Returns transform of the paint boss's next painting target.
+    /// </summary>
+    public Transform GetNextPaintingTransform()
+    {
+        // no next painting yet
+        if (_spawners.Count == 0)
+            return null;
+
+        return _spawners[0].transform;
+    }
 }

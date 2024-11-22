@@ -31,7 +31,6 @@ public class ReelingAccessibilitySpriteSwap : MonoBehaviour
         // accessibility
         if (GameManager.Instance.GamePersistent.IsBobber)
         {
-            Debug.Log("TERT");
             _shrinkingCircleImage.sprite = _thickerSprite;
             _innerBorderImage.sprite = _thickerSpriteBorder;
             _outerBorderImage.sprite = _thickerSpriteBorder;
