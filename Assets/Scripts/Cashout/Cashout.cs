@@ -57,10 +57,10 @@ public class Cashout : MonoBehaviour
 
         // initialize boss bounty text
         float bossBounty = GameManager.Instance.ScenePersistent.BossPerformanceMultiplier;
-        _bossBountyText.text = "x " + bossBounty.ToString("F1");
+        _bossBountyText.text = "x " + bossBounty.ToString("F2");
 
         // initialize total text
-        int total = (int) (summary * bossBounty);
+        int total = Mathf.RoundToInt(summary * (Mathf.Round(bossBounty * 100f) / 100f));
         _totalText.text = total.ToString();
 
         // increment actual saved currency
