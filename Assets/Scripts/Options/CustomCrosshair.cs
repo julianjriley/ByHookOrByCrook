@@ -12,40 +12,53 @@ public class CustomCrosshair : MonoBehaviour
     Cursor cursor;
     // private SpriteRenderer _renderer;
     public Image DefaultCrosshair;
-    public Texture2D Crosshair;
+    //public Texture2D Crosshair;
 
     public Slider Red, Green, Blue, Opacity, Size;
 
     private Color newColor;
 
+    public Texture2D Crosshair;
+
+
     private void Start()
     {
-        //Cursor.visible = false;
-        //DefaultCrosshair = GetComponent<Image>();
-         // _renderer = GetComponent<SpriteRenderer>();
-        
 
-        //Cursor.SetCursor(DefaultCrosshair.texture,new Vector2(0,0), CursorMode.ForceSoftware);
-    }
-
-    private void OnGUI()
-    {
-        GUI.skin.settings.cursorColor = newColor;
+        //Crosshair = new Texture2D(82, 82, TextureFormat.RGBA32, false);
+        Cursor.SetCursor(Crosshair, Vector2.zero, CursorMode.Auto);
     }
 
     private void Update()
     {
-        
-        //Vector2 _cursorPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        //Cursor.SetCursor(Crosshair, new Vector2(30, 25), CursorMode.ForceSoftware);
-        //GameManager.Instance.GamePersistent.Crosshair = this;
-        //GameManager.Instance.GamePersistent.crosshairSprite = DefaultCrosshair.sprite;
+        transform.position = Mouse.current.position.value;
     }
 
+    void FillCrosshair()
+    {
+        for (int x = 0; x < Crosshair.width; x++)
+        {
+            
+            for (int y = 0; y < Crosshair.height; y++)
+            {
+                if (Crosshair.GetPixel(x,y) != Color.clear)
+                    Crosshair.SetPixel(x,y, newColor);
+            }
+        }
+        Crosshair.Apply();
+
+        Cursor.SetCursor(Crosshair, Vector2.zero, CursorMode.ForceSoftware);
+    }
     public void UpdateCrosshair()
     {
         DefaultCrosshair.color = new Color(Red.value, Green.value, Blue.value, Opacity.value);
         newColor = new Color(Red.value, Green.value, Blue.value, Opacity.value);
+
+        newColor = Color.HSVToRGB(Red.value, 1, 1);
+        //newColor = Color.HSVToRGB(Green.value, 1, 1);
+        //newColor = Color.HSVToRGB(Blue.value, 1, 1);
+        //newColor = Color.HSVToRGB(Opacity.value, 1, 1);
+        FillCrosshair();
+        
         // Texture2D texture = new Texture2D((int)Red.value, (int)Green.value, (int)Blue.value, (int)Opacity.value);
 
         // TODO: Link to texture2D
