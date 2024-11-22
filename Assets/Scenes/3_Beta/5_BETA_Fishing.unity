@@ -5296,8 +5296,8 @@ SpriteRenderer:
   m_SortingLayerID: 1334251207
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f256495aa6da4fe44a5bc65b96b5d8c5, type: 3}
-  m_Color: {r: 0.29423285, g: 0.7169812, b: 0.41741776, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 3b1be7d24de4c204096ff64d3b8ca204, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5322,8 +5322,10 @@ MonoBehaviour:
   _shrinkingCircleImage: {fileID: 1231716280}
   _innerBorderImage: {fileID: 463331141}
   _outerBorderImage: {fileID: 359562261}
-  _thickerSprite: {fileID: 21300000, guid: fd7a0e8655b34434ca180363ad98e2c5, type: 3}
-  _thickSprite: {fileID: 21300000, guid: f256495aa6da4fe44a5bc65b96b5d8c5, type: 3}
+  _thickerSprite: {fileID: 21300000, guid: d7d48c82aeecacc4e8b5033c448e79f8, type: 3}
+  _thickSprite: {fileID: 21300000, guid: 3b1be7d24de4c204096ff64d3b8ca204, type: 3}
+  _thickerSpriteBorder: {fileID: 21300000, guid: fd7a0e8655b34434ca180363ad98e2c5, type: 3}
+  _thickSpriteBorder: {fileID: 21300000, guid: f256495aa6da4fe44a5bc65b96b5d8c5, type: 3}
 --- !u!1 &1236547278
 GameObject:
   m_ObjectHideFlags: 0
@@ -8363,8 +8365,8 @@ SpriteRenderer:
   m_SortingLayerID: 1334251207
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: c774e381443bcab45bb6ce97f4adca43, type: 3}
-  m_Color: {r: 0.6981132, g: 0.51079786, b: 0.45772517, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 460bf763f73f69544a6bb5e232b758d8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
