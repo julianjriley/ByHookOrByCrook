@@ -128,7 +128,12 @@ public class PlayerCombat : MonoBehaviour, IDamageable
             foreach (PassiveItem passiveItem in testItems)
                 AddItemToPlayer(passiveItem);
             foreach (Weapon weapon in testWeapons)
+            {
                 AddItemToPlayer(weapon);
+                GameManager.Instance.ScenePersistent.Loadout.Add(weapon);
+            }
+                
+            
         }
 #endif
         //AddItemToPlayer(defaultWeapon);

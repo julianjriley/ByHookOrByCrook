@@ -122,7 +122,7 @@ public class LoadoutSelection : MonoBehaviour
         }
 
         // actually transition scene
-        StartCoroutine(Fadeout(sceneToSwitchTo));
+        SceneManager.LoadScene(sceneToSwitchTo);
     }
 
     /// <summary>
@@ -157,7 +157,7 @@ public class LoadoutSelection : MonoBehaviour
         AddFish();
 
         // actually transition scene
-        StartCoroutine(Fadeout(_practiceSceneName));
+        SceneManager.LoadScene(_practiceSceneName);
     }
 
     public void AddFish()
@@ -183,16 +183,6 @@ public class LoadoutSelection : MonoBehaviour
         }
         if (!isWeaponFound)
             GameManager.Instance.AddLoadoutItem(_starterGun);
-    }
-
-    private IEnumerator Fadeout(string sceneName)
-    {
-        // TODO: add actual smooth transition visual effects here
-
-        // Fadeout logic/delay
-        yield return new WaitForSeconds(1f);
-
-        SceneManager.LoadScene(sceneName);
     }
     #endregion
 }
