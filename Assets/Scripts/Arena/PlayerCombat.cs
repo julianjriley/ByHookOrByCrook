@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerCombat : MonoBehaviour, IDamageable
 {
 
-    private ActionControls controls;
+    private InputActionMap controls;
     Camera cam;
 
     //Player Movement Script
@@ -81,9 +81,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     [SerializeField] Weapon[] testWeapons;
 #endif
 
-    
-  
-
     private void OnEnable()
     {
         cam = Camera.main;
@@ -91,20 +88,20 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        controls = new ActionControls();
+        controls = InputSystem.actions.actionMaps[0];
     }
     void Start()
     {
-        controls.Player.FireWeapon.started += FireWeapon;
-        controls.Player.FireWeapon.canceled += FireWeapon;
-        controls.Player.FireWeapon.Enable();
+        controls.FindAction("FireWeapon").started += FireWeapon;
+        controls.FindAction("FireWeapon").canceled += FireWeapon;
+        controls.FindAction("FireWeapon").Enable();
 
-        controls.Player.SwitchWeapon.Enable();
-        controls.Player.SwitchWeapon.performed += ChangeWeapon;
-        
-        controls.Player.InvulnToggle.Enable();
-        controls.Player.InvulnToggle.performed += ToggleInvuln;
-        
+        controls.FindAction("SwitchWeapon").Enable();
+        controls.FindAction("SwitchWeapon").performed += ChangeWeapon;
+
+        controls.FindAction("InvulnToggle").Enable();
+        controls.FindAction("InvulnToggle").performed += ToggleInvuln;
+
         ResetStats();
         _weapons = new List<WeaponInstance>();
         playerMovement = GetComponent<ArenaMovement>();
@@ -152,8 +149,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     private void OnDisable()
     {
-        controls.Player.FireWeapon.Disable();
-        controls.Player.SwitchWeapon.Disable();
+        controls.FindAction("FireWeapon").Disable();
+        controls.FindAction("SwitchWeapon").Disable();
     }
 
 
@@ -197,7 +194,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         _equippedWeapon.DisableRendering();
         _equippedWeapon = _weapons[equippedWeaponindex];
         _equippedWeapon.EnableRendering();
-        if (controls.Player.FireWeapon.IsPressed())
+
+        if (controls.FindAction("FireWeapon").IsPressed())
         {
             _equippedWeapon.SetAim(weaponDirection);
             FireFunctionality();
