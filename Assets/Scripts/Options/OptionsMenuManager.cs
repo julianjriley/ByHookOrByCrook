@@ -56,9 +56,13 @@ public class OptionsMenuManager : MonoBehaviour
     private void Start()
     {
         _profile.TryGetSettings(out _exposure);
+        _exposure.keyValue.value = GameManager.Instance.GamePersistent.Brightness;
+        _brightnessSlider.value = GameManager.Instance.GamePersistent.Brightness;
         AdjustBrightness();
 
         _profile.TryGetSettings(out _saturation);
+        _saturation.saturation.value = GameManager.Instance.GamePersistent.Saturation;
+        _saturationSlider.value = GameManager.Instance.GamePersistent.Saturation;
         AdjustSaturation();
 
         
@@ -67,7 +71,12 @@ public class OptionsMenuManager : MonoBehaviour
             _buttons[_currentTabNum].interactable = false;
         }
     }
-    
+
+    private void Update()
+    {
+
+    }
+
     public void AdjustSensivity()
     {
         // won't be in for Beta due to crappy documentation
@@ -85,17 +94,21 @@ public class OptionsMenuManager : MonoBehaviour
     {
         _profile.TryGetSettings(out _saturation);
         _saturation.saturation.value = _saturationSlider.value;
+        GameManager.Instance.GamePersistent.Saturation = _saturationSlider.value;
     }
     public void AdjustBrightness()
     {
         if (_brightnessSlider.value != 0)
         {
             _exposure.keyValue.value = _brightnessSlider.value;
+            GameManager.Instance.GamePersistent.Brightness = _brightnessSlider.value;
         }
         else
         {
             _exposure.keyValue.value = .05f; // the lowest brightenss setting
-        } 
+            GameManager.Instance.GamePersistent.Brightness = .05f;
+        }
+        
     }
     public void LoadStartScene()
     {

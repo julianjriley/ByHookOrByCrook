@@ -74,7 +74,7 @@ public class PauseManager : MonoBehaviour
         actions.Disable();
         _isPaused = true;
         _pauseMenu.SetActive(true);
-        Debug.Log("disabling input");
+        //Debug.Log("disabling input");
 
     }
 
@@ -99,19 +99,7 @@ public class PauseManager : MonoBehaviour
 
     void Countdown()
     {
-        _startTime = Time.unscaledTime;
-        Debug.Log("Start Time = " + _startTime);
-        _endTime = _startTime + 3f;
-        Debug.Log("Emd Time = " + _endTime);
-
-        Debug.Log("Unscaled time is = " + Time.unscaledTime);
-
-        if (Time.unscaledTime >= _endTime)
-        {
-            Debug.Log("Unscaled time == endtime");
-            Time.timeScale = 1f;
-            _isPaused = false;
-        }
+        StartCoroutine(DoCountdown());
 
     }
 
@@ -123,11 +111,29 @@ public class PauseManager : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1f;
+        actions.Enable();
         SceneManager.LoadScene(0);
     }
     public void Hub()
     {
         Time.timeScale = 1f;
+        actions.Enable();
         SceneManager.LoadScene(3);
+    }
+
+    private IEnumerator DoCountdown()
+    {
+        _startTime = Time.unscaledTime;
+        //Debug.Log("Start Time = " + _startTime);
+        _endTime = _startTime + 3f;
+        //Debug.Log("Emd Time = " + _endTime);
+
+        //Debug.Log("Unscaled time is = " + Time.unscaledTime);
+
+        yield return new WaitUntil(() => Time.unscaledTime >= _endTime);
+
+            //Debug.Log("Unscaled time == endtime");
+            Time.timeScale = 1f;
+            _isPaused = false;
     }
 }
