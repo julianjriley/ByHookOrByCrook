@@ -20,6 +20,10 @@ public class ReelingAccessibilitySpriteSwap : MonoBehaviour
     private Sprite _thickerSprite;
     [SerializeField, Tooltip("Sprite for non-accessibility bobber.")]
     private Sprite _thickSprite;
+    [SerializeField, Tooltip("Border sprite for Accessibility bobber.")]
+    private Sprite _thickerSpriteBorder;
+    [SerializeField, Tooltip("Border sprite for non-accessibility bobber.")]
+    private Sprite _thickSpriteBorder;
 
     // Start is called before the first frame update
     void Awake()
@@ -28,15 +32,15 @@ public class ReelingAccessibilitySpriteSwap : MonoBehaviour
         if (GameManager.Instance.GamePersistent.IsBobber)
         {
             _shrinkingCircleImage.sprite = _thickerSprite;
-            _innerBorderImage.sprite = _thickerSprite;
-            _outerBorderImage.sprite = _thickerSprite;
+            _innerBorderImage.sprite = _thickerSpriteBorder;
+            _outerBorderImage.sprite = _thickerSpriteBorder;
         }
         // non-accessibility
         else
         {
             _shrinkingCircleImage.sprite = _thickSprite;
-            _innerBorderImage.sprite = _thickSprite;
-            _outerBorderImage.sprite = _thickSprite;
+            _innerBorderImage.sprite = _thickSpriteBorder;
+            _outerBorderImage.sprite = _thickSpriteBorder;
         }    
     }
 }
