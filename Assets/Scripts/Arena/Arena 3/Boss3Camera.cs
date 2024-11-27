@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Boss3Camera : MonoBehaviour
 {
-    [SerializeField] private float _cameraSpeed = .5f;
+    [SerializeField] private float _topCameraSpeed = 2f;
 
     private float _currentCameraSpeed = 0;
+    [Header("Ramping Variables For Round Start")]
+    [SerializeField, Tooltip("How much closer we get to full camera speed each [delay]")] private float _rampIncrement;
+    [SerializeField, Tooltip("How long we wait before each [increment]")] private float _rampDelay;
+    private bool _cameraRampingUp = false;
 
     private float _finalStop = -1;
     private bool _fullStop = false;
@@ -37,7 +41,22 @@ public class Boss3Camera : MonoBehaviour
 
     public void SetCamMoving()
     {
-        _currentCameraSpeed = _cameraSpeed;
+        if (!_cameraRampingUp)
+        {
+            StartCoroutine(DoCamRampUp());
+        }
+        
+    }
+
+    private IEnumerator DoCamRampUp()
+    {
+        _cameraRampingUp = true;
+        while(_currentCameraSpeed < _topCameraSpeed)
+        {
+            _currentCameraSpeed += _rampIncrement;
+            yield return new WaitForSeconds(_rampDelay);
+        }
+        _currentCameraSpeed = _topCameraSpeed;
     }
 
     public bool GetFullStop()

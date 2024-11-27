@@ -30,6 +30,8 @@ public class GroupSpawner : MonoBehaviour
         _currentSpawnHeight += _spawnHeightDistance;
 
         _lastCamPosY = 0;
+
+        Activate = true;
     }
 
     // Update is called once per frame
