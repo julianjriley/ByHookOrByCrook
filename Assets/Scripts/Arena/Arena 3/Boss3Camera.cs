@@ -39,4 +39,9 @@ public class Boss3Camera : MonoBehaviour
     {
         _currentCameraSpeed = _cameraSpeed;
     }
+
+    public bool GetFullStop()
+    {
+        return _fullStop;
+    }
 }

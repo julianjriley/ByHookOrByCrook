@@ -227,7 +227,6 @@ GameObject:
   - component: {fileID: 1655653055108667798}
   - component: {fileID: 557532399229161173}
   - component: {fileID: 352031637206696356}
-  - component: {fileID: 6151278921555366955}
   m_Layer: 10
   m_Name: Anime Boss
   m_TagString: Boss
@@ -250,7 +249,7 @@ Transform:
   - {fileID: 7904423402414943674}
   - {fileID: 375428711803303604}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2575335862162558461
 SpriteRenderer:
@@ -364,37 +363,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cab58fedcf134740a9d63b215a0e63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 20
+  Speed: 25
   _playerTransform: {fileID: 0}
-  BossHealth: 100
+  BossHealth: 300
   MaxBossHealth: 100
   _phases:
-  - Threshold: 100
+  - Threshold: 300
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
     StartDelay: 1.5
-    RepeatRate: 5
+    RepeatRate: 3.5
     AttackPrefabs:
-    - {fileID: 7378992784451185382, guid: f1d1797e475447b42bfb0eea4088a191, type: 3}
-  - Threshold: 50
+    - {fileID: 5530212971044480126, guid: e8f20ca7daf928e459a6a5fdb2d1e74c, type: 3}
+  - Threshold: 225
     StartEvent:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1655653055108667798}
-          m_TargetAssemblyTypeName: BossPrototype, Assembly-CSharp
-          m_MethodName: SpawnAttackOnce
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 2123999255432267849, guid: 66f8bc184e1252f4591f60b6e1760125, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1655653055108667798}
-          m_TargetAssemblyTypeName: BossPrototype, Assembly-CSharp
+          m_TargetAssemblyTypeName: AnimeBoss, Assembly-CSharp
           m_MethodName: SpawnAttackOnce
           m_Mode: 2
           m_Arguments:
@@ -406,9 +393,52 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     StartDelay: 11.5
-    RepeatRate: 3
+    RepeatRate: 5
     AttackPrefabs:
-    - {fileID: 2123999255432267849, guid: 66f8bc184e1252f4591f60b6e1760125, type: 3}
+    - {fileID: 3147431625062083812, guid: f1417725501dd6944ba75b6e2869bdeb, type: 3}
+    - {fileID: 6155035009863069748, guid: 0628964ccb14c9c48b177a06430b274b, type: 3}
+  - Threshold: 175
+    StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1655653055108667798}
+          m_TargetAssemblyTypeName: AnimeBoss, Assembly-CSharp
+          m_MethodName: SpawnAttackOnce
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1697940584593870877, guid: b80e3ec6ea0c97c42ae365d2187a7b33, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    StartDelay: 11.5
+    RepeatRate: 5
+    AttackPrefabs:
+    - {fileID: 3147431625062083812, guid: f1417725501dd6944ba75b6e2869bdeb, type: 3}
+    - {fileID: 6155035009863069748, guid: 0628964ccb14c9c48b177a06430b274b, type: 3}
+  - Threshold: 100
+    StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1655653055108667798}
+          m_TargetAssemblyTypeName: AnimeBoss, Assembly-CSharp
+          m_MethodName: SpawnAttackOnce
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1697940584593870877, guid: b80e3ec6ea0c97c42ae365d2187a7b33, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    StartDelay: 11.5
+    RepeatRate: 5
+    AttackPrefabs:
+    - {fileID: 3147431625062083812, guid: f1417725501dd6944ba75b6e2869bdeb, type: 3}
+    - {fileID: 6155035009863069748, guid: 0628964ccb14c9c48b177a06430b274b, type: 3}
   damageSound:
     Guid:
       Data1: 1622638801
@@ -417,7 +447,7 @@ MonoBehaviour:
       Data4: -1696129653
     Path: event:/Combat/General/BossHit
   _cashoutSceneName: 8_BETA_Cashout
-  _bossProgressionNumber: 0
+  _bossProgressionNumber: 2
   _mikuAttackEmpty: {fileID: 0}
   _laserAttackEmpty: {fileID: 0}
   _laserBeamDuration: 10
@@ -446,25 +476,6 @@ CapsuleCollider:
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &352031637206696356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7536411905098285336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18bedda90d9e5de40a5e659956336b9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  music:
-    Guid:
-      Data1: 817889303
-      Data2: 1287124787
-      Data3: 109520307
-      Data4: -1313791562
-    Path: event:/Music/PixelFight
---- !u!114 &6151278921555366955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
