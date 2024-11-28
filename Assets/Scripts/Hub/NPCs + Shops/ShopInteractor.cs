@@ -65,7 +65,6 @@ public class ShopInteractor : Interactor
             Destroy(gameObject);
         }
 
-        _whishNPC.SetActive(false);
     }
 
     private void OnEnable()
@@ -103,14 +102,13 @@ public class ShopInteractor : Interactor
 
             if (!_multipurchase) // If it's one purchase per load, destroy this thing
             {
-                Destroy(gameObject); // Destroy on purchase
-
                 //If the ShopType Is nothing
                 if (GoodsSold == ShopType.Nothing)
                 {
                     //Load in the Foutune Teller
                     _whishNPC.SetActive(true);
                 }
+                Destroy(gameObject); // Destroy on purchase
             }
             else // Essentially respawn/reset the shop
             {
