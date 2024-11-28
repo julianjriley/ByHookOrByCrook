@@ -42,8 +42,15 @@ public class AnimeBoss : BossPrototype
 
         // Continues to give existing lasers a rotation
         UpdateLaserRotation();
-        
-    }
+
+        if (_phaseCounter == 2)
+
+            if (!_phaseTwoChangeInProgress) // If the phase change needs to start, start it
+            {
+                StartCoroutine(DoMajorPhaseChange());
+            }
+
+        }
 
     private void SetSpawnLocation()
     {
@@ -150,6 +157,8 @@ public class AnimeBoss : BossPrototype
 
         // Trigger the spawn for the final platform
         _gSpawner.IsFinalSpawn = true;
+        CapsuleCollider col = GetComponent<CapsuleCollider>();
+        col.enabled = false;
 
         // Fly on up to this new point
         yield return new WaitForSeconds(.1f);
@@ -162,6 +171,7 @@ public class AnimeBoss : BossPrototype
         // And once that's done, resume normal attacking
         SetDefaultTarget();
         SetDefaultSpeed();
+        col.enabled = true;
 
         _inPhaseTwoPos = true;
         yield return null;
