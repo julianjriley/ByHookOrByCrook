@@ -2614,7 +2614,7 @@ PrefabInstance:
       objectReference: {fileID: 350618026}
     - target: {fileID: 1655653055108667798, guid: 208d10de5235ba143a0d4e5cb667d819, type: 3}
       propertyPath: _phases.Array.data[0].Threshold
-      value: 100
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1655653055108667798, guid: 208d10de5235ba143a0d4e5cb667d819, type: 3}
       propertyPath: _phases.Array.data[1].Threshold
