@@ -29,9 +29,6 @@ public class OptionsMenuManager : MonoBehaviour
     private List<Button> _buttons;
 
     [SerializeField, Tooltip("SFX slider")]
-    private Slider _sensitivitySlider;
-
-    [SerializeField, Tooltip("SFX slider")]
     private Slider _sfxSlider;
     [SerializeField, Tooltip("Music slider")]
     private Slider _musicSlider;

@@ -18,7 +18,7 @@ public class SliderPercentages : MonoBehaviour
 
     private void Start()
     {
-        if (_index == 9)
+        if (_index == 4)
         {
             // Silly calculation for the saturation slider
             _optionsMenuManager._tmpList[_index].text = Mathf.RoundToInt(_optionsMenuManager._sliderList[_index].value) + "%";

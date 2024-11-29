@@ -7,19 +7,17 @@ using UnityEngine.UI;
 
 public class CursorController : MonoBehaviour
 {
-    public Texture2D Crosshair;
-    
+    public Camera ArenaCamera;
 
-    // TODO: Set default sprite in build settings to the normal cursor
-    // TODO: In combat scenes, change cursor to crosshair
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+    private void Update()
+    {
+        Vector2 cursorPos = ArenaCamera.ScreenToWorldPoint(Mouse.current.position.value);
 
-    //private void Start()
-    //{
-    //    Crosshair = new Texture2D(82, 82);
-    //    Cursor.SetCursor(Crosshair, 0, CursorMode.ForceSoftware)
-    //}
-    //private void Update()
-    //{
-        
-    //}
+        transform.position = new Vector3(cursorPos.x, cursorPos.y, 1);
+    }
+
 }
