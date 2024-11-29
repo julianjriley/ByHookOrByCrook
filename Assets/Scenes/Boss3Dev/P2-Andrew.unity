@@ -2601,6 +2601,10 @@ PrefabInstance:
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1655653055108667798, guid: 208d10de5235ba143a0d4e5cb667d819, type: 3}
+      propertyPath: _laserbeamPrefab
+      value: 
+      objectReference: {fileID: 3028064153207335143, guid: 355ae398be7b22d418a9ce2e884388fb, type: 3}
+    - target: {fileID: 1655653055108667798, guid: 208d10de5235ba143a0d4e5cb667d819, type: 3}
       propertyPath: _mikuAttackEmpty
       value: 
       objectReference: {fileID: 287787622}

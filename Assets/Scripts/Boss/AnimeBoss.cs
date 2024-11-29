@@ -16,14 +16,15 @@ public class AnimeBoss : BossPrototype
     private Transform _mikuAttackEmpty;
 
     [Header("Laser Attack")]
+    [SerializeField, Tooltip("A laser")]
+    private GameObject _laserbeamPrefab;
     [SerializeField, Tooltip("Spawn location for the lasers")]
     private Transform _laserAttackEmpty;
     [SerializeField, Tooltip("How long the laser attack lasts")]
     private float _laserBeamDuration = 10;
     [SerializeField, Tooltip("List of lasers")]
     private List<GameObject> laserList;
-
-    private GameObject _laserbeamPrefab;
+    
     private float currentTime = 0;
     private float _numberOflasers = 4;
 
@@ -41,7 +42,7 @@ public class AnimeBoss : BossPrototype
         base.FixedUpdate();
 
         // Continues to give existing lasers a rotation
-        UpdateLaserRotation();
+        //UpdateLaserRotation();
 
         if (_phaseCounter == 2)
 
@@ -51,19 +52,15 @@ public class AnimeBoss : BossPrototype
             }
 
         }
+    #region LASER BEAM METHODS
 
-    private void SetSpawnLocation()
+    public override void SpawnAttackOnce(GameObject gameObj) // This has just been converted into the "do the laser method"
     {
-        _spawnLocation = _laserAttackEmpty;
+        //_laserbeamPrefab = gameObj;
+        InvokeRepeating("StartLaserBeam", 1f, 30f); // Ahh, so this begins the loop of doing lasers every 30 sec
     }
 
-    public override void SpawnAttackOnce(GameObject gameObj)
-    {
-        _laserbeamPrefab = gameObj;
-        InvokeRepeating("StartLaserBeam", 1f, 30f);
-    }
-
-    private void UpdateLaserRotation()
+    /*private void UpdateLaserRotation() // Spins the lasers (moved to just the laser object)
     {
         if (laserList.Count == 0)
         {
@@ -77,26 +74,26 @@ public class AnimeBoss : BossPrototype
             }
         }
 
-    }
+    }*/
     private void StartLaserBeam()
     {
-
         SetNewTarget(_laserAttackEmpty, 20f);
         
         // Actually spawn the lasers
         StartCoroutine(SpawnLaserBeam());
     }
 
-    IEnumerator SpawnLaserBeam() 
+    private IEnumerator SpawnLaserBeam() 
     {
         for (int i = 0; i < 4; i++)
         {
             GameObject laser = Instantiate(_laserbeamPrefab, _laserAttackEmpty);
             laserList.Add(laser);
-            laser.transform.Rotate(0, 0, .7f); 
+            //laser.transform.Rotate(0, 0, .7f); 
             yield return new WaitForSeconds(1.5f);
         }
     }
+    #endregion
 
     override protected void AttackLogic()
     {
@@ -131,24 +128,24 @@ public class AnimeBoss : BossPrototype
         {
             Instantiate(chosenAttack, _mikuAttackEmpty);
         }
-        else if (chosenAttack.GetComponent<HeartAoE>())
+        /*else if (chosenAttack.GetComponent<HeartAoE>()) Why are we doing this?
         {
             // Stop the laserbeams if the attack is hearts next
-            StopCoroutine(SpawnLaserBeam());
-            StartCoroutine(HeartAttack(chosenAttack));
+            //StopCoroutine(SpawnLaserBeam());
+            //StartCoroutine(HeartAttack(chosenAttack));
             Instantiate(chosenAttack, _spawnLocation);
-        }
+        }*/
         else
         {
             Instantiate(chosenAttack, _spawnLocation);
         }
     }
 
-    IEnumerator HeartAttack(GameObject heartPrefab)
+    /*private IEnumerator HeartAttack(GameObject heartPrefab)
     {
         SetNewTarget(_spawnLocation, 4f);
         yield return new WaitForSeconds(1);
-    }
+    }*/
 
     private IEnumerator DoMajorPhaseChange()
     {
@@ -172,6 +169,8 @@ public class AnimeBoss : BossPrototype
         SetDefaultTarget();
         SetDefaultSpeed();
         col.enabled = true;
+
+        SpawnAttackOnce(this.gameObject); // Spawn the lasers NOW!
 
         _inPhaseTwoPos = true;
         yield return null;
