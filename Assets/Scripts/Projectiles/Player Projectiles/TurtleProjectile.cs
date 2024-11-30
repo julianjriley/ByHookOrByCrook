@@ -40,7 +40,11 @@ public class TurtleProjectile : Projectile
             Invoke("Respawn", _respawnDelay);
         }
         else
+        {
+            InstantiateDeathEffect();
             Destroy(gameObject);
+        }
+            
     }
 
     protected override void OnTriggerEnter(Collider collider)
