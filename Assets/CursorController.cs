@@ -20,4 +20,8 @@ public class CursorController : MonoBehaviour
         transform.position = new Vector3(cursorPos.x, cursorPos.y, 1);
     }
 
+    public void UpdateSprite(Sprite sprite)
+    {
+        this.GetComponent<SpriteRenderer>().sprite = sprite;
+    }
 }

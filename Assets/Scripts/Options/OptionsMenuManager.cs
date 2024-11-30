@@ -10,11 +10,6 @@ using UnityEngine.InputSystem;
 
 public class OptionsMenuManager : MonoBehaviour
 {
-    //[SerializeField]
-    //private List<TextMeshProUGUI> _listOfPercentages;
-
-    //private TextMeshProUGUI _textTMP;
-
     [SerializeField]
     private string _startScene;
 
@@ -47,7 +42,6 @@ public class OptionsMenuManager : MonoBehaviour
 
    
     public List<TextMeshProUGUI> _tmpList;
-
     public List<Slider> _sliderList;
 
     private void Start()
@@ -67,16 +61,6 @@ public class OptionsMenuManager : MonoBehaviour
         {
             _buttons[_currentTabNum].interactable = false;
         }
-    }
-
-    private void Update()
-    {
-
-    }
-
-    public void AdjustSensivity()
-    {
-        // won't be in for Beta due to crappy documentation
     }
 
     public void AdjustSFX()

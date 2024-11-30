@@ -35,21 +35,11 @@ public class PauseManager : MonoBehaviour
     private void Start()
     {
         _isPaused = false;
+        _pauseMenu.SetActive(false);
         _player = FindAnyObjectByType<PlayerCombat>();
     }
     private void Update()
     {
-        //if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 1
-        //    || SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4
-        //    || SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6
-        //    | SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8
-        //    || SceneManager.GetActiveScene().buildIndex == 9 || SceneManager.GetActiveScene().buildIndex == 10)
-        //{
-        //    if (Time.timeScale < 1f)
-        //    {
-        //        Time.timeScale = 1f;
-        //    }
-        //}
 
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
@@ -112,6 +102,7 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         actions.Enable();
+        _pauseMenu.SetActive(false);
         SceneManager.LoadScene(0);
     }
     public void Hub()
