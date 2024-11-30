@@ -202,6 +202,11 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!1 &1836019092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 812915393971223093, guid: 2a63a7814b01c69458301016f4f1051b, type: 3}
+  m_PrefabInstance: {fileID: 284450472449488170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1927825874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -276,9 +281,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 812915393971223093, guid: 2a63a7814b01c69458301016f4f1051b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671291159291483947, guid: 2a63a7814b01c69458301016f4f1051b, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1927825875}
     - target: {fileID: 3578637568230103278, guid: 2a63a7814b01c69458301016f4f1051b, type: 3}
       propertyPath: m_Name
       value: PauseMenuController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351941416050523555, guid: 2a63a7814b01c69458301016f4f1051b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1836019092}
+    - target: {fileID: 4351941416050523555, guid: 2a63a7814b01c69458301016f4f1051b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 6414298317456304012, guid: 2a63a7814b01c69458301016f4f1051b, type: 3}
       propertyPath: m_RootOrder
@@ -322,6 +343,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6414298317456304012, guid: 2a63a7814b01c69458301016f4f1051b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476475485748116439, guid: 2a63a7814b01c69458301016f4f1051b, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8549503219548429170, guid: 2a63a7814b01c69458301016f4f1051b, type: 3}

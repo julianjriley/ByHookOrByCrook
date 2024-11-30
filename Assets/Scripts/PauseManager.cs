@@ -75,7 +75,7 @@ public class PauseManager : MonoBehaviour
         actions.Enable();
 
 
-        Countdown(); // remove later, just testing for now
+       // Countdown(); // remove later, just testing for now
 
         // uncomment if statement below after testing and getting all build indicies
 
