@@ -21,6 +21,8 @@ public class Projectile : MonoBehaviour, IDamageable
     protected Rigidbody _rb;
     protected PlayerCombat _playerCombat;
 
+    [SerializeField] protected GameObject _deathEffect;
+
     bool shortRangeDamage;
     float distanceToPlayer;
 
@@ -35,7 +37,7 @@ public class Projectile : MonoBehaviour, IDamageable
             Destroy(gameObject, _lifetime);
     }
 
-    public  virtual void AssignStats(Weapon weapon)
+    public virtual void AssignStats(Weapon weapon)
     {
         _damage = weapon.Damage;
         _baseDamage = _damage;
@@ -98,6 +100,12 @@ public class Projectile : MonoBehaviour, IDamageable
         if (_health <= 0)
             Destroy(gameObject);
 
+    }
+
+    protected void PlayDeathEffect()
+    {
+        if (_deathEffect != null)
+            Instantiate(_deathEffect, gameObject.transform.position, Quaternion.identity);
     }
 
     public void PassEffect(EffectData effectData)
