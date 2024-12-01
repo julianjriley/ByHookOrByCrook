@@ -21,11 +21,10 @@ public class Projectile : MonoBehaviour, IDamageable
     protected Rigidbody _rb;
     protected PlayerCombat _playerCombat;
 
-    [SerializeField] protected GameObject _deathEffect;
-
     bool shortRangeDamage;
     float distanceToPlayer;
 
+    [SerializeField] protected GameObject _deathEffect;
 
     virtual protected void Start()
     {
@@ -37,7 +36,7 @@ public class Projectile : MonoBehaviour, IDamageable
             Destroy(gameObject, _lifetime);
     }
 
-    public virtual void AssignStats(Weapon weapon)
+    public  virtual void AssignStats(Weapon weapon)
     {
         _damage = weapon.Damage;
         _baseDamage = _damage;
@@ -75,7 +74,8 @@ public class Projectile : MonoBehaviour, IDamageable
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
-        if(collider.TryGetComponent<IDamageable>(out IDamageable component))
+        InstantiateDeathEffect();
+        if (collider.TryGetComponent<IDamageable>(out IDamageable component))
         {
             component.TakeDamage(_damage, false);
             if(collider.gameObject.layer == LayerMask.NameToLayer("Player") || collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
@@ -90,6 +90,7 @@ public class Projectile : MonoBehaviour, IDamageable
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {
+        InstantiateDeathEffect();
         if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable component))
         {
             component.TakeDamage(_damage, false);
@@ -102,10 +103,15 @@ public class Projectile : MonoBehaviour, IDamageable
 
     }
 
-    protected void PlayDeathEffect()
+    protected void InstantiateDeathEffect()
     {
-        if (_deathEffect != null)
-            Instantiate(_deathEffect, gameObject.transform.position, Quaternion.identity);
+        if(_deathEffect != null)
+        {
+            GameObject deathEffect = Instantiate(_deathEffect, transform.position, Quaternion.identity);
+            Destroy(deathEffect, 0.2f);
+        }
+
+           
     }
 
     public void PassEffect(EffectData effectData)

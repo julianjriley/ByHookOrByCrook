@@ -30,7 +30,7 @@ public class WeaponInstance : MonoBehaviour
     protected float _heatLevel;
 
     //Used for auto firing weapons
-    protected Coroutine _autoFireCoroutine;
+    protected Coroutine _autoFireCoroutine = null;
 
     protected virtual void Start()
     {
