@@ -29,7 +29,7 @@ public class RailgunFishProjectile : Projectile
         {
             collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
         }
-        InstantiateDeathEffect();
+        InstantiateDeathEffect(0.2f);
     }
 
     protected override void OnCollisionEnter(Collision collision)
@@ -51,6 +51,6 @@ public class RailgunFishProjectile : Projectile
         {
             collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
         }
-        InstantiateDeathEffect();
+        InstantiateDeathEffect(0.2f);
     }
 }
