@@ -9,12 +9,12 @@ public class Blobfish : WeaponInstance
     private Animator _animator;
     private float _tickTimer = 9f;
     private bool _transformed = false;
-    
+    private bool _tickTimerEnabled = true;
 
     protected override void Start()
     {
         base.Start();
-        //_animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
     public override void Fire(Vector3 direction)
     {
@@ -30,6 +30,7 @@ public class Blobfish : WeaponInstance
 
         if (!_transformed)
             return;
+        _animator.SetBool("Fire", true);
         if (_weapon.ProjectileCount < 2)
         {
             CheckOverheat();
@@ -77,22 +78,24 @@ public class Blobfish : WeaponInstance
     protected override void Update()
     {
         base.Update();
-        if (_transformed || !spriteRenderer.enabled)
+        if (!_tickTimerEnabled || !spriteRenderer.enabled)
             return;
         if (_tickTimer < 0)
         {
-            _transformed = true;
+            _tickTimerEnabled = false;
+            StartCoroutine(BecomeTheAbsoluteGigaMegaNuke3000());
         }
         else
             _tickTimer -= Time.deltaTime;
-        Debug.Log(_tickTimer);
     }
 
     
 
-    private void BecomeTheAbsoluteGigaMegaNuke3000()
+    private IEnumerator BecomeTheAbsoluteGigaMegaNuke3000()
     {
-        _animator.Play("Transform");
+        _animator.SetBool("Transform", true);
+        yield return new WaitForSeconds(2);
+        _transformed = true;
     }
 
 
