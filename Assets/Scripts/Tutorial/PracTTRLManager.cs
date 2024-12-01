@@ -13,6 +13,10 @@ public class PracTTRLManager : MonoBehaviour
     [Header("Boss Scenes")]
     [SerializeField] string[] _bossScenes;
 
+    [Header("Outro Transition")]
+    [SerializeField] private GameObject _firstHalfWaterTransition;
+    private bool _isPressed = false;
+
     void Start()
     {
         if (GameManager.Instance.GamePersistent.IsTutorialCombat)
@@ -22,13 +26,7 @@ public class PracTTRLManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void FightButton()
+    public void SceneChange()
     {
         // Use this function to transition to PRACTICE or COMBAT scene
         string sceneToSwitchTo;
@@ -44,5 +42,17 @@ public class PracTTRLManager : MonoBehaviour
                 sceneToSwitchTo = _bossScenes[0]; break;
         }
         SceneManager.LoadScene(sceneToSwitchTo);
+    }
+    public void FightButton() {
+        if (_isPressed) {
+            return;
+        }
+        _isPressed = true;
+        StartCoroutine(SceneDelay());
+    }
+    IEnumerator SceneDelay() {
+        _firstHalfWaterTransition.SetActive(true);
+        yield return new WaitForSeconds(1.433f);
+        SceneChange();
     }
 }

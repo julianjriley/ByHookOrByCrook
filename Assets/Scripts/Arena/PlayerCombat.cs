@@ -48,6 +48,7 @@ public class PlayerCombat : MonoBehaviour
 
     bool dead;
     //Damage taking stuff
+    public bool BossDefeated = false;
     private bool _invulnerable;
     private Collider _collider;
     private LayerMask _invulnerabilityMask;
@@ -110,6 +111,7 @@ public class PlayerCombat : MonoBehaviour
         playerMovement = GetComponent<ArenaMovement>();
         rb = GetComponent<Rigidbody>();
 
+        BossDefeated = false;
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
 
         _collider = GetComponent<Collider>();
@@ -301,7 +303,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void TakeDamageLikeAGoodBoy()
     {
-        if (_invulnerable)
+        if (_invulnerable || BossDefeated)
             return;
         Health -= 1;
         SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);

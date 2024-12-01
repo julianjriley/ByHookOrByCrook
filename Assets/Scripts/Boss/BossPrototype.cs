@@ -24,13 +24,15 @@ public class BossPrototype : MonoBehaviour
     public Transform _playerTransform;
     private protected SpriteRenderer _renderer;
 
-    [Header ("Boss Intro")]
+    [Header ("Boss Intro & Outro")]
     [SerializeField] private Transform _offscreenTarget;
     [SerializeField] private Transform _entranceTarget;
     [SerializeField] private GameObject _fightText;
     [SerializeField] private GameObject _introUI;
     [SerializeField] private GameObject _victoryText;
-    [SerializeField] private GameObject _fadeOutPanel;
+    [SerializeField] private GameObject _defeatText;
+    [SerializeField] private GameObject _introWaterAnimation;
+    [SerializeField] private GameObject _outroWaterAnimation;
     private InputAction _skipIntroAction;
     private bool _introIsSkippable = false;
     private Coroutine _part1Intro;
@@ -70,6 +72,8 @@ public class BossPrototype : MonoBehaviour
     // Start is called before the first frame update
     virtual protected void Start()
     {
+        _introUI.SetActive(true);
+        _introWaterAnimation.gameObject.SetActive(true);
         _rb = GetComponent<Rigidbody>();
         _spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();
         _target = GameObject.Find("Boss Target").GetComponent<Transform>();
@@ -83,7 +87,7 @@ public class BossPrototype : MonoBehaviour
 
         _part1Intro = StartCoroutine(TitleCard());
 
-        PlayerCombat.playerDeath += GoToCashout;
+        PlayerCombat.playerDeath += HandlePlayerDeath;
     }
 
     protected IEnumerator TitleCard() {
@@ -290,12 +294,22 @@ public class BossPrototype : MonoBehaviour
         GameManager.Instance.GamePersistent.BossNumber = _bossProgressionNumber;
         transform.Find("SmokeExplosionVFX_0").gameObject.SetActive(true);
         _victoryText.SetActive(true);
-        _fadeOutPanel.SetActive(true);
+        //_fadeOutPanel.SetActive(true);
+        StartCoroutine(NextSceneDelay());
+    }
+
+    void HandlePlayerDeath() {
+        _actions.Disable();
+        _defeatText.SetActive(true);
+        _player.transform.Find("SmokeExplosionVFX_0").gameObject.SetActive(true);
+        _player.GetComponent<PlayerCombat>().BossDefeated = true;
         StartCoroutine(NextSceneDelay());
     }
 
     IEnumerator NextSceneDelay() {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1f);
+        _outroWaterAnimation.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
         GoToCashout();
     }
 
