@@ -29,6 +29,7 @@ public class LoadoutSelection : MonoBehaviour
 
     [Header("Boss Scenes")]
     [SerializeField] string[] _bossScenes;
+    [SerializeField] GameObject _firstHalfWaterTransition;
     void Start()
     {
         // Spawn fish button for each caught fish (from GameManager)
@@ -100,10 +101,9 @@ public class LoadoutSelection : MonoBehaviour
     private IEnumerator Fadeout(string sceneName)
     {
         // TODO: add actual smooth transition visual effects here
-
+        _firstHalfWaterTransition.SetActive(true);
         // Fadeout logic/delay
-        yield return new WaitForSeconds(1f);
-
+        yield return new WaitForSeconds(1.433f);
         SceneManager.LoadScene(sceneName);
     }
 
