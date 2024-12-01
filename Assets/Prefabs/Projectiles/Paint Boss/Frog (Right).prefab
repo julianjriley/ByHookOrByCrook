@@ -190,6 +190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6922702029102905494}
+  - component: {fileID: 7639526242425873117}
   m_Layer: 8
   m_Name: Frog (Right)
   m_TagString: Untagged
@@ -211,5 +212,24 @@ Transform:
   m_Children:
   - {fileID: 2475356086069289847}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7639526242425873117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5824145095176316402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05059003bc11a4d4295b5514ecea48bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot:
+    Guid:
+      Data1: 1412890430
+      Data2: 1340763535
+      Data3: 1968634802
+      Data4: -454279793
+    Path: event:/Combat/Painterly/Frog
