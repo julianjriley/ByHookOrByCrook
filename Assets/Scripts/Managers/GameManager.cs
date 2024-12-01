@@ -217,6 +217,12 @@ public class GameManager : MonoBehaviour
         public List<bool> IsConvoHadBag;
         public bool AllConvosHadBag;
 
+        public float SFXVolume;
+        public float MusicVolume;
+
+        public float Brightness;
+        public float Saturation;
+
         // Actual player settings
         public bool IsTutorialHub;  // Toggles for the 4 main sections of the tutorial
         public bool IsTutorialBait;
@@ -290,6 +296,12 @@ public class GameManager : MonoBehaviour
         newSaveData.IsConvoHadBag = new List<bool>();
         newSaveData.AllConvosHadBag = false;
 
+        newSaveData.SFXVolume = 0.5f;
+        newSaveData.MusicVolume = 0.5f;
+
+        newSaveData.Brightness = 1f;
+        newSaveData.Saturation = 30f;
+
         newSaveData.IsTutorialHub = true;
         newSaveData.IsTutorialBait = true;
         newSaveData.IsTutorialFish = true;
@@ -320,6 +332,8 @@ public class GameManager : MonoBehaviour
         string saveData = JsonUtility.ToJson(GamePersistent);
         string filePath = Application.persistentDataPath + "/GameData.json";
         System.IO.File.WriteAllText(filePath, saveData);
+
+        ResetScenePersistentData();
         /*****************************************************************
         // JSON functionality. To be replaced with PlayerPrefs
 

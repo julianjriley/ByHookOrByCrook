@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 public class StartMenuManager : MonoBehaviour
 {
     [SerializeField]
-    private string gameScene, optionsScene, creditsScene, startScene;
+    private string gameScene, creditsScene, startScene;
+    [SerializeField]
+    GameObject optionsScreen;
+    //[SerializeField]
+    //private GameObject optionsScene;
 
     public void LoadGameScene()
     {
@@ -15,7 +19,7 @@ public class StartMenuManager : MonoBehaviour
 
     public void LoadOptionsScene()
     {
-        SceneManager.LoadScene(optionsScene);
+        optionsScreen.SetActive(true);
     }
 
     public void LoadCreditsScene()
