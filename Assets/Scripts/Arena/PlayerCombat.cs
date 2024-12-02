@@ -68,7 +68,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     public bool canRevive = false;
     private bool _hasRevived = false;
     public bool canInvincibleDash = false;
-
+    public static event Action DeadFishUIEvent;
 
     //Skipper
     [SerializeField] GameObject skipper;
@@ -109,6 +109,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody>();
         gameObject.AddComponent<EffectManager>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        equippedWeaponindex = 0;
 
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
 
@@ -151,10 +152,24 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     private void OnDisable()
     {
+        controls.FindAction("FireWeapon").started -= FireWeapon;
+        controls.FindAction("FireWeapon").canceled -= FireWeapon;
+        controls.FindAction("SwitchWeapon").performed -= ChangeWeapon;
+        controls.FindAction("InvulnToggle").performed -= ToggleInvuln;
+
         controls.FindAction("FireWeapon").Disable();
         controls.FindAction("SwitchWeapon").Disable();
+        foreach(Item item in _inventory.items)
+        {
+            if(item is Weapon)
+            {
+                Weapon weapon = (Weapon)item;
+                weapon.ResetStats();
+            }
+        }
     }
 
+    
 
 
     void FireWeapon(InputAction.CallbackContext context)
@@ -254,8 +269,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
             transform.localScale = new Vector3(1, 1, 1);
             _facingLeft = false;
         }
-        
-        
     }
 
     private void FixedUpdate()
@@ -445,6 +458,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         }
     }
 #endif
+    
+
 
     #region Zombie Mode Code
 
@@ -468,6 +483,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     IEnumerator ZombieDeathTimer()
     {
+        DeadFishUIEvent?.Invoke();
         yield return new WaitForSeconds(30);
         playerDeath?.Invoke();
     }
