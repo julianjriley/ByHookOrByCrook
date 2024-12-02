@@ -107,6 +107,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         playerMovement = GetComponent<ArenaMovement>();
         rb = GetComponent<Rigidbody>();
         gameObject.AddComponent<EffectManager>();
+        equippedWeaponindex = 0;
 
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
 
@@ -257,8 +258,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
             transform.localScale = new Vector3(1, 1, 1);
             _facingLeft = false;
         }
-        
-        
     }
 
     private void FixedUpdate()
