@@ -433,14 +433,14 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     IEnumerator DamageFlash()
     {
         Color baseColor = _spriteRenderer.color;
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 8; i++)
         {
             baseColor.a = 0f;
             _spriteRenderer.color = baseColor;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.0625f);
             baseColor.a = 1f;
             _spriteRenderer.color = baseColor;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.0625f);
         }
     }
 
