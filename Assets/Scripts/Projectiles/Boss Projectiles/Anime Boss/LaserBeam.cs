@@ -5,13 +5,16 @@ using UnityEngine.UIElements;
 
 public class LaserBeam : Projectile
 {
-    //private float _zForce = 360f;
     private Animator _animator;
     private Collider _collider;
     [Header("Beam Specifics")]
+    [Tooltip("Rotation speed")]
     [SerializeField] private float _rotSpeed = .7f;
+    [Tooltip("Rotation direction")]
     [SerializeField] private float _dir = 1;
+    [Tooltip("Time portion of laser's cycle where it can damage player")]
     [SerializeField] private float _activeDuration = 2.5f;
+    [Tooltip("Total time of laser cycle (nondamaging => damaging)")]
     [SerializeField] private float _cycleDuration = 5f;
     private float _downDuration;
 
@@ -39,14 +42,6 @@ public class LaserBeam : Projectile
         base.FixedUpdate();
         this.transform.Rotate(0, 0, _rotSpeed * _dir);
     }
-
-    public void SetDirAndSpeed(float dir, float duration, float speed=.7f)
-    {
-        _dir = dir;
-        _activeDuration = duration;
-        _rotSpeed = speed;
-    }
-
     
 
     #region DESTROY BEHAVIOR
@@ -75,9 +70,13 @@ public class LaserBeam : Projectile
 
     private IEnumerator DoLaserAction()
     {
-        yield return new WaitForSeconds(_downDuration);
+        yield return new WaitForSeconds(_downDuration / 2);
+        _animator.Play("LaserThreaten");
+        yield return new WaitForSeconds(_downDuration / 4); // Speed up the animation
+        _animator.speed = 1.5f;
+        yield return new WaitForSeconds(_downDuration / 4);
 
-        
+        _animator.speed = 1;
         _animator.Play("LaserAppear");
         yield return new WaitForSeconds(.5f);
         _collider.enabled = true;

@@ -322,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &87810714
 Transform:
   m_ObjectHideFlags: 0
@@ -4156,13 +4156,9 @@ MonoBehaviour:
     StartDelay: 11.5
     RepeatRate: 5
     AttackPrefabs:
-    - {fileID: 5419112317460699201, guid: 31922cd25e237f647ab82408930bf149, type: 3}
-    - {fileID: 7429911807007843636, guid: 1a19c3a01a6b7cb4282e395898dc0f76, type: 3}
-    - {fileID: 2554689877075477920, guid: 3a9602d865710d34cb252a86b04fbbf1, type: 3}
-    - {fileID: 7846156294221348025, guid: 37e1411e043f73c4a8167a4563522e67, type: 3}
     - {fileID: 3764200832503351960, guid: 0d038490787aa094fa39d182929305e1, type: 3}
     - {fileID: 3286273120711215309, guid: 56f59a2f6133070428efef9f616ec155, type: 3}
-    - {fileID: 3872213493749110382, guid: 1171c50c11610c14b9de2fe49776ce5c, type: 3}
+    - {fileID: 3270824475498826915, guid: 280fb44aeb70000408adf2ad1947723c, type: 3}
   - Threshold: 100
     StartEvent:
       m_PersistentCalls:
@@ -4197,10 +4193,11 @@ MonoBehaviour:
   _wand: {fileID: 87810713}
   _wandAnim: {fileID: 87810716}
   _bigWhiteScreen: {fileID: 618556814}
+  _skipCutscene: 0
   _mikuAttackEmpty: {fileID: 287787622}
   _laserbeamPrefab: {fileID: 3028064153207335143, guid: 355ae398be7b22d418a9ce2e884388fb, type: 3}
   _laserAttackEmpty: {fileID: 350618026}
-  _laserBeamDuration: 10
+  _pauseTime: 0.5
 --- !u!95 &2065130007610469065
 Animator:
   serializedVersion: 5

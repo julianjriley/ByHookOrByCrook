@@ -18,6 +18,8 @@ public class AnimeBoss : BossPrototype
     private Animator _wandAnim;
     [SerializeField, Tooltip("The big white screen")]
     private GameObject _bigWhiteScreen;
+    [SerializeField, Tooltip("Skips phase change cutscene for testing")]
+    private bool _skipCutscene;
     private Animator _bossAnim;
     private Animator _bwsAnim;
 
@@ -31,8 +33,8 @@ public class AnimeBoss : BossPrototype
     private GameObject _laserbeamPrefab;
     [SerializeField, Tooltip("Spawn location for the lasers")]
     private Transform _laserAttackEmpty;
-    [SerializeField, Tooltip("How long the laser attack lasts")]
-    private float _laserBeamDuration = 10;
+    [SerializeField, Tooltip("How long the boss stops to cast lasers")]
+    private float _pauseTime = .5f;
     private bool _laserActive; // Prevents other things from happening during laser time
 
     // Booleans for the major phase change
@@ -118,6 +120,10 @@ public class AnimeBoss : BossPrototype
         {
             Instantiate(chosenAttack, _mikuAttackEmpty);
         }
+        else if (chosenAttack.gameObject.CompareTag("Laser")) // Special laser casting conditions
+        {
+            DoCastLaser(chosenAttack);
+        }
         else
         {
             Instantiate(chosenAttack, _spawnLocation);
@@ -142,16 +148,24 @@ public class AnimeBoss : BossPrototype
         // Wait for the camera to catch up
         yield return new WaitUntil(() => _b3Cam.GetFullStop());
 
-        // Play the transformation sequence
-        _bossAnim.Play("Transfoooorm", 0, 0);
-        _bigWhiteScreen.SetActive(true);
-        _bwsAnim.Play("FadeWhite", 0, 0);
-        yield return new WaitForSeconds(6.67f);
-        _wand.SetActive(true);
-        _bwsAnim.Play("FadeClear", 0, 0);
-        _bossAnim.Play("Idle", 0, 0);
-        _bossAnim.speed = 0;
-        yield return new WaitForSeconds(3f);
+        if (!_skipCutscene)
+        {
+            // Play the transformation sequence
+            _bossAnim.Play("Transfoooorm", 0, 0);
+            _bigWhiteScreen.SetActive(true);
+            _bwsAnim.Play("FadeWhite", 0, 0);
+            yield return new WaitForSeconds(6.67f);
+            _wand.SetActive(true);
+            _bwsAnim.Play("FadeClear", 0, 0);
+            _bossAnim.Play("Idle", 0, 0);
+            _bossAnim.speed = 0;
+            yield return new WaitForSeconds(3f);
+        }
+        else
+        {
+            _wand.SetActive(true);
+        }
+        
         _bossAnim.speed = 1;
 
         // And once that's done, resume normal attacking
@@ -159,9 +173,18 @@ public class AnimeBoss : BossPrototype
         SetDefaultSpeed();
         col.enabled = true;
 
-        SpawnAttackOnce(this.gameObject); // Spawn the lasers NOW!
-
         _inPhaseTwoPos = true;
+        yield return null;
+    }
+
+    private IEnumerator DoCastLaser(GameObject chosenAttack)
+    {
+        SetSpeed(0);
+        _wandAnim.speed = 1;
+        Instantiate(chosenAttack, _laserAttackEmpty);
+        yield return new WaitForSeconds(_pauseTime);
+        _wandAnim.speed = 0;
+        SetDefaultSpeed();
         yield return null;
     }
 
