@@ -67,7 +67,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     public bool canRevive = false;
     private bool _hasRevived = false;
     public bool canInvincibleDash = false;
-
+    public static event Action DeadFishUIEvent;
 
     //Skipper
     [SerializeField] GameObject skipper;
@@ -465,6 +465,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     IEnumerator ZombieDeathTimer()
     {
+        DeadFishUIEvent?.Invoke();
         yield return new WaitForSeconds(30);
         playerDeath?.Invoke();
     }
