@@ -322,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &87810714
 Transform:
   m_ObjectHideFlags: 0
@@ -4156,25 +4156,13 @@ MonoBehaviour:
     StartDelay: 11.5
     RepeatRate: 5
     AttackPrefabs:
-    - {fileID: 3764200832503351960, guid: 0d038490787aa094fa39d182929305e1, type: 3}
-    - {fileID: 3286273120711215309, guid: 56f59a2f6133070428efef9f616ec155, type: 3}
     - {fileID: 3270824475498826915, guid: 280fb44aeb70000408adf2ad1947723c, type: 3}
+    - {fileID: 3764200832503351960, guid: 0d038490787aa094fa39d182929305e1, type: 3}
+    - {fileID: 2554689877075477920, guid: 3a9602d865710d34cb252a86b04fbbf1, type: 3}
   - Threshold: 100
     StartEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1655653053277534099}
-          m_TargetAssemblyTypeName: AnimeBoss, Assembly-CSharp
-          m_MethodName: SpawnAttackOnce
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1697940584593870877, guid: b80e3ec6ea0c97c42ae365d2187a7b33, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     StartDelay: 11.5
     RepeatRate: 5
     AttackPrefabs:
@@ -4193,11 +4181,11 @@ MonoBehaviour:
   _wand: {fileID: 87810713}
   _wandAnim: {fileID: 87810716}
   _bigWhiteScreen: {fileID: 618556814}
-  _skipCutscene: 0
+  _skipCutscene: 1
   _mikuAttackEmpty: {fileID: 287787622}
   _laserbeamPrefab: {fileID: 3028064153207335143, guid: 355ae398be7b22d418a9ce2e884388fb, type: 3}
   _laserAttackEmpty: {fileID: 350618026}
-  _pauseTime: 0.5
+  _pauseTime: 2
 --- !u!95 &2065130007610469065
 Animator:
   serializedVersion: 5

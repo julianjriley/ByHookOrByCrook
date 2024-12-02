@@ -45,6 +45,7 @@ public class AnimeBoss : BossPrototype
         base.Start();
         _bossAnim = GetComponent<Animator>();
         _bwsAnim = _bigWhiteScreen.GetComponent<Animator>();
+        _wandAnim.speed = 0;
     }
 
     override protected void FixedUpdate()
@@ -122,7 +123,7 @@ public class AnimeBoss : BossPrototype
         }
         else if (chosenAttack.gameObject.CompareTag("Laser")) // Special laser casting conditions
         {
-            DoCastLaser(chosenAttack);
+            StartCoroutine(DoCastLaser(chosenAttack));
         }
         else
         {
@@ -160,6 +161,7 @@ public class AnimeBoss : BossPrototype
             _bossAnim.Play("Idle", 0, 0);
             _bossAnim.speed = 0;
             yield return new WaitForSeconds(3f);
+            _bigWhiteScreen.SetActive(false);
         }
         else
         {

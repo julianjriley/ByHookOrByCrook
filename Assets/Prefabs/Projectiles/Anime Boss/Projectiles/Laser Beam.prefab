@@ -124,7 +124,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
@@ -148,6 +148,7 @@ MonoBehaviour:
   _speed: 1
   _lifetime: 10
   _health: 10000
+  _deathEffect: {fileID: 0}
   _rotSpeed: 0.7
   _dir: 1
   _activeDuration: 1
