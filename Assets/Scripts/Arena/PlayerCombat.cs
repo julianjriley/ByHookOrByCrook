@@ -150,6 +150,11 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     private void OnDisable()
     {
+        controls.FindAction("FireWeapon").started -= FireWeapon;
+        controls.FindAction("FireWeapon").canceled -= FireWeapon;
+        controls.FindAction("SwitchWeapon").performed -= ChangeWeapon;
+        controls.FindAction("InvulnToggle").performed -= ToggleInvuln;
+
         controls.FindAction("FireWeapon").Disable();
         controls.FindAction("SwitchWeapon").Disable();
     }
