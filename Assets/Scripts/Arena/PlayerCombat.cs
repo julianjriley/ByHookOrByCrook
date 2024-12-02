@@ -151,8 +151,17 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     {
         controls.FindAction("FireWeapon").Disable();
         controls.FindAction("SwitchWeapon").Disable();
+        foreach(Item item in _inventory.items)
+        {
+            if(item is Weapon)
+            {
+                Weapon weapon = (Weapon)item;
+                weapon.ResetStats();
+            }
+        }
     }
 
+    
 
 
     void FireWeapon(InputAction.CallbackContext context)
@@ -428,6 +437,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         }
     }
 #endif
+    
+
 
     #region Zombie Mode Code
 
