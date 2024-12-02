@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class BaitSelector : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class BaitSelector : MonoBehaviour
     [Header("Selected Bait")]
     [SerializeField, Tooltip("Object to which selected bait objects are instantiated to.")]
     public GameObject SelectedBaitParent;
+    [Header("SFX")]
+    [SerializeField] EventReference returnSound;
 
     private int _remainingBaitSlots;
 
@@ -99,6 +102,10 @@ public class BaitSelector : MonoBehaviour
             _continueButton.SetActive(false);
     }
 
+    public void PlayAudio()
+    {
+        SoundManager.Instance.PlayOneShot(returnSound, gameObject.transform.position);
+    }
     #region SCENE TRANSITIONS
     [Header("Scene Transitions")]
     [SerializeField, Tooltip("Name of hub scene to transition back to.")]
