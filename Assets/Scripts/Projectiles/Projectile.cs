@@ -24,6 +24,7 @@ public class Projectile : MonoBehaviour, IDamageable
     bool shortRangeDamage;
     float distanceToPlayer;
 
+    [SerializeField] protected GameObject _deathEffect;
 
     virtual protected void Start()
     {
@@ -73,7 +74,8 @@ public class Projectile : MonoBehaviour, IDamageable
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
-        if(collider.TryGetComponent<IDamageable>(out IDamageable component))
+        InstantiateDeathEffect();
+        if (collider.TryGetComponent<IDamageable>(out IDamageable component))
         {
             component.TakeDamage(_damage, false);
             if(collider.gameObject.layer == LayerMask.NameToLayer("Player") || collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
@@ -88,6 +90,7 @@ public class Projectile : MonoBehaviour, IDamageable
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {
+        InstantiateDeathEffect();
         if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable component))
         {
             component.TakeDamage(_damage, false);
@@ -98,6 +101,17 @@ public class Projectile : MonoBehaviour, IDamageable
         if (_health <= 0)
             Destroy(gameObject);
 
+    }
+
+    protected void InstantiateDeathEffect()
+    {
+        if(_deathEffect != null)
+        {
+            GameObject deathEffect = Instantiate(_deathEffect, transform.position, Quaternion.identity);
+            Destroy(deathEffect, 0.2f);
+        }
+
+           
     }
 
     public void PassEffect(EffectData effectData)
