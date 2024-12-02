@@ -27,7 +27,7 @@ public class ImageFade : MonoBehaviour
         _image.color = originalColor;
         for(int i = 0; i < 20 * fadeInDuration; i++)
         {
-            originalColor.a += (_isTransparentBar ? 0.025f : 0.5f)/fadeInDuration;
+            originalColor.a += (_isTransparentBar ? 0.0375f : 0.05f)/fadeInDuration;
             _image.color = originalColor;
             yield return new WaitForSeconds(0.05f);
         }
