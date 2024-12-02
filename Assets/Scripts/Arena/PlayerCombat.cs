@@ -107,6 +107,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         playerMovement = GetComponent<ArenaMovement>();
         rb = GetComponent<Rigidbody>();
         gameObject.AddComponent<EffectManager>();
+        equippedWeaponindex = 0;
 
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
 
@@ -149,6 +150,11 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     private void OnDisable()
     {
+        controls.FindAction("FireWeapon").started -= FireWeapon;
+        controls.FindAction("FireWeapon").canceled -= FireWeapon;
+        controls.FindAction("SwitchWeapon").performed -= ChangeWeapon;
+        controls.FindAction("InvulnToggle").performed -= ToggleInvuln;
+
         controls.FindAction("FireWeapon").Disable();
         controls.FindAction("SwitchWeapon").Disable();
         foreach(Item item in _inventory.items)
@@ -261,8 +267,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
             transform.localScale = new Vector3(1, 1, 1);
             _facingLeft = false;
         }
-        
-        
     }
 
     private void FixedUpdate()
