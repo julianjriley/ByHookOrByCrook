@@ -7,6 +7,7 @@ public class ImageFade : MonoBehaviour
 {
     Image _image;
     [SerializeField] float fadeInDuration = 1;
+    [SerializeField, Tooltip("True only for the filler bar.")] private bool _isTransparentBar = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class ImageFade : MonoBehaviour
         _image.color = originalColor;
         for(int i = 0; i < 20 * fadeInDuration; i++)
         {
-            originalColor.a += 0.05f/fadeInDuration;
+            originalColor.a += (_isTransparentBar ? 0.025f : 0.5f)/fadeInDuration;
             _image.color = originalColor;
             yield return new WaitForSeconds(0.05f);
         }
