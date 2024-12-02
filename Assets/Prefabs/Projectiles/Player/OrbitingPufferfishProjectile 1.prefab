@@ -158,6 +158,7 @@ MonoBehaviour:
   _speed: 0
   _lifetime: 0
   _health: 0
+  _deathEffect: {fileID: 4895959312990527715, guid: 465e915088d234547afbb39d99e6f20e, type: 3}
   _anim: {fileID: 3797798423814436824}
 --- !u!95 &3797798423814436824
 Animator:
