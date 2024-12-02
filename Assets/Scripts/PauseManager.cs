@@ -22,10 +22,6 @@ public class PauseManager : MonoBehaviour
     private float _startTime;
     private float _endTime;
 
-    // --------README--------
-    // The solution right now is scuffed, but should be enough for the beta.
-    // You will have to update the first IF statement conditions if you're adding MORE build scenes.
-
     private void Awake()
     {
         actions = InputSystem.actions;
@@ -44,17 +40,24 @@ public class PauseManager : MonoBehaviour
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
 
-            if (SceneManager.GetActiveScene().buildIndex == 0
-            || SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+            if (SceneManager.GetActiveScene().buildIndex == 0)
             {
-                // Prevents pausing in main menu, credits and something else
+                // Prevents pausing in main menu
                 return;
             }
 
             if (_isPaused == false)
+            {
+                Debug.Log("Pause");
                 Pause();
+
+            }
             else
+            {
+                Debug.Log("Resume");
                 Resume();
+
+            }
         }
     }
 
@@ -73,17 +76,11 @@ public class PauseManager : MonoBehaviour
     {
         _pauseMenu.SetActive(false);
         actions.Enable();
+        _isPaused = false;
+        Time.timeScale = 1f;
 
 
-       // Countdown(); // remove later, just testing for now
-
-        // uncomment if statement below after testing and getting all build indicies
-
-        //if (SceneManager.GetActiveScene().buildIndex > 9 && SceneManager.GetActiveScene().buildIndex < 12)
-        //{
-        //    // In combat scenes we countdown 
-        //    Countdown();
-        //}
+        // WISHLIST: Countdown Timer. Some functions are written but don't work.
 
     }
 
@@ -115,15 +112,10 @@ public class PauseManager : MonoBehaviour
     private IEnumerator DoCountdown()
     {
         _startTime = Time.unscaledTime;
-        //Debug.Log("Start Time = " + _startTime);
         _endTime = _startTime + 3f;
-        //Debug.Log("Emd Time = " + _endTime);
-
-        //Debug.Log("Unscaled time is = " + Time.unscaledTime);
-
+ 
         yield return new WaitUntil(() => Time.unscaledTime >= _endTime);
 
-            //Debug.Log("Unscaled time == endtime");
             Time.timeScale = 1f;
             _isPaused = false;
     }

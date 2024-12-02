@@ -547,7 +547,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2204,7 +2204,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Left-Click\nE\t\n\nW\nA\nS\nD\nLeft-Click\nTab & Hotkeys\nEscape"
+  m_text: "Left-Click\nE\t\n\nW\nA\nS\nD\nLeft-Click\nTab & Hotkeys\nI\nEscape"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 85ebad7e7f9a61144a790f8158e17fa1, type: 2}
   m_sharedMaterial: {fileID: -2088938790080506899, guid: 85ebad7e7f9a61144a790f8158e17fa1, type: 2}
@@ -2453,7 +2453,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Casting / Reeling\t\nInteract\t\nMovement\n\tUp\n\tDown\n\tLeft\n\tRight\nShooting\nWeapon
-    Switch\nPause Game"
+    Switch\nInvincibility\nPause Game"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 85ebad7e7f9a61144a790f8158e17fa1, type: 2}
   m_sharedMaterial: {fileID: -2088938790080506899, guid: 85ebad7e7f9a61144a790f8158e17fa1, type: 2}
@@ -3060,7 +3060,7 @@ Transform:
   - {fileID: 612907032004954282}
   - {fileID: 6019117023551294284}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3713754302061052005
 GameObject:

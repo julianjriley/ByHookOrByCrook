@@ -535,7 +535,7 @@ Transform:
   - {fileID: 1441683115019875676}
   - {fileID: 7192004609439215010}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8319917784875445022
 MonoBehaviour:
@@ -2175,12 +2175,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 6414298317456304012}
     m_Modifications:
     - target: {fileID: 2067670656586702251, guid: 7ddb3a9bb6cd5534e9ae781eccf34fad, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067670656586702251, guid: 7ddb3a9bb6cd5534e9ae781eccf34fad, type: 3}
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3669180904769941685, guid: 7ddb3a9bb6cd5534e9ae781eccf34fad, type: 3}
       propertyPath: m_Name
       value: OptionsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3669180904769941685, guid: 7ddb3a9bb6cd5534e9ae781eccf34fad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6515759506183694114, guid: 7ddb3a9bb6cd5534e9ae781eccf34fad, type: 3}
       propertyPath: m_RootOrder

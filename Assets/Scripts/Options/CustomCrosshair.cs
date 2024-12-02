@@ -21,7 +21,6 @@ public class CustomCrosshair : MonoBehaviour
         {
             case 0:
                 _controller.UpdateSprite(crosshairList[0]); 
-                //_sprite = crosshairList[0];
                 this.GetComponent<Image>().sprite = crosshairList[0];
                 break;
             case 1:
