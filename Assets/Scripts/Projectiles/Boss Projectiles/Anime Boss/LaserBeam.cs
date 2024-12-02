@@ -10,7 +10,10 @@ public class LaserBeam : Projectile
     private Collider _collider;
     [Header("Beam Specifics")]
     [SerializeField] private float _rotSpeed = .7f;
-    private float _dir = 1;
+    [SerializeField] private float _dir = 1;
+    [SerializeField] private float _activeDuration = 2.5f;
+    [SerializeField] private float _cycleDuration = 5f;
+    private float _downDuration;
 
     override protected void Start()
     {
@@ -18,6 +21,10 @@ public class LaserBeam : Projectile
         //Color color = GetComponent<SpriteRenderer>().color;
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider>();
+
+        _downDuration = _cycleDuration - _activeDuration;
+
+        _animator.Play("LaserSpawn");
 
         // Lasers turn "red" and damage the player. Faded lasers with no core are safe
         StartCoroutine(StartGimmick());
@@ -29,15 +36,16 @@ public class LaserBeam : Projectile
         this.transform.Rotate(0, 0, _rotSpeed * _dir);
     }
 
-    public void SetDirAndSpeed(float dir, float speed=.7f)
+    public void SetDirAndSpeed(float dir, float duration, float speed=.7f)
     {
         _dir = dir;
+        _activeDuration = duration;
         _rotSpeed = speed;
     }
 
     private IEnumerator StartGimmick()
     {
-        InvokeRepeating("Gimmick", 0f, 5f);
+        InvokeRepeating("Gimmick", 0f, _cycleDuration);
         yield return new WaitForSeconds(0f);
     }
 
@@ -48,10 +56,14 @@ public class LaserBeam : Projectile
 
     private IEnumerator DoLaserAction()
     {
-        _collider.enabled = true;
-        _animator.Play("LaserAppear");
+        yield return new WaitForSeconds(_downDuration);
 
-        yield return new WaitForSeconds(2.5f);
+        
+        _animator.Play("LaserAppear");
+        yield return new WaitForSeconds(.5f);
+        _collider.enabled = true;
+
+        yield return new WaitForSeconds(_activeDuration);
 
         _collider.enabled = false;
         _animator.Play("LaserFade");

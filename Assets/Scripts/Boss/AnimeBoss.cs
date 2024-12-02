@@ -11,6 +11,12 @@ public class AnimeBoss : BossPrototype
     [SerializeField, Tooltip("The camera")]
     private Boss3Camera _b3Cam;
 
+    [Header("Boss")]
+    [SerializeField, Tooltip("The wand")]
+    private GameObject _wand;
+    [SerializeField, Tooltip("The wand animator")]
+    private Animator _wandAnim;
+
     [Header("Miku Attack")]
     [SerializeField, Tooltip("The empty that Miku spawns under")]
     private Transform _mikuAttackEmpty;
@@ -24,6 +30,7 @@ public class AnimeBoss : BossPrototype
     private float _laserBeamDuration = 10;
     [SerializeField, Tooltip("List of lasers")]
     private List<GameObject> laserList;
+    private bool _laserActive; // Prevents other things from happening during laser time
     
     private float currentTime = 0;
     private float _numberOflasers = 4;
@@ -34,15 +41,11 @@ public class AnimeBoss : BossPrototype
     override protected void Start()
     {
         base.Start();
-        //SetSpawnLocation();
     }
 
     override protected void FixedUpdate()
     {
         base.FixedUpdate();
-
-        // Continues to give existing lasers a rotation
-        //UpdateLaserRotation();
 
         if (_phaseCounter == 2)
 
@@ -60,21 +63,6 @@ public class AnimeBoss : BossPrototype
         InvokeRepeating("StartLaserBeam", 1f, 30f); // Ahh, so this begins the loop of doing lasers every 30 sec
     }
 
-    /*private void UpdateLaserRotation() // Spins the lasers (moved to just the laser object)
-    {
-        if (laserList.Count == 0)
-        {
-            return;
-        }
-        foreach (GameObject laser in laserList)
-        {
-            if (laser)
-            {
-                laser.transform.Rotate(0, 0, .7f);
-            }
-        }
-
-    }*/
     private void StartLaserBeam()
     {
         SetNewTarget(_laserAttackEmpty, 20f);
@@ -88,8 +76,7 @@ public class AnimeBoss : BossPrototype
         for (int i = 0; i < 4; i++)
         {
             GameObject laser = Instantiate(_laserbeamPrefab, _laserAttackEmpty);
-            laserList.Add(laser);
-            //laser.transform.Rotate(0, 0, .7f); 
+            //laserList.Add(laser);
             yield return new WaitForSeconds(1.5f);
         }
     }
@@ -128,24 +115,11 @@ public class AnimeBoss : BossPrototype
         {
             Instantiate(chosenAttack, _mikuAttackEmpty);
         }
-        /*else if (chosenAttack.GetComponent<HeartAoE>()) Why are we doing this?
-        {
-            // Stop the laserbeams if the attack is hearts next
-            //StopCoroutine(SpawnLaserBeam());
-            //StartCoroutine(HeartAttack(chosenAttack));
-            Instantiate(chosenAttack, _spawnLocation);
-        }*/
         else
         {
             Instantiate(chosenAttack, _spawnLocation);
         }
     }
-
-    /*private IEnumerator HeartAttack(GameObject heartPrefab)
-    {
-        SetNewTarget(_spawnLocation, 4f);
-        yield return new WaitForSeconds(1);
-    }*/
 
     private IEnumerator DoMajorPhaseChange()
     {
@@ -164,6 +138,9 @@ public class AnimeBoss : BossPrototype
 
         // Wait for the camera to catch up
         yield return new WaitUntil(() => _b3Cam.GetFullStop());
+
+        // Play the transformation sequence
+        // TODO
 
         // And once that's done, resume normal attacking
         SetDefaultTarget();

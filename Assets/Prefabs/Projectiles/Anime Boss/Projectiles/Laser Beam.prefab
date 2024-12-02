@@ -126,7 +126,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 124.99998, y: 3.5598242, z: 0.19999999}
   m_Center: {x: 0, y: 0.55474794, z: 0}
@@ -148,6 +148,10 @@ MonoBehaviour:
   _speed: 1
   _lifetime: 10
   _health: 10000
+  _rotSpeed: 0.7
+  _dir: 1
+  _activeDuration: 1
+  _cycleDuration: 5
 --- !u!1 &3729586690419508271
 GameObject:
   m_ObjectHideFlags: 0
