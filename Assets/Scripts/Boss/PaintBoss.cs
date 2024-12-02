@@ -95,8 +95,6 @@ public class PaintBoss : BossPrototype
         SetDefaultSpeed();
         // TODO: return to idle animation
 
-       // paintingInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-       // paintingInstance.release();
         Debug.Log("SoundStop");
         _isPainting = false;
     }

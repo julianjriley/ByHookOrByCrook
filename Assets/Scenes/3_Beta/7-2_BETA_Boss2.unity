@@ -4042,8 +4042,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 218604091}
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: paintingSound.Path
+      value: event:/Combat/Painterly/Painting
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: _paintingTrackSpeed
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: paintingSound.Guid.Data1
+      value: 92075825
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: paintingSound.Guid.Data2
+      value: 1164325108
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: paintingSound.Guid.Data3
+      value: 353952167
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: paintingSound.Guid.Data4
+      value: -296267625
       objectReference: {fileID: 0}
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: _phases.Array.data[2].RepeatRate
