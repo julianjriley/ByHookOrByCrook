@@ -110,12 +110,12 @@ public class WeaponInstance : MonoBehaviour
         _direction = direction;
     }
 
-    public void DisableRendering()
+    public virtual void DisableRendering()
     {
         spriteRenderer.enabled = false;
     }
 
-    public void EnableRendering()
+    public virtual void EnableRendering()
     {
         spriteRenderer.enabled = true;
     }
