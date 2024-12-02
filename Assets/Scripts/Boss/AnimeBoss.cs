@@ -16,6 +16,11 @@ public class AnimeBoss : BossPrototype
     private GameObject _wand;
     [SerializeField, Tooltip("The wand animator")]
     private Animator _wandAnim;
+    [SerializeField, Tooltip("The big white screen")]
+    private GameObject _bigWhiteScreen;
+    private Animator _bossAnim;
+    private Animator _bwsAnim;
+
 
     [Header("Miku Attack")]
     [SerializeField, Tooltip("The empty that Miku spawns under")]
@@ -28,12 +33,7 @@ public class AnimeBoss : BossPrototype
     private Transform _laserAttackEmpty;
     [SerializeField, Tooltip("How long the laser attack lasts")]
     private float _laserBeamDuration = 10;
-    [SerializeField, Tooltip("List of lasers")]
-    private List<GameObject> laserList;
     private bool _laserActive; // Prevents other things from happening during laser time
-    
-    private float currentTime = 0;
-    private float _numberOflasers = 4;
 
     // Booleans for the major phase change
     private bool _inPhaseTwoPos; // True when the boss has entered position for phase 2
@@ -41,6 +41,8 @@ public class AnimeBoss : BossPrototype
     override protected void Start()
     {
         base.Start();
+        _bossAnim = GetComponent<Animator>();
+        _bwsAnim = _bigWhiteScreen.GetComponent<Animator>();
     }
 
     override protected void FixedUpdate()
@@ -78,7 +80,6 @@ public class AnimeBoss : BossPrototype
         for (int i = 0; i < 4; i++)
         {
             GameObject laser = Instantiate(_laserbeamPrefab, _laserAttackEmpty);
-            //laserList.Add(laser);
             yield return new WaitForSeconds(1.5f);
         }
     }
@@ -142,7 +143,16 @@ public class AnimeBoss : BossPrototype
         yield return new WaitUntil(() => _b3Cam.GetFullStop());
 
         // Play the transformation sequence
-        
+        _bossAnim.Play("Transfoooorm", 0, 0);
+        _bigWhiteScreen.SetActive(true);
+        _bwsAnim.Play("FadeWhite", 0, 0);
+        yield return new WaitForSeconds(6.67f);
+        _wand.SetActive(true);
+        _bwsAnim.Play("FadeClear", 0, 0);
+        _bossAnim.Play("Idle", 0, 0);
+        _bossAnim.speed = 0;
+        yield return new WaitForSeconds(3f);
+        _bossAnim.speed = 1;
 
         // And once that's done, resume normal attacking
         SetDefaultTarget();
