@@ -66,13 +66,15 @@ public class AnimeBoss : BossPrototype
     private void StartLaserBeam()
     {
         SetNewTarget(_laserAttackEmpty, 20f);
-        
+
         // Actually spawn the lasers
+        
         StartCoroutine(SpawnLaserBeam());
     }
 
     private IEnumerator SpawnLaserBeam() 
     {
+        yield return new WaitUntil(() => _inPhaseTwoPos == true);
         for (int i = 0; i < 4; i++)
         {
             GameObject laser = Instantiate(_laserbeamPrefab, _laserAttackEmpty);
@@ -84,7 +86,7 @@ public class AnimeBoss : BossPrototype
 
     override protected void AttackLogic()
     {
-        if(_phaseCounter == 2)
+        if(_phaseCounter >= 2)
         {
             if (_inPhaseTwoPos) // If the phase change has completed, resume normal attack patterns
             {
@@ -152,4 +154,6 @@ public class AnimeBoss : BossPrototype
         _inPhaseTwoPos = true;
         yield return null;
     }
+
+
 }
