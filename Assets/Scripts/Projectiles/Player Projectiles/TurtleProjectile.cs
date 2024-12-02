@@ -33,6 +33,8 @@ public class TurtleProjectile : Projectile
     {
         if (_isRespawning)
         {
+            InstantiateDeathEffect();
+
             _collider.enabled = false;
             _sprite.enabled = false;
 
