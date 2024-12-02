@@ -47,7 +47,7 @@ public class AnimeBoss : BossPrototype
     {
         base.FixedUpdate();
 
-        if (_phaseCounter == 2)
+        if (_phaseCounter >= 2)
 
             if (!_phaseTwoChangeInProgress) // If the phase change needs to start, start it
             {
@@ -142,7 +142,7 @@ public class AnimeBoss : BossPrototype
         yield return new WaitUntil(() => _b3Cam.GetFullStop());
 
         // Play the transformation sequence
-        // TODO
+        
 
         // And once that's done, resume normal attacking
         SetDefaultTarget();

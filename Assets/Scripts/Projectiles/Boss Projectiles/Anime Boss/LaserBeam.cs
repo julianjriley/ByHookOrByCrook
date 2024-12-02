@@ -17,8 +17,12 @@ public class LaserBeam : Projectile
 
     override protected void Start()
     {
-        base.Start();
-        //Color color = GetComponent<SpriteRenderer>().color;
+        gameObject.AddComponent<EffectManager>();
+        _rb = GetComponent<Rigidbody>();
+
+        if (_lifetime > 0)
+            Invoke("TimeUp", _lifetime);
+
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider>();
 
@@ -43,13 +47,28 @@ public class LaserBeam : Projectile
         _rotSpeed = speed;
     }
 
-    private IEnumerator StartGimmick()
+    
+
+    #region DESTROY BEHAVIOR
+    private void TimeUp()
+    {
+        StartCoroutine(OnDissapate());
+    }
+
+    private IEnumerator OnDissapate()
+    {
+        _animator.Play("LaserDespawn", 0, 0);
+        yield return new WaitForSeconds(.33f);
+        Destroy(this);
+    }
+    #endregion
+    private IEnumerator StartGimmick() //TODO
     {
         InvokeRepeating("Gimmick", 0f, _cycleDuration);
         yield return new WaitForSeconds(0f);
     }
 
-    void Gimmick()
+    private void Gimmick()
     {
         StartCoroutine(DoLaserAction());
     }
@@ -68,6 +87,8 @@ public class LaserBeam : Projectile
         _collider.enabled = false;
         _animator.Play("LaserFade");
     }
+
+
 
     override protected void OnTriggerEnter(Collider collider)
     {
