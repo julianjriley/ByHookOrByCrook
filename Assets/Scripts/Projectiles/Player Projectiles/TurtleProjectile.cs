@@ -43,7 +43,7 @@ public class TurtleProjectile : Projectile
         }
         else
         {
-            InstantiateDeathEffect(0.2f);
+            InstantiateDeathEffect();
             Destroy(gameObject);
         }
             

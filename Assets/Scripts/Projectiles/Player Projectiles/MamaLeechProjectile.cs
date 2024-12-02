@@ -21,7 +21,7 @@ public class MamaLeechProjectile : Projectile
     //The two collision functions and apply poision functions are exactly the same
     protected override void OnTriggerEnter(Collider collider)
     {
-        InstantiateDeathEffect(0.2f);
+        InstantiateDeathEffect();
         if (collider.TryGetComponent<IDamageable>(out IDamageable component))
         {
             component.TakeDamage(_damage, false);
@@ -38,7 +38,7 @@ public class MamaLeechProjectile : Projectile
     }
     protected override void OnCollisionEnter(Collision collision)
     {
-        InstantiateDeathEffect(0.2f);
+        InstantiateDeathEffect();
         if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable component))
         {
             component.TakeDamage(_damage, false);

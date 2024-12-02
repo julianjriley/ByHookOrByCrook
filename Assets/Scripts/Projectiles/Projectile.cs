@@ -74,7 +74,7 @@ public class Projectile : MonoBehaviour, IDamageable
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
-        InstantiateDeathEffect(0.2f);
+        InstantiateDeathEffect();
         if (collider.TryGetComponent<IDamageable>(out IDamageable component))
         {
             component.TakeDamage(_damage, false);
@@ -90,7 +90,7 @@ public class Projectile : MonoBehaviour, IDamageable
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        InstantiateDeathEffect(0.2f);
+        InstantiateDeathEffect();
         if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable component))
         {
             component.TakeDamage(_damage, false);
