@@ -13,9 +13,9 @@ public class PracTTRLManager : MonoBehaviour
     [Header("Boss Scenes")]
     [SerializeField] string[] _bossScenes;
 
-    [Header("Outro Transition")]
-    [SerializeField] private GameObject _firstHalfWaterTransition;
-    private bool _isPressed = false;
+    [Header("Scene Transitions")]
+    [SerializeField, Tooltip("Used to call scene transitions.")]
+    private SceneTransitionsHandler _transitionsHandler;
 
     void Start()
     {
@@ -46,18 +46,8 @@ public class PracTTRLManager : MonoBehaviour
             default:
                 sceneToSwitchTo = _bossScenes[0]; break;
         }
-        SceneManager.LoadScene(sceneToSwitchTo);
-    }
-    public void FightButton() {
-        if (_isPressed) {
-            return;
-        }
-        _isPressed = true;
-        StartCoroutine(SceneDelay());
-    }
-    IEnumerator SceneDelay() {
-        _firstHalfWaterTransition.SetActive(true);
-        yield return new WaitForSeconds(1.433f);
-        SceneChange();
+
+        // actually load scene
+        _transitionsHandler.LoadScene(sceneToSwitchTo);
     }
 }
