@@ -19,7 +19,8 @@ public class StartMenuManager : MonoBehaviour
 
     public void ClearData()
     {
-        //GameManager.Instance.GamePersistent
+        GameManager.Instance.InitializeSaveData(true);
+        SceneManager.LoadScene(gameScene);
     }
     public void LoadOptionsScene()
     {
