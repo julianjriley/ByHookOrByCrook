@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitionImage: {fileID: 1289739892071531980}
+  _handler: {fileID: 7907522791565036698}
 --- !u!1 &2325021360441408113
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitionImage: {fileID: 61959052377570248}
+  _handler: {fileID: 7907522791565036698}
 --- !u!1 &5363859866264758748
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,6 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitionImage: {fileID: 2021859819015642172}
+  _handler: {fileID: 7907522791565036698}
 --- !u!1 &7719751899212168795
 GameObject:
   m_ObjectHideFlags: 0

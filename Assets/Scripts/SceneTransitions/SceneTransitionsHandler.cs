@@ -38,6 +38,10 @@ public class SceneTransitionsHandler : MonoBehaviour
     [SerializeField, Tooltip("Animated sprite for slide left scene exit.")]
     private GameObject _exitSlideLeft;
 
+    // whether the enter transition has completed
+    private bool _isDoneLoading = false;
+    public bool IsDoneLoading() { return _isDoneLoading; }
+
     // whether it is time to call the scene transition
     private bool _isReadyToLoad = false;
     private bool IsReadyToLoad() { return _isReadyToLoad; }
@@ -104,5 +108,13 @@ public class SceneTransitionsHandler : MonoBehaviour
     public void SetReadyToLoad()
     {
         _isReadyToLoad = true;
+    }
+
+    /// <summary>
+    /// Updates boolean so transition handler knows loading has completed.
+    /// </summary>
+    public void SetDoneLoading()
+    {
+        _isDoneLoading = true;
     }
 }

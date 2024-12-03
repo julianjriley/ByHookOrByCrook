@@ -10,6 +10,8 @@ public class TransitionEnterEvent : MonoBehaviour
 {
     [SerializeField, Tooltip("Used to disable the image at the end of animation.")]
     private Image _transitionImage;
+    [SerializeField, Tooltip("Used to indicate when animation is complete.")]
+    SceneTransitionsHandler _handler;
 
     /// <summary>
     /// Called by the animator event to disable image & raycast.
@@ -17,5 +19,6 @@ public class TransitionEnterEvent : MonoBehaviour
     public void AnimationComplete()
     {
         _transitionImage.enabled = false;
+        _handler.SetDoneLoading();
     }
 }
