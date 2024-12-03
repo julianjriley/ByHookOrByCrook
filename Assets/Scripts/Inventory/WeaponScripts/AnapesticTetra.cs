@@ -31,6 +31,7 @@ public class AnapesticTetra : WeaponInstance
                 AnapesticTetraProjectile anapesticTetraProjectile = projectile.GetComponent<AnapesticTetraProjectile>();
                 anapesticTetraProjectile.AssignStats(_weapon);
                 _heatLevel += _weapon.HeatBuildup;
+                Debug.Log(_weapon.Damage);
             }
             _weapon.Damage /= mult;
         }

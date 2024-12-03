@@ -158,14 +158,13 @@ public class WeaponInstance : MonoBehaviour
         }
     }
 
-    protected void CheckOverheat()
+    protected float CheckOverheat()
     {
-        if (_weapon.overheatShot && ((_heatLevel + _weapon.HeatBuildup) > 100) && _heatLevel < 100)
-            _weapon.Damage *= 4f;
-        else if (_weapon.overheatShot && _heatLevel >= 100)
-        {
-            _weapon.Damage /= 4f;
-        }
+        if (_weapon.overheatShot && (_heatLevel + _weapon.HeatBuildup) >= 100)
+            return 4f;
+        else
+            return 1f;
+
     }
 
     void AddOverheatMult()
