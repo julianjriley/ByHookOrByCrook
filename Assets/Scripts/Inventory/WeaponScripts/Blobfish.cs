@@ -7,7 +7,7 @@ public class Blobfish : WeaponInstance
 {
     [SerializeField] private GameObject _projectile;
     private Animator _animator;
-    private float _tickTimer = 9f;
+    private float _tickTimer = 90f;
     private bool _transformed = false;
     private bool _tickTimerEnabled = true;
 
@@ -86,7 +86,11 @@ public class Blobfish : WeaponInstance
             StartCoroutine(BecomeTheAbsoluteGigaMegaNuke3000());
         }
         else
+        {
             _tickTimer -= Time.deltaTime;
+            _animator.SetFloat("TimeLeft", _tickTimer);
+        }
+            
     }
 
     
