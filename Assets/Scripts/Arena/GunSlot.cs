@@ -49,6 +49,6 @@ public class GunSlot : MonoBehaviour
 
     public void EnSmallen()
     {
-        transform.localScale = Vector3.one / 2;
+        transform.localScale = Vector3.one / 1.5f;
     }
 }
