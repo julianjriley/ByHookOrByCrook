@@ -67,7 +67,7 @@ public class SceneTransitionsHandler : MonoBehaviour
     /// <summary>
     /// Called wherever a scene transition would normally be called.
     /// </summary>
-    public void ExitScene(string nextSceneName, TransitionType transitionType = TransitionType.None)
+    public void LoadScene(string nextSceneName, TransitionType transitionType = TransitionType.None)
     {
         // determine which type to use
         TransitionType type = transitionType;

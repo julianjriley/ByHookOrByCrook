@@ -124,7 +124,7 @@ public class BaitSelector : MonoBehaviour
     public void BackToHub()
     {
         // left transition override for back to hub
-        _transitionsHandler.ExitScene(_hubSceneName, SceneTransitionsHandler.TransitionType.SlideLeft);
+        _transitionsHandler.LoadScene(_hubSceneName, SceneTransitionsHandler.TransitionType.SlideLeft);
     }
 
     /// <summary>
@@ -162,7 +162,7 @@ public class BaitSelector : MonoBehaviour
         SoundManager.Instance.CleanUp(); //stops the music
 
         // Load fishing scene
-        _transitionsHandler.ExitScene(_fishingSceneName);
+        _transitionsHandler.LoadScene(_fishingSceneName);
     }
 
     /// <summary>
