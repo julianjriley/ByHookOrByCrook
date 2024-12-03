@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,6 +15,8 @@ public class WeaponInstance : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     protected Animator _animator;
     PlayerCombat _player;
+
+    [SerializeField] protected GameObject _projectile;
 
     public float mult;
 
@@ -41,6 +44,7 @@ public class WeaponInstance : MonoBehaviour
         mult = 1.0f;
         WeaponCooledOff += SubtractOverheatMult;
         WeaponOverheated += AddOverheatMult;
+
     }
 
     void OnDisable()
@@ -51,7 +55,74 @@ public class WeaponInstance : MonoBehaviour
 
     public virtual void Fire(Vector3 direction)
     {
-        
+
+        BulletHandling(direction);
+        _animator.Play("Fire");
+        OverheatAndResetting();
+
+    }
+
+    protected bool FireBoolChecks()
+    {
+        if (!_canFire)
+        {
+            return false;
+        }
+
+        if (_overHeated)
+        {
+            return false;
+        }
+        else
+            return true;
+    }
+
+    protected void BulletHandling(Vector3 direction)
+    {
+        if (_weapon.ProjectileCount < 2)
+        {
+            BulletLogic(direction);
+            _heatLevel += _weapon.HeatBuildup;
+        }
+        else
+        {
+            TripleShot();
+        }
+    }
+
+    protected virtual void BulletLogic(Vector3 direction)
+    {
+        for (int i = 0; i < _weapon.ProjectileCount; i++)
+        {
+            GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, _direction));
+            projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
+            projectile.GetComponent<Rigidbody>().AddForce(_direction * _weapon.Speed, ForceMode.Impulse);
+            Projectile projectileComponent = projectile.GetComponent<Projectile>();
+            projectileComponent.AssignStats(_weapon);
+            projectileComponent.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
+        }
+    }
+
+    protected virtual void TripleShot()
+    {
+        for (int i = -1; i < _weapon.ProjectileCount - 1; i++)
+        {
+            Vector3 aimingDir = Quaternion.Euler(0, 0, 8 * i) * _direction;
+            BulletLogic(aimingDir);
+        }
+        _heatLevel += _weapon.HeatBuildup;
+    }
+
+    protected virtual void OverheatAndResetting()
+    {
+        TryApplyRecoil();
+        if (_heatLevel >= 100)
+        {
+            _overHeated = true;
+        }
+        SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
+        StartCoroutine(FireRate());
+        _autoFireCoroutine = StartCoroutine(FireAuto(_direction));
     }
 
     public virtual void CeaseFire()

@@ -69,11 +69,11 @@ public class Boss1 : BossPrototype
     }
     public override void Move() {
         if (_rb == null) {
-            Debug.Log("No rigidbody");
+           // Debug.Log("No rigidbody");
             return;
         }
         if (_target == null) {
-            Debug.Log("No target");
+           // Debug.Log("No target");
             return;
         }
         //if (Mathf.Abs(_rb.velocity.x) < 13) {
