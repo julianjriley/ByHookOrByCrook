@@ -53,7 +53,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private LayerMask _invulnerabilityMask;
     private Coroutine _invulnerableWindow;
 
-
+    //Sprite Renderer
+    SpriteRenderer _spriteRenderer;
 
     public delegate void PlayerDied();
     public static event PlayerDied playerDeath;
@@ -107,6 +108,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         playerMovement = GetComponent<ArenaMovement>();
         rb = GetComponent<Rigidbody>();
         gameObject.AddComponent<EffectManager>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         equippedWeaponindex = 0;
 
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
@@ -422,9 +424,24 @@ public class PlayerCombat : MonoBehaviour, IDamageable
             yield break;
         _invulnerable = true;
         _collider.excludeLayers = _invulnerabilityMask;
+        StartCoroutine(DamageFlash());
         yield return new WaitForSeconds(1);
         _collider.excludeLayers = 0;
         _invulnerable = false;
+    }
+
+    IEnumerator DamageFlash()
+    {
+        Color baseColor = _spriteRenderer.color;
+        for(int i = 0; i < 8; i++)
+        {
+            baseColor.a = 0f;
+            _spriteRenderer.color = baseColor;
+            yield return new WaitForSeconds(0.0625f);
+            baseColor.a = 1f;
+            _spriteRenderer.color = baseColor;
+            yield return new WaitForSeconds(0.0625f);
+        }
     }
 
     public void PassEffect(EffectData effectData)
@@ -457,6 +474,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
             HealthChanged?.Invoke(Health);
             canRevive = false;
             _hasRevived = true;
+            _invulnerableWindow = StartCoroutine(InvulnerabilityWindow(1));
             StartCoroutine(ZombieDeathTimer());
             return true;
         }
