@@ -294,7 +294,7 @@ public class ShopInteractor : Interactor
         }
         else if (GoodsSold == ShopType.BaitSpace)
         {
-            _npc.SetConversation(_convos[GameManager.Instance.GamePersistent.BattleInventorySize - minBaitSlots], -1);
+            _npc.SetConversation(_convos[GameManager.Instance.GamePersistent.BaitInventorySize - minBaitSlots], -1);
         }
         else if (GoodsSold == ShopType.BagSpace)
         {
