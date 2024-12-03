@@ -145,6 +145,19 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PauseAll(bool pause)
+    {
+        foreach (EventInstance eventInstance in eventInstances)
+        {
+            eventInstance.setPaused(pause);
+        }
+    }
+
+    public void Pause(EventInstance eventInstance, bool pause)
+    {
+        eventInstance.setPaused(pause);
+    }
+
     public void CheckEventInstances()
     {
         foreach (EventInstance eventInstance in eventInstances)
