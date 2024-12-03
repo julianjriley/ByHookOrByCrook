@@ -70,8 +70,6 @@ public class LoadoutSelection : MonoBehaviour
 
     #region SCENE TRANSITIONS
     [Header("Scene Transitions")]
-    [SerializeField, Tooltip("Names of boss scenes to transition to.")] 
-    private string[] _bossScenes;
     [SerializeField, Tooltip("Game object to activate for confirmation popup.")]
     private GameObject _combatConfirmationPopup;
     [SerializeField, Tooltip("Name of practice scene to transition to.")]
@@ -211,14 +209,6 @@ public class LoadoutSelection : MonoBehaviour
         // Fadeout logic/delay
         yield return new WaitForSeconds(1.433f);
         SceneManager.LoadScene(sceneName);
-    }
-
-    /// <summary>
-    /// Current number of selected fish.
-    /// </summary>
-    public int GetCurrentLoadoutSize()
-    {
-        return LoadoutFishParent.transform.childCount;
     }
     #endregion
 }
