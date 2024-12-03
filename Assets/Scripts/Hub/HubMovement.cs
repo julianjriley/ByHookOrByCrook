@@ -33,6 +33,7 @@ public class HubMovement : MonoBehaviour
     void Start()
     {
         _moveAction = InputSystem.actions.FindAction("Move Top-Down");
+        _moveAction.Enable();
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _sr = GetComponent<SpriteRenderer>();

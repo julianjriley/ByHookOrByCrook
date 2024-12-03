@@ -226,8 +226,6 @@ GameObject:
   - component: {fileID: 524261643316257706}
   - component: {fileID: 3478655693882918306}
   - component: {fileID: 8236188110801452168}
-  - component: {fileID: 4109133184467577394}
-  - component: {fileID: 8160810746265274250}
   m_Layer: 10
   m_Name: Boss
   m_TagString: Boss
@@ -345,6 +343,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 20
   _playerTransform: {fileID: 0}
+  _offscreenTarget: {fileID: 0}
+  _entranceTarget: {fileID: 0}
+  _fightText: {fileID: 0}
+  _introUI: {fileID: 0}
+  _victoryText: {fileID: 0}
+  _defeatText: {fileID: 0}
+  _transitionsHandler: {fileID: 0}
   BossHealth: 100
   MaxBossHealth: 100
   _phases:
@@ -431,41 +436,3 @@ CapsuleCollider:
   m_Height: 3.01
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4109133184467577394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6471947525389772445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18bedda90d9e5de40a5e659956336b9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  music:
-    Guid:
-      Data1: 817889303
-      Data2: 1287124787
-      Data3: 109520307
-      Data4: -1313791562
-    Path: event:/Music/PixelFight
---- !u!114 &8160810746265274250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6471947525389772445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18bedda90d9e5de40a5e659956336b9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  music:
-    Guid:
-      Data1: 817889303
-      Data2: 1287124787
-      Data3: 109520307
-      Data4: -1313791562
-    Path: event:/Music/PixelFight
