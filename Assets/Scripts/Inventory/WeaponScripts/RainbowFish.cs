@@ -30,8 +30,6 @@ public class RainbowFish : WeaponInstance
         }
         if (_weapon.ProjectileCount < 2)
         {
-            CheckOverheat();
-            _weapon.Damage *= mult;
             for (int i = 0; i < _weapon.ProjectileCount; i++)
             {
                 GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, _direction));
@@ -39,14 +37,12 @@ public class RainbowFish : WeaponInstance
                 projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
                 RottenFishProjectile rottenFishProjectile = projectile.GetComponent<RottenFishProjectile>();
                 rottenFishProjectile.AssignStats(_weapon);
+                rottenFishProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
                 _heatLevel += _weapon.HeatBuildup;
             }
-            _weapon.Damage /= mult;
         }
         else
         {
-            CheckOverheat();
-            _weapon.Damage *= mult;
             for (int i = -1; i < _weapon.ProjectileCount - 1; i++)
             {
                 Vector3 aimingDir = Quaternion.Euler(0, 0, 8 * i) * _direction;
@@ -55,8 +51,9 @@ public class RainbowFish : WeaponInstance
                 projectile.GetComponent<Rigidbody>().AddForce(aimingDir * _weapon.Speed, ForceMode.Impulse);
                 RottenFishProjectile rottenFishProjectile = projectile.GetComponent<RottenFishProjectile>();
                 rottenFishProjectile.AssignStats(_weapon);
+                rottenFishProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
             }
-            _weapon.Damage /= mult;
+            
             _heatLevel += _weapon.HeatBuildup;
         }
 
@@ -66,7 +63,6 @@ public class RainbowFish : WeaponInstance
             increasedFireRate = 0;
         }
         _animator.Play("Fire");
-        CheckOverheat();
         TryApplyRecoil(); 
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
         increasedFireRate += 0.3f;

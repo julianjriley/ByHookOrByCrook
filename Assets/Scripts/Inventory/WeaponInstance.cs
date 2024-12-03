@@ -15,7 +15,7 @@ public class WeaponInstance : MonoBehaviour
     protected Animator _animator;
     PlayerCombat _player;
 
-    public static float mult;
+    public float mult;
 
     public static event Action WeaponOverheated;
     public static event Action WeaponCooledOff;
@@ -41,6 +41,12 @@ public class WeaponInstance : MonoBehaviour
         mult = 1.0f;
         WeaponCooledOff += SubtractOverheatMult;
         WeaponOverheated += AddOverheatMult;
+    }
+
+    void OnDisable()
+    {
+        WeaponCooledOff -= SubtractOverheatMult;
+        WeaponOverheated -= AddOverheatMult;
     }
 
     public virtual void Fire(Vector3 direction)
@@ -170,13 +176,13 @@ public class WeaponInstance : MonoBehaviour
     void AddOverheatMult()
     {
         if (_weapon.overheatDamageBonus)
-            mult += 1f;
+            mult += 0.2f;
     }
 
     void SubtractOverheatMult()
     {
         if (_weapon.overheatDamageBonus)
-            mult -= 1f;
+            mult -= 0.2f;
     }
 
 }

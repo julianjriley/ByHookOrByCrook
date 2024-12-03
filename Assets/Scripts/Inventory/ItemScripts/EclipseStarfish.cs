@@ -18,6 +18,6 @@ public class EclipseStarfish : PassiveItemInstance
                 weapon.overheatDamageBonus = true;
             }
         }
-        SunfishInteraction.Invoke();
+        SunfishInteraction?.Invoke();
     }
 }

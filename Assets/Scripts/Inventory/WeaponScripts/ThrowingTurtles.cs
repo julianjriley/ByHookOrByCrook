@@ -23,8 +23,6 @@ public class ThrowingTurtles : WeaponInstance
         }
         if (_weapon.ProjectileCount < 2)
         {
-            CheckOverheat();
-            _weapon.Damage *= mult;
             for (int i = 0; i < _weapon.ProjectileCount; i++)
             {
                 GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, _direction));
@@ -32,14 +30,12 @@ public class ThrowingTurtles : WeaponInstance
                 projectile.GetComponent<Rigidbody>().AddForce(_direction * _weapon.Speed, ForceMode.Impulse);
                 TurtleProjectile turtleProjectile = projectile.GetComponent<TurtleProjectile>();
                 turtleProjectile.AssignStats(_weapon);
+                turtleProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
                 _heatLevel += _weapon.HeatBuildup;
             }
-            _weapon.Damage /= mult;
         }
         else
         {
-            CheckOverheat();
-            _weapon.Damage *= mult;
             for (int i = -1; i < _weapon.ProjectileCount - 1; i++)
             {
                 Vector3 aimingDir = Quaternion.Euler(0, 0, 90 * i) * _direction;
@@ -49,11 +45,10 @@ public class ThrowingTurtles : WeaponInstance
                 projectile.GetComponent<Rigidbody>().AddForce(aimingDir * _weapon.Speed, ForceMode.Impulse);
                 TurtleProjectile turtleProjectile = projectile.GetComponent<TurtleProjectile>();
                 turtleProjectile.AssignStats(_weapon);
+                turtleProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
             }
-            _weapon.Damage /= mult;
             _heatLevel += _weapon.HeatBuildup;
         }
-        CheckOverheat();
         TryApplyRecoil();
         if (_heatLevel >= 100)
         {

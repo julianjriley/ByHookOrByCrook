@@ -22,8 +22,6 @@ public class RailgunFish : WeaponInstance
         }
         if (_weapon.ProjectileCount < 2)
         {
-            CheckOverheat();
-            _weapon.Damage *= mult;
             for (int i = 0; i < _weapon.ProjectileCount; i++)
             {
 
@@ -32,15 +30,13 @@ public class RailgunFish : WeaponInstance
                 projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
                 RailgunFishProjectile railgunFishProjectile = projectile.GetComponent<RailgunFishProjectile>();
                 railgunFishProjectile.AssignStats(_weapon);
+                railgunFishProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
                 _heatLevel += _weapon.HeatBuildup;
                 
             }
-            _weapon.Damage /= mult;
         }
         else
         {
-            CheckOverheat();
-            _weapon.Damage *= mult;
             for (int i = -1; i < _weapon.ProjectileCount - 1; i++)
             {
                 Vector3 aimingDir = Quaternion.Euler(0, 0, 8 * i) * _direction;
@@ -49,11 +45,10 @@ public class RailgunFish : WeaponInstance
                 projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
                 RailgunFishProjectile railgunFishProjectile = projectile.GetComponent<RailgunFishProjectile>();
                 railgunFishProjectile.AssignStats(_weapon);
+                railgunFishProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
             }
-            _weapon.Damage /= mult;
             _heatLevel += _weapon.HeatBuildup;
         }
-        CheckOverheat();
         if (_heatLevel >= 100)
             _overHeated = true;
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
