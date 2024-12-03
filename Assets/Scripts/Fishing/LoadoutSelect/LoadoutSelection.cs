@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -27,9 +26,6 @@ public class LoadoutSelection : MonoBehaviour
     [SerializeField, Tooltip("List of fish used when starting Unity within this scene. Instead of using GameManager.")]
     private List<Item> _editorFishList;
 
-    [Header("Boss Scenes")]
-    [SerializeField] string[] _bossScenes;
-    [SerializeField] GameObject _firstHalfWaterTransition;
     void Start()
     {
         // Spawn fish button for each caught fish (from GameManager)
@@ -70,12 +66,16 @@ public class LoadoutSelection : MonoBehaviour
 
     #region SCENE TRANSITIONS
     [Header("Scene Transitions")]
+    [SerializeField, Tooltip("Scene names of the different boss scenes.")] 
+    private string[] _bossScenes;
     [SerializeField, Tooltip("Game object to activate for confirmation popup.")]
     private GameObject _combatConfirmationPopup;
     [SerializeField, Tooltip("Name of practice scene to transition to.")]
     private string _practiceSceneName;
     [SerializeField, Tooltip("Game object to activate for confirmation popup.")]
     private GameObject _practiceConfirmationPopup;
+    [SerializeField, Tooltip("Used to call scene transitions.")]
+    private SceneTransitionsHandler _transitionsHandler;
 
     /// <summary>
     /// Continues if bait slots are full. Otherwise, brings up Confirmation Popup for combat.
@@ -123,7 +123,7 @@ public class LoadoutSelection : MonoBehaviour
         }
 
         // actually transition scene
-        SceneManager.LoadScene(sceneToSwitchTo);
+        _transitionsHandler.LoadScene(sceneToSwitchTo);
     }
 
     /// <summary>
@@ -157,8 +157,8 @@ public class LoadoutSelection : MonoBehaviour
         // add loadout to game manager
         AddFish();
 
-        // actually transition scene
-        SceneManager.LoadScene(_practiceSceneName);
+        // actually transition scene -> DON'T DO WATER TRANSITION FOR PRACTICE
+        _transitionsHandler.LoadScene(_practiceSceneName, SceneTransitionsHandler.TransitionType.SlideRight);
     }
 
     public void AddFish()
@@ -198,17 +198,6 @@ public class LoadoutSelection : MonoBehaviour
             default:
                 sceneToSwitchTo = _bossScenes[0]; break;
         }
-
-        StartCoroutine(Fadeout(sceneToSwitchTo));
-    }
-
-    private IEnumerator Fadeout(string sceneName)
-    {
-        // TODO: add actual smooth transition visual effects here
-        _firstHalfWaterTransition.SetActive(true);
-        // Fadeout logic/delay
-        yield return new WaitForSeconds(1.433f);
-        SceneManager.LoadScene(sceneName);
     }
     #endregion
 }
