@@ -125,6 +125,11 @@ public class WeaponInstance : MonoBehaviour
         return _heatLevel;
     }
 
+    public float SetHeatLevel(float heatLevel)
+    {
+        _heatLevel = heatLevel;
+    }
+
     public Weapon GetWeapon()
     {
         return _weapon;
@@ -163,4 +168,5 @@ public class WeaponInstance : MonoBehaviour
         if (_weapon.overheatDamageBonus)
             mult -= 1f;
     }
+
 }
