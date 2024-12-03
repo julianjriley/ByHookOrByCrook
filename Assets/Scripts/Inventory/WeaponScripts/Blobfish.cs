@@ -6,7 +6,7 @@ using UnityEngine;
 public class Blobfish : WeaponInstance
 {
     [SerializeField] private GameObject _projectile;
-    private Animator _animator;
+    
     private float _tickTimer = 9f;
     private bool _transformed = false;
     private bool _tickTimerEnabled = true;
@@ -14,7 +14,7 @@ public class Blobfish : WeaponInstance
     protected override void Start()
     {
         base.Start();
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
     }
     public override void Fire(Vector3 direction)
     {

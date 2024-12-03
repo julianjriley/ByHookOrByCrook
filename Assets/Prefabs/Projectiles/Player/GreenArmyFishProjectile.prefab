@@ -158,6 +158,7 @@ MonoBehaviour:
   _speed: 0
   _lifetime: 0
   _health: 1
+  _deathEffect: {fileID: 0}
   enemyMask:
     serializedVersion: 2
     m_Bits: 1280
@@ -245,7 +246,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.56
+      scalar: 0.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -298,7 +299,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 2.88
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -416,7 +417,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.52
+      scalar: 0.45
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -999,7 +1000,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 11.59
+      scalar: 73.38
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1438,7 +1439,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
+        key1: {r: 1, g: 1, b: 1, a: 0.43137255}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -4906,7 +4907,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
