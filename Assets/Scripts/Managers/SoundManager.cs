@@ -45,9 +45,6 @@ public class SoundManager : MonoBehaviour
     {
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
         eventInstances.Add(eventInstance);
-        eventInstance.getDescription(out EventDescription description);
-        description.getPath(out string result);
-        //UnityEngine.Debug.Log(result);
         return eventInstance;
     }
 
@@ -73,6 +70,7 @@ public class SoundManager : MonoBehaviour
         fishingEventInstance = CreateInstance(fishingEventReference);
         fishingEventInstance.start();
     }
+
 
     public void SetGlobalParameter(string name, float value)
     {
