@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EclipseStarfish : PassiveItemInstance
 {
+    public static event Action SunfishInteraction;
+
     public override void ItemEffect()
     {
         base.ItemEffect();
@@ -15,5 +18,6 @@ public class EclipseStarfish : PassiveItemInstance
                 weapon.overheatDamageBonus = true;
             }
         }
+        SunfishInteraction.Invoke();
     }
 }
