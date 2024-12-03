@@ -17,6 +17,10 @@ public class StartMenuManager : MonoBehaviour
         SceneManager.LoadScene(gameScene);
     }
 
+    public void ClearData()
+    {
+        //GameManager.Instance.GamePersistent
+    }
     public void LoadOptionsScene()
     {
         optionsScreen.SetActive(true);
