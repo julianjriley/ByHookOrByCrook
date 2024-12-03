@@ -9,9 +9,8 @@ public class StartMenuManager : MonoBehaviour
     private string gameScene, creditsScene, startScene;
     [SerializeField]
     GameObject optionsScreen;
-    //[SerializeField]
-    //private GameObject optionsScene;
-
+    [SerializeField]
+    private Sprite bubble, pop;
     public void LoadGameScene()
     {
         SceneManager.LoadScene(gameScene);
@@ -24,7 +23,12 @@ public class StartMenuManager : MonoBehaviour
     }
     public void LoadOptionsScene()
     {
-        optionsScreen.SetActive(true);
+        StartCoroutine(BubblePop());
+    }
+
+
+    IEnumerator BubblePop() { 
+        yield return new WaitForSeconds(1);
     }
 
     public void LoadCreditsScene()
