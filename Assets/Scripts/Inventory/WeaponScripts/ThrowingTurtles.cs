@@ -53,11 +53,10 @@ public class ThrowingTurtles : WeaponInstance
             _weapon.Damage /= mult;
             _heatLevel += _weapon.HeatBuildup;
         }
+        CheckOverheat();
         TryApplyRecoil();
         if (_heatLevel >= 100)
         {
-            if (_weapon.overheatShot)
-                _weapon.Damage /= 10f;
             _overHeated = true;
         }  
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);

@@ -35,6 +35,7 @@ public class MantisShrimp : WeaponInstance
         mantisShrimpProjectile.AssignStats(_weapon);
         _weapon.Damage /= mult;
         _heatLevel += _weapon.HeatBuildup;
+        CheckOverheat();
         _animator.Play("Fire");
         if (_heatLevel >= 100)
             _overHeated = true;

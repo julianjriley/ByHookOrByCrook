@@ -54,6 +54,7 @@ public class MamaLeech : WeaponInstance
             _weapon.Damage /= mult;
             _heatLevel += _weapon.HeatBuildup;
         }
+        CheckOverheat();
         TryApplyRecoil();
         if (_heatLevel >= 100)
         {

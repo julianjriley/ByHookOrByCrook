@@ -50,6 +50,7 @@ public class AnapesticTetra : WeaponInstance
             _weapon.Damage /= mult;
             _heatLevel += _weapon.HeatBuildup;
         }
+        CheckOverheat();
         _animator.Play("Fire");
         TryApplyRecoil();
         if(_projectileIndex >= _projectiles.Length - 1)
@@ -58,8 +59,6 @@ public class AnapesticTetra : WeaponInstance
             _projectileIndex += 1;
         if (_heatLevel >= 100)
         {
-            if (_weapon.overheatShot)
-                _weapon.Damage /= 10f;
             _overHeated = true;
         }
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);

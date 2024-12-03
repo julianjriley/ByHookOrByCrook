@@ -49,10 +49,9 @@ public class GreenArmyFish : WeaponInstance
         }
         _animator.Play("Fire");
         TryApplyRecoil();
+        CheckOverheat();
         if (_heatLevel >= 100)
         {
-            if (_weapon.overheatShot)
-                _weapon.Damage /= 10f;
             _overHeated = true;
         }
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
