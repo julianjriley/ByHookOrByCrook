@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -67,7 +66,7 @@ public class LoadoutSelection : MonoBehaviour
 
     #region SCENE TRANSITIONS
     [Header("Scene Transitions")]
-    [SerializeField, Tooltip("Names of boss scenes to transition to.")] 
+    [SerializeField, Tooltip("Scene names of the different boss scenes.")] 
     private string[] _bossScenes;
     [SerializeField, Tooltip("Game object to activate for confirmation popup.")]
     private GameObject _combatConfirmationPopup;
@@ -75,6 +74,8 @@ public class LoadoutSelection : MonoBehaviour
     private string _practiceSceneName;
     [SerializeField, Tooltip("Game object to activate for confirmation popup.")]
     private GameObject _practiceConfirmationPopup;
+    [SerializeField, Tooltip("Used to call scene transitions.")]
+    private SceneTransitionsHandler _transitionsHandler;
 
     /// <summary>
     /// Continues if bait slots are full. Otherwise, brings up Confirmation Popup for combat.
@@ -122,7 +123,7 @@ public class LoadoutSelection : MonoBehaviour
         }
 
         // actually transition scene
-        SceneManager.LoadScene(sceneToSwitchTo);
+        _transitionsHandler.LoadScene(sceneToSwitchTo);
     }
 
     /// <summary>
@@ -156,8 +157,8 @@ public class LoadoutSelection : MonoBehaviour
         // add loadout to game manager
         AddFish();
 
-        // actually transition scene
-        SceneManager.LoadScene(_practiceSceneName);
+        // actually transition scene -> DON'T DO WATER TRANSITION FOR PRACTICE
+        _transitionsHandler.LoadScene(_practiceSceneName, SceneTransitionsHandler.TransitionType.SlideRight);
     }
 
     public void AddFish()
@@ -183,6 +184,20 @@ public class LoadoutSelection : MonoBehaviour
         }
         if (!isWeaponFound)
             GameManager.Instance.AddLoadoutItem(_starterGun);
+
+        // Use this function to transition to PRACTICE or COMBAT scene
+        string sceneToSwitchTo;
+        switch (GameManager.Instance.GamePersistent.BossNumber)
+        { 
+            case 0:
+                sceneToSwitchTo = _bossScenes[0]; break;
+            case 1:
+                sceneToSwitchTo= _bossScenes[1]; break;
+            case 2:
+                sceneToSwitchTo=_bossScenes[2]; break;
+            default:
+                sceneToSwitchTo = _bossScenes[0]; break;
+        }
     }
     #endregion
 }
