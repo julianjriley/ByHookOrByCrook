@@ -622,13 +622,13 @@ MonoBehaviour:
   RealChannelSettings: []
   Plugins: []
   MasterBanks:
-  - Desktop/Master
+  - Master
   - Desktop/Master
   Banks:
   - Desktop/Music
-  - Desktop/Music
   - Desktop/SFX
-  - Desktop/SFX
+  - Music
+  - SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
