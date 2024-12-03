@@ -9,7 +9,7 @@ using FMODUnity;
 
 public class ArenaMovement : MonoBehaviour
 {
-    private ActionControls controls;
+    private InputActionMap controls;
 
     [Header("OverHeated Buff Info")]
     private bool _isOverHeated;
@@ -126,20 +126,20 @@ public class ArenaMovement : MonoBehaviour
         _dashCount = numberOfAirDashes;
 
         //Bind JumpInput      
-        //controls.Player.JumpAction.Enable();
-        controls.Player.JumpAction.started += JumpInput;
-        controls.Player.JumpAction.performed += JumpInput;
-        controls.Player.JumpAction.canceled += JumpInput;
+        //controls.FindAction("JumpAction").Enable();
+        controls.FindAction("JumpAction").started += JumpInput;
+        controls.FindAction("JumpAction").performed += JumpInput;
+        controls.FindAction("JumpAction").canceled += JumpInput;
 
         //Bind MoveInput
-        //controls.Player.MoveArena.Enable();
-        controls.Player.MoveArena.started += MoveInput;
-        controls.Player.MoveArena.performed += MoveInput;
-        controls.Player.MoveArena.canceled += MoveInput;
+        //controls.FindAction("MoveArena").Enable();
+        controls.FindAction("MoveArena").started += MoveInput;
+        controls.FindAction("MoveArena").performed += MoveInput;
+        controls.FindAction("MoveArena").canceled += MoveInput;
 
         //Bind DashInput
-        //controls.Player.Dash.Enable();
-        controls.Player.Dash.started += DashInput;
+        //controls.FindAction("Dash").Enable();
+        controls.FindAction("Dash").started += DashInput;
 
         //Create Footsteps EventInstance
         footsteps = SoundManager.Instance.CreateInstance(footstepsSound);
@@ -147,11 +147,11 @@ public class ArenaMovement : MonoBehaviour
     //
     private void Awake()
     {
-        controls = new ActionControls();
+        controls = InputSystem.actions.actionMaps[0];
         //Enable Player Movement Binds
-        controls.Player.JumpAction.Enable();
-        controls.Player.MoveArena.Enable();
-        controls.Player.Dash.Enable();
+        controls.FindAction("JumpAction").Enable();
+        controls.FindAction("MoveArena").Enable();
+        controls.FindAction("Dash").Enable();
     }
 
     //Update: used to dcrement/Increment Timers only
@@ -190,7 +190,7 @@ public class ArenaMovement : MonoBehaviour
         } 
         Jump();
         Move();
-        GoThroughPlatforms = controls.Player.MoveArena.ReadValue<Vector2>().y;
+        GoThroughPlatforms = controls.FindAction("MoveArena").ReadValue<Vector2>().y;
     }
 
     /*  JumpInput: Runs when jump button is pressed
@@ -532,12 +532,22 @@ public class ArenaMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        if (controls != null)
-        {
-            controls.Player.MoveArena.Disable();
-            controls.Player.JumpAction.Disable();
-            controls.Player.Dash.Disable();
-        }
+        //Unbind JumpInput      
+        controls.FindAction("JumpAction").started -= JumpInput;
+        controls.FindAction("JumpAction").performed -= JumpInput;
+        controls.FindAction("JumpAction").canceled -= JumpInput;
+
+        //Unbind MoveInput
+        controls.FindAction("MoveArena").started -= MoveInput;
+        controls.FindAction("MoveArena").performed -= MoveInput;
+        controls.FindAction("MoveArena").canceled -= MoveInput;
+
+        //Unbind DashInput
+        controls.FindAction("Dash").started -= DashInput;
+        
+        controls.FindAction("MoveArena").Disable();
+        controls.FindAction("JumpAction").Disable();
+        controls.FindAction("Dash").Disable();
     }
 
 }

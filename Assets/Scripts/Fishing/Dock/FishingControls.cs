@@ -19,6 +19,8 @@ public class FishingControls : MonoBehaviour
     private CatchUI _catchUI;
     [SerializeField, Tooltip("Used to trigger player animations corresponding to actions.")]
     private Animator _anim;
+    [SerializeField, Tooltip("Used to determine if transition is compelete, so inputs can be processed.")]
+    private SceneTransitionsHandler _transitionHandler;
 
     // Tutorial stuff
     public delegate void OnFirstCast();
@@ -38,7 +40,7 @@ public class FishingControls : MonoBehaviour
     {
         // inputs
         _inputAction = InputSystem.actions.FindAction(FISHING_INPUT_ACTION);
-
+        _inputAction.Enable();
         // casting vars
         _initFillScaleX = _fillBar.transform.localScale.x;
         _castingIndicator.SetActive(false); // hidden by default
@@ -75,6 +77,11 @@ public class FishingControls : MonoBehaviour
         _prevFishingClick = _fishingClick;
 
         _fishingClick = false;
+
+        // prevent processing inputs until scene transition finishes loading
+        if (!_transitionHandler.IsDoneLoading())
+            return;
+
         // read input to determine if fishing click held during this frame
         float input = _inputAction.ReadValue<float>();
         if (input > InputSystem.settings.defaultDeadzoneMin)

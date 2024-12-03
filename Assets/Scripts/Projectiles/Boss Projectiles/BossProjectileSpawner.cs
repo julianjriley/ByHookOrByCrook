@@ -26,8 +26,10 @@ public class BossProjectileSpawner : MonoBehaviour
         // ready to spawn
         if (_spawnTimer < 0)
         {
-            // spawn projectile at rift position/rotation
-            Instantiate(_projectilePrefab, transform.position, transform.rotation);
+                // spawn projectile at rift position/rotation
+                Instantiate(_projectilePrefab, transform.position, transform.rotation);
+
+            
 
             // TODO: integrate this better with animations / fade out / etc.
             Destroy(gameObject);
