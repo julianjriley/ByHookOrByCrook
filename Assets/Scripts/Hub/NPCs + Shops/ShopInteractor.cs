@@ -36,6 +36,9 @@ public class ShopInteractor : Interactor
     [SerializeField] private EventReference purchaseSound;
     [SerializeField] private EventReference tooPoorSound;
 
+    [Tooltip("If NPC is of shop typ nothing, then after purchase will spwan a fortune")]
+    [SerializeField] private GameObject _whishNPC;
+
     public delegate void OnShopEnter();
     public static event OnShopEnter onShopEnter;
     public delegate void OnShopPurchase(int cost);
@@ -61,6 +64,7 @@ public class ShopInteractor : Interactor
         {
             Destroy(gameObject);
         }
+
     }
 
     private void OnEnable()
@@ -98,6 +102,12 @@ public class ShopInteractor : Interactor
 
             if (!_multipurchase) // If it's one purchase per load, destroy this thing
             {
+                //If the ShopType Is nothing
+                if (GoodsSold == ShopType.Nothing)
+                {
+                    //Load in the Foutune Teller
+                    _whishNPC.SetActive(true);
+                }
                 Destroy(gameObject); // Destroy on purchase
             }
             else // Essentially respawn/reset the shop
