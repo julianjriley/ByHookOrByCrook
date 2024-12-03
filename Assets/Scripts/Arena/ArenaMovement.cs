@@ -532,12 +532,22 @@ public class ArenaMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        if (controls != null)
-        {
-            controls.FindAction("MoveArena").Disable();
-            controls.FindAction("JumpAction").Disable();
-            controls.FindAction("Dash").Disable();
-        }
+        //Unbind JumpInput      
+        controls.FindAction("JumpAction").started -= JumpInput;
+        controls.FindAction("JumpAction").performed -= JumpInput;
+        controls.FindAction("JumpAction").canceled -= JumpInput;
+
+        //Unbind MoveInput
+        controls.FindAction("MoveArena").started -= MoveInput;
+        controls.FindAction("MoveArena").performed -= MoveInput;
+        controls.FindAction("MoveArena").canceled -= MoveInput;
+
+        //Unbind DashInput
+        controls.FindAction("Dash").started -= DashInput;
+        
+        controls.FindAction("MoveArena").Disable();
+        controls.FindAction("JumpAction").Disable();
+        controls.FindAction("Dash").Disable();
     }
 
 }

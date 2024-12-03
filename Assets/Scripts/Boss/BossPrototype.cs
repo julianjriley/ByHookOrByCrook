@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
-using TMPro;
 using UnityEngine.InputSystem;
 using static Unity.Mathematics.math;
 
@@ -32,10 +30,10 @@ public class BossPrototype : MonoBehaviour, IDamageable
     [SerializeField] private GameObject _introUI;
     [SerializeField] private GameObject _victoryText;
     [SerializeField] private GameObject _defeatText;
-    [SerializeField] private GameObject _introWaterAnimation;
-    [SerializeField] private GameObject _outroWaterAnimation;
+    [SerializeField, Tooltip("Used to call scene transitions.")]
+    private SceneTransitionsHandler _transitionsHandler;
+
     private InputAction _skipIntroAction;
-    private bool _introIsSkippable = false;
     private Coroutine _part1Intro;
     private GameObject _player;
     private InputActionAsset _actions;
@@ -74,7 +72,6 @@ public class BossPrototype : MonoBehaviour, IDamageable
     virtual protected void Start()
     {
         _introUI.SetActive(true);
-        _introWaterAnimation.gameObject.SetActive(true);
         _rb = GetComponent<Rigidbody>();
         _spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();
         _target = GameObject.Find("Boss Target").GetComponent<Transform>();
@@ -91,7 +88,11 @@ public class BossPrototype : MonoBehaviour, IDamageable
         PlayerCombat.playerDeath += HandlePlayerDeath;
 
         gameObject.AddComponent<EffectManager>();
-        PlayerCombat.playerDeath += GoToCashout;
+    }
+
+    private void OnDisable()
+    {
+        PlayerCombat.playerDeath -= HandlePlayerDeath;
     }
 
     protected IEnumerator TitleCard() {
@@ -108,17 +109,20 @@ public class BossPrototype : MonoBehaviour, IDamageable
         _skipIntroAction.performed += EndTitleCard;
 
         _fightText.SetActive(false);
+
         //disable player combat and movement
         _player = _playerTransform.gameObject;
         _actions.Disable();
-        _introIsSkippable = true;
+
         SetNewTarget(_offscreenTarget, -1);
+
         yield return new WaitForSeconds(4f);
+
         EndTitleCard();
     }
 
     protected void EndTitleCard() {
-        _introIsSkippable = false;
+        _skipIntroAction.performed -= EndTitleCard;
         _skipIntroAction.Disable();
         Destroy(_introUI);
         if (_part1Intro != null) {
@@ -127,8 +131,9 @@ public class BossPrototype : MonoBehaviour, IDamageable
         StartCoroutine(BossEntrance());
     }
 
+    // this variant is used for input cancelling early
     protected void EndTitleCard(InputAction.CallbackContext context) {
-        _introIsSkippable = false;
+        _skipIntroAction.performed -= EndTitleCard;
         _skipIntroAction.Disable();
         Destroy(_introUI);
         if (_part1Intro != null) {
@@ -170,11 +175,11 @@ public class BossPrototype : MonoBehaviour, IDamageable
 
     public virtual void Move() {
         if (_rb == null) {
-            Debug.Log("No rigidbody");
+            //Debug.Log("No rigidbody");
             return;
         }
         if (_target == null) {
-            Debug.Log("No target");
+            //Debug.Log("No target");
             return;
         }
 
@@ -311,9 +316,8 @@ public class BossPrototype : MonoBehaviour, IDamageable
     }
 
     IEnumerator NextSceneDelay() {
-        yield return new WaitForSeconds(1f);
-        _outroWaterAnimation.SetActive(true);
         yield return new WaitForSeconds(1.5f);
+        
         GoToCashout();
     }
 
@@ -325,11 +329,11 @@ public class BossPrototype : MonoBehaviour, IDamageable
             SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
     }
 
-    //ONLY FOR THE PROTOTYPE
     public void GoToCashout()
     {
         CalculateBossBountyMultiplier();
-        SceneManager.LoadScene(_cashoutSceneName);
+
+        _transitionsHandler.LoadScene(_cashoutSceneName);
     }
 
     protected void CalculateBossBountyMultiplier()
