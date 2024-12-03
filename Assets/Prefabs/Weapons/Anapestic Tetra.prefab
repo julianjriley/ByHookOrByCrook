@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7310755208772182936}
   - component: {fileID: 6822765880729597421}
   - component: {fileID: 1849693168248929754}
+  - component: {fileID: 8970156803829997955}
   m_Layer: 6
   m_Name: Anapestic Tetra
   m_TagString: Untagged
@@ -25,15 +26,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666468142319288933}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.41, y: 1.76, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.13, y: 0.17756097, z: 0.31707317}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 578978593963931447}
+  - {fileID: 3198785422826380035}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6822765880729597421
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -75,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.6795271, g: 0.22022964, b: 0.9528302, a: 1}
+  m_Sprite: {fileID: 1625400150, guid: 9ebf4612f2c351d4595aab8ce88fec65, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,10 +105,67 @@ MonoBehaviour:
   _overHeated: 0
   _canFire: 1
   _projectiles:
-  - {fileID: 3610213691672732600, guid: 53e7cc0e938e770468b9c881b38b756f, type: 3}
-  - {fileID: 2135115286388844846, guid: b4160056c08e418479e5577cfd0f438d, type: 3}
   - {fileID: 4441960118058547785, guid: da5be9c8318cbbe40af2e778abe13958, type: 3}
   - {fileID: 2331308602887073996, guid: a053f8c835068cb4e8a7ebadfa26a6c3, type: 3}
+  - {fileID: 2135115286388844846, guid: b4160056c08e418479e5577cfd0f438d, type: 3}
+  - {fileID: 3610213691672732600, guid: 53e7cc0e938e770468b9c881b38b756f, type: 3}
+  _speedValues:
+  - 10
+  - 10
+  - 20
+  - 7
+--- !u!95 &8970156803829997955
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666468142319288933}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2c92f1e9a4e1db644bfebcd7c92f0792, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &8510070645174470856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3198785422826380035}
+  m_Layer: 6
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3198785422826380035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8510070645174470856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7310755208772182936}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9048404298982730137
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9048404298982730137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

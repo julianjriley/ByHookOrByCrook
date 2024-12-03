@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2273508693910354259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.06, y: 0, z: 0}
+  m_LocalPosition: {x: 0.25, y: -0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -104,7 +104,7 @@ Transform:
   - {fileID: 3626624968750108136}
   - {fileID: 7767027105474767354}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6682747494233883687
 SpriteRenderer:
@@ -186,11 +186,9 @@ MonoBehaviour:
       Data3: 232441227
       Data4: -1204494196
     Path: event:/Combat/General/PlayerHit
-  testItems:
-  - {fileID: 11400000, guid: d40abd35c549b14489b3928f27357311, type: 2}
-  - {fileID: 11400000, guid: fe67f5bd063a266448c003fc9523b48b, type: 2}
+  testItems: []
   testWeapons:
-  - {fileID: 11400000, guid: 34c1a93d6ce2e9f45b973bd36719fdc1, type: 2}
+  - {fileID: 11400000, guid: 8e44b83933400354fb8bcc92f28a9c67, type: 2}
 --- !u!114 &2822287764505044261
 MonoBehaviour:
   m_ObjectHideFlags: 0
