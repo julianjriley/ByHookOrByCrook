@@ -24,6 +24,11 @@ public class PracTTRLManager : MonoBehaviour
             _tutorialView.SetActive(true);
             _fightButton.SetActive(false);
         }
+        else
+        {
+            _tutorialView.SetActive(false);
+            this.gameObject.SetActive(false);
+        }
     }
 
     public void SceneChange()

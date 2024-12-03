@@ -33,6 +33,8 @@ public class TurtleProjectile : Projectile
     {
         if (_isRespawning)
         {
+            InstantiateDeathEffect();
+
             _collider.enabled = false;
             _sprite.enabled = false;
 
@@ -40,7 +42,11 @@ public class TurtleProjectile : Projectile
             Invoke("Respawn", _respawnDelay);
         }
         else
+        {
+            InstantiateDeathEffect();
             Destroy(gameObject);
+        }
+            
     }
 
     protected override void OnTriggerEnter(Collider collider)
@@ -48,7 +54,7 @@ public class TurtleProjectile : Projectile
         // apply damage to boss normally
         if (collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
 
             DestroyOrDisable();
         }
@@ -67,7 +73,7 @@ public class TurtleProjectile : Projectile
         // apply damage to boss normally
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
 
             DestroyOrDisable();
         }
@@ -80,5 +86,14 @@ public class TurtleProjectile : Projectile
 
             DestroyOrDisable();
         }
+    }
+
+    public override void TakeDamage(float damage, bool dontUseSound = false)
+    {
+        /*_health -= damage;
+        if (_health <= 0)
+        {
+            DestroyOrDisable();
+        }*/
     }
 }

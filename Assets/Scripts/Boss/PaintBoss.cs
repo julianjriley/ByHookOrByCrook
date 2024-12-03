@@ -1,3 +1,5 @@
+using FMODUnity;
+using FMOD.Studio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +19,7 @@ public class PaintBoss : BossPrototype
     private float _paintDuration;
     [SerializeField, Tooltip("Target used to make the boss track to a painting to spawn an 'enemy'.")]
     private CirclingTarget _paintingTarget;
+    [SerializeField] EventReference paintingSound;
 
     // queue of spawners the boss must track to
     private List<PainterlySpawner> _preparingSpawners = new();
@@ -69,10 +72,13 @@ public class PaintBoss : BossPrototype
     /// </summary>
     private IEnumerator MakeSomeArt()
     {
+        Debug.Log("MakeSomeArt called");
         // start paint effect on spawner
         _spawners[0].StartPaint();
 
         // TODO: add calls to sound/animation for painting
+        SoundManager.Instance.PlayOneShot(paintingSound, gameObject.transform.position);
+        Debug.Log("SoundStart");
 
 
         // paint delay
@@ -89,6 +95,7 @@ public class PaintBoss : BossPrototype
         SetDefaultSpeed();
         // TODO: return to idle animation
 
+        Debug.Log("SoundStop");
         _isPainting = false;
     }
 
@@ -105,5 +112,17 @@ public class PaintBoss : BossPrototype
         // Add object to spawners list ONLY if it is a PainterlySpawner (i.e. ignore ink portals)
         if (attack.TryGetComponent(out PainterlySpawner spawner))
             _preparingSpawners.Add(spawner);
+    }
+
+    /// <summary>
+    /// Returns transform of the paint boss's next painting target.
+    /// </summary>
+    public Transform GetNextPaintingTransform()
+    {
+        // no next painting yet
+        if (_spawners.Count == 0)
+            return null;
+
+        return _spawners[0].transform;
     }
 }

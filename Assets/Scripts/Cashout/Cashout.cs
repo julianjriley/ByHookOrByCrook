@@ -5,80 +5,90 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-
+/// <summary>
+/// Handles all initialization and functionality of cashout scene.
+/// </summary>
 public class Cashout : MonoBehaviour
 {
-    public GameObject Fish;
-    TMP_Text fishName;
-    TMP_Text fishAmount;
-    Image fishImage;
-    public GameObject Content;
-    public TMP_Text SummaryText;
-    public TMP_Text BossBountyText;
-    public TMP_Text TotalText;
+    [Header("References")]
+    [SerializeField, Tooltip("Prefab used to spawn fish that were caught during fishing.")]
+    private GameObject _fishDisplayPrefab;
+    [SerializeField, Tooltip("Transform where fish displays are created under")]
+    private Transform _fishContentsTransform;
+    [SerializeField, Tooltip("Text for setting summary amount (before multiplier).")]
+    private TMP_Text _summaryText;
+    [SerializeField, Tooltip("Text for setting the boss bounter multiplier amount.")]
+    private TMP_Text _bossBountyText;
+    [SerializeField, Tooltip("Text for setting the total amount (after multiplier).")]
+    private TMP_Text _totalText;
 
-    int summary = 0;
-    float BossBounty = 0;
-    float total = 0;
-    int intTotal = 0;
-
-    public List<string> fishType = new List<string>();
-    //fishType will be changed
+    [Header("Editor Only")]
+    [SerializeField, Tooltip("Items to use for testing if starting unity in cashout scene.")]
+    private List<Item> _editorFish;
 
     // Start is called before the first frame update
     void Start()
     {
+        int summary = 0;
 
-        
-        BossBounty = GameManager.Instance.ScenePersistent.BossPerformanceMultiplier;
-        fishName = Fish.transform.Find("FishNameBackground/FishName").GetComponent<TextMeshProUGUI>();
-        fishAmount = Fish.transform.Find("FishNameBackground/MoneyBackground/FishAmount").GetComponent<TextMeshProUGUI>();
-        fishImage = Fish.transform.Find("FishImage").GetComponent<Image>();
-        
-        //Debug.Log(GameManager.Instance.ScenePersistent.Loadout.Count + " FISH AMOUNT");
-        foreach(Item item in GameManager.Instance.ScenePersistent.CaughtFish)
+        // Initialize cashout fish displays for caught fish
+        foreach (Item item in GameManager.Instance.ScenePersistent.CaughtFish)
         {
+            CreateCashoutFishDisplay(item);
             
-            fishName.text = item.GetItemName();
-            fishAmount.text = item.GetCost().ToString();
-            fishImage.sprite = item.GetSprite();
             summary += item.GetCost();
-            Instantiate(Fish, Content.transform);
         }
-        /*
 
-        for (int i = 0; i < fishType.Count; i++){
-            Instantiate(Fish, Content.transform);
-            switch(fishType[i]){
-                case "Salmon":
-                    fishName.text = "Salmon";
-                    int salmonAmt = 100;
-                    fishAmount.text = salmonAmt.ToString();
-                    summary += salmonAmt;
-                    break;
-                case "Tuna":
-                    fishName.text = "Tuna";
-                    int tunaAmt = 200;
-                    fishAmount.text = tunaAmt.ToString();
-                    summary += tunaAmt;
-                    break;
-                case "Sucker Puncher":
-                    fishName.text = "Sucker Puncher";
-                    int suckerAmt = 402;
-                    fishAmount.text = suckerAmt.ToString();
-                    summary += suckerAmt;
-                    break;
+#if UNITY_EDITOR
+        // Initialize testing fish without going through other scenes
+        if (GameManager.Instance.ScenePersistent.CaughtFish.Count == 0) // only use editor fish if no fish are found in caught fish list.
+        {
+            foreach (Item item in _editorFish)
+            {
+                CreateCashoutFishDisplay(item);
+
+                summary += item.GetCost();
             }
         }
-        */
-        SummaryText.text = summary.ToString();
-        BossBountyText.text = BossBounty.ToString("F1");
-        total = (float)summary * BossBounty;
-        intTotal = (int)total;
-        //Debug.Log(total);
-       // Debug.Log(intTotal);
-        TotalText.text = intTotal.ToString();
-        GameManager.Instance.GamePersistent.Gill += intTotal;
+#endif
+
+        // initialize summary text
+        _summaryText.text = summary.ToString();
+
+        // initialize boss bounty text
+        float bossBounty = GameManager.Instance.ScenePersistent.BossPerformanceMultiplier;
+        _bossBountyText.text = "x " + bossBounty.ToString("F2");
+
+        // initialize total text
+        int total = Mathf.RoundToInt(summary * (Mathf.Round(bossBounty * 100f) / 100f));
+        _totalText.text = total.ToString();
+
+        // increment actual saved currency
+        GameManager.Instance.GamePersistent.Gill += total;
+
+        // For the NPCs
+        if (bossBounty < 2)
+        {
+            GameManager.Instance.GamePersistent.LossCounter += 1;
+        }
+        else
+        {
+            GameManager.Instance.GamePersistent.LossCounter = 0;
+        }
+    }
+
+    /// <summary>
+    /// Handles initialization of a single cashout fish display based on provided item
+    /// </summary>
+    private void CreateCashoutFishDisplay(Item item)
+    {
+        // instantiate prefab
+        GameObject newFishDisplay = Instantiate(_fishDisplayPrefab, _fishContentsTransform);
+
+        // initialize values of new instance
+        if (!newFishDisplay.TryGetComponent(out CashoutFishDisplay fishDisplay))
+            throw new System.Exception("Cashout fish display prefab MUST have CashoutFishDisplay component.");
+        fishDisplay.Initialize(item.GetItemName(), item.GetCost().ToString(), item.GetSprite());
     }
 
     public void GoToHub(string hubSceneName)
@@ -88,12 +98,4 @@ public class Cashout : MonoBehaviour
 
         SceneManager.LoadScene(hubSceneName);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
 }

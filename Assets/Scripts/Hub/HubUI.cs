@@ -19,7 +19,7 @@ public class HubUI : MonoBehaviour
     {
         _anim = GetComponentInChildren<Animator>();
         _recordedGill = GameManager.Instance.GamePersistent.Gill;
-        _moneyDisplay.text = "G " + GameManager.Instance.GamePersistent.Gill;
+        _moneyDisplay.text = "S " + GameManager.Instance.GamePersistent.Gill;
     }
 
     private void OnEnable()
@@ -92,13 +92,13 @@ public class HubUI : MonoBehaviour
     {
         _activeCoroutine = true;
 
-        float timeSlice = .01f;
+        float timeSlice = .002f;
 
         if (_diff > 0) // We lost money
         {
             for(int i = 0; i < _diff; i++)
             {
-                _moneyDisplay.text = "G " + _recordedGill;
+                _moneyDisplay.text = "S " + _recordedGill;
                 _recordedGill--;
                 yield return new WaitForSeconds(timeSlice * (i / _diff));
             }
@@ -112,7 +112,7 @@ public class HubUI : MonoBehaviour
                 yield return new WaitForSeconds(.01f);
             }
         }*/
-        _moneyDisplay.text = "G " + GameManager.Instance.GamePersistent.Gill;
+        _moneyDisplay.text = "S " + GameManager.Instance.GamePersistent.Gill;
         _recordedGill = GameManager.Instance.GamePersistent.Gill;
         _activeCoroutine=false;
         _diff = 0;

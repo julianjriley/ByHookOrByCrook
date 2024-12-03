@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: MantisShrimp
   m_EditorClassIdentifier: 
   _itemID: 31
-  _itemName: Mantis Shrimp
-  _itemDescription: It punches incredibly fast (and frequently)
+  _itemName: Calvin The Mantis Shrimp
+  _itemDescription: "A close-up melee brawler\u2019s favorite. | You\u2019re fairly
+    certain this is the same mantis shrimp every time you catch it. Little guy HATES
+    the Cosmoctopus."
   _sprite: {fileID: 21300000, guid: 054cf861e8d25ad4e9951094479e5133, type: 3}
   _itemPrefab: {fileID: 5533852075674413634, guid: 64584fe0510449c4697ffdea7ca4b3f7, type: 3}
   _cost: 40
@@ -31,11 +33,11 @@ MonoBehaviour:
   _baseRecoilAmount: 0
   _fireSound:
     Guid:
-      Data1: 750242881
-      Data2: 1273948051
-      Data3: 284294323
-      Data4: -499286835
-    Path: event:/Combat/Guns/RottenFish
+      Data1: 1327026062
+      Data2: 1280663795
+      Data3: 1066778243
+      Data4: -1078162090
+    Path: event:/Combat/Guns/MantisGun
   canRecoil: 0
   overheatShot: 0
   overheatDamageBonus: 0

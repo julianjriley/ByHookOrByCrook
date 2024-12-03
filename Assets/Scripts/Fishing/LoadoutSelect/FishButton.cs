@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -22,14 +23,23 @@ public class FishButton : MonoBehaviour
     private Image _iconSprite;
     [SerializeField, Tooltip("The sprites to choose from for the icons")]
     private Sprite[] _iconSprites;
+    [SerializeField, Tooltip("Used to trigger shake animation negative feedback")]
+    private Animator _anim;
 
     [Header("Tooltip")]
     [SerializeField, Tooltip("Used to enable/disable tooltip popup")]
     private GameObject _tooltipObject;
     [SerializeField, Tooltip("Used for setting item name in tooltip.")]
     private TextMeshProUGUI _itemName;
-    [SerializeField, Tooltip("Used for setting item description in tooltip.")]
-    private TextMeshProUGUI _itemDescription;
+    [SerializeField, Tooltip("Used for setting item practical description in tooltip.")]
+    private TextMeshProUGUI _practicalDescription;
+    [SerializeField, Tooltip("Used for setting item fun description in tooltip.")]
+    private TextMeshProUGUI _funDescription;
+
+    [Header("Sounds")]
+    [SerializeField] EventReference select;
+    [SerializeField] EventReference deselect;
+    [SerializeField] EventReference tooFull;
 
     private void Start()
     {
@@ -45,8 +55,13 @@ public class FishButton : MonoBehaviour
     {
         Item = fishItem;
 
-        _itemName.text = fishItem.GetItemName(); 
-        _itemDescription.text = fishItem.GetItemDescription();
+        _itemName.text = fishItem.GetItemName();
+
+        string[] itemDescription = fishItem.GetItemDescription().Split('|');
+        _practicalDescription.text = itemDescription[0];
+        if (itemDescription.Length > 1) // avoid error for improperly formatted item descriptions
+            _funDescription.text = itemDescription[1];
+
         _sprite.sprite = fishItem.GetSprite();
         _iconSprite.sprite = _iconSprites[(int) fishItem.GetItemType()];
     }
@@ -84,10 +99,15 @@ public class FishButton : MonoBehaviour
 
                 // hide tooltip
                 _tooltipObject.SetActive(false);
+                SoundManager.Instance.PlayOneShot(select, gameObject.transform.position);
+
+                // TODO: play add to loadout audio
             }
             else
             {
-                // TODO: negative feedback that you cannot add anymore items to the loadout since it is full
+                _anim.SetTrigger("Shake");
+                SoundManager.Instance.PlayOneShot(tooFull, gameObject.transform.position);
+                // TODO: play negative feedback audio
             }
         }
         // Swap from loadout to caught fish
@@ -99,6 +119,13 @@ public class FishButton : MonoBehaviour
 
             // hide tooltip
             _tooltipObject.SetActive(false);
+            SoundManager.Instance.PlayOneShot(deselect, gameObject.transform.position);
+
+            // TODO: play remove from loadout audio
         }
+
+        // cancel confirmation popups since a different button was pressed.
+        _loadoutSelection.CancelCombatConfirmationPopup();
+        _loadoutSelection.CancelPracticeConfirmationPopup();
     }
 }

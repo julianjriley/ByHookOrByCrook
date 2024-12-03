@@ -189,6 +189,7 @@ public class GameManager : MonoBehaviour
         
         // Boss-related stats
         public int BossNumber;  // Whether the player is on the first, second, or third boss (0, 1, 2)
+        public int NPCBossNumber;
         public int LossCounter; // How many times you've lost to a boss (resets on victory)
 
         // Money
@@ -210,8 +211,17 @@ public class GameManager : MonoBehaviour
 
         // Hub related stats
         public List<bool> IsConvoHadRod;
+        public bool AllConvosHadRod;
         public List<bool> IsConvoHadBait;
+        public bool AllConvosHadBait;
         public List<bool> IsConvoHadBag;
+        public bool AllConvosHadBag;
+
+        public float SFXVolume;
+        public float MusicVolume;
+
+        public float Brightness;
+        public float Saturation;
 
         // Actual player settings
         public bool IsTutorialHub;  // Toggles for the 4 main sections of the tutorial
@@ -265,8 +275,9 @@ public class GameManager : MonoBehaviour
         
         newSaveData.BossNumber = 0;
         newSaveData.LossCounter = 0;
+        newSaveData.NPCBossNumber = 0;
 
-        newSaveData.Gill = 0;
+        newSaveData.Gill = 5;
         newSaveData.BaitInventorySize = 3;
         newSaveData.BattleInventorySize = 2;
         newSaveData.RodLevel = 0;
@@ -279,8 +290,17 @@ public class GameManager : MonoBehaviour
         newSaveData.IsBobber = false;
 
         newSaveData.IsConvoHadRod = new List<bool>();
+        newSaveData.AllConvosHadRod = false;
         newSaveData.IsConvoHadBait = new List<bool>();
+        newSaveData.AllConvosHadBait = false;
         newSaveData.IsConvoHadBag = new List<bool>();
+        newSaveData.AllConvosHadBag = false;
+
+        newSaveData.SFXVolume = 0.5f;
+        newSaveData.MusicVolume = 0.5f;
+
+        newSaveData.Brightness = 1f;
+        newSaveData.Saturation = 30f;
 
         newSaveData.IsTutorialHub = true;
         newSaveData.IsTutorialBait = true;
@@ -311,8 +331,9 @@ public class GameManager : MonoBehaviour
         // TODO: SAVE PersistentData to PlayerPrefs
         string saveData = JsonUtility.ToJson(GamePersistent);
         string filePath = Application.persistentDataPath + "/GameData.json";
-        Debug.Log(filePath);
         System.IO.File.WriteAllText(filePath, saveData);
+
+        ResetScenePersistentData();
         /*****************************************************************
         // JSON functionality. To be replaced with PlayerPrefs
 

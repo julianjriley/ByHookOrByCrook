@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,10 @@ public class Barrel : MonoBehaviour
     private GameObject _selectedBaitPrefab;
     [SerializeField, Tooltip("used to enable or disable the lock sprite.")]
     private GameObject _lock;
+    [SerializeField, Tooltip("Used to trigger unable to select animation.")]
+    private Animator _anim;
+    [SerializeField, Tooltip("Used to enable/disable locked audio button.")]
+    private GameObject _lockedAudioButton;
 
     private Button _barrelButton;
 
@@ -24,6 +29,11 @@ public class Barrel : MonoBehaviour
     public BaitType BaitType;
     [SerializeField, Tooltip("Vertical offset beneath the barrel that the UI popup will appear")]
     private float _tooltipOffset;
+    [Header("SFX")]
+    [SerializeField] EventReference selectBait;
+    [SerializeField] EventReference tooFull;
+    [SerializeField] EventReference cantBuy;
+
 
     private void Start()
     {
@@ -55,10 +65,19 @@ public class Barrel : MonoBehaviour
 
             // one less slot that can be filled
             _baitSelector.DecreaseRemainingBaitSlots();
+
+            // clicking a barrel will automatically close the confirmation popup
+            _baitSelector.CancelConfirmationPopup();
+            SoundManager.Instance.PlayOneShot(selectBait, gameObject.transform.position);
+
+            // TODO: play select bait audio
         }
         else
         {
-            // TODO: some visual/audio feedback for being unable to add any more bait
+            _anim.SetTrigger("Shake");
+            SoundManager.Instance.PlayOneShot(tooFull, gameObject.transform.position);
+
+            // TODO: play negative feedback audio
         }
     }
 
@@ -73,8 +92,6 @@ public class Barrel : MonoBehaviour
             _baitSelector.LockedTooltip.transform.position = transform.position + Vector3.down * _tooltipOffset;
             _baitSelector.LockedTooltip.SetActive(true);
         }
-
-        // TODO: Visual indicator (i.e. shake?) that selected item can be picked
     }
 
     /// <summary>
@@ -86,8 +103,24 @@ public class Barrel : MonoBehaviour
         _baitSelector.LockedTooltip.SetActive(false);
     }
 
-    public void SetLockVisual(bool newState)
+    /// <summary>
+    /// Configures barrel to be properly locked.
+    /// </summary>
+    public void SetLocked(bool newState)
     {
         _lock.SetActive(newState);
+        _lockedAudioButton.SetActive(newState);
+    }
+
+    /// <summary>
+    /// Plays audio feedback for clicking on a locked barrel.
+    /// Also shakes the barrel.
+    /// </summary>
+    public void OnLockedBarrelClick()
+    {
+        _anim.SetTrigger("Shake");
+        SoundManager.Instance.PlayOneShot(cantBuy, gameObject.transform.position);
+
+        // TODO: play negative feedback audio
     }
 }

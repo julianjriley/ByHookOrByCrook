@@ -34,7 +34,7 @@ public class OrbitingPufferfishProjectile : Projectile
         _player = player;
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float damage, bool dontUseSound = false)
     {
         
     }
@@ -46,19 +46,19 @@ public class OrbitingPufferfishProjectile : Projectile
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collider.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
+            collider.gameObject.GetComponent<PlayerCombat>().TakeDamage(_damage, false);
 
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
 
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collider.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
         {
-            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
         }
 
         StartCoroutine(WaitForReactivation());
@@ -70,19 +70,19 @@ public class OrbitingPufferfishProjectile : Projectile
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
+            collision.gameObject.GetComponent<PlayerCombat>().TakeDamage(_damage, false);
 
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
 
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
         {
-            collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+            collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
         }
 
         StartCoroutine(WaitForReactivation());
@@ -93,6 +93,7 @@ public class OrbitingPufferfishProjectile : Projectile
     {
         _anim.SetTrigger("Deflate");
         _collider.enabled = false;
+        InstantiateDeathEffect();
         yield return new WaitForSeconds(resetInterval);
         _anim.SetTrigger("Inflate");
         _collider.enabled = true;

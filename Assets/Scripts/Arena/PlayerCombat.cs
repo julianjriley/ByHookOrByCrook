@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : MonoBehaviour, IDamageable
 {
 
     private InputActionMap controls;
@@ -54,7 +54,8 @@ public class PlayerCombat : MonoBehaviour
     private LayerMask _invulnerabilityMask;
     private Coroutine _invulnerableWindow;
 
-
+    //Sprite Renderer
+    SpriteRenderer _spriteRenderer;
 
     public delegate void PlayerDied();
     public static event PlayerDied playerDeath;
@@ -68,7 +69,7 @@ public class PlayerCombat : MonoBehaviour
     public bool canRevive = false;
     private bool _hasRevived = false;
     public bool canInvincibleDash = false;
-
+    public static event Action DeadFishUIEvent;
 
     //Skipper
     [SerializeField] GameObject skipper;
@@ -81,9 +82,6 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] PassiveItem[] testItems;
     [SerializeField] Weapon[] testWeapons;
 #endif
-
-    
-  
 
     private void OnEnable()
     {
@@ -101,15 +99,18 @@ public class PlayerCombat : MonoBehaviour
         controls.FindAction("FireWeapon").Enable();
 
         controls.FindAction("SwitchWeapon").Enable();
-        controls.FindAction("SwitchWeapon").started += ChangeWeapon;
-        
+        controls.FindAction("SwitchWeapon").performed += ChangeWeapon;
+
         controls.FindAction("InvulnToggle").Enable();
         controls.FindAction("InvulnToggle").performed += ToggleInvuln;
-        
+
         ResetStats();
         _weapons = new List<WeaponInstance>();
         playerMovement = GetComponent<ArenaMovement>();
         rb = GetComponent<Rigidbody>();
+        gameObject.AddComponent<EffectManager>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        equippedWeaponindex = 0;
 
         BossDefeated = false;
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
@@ -129,7 +130,12 @@ public class PlayerCombat : MonoBehaviour
             foreach (PassiveItem passiveItem in testItems)
                 AddItemToPlayer(passiveItem);
             foreach (Weapon weapon in testWeapons)
+            {
                 AddItemToPlayer(weapon);
+                GameManager.Instance.ScenePersistent.Loadout.Add(weapon);
+            }
+                
+            
         }
 #endif
         //AddItemToPlayer(defaultWeapon);
@@ -148,10 +154,24 @@ public class PlayerCombat : MonoBehaviour
 
     private void OnDisable()
     {
+        controls.FindAction("FireWeapon").started -= FireWeapon;
+        controls.FindAction("FireWeapon").canceled -= FireWeapon;
+        controls.FindAction("SwitchWeapon").performed -= ChangeWeapon;
+        controls.FindAction("InvulnToggle").performed -= ToggleInvuln;
+
         controls.FindAction("FireWeapon").Disable();
         controls.FindAction("SwitchWeapon").Disable();
+        foreach(Item item in _inventory.items)
+        {
+            if(item is Weapon)
+            {
+                Weapon weapon = (Weapon)item;
+                weapon.ResetStats();
+            }
+        }
     }
 
+    
 
 
     void FireWeapon(InputAction.CallbackContext context)
@@ -236,7 +256,7 @@ public class PlayerCombat : MonoBehaviour
     private void Update()
     {
         mousePosition = Mouse.current.position.ReadValue();
-        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 16.745f));
+        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, -cam.transform.position.z));
         if(_equippedWeapon != null)
             _equippedWeapon.SetAim(weaponDirection);
         if (worldPos.x < gameObject.transform.position.x)
@@ -250,8 +270,6 @@ public class PlayerCombat : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
             _facingLeft = false;
         }
-        
-        
     }
 
     private void FixedUpdate()
@@ -301,7 +319,8 @@ public class PlayerCombat : MonoBehaviour
         set { _health = value; }
     }
 
-    public void TakeDamageLikeAGoodBoy()
+    //the damage parameter can be ignored here its just how the interfacing works to make things easier
+    public void TakeDamage(float damage, bool dontUseSound = false)
     {
         if (_invulnerable || BossDefeated)
             return;
@@ -406,10 +425,42 @@ public class PlayerCombat : MonoBehaviour
             yield break;
         _invulnerable = true;
         _collider.excludeLayers = _invulnerabilityMask;
+        StartCoroutine(DamageFlash());
         yield return new WaitForSeconds(1);
         _collider.excludeLayers = 0;
         _invulnerable = false;
     }
+
+    IEnumerator DamageFlash()
+    {
+        Color baseColor = _spriteRenderer.color;
+        for(int i = 0; i < 8; i++)
+        {
+            baseColor.a = 0f;
+            _spriteRenderer.color = baseColor;
+            yield return new WaitForSeconds(0.0625f);
+            baseColor.a = 1f;
+            _spriteRenderer.color = baseColor;
+            yield return new WaitForSeconds(0.0625f);
+        }
+    }
+
+    public void PassEffect(EffectData effectData)
+    {
+        GetComponent<EffectManager>().PassEffect(effectData);
+    }
+
+#if UNITY_EDITOR
+    private void OnApplicationQuit()
+    {
+        foreach(Weapon weapon in testWeapons)
+        {
+            weapon.ResetStats();
+        }
+    }
+#endif
+    
+
 
     #region Zombie Mode Code
 
@@ -424,6 +475,7 @@ public class PlayerCombat : MonoBehaviour
             HealthChanged?.Invoke(Health);
             canRevive = false;
             _hasRevived = true;
+            _invulnerableWindow = StartCoroutine(InvulnerabilityWindow(1));
             StartCoroutine(ZombieDeathTimer());
             return true;
         }
@@ -432,6 +484,7 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator ZombieDeathTimer()
     {
+        DeadFishUIEvent?.Invoke();
         yield return new WaitForSeconds(30);
         playerDeath?.Invoke();
     }

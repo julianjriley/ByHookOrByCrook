@@ -57,7 +57,7 @@ public class ShopInteractor : Interactor
             ShopCost();
             _priceText.text = "S " + _currentCost;
         }
-        if (GameManager.Instance.GamePersistent.IsTutorialHub)
+        if (GameManager.Instance.GamePersistent.IsTutorialHub && GoodsSold != ShopType.Nothing)
         {
             Destroy(gameObject);
         }
@@ -91,7 +91,8 @@ public class ShopInteractor : Interactor
             // Remove the cost from their balance
             GameManager.Instance.GamePersistent.Gill -= _currentCost;
             onShopPurchase?.Invoke(_currentCost);
-            ShopConvo(); // Set the correct conversation
+            if(GoodsSold != ShopType.Nothing)
+                ShopConvo(); // Set the correct conversation
             ShopSell();  // Give them the item
             SoundManager.Instance.PlayOneShot(purchaseSound, gameObject.transform.position);
 
@@ -138,8 +139,8 @@ public class ShopInteractor : Interactor
     {
         // This is the only place in the game we will EVER need to check current sizes against a max,
         // so this is where the max rod level, max bait inventory size, and max battle inventory size are stored.
-        int maxBaitSlots = 5;
-        int maxBattleSlots = 5;
+        int maxBaitSlots = 10;
+        int maxBattleSlots = 8;
         if (GoodsSold == ShopType.Rod)
         {
             if (GameManager.Instance.GamePersistent.RodLevel >= 2)

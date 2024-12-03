@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,5 +52,11 @@ public class SelectedBait : MonoBehaviour
         // Pseudo-deletion (avoids MissingReferenceException issues with Unity event system)
         Destroy(this); // remove SelectedBait component
         gameObject.SetActive(false);
+
+        // clicking a bait will automatically close the confirmation popup
+        _baitSelector.CancelConfirmationPopup();
+        _baitSelector.PlayAudio();
+
+        // TODO: play bait return audio
     }
 }

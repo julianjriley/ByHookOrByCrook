@@ -5,7 +5,7 @@ using UnityEngine;
 public class RailgunFishProjectile : Projectile
 {
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float damage, bool dontUseSound = false)
     {
         
     }
@@ -17,18 +17,19 @@ public class RailgunFishProjectile : Projectile
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collider.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
+            collider.gameObject.GetComponent<PlayerCombat>().TakeDamage(2, false);
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collider.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
         {
-            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
         }
+        InstantiateDeathEffect();
     }
 
     protected override void OnCollisionEnter(Collision collision)
@@ -38,17 +39,18 @@ public class RailgunFishProjectile : Projectile
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
+            collision.gameObject.GetComponent<PlayerCombat>().TakeDamage(4, false);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
         {
-            collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+            collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
         }
+        InstantiateDeathEffect();
     }
 }
