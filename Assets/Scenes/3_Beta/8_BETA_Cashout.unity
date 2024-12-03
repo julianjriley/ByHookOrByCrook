@@ -432,50 +432,87 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &380118896
-GameObject:
+--- !u!1001 &291472685
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 380118898}
-  - component: {fileID: 380118897}
-  m_Layer: 0
-  m_Name: AudioCleanUp
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &380118897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380118896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ce22089a0bd72418d737747f35980d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &380118898
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380118896}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: music.Path
+      value: event:/Music/Cashout
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: music.Guid.Data1
+      value: 1737857078
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: music.Guid.Data2
+      value: 1214033460
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: music.Guid.Data3
+      value: -1461606487
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: music.Guid.Data4
+      value: -1562565197
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325881820748248570, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: m_Name
+      value: AudioClean
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 33.96193
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.888144
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.7741051
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
 --- !u!1 &451093594
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,6 +2359,7 @@ GameObject:
   - component: {fileID: 1607018087}
   - component: {fileID: 1607018086}
   - component: {fileID: 1607018085}
+  - component: {fileID: 1607018088}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -2405,6 +2443,18 @@ MonoBehaviour:
           m_StringArgument: 3_BETA_Hub
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1607018088}
+        m_TargetAssemblyTypeName: AudioOnClick, Assembly-CSharp
+        m_MethodName: PlayAudioOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1607018086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2443,6 +2493,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607018083}
   m_CullTransparentMesh: 1
+--- !u!114 &1607018088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607018083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d30b0deb75990479342fb7d53c782b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound:
+    Guid:
+      Data1: -867108775
+      Data2: 1117955784
+      Data3: 1396166557
+      Data4: -195442670
+    Path: event:/Hub/Purchase
+  cantClickSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  thisButton: {fileID: 0}
 --- !u!1 &1642285844
 GameObject:
   m_ObjectHideFlags: 0
