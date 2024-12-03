@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,11 @@ public class Barrel : MonoBehaviour
     public BaitType BaitType;
     [SerializeField, Tooltip("Vertical offset beneath the barrel that the UI popup will appear")]
     private float _tooltipOffset;
+    [Header("SFX")]
+    [SerializeField] EventReference selectBait;
+    [SerializeField] EventReference tooFull;
+    [SerializeField] EventReference cantBuy;
+
 
     private void Start()
     {
@@ -63,13 +69,15 @@ public class Barrel : MonoBehaviour
             // clicking a barrel will automatically close the confirmation popup
             _baitSelector.CancelConfirmationPopup();
 
-            // TODO: play select bait audio
+            // play select bait audio
+            SoundManager.Instance.PlayOneShot(selectBait, gameObject.transform.position);
         }
         else
         {
             _anim.SetTrigger("Shake");
 
-            // TODO: play negative feedback audio
+            // play negative feedback audio
+            SoundManager.Instance.PlayOneShot(tooFull, gameObject.transform.position);
         }
     }
 
@@ -112,6 +120,7 @@ public class Barrel : MonoBehaviour
     {
         _anim.SetTrigger("Shake");
 
-        // TODO: play negative feedback audio
+        // play negative feedback audio
+        SoundManager.Instance.PlayOneShot(cantBuy, gameObject.transform.position);
     }
 }

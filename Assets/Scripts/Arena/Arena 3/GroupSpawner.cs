@@ -6,6 +6,8 @@ public class GroupSpawner : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _possibleGroups;
     [SerializeField] private GameObject _finalGroup;
+    [Tooltip("An empty that exists purely as the final target of the boss")]
+    [SerializeField] private GameObject _finalTarget;
 
     [Tooltip("Height of a single platform group (and how far up the next will be spawned from the last")]
     [SerializeField] private float _spawnHeightDistance;
@@ -17,7 +19,6 @@ public class GroupSpawner : MonoBehaviour
 
 
     public bool IsFinalSpawn; // Toggling this boolean halts generation after spawning one final configuration
-
     private float _lastCamPosY;
     
 
@@ -29,6 +30,8 @@ public class GroupSpawner : MonoBehaviour
         _currentSpawnHeight += _spawnHeightDistance;
 
         _lastCamPosY = 0;
+
+        Activate = true;
     }
 
     // Update is called once per frame
@@ -64,5 +67,10 @@ public class GroupSpawner : MonoBehaviour
     {
         int index = Random.Range(0, _possibleGroups.Count);
         return _possibleGroups[index];
+    }
+
+    public Transform getFinalSection() // Call after we've made the final section
+    {
+        return Instantiate(_finalTarget, new Vector3(0, _currentSpawnHeight + _spawnHeightDistance / 1.5f, 0), Quaternion.identity).transform;
     }
 }

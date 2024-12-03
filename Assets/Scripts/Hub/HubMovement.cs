@@ -22,13 +22,19 @@ public class HubMovement : MonoBehaviour
 
     public float MoveSpeed = 7f;
     public bool IsIdle = false; // A toggle for forcing the bear to stand still
+    private bool _isTransitionDone = false;
 
     [SerializeField] EventReference footstepsSound;
     private EventInstance footsteps;
 
+    [SerializeField, Tooltip("Used to disable movement controls while scene transition is not completed.")]
+    private SceneTransitionsHandler _transitionsHandler;
+
     void Start()
     {
         _moveAction = InputSystem.actions.FindAction("Move Top-Down");
+        _moveAction.Enable();
+        InputSystem.actions.FindAction("Mouse Position").Enable();
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _sr = GetComponent<SpriteRenderer>();
@@ -48,6 +54,15 @@ public class HubMovement : MonoBehaviour
         AnimatePlayer2D();
 
         _velocity = new Vector2(_moveValues.x * MoveSpeed, _moveValues.y * MoveSpeed);
+
+        // no motion if still loading scene
+        if (!_transitionsHandler.IsDoneLoading())
+            IsIdle = true; // prevents motion AND animation when trying to move
+        else if (!_isTransitionDone)
+        {
+            IsIdle = false;
+            _isTransitionDone = true;
+        }
     }
 
     private void FixedUpdate()
@@ -62,12 +77,12 @@ public class HubMovement : MonoBehaviour
         if (!IsIdle)
         {
             _rb.velocity = _velocity;
-            if (_rb.velocity.magnitude != 0 && !footstepsState.Equals(PLAYBACK_STATE.PLAYING))
+            if (_velocity.magnitude != 0 && !footstepsState.Equals(PLAYBACK_STATE.PLAYING))
             {
                 footsteps.start();
                 //Debug.Log("START");
             }
-            if (_rb.velocity.magnitude == 0 && footstepsState.Equals(PLAYBACK_STATE.PLAYING))
+            if (_velocity.magnitude == 0 && footstepsState.Equals(PLAYBACK_STATE.PLAYING))
             {
                 footsteps.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 //Debug.Log("STOP");

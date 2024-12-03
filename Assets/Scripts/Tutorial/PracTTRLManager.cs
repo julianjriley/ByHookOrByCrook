@@ -13,6 +13,10 @@ public class PracTTRLManager : MonoBehaviour
     [Header("Boss Scenes")]
     [SerializeField] string[] _bossScenes;
 
+    [Header("Scene Transitions")]
+    [SerializeField, Tooltip("Used to call scene transitions.")]
+    private SceneTransitionsHandler _transitionsHandler;
+
     void Start()
     {
         if (GameManager.Instance.GamePersistent.IsTutorialCombat)
@@ -27,13 +31,7 @@ public class PracTTRLManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void FightButton()
+    public void SceneChange()
     {
         // Use this function to transition to PRACTICE or COMBAT scene
         string sceneToSwitchTo;
@@ -48,6 +46,8 @@ public class PracTTRLManager : MonoBehaviour
             default:
                 sceneToSwitchTo = _bossScenes[0]; break;
         }
-        SceneManager.LoadScene(sceneToSwitchTo);
+
+        // actually load scene
+        _transitionsHandler.LoadScene(sceneToSwitchTo);
     }
 }

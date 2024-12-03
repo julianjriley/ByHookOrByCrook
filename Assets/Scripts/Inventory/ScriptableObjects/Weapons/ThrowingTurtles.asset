@@ -16,27 +16,27 @@ MonoBehaviour:
   _itemName: Throwing Turtles
   _itemDescription: "Act as shootable shields. | You\u2019ll find no shelled creatures
     more fearsome than these. (Hermit crabs are cowards.)"
-  _sprite: {fileID: 21300000, guid: 0a63a57345f9ac14a81a29d63fafad63, type: 3}
+  _sprite: {fileID: 21300000, guid: c5bc8c0dd19db1040b0bc3735ab04227, type: 3}
   _itemPrefab: {fileID: 3217987424760453924, guid: 287bbfdc1eead254e951ababebf30a2a, type: 3}
   _cost: 145
   itemType: 3
   _baseDamage: 1.5
-  _baseFireRate: 0.4
+  _baseFireRate: 0.8
   _baseSize: 1
   _baseSpeed: 1
   _baseLifetime: 120
-  _baseHeatBuildup: 10
-  _baseCoolingSpeed: 15
+  _baseHeatBuildup: 40
+  _baseCoolingSpeed: 10
   _overHeatCoolingSpeedMultiplier: 1
   _baseProjectileCount: 1
   _baseRecoilAmount: 20
   _fireSound:
     Guid:
-      Data1: 750242881
-      Data2: 1273948051
-      Data3: 284294323
-      Data4: -499286835
-    Path: event:/Combat/Guns/RottenFish
+      Data1: 900367285
+      Data2: 1186878774
+      Data3: -1914987587
+      Data4: -1925806839
+    Path: event:/Combat/Guns/TurtleGun
   canRecoil: 0
   overheatShot: 0
   overheatDamageBonus: 0

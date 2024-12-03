@@ -93,6 +93,7 @@ public class OrbitingPufferfishProjectile : Projectile
     {
         _anim.SetTrigger("Deflate");
         _collider.enabled = false;
+        InstantiateDeathEffect();
         yield return new WaitForSeconds(resetInterval);
         _anim.SetTrigger("Inflate");
         _collider.enabled = true;

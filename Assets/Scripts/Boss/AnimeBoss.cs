@@ -5,23 +5,35 @@ using UnityEngine;
 
 public class AnimeBoss : BossPrototype
 {
-    [SerializeField]
+    [Header("Arena")]
+    [SerializeField, Tooltip("The platform group spawner")]
+    private GroupSpawner _gSpawner;
+    [SerializeField, Tooltip("The camera")]
+    private Boss3Camera _b3Cam;
+
+    [Header("Miku Attack")]
+    [SerializeField, Tooltip("The empty that Miku spawns under")]
+    private Transform _mikuAttackEmpty;
+
+    [Header("Laser Attack")]
+    [SerializeField, Tooltip("Spawn location for the lasers")]
+    private Transform _laserAttackEmpty;
+    [SerializeField, Tooltip("How long the laser attack lasts")]
     private float _laserBeamDuration = 10;
-    [SerializeField]
-    private Transform _newSpawnLocation;
+    [SerializeField, Tooltip("List of lasers")]
+    private List<GameObject> laserList;
 
-    private GameObject laserbeamPrefab;
-
+    private GameObject _laserbeamPrefab;
     private float currentTime = 0;
     private float _numberOflasers = 4;
 
-    [SerializeField]
-    private List<GameObject> laserList;
-
+    // Booleans for the major phase change
+    private bool _inPhaseTwoPos; // True when the boss has entered position for phase 2
+    private bool _phaseTwoChangeInProgress; // Blocker boolean for when the phase 2 change is happening
     override protected void Start()
     {
         base.Start();
-        SetSpawnLocation();
+        //SetSpawnLocation();
     }
 
     override protected void FixedUpdate()
@@ -30,17 +42,17 @@ public class AnimeBoss : BossPrototype
 
         // Continues to give existing lasers a rotation
         UpdateLaserRotation();
-        _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        
     }
 
     private void SetSpawnLocation()
     {
-        _spawnLocation = _newSpawnLocation;
+        _spawnLocation = _laserAttackEmpty;
     }
 
     public override void SpawnAttackOnce(GameObject gameObj)
     {
-        laserbeamPrefab = gameObj;
+        _laserbeamPrefab = gameObj;
         InvokeRepeating("StartLaserBeam", 1f, 30f);
     }
 
@@ -61,18 +73,20 @@ public class AnimeBoss : BossPrototype
     }
     private void StartLaserBeam()
     {
-    
-        SetNewTarget(_spawnLocation, 20f);
-        
+
+        SetNewTarget(_laserAttackEmpty, 20f);
+
         // Actually spawn the lasers
+        
         StartCoroutine(SpawnLaserBeam());
     }
 
     IEnumerator SpawnLaserBeam() 
     {
+        yield return new WaitUntil(() => _inPhaseTwoPos == true);
         for (int i = 0; i < 4; i++)
         {
-            GameObject laser = Instantiate(laserbeamPrefab, _spawnLocation);
+            GameObject laser = Instantiate(_laserbeamPrefab, _laserAttackEmpty);
             laserList.Add(laser);
             laser.transform.Rotate(0, 0, .7f); 
             yield return new WaitForSeconds(1.5f);
@@ -81,24 +95,47 @@ public class AnimeBoss : BossPrototype
 
     override protected void AttackLogic()
     {
-        GameObject chosenAttack = _phases[0].AttackPrefabs[0]; //default that will be overwritten
-        switch (_phaseCounter)
+        if(_phaseCounter >= 2)
         {
-            case 0:
-                ChooseAttack(ref chosenAttack, 0); //pass in a reference to chosenAttack and the phase #
-                Instantiate(chosenAttack, _spawnLocation);
-                break;
-            case 1:
-                ChooseAttack(ref chosenAttack, 1);
-                if (chosenAttack.GetComponent<HeartAoE>())
-                {
-                    // Stop the laserbeams if the attack is hearts next
-                    StopCoroutine(SpawnLaserBeam());
-                    StartCoroutine(HeartAttack(chosenAttack));
-                    Instantiate(chosenAttack, _spawnLocation);
-                }
-                else Instantiate(chosenAttack, _spawnLocation);
-                break;
+            if (_inPhaseTwoPos) // If the phase change has completed, resume normal attack patterns
+            {
+                AttackLogicMethod();
+            }
+            else if (!_phaseTwoChangeInProgress) // If the phase change needs to start, start it
+            {
+                StartCoroutine(DoMajorPhaseChange());
+            }
+            else
+            {
+                // If the phase change is in progress, nothing happens! We don't even need this else statement!
+            }
+        }
+        else // Otherwise we can be normal
+        {
+            AttackLogicMethod();
+        }
+    }
+
+    private void AttackLogicMethod() // Condensing most of the attack logic into a separate method to facilitate how this boss works
+    {
+        GameObject chosenAttack = _phases[0].AttackPrefabs[0]; //default that will be overwritten
+
+        ChooseAttack(ref chosenAttack, _phaseCounter); // Pass in a reference to chosenAttack and the phase #
+
+        if (chosenAttack.gameObject.CompareTag("Miku")) // Miku needs to spawn under a different parent
+        {
+            Instantiate(chosenAttack, _mikuAttackEmpty);
+        }
+        else if (chosenAttack.GetComponent<HeartAoE>())
+        {
+            // Stop the laserbeams if the attack is hearts next
+            StopCoroutine(SpawnLaserBeam());
+            StartCoroutine(HeartAttack(chosenAttack));
+            Instantiate(chosenAttack, _spawnLocation);
+        }
+        else
+        {
+            Instantiate(chosenAttack, _spawnLocation);
         }
     }
 
@@ -107,4 +144,30 @@ public class AnimeBoss : BossPrototype
         SetNewTarget(_spawnLocation, 4f);
         yield return new WaitForSeconds(1);
     }
+
+    private IEnumerator DoMajorPhaseChange()
+    {
+        // When we get to the second half of the fight...
+        _phaseTwoChangeInProgress = true;
+
+        // Trigger the spawn for the final platform
+        _gSpawner.IsFinalSpawn = true;
+
+        // Fly on up to this new point
+        yield return new WaitForSeconds(.1f);
+        SetNewTarget(_gSpawner.getFinalSection());
+        SetSpeed(50f);
+
+        // Wait for the camera to catch up
+        yield return new WaitUntil(() => _b3Cam.GetFullStop());
+
+        // And once that's done, resume normal attacking
+        SetDefaultTarget();
+        SetDefaultSpeed();
+
+        _inPhaseTwoPos = true;
+        yield return null;
+    }
+
+
 }
