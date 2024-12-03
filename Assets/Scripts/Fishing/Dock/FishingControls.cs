@@ -40,7 +40,7 @@ public class FishingControls : MonoBehaviour
     {
         // inputs
         _inputAction = InputSystem.actions.FindAction(FISHING_INPUT_ACTION);
-
+        _inputAction.Enable();
         // casting vars
         _initFillScaleX = _fillBar.transform.localScale.x;
         _castingIndicator.SetActive(false); // hidden by default

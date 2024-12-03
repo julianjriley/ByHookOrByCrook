@@ -34,6 +34,7 @@ public class HubMovement : MonoBehaviour
     {
         _moveAction = InputSystem.actions.FindAction("Move Top-Down");
         _moveAction.Enable();
+        InputSystem.actions.FindAction("Mouse Position").Enable();
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _sr = GetComponent<SpriteRenderer>();
