@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ContactLoad : MonoBehaviour
 {
+    [SerializeField, Tooltip("Used to call scene transitions.")]
+    private SceneTransitionsHandler _transitionsHandler;
+
     public string SceneName;
     void Start()
     {
@@ -21,7 +23,7 @@ public class ContactLoad : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneName);
+            _transitionsHandler.LoadScene(SceneName);
         }
     }
 }

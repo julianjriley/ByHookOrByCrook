@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Handles all initialization and functionality of cashout scene.
@@ -21,6 +19,8 @@ public class Cashout : MonoBehaviour
     private TMP_Text _bossBountyText;
     [SerializeField, Tooltip("Text for setting the total amount (after multiplier).")]
     private TMP_Text _totalText;
+    [SerializeField, Tooltip("Used to call scene transitions.")]
+    private SceneTransitionsHandler _transitionsHandler;
 
     [Header("Editor Only")]
     [SerializeField, Tooltip("Items to use for testing if starting unity in cashout scene.")]
@@ -96,6 +96,7 @@ public class Cashout : MonoBehaviour
         // Clear all scene persistent data (bait, caught fish, loadout) for next run
         GameManager.Instance.ResetScenePersistentData();
 
-        SceneManager.LoadScene(hubSceneName);
+        // actually load scene
+        _transitionsHandler.LoadScene(hubSceneName);
     }
 }

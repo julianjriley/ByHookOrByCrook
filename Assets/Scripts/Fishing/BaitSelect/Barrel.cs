@@ -68,16 +68,16 @@ public class Barrel : MonoBehaviour
 
             // clicking a barrel will automatically close the confirmation popup
             _baitSelector.CancelConfirmationPopup();
-            SoundManager.Instance.PlayOneShot(selectBait, gameObject.transform.position);
 
-            // TODO: play select bait audio
+            // play select bait audio
+            SoundManager.Instance.PlayOneShot(selectBait, gameObject.transform.position);
         }
         else
         {
             _anim.SetTrigger("Shake");
-            SoundManager.Instance.PlayOneShot(tooFull, gameObject.transform.position);
 
-            // TODO: play negative feedback audio
+            // play negative feedback audio
+            SoundManager.Instance.PlayOneShot(tooFull, gameObject.transform.position);
         }
     }
 
@@ -119,8 +119,8 @@ public class Barrel : MonoBehaviour
     public void OnLockedBarrelClick()
     {
         _anim.SetTrigger("Shake");
-        SoundManager.Instance.PlayOneShot(cantBuy, gameObject.transform.position);
 
-        // TODO: play negative feedback audio
+        // play negative feedback audio
+        SoundManager.Instance.PlayOneShot(cantBuy, gameObject.transform.position);
     }
 }
