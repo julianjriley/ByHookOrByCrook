@@ -1,4 +1,3 @@
-using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,7 +54,6 @@ public class SelectedBait : MonoBehaviour
 
         // clicking a bait will automatically close the confirmation popup
         _baitSelector.CancelConfirmationPopup();
-        _baitSelector.PlayAudio();
 
         // TODO: play bait return audio
     }

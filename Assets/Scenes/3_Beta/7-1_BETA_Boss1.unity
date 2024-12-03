@@ -949,91 +949,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2816929413548509376, guid: df07c7ca8d1e02b42ad46c886e29d00d, type: 3}
   m_PrefabInstance: {fileID: 926515694}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1225775793
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: music.Path
-      value: event:/Music/PixelFight
-      objectReference: {fileID: 0}
-    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: music.Guid.Data1
-      value: 817889303
-      objectReference: {fileID: 0}
-    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: music.Guid.Data2
-      value: 1287124787
-      objectReference: {fileID: 0}
-    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: music.Guid.Data3
-      value: 109520307
-      objectReference: {fileID: 0}
-    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: music.Guid.Data4
-      value: -1313791562
-      objectReference: {fileID: 0}
-    - target: {fileID: 2325881820748248570, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_Name
-      value: AudioClean
-      objectReference: {fileID: 0}
-    - target: {fileID: 2325881820748248570, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 33.96193
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.888144
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.7741051
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4157095137720307743, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
 --- !u!1 &1278037056
 GameObject:
   m_ObjectHideFlags: 0
@@ -2940,6 +2855,7 @@ GameObject:
   - component: {fileID: 601137835593887851}
   - component: {fileID: 5936936945733125047}
   - component: {fileID: 1183962011684666013}
+  - component: {fileID: 7071379696094070295}
   m_Layer: 10
   m_Name: Pixel Boss
   m_TagString: Boss
@@ -3336,6 +3252,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7071379696094070295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319637734953820296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18bedda90d9e5de40a5e659956336b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music:
+    Guid:
+      Data1: 817889303
+      Data2: 1287124787
+      Data3: 109520307
+      Data4: -1313791562
+    Path: event:/Music/PixelFight
 --- !u!212 &7444348792546138184
 SpriteRenderer:
   m_ObjectHideFlags: 0

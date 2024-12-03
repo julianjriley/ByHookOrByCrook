@@ -622,10 +622,13 @@ MonoBehaviour:
   RealChannelSettings: []
   Plugins: []
   MasterBanks:
-  - Master
+  - Desktop/Master
+  - Desktop/Master
   Banks:
-  - Music
-  - SFX
+  - Desktop/Music
+  - Desktop/Music
+  - Desktop/SFX
+  - Desktop/SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
@@ -841,8 +844,8 @@ MonoBehaviour:
       Value: 
       HasValue: 0
     SpeakerMode:
-      Value: 3
-      HasValue: 1
+      Value: 0
+      HasValue: 0
     VirtualChannelCount:
       Value: 0
       HasValue: 0

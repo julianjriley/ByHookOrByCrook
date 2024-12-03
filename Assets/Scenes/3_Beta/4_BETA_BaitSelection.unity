@@ -322,27 +322,6 @@ MonoBehaviour:
   _lockedAudioButton: {fileID: 1948450210}
   BaitType: 3
   _tooltipOffset: 5.5
-  selectBait:
-    Guid:
-      Data1: -921066348
-      Data2: 1218846764
-      Data3: 1058853297
-      Data4: -1396664437
-    Path: event:/Hub/BaitSquish
-  tooFull:
-    Guid:
-      Data1: -1808635281
-      Data2: 1229730467
-      Data3: 2053126310
-      Data4: -582312650
-    Path: event:/Hub/TooPoor
-  cantBuy:
-    Guid:
-      Data1: -1808635281
-      Data2: 1229730467
-      Data3: 2053126310
-      Data4: -582312650
-    Path: event:/Hub/TooPoor
 --- !u!114 &49326659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,27 +569,6 @@ MonoBehaviour:
   _lockedAudioButton: {fileID: 0}
   BaitType: 0
   _tooltipOffset: 5.5
-  selectBait:
-    Guid:
-      Data1: -921066348
-      Data2: 1218846764
-      Data3: 1058853297
-      Data4: -1396664437
-    Path: event:/Hub/BaitSquish
-  tooFull:
-    Guid:
-      Data1: -1808635281
-      Data2: 1229730467
-      Data3: 2053126310
-      Data4: -582312650
-    Path: event:/Hub/TooPoor
-  cantBuy:
-    Guid:
-      Data1: -1808635281
-      Data2: 1229730467
-      Data3: 2053126310
-      Data4: -582312650
-    Path: event:/Hub/TooPoor
 --- !u!95 &97118874
 Animator:
   serializedVersion: 5
@@ -1650,13 +1608,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3f0649bd19fae664687647d4848785ba, type: 3}
   LockedTooltip: {fileID: 951870367}
   SelectedBaitParent: {fileID: 999720807}
-  returnSound:
-    Guid:
-      Data1: -1241310842
-      Data2: 1181685691
-      Data3: -1892591731
-      Data4: 338671962
-    Path: event:/Hub/BaitSquishLow
   _hubSceneName: 3_BETA_Hub
   _fishingSceneName: 5_BETA_Fishing
   _confirmationPopup: {fileID: 10051123}
@@ -2105,27 +2056,6 @@ MonoBehaviour:
   _lockedAudioButton: {fileID: 176812063}
   BaitType: 2
   _tooltipOffset: 5.5
-  selectBait:
-    Guid:
-      Data1: -921066348
-      Data2: 1218846764
-      Data3: 1058853297
-      Data4: -1396664437
-    Path: event:/Hub/BaitSquish
-  tooFull:
-    Guid:
-      Data1: -1808635281
-      Data2: 1229730467
-      Data3: 2053126310
-      Data4: -582312650
-    Path: event:/Hub/TooPoor
-  cantBuy:
-    Guid:
-      Data1: -1808635281
-      Data2: 1229730467
-      Data3: 2053126310
-      Data4: -582312650
-    Path: event:/Hub/TooPoor
 --- !u!114 &932572949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2416,27 +2346,6 @@ MonoBehaviour:
   _lockedAudioButton: {fileID: 2071016288}
   BaitType: 1
   _tooltipOffset: 5.5
-  selectBait:
-    Guid:
-      Data1: -921066348
-      Data2: 1218846764
-      Data3: 1058853297
-      Data4: -1396664437
-    Path: event:/Hub/BaitSquish
-  tooFull:
-    Guid:
-      Data1: -1808635281
-      Data2: 1229730467
-      Data3: 2053126310
-      Data4: -582312650
-    Path: event:/Hub/TooPoor
-  cantBuy:
-    Guid:
-      Data1: -1808635281
-      Data2: 1229730467
-      Data3: 2053126310
-      Data4: -582312650
-    Path: event:/Hub/TooPoor
 --- !u!114 &961592193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2953,27 +2862,6 @@ MonoBehaviour:
   _lockedAudioButton: {fileID: 1412185477}
   BaitType: 4
   _tooltipOffset: 5.5
-  selectBait:
-    Guid:
-      Data1: -921066348
-      Data2: 1218846764
-      Data3: 1058853297
-      Data4: -1396664437
-    Path: event:/Hub/BaitSquish
-  tooFull:
-    Guid:
-      Data1: -1808635281
-      Data2: 1229730467
-      Data3: 2053126310
-      Data4: -582312650
-    Path: event:/Hub/TooPoor
-  cantBuy:
-    Guid:
-      Data1: -1808635281
-      Data2: 1229730467
-      Data3: 2053126310
-      Data4: -582312650
-    Path: event:/Hub/TooPoor
 --- !u!114 &1070592516
 MonoBehaviour:
   m_ObjectHideFlags: 0

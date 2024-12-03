@@ -21,23 +21,23 @@ MonoBehaviour:
   _itemPrefab: {fileID: 738137400646751251, guid: eb3bfa6cb04da524a8c3add99461c9c6, type: 3}
   _cost: 60
   itemType: 0
-  _baseDamage: 15
+  _baseDamage: 4
   _baseFireRate: 1
   _baseSize: 1
   _baseSpeed: 80
   _baseLifetime: 3
-  _baseHeatBuildup: 101
+  _baseHeatBuildup: 30
   _baseCoolingSpeed: 10
   _overHeatCoolingSpeedMultiplier: 1
   _baseProjectileCount: 1
   _baseRecoilAmount: 0
   _fireSound:
     Guid:
-      Data1: -492761950
-      Data2: 1339762798
-      Data3: 1168927874
-      Data4: -1779430521
-    Path: event:/Combat/Guns/Barracutea
+      Data1: 750242881
+      Data2: 1273948051
+      Data3: 284294323
+      Data4: -499286835
+    Path: event:/Combat/Guns/RottenFish
   canRecoil: 0
   overheatShot: 0
   overheatDamageBonus: 0

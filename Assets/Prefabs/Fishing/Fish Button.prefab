@@ -426,27 +426,6 @@ MonoBehaviour:
   _itemName: {fileID: 2669520496276471171}
   _practicalDescription: {fileID: 110420301576832099}
   _funDescription: {fileID: 2194507946996346915}
-  select:
-    Guid:
-      Data1: -1625714810
-      Data2: 1190095100
-      Data3: 1120425350
-      Data4: 1090946898
-    Path: event:/Hub/ItemSelect
-  deselect:
-    Guid:
-      Data1: -375257121
-      Data2: 1231922244
-      Data3: 1636002212
-      Data4: 247806363
-    Path: event:/Hub/ItemDeselect
-  tooFull:
-    Guid:
-      Data1: -1808635281
-      Data2: 1229730467
-      Data3: 2053126310
-      Data4: -582312650
-    Path: event:/Hub/TooPoor
 --- !u!114 &1128066065812479504
 MonoBehaviour:
   m_ObjectHideFlags: 0

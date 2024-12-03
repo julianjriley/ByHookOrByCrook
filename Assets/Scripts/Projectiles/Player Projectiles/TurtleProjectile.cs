@@ -33,8 +33,6 @@ public class TurtleProjectile : Projectile
     {
         if (_isRespawning)
         {
-            InstantiateDeathEffect();
-
             _collider.enabled = false;
             _sprite.enabled = false;
 
@@ -42,11 +40,7 @@ public class TurtleProjectile : Projectile
             Invoke("Respawn", _respawnDelay);
         }
         else
-        {
-            InstantiateDeathEffect();
             Destroy(gameObject);
-        }
-            
     }
 
     protected override void OnTriggerEnter(Collider collider)

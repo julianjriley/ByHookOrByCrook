@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioCleanUp : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void Awake()
+    public void Start()
     {
         SoundManager.Instance.CleanUp();
     }

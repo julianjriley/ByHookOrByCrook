@@ -30,7 +30,7 @@ public class WeaponInstance : MonoBehaviour
     protected float _heatLevel;
 
     //Used for auto firing weapons
-    protected Coroutine _autoFireCoroutine = null;
+    protected Coroutine _autoFireCoroutine;
 
     protected virtual void Start()
     {
@@ -110,12 +110,12 @@ public class WeaponInstance : MonoBehaviour
         _direction = direction;
     }
 
-    public virtual void DisableRendering()
+    public void DisableRendering()
     {
         spriteRenderer.enabled = false;
     }
 
-    public virtual void EnableRendering()
+    public void EnableRendering()
     {
         spriteRenderer.enabled = true;
     }

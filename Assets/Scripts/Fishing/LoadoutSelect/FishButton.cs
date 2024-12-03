@@ -1,4 +1,3 @@
-using FMODUnity;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -35,11 +34,6 @@ public class FishButton : MonoBehaviour
     private TextMeshProUGUI _practicalDescription;
     [SerializeField, Tooltip("Used for setting item fun description in tooltip.")]
     private TextMeshProUGUI _funDescription;
-
-    [Header("Sounds")]
-    [SerializeField] EventReference select;
-    [SerializeField] EventReference deselect;
-    [SerializeField] EventReference tooFull;
 
     private void Start()
     {
@@ -99,14 +93,13 @@ public class FishButton : MonoBehaviour
 
                 // hide tooltip
                 _tooltipObject.SetActive(false);
-                SoundManager.Instance.PlayOneShot(select, gameObject.transform.position);
 
                 // TODO: play add to loadout audio
             }
             else
             {
                 _anim.SetTrigger("Shake");
-                SoundManager.Instance.PlayOneShot(tooFull, gameObject.transform.position);
+
                 // TODO: play negative feedback audio
             }
         }
@@ -119,7 +112,6 @@ public class FishButton : MonoBehaviour
 
             // hide tooltip
             _tooltipObject.SetActive(false);
-            SoundManager.Instance.PlayOneShot(deselect, gameObject.transform.position);
 
             // TODO: play remove from loadout audio
         }

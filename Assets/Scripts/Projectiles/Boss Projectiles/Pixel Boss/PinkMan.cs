@@ -1,4 +1,3 @@
-using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +20,6 @@ public class PinkMan : Projectile
 
     private GameObject _player;
     private bool _hasTurned = false;
-    [SerializeField] EventReference pacSound;
 
     // Start is called before the first frame update
     override protected void Start()
@@ -114,7 +112,6 @@ public class PinkMan : Projectile
 
             // start charging animation
             _anim.SetTrigger("Charge");
-            GetComponent<StudioParameterTrigger>().TriggerParameters();
         }
     }
 }
