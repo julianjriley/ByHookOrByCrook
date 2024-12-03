@@ -106,11 +106,12 @@ MonoBehaviour:
   _speed: 1
   _lifetime: 3
   _health: 1
+  _deathEffect: {fileID: 4895959312990527715, guid: 465e915088d234547afbb39d99e6f20e, type: 3}
   _repeatTime: 2
   _startTime: 1
   _effectData:
     type: 0
-    effectStrength: 1
+    effectStrength: 0.5
     effectVisual: {fileID: 7268858134994037512, guid: b5aa0588aa3bd4a48b4054296e855e25, type: 3}
   _renderer: {fileID: 2830727031234648781}
 --- !u!136 &4069988502811610014
