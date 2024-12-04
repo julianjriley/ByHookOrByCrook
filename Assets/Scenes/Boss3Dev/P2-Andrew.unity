@@ -3449,7 +3449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _phases.Array.data[2].AttackPrefabs.Array.size
-      value: 6
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[0]
@@ -3475,6 +3475,42 @@ PrefabInstance:
       propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[5]
       value: 
       objectReference: {fileID: 5657812542449007132, guid: bdb880e6461e61b4c8a13beced94b218, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 9163027841056639345, guid: 888bbff370dd29845852747fb7b7ab0b, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 3795539057491804075, guid: 896b89c9d3b1f234a947fc96853d1eec, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 1313593509738440572, guid: 7a027be133a4daa47b15621dff49e76e, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 6234742286634803195, guid: e580110b535298440beb4b158002e0f5, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 1149532525272193349, guid: 7838fdb4657939949964543d751c973d, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[11]
+      value: 
+      objectReference: {fileID: 7482703264570985396, guid: 5f80a39188f36884e9f529d3eb37d3a8, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[12]
+      value: 
+      objectReference: {fileID: 6621855051909973360, guid: 2eb0ceb31f54749469acc05f615ce8a7, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[13]
+      value: 
+      objectReference: {fileID: 4798447765693129418, guid: 38a198ce03ffccc4a925ddfc07ebff17, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[14]
+      value: 
+      objectReference: {fileID: 6339863087777551465, guid: 55800ec82c2354641af28d9d5f5aed84, type: 3}
     - target: {fileID: 5751095749247107456, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: m_Name
       value: Anime Boss (NEWER)
