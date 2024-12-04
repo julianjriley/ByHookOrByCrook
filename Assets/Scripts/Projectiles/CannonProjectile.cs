@@ -12,6 +12,15 @@ public class CannonProjectile : Projectile
 
         _direction.x = Vector3.right.x;
         _rb.velocity = _direction * _speed;
-        GameManager.Instance.GamePersistent.IsInvulnerable = true;
+    }
+
+    protected override void OnTriggerEnter(Collider collider)
+    {
+        base.OnTriggerEnter(collider);
+    }
+
+    protected override void OnCollisionEnter(Collision collision)
+    {
+        base.OnCollisionEnter(collision);
     }
 }
