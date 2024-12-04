@@ -75,6 +75,7 @@ public class PauseManager : MonoBehaviour
     public void Resume()
     {
         _pauseMenu.SetActive(false);
+        _optionsMenu.SetActive(false);
         actions.Enable();
         _isPaused = false;
         Time.timeScale = 1f;
