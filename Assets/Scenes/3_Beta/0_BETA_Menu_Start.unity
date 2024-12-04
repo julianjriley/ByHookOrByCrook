@@ -2165,8 +2165,9 @@ MonoBehaviour:
   creditsScene: 2_BETA_Menu_Credits
   startScene: 0_BETA_Menu_Start
   optionsScreen: {fileID: 2594656356509036686}
-  bubble: {fileID: 0}
-  pop: {fileID: 0}
+  bubble: {fileID: 781442673, guid: d973554198f983049a1f6340fab0612f, type: 3}
+  pop: {fileID: -391659098, guid: d973554198f983049a1f6340fab0612f, type: 3}
+  _optionsImage: {fileID: 1694803371}
 --- !u!4 &1448300996
 Transform:
   m_ObjectHideFlags: 0
@@ -2890,18 +2891,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1694803371}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-        m_MethodName: set_overrideSprite
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 781442673, guid: d973554198f983049a1f6340fab0612f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

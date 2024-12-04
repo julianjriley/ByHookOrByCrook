@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StartMenuManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class StartMenuManager : MonoBehaviour
     GameObject optionsScreen;
     [SerializeField]
     private Sprite bubble, pop;
+    [SerializeField] private Image _optionsImage;
     public void LoadGameScene()
     {
         if (GameManager.Instance.GamePersistent.LossCounter != 0 || GameManager.Instance.GamePersistent.BossNumber != 0)
@@ -27,11 +29,17 @@ public class StartMenuManager : MonoBehaviour
     public void LoadOptionsScene()
     {
         StartCoroutine(BubblePop());
+        
     }
 
 
-    IEnumerator BubblePop() { 
-        yield return new WaitForSeconds(1);
+    IEnumerator BubblePop() {
+        _optionsImage.sprite = pop;
+        yield return new WaitForSeconds(.1f);
+        optionsScreen.SetActive(true);
+        yield return new WaitForSeconds(.01f);
+        _optionsImage.sprite = bubble;
+
     }
 
     public void LoadCreditsScene()
@@ -41,10 +49,7 @@ public class StartMenuManager : MonoBehaviour
 
     public void LoadStartScene()
     {
-        
-            SceneManager.LoadScene(startScene);
-        
-        
+        SceneManager.LoadScene(startScene);
     }
 
     public void QuitGame()
