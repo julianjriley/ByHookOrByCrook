@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class PracticeTarg : MonoBehaviour, IDamageable
 {
     private BoxCollider _boxCol;
     [SerializeField] private Animator _anim;
+
+    [Header("SFX")]
+    [SerializeField] EventReference damageSound;
 
     void Start()
     {
@@ -23,6 +27,8 @@ public class PracticeTarg : MonoBehaviour, IDamageable
     public void TakeDamage(float damage, bool dontUseSound = false)
     {
         _anim.Play("Bobble", 0, 0);
+        if (!dontUseSound)
+            SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
     }
 
     public void PassEffect(EffectData effectData)
