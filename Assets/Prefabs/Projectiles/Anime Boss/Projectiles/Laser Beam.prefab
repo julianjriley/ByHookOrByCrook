@@ -146,13 +146,13 @@ MonoBehaviour:
   _baseDamage: 1
   _size: 1
   _speed: 1
-  _lifetime: 4
+  _lifetime: 4.75
   _health: 10000
   _deathEffect: {fileID: 0}
   _rotSpeed: 0
   _dir: 1
   _activeDuration: 1
-  _cycleDuration: 4
+  _cycleDuration: 4.2
 --- !u!1 &3729586690419508271
 GameObject:
   m_ObjectHideFlags: 0

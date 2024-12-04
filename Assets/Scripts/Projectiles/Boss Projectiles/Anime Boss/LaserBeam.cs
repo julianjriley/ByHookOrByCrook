@@ -20,6 +20,8 @@ public class LaserBeam : Projectile
 
     override protected void Start()
     {
+        base.Start();
+
         gameObject.AddComponent<EffectManager>();
         _rb = GetComponent<Rigidbody>();
 
@@ -78,7 +80,6 @@ public class LaserBeam : Projectile
 
         _animator.speed = 1;
         _animator.Play("LaserAppear");
-        yield return new WaitForSeconds(.5f);
         _collider.enabled = true;
 
         yield return new WaitForSeconds(_activeDuration);
