@@ -5,7 +5,6 @@ using UnityEngine;
 public class Blobfish : WeaponInstance
 {
     [SerializeField] private GameObject _projectile;
-    private Animator _animator;
     private float _tickTimer = 90f;
     private bool _transformed = false;
     private bool _tickTimerEnabled = true;
