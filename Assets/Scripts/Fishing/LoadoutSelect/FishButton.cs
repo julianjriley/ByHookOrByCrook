@@ -41,6 +41,8 @@ public class FishButton : MonoBehaviour
     [SerializeField] EventReference deselect;
     [SerializeField] EventReference tooFull;
 
+    private int _itemType;
+
     private void Start()
     {
         _selectedCount = 0;
@@ -63,7 +65,8 @@ public class FishButton : MonoBehaviour
             _funDescription.text = itemDescription[1];
 
         _sprite.sprite = fishItem.GetSprite();
-        _iconSprite.sprite = _iconSprites[(int) fishItem.GetItemType()];
+        _itemType = (int)fishItem.GetItemType();
+        _iconSprite.sprite = _iconSprites[_itemType];
     }
 
     /// <summary>
@@ -99,15 +102,23 @@ public class FishButton : MonoBehaviour
 
                 // hide tooltip
                 _tooltipObject.SetActive(false);
+
+                // play add to loadout audio
                 SoundManager.Instance.PlayOneShot(select, gameObject.transform.position);
 
-                // TODO: play add to loadout audio
+                // if a gun -> unlock bear's first fish toggle
+                if (_itemType == 3) // weapon is 3
+                {
+                    _loadoutSelection.NumOfWeaponsPicked++;
+                    _loadoutSelection.EnablePlushToggle();
+                }
             }
             else
             {
                 _anim.SetTrigger("Shake");
+
+                // play negative feedback audio
                 SoundManager.Instance.PlayOneShot(tooFull, gameObject.transform.position);
-                // TODO: play negative feedback audio
             }
         }
         // Swap from loadout to caught fish
@@ -119,9 +130,18 @@ public class FishButton : MonoBehaviour
 
             // hide tooltip
             _tooltipObject.SetActive(false);
+
+            // play remove from loadout audio
             SoundManager.Instance.PlayOneShot(deselect, gameObject.transform.position);
 
-            // TODO: play remove from loadout audio
+            // if a gun -> lock bear's first fish toggle (IF IT WAS THE ONLY GUN)
+            if (_itemType == 3) // weapon is 3
+            {
+                _loadoutSelection.NumOfWeaponsPicked--;
+
+                if(_loadoutSelection.NumOfWeaponsPicked == 0) // if none remainin selected fish
+                    _loadoutSelection.DisablePlushToggle();
+            }
         }
 
         // cancel confirmation popups since a different button was pressed.

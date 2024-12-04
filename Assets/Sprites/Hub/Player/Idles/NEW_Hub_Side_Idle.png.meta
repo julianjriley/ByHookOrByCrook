@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b5e516e9f0558b4c8276ed1e632f138
+guid: 5198e394247d4914a98b1b82c977bf92
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Credits B1_0
+      name: NEW_Hub_Side_Idle_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 930
-        width: 137
-        height: 136
+        x: 0
+        y: 0
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b4802ecdca30354d95bf4cac8ad5deb
-      internalID: 2100796750
+      spriteID: f4d13556243dfc341a9bbffe685200f4
+      internalID: 1664062074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Credits B1_2
+      name: NEW_Hub_Side_Idle_1
       rect:
         serializedVersion: 2
-        x: 79
-        y: 722
-        width: 146
-        height: 142
+        x: 1024
+        y: 0
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +158,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67c10303a6bf4cb41aa3a7bdf93dc247
-      internalID: -79717634
+      spriteID: 5c1bc4574f735c64fb4723034b6c685e
+      internalID: -672091198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW_Hub_Side_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a9a2fd38d3585247841f13eac984150
+      internalID: -1268062161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW_Hub_Side_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a082d3c2ed08cf46b94705e13c9b4fd
+      internalID: -1650379047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW_Hub_Side_Idle_4
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a497392217c1ebe4a88ab391847fbfa0
+      internalID: 321044401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW_Hub_Side_Idle_5
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0297397c740587a48884eb8ab3147ab6
+      internalID: 531439788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW_Hub_Side_Idle_6
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6089fde277202d429e9b4e8b0b5f994
+      internalID: -426419640
       vertices: []
       indices: 
       edges: []
@@ -167,7 +272,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 09d28073cb497bf4087a90aba56bc2bc
     internalID: 0
     vertices: []
     indices: 
@@ -175,9 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Credits B1_0: 2100796750
-      Credits B1_1: -1454785509
-      Credits B1_2: -79717634
+      NEW_Hub_Side_Idle_0: 1664062074
+      NEW_Hub_Side_Idle_1: -672091198
+      NEW_Hub_Side_Idle_2: -1268062161
+      NEW_Hub_Side_Idle_3: -1650379047
+      NEW_Hub_Side_Idle_4: 321044401
+      NEW_Hub_Side_Idle_5: 531439788
+      NEW_Hub_Side_Idle_6: -426419640
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

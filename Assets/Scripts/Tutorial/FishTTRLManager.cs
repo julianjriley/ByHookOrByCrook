@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class FishTTRLManager : MonoBehaviour
     [SerializeField] private GameObject _void;
     [SerializeField] private Animator _sign1;
     [SerializeField] private Animator _sign2;
+    [SerializeField] private EventReference _signSound;
 
     private bool _hasCast = false;
     private bool _hasConfirmed = false;
@@ -51,6 +53,7 @@ public class FishTTRLManager : MonoBehaviour
     private IEnumerator DoTutorial()
     {
         _sign1.Play("Appear", 0, 0);    // Show how to hold and release, and then let them
+        SoundManager.Instance.PlayOneShot(_signSound, gameObject.transform.position);
         yield return new WaitUntil(() => _hasConfirmed);
         _sign1.Play("Disappear", 0, 0);
         
@@ -61,6 +64,7 @@ public class FishTTRLManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         _void.SetActive(true);
         _sign2.Play("Appear", 0, 0);    // Third non-fullscreen popup: When it bites, do the thing!
+        SoundManager.Instance.PlayOneShot(_signSound, gameObject.transform.position);
 
         // FREEZE THE BITE LOGIC
         // To continue, they click a button on that popup, which unfreezes the bite logic
