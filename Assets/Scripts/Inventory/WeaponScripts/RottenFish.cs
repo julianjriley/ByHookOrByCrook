@@ -21,8 +21,6 @@ public class RottenFish : WeaponInstance
         }
         if(_weapon.ProjectileCount < 2)
         {
-            CheckOverheat();
-            _weapon.Damage *= mult;
             for (int i = 0; i < _weapon.ProjectileCount; i++)
             {
                 GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, _direction));
@@ -30,14 +28,12 @@ public class RottenFish : WeaponInstance
                 projectile.GetComponent<Rigidbody>().AddForce(_direction * _weapon.Speed, ForceMode.Impulse);
                 RottenFishProjectile rottenFishProjectile = projectile.GetComponent<RottenFishProjectile>();
                 rottenFishProjectile.AssignStats(_weapon);
+                rottenFishProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
                 _heatLevel += _weapon.HeatBuildup;
             }
-            _weapon.Damage /= mult;
         }
         else
         {
-            CheckOverheat();
-            _weapon.Damage *= mult;
             for (int i = -1; i < _weapon.ProjectileCount - 1; i++)
             {
                 Vector3 aimingDir = Quaternion.Euler(0,0, 8 * i) * _direction;
@@ -46,16 +42,14 @@ public class RottenFish : WeaponInstance
                 projectile.GetComponent<Rigidbody>().AddForce(aimingDir * _weapon.Speed, ForceMode.Impulse);
                 RottenFishProjectile rottenFishProjectile = projectile.GetComponent<RottenFishProjectile>();
                 rottenFishProjectile.AssignStats(_weapon);
+                rottenFishProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
             }
-            _weapon.Damage /= mult;
             _heatLevel += _weapon.HeatBuildup;
         }
         _animator.Play("Fire");
         TryApplyRecoil();
         if (_heatLevel >= 100)
         {
-            if (_weapon.overheatShot)
-                _weapon.Damage /= 10f;
             _overHeated = true;
         }
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
