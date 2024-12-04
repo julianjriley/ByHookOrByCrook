@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,9 +24,10 @@ public class SceneTransitionsHandler : MonoBehaviour
     [Header("Water Transitions")]
     [SerializeField, Tooltip("Animated sprite for water scene enter.")]
     private GameObject _enterWater;
+    [SerializeField] EventReference _enterWaterSound;
     [SerializeField, Tooltip("Animated sprite for water scene exit.")]
     private GameObject _exitWater;
-
+    [SerializeField] EventReference _exitWaterSound;
     [Header("Slide Right Transitions")]
     [SerializeField, Tooltip("Animated sprite for slide right scene enter.")]
     private GameObject _enterSlideRight;
@@ -37,6 +39,7 @@ public class SceneTransitionsHandler : MonoBehaviour
     private GameObject _enterSlideLeft;
     [SerializeField, Tooltip("Animated sprite for slide left scene exit.")]
     private GameObject _exitSlideLeft;
+    [SerializeField] EventReference _slideTransitionSound;
 
     // whether the enter transition has completed
     private bool _isDoneLoading = false;
@@ -54,6 +57,7 @@ public class SceneTransitionsHandler : MonoBehaviour
         {
             case TransitionType.Water:
                 _enterWater.SetActive(true);
+                SoundManager.Instance.PlayOneShot(_enterWaterSound, gameObject.transform.position);
                 break;
             case TransitionType.SlideRight:
                 _enterSlideRight.SetActive(true);
@@ -79,12 +83,15 @@ public class SceneTransitionsHandler : MonoBehaviour
         {
             case TransitionType.Water:
                 _exitWater.SetActive(true);
+                SoundManager.Instance.PlayOneShot(_exitWaterSound, gameObject.transform.position);
                 break;
             case TransitionType.SlideRight:
                 _exitSlideRight.SetActive(true);
+                SoundManager.Instance.PlayOneShot(_slideTransitionSound, gameObject.transform.position);
                 break;
             case TransitionType.SlideLeft:
                 _exitSlideLeft.SetActive(true);
+                SoundManager.Instance.PlayOneShot(_slideTransitionSound, gameObject.transform.position);
                 break;
         }
 
