@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour, IDamageable
     protected Rigidbody _rb;
     protected PlayerCombat _playerCombat;
 
-    bool shortRangeDamage;
+    protected bool shortRangeDamage;
     float distanceToPlayer;
 
     [SerializeField] protected GameObject _deathEffect;

@@ -21,6 +21,8 @@ public class FishingControls : MonoBehaviour
     private Animator _anim;
     [SerializeField, Tooltip("Used to determine if transition is compelete, so inputs can be processed.")]
     private SceneTransitionsHandler _transitionHandler;
+    [SerializeField, Tooltip("Used to disable controls once no more bait remains.")]
+    private RemainingBaitUI _remainingBait;
 
     // Tutorial stuff
     public delegate void OnFirstCast();
@@ -54,6 +56,10 @@ public class FishingControls : MonoBehaviour
     {
         // Prevent ALL controls while popup still active
         if (_catchUI.IsPopupActive())
+            return;
+
+        // Prevent casting inputs after final bait has been consumed (avoid input processing during scene transition)
+        if (_remainingBait.GetBaitLeft() == 0)
             return;
 
         // update inputs every frame

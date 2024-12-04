@@ -21,10 +21,15 @@ public class LoadoutSelection : MonoBehaviour
     public GameObject LoadoutFishParent;
     [SerializeField, Tooltip("Used to determine if player wants to take plush.")]
     private Toggle _defaultFishToggle;
+    [SerializeField, Tooltip("Used to visually indicate when plush toggle is locked.")]
+    private GameObject _plushLock;
 
     [Header("Editor Only")]
     [SerializeField, Tooltip("List of fish used when starting Unity within this scene. Instead of using GameManager.")]
     private List<Item> _editorFishList;
+
+    [HideInInspector]
+    public int NumOfWeaponsPicked = 0;
 
     void Start()
     {
@@ -62,6 +67,25 @@ public class LoadoutSelection : MonoBehaviour
     public int GetCurrentUnselectedFish()
     {
         return CaughtFishParent.transform.childCount;
+    }
+
+    /// <summary>
+    /// Removes lock and enables fish toggle.
+    /// </summary>
+    public void EnablePlushToggle()
+    {
+        _defaultFishToggle.interactable = true;
+        _plushLock.SetActive(false);
+    }
+
+    /// <summary>
+    /// Sets fish toggle to set and locks it.
+    /// </summary>
+    public void DisablePlushToggle()
+    {
+        _defaultFishToggle.isOn = true;
+        _defaultFishToggle.interactable = false;
+        _plushLock.SetActive(true);
     }
 
     #region SCENE TRANSITIONS
@@ -184,20 +208,6 @@ public class LoadoutSelection : MonoBehaviour
         }
         if (!isWeaponFound)
             GameManager.Instance.AddLoadoutItem(_starterGun);
-
-        // Use this function to transition to PRACTICE or COMBAT scene
-        string sceneToSwitchTo;
-        switch (GameManager.Instance.GamePersistent.BossNumber)
-        { 
-            case 0:
-                sceneToSwitchTo = _bossScenes[0]; break;
-            case 1:
-                sceneToSwitchTo= _bossScenes[1]; break;
-            case 2:
-                sceneToSwitchTo=_bossScenes[2]; break;
-            default:
-                sceneToSwitchTo = _bossScenes[0]; break;
-        }
     }
     #endregion
 }
