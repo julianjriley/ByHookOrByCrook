@@ -65,7 +65,6 @@ public class OptionsMenuManager : MonoBehaviour
         _saturationSlider.value = GameManager.Instance.GamePersistent.Saturation;
         AdjustSaturation();
 
-        
         if (_currentTab != null)
         {
             _buttons[_currentTabNum].interactable = false;
