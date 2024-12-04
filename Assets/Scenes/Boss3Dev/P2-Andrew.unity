@@ -1696,6 +1696,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Final Block
       objectReference: {fileID: 0}
+    - target: {fileID: 2925717201679684063, guid: 3d02e8e14fee3bb4b880f98518f0ce5f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3185,7 +3189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2104271104
 Transform:
   m_ObjectHideFlags: 0
@@ -3368,7 +3372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7504257471945500874, guid: bb4930eaa7bc174438c8cd3774130862, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3435,6 +3439,14 @@ PrefabInstance:
       propertyPath: _transitionsHandler
       value: 
       objectReference: {fileID: 2099227494}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 3919691256913672284, guid: e7def24a7bc8df342a5676c78b3640f9, type: 3}
     - target: {fileID: 5751095749247107456, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: m_Name
       value: Anime Boss (NEWER)
