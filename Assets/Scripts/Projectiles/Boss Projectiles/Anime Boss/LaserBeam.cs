@@ -20,8 +20,6 @@ public class LaserBeam : Projectile
 
     override protected void Start()
     {
-        base.Start();
-
         gameObject.AddComponent<EffectManager>();
         _rb = GetComponent<Rigidbody>();
 
@@ -49,14 +47,15 @@ public class LaserBeam : Projectile
     #region DESTROY BEHAVIOR
     private void TimeUp()
     {
+        StopAllCoroutines(); // ensure proper despawn anim plays instead of override in next function
         StartCoroutine(OnDissapate());
     }
 
     private IEnumerator OnDissapate()
     {
         _animator.Play("LaserDespawn", 0, 0);
-        yield return new WaitForSeconds(.33f);
-        Destroy(this);
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
     #endregion
     private IEnumerator StartGimmick() //TODO
