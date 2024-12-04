@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MantisShrimp
+  m_Controller: {fileID: 9100000, guid: 2c92f1e9a4e1db644bfebcd7c92f0792, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 168984156540205489cf731ed7694f79, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3a9754ced2b83764598e0596027908a1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4b4c978866288f84b8b82981e5c4b7fe, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 01e938b87cc888542bcbebc7777cbd07, type: 2}

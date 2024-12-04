@@ -30,6 +30,7 @@ public class Interactor : MonoBehaviour
     protected void Start()
     {
         _interactAction = InputSystem.actions.FindAction("Interact");
+        _interactAction.Enable();
         _col = GetComponent<BoxCollider2D>();  
 
         _interactAnim = _interactPrompt.GetComponentInChildren<Animator>();
