@@ -114,7 +114,7 @@ public class NPCInteractor : Interactor
         _player.IsIdle = true;
 
         // Stop other SFX
-        SoundManager.Instance.CleanButSpare("Hub", false);
+        _player.StopFootsteps();
 
         // Show the discussion box
         _convoBubble.SetActive(true);
@@ -164,7 +164,8 @@ public class NPCInteractor : Interactor
 
         // Give player movement back
         _player.IsIdle = false;
-        
+        SoundManager.Instance.Pause(SoundManager.Instance.footstepsEventInstance, false);
+
         // Bring music back to full volume
         SoundManager.Instance.SetGlobalParameter("MusicDown", 0);
 

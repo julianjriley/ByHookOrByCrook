@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using TMPro;
+using FMODUnity;
 
 public class BaitTTRLManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class BaitTTRLManager : MonoBehaviour
     [SerializeField] private GameObject _backToHubButton;
     [SerializeField] private GameObject _nextButton;
     [SerializeField] private GameObject _foregroundScreen;
+    [SerializeField] private EventReference signSound;
 
     [Header("Bait Selector")]
     [SerializeField] private BaitSelector _bs;
@@ -62,6 +64,7 @@ public class BaitTTRLManager : MonoBehaviour
     {
         // Show the sign
         _signAnim.Play("Appear", 0, 0);
+        SoundManager.Instance.PlayOneShot(signSound, gameObject.transform.position);
         // When they click the button, the sign goes away and they can select bait
         yield return new WaitUntil(() => _readSign);
         _signAnim.Play("Disappear", 0, 0);
