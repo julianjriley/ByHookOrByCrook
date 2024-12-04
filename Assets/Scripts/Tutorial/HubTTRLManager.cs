@@ -43,6 +43,9 @@ public class HubTTRLManager : MonoBehaviour
     [SerializeField] private GameObject _mainCamera;
     [SerializeField] private GameObject _interactCamera;
 
+    [Header("SFX")]
+    [SerializeField] private EventReference _signSound;
+
     void Start()
     {
         if (GameManager.Instance.GamePersistent.IsTutorialHub)
