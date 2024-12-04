@@ -13,7 +13,10 @@ public class StartMenuManager : MonoBehaviour
     private Sprite bubble, pop;
     public void LoadGameScene()
     {
-        SceneManager.LoadScene(gameScene);
+        if (GameManager.Instance.GamePersistent.LossCounter != 0 || GameManager.Instance.GamePersistent.BossNumber != 0)
+        {
+            SceneManager.LoadScene(gameScene);
+        }
     }
 
     public void ClearData()
@@ -38,7 +41,10 @@ public class StartMenuManager : MonoBehaviour
 
     public void LoadStartScene()
     {
-        SceneManager.LoadScene(startScene);
+        
+            SceneManager.LoadScene(startScene);
+        
+        
     }
 
     public void QuitGame()

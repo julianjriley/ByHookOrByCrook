@@ -222,7 +222,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1448300995}
         m_TargetAssemblyTypeName: StartMenuManager, Assembly-CSharp
-        m_MethodName: LoadGameScene
+        m_MethodName: ClearData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2084,7 +2084,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1448300995}
         m_TargetAssemblyTypeName: StartMenuManager, Assembly-CSharp
-        m_MethodName: ClearData
+        m_MethodName: LoadGameScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
