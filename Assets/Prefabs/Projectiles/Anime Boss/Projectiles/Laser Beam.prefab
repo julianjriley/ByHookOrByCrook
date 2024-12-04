@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 450084569799971368}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &464578617500114626
 SpriteRenderer:
@@ -128,8 +128,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 124.99998, y: 3.5598242, z: 0.19999999}
-  m_Center: {x: 0, y: 0.55474794, z: 0}
+  m_Size: {x: 124.99998, y: 2.615861, z: 0.19999999}
+  m_Center: {x: 0, y: 0.6895996, z: 0}
 --- !u!114 &3798370416761775583
 MonoBehaviour:
   m_ObjectHideFlags: 0
