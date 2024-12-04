@@ -10,6 +10,7 @@ public class Boss3Camera : MonoBehaviour
     [Header("Ramping Variables For Round Start")]
     [SerializeField, Tooltip("How much closer we get to full camera speed each [delay]")] private float _rampIncrement;
     [SerializeField, Tooltip("How long we wait before each [increment]")] private float _rampDelay;
+    [SerializeField, Tooltip("Initial delay to give time for intro UI cutscene")] private float _startDelay;
     private bool _cameraRampingUp = false;
 
     private float _finalStop = -1;
@@ -50,6 +51,8 @@ public class Boss3Camera : MonoBehaviour
 
     private IEnumerator DoCamRampUp()
     {
+        yield return new WaitForSeconds(_startDelay);
+
         _cameraRampingUp = true;
         while(_currentCameraSpeed < _topCameraSpeed)
         {
