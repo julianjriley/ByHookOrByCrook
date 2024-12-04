@@ -2651,11 +2651,15 @@ PrefabInstance:
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: cbae0445f69e26243ab9f30476c91350, type: 2}
+      objectReference: {fileID: 11400000, guid: 67b3170d6996e554c8542845050f8f96, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: f58fe4e8aa1949e489d8318041853c70, type: 2}
+      objectReference: {fileID: 11400000, guid: 83cc3916edb49b2409f176caa59ea512, type: 2}
+    - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
+      propertyPath: testItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 83cc3916edb49b2409f176caa59ea512, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[0]
       value: 
@@ -3440,13 +3444,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2099227494}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].RepeatRate
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _phases.Array.data[2].AttackPrefabs.Array.size
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 3919691256913672284, guid: e7def24a7bc8df342a5676c78b3640f9, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7900697639880987432, guid: 4d5371f4f737bf44080ad9a987e44b4d, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 3693629592956994482, guid: e2c6abbde80a709439bbd9cf3581050f, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 4734824460262262603, guid: ff9f0142786c2dd4bbd251b4129f6b17, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 6564452776831401484, guid: 3dc823cf7bc22df4693619a6b7565cd3, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 5657812542449007132, guid: bdb880e6461e61b4c8a13beced94b218, type: 3}
     - target: {fileID: 5751095749247107456, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: m_Name
       value: Anime Boss (NEWER)
