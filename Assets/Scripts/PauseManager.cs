@@ -48,13 +48,13 @@ public class PauseManager : MonoBehaviour
 
             if (_isPaused == false)
             {
-                Debug.Log("Pause");
+                //Debug.Log("Pause");
                 Pause();
 
             }
             else
             {
-                Debug.Log("Resume");
+                //Debug.Log("Resume");
                 Resume();
 
             }
