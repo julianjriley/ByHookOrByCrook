@@ -1352,6 +1352,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5786527395875337277, guid: afe2a4979f1045b4394bd36b24bd6deb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1014.15
+      objectReference: {fileID: 0}
     - target: {fileID: 7008993808669093763, guid: afe2a4979f1045b4394bd36b24bd6deb, type: 3}
       propertyPath: m_Name
       value: Intro Boss Targets
@@ -3906,6 +3910,14 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3986277634790609888, guid: c7bf435f6cebb2749841337e3e476b21, type: 3}
+      propertyPath: m_Size.y
+      value: 10.395618
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986277634790609888, guid: c7bf435f6cebb2749841337e3e476b21, type: 3}
+      propertyPath: m_Center.y
+      value: -0.30219078
+      objectReference: {fileID: 0}
     - target: {fileID: 6423747674264421804, guid: c7bf435f6cebb2749841337e3e476b21, type: 3}
       propertyPath: m_Name
       value: TargetBoundingBox
@@ -4329,6 +4341,14 @@ PrefabInstance:
     - target: {fileID: 3695964017896055347, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: m_Name
       value: Paint Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236412917565380981, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382255188273974416, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8615570964884101335, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: m_RootOrder

@@ -52,6 +52,7 @@ public class PaintBoss : BossPrototype
         {
             // indicator of charging to portrait
             _exclamation.SetActive(true);
+            _spawners[0].SetNextTarget(true);
 
             // update where boss tracks towards
             if (_target != _paintingTarget.transform)
@@ -79,6 +80,7 @@ public class PaintBoss : BossPrototype
     {
         // no longer charging towards portrait
         _exclamation.SetActive(false);
+        _spawners[0].SetNextTarget(false);
 
         // start paint effect on spawner
         _spawners[0].StartPaint();
