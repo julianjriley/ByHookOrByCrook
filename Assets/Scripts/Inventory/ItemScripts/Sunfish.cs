@@ -69,7 +69,7 @@ public class Sunfish : PassiveItemInstance
                     closeRangeDamageMultiplier = 1 * Mathf.Clamp(math.remap(0, 8, 2, 1, distanceToPlayer), 1, 2);
                 }
                 float damage = 2f * mult * closeRangeDamageMultiplier;
-                Debug.Log(damage);
+                
                 if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile"))
                 {
                     damage = 0.5f * mult * closeRangeDamageMultiplier;
