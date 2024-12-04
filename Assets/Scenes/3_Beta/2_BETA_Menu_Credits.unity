@@ -843,7 +843,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 373, y: 410}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 556, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1308833879
 MonoBehaviour:
@@ -865,21 +865,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Credits\r\n\r\nSmall Pond Studios\r\n\nTeam Lead\r\nJane-Nicole Apostol\r\n\r\nBuild
-    Master\r\nJulian Riley\r\n\r\nAccessibility Lead\r\nZiad El-Rady\r\n\r\nArt Leads\r\nKy'mani
-    Brown\r\nChristian Lepillan\r\n\r\nArtists\r\nEglis Castaneda\r\nAlex Gonzalez\r\nSofia
-    D'Aurio\r\nRichard Huang\r\nAmanda Hollohan\r\nKenton Knelle\r\nMade Love\r\n\r\nUX/UI
-    Artists\r\nJane-Nicole Apostol\r\nKy\u2019mani Brown\r\nEglis Castaneda\r\nAmanda
-    Hollohon\r\nKenton Knelle\r\nRichard Huang\r\nJennifer Puurington\r\n\r\nAudio
-    Lead\r\nAndres Maldonado\r\n\r\nEngineer Leads\r\nAndrew Kohler\r\nJodi Foster\r\n\r\nEngineers\r\nJulian
-    Riley\r\nBrandon Davis\r\nChristopher Truta\r\nAnne Botwinik\r\nJane-Nicole Apostol\r\nZiad
-    El-Rady\r\n\r\nGame Design Leads\r\nJane-Nicole Apostol\r\nZiad El-Rady\r\n\r\nGame
-    Designers\r\nAvery Birle\r\nGianna Giliberto\r\nJennifer Purington\r\nMiralem
-    Barucic\r\nHans Tang\r\nAndres Maldonado\r\nAndrew Kohler\r\nJodi Foster\r\nJulian
-    Riley\r\nChristopher Truta\r\n\r\nWriters\r\nAvery Birle\r\nGianna Giliberto\r\nAndrew
-    Kohler\r\n\r\nFonts Used\r\nLondrina Sans\r\nPT Sans\r\n\r\nNow available to
-    play on STEAM!\n\nand...\n\nSpecial thanks to our CEO Overlord \nNick Heitzman
-    <3\r\n"
+  m_text: "Credits\r\n\r\nSmall Pond Studios\r\n\n- Team Lead -\nJane-Nicole Apostol\r\n\r\n-
+    Build Master - \nJulian Riley\r\n\r\n- Accessibility Lead -\nZiad El-Rady\r\n\r\n-
+    Art Leads -\nKy'mani Brown\r\nChristian Lepillan\r\n\r\n- Artists -\nEglis Castaneda\r\nAlex
+    Gonzalez\r\nSofia D'Aurio\r\nRichard Huang\r\nAmanda Hollohan\r\nKenton Knelle\r\nMade
+    Love\r\n\r\n- UI/UX Artists -\nJane-Nicole Apostol\r\nKy\u2019mani Brown\r\nEglis
+    Castaneda\r\nAmanda Hollohon\r\nKenton Knelle\r\nRichard Huang\r\nJennifer Purington\r\n\r\n-
+    Audio Lead -\r\nAndres Maldonado\r\n\r\n- Engineering Leads -\r\nAndrew Kohler\r\nJodi
+    Foster\r\n\r\n- Engineers -\nJulian Riley\r\nBrandon Davis\r\nChristopher Truta\r\nAnne
+    Botwinik\r\nJane-Nicole Apostol\r\nZiad El-Rady\r\n\r\n- Game Design Leads -\r\nJane-Nicole
+    Apostol\r\nZiad El-Rady\r\n\r\n- Game Designers -\r\nAvery Birle\r\nGianna Giliberto\r\nJennifer
+    Purington\r\nMiralem Barucic\r\nHans Tang\r\nAndres Maldonado\r\nAndrew Kohler\r\nJodi
+    Foster\r\nJulian Riley\r\nChristopher Truta\r\n\r\n- Writers -\r\nAvery Birle\r\nGianna
+    Giliberto\r\nAndrew Kohler\r\n\r\n- Fonts Used -\nLondrina Sans\r\nPT Sans\r\n\r\nNow
+    available to play on STEAM!\n\nand...\n\nSpecial thanks to our CEO Overlord \nNick
+    Heitzman <3\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b08bbed67e0d9e44aa199777d92f72c, type: 2}
   m_sharedMaterial: {fileID: 2383596797055915489, guid: 4b08bbed67e0d9e44aa199777d92f72c, type: 2}
@@ -922,7 +922,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -942,7 +942,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -29.68428, y: 0, z: -281.16855, w: 0}
+  m_margin: {x: -29.68428, y: 0, z: -281.16855, w: -5902.7285}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
