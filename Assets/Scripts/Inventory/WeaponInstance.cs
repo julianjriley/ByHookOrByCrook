@@ -12,7 +12,7 @@ public class WeaponInstance : MonoBehaviour
     [SerializeField] protected bool _overHeated;
     [SerializeField] protected bool _canFire = true;
     protected SpriteRenderer spriteRenderer;
-
+    protected Animator _animator;
     PlayerCombat _player;
 
     public static float mult;
@@ -34,6 +34,8 @@ public class WeaponInstance : MonoBehaviour
 
     protected virtual void Start()
     {
+
+        _animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         _player = _weapon.GetPlayer();
         mult = 1.0f;
@@ -163,4 +165,5 @@ public class WeaponInstance : MonoBehaviour
         if (_weapon.overheatDamageBonus)
             mult -= 1f;
     }
+
 }

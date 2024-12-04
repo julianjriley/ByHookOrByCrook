@@ -47,6 +47,7 @@ public class GreenArmyFish : WeaponInstance
             _weapon.Damage /= mult;
             _heatLevel += _weapon.HeatBuildup;
         }
+        _animator.Play("Fire");
         TryApplyRecoil();
         if (_heatLevel >= 100)
         {

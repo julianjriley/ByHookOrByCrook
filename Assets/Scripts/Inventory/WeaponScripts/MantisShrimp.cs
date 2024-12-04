@@ -27,7 +27,7 @@ public class MantisShrimp : WeaponInstance
         CheckOverheat();
         _weapon.Damage *= mult;
         int shotDirectionMod = Random.Range(0, 5);
-        Vector3 aimingDir = Quaternion.Euler(0, 0, 18 * (2 - shotDirectionMod)) * _direction;
+        Vector3 aimingDir = Quaternion.Euler(0, 0, 12 * (2 - shotDirectionMod)) * _direction;
         GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, aimingDir));
         projectile.GetComponent<Rigidbody>().AddForce(aimingDir * _weapon.Speed, ForceMode.Impulse);
         projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
@@ -35,7 +35,7 @@ public class MantisShrimp : WeaponInstance
         mantisShrimpProjectile.AssignStats(_weapon);
         _weapon.Damage /= mult;
         _heatLevel += _weapon.HeatBuildup;
-
+        _animator.Play("Fire");
         if (_heatLevel >= 100)
             _overHeated = true;
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);

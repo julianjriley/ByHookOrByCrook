@@ -72,14 +72,12 @@ public class PaintBoss : BossPrototype
     /// </summary>
     private IEnumerator MakeSomeArt()
     {
-        Debug.Log("MakeSomeArt called");
         // start paint effect on spawner
         _spawners[0].StartPaint();
 
-        // TODO: add calls to sound/animation for painting
+        // painting sound
         SoundManager.Instance.PlayOneShot(paintingSound, gameObject.transform.position);
-        Debug.Log("SoundStart");
-
+        // TODO: painting animation
 
         // paint delay
         yield return new WaitForSeconds(_paintDuration);
@@ -93,9 +91,9 @@ public class PaintBoss : BossPrototype
         // return to non-painting movement behavior
         SetDefaultTarget();
         SetDefaultSpeed();
+
         // TODO: return to idle animation
 
-        Debug.Log("SoundStop");
         _isPainting = false;
     }
 

@@ -67,6 +67,8 @@ public class RainbowFish : WeaponInstance
             _overHeated = true;
             increasedFireRate = 0;
         }
+        _animator.Play("Fire");
+        TryApplyRecoil(); 
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
         increasedFireRate += 0.3f;
         StartCoroutine(FireRate());

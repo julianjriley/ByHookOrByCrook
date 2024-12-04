@@ -868,6 +868,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cryerPrompt: {fileID: 8140772182228422777}
+  _newConvo: {fileID: 0}
+  _npcInteractor: {fileID: 0}
+  IsCurrentConvoHad: 0
 --- !u!50 &1036699568044980609
 Rigidbody2D:
   serializedVersion: 4
@@ -2193,7 +2196,9 @@ MonoBehaviour:
   _interactPrompt: {fileID: 5379468106279391979}
   GoodsSold: 0
   _cryerPrompt: {fileID: 8140772182228422777}
+  _cryerScript: {fileID: 0}
   _convoBubble: {fileID: 6999762526886154468}
+  _newConvoNotif: {fileID: 0}
   _convoText: {fileID: 1071608667017697015}
   _endDelay: 1
   _mainCamera: {fileID: 0}

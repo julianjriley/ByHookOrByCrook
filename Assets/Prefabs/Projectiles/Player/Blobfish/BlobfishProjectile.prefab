@@ -5164,6 +5164,9 @@ MonoBehaviour:
   _lifetime: 0
   _health: 2
   _deathEffect: {fileID: 3640385969041863935, guid: 1580c398e9cbd9746aacc3242b226085, type: 3}
+  enemyProjectileMask:
+    serializedVersion: 2
+    m_Bits: 1792
   _flashEffect: {fileID: 6705548514229982336, guid: 303edf10fa75f0c4f817a595fa67133f, type: 3}
 --- !u!95 &2963979174500865795
 Animator:
