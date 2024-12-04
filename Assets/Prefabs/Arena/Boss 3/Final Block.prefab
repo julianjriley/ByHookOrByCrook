@@ -35,10 +35,10 @@ Transform:
   - {fileID: 6754707895371587917}
   - {fileID: 8951610721440814156}
   - {fileID: 8882449427228209708}
-  - {fileID: 5612858196414398847}
+  - {fileID: 6338004675216661558}
   - {fileID: 4423589204897272041}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6854463406967680460
 MonoBehaviour:
@@ -155,7 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1878561136683933000, guid: 7f6cadd99807bdb4987745a996855c8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.13
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1878561136683933000, guid: 7f6cadd99807bdb4987745a996855c8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -221,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1878561136683933000, guid: 7f6cadd99807bdb4987745a996855c8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.77
+      value: 12.36
       objectReference: {fileID: 0}
     - target: {fileID: 1878561136683933000, guid: 7f6cadd99807bdb4987745a996855c8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -420,7 +420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1878561136683933000, guid: 7f6cadd99807bdb4987745a996855c8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.77
+      value: 12.36
       objectReference: {fileID: 0}
     - target: {fileID: 1878561136683933000, guid: 7f6cadd99807bdb4987745a996855c8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -464,7 +464,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f6cadd99807bdb4987745a996855c8e, type: 3}
---- !u!4 &5612858196414398847 stripped
+--- !u!4 &6338004675216661558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1878561136683933000, guid: 7f6cadd99807bdb4987745a996855c8e, type: 3}
   m_PrefabInstance: {fileID: 5612858196414398846}
