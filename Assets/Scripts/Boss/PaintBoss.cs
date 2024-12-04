@@ -91,9 +91,9 @@ public class PaintBoss : BossPrototype
         // return to non-painting movement behavior
         SetDefaultTarget();
         SetDefaultSpeed();
+
         // TODO: return to idle animation
 
-        Debug.Log("SoundStop");
         _isPainting = false;
     }
 
