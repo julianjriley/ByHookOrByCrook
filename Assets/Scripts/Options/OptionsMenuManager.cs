@@ -56,7 +56,6 @@ public class OptionsMenuManager : MonoBehaviour
         _saturationSlider.value = GameManager.Instance.GamePersistent.Saturation;
         AdjustSaturation();
 
-        
         if (_currentTab != null)
         {
             _buttons[_currentTabNum].interactable = false;
@@ -66,10 +65,12 @@ public class OptionsMenuManager : MonoBehaviour
     public void AdjustSFX()
     {
         GameManager.Instance.GamePersistent.SFXVolume = _sfxSlider.value;
+        SoundManager.Instance.SetGlobalParameter("SFXSlider", _sfxSlider.value);
     }
     public void AdjustMusic()
     {
         GameManager.Instance.GamePersistent.MusicVolume = _musicSlider.value;
+        SoundManager.Instance.SetGlobalParameter("MusicSlider", _musicSlider.value);
     }
     public void AdjustSaturation()
     {

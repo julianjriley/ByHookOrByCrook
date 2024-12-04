@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 /// <summary>
@@ -26,6 +25,8 @@ public class CatchUI : MonoBehaviour
     private Sprite[] _iconSprites;
     [SerializeField, Tooltip("Used to do little wiggle effect at max scale.")]
     private Animator _anim;
+    [SerializeField, Tooltip("Used to start scene transition.")]
+    private SceneTransitionsHandler _transitionHandler;
 
     [Header("Behavior")]
     [SerializeField, Tooltip("Height and width of sprite at maximum scale.")]
@@ -42,6 +43,7 @@ public class CatchUI : MonoBehaviour
     private string _loadoutSceneName;
 
     private int _catchCount = 0;
+    private bool _hasLoadedOnce = false;
 
     // Update is called once per frame
     void Update()
@@ -54,10 +56,15 @@ public class CatchUI : MonoBehaviour
             _catchCount++;
         }
 
-        // TODO: smoother transition effect
+        // prevent trying to load multiple times
+        if (_hasLoadedOnce) return;
+
         // Scene transition to end fishing
         if (GameManager.Instance.ScenePersistent.BaitList.Count == 0 && !IsPopupActive())
-            SceneManager.LoadScene(_loadoutSceneName);
+        {
+            _transitionHandler.LoadScene(_loadoutSceneName);
+            _hasLoadedOnce = true;
+        }
     }
 
     /// <summary>

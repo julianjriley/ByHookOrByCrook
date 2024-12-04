@@ -55,8 +55,9 @@ MonoBehaviour:
   _baseDamage: 0
   _size: 1
   _speed: 5
-  _lifetime: 10
+  _lifetime: 7
   _health: 3
+  _deathEffect: {fileID: 0}
   _phaseTwoSpeedMultiplier: 4
   _detectDistance: 0.5
   _initialDirection: {x: 1, y: 0}

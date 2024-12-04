@@ -70,4 +70,9 @@ public class RemainingBaitUI : MonoBehaviour
             Destroy(transform.GetChild(transform.childCount - 1).gameObject);
         }
     }
+
+    public int GetBaitLeft()
+    {
+        return baitLeft;
+    }
 }
