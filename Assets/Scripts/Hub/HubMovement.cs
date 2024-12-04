@@ -19,6 +19,7 @@ public class HubMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private Animator _anim;
     private SpriteRenderer _sr;
+    private bool soundOn = true;
 
     public float MoveSpeed = 7f;
     public bool IsIdle = false; // A toggle for forcing the bear to stand still
@@ -77,7 +78,7 @@ public class HubMovement : MonoBehaviour
         if (!IsIdle)
         {
             _rb.velocity = _velocity;
-            if (_velocity.magnitude != 0 && !footstepsState.Equals(PLAYBACK_STATE.PLAYING))
+            if (_velocity.magnitude != 0 && !footstepsState.Equals(PLAYBACK_STATE.PLAYING) && soundOn)
             {
                 footsteps.start();
                 //Debug.Log("START");
@@ -95,6 +96,10 @@ public class HubMovement : MonoBehaviour
         
     }
 
+    public void StopFootsteps()
+    {
+        footsteps.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
     private void AnimatePlayer2D()
     {
         if ((_moveValues.x != 0) && !IsIdle)

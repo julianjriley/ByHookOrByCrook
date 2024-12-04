@@ -4028,6 +4028,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 317110625}
     - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+      propertyPath: _signSound.Path
+      value: event:/Hub/SignCreak
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
       propertyPath: _caughtFishParent
       value: 
       objectReference: {fileID: 1227385808}
@@ -4035,6 +4039,22 @@ PrefabInstance:
       propertyPath: _foregroundScreen
       value: 
       objectReference: {fileID: 1351770373}
+    - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+      propertyPath: _signSound.Guid.Data1
+      value: 2142343668
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+      propertyPath: _signSound.Guid.Data2
+      value: 1196446327
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+      propertyPath: _signSound.Guid.Data3
+      value: -1413882210
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267157530609490801, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
+      propertyPath: _signSound.Guid.Data4
+      value: 45920916
+      objectReference: {fileID: 0}
     - target: {fileID: 5923335221474725574, guid: 0531ed2408a8d7e409304745e816fe27, type: 3}
       propertyPath: m_RootOrder
       value: 4

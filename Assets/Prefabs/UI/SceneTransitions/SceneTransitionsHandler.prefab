@@ -171,11 +171,32 @@ MonoBehaviour:
   _enterTransitionType: 1
   _exitTransitionType: 1
   _enterWater: {fileID: 527765925948799261}
+  _enterWaterSound:
+    Guid:
+      Data1: 895258895
+      Data2: 1192220042
+      Data3: 742907306
+      Data4: 1220971094
+    Path: event:/Combat/General/WaterOut
   _exitWater: {fileID: 7524435843583333918}
+  _exitWaterSound:
+    Guid:
+      Data1: -560904322
+      Data2: 1089378401
+      Data3: -1794947181
+      Data4: 890563539
+    Path: event:/Combat/General/WaterIn
   _enterSlideRight: {fileID: 7661631125498959800}
   _exitSlideRight: {fileID: 7719751899212168795}
   _enterSlideLeft: {fileID: 5034001509583462210}
   _exitSlideLeft: {fileID: 4221380115714605988}
+  _slideTransitionSound:
+    Guid:
+      Data1: 1422966309
+      Data2: 1208153970
+      Data3: 802363810
+      Data4: -1736231066
+    Path: event:/Hub/SlideTransition
 --- !u!1 &4221380115714605988
 GameObject:
   m_ObjectHideFlags: 0

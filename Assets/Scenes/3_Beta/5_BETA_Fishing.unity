@@ -6664,6 +6664,26 @@ PrefabInstance:
       propertyPath: _tutorialView
       value: 
       objectReference: {fileID: 2059197993}
+    - target: {fileID: 7379809715387080081, guid: aa31269b3c106784ba3b3d353d295d63, type: 3}
+      propertyPath: _signSound.Path
+      value: event:/Hub/SignCreak
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379809715387080081, guid: aa31269b3c106784ba3b3d353d295d63, type: 3}
+      propertyPath: _signSound.Guid.Data1
+      value: 2142343668
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379809715387080081, guid: aa31269b3c106784ba3b3d353d295d63, type: 3}
+      propertyPath: _signSound.Guid.Data2
+      value: 1196446327
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379809715387080081, guid: aa31269b3c106784ba3b3d353d295d63, type: 3}
+      propertyPath: _signSound.Guid.Data3
+      value: -1413882210
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379809715387080081, guid: aa31269b3c106784ba3b3d353d295d63, type: 3}
+      propertyPath: _signSound.Guid.Data4
+      value: 45920916
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

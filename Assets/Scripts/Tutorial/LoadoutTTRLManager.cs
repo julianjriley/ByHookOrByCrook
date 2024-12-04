@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,9 @@ public class LoadoutTTRLManager : MonoBehaviour
 
     [Header("Loadout Selector")]
     [SerializeField] private LoadoutSelection _bs;
+
+    [Header("SFX")]
+    [SerializeField] private EventReference _signSound;
 
     private bool _readSign = false;
     void Start()
@@ -55,6 +59,7 @@ public class LoadoutTTRLManager : MonoBehaviour
     {
         // Show the sign
         _signAnim.Play("Appear", 0, 0);
+        SoundManager.Instance.PlayOneShot(_signSound, gameObject.transform.position);
         // When they click the button, the sign goes away and they can select bait
         yield return new WaitUntil(() => _readSign);
         _signAnim.Play("Disappear", 0, 0);
