@@ -3135,6 +3135,7 @@ MonoBehaviour:
   _catchUI: {fileID: 708627468}
   _anim: {fileID: 790663018}
   _transitionHandler: {fileID: 1134297583}
+  _remainingBait: {fileID: 1856506944}
   _castingIndicator: {fileID: 1024200912}
   _fillBar: {fileID: 131759564}
   _chargeRate: 1
@@ -3816,10 +3817,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Flame angel fish
+  m_text: Flame Angel Fish
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4b08bbed67e0d9e44aa199777d92f72c, type: 2}
+  m_sharedMaterial: {fileID: 2383596797055915489, guid: 4b08bbed67e0d9e44aa199777d92f72c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3843,8 +3844,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
