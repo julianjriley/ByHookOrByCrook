@@ -25,8 +25,6 @@ public class MamaLeech : WeaponInstance
         }
         if (_weapon.ProjectileCount < 2)
         {
-            CheckOverheat();
-            _weapon.Damage *= mult;
             for (int i = 0; i < _weapon.ProjectileCount; i++)
             {
                 GameObject projectile = Instantiate(_projectile, _firePoint.position, Quaternion.FromToRotation(Vector3.up, _direction));
@@ -34,14 +32,12 @@ public class MamaLeech : WeaponInstance
                 projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
                 MamaLeechProjectile mamaLeechProjectile = projectile.GetComponent<MamaLeechProjectile>();
                 mamaLeechProjectile.AssignStats(_weapon);
+                mamaLeechProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
                 _heatLevel += _weapon.HeatBuildup;
             }
-            _weapon.Damage /= mult;
         }
         else
         {
-            CheckOverheat();
-            _weapon.Damage *= mult;
             for (int i = -1; i < _weapon.ProjectileCount - 1; i++)
             {
                 Vector3 aimingDir = Quaternion.Euler(0, 0, 8 * i) * _direction;
@@ -50,8 +46,9 @@ public class MamaLeech : WeaponInstance
                 projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
                 MamaLeechProjectile mamaLeechProjectile = projectile.GetComponent<MamaLeechProjectile>();
                 mamaLeechProjectile.AssignStats(_weapon);
+                mamaLeechProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
             }
-            _weapon.Damage /= mult;
+            
             _heatLevel += _weapon.HeatBuildup;
         }
         TryApplyRecoil();

@@ -47,6 +47,12 @@ public class Projectile : MonoBehaviour, IDamageable
         shortRangeDamage = _playerCombat.useShortRangeDamage;
     }
 
+    public virtual void ReassignDamage(float damage)
+    {
+        _damage = damage;
+        _baseDamage = damage;
+    }
+
     public virtual void TakeDamage(float damage, bool dontUseSound = false)
     {
         _health -= damage;
