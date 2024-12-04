@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using FMODUnity;
 
 public class BaitSelector : MonoBehaviour
@@ -116,13 +115,16 @@ public class BaitSelector : MonoBehaviour
     private GameObject _confirmationPopup;
     [SerializeField, Tooltip("Game object to be activated to ensure player can only continue with AT LEAST one bait.")]
     private GameObject _continueButton;
+    [SerializeField, Tooltip("Used to actually call scene transitions.")]
+    private SceneTransitionsHandler _transitionsHandler;
 
     /// <summary>
     /// Simple scene transition back to hub
     /// </summary>
     public void BackToHub()
     {
-        SceneManager.LoadScene(_hubSceneName);
+        // left transition override for back to hub
+        _transitionsHandler.LoadScene(_hubSceneName, SceneTransitionsHandler.TransitionType.SlideLeft);
     }
 
     /// <summary>
@@ -160,7 +162,7 @@ public class BaitSelector : MonoBehaviour
         SoundManager.Instance.CleanUp(); //stops the music
 
         // Load fishing scene
-        SceneManager.LoadScene(_fishingSceneName);
+        _transitionsHandler.LoadScene(_fishingSceneName);
     }
 
     /// <summary>

@@ -257,7 +257,7 @@ public class GameManager : MonoBehaviour
     /// initializes base stats of save data (used for first time playing).
     /// Used both for reading existing save data AND for creating new save data if none is found.
     /// </summary>
-    private void InitializeSaveData()
+    public void InitializeSaveData(bool deleteOldSave = false)
     {
         // initialize and load save data
         GamePersistentData newSaveData = new GamePersistentData();
@@ -265,13 +265,19 @@ public class GameManager : MonoBehaviour
         // TODO: INITIALIZE DEFAULT VALUES FOR SAVE DATA
         // default data in case player prefs not found
         string filePath = Application.persistentDataPath + "/GameData.json";
-        if (System.IO.File.Exists(filePath))
+        if (!deleteOldSave)
         {
-            string saveData = System.IO.File.ReadAllText(filePath);
-            newSaveData = JsonUtility.FromJson<GamePersistentData>(saveData);
-            Instance.GamePersistent = newSaveData;
-            return;
+            if (System.IO.File.Exists(filePath))
+            {
+
+                string saveData = System.IO.File.ReadAllText(filePath);
+                newSaveData = JsonUtility.FromJson<GamePersistentData>(saveData);
+                Instance.GamePersistent = newSaveData;
+                return;
+            }
         }
+
+
         
         newSaveData.BossNumber = 0;
         newSaveData.LossCounter = 0;

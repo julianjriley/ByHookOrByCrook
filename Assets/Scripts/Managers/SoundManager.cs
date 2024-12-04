@@ -45,9 +45,6 @@ public class SoundManager : MonoBehaviour
     {
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
         eventInstances.Add(eventInstance);
-        eventInstance.getDescription(out EventDescription description);
-        description.getPath(out string result);
-        //UnityEngine.Debug.Log(result);
         return eventInstance;
     }
 
@@ -73,6 +70,7 @@ public class SoundManager : MonoBehaviour
         fishingEventInstance = CreateInstance(fishingEventReference);
         fishingEventInstance.start();
     }
+
 
     public void SetGlobalParameter(string name, float value)
     {
@@ -145,6 +143,19 @@ public class SoundManager : MonoBehaviour
                 eventInstance.release();
             }
         }
+    }
+
+    public void PauseAll(bool pause)
+    {
+        foreach (EventInstance eventInstance in eventInstances)
+        {
+            eventInstance.setPaused(pause);
+        }
+    }
+
+    public void Pause(EventInstance eventInstance, bool pause)
+    {
+        eventInstance.setPaused(pause);
     }
 
     public void CheckEventInstances()

@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour, IDamageable
     protected Rigidbody _rb;
     protected PlayerCombat _playerCombat;
 
-    bool shortRangeDamage;
+    protected bool shortRangeDamage;
     float distanceToPlayer;
 
     [SerializeField] protected GameObject _deathEffect;
@@ -45,6 +45,12 @@ public class Projectile : MonoBehaviour, IDamageable
         _lifetime = weapon.Lifetime;
         _playerCombat = weapon.GetPlayer();
         shortRangeDamage = _playerCombat.useShortRangeDamage;
+    }
+
+    public virtual void ReassignDamage(float damage)
+    {
+        _damage = damage;
+        _baseDamage = damage;
     }
 
     public virtual void TakeDamage(float damage, bool dontUseSound = false)

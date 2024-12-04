@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 5651571089999197184}
   - component: {fileID: 7003954443489229343}
   - component: {fileID: 2514866758539811363}
+  - component: {fileID: 7019201473609639178}
   m_Layer: 6
   m_Name: RainbowFish
   m_TagString: Untagged
@@ -106,7 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: 51eb13d94f4cca34ea1c4051d7ec7355, type: 3}
+  m_Sprite: {fileID: 12690607, guid: 2aa001ac55a33524baa6f4506e25db1b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,3 +135,24 @@ MonoBehaviour:
   _overHeated: 0
   _canFire: 1
   _projectile: {fileID: 601086307551454052, guid: 5cbdab38676ccca42b6fa554184a8287, type: 3}
+--- !u!95 &7019201473609639178
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7851906927572201638}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cd306c955ab9f824b8897367f51a007c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

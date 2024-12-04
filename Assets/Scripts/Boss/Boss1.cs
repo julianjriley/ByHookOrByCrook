@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class Boss1 : BossPrototype
     public Transform LowerLeft;
     public Transform LowerLeft_2;
     private Animator _anim;
+    [SerializeField] EventReference drillSound;
 
     [Header("Galaga Attacks")]
     [SerializeField, Tooltip("Galaga attack with one rows")]
@@ -156,6 +158,8 @@ public class Boss1 : BossPrototype
         transform.GetChild(1).gameObject.SetActive(false);
 
         _anim.SetBool("drillIn", true);
+        FMOD.Studio.EventInstance drillInstance = SoundManager.Instance.CreateInstance(drillSound);
+        drillInstance.start();
 
 
         yield return new WaitForSeconds(0.7f);
@@ -177,6 +181,7 @@ public class Boss1 : BossPrototype
         _capsule.center = Vector3.zero;
 
         _anim.SetBool("drillOut", true);
+        drillInstance.setParameterByName("DrillDone", 1);
         SetSpeed(50f);
         _anim.SetBool("drillIn", false);
         _anim.SetBool("drill", false);

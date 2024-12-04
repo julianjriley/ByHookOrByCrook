@@ -12,10 +12,10 @@ public class WeaponInstance : MonoBehaviour
     [SerializeField] protected bool _overHeated;
     [SerializeField] protected bool _canFire = true;
     protected SpriteRenderer spriteRenderer;
-
+    protected Animator _animator;
     PlayerCombat _player;
 
-    public static float mult;
+    public float mult;
 
     public static event Action WeaponOverheated;
     public static event Action WeaponCooledOff;
@@ -34,11 +34,19 @@ public class WeaponInstance : MonoBehaviour
 
     protected virtual void Start()
     {
+
+        _animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         _player = _weapon.GetPlayer();
         mult = 1.0f;
         WeaponCooledOff += SubtractOverheatMult;
         WeaponOverheated += AddOverheatMult;
+    }
+
+    void OnDisable()
+    {
+        WeaponCooledOff -= SubtractOverheatMult;
+        WeaponOverheated -= AddOverheatMult;
     }
 
     public virtual void Fire(Vector3 direction)
@@ -125,6 +133,11 @@ public class WeaponInstance : MonoBehaviour
         return _heatLevel;
     }
 
+    public void SetHeatLevel(float heatLevel)
+    {
+        _heatLevel = heatLevel;
+    }
+
     public Weapon GetWeapon()
     {
         return _weapon;
@@ -133,6 +146,11 @@ public class WeaponInstance : MonoBehaviour
     public bool GetOverHeatedState()
     {
         return _overHeated;
+    }
+
+    public void SetOverHeatedState(bool overHeated)
+    {
+        _overHeated = overHeated;
     }
 
 
@@ -146,21 +164,25 @@ public class WeaponInstance : MonoBehaviour
         }
     }
 
-    protected void CheckOverheat()
+    protected float CheckOverheat()
     {
-        if (_weapon.overheatShot && (_heatLevel + _weapon.HeatBuildup) > 100)
-            _weapon.Damage *= 4f;
+        if (_weapon.overheatShot && (_heatLevel + _weapon.HeatBuildup) >= 100)
+            return 4f;
+        else
+            return 1f;
+
     }
 
     void AddOverheatMult()
     {
         if (_weapon.overheatDamageBonus)
-            mult += 1f;
+            mult += 0.2f;
     }
 
     void SubtractOverheatMult()
     {
         if (_weapon.overheatDamageBonus)
-            mult -= 1f;
+            mult -= 0.2f;
     }
+
 }
