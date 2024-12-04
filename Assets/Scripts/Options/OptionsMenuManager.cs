@@ -46,6 +46,7 @@ public class OptionsMenuManager : MonoBehaviour
 
     private void Start()
     {
+        // Correctly default set brightness and exposure
         _profile.TryGetSettings(out _exposure);
         _exposure.keyValue.value = GameManager.Instance.GamePersistent.Brightness;
         _brightnessSlider.value = GameManager.Instance.GamePersistent.Brightness;
@@ -55,6 +56,10 @@ public class OptionsMenuManager : MonoBehaviour
         _saturation.saturation.value = GameManager.Instance.GamePersistent.Saturation;
         _saturationSlider.value = GameManager.Instance.GamePersistent.Saturation;
         AdjustSaturation();
+
+        // Correctly default set volume settings
+        _sfxSlider.value = GameManager.Instance.GamePersistent.SFXVolume;
+        _musicSlider.value = GameManager.Instance.GamePersistent.MusicVolume;
 
         if (_currentTab != null)
         {

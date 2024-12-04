@@ -15,13 +15,13 @@ public class CursorController : MonoBehaviour
     }
     private void Update()
     {
-        Vector2 cursorPos = ArenaCamera.ScreenToWorldPoint(Mouse.current.position.value);
+        Vector2 cursorPos = Mouse.current.position.value;//ArenaCamera.ScreenToWorldPoint(Mouse.current.position.value);
 
         transform.position = new Vector3(cursorPos.x, cursorPos.y, 1);
     }
 
     public void UpdateSprite(Sprite sprite)
     {
-        this.GetComponent<SpriteRenderer>().sprite = sprite;
+        this.GetComponent<Image>().sprite = sprite;
     }
 }
