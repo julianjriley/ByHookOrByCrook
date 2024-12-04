@@ -7337,9 +7337,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5613259036970278718}
     - target: {fileID: 2849637176247373706, guid: cd11afe194f6ab5449a0b49e10269532, type: 3}
+      propertyPath: _signSound.Path
+      value: event:/Hub/SignCreak
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849637176247373706, guid: cd11afe194f6ab5449a0b49e10269532, type: 3}
       propertyPath: _hubMusicTrigger
       value: 
       objectReference: {fileID: 645071950}
+    - target: {fileID: 2849637176247373706, guid: cd11afe194f6ab5449a0b49e10269532, type: 3}
+      propertyPath: _signSound.Guid.Data1
+      value: 2142343668
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849637176247373706, guid: cd11afe194f6ab5449a0b49e10269532, type: 3}
+      propertyPath: _signSound.Guid.Data2
+      value: 1196446327
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849637176247373706, guid: cd11afe194f6ab5449a0b49e10269532, type: 3}
+      propertyPath: _signSound.Guid.Data3
+      value: -1413882210
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849637176247373706, guid: cd11afe194f6ab5449a0b49e10269532, type: 3}
+      propertyPath: _signSound.Guid.Data4
+      value: 45920916
+      objectReference: {fileID: 0}
     - target: {fileID: 3158750271200999810, guid: cd11afe194f6ab5449a0b49e10269532, type: 3}
       propertyPath: m_Sprite
       value: 
