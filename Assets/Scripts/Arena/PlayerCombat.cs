@@ -48,6 +48,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     bool dead;
     //Damage taking stuff
+    public bool BossDefeated = false;
     private bool _invulnerable;
     private Collider _collider;
     private LayerMask _invulnerabilityMask;
@@ -111,6 +112,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         _spriteRenderer = GetComponent<SpriteRenderer>();
         equippedWeaponindex = 0;
 
+        BossDefeated = false;
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
 
         _collider = GetComponent<Collider>();
@@ -211,7 +213,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         _equippedWeapon.DisableRendering();
         _equippedWeapon = _weapons[equippedWeaponindex];
         _equippedWeapon.EnableRendering();
-
         if (controls.FindAction("FireWeapon").IsPressed())
         {
             _equippedWeapon.SetAim(weaponDirection);
@@ -321,7 +322,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     //the damage parameter can be ignored here its just how the interfacing works to make things easier
     public void TakeDamage(float damage, bool dontUseSound = false)
     {
-        if (_invulnerable)
+        if (_invulnerable || BossDefeated)
             return;
         Health -= 1;
         SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);

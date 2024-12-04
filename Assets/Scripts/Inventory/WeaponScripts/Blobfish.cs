@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
 
 public class Blobfish : WeaponInstance
@@ -14,7 +13,7 @@ public class Blobfish : WeaponInstance
     protected override void Start()
     {
         base.Start();
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
     }
     public override void Fire(Vector3 direction)
     {
