@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b5e516e9f0558b4c8276ed1e632f138
+guid: 0151776202e1b904885b99b6c1cd18bf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Credits B1_0
+      name: credits-buttons_0
       rect:
         serializedVersion: 2
         x: 26
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b4802ecdca30354d95bf4cac8ad5deb
-      internalID: 2100796750
+      spriteID: bce34d04daf4dc645b5f8f19e94adbfc
+      internalID: -745629411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Credits B1_2
+      name: credits-buttons_2
       rect:
         serializedVersion: 2
-        x: 79
-        y: 722
-        width: 146
-        height: 142
+        x: 78
+        y: 720
+        width: 148
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67c10303a6bf4cb41aa3a7bdf93dc247
-      internalID: -79717634
+      spriteID: 8b5f020a3fedbf049a8aea2c5607297d
+      internalID: -837960533
       vertices: []
       indices: 
       edges: []
@@ -175,9 +175,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Credits B1_0: 2100796750
-      Credits B1_1: -1454785509
-      Credits B1_2: -79717634
+      credits-buttons_0: -745629411
+      credits-buttons_1: 420315815
+      credits-buttons_2: -837960533
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
