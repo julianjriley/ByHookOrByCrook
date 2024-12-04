@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BlobfishProjectile : Projectile
 {
+    private const float INDIRECT_DAMAGE = 100f;
     [SerializeField] LayerMask enemyProjectileMask;
     private float _damageMod = 0.6f;
     [SerializeField] private GameObject _flashEffect;
@@ -17,6 +18,16 @@ public class BlobfishProjectile : Projectile
             FlashEffect();
             Destroy(gameObject);
         }
+
+        // impact with breakable projectile
+        if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile"))
+        {
+            _damage = INDIRECT_DAMAGE; // constant damage instead of percent max health
+
+            InstantiateDeathEffect(0.7f);
+            FlashEffect();
+            Destroy(gameObject);
+        }
     }
 
     protected override void OnTriggerEnter(Collider collider)
@@ -24,6 +35,16 @@ public class BlobfishProjectile : Projectile
         if (collider.gameObject.TryGetComponent<BossPrototype>(out BossPrototype component))
         {
             _damage = component.MaxBossHealth * _damageMod;
+            ScreenWipe();
+            InstantiateDeathEffect(0.7f);
+            FlashEffect();
+            Destroy(gameObject);
+        }
+
+        // impact with breakable projectile
+        if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile"))
+        {
+            _damage = INDIRECT_DAMAGE; // constant damage instead of percent max health
             ScreenWipe();
             InstantiateDeathEffect(0.7f);
             FlashEffect();
