@@ -96,7 +96,7 @@ public class Blobfish : WeaponInstance
     private IEnumerator BecomeTheAbsoluteGigaMegaNuke3000()
     {
         _animator.SetBool("Transform", true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         _transformed = true;
     }
 
