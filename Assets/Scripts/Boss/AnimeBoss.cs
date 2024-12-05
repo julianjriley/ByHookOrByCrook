@@ -95,7 +95,7 @@ public class AnimeBoss : BossPrototype
         }
         else
         {
-            StartCoroutine(DoCastLaser(chosenAttack));
+            StartCoroutine(DoCastLaser(chosenAttack)); // this function does the pause and wand wiggle
             Instantiate(chosenAttack, _spawnLocation);
         }
     }
