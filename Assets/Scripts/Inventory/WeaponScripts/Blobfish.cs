@@ -84,14 +84,24 @@ public class Blobfish : WeaponInstance
 
     protected override void Update()
     {
-        base.Update();
-        if (!_tickTimerEnabled || !spriteRenderer.enabled)
+        blobSound.getParameterByName("IsActive", out soundOn);
+        if (!spriteRenderer.enabled)
         {
-            blobSound.getParameterByName("IsActive", out soundOn);
-            if (soundOn == 1 && _tickTimerEnabled)
+            if (soundOn == 1)
             {
                 SoundManager.Instance.SetParameter(blobSound, "IsActive", 0);
             }
+        }
+        if (spriteRenderer.enabled)
+        {
+            if (soundOn == 0)
+            {
+                SoundManager.Instance.SetParameter(blobSound, "IsActive", 1);
+            }
+        }
+        base.Update();
+        if (!_tickTimerEnabled || !spriteRenderer.enabled)
+        {
             return;
         }
         if (_tickTimer < 0)
@@ -112,11 +122,6 @@ public class Blobfish : WeaponInstance
         if (_tickTimer <= 30 && _tickTimer > 0)
         {
             SoundManager.Instance.SetParameter(blobSound, "BlobLevel", 2);
-        }
-        blobSound.getParameterByName("IsActive", out soundOn);
-        if (soundOn == 0)
-        {
-            SoundManager.Instance.SetParameter(blobSound, "IsActive", 1);
         }
     }
 

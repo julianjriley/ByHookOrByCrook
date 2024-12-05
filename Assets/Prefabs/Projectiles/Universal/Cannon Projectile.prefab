@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2652666119680444640}
   - component: {fileID: 6561439118861176298}
   - component: {fileID: -9153567117276549791}
+  - component: {fileID: 7747723185297554255}
   m_Layer: 8
   m_Name: Cannon Projectile
   m_TagString: Untagged
@@ -154,3 +155,34 @@ MonoBehaviour:
   _lifetime: 5
   _health: 1
   _deathEffect: {fileID: 0}
+--- !u!114 &7747723185297554255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080548220480504319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 900367285
+      Data2: 1186878774
+      Data3: -1914987587
+      Data4: -1925806839
+    Path: event:/Combat/Guns/TurtleGun
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
