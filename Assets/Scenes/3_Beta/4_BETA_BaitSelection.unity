@@ -2243,6 +2243,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 831f8741c9c88664bb344e076b753ff9, type: 3}
+--- !u!114 &727004301 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8526552393891203726, guid: 831f8741c9c88664bb344e076b753ff9, type: 3}
+  m_PrefabInstance: {fileID: 727004300}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &796439603
 GameObject:
   m_ObjectHideFlags: 0
@@ -3313,6 +3324,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976569191}
   m_CullTransparentMesh: 1
+--- !u!1001 &988887427
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1318174483}
+    m_Modifications:
+    - target: {fileID: 5994997791347468704, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: m_Name
+      value: Pause_v3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911881083965096430, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: _layer
+      value: 
+      objectReference: {fileID: 727004301}
+    - target: {fileID: 7241908037913301647, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241908037913301647, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241908037913301647, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241908037913301647, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241908037913301647, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241908037913301647, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241908037913301647, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241908037913301647, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241908037913301647, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241908037913301647, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241908037913301647, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+--- !u!4 &988887428 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7241908037913301647, guid: 05dfee97547e07745af45ae19219fed4, type: 3}
+  m_PrefabInstance: {fileID: 988887427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &999720807
 GameObject:
   m_ObjectHideFlags: 0
@@ -4401,6 +4482,7 @@ RectTransform:
   - {fileID: 1448079815}
   - {fileID: 10051124}
   - {fileID: 7318591842689951464}
+  - {fileID: 988887428}
   - {fileID: 938819127}
   m_Father: {fileID: 0}
   m_RootOrder: 3
