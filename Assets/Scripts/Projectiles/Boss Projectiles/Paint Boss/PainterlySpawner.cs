@@ -24,6 +24,8 @@ public class PainterlySpawner : MonoBehaviour
     private SpriteRenderer _paintEffect;
     [SerializeField, Tooltip("Projectile/Enemy prefab to create once painting is complete")]
     private GameObject _enemyToSpawn;
+    [SerializeField, Tooltip("Indicates that this is the next target of the boss.")]
+    private GameObject _nextTargetIndicator;
 
     [HideInInspector]
     public bool isReady = false;
@@ -87,5 +89,13 @@ public class PainterlySpawner : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// Shows or hides visual to indicate that this portrait is next for the boss.
+    /// </summary>
+    public void SetNextTarget(bool isNextTarget)
+    {
+        _nextTargetIndicator.SetActive(isNextTarget);
     }
 }
