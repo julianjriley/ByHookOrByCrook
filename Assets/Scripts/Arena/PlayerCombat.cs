@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerCombat : MonoBehaviour, IDamageable
 {
@@ -322,7 +323,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     //the damage parameter can be ignored here its just how the interfacing works to make things easier
     public void TakeDamage(float damage, bool dontUseSound = false)
     {
-        if (_invulnerable || BossDefeated)
+        if (_invulnerable || BossDefeated || SceneManager.GetActiveScene().name == "6.5PracTut")
             return;
         Health -= 1;
         SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);

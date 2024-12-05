@@ -69,7 +69,7 @@ public class LoveLetter : Projectile
         }
 
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, _speed * Time.deltaTime);
-        Debug.Log(distanceBetween);
+        //Debug.Log(distanceBetween);
         if (Mathf.Abs(distanceBetween) <= _maxDistance)
         {
             // when the projectile is close to the player, explode

@@ -304,7 +304,16 @@ public class BossPrototype : MonoBehaviour, IDamageable
         transform.Find("SmokeExplosionVFX_0").gameObject.SetActive(true);
         _victoryText.SetActive(true);
         //_fadeOutPanel.SetActive(true);
-        StartCoroutine(NextSceneDelay());
+        if(_bossProgressionNumber == 3)
+        {
+            GameManager.Instance.GamePersistent.BossNumber = 2;
+            StartCoroutine(NextSceneDelay(true));
+        }
+        else
+        {
+            StartCoroutine(NextSceneDelay(false));
+        }
+        
     }
 
     void HandlePlayerDeath() {
@@ -312,13 +321,20 @@ public class BossPrototype : MonoBehaviour, IDamageable
         _defeatText.SetActive(true);
         _player.transform.Find("SmokeExplosionVFX_0").gameObject.SetActive(true);
         _player.GetComponent<PlayerCombat>().BossDefeated = true;
-        StartCoroutine(NextSceneDelay());
+        StartCoroutine(NextSceneDelay(false));
     }
 
-    IEnumerator NextSceneDelay() {
+    IEnumerator NextSceneDelay(bool boss3Win) {
         yield return new WaitForSeconds(1.5f);
+
+        if (boss3Win) {
+            _transitionsHandler.LoadScene("8X_EndCutscene");
+        }
+        else
+        {
+            GoToCashout();
+        }
         
-        GoToCashout();
     }
 
     public void TakeDamage(float damage, bool dontUseSound)
