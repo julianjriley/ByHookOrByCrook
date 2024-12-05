@@ -2675,7 +2675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.size
@@ -2700,7 +2700,7 @@ PrefabInstance:
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 83cc3916edb49b2409f176caa59ea512, type: 2}
+      objectReference: {fileID: 11400000, guid: 0c565f0eac3eb7641bbf287734f2b8ca, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[0]
       value: 
@@ -3493,6 +3493,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1992433307}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _skipCutscene
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _bigWhiteScreen
       value: 
       objectReference: {fileID: 618556814}
@@ -3516,6 +3520,206 @@ PrefabInstance:
       propertyPath: _transitionsHandler
       value: 
       objectReference: {fileID: 2099227494}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[4].Threshold
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[5].Threshold
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].RepeatRate
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].StartDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].RepeatRate
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].StartDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[3].StartDelay
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[0].AttackPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 8464523043721956308, guid: c0825f75bf2654e4a8276f64d36999e5, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3525953262652235345, guid: eee10edc04a48f04fa02e14a1e11218c, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5680928314903981171, guid: 5dca16b6be91b0a4583ef4741a59fd47, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4538982393113318743, guid: b486fc8ff9fbcb14c94b7cd8b0face01, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 8464523043721956308, guid: c0825f75bf2654e4a8276f64d36999e5, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3525953262652235345, guid: eee10edc04a48f04fa02e14a1e11218c, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 2566977309235366854, guid: 4edb1139b3c51db4082f55eaeeea519e, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 319369555003794758, guid: ce2a3ea6b61479f4abac051e6bf6af2a, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 6207510608846140487, guid: 2c8171aca23cc954dba10b77869e1c57, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 2515766167871629070, guid: 26683f989fed7a543b601459fa11b691, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 1955756811694309828, guid: e63edd0364a071748b3f8e3488c821de, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[11]
+      value: 
+      objectReference: {fileID: 7848507025822695964, guid: 3b128ed2191b0484f9f01c49a8655eb5, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[12]
+      value: 
+      objectReference: {fileID: 2515766167871629070, guid: 26683f989fed7a543b601459fa11b691, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[13]
+      value: 
+      objectReference: {fileID: 319369555003794758, guid: ce2a3ea6b61479f4abac051e6bf6af2a, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[14]
+      value: 
+      objectReference: {fileID: 6207510608846140487, guid: 2c8171aca23cc954dba10b77869e1c57, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[15]
+      value: 
+      objectReference: {fileID: 2566977309235366854, guid: 4edb1139b3c51db4082f55eaeeea519e, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[11]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[12]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[13]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[14]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[15]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[16]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[17]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[18]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[19]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].StartEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].StartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].StartEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5751095749247107456, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: m_Name
       value: Anime Boss (NEWER)
