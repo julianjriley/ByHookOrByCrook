@@ -27,6 +27,7 @@ public class NPCInteractor : Interactor
     [SerializeField] EventReference dialogueSound;
 
     bool isSkippingLine;
+    private bool _interacted;
 
     new void Start()
     {
@@ -45,26 +46,27 @@ public class NPCInteractor : Interactor
 
         if (_convoIndex >= 0)
         {
-            if (!getIsConvoHad()[_convoIndex])
+            if (!_interacted)
             {
-                if (getSetConvo().GeneralPriority == 0 && !getNPCConvoExhausted())
-                {
-                    _newConvoNotif.SetActive(true);
-                }
-                else if (getSetConvo().GeneralPriority != 0 || getSetConvo().RequiredBossLossCount != 0)
-                {
-                    _newConvoNotif.SetActive(true);
-                }
-                else
-                {
-                    _newConvoNotif.SetActive(false);
-                }
+                _newConvoNotif.SetActive(true);
+            }
+            else
+            {
+                _newConvoNotif.SetActive(false);
             }
             
         }
         else if(_convoIndex < 0)
         {
-            _newConvoNotif.SetActive(true);
+            if (!_interacted)
+            {
+                _newConvoNotif.SetActive(true);
+            }
+            else
+            {
+                _newConvoNotif.SetActive(false);
+            }
+            
         }
         else
         {
@@ -78,6 +80,7 @@ public class NPCInteractor : Interactor
     {
         _conversation = convo;
         _convoIndex = index;
+        _interacted = false;
         _cryerScript.IsCurrentConvoHad = false;
     }
     private List<bool> getIsConvoHad()
@@ -161,6 +164,7 @@ public class NPCInteractor : Interactor
         // Switch cameras back
         _interactCamera.SetActive(false);
         _mainCamera.SetActive(true);
+        _interacted = true;
 
         // Give player movement back
         _player.IsIdle = false;
