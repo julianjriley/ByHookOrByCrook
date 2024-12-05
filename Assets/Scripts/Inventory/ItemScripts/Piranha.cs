@@ -11,6 +11,6 @@ public class Piranha : PassiveItemInstance
     {
         base.ItemEffect();
         _player.useShortRangeDamage = true;
-        SunfishInteraction.Invoke();
+        SunfishInteraction?.Invoke();
     }
 }

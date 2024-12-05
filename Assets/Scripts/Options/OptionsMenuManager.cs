@@ -10,11 +10,6 @@ using UnityEngine.InputSystem;
 
 public class OptionsMenuManager : MonoBehaviour
 {
-    //[SerializeField]
-    //private List<TextMeshProUGUI> _listOfPercentages;
-
-    //private TextMeshProUGUI _textTMP;
-
     [SerializeField]
     private string _startScene;
 
@@ -27,9 +22,6 @@ public class OptionsMenuManager : MonoBehaviour
 
     [SerializeField, Header("Buttons")]
     private List<Button> _buttons;
-
-    [SerializeField, Tooltip("SFX slider")]
-    private Slider _sensitivitySlider;
 
     [SerializeField, Tooltip("SFX slider")]
     private Slider _sfxSlider;
@@ -50,11 +42,11 @@ public class OptionsMenuManager : MonoBehaviour
 
    
     public List<TextMeshProUGUI> _tmpList;
-
     public List<Slider> _sliderList;
 
     private void Start()
     {
+        // Correctly default set brightness and exposure
         _profile.TryGetSettings(out _exposure);
         _exposure.keyValue.value = GameManager.Instance.GamePersistent.Brightness;
         _brightnessSlider.value = GameManager.Instance.GamePersistent.Brightness;
@@ -65,20 +57,14 @@ public class OptionsMenuManager : MonoBehaviour
         _saturationSlider.value = GameManager.Instance.GamePersistent.Saturation;
         AdjustSaturation();
 
+        // Correctly default set volume settings
+        _sfxSlider.value = GameManager.Instance.GamePersistent.SFXVolume;
+        _musicSlider.value = GameManager.Instance.GamePersistent.MusicVolume;
+
         if (_currentTab != null)
         {
             _buttons[_currentTabNum].interactable = false;
         }
-    }
-
-    private void Update()
-    {
-
-    }
-
-    public void AdjustSensivity()
-    {
-        // won't be in for Beta due to crappy documentation
     }
 
     public void AdjustSFX()

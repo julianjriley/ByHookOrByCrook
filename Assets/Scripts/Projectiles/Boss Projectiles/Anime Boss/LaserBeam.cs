@@ -5,46 +5,95 @@ using UnityEngine.UIElements;
 
 public class LaserBeam : Projectile
 {
-    private float _zForce = 360f;
     private Animator _animator;
     private Collider _collider;
+    [Header("Beam Specifics")]
+    [Tooltip("Rotation speed")]
+    [SerializeField] private float _rotSpeed = .7f;
+    [Tooltip("Rotation direction")]
+    [SerializeField] private float _dir = 1;
+    [Tooltip("Time portion of laser's cycle where it can damage player")]
+    [SerializeField] private float _activeDuration = 2.5f;
+    [Tooltip("Total time of laser cycle (nondamaging => damaging)")]
+    [SerializeField] private float _cycleDuration = 5f;
+    private float _downDuration;
 
     override protected void Start()
     {
-        base.Start();
-        Color color = GetComponent<SpriteRenderer>().color;
+        gameObject.AddComponent<EffectManager>();
+        _rb = GetComponent<Rigidbody>();
+
+        if (_lifetime > 0)
+            Invoke("TimeUp", _lifetime);
+
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider>();
 
-        // Lasers turn "red" and damage the player. Yellow lasers are safe. Animation color change might be a little off.
-        // TODO: Replace laser sprite 
+        _downDuration = _cycleDuration - _activeDuration;
+
+        _animator.Play("LaserSpawn");
+
+        // Lasers turn "red" and damage the player. Faded lasers with no core are safe
         StartCoroutine(StartGimmick());
     }
-    IEnumerator StartGimmick()
+
+    private new void FixedUpdate()
     {
-        InvokeRepeating("Gimmick", 0f, 5f);
+        base.FixedUpdate();
+        this.transform.Rotate(0, 0, _rotSpeed * _dir);
+    }
+    
+
+    #region DESTROY BEHAVIOR
+    private void TimeUp()
+    {
+        StopAllCoroutines(); // ensure proper despawn anim plays instead of override in next function
+        StartCoroutine(OnDissapate());
+    }
+
+    private IEnumerator OnDissapate()
+    {
+        _animator.Play("LaserDespawn", 0, 0);
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
+    #endregion
+    private IEnumerator StartGimmick() //TODO
+    {
+        InvokeRepeating("Gimmick", 0f, _cycleDuration);
         yield return new WaitForSeconds(0f);
     }
 
-    void Gimmick()
+    private void Gimmick()
     {
+        StartCoroutine(DoLaserAction());
+    }
+
+    private IEnumerator DoLaserAction()
+    {
+        yield return new WaitForSeconds(_downDuration / 2);
+        _animator.Play("LaserThreaten");
+        yield return new WaitForSeconds(_downDuration / 4); // Speed up the animation
+        _animator.speed = 1.5f;
+        yield return new WaitForSeconds(_downDuration / 4);
+
+        _animator.speed = 1;
+        _animator.Play("LaserAppear");
         _collider.enabled = true;
-        _animator.Play("ChangeLaserColor");
 
-        StartCoroutine(ResetColliders());
-    }
+        yield return new WaitForSeconds(_activeDuration);
 
-    IEnumerator ResetColliders()
-    {
-        yield return new WaitForSeconds(2.5f);
         _collider.enabled = false;
-        _animator.Play("DefaultLaser");
+        _animator.Play("LaserFade");
     }
+
+
+
     override protected void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collider.gameObject.GetComponent<PlayerCombat>().TakeDamage(2, false);
+            collider.gameObject.GetComponent<PlayerCombat>().TakeDamage(1, false);
             // Colliding with the player does not destroy the laser
         }
 
@@ -70,7 +119,7 @@ public class LaserBeam : Projectile
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<PlayerCombat>().TakeDamage(2, false);
+            collision.gameObject.GetComponent<PlayerCombat>().TakeDamage(1, false);
             // Colliding with the player does not destroy the laser
         }
 
