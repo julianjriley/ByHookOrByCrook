@@ -101,12 +101,14 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1f;
         actions.Enable();
         _pauseMenu.SetActive(false);
+        GameManager.Instance.ResetScenePersistentData();
         SceneManager.LoadScene(0);
     }
     public void Hub()
     {
         Time.timeScale = 1f;
         actions.Enable();
+        GameManager.Instance.ResetScenePersistentData();
         SceneManager.LoadScene(3);
     }
 
