@@ -2658,6 +2658,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: music.Path
+      value: event:/Music/Hub
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: music.Guid.Data1
+      value: -275239985
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: music.Guid.Data2
+      value: 1289914155
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: music.Guid.Data3
+      value: -642291557
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059639608911987488, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
+      propertyPath: music.Guid.Data4
+      value: -2059794694
+      objectReference: {fileID: 0}
     - target: {fileID: 2325881820748248570, guid: 37920241395bf9a499b797209d2b2e55, type: 3}
       propertyPath: m_Name
       value: AudioClean
