@@ -38,12 +38,12 @@ public class IntroCutsceneManager : MonoBehaviour
         yield return new WaitUntil(() => !_interactAction.IsPressed());
         yield return new WaitUntil(() => _interactAction.IsPressed());
 
-        _animList[3].Play("Page"); // Turn page 2
+        _animList[3].Play("Page"); // Turn page 3
         yield return new WaitForSeconds(2f);
         yield return new WaitUntil(() => !_interactAction.IsPressed());
         yield return new WaitUntil(() => _interactAction.IsPressed());
 
-        _animList[4].Play("Page"); // Turn page 2
+        _animList[4].Play("Page"); // Turn page 4
         yield return new WaitForSeconds(2f);
         yield return new WaitUntil(() => !_interactAction.IsPressed());
         yield return new WaitUntil(() => _interactAction.IsPressed());
