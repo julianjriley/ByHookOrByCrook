@@ -1337,7 +1337,7 @@ GameObject:
   - component: {fileID: 944371975}
   - component: {fileID: 944371977}
   - component: {fileID: 944371978}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Back Water
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1445,7 +1445,7 @@ GameObject:
   - component: {fileID: 996133662}
   - component: {fileID: 996133664}
   - component: {fileID: 996133665}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Front Water
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2a31922eaff044181c6472c884915b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _launchSpeed: 22
+  _launchSpeed: 30
 --- !u!95 &996133665
 Animator:
   serializedVersion: 5
