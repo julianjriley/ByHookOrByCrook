@@ -1914,6 +1914,10 @@ PrefabInstance:
       propertyPath: _exitTransitionType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7907522791565036698, guid: 930bdb7b2af542244a46c1a7fde26718, type: 3}
+      propertyPath: _enterTransitionType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -3540,6 +3540,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 703992921}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: BossHealth
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _fightText
       value: 
       objectReference: {fileID: 1992433308}
@@ -3581,7 +3585,7 @@ PrefabInstance:
       objectReference: {fileID: 2099227494}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _bossProgressionNumber
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _phases.Array.data[4].Threshold
