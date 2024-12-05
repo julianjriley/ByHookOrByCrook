@@ -1216,6 +1216,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _possibleGroups:
   - {fileID: 7748055756918919621, guid: 8d3719704e95b6d41806fee106eee51e, type: 3}
+  - {fileID: 7748055756918919621, guid: 024af498dc87fad469b4291088d10dcd, type: 3}
+  - {fileID: 7748055756918919621, guid: 14251d8c8370f334ab8ef4b8fd45ed62, type: 3}
+  - {fileID: 7748055756918919621, guid: 26e86c2de6ec0e445ac8d4df144fa9e3, type: 3}
+  - {fileID: 7748055756918919621, guid: 5597dbe5f2cec1846a4ea73a9abc7170, type: 3}
+  - {fileID: 7748055756918919621, guid: b4a384c760eb8bd4088120a26f6c4139, type: 3}
   _finalGroup: {fileID: 2925717201679684063, guid: 3d02e8e14fee3bb4b880f98518f0ce5f, type: 3}
   _finalTarget: {fileID: 5819543018580558678, guid: 07c0a352fd7971647be8d32baabbdef5, type: 3}
   _spawnHeightDistance: 18.8
@@ -3069,7 +3074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96e3f673d5e61dc4f8ab07202ef57d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topCameraSpeed: 2
+  _topCameraSpeed: 1.75
   _rampIncrement: 0.1
   _rampDelay: 0.4
   _startDelay: 7.5
