@@ -14,8 +14,10 @@ public class BouncyMiku : Projectile
     {
         base.Start();
 
-        _direction.x = Vector3.right.x;
-        _direction.y = Vector3.down.y;
+        // randomize initial direction
+        _direction.x = Random.Range(0, 2) == 0 ? -1 : 1;
+        _direction.y = Random.Range(0, 2) == 0 ? -1 : 1;
+
         _rb.velocity = _direction * _speed;
     }
 

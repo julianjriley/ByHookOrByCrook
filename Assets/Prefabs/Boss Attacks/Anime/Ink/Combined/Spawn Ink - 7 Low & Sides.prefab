@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5861339265542601641}
   m_Layer: 0
   m_Name: Spawn Ink - 7 Low & Sides
-  m_TagString: Untagged
+  m_TagString: AnimeInk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   - {fileID: 1680360653989500350}
   - {fileID: 5162641547193017572}
   - {fileID: 3960008468428297656}
-  - {fileID: 6599261162802436007}
+  - {fileID: 2777801019074918826}
   - {fileID: 4506712836825465000}
   - {fileID: 2561179957497157645}
   - {fileID: 1118300584079427186}
@@ -297,7 +297,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f8bc184e1252f4591f60b6e1760125, type: 3}
---- !u!4 &6599261162802436007 stripped
+--- !u!4 &2777801019074918826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9014502619438345740, guid: 66f8bc184e1252f4591f60b6e1760125, type: 3}
   m_PrefabInstance: {fileID: 6599261162802436006}

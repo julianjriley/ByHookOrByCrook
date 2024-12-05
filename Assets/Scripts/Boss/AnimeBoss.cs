@@ -89,14 +89,17 @@ public class AnimeBoss : BossPrototype
 
         ChooseAttack(ref chosenAttack, _phaseCounter); // Pass in a reference to chosenAttack and the phase #
 
-        if (chosenAttack.gameObject.CompareTag("Miku")) // Miku needs to spawn under a different parent
+        if (chosenAttack.gameObject.CompareTag("Miku") || chosenAttack.gameObject.CompareTag("LoveLetter")) // Miku needs to spawn under a different parent
         {
-            Instantiate(chosenAttack, _mikuAttackEmpty);
+            StartCoroutine(DoPhase1Spawn(chosenAttack)); // this function does the pause and wand wiggle
+        }
+        else if (chosenAttack.gameObject.CompareTag("AnimeInk"))
+        {
+            Instantiate(chosenAttack, _laserAttackEmpty);
         }
         else
         {
             StartCoroutine(DoCastLaser(chosenAttack)); // this function does the pause and wand wiggle
-            Instantiate(chosenAttack, _spawnLocation);
         }
     }
 
@@ -155,6 +158,15 @@ public class AnimeBoss : BossPrototype
         Instantiate(chosenAttack, _laserAttackEmpty);
         yield return new WaitForSeconds(_pauseTime);
         _wandAnim.speed = 0;
+        SetDefaultSpeed();
+        yield return null;
+    }
+
+    private IEnumerator DoPhase1Spawn(GameObject chosenAttack)
+    {
+        SetSpeed(0);
+        Instantiate(chosenAttack, _mikuAttackEmpty);
+        yield return new WaitForSeconds(_pauseTime/1.5f);
         SetDefaultSpeed();
         yield return null;
     }
