@@ -54,6 +54,7 @@ public class Boss3Camera : MonoBehaviour
         while(_currentCameraSpeed < _topCameraSpeed)
         {
             _currentCameraSpeed += _rampIncrement;
+            
             yield return new WaitForSeconds(_rampDelay);
         }
         _currentCameraSpeed = _topCameraSpeed;
