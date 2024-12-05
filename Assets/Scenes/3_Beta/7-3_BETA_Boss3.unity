@@ -3521,6 +3521,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2099227494}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _bossProgressionNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _phases.Array.data[4].Threshold
       value: 225
       objectReference: {fileID: 0}

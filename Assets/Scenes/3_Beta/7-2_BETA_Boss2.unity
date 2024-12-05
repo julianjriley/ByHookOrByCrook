@@ -4327,6 +4327,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1407516196}
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: _bossProgressionNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: paintingSound.Guid.Data1
       value: 92075825
       objectReference: {fileID: 0}
