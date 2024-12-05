@@ -12,7 +12,7 @@ public class GreenArmyFishProjectile : Projectile
     protected override void Start()
     {
         base.Start();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _collider = GetComponent<Collider>();
 
     }

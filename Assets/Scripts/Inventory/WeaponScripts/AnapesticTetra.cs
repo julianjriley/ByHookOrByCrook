@@ -21,8 +21,6 @@ public class AnapesticTetra : WeaponInstance
         }
         if (_weapon.ProjectileCount < 2)
         {
-            CheckOverheat();
-            _weapon.Damage *= mult;
             for (int i = 0; i < _weapon.ProjectileCount; i++)
             {
                 GameObject projectile = Instantiate(_projectiles[_projectileIndex], _firePoint.position, Quaternion.FromToRotation(Vector3.up, _direction));
@@ -30,14 +28,12 @@ public class AnapesticTetra : WeaponInstance
                 projectile.GetComponent<Rigidbody>().AddForce(_direction * _speedValues[_projectileIndex], ForceMode.Impulse);
                 AnapesticTetraProjectile anapesticTetraProjectile = projectile.GetComponent<AnapesticTetraProjectile>();
                 anapesticTetraProjectile.AssignStats(_weapon);
+                anapesticTetraProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
                 _heatLevel += _weapon.HeatBuildup;
             }
-            _weapon.Damage /= mult;
         }
         else
         {
-            CheckOverheat();
-            _weapon.Damage *= mult;
             for (int i = -1; i < _weapon.ProjectileCount - 1; i++)
             {
                 Vector3 aimingDir = Quaternion.Euler(0, 0, 8 * i) * _direction;
@@ -46,8 +42,8 @@ public class AnapesticTetra : WeaponInstance
                 projectile.GetComponent<Rigidbody>().AddForce(_direction * _speedValues[_projectileIndex], ForceMode.Impulse);
                 AnapesticTetraProjectile anapesticTetraProjectile = projectile.GetComponent<AnapesticTetraProjectile>();
                 anapesticTetraProjectile.AssignStats(_weapon);
+                anapesticTetraProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
             }
-            _weapon.Damage /= mult;
             _heatLevel += _weapon.HeatBuildup;
         }
         _animator.Play("Fire");
@@ -58,8 +54,6 @@ public class AnapesticTetra : WeaponInstance
             _projectileIndex += 1;
         if (_heatLevel >= 100)
         {
-            if (_weapon.overheatShot)
-                _weapon.Damage /= 10f;
             _overHeated = true;
         }
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
