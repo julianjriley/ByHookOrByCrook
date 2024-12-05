@@ -2308,7 +2308,7 @@ MonoBehaviour:
   _bossScenes:
   - 7-1_BETA_Boss1
   - 7-2_BETA_Boss2
-  - 
+  - 7-3_BETA_Boss3
   _transitionsHandler: {fileID: 1923995797}
 --- !u!1 &1199834078
 GameObject:
@@ -2398,6 +2398,7 @@ GameObject:
   - component: {fileID: 1257850374}
   - component: {fileID: 1257850373}
   - component: {fileID: 1257850372}
+  - component: {fileID: 1257850375}
   m_Layer: 0
   m_Name: Cannon Sprite
   m_TagString: Untagged
@@ -2520,6 +2521,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1257850375
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257850370}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f527bff0725875940b74e0ae60e482dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1286592074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2894,6 +2916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 7080548220480504319, guid: 7194303d638154142b94f106c63a79db, type: 3}
+  _anim: {fileID: 1257850375}
 --- !u!1001 &1505341134
 PrefabInstance:
   m_ObjectHideFlags: 0
