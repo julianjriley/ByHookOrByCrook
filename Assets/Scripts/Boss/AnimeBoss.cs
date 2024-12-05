@@ -163,7 +163,8 @@ public class AnimeBoss : BossPrototype
             yield return new WaitForSeconds(6.67f);
             _wand.SetActive(true);
             _bwsAnim.Play("FadeClear", 0, 0);
-            _bossAnim.Play("Idle", 0, 0);
+            //_bossAnim.Play("Idle", 0, 0);
+            _bossAnim.Play("Idle2",0,0);
             _bossAnim.speed = 0;
             yield return new WaitForSeconds(3f);
             _bigWhiteScreen.SetActive(false);
