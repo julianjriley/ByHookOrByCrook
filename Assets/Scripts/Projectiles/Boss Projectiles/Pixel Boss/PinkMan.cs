@@ -114,7 +114,7 @@ public class PinkMan : Projectile
 
             // start charging animation
             _anim.SetTrigger("Charge");
-            GetComponent<StudioParameterTrigger>().TriggerParameters();
+            GetComponent<StudioEventEmitter>().Play();
         }
     }
 }

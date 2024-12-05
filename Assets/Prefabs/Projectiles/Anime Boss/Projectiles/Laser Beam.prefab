@@ -153,6 +153,13 @@ MonoBehaviour:
   _dir: 1
   _activeDuration: 1
   _cycleDuration: 4.2
+  laserSound:
+    Guid:
+      Data1: 713015317
+      Data2: 1149622472
+      Data3: -416052349
+      Data4: 1219040963
+    Path: event:/Combat/Anime/LaserBuzz
 --- !u!1 &3729586690419508271
 GameObject:
   m_ObjectHideFlags: 0

@@ -10197,6 +10197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 399465984368751786}
   - component: {fileID: 5786632067292896780}
+  - component: {fileID: 1600341823420892020}
   m_Layer: 0
   m_Name: Sunfish
   m_TagString: Untagged
@@ -10221,7 +10222,7 @@ Transform:
   - {fileID: 232256788937766513}
   - {fileID: 8712870946667911346}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5786632067292896780
 MonoBehaviour:
@@ -10237,6 +10238,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _passiveItem: {fileID: 11400000, guid: de62e8548c69e4345a551609ed959a58, type: 2}
   hitEffect: {fileID: 4895959312990527715, guid: 465e915088d234547afbb39d99e6f20e, type: 3}
+--- !u!114 &1600341823420892020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7975323048769519320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -739347135
+      Data2: 1200871135
+      Data3: 292061362
+      Data4: -743080058
+    Path: event:/Combat/Guns/Sunfish
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &8347364817118187404
 GameObject:
   m_ObjectHideFlags: 0

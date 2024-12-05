@@ -1,6 +1,9 @@
+using FMODUnity;
+using FMOD.Studio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD;
 
 public class Blobfish : WeaponInstance
 {
@@ -8,11 +11,16 @@ public class Blobfish : WeaponInstance
     private float _tickTimer = 90f;
     private bool _transformed = false;
     private bool _tickTimerEnabled = true;
+    [SerializeField] private EventReference _blobSound;
+    private EventInstance blobSound;
+    private float soundOn;
 
     protected override void Start()
     {
         base.Start();
         //_animator = GetComponent<Animator>();
+        blobSound = SoundManager.Instance.CreateInstance(_blobSound);
+        blobSound.start();
     }
     public override void Fire(Vector3 direction)
     {
@@ -69,15 +77,33 @@ public class Blobfish : WeaponInstance
             _overHeated = true;
         }
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
+        SoundManager.Instance.SetParameter(blobSound, "BlobLevel", 0);
         StartCoroutine(FireRate());
         _autoFireCoroutine = StartCoroutine(FireAuto(_direction));
     }
 
     protected override void Update()
     {
+        blobSound.getParameterByName("IsActive", out soundOn);
+        if (!spriteRenderer.enabled)
+        {
+            if (soundOn == 1)
+            {
+                SoundManager.Instance.SetParameter(blobSound, "IsActive", 0);
+            }
+        }
+        if (spriteRenderer.enabled)
+        {
+            if (soundOn == 0)
+            {
+                SoundManager.Instance.SetParameter(blobSound, "IsActive", 1);
+            }
+        }
         base.Update();
         if (!_tickTimerEnabled || !spriteRenderer.enabled)
+        {
             return;
+        }
         if (_tickTimer < 0)
         {
             _tickTimerEnabled = false;
@@ -88,7 +114,15 @@ public class Blobfish : WeaponInstance
             _tickTimer -= Time.deltaTime;
             _animator.SetFloat("TimeLeft", _tickTimer);
         }
-            
+        //sound stuff
+        if (_tickTimer <= 60 && _tickTimer > 30)
+        {
+            SoundManager.Instance.SetParameter(blobSound, "BlobLevel", 1);
+        }
+        if (_tickTimer <= 30 && _tickTimer > 0)
+        {
+            SoundManager.Instance.SetParameter(blobSound, "BlobLevel", 2);
+        }
     }
 
     
@@ -96,6 +130,7 @@ public class Blobfish : WeaponInstance
     private IEnumerator BecomeTheAbsoluteGigaMegaNuke3000()
     {
         _animator.SetBool("Transform", true);
+        SoundManager.Instance.SetParameter(blobSound, "BlobLevel", 3);
         yield return new WaitForSeconds(0.5f);
         _transformed = true;
     }

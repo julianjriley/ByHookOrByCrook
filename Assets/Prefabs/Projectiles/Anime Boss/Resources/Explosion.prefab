@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8614568908791189056}
   - component: {fileID: 6571951784484371709}
   - component: {fileID: 4492725531983232036}
+  - component: {fileID: -7076053165930805136}
   m_Layer: 9
   m_Name: Explosion
   m_TagString: Untagged
@@ -126,3 +127,34 @@ MonoBehaviour:
   _lifetime: 0.5
   _health: 5
   _deathEffect: {fileID: 0}
+--- !u!114 &-7076053165930805136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565081720219544214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1392252153
+      Data2: 1182227403
+      Data3: -1672108356
+      Data4: -1342534773
+    Path: event:/Combat/Guns/Grenade
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
