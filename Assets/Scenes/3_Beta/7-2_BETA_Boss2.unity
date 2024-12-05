@@ -1352,6 +1352,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5786527395875337277, guid: afe2a4979f1045b4394bd36b24bd6deb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1014.15
+      objectReference: {fileID: 0}
     - target: {fileID: 7008993808669093763, guid: afe2a4979f1045b4394bd36b24bd6deb, type: 3}
       propertyPath: m_Name
       value: Intro Boss Targets
@@ -3906,6 +3910,14 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3986277634790609888, guid: c7bf435f6cebb2749841337e3e476b21, type: 3}
+      propertyPath: m_Size.y
+      value: 10.395618
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986277634790609888, guid: c7bf435f6cebb2749841337e3e476b21, type: 3}
+      propertyPath: m_Center.y
+      value: -0.30219078
+      objectReference: {fileID: 0}
     - target: {fileID: 6423747674264421804, guid: c7bf435f6cebb2749841337e3e476b21, type: 3}
       propertyPath: m_Name
       value: TargetBoundingBox
@@ -4315,41 +4327,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1673396115}
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
-      propertyPath: paintingSound.Path
-      value: event:/Combat/Painterly/Painting
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
-      propertyPath: _paintingTrackSpeed
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: _transitionsHandler
       value: 
       objectReference: {fileID: 1407516196}
-    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
-      propertyPath: paintingSound.Guid.Data1
-      value: 92075825
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
-      propertyPath: paintingSound.Guid.Data2
-      value: 1164325108
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
-      propertyPath: paintingSound.Guid.Data3
-      value: 353952167
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
-      propertyPath: paintingSound.Guid.Data4
-      value: -296267625
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
-      propertyPath: _phases.Array.data[2].RepeatRate
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
-      propertyPath: _phases.Array.data[3].RepeatRate
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[17]
       value: 
