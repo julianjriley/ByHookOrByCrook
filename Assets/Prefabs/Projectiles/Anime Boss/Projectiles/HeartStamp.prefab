@@ -135,10 +135,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 3.517557
-  m_Height: 151.6832
-  m_Direction: 1
-  m_Center: {x: 1.3135004, y: -4.883442, z: 0}
+  m_Radius: 2.3045762
+  m_Height: 149.22974
+  m_Direction: 0
+  m_Center: {x: 0.94662905, y: 6.5168676, z: 0}
 --- !u!114 &4719840994955665694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +157,7 @@ MonoBehaviour:
   _speed: 1
   _lifetime: 5
   _health: 10000
+  _deathEffect: {fileID: 0}
   _ps: {fileID: 1485549609754653528}
 --- !u!95 &3197254914022828904
 Animator:
