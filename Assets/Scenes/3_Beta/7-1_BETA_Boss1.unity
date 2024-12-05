@@ -4019,6 +4019,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5624498320728542699, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6216035640418785883, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
       propertyPath: m_Name
       value: Boss Intro

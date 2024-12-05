@@ -3429,6 +3429,18 @@ PrefabInstance:
 
         Menace of the Painter Reality'
       objectReference: {fileID: 0}
+    - target: {fileID: 2654662467534787710, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b08bbed67e0d9e44aa199777d92f72c, type: 2}
+    - target: {fileID: 2654662467534787710, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2383596797055915489, guid: 4b08bbed67e0d9e44aa199777d92f72c, type: 2}
+    - target: {fileID: 2654662467534787710, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3009414729312138314, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3518,6 +3530,18 @@ PrefabInstance:
       value: 'Terrorbrush Tentacle:
 
         Menace of the Painter Reality'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461873773169119458, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b08bbed67e0d9e44aa199777d92f72c, type: 2}
+    - target: {fileID: 5461873773169119458, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2383596797055915489, guid: 4b08bbed67e0d9e44aa199777d92f72c, type: 2}
+    - target: {fileID: 5461873773169119458, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5624498320728542699, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
       propertyPath: m_IsActive
@@ -4330,6 +4354,10 @@ PrefabInstance:
       propertyPath: _transitionsHandler
       value: 
       objectReference: {fileID: 1407516196}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: _bossProgressionNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[17]
       value: 
