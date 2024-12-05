@@ -71,4 +71,9 @@ public class Skipper : MonoBehaviour
         _skipperGlock.Fire(_weaponDirection);
 
     }
+
+    public void OnApplicationQuit()
+    {
+       _skipperGlock.GetWeapon().ResetStats();
+    }
 }
