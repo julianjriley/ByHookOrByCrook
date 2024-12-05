@@ -1012,7 +1012,7 @@ Transform:
   - {fileID: 5707883226058391673}
   - {fileID: 1073788579407919150}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2983809155565501779
 SpriteRenderer:
@@ -1281,6 +1281,20 @@ MonoBehaviour:
   _wandAnim: {fileID: 2092681179612196492}
   _bigWhiteScreen: {fileID: 0}
   _skipCutscene: 1
+  transitionLeadup:
+    Guid:
+      Data1: 639408310
+      Data2: 1334174244
+      Data3: 1607947941
+      Data4: -1724721659
+    Path: event:/Combat/Anime/TransformationLeadup
+  anime2Track:
+    Guid:
+      Data1: 1907727205
+      Data2: 1177069755
+      Data3: 2142568625
+      Data4: 187321484
+    Path: event:/Music/Anime2
   _mikuAttackEmpty: {fileID: 5910219835487344141}
   _laserbeamPrefab: {fileID: 3028064153207335143, guid: 355ae398be7b22d418a9ce2e884388fb, type: 3}
   _laserAttackEmpty: {fileID: 0}

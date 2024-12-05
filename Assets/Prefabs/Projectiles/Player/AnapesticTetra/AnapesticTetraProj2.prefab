@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2135115286388844846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.37, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.74, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6720962456717238182}
@@ -176,6 +176,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -328271615, guid: 7d7daa06539176c478afd7a2a99a1149, type: 3}
+    - target: {fileID: 8395435937037991085, guid: 9a9ae34019562cf41a0dfd8eccf20af5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.25044498
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395435937037991085, guid: 9a9ae34019562cf41a0dfd8eccf20af5, type: 3}
+      propertyPath: m_Color.g
+      value: 0.25044498
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395435937037991085, guid: 9a9ae34019562cf41a0dfd8eccf20af5, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7924528
+      objectReference: {fileID: 0}
     - target: {fileID: 8395435937037991085, guid: 9a9ae34019562cf41a0dfd8eccf20af5, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1

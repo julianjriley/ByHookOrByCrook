@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     public EventInstance fishingEventInstance;
     public EventInstance footstepsEventInstance;
     public EventInstance dialogueEventInstance;
+    public EventInstance laserEventInstance;
 
     public List<EventInstance> eventInstances;
 
@@ -92,6 +93,14 @@ public class SoundManager : MonoBehaviour
     {
         dialogueEventInstance = CreateInstance(dialogueEventReference);
         dialogueEventInstance.start();
+    }
+
+    public void InitializeLaser(EventReference laserEventReference)
+    {
+        laserEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        laserEventInstance.release();
+        laserEventInstance = CreateInstance(laserEventReference);
+        laserEventInstance.start();
     }
 
     public void StopDialogue()

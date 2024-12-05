@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -23,6 +25,13 @@ public class AnimeBoss : BossPrototype
     private Animator _bossAnim;
     private Animator _bwsAnim;
 
+    [Header("SFX")]
+    [SerializeField] private EventReference transitionLeadup;
+    [SerializeField] private EventReference anime2Track;
+    private EventInstance leadupInstance;
+    private EventInstance music;
+    private bool isLeadingUp;
+    private float leadupDistance;
 
     [Header("Miku Attack")]
     [SerializeField, Tooltip("The empty that Miku spawns under")]
@@ -45,6 +54,7 @@ public class AnimeBoss : BossPrototype
         _bossAnim = GetComponent<Animator>();
         _bwsAnim = _bigWhiteScreen.GetComponent<Animator>();
         _wandAnim.speed = 0;
+        //music = SoundManager.Instance.musicEventInstance;
     }
 
     override protected void FixedUpdate()
@@ -52,13 +62,22 @@ public class AnimeBoss : BossPrototype
         base.FixedUpdate();
 
         if (_phaseCounter >= 3)
-
+        {
             if (!_phaseTwoChangeInProgress) // If the phase change needs to start, start it
             {
                 StartCoroutine(DoMajorPhaseChange());
             }
-
+            if(isLeadingUp)
+            {
+                leadupDistance = gameObject.transform.position.y - _playerTransform.position.y;
+                if (leadupDistance < 40)
+                {
+                    SoundManager.Instance.SetParameter(leadupInstance, "Distance", leadupDistance / 4);
+                }
+            }
         }
+        music.getParameterByName("Phase1Over", out float volume);
+    }
 
     override protected void AttackLogic()
     {
@@ -118,13 +137,27 @@ public class AnimeBoss : BossPrototype
         SetNewTarget(_gSpawner.getFinalSection());
         SetSpeed(50f);
 
+        // Stop the music
+        SoundManager.Instance.musicEventInstance.setParameterByName("Phase1Over", 1);
+
+        // Start Transformation Leadup
+        leadupInstance = SoundManager.Instance.CreateInstance(transitionLeadup);
+        leadupInstance.start();
+        yield return new WaitForSeconds(3f);
+        isLeadingUp = true;
+
         // Wait for the camera to catch up
         yield return new WaitUntil(() => _b3Cam.GetFullStop());
+        SoundManager.Instance.musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        SoundManager.Instance.musicEventInstance.release();
+        leadupInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        leadupInstance.release();
 
         if (!_skipCutscene)
         {
             // Play the transformation sequence
             _bossAnim.Play("Transfoooorm", 0, 0);
+            SoundManager.Instance.InitializeMusic(anime2Track);
             _bigWhiteScreen.SetActive(true);
             _bwsAnim.Play("FadeWhite", 0, 0);
             yield return new WaitForSeconds(6.67f);

@@ -5070,6 +5070,7 @@ GameObject:
   - component: {fileID: 7506525584329227125}
   - component: {fileID: 2153822861093203654}
   - component: {fileID: 2963979174500865795}
+  - component: {fileID: 1468437784464894759}
   m_Layer: 7
   m_Name: BlobfishProjectile
   m_TagString: Untagged
@@ -5189,3 +5190,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1468437784464894759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9108192296873865193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -71016327
+      Data2: 1326653352
+      Data3: -1660939382
+      Data4: -1213309905
+    Path: event:/Combat/Guns/BlobfishShot
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

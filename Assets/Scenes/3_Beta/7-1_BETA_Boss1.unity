@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43354076, g: 0.47028798, b: 0.5063641, a: 1}
+  m_IndirectSpecularColor: {r: 0.43354046, g: 0.47028756, b: 0.50636315, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1768,16 +1768,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: f79162a3400d7f64ab45dda97c3223b4, type: 2}
+      objectReference: {fileID: 11400000, guid: 7d5259b2ce82e814b8411efdf587051b, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[1]
       value: 
@@ -1801,7 +1801,7 @@ PrefabInstance:
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: cdcb881443434e14abd8e0ce08db8810, type: 2}
+      objectReference: {fileID: 11400000, guid: 60d2a0e74ba19284fb95c2dc06357187, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[3]
       value: 
