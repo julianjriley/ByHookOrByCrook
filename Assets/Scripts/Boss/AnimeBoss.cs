@@ -35,7 +35,6 @@ public class AnimeBoss : BossPrototype
     private Transform _laserAttackEmpty;
     [SerializeField, Tooltip("How long the boss stops to cast lasers")]
     private float _pauseTime = .5f;
-    private bool _laserActive; // Prevents other things from happening during laser time
 
     // Booleans for the major phase change
     private bool _inPhaseTwoPos; // True when the boss has entered position for phase 2
@@ -62,7 +61,7 @@ public class AnimeBoss : BossPrototype
         }
     #region LASER BEAM METHODS
 
-    public override void SpawnAttackOnce(GameObject gameObj) // This has just been converted into the "do the laser method"
+/*    public override void SpawnAttackOnce(GameObject gameObj) // This has just been converted into the "do the laser method"
     {
         //_laserbeamPrefab = gameObj;
         InvokeRepeating("StartLaserBeam", 1f, 30f); // Ahh, so this begins the loop of doing lasers every 30 sec
@@ -70,14 +69,15 @@ public class AnimeBoss : BossPrototype
 
     private void StartLaserBeam()
     {
-        SetNewTarget(_laserAttackEmpty, 20f);
+        // DISABLED: we want boss to keep moving like normal
+        // SetNewTarget(_laserAttackEmpty, 20f);
 
         // Actually spawn the lasers
         
         StartCoroutine(SpawnLaserBeam());
-    }
+    }*/
 
-    private IEnumerator SpawnLaserBeam() 
+ /*   private IEnumerator SpawnLaserBeam() 
     {
         yield return new WaitUntil(() => _inPhaseTwoPos == true);
         for (int i = 0; i < 4; i++)
@@ -85,7 +85,7 @@ public class AnimeBoss : BossPrototype
             GameObject laser = Instantiate(_laserbeamPrefab, _laserAttackEmpty);
             yield return new WaitForSeconds(1.5f);
         }
-    }
+    }*/
     #endregion
 
     override protected void AttackLogic()
@@ -121,12 +121,9 @@ public class AnimeBoss : BossPrototype
         {
             Instantiate(chosenAttack, _mikuAttackEmpty);
         }
-        else if (chosenAttack.gameObject.CompareTag("Laser")) // Special laser casting conditions
-        {
-            StartCoroutine(DoCastLaser(chosenAttack));
-        }
         else
         {
+            StartCoroutine(DoCastLaser(chosenAttack));
             Instantiate(chosenAttack, _spawnLocation);
         }
     }
