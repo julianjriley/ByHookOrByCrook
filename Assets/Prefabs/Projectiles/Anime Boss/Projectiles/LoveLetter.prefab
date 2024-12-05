@@ -29,11 +29,11 @@ Transform:
   m_GameObject: {fileID: 3147431625062083812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7151161189939041623
 SpriteRenderer:
@@ -155,6 +155,7 @@ MonoBehaviour:
   _speed: 4
   _lifetime: 4
   _health: 5
+  _deathEffect: {fileID: 0}
   _timeTillExplosion: 3
   _maxDistance: 2
   _explosion: {fileID: 565081720219544214, guid: 9ddaec7f7d6cc4b4ab238223c39962b7, type: 3}

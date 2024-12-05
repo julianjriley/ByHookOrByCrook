@@ -302,8 +302,8 @@ public class GameManager : MonoBehaviour
         newSaveData.IsConvoHadBag = new List<bool>();
         newSaveData.AllConvosHadBag = false;
 
-        newSaveData.SFXVolume = 0.5f;
-        newSaveData.MusicVolume = 0.5f;
+        newSaveData.SFXVolume = 1f;
+        newSaveData.MusicVolume = 1f;
 
         newSaveData.Brightness = 1f;
         newSaveData.Saturation = 30f;
