@@ -54,7 +54,7 @@ public class AnimeBoss : BossPrototype
         _bossAnim = GetComponent<Animator>();
         _bwsAnim = _bigWhiteScreen.GetComponent<Animator>();
         _wandAnim.speed = 0;
-        music = SoundManager.Instance.musicEventInstance;
+        //music = SoundManager.Instance.musicEventInstance;
     }
 
     override protected void FixedUpdate()
@@ -77,7 +77,6 @@ public class AnimeBoss : BossPrototype
             }
         }
         music.getParameterByName("Phase1Over", out float volume);
-        Debug.Log(volume);
     }
 
     override protected void AttackLogic()
@@ -139,7 +138,7 @@ public class AnimeBoss : BossPrototype
         SetSpeed(50f);
 
         // Stop the music
-        music.setParameterByName("Phase1Over", 1);
+        SoundManager.Instance.musicEventInstance.setParameterByName("Phase1Over", 1);
 
         // Start Transformation Leadup
         leadupInstance = SoundManager.Instance.CreateInstance(transitionLeadup);
