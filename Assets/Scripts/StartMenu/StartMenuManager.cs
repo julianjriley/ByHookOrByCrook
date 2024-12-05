@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class StartMenuManager : MonoBehaviour
 {
     [SerializeField]
-    private string gameScene, creditsScene, startScene;
+    private string gameScene, creditsScene, startScene, newStartScene;
     [SerializeField]
     GameObject optionsScreen;
     [SerializeField]
@@ -24,7 +24,7 @@ public class StartMenuManager : MonoBehaviour
     public void ClearData()
     {
         GameManager.Instance.InitializeSaveData(true);
-        SceneManager.LoadScene(gameScene);
+        SceneManager.LoadScene(newStartScene);
     }
     public void LoadOptionsScene()
     {
