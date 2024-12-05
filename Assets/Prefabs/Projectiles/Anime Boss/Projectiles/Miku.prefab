@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 200201163924875462}
   - component: {fileID: 2709412597720014026}
   - component: {fileID: 8643602353941430029}
+  - component: {fileID: 348324164140915882}
   m_Layer: 8
   m_Name: Miku
   m_TagString: Miku
@@ -35,7 +36,7 @@ Transform:
   - {fileID: 7370281106623394827}
   - {fileID: 2337612589517388540}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4479598209664823706
 Rigidbody:
@@ -105,7 +106,15 @@ MonoBehaviour:
   _speed: 5
   _lifetime: 10
   _health: 5
+  _deathEffect: {fileID: 0}
   _sprite: {fileID: 5213961956247577238}
+  mikuSound:
+    Guid:
+      Data1: 1717108266
+      Data2: 1237901037
+      Data3: -890027090
+      Data4: -1118170487
+    Path: event:/Combat/Anime/Miku
 --- !u!136 &8643602353941430029
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -129,6 +138,37 @@ CapsuleCollider:
   m_Height: 3.4781404
   m_Direction: 1
   m_Center: {x: -0.079386905, y: -0.15204239, z: 0}
+--- !u!114 &348324164140915882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809019826170991230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1258524949
+      Data2: 1080547674
+      Data3: 969860509
+      Data4: -76266862
+    Path: event:/Combat/General/Poof
+  Event: 
+  EventPlayTrigger: 2
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &4930767534375511951
 GameObject:
   m_ObjectHideFlags: 0

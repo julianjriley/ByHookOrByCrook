@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5308727306712629826}
   - component: {fileID: 3717053446057670138}
   - component: {fileID: -3825279290709488291}
+  - component: {fileID: 2150289851845469404}
   m_Layer: 8
   m_Name: LoveLetter
   m_TagString: Untagged
@@ -159,3 +160,34 @@ MonoBehaviour:
   _timeTillExplosion: 3
   _maxDistance: 2
   _explosion: {fileID: 565081720219544214, guid: 9ddaec7f7d6cc4b4ab238223c39962b7, type: 3}
+--- !u!114 &2150289851845469404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3147431625062083812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -360336581
+      Data2: 1165024339
+      Data3: 1623024571
+      Data4: 440065680
+    Path: event:/Combat/Anime/LetterOpen
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

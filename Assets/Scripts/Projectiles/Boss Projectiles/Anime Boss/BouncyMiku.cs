@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +10,7 @@ public class BouncyMiku : Projectile
 {
     private Vector3 _direction;
     [SerializeField] private GameObject _sprite;
+    [SerializeField] private EventReference mikuSound;
 
     override protected void Start()
     {
@@ -42,6 +44,7 @@ public class BouncyMiku : Projectile
                 _direction.y *= -1;
             }
             _rb.velocity = _direction * _speed;
+            SoundManager.Instance.PlayOneShot(mikuSound, gameObject.transform.position);
         }
     }
 

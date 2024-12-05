@@ -67,7 +67,7 @@ public class BlobfishProjectile : Projectile
 
     void FlashEffect()
     {
-        GameObject flashEffect = Instantiate(_flashEffect, new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject flashEffect = Instantiate(_flashEffect, gameObject.transform.position, Quaternion.identity);
         Destroy(flashEffect, 2f);
     }
 
