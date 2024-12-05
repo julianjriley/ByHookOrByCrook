@@ -50,10 +50,12 @@ public class Boss3Camera : MonoBehaviour
 
     private IEnumerator DoCamRampUp()
     {
+        yield return new WaitForSeconds(5f);
         _cameraRampingUp = true;
         while(_currentCameraSpeed < _topCameraSpeed)
         {
             _currentCameraSpeed += _rampIncrement;
+            
             yield return new WaitForSeconds(_rampDelay);
         }
         _currentCameraSpeed = _topCameraSpeed;
