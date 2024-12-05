@@ -7,6 +7,7 @@ public class LLExplosion : Projectile
     override protected void Start()
     {
         base.Start();
+        
     }
 
     protected override void FixedUpdate()
@@ -16,11 +17,21 @@ public class LLExplosion : Projectile
 
     override protected void OnCollisionEnter(Collision collision)
     {
-        base.OnCollisionEnter(collision);
+        if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable component))
+        {
+            component.TakeDamage(_damage, false);
+
+
+        }
     }
 
     override protected void OnTriggerEnter(Collider collider)
     {
-        base.OnTriggerEnter(collider);
+        if (collider.TryGetComponent<IDamageable>(out IDamageable component))
+        {
+            component.TakeDamage(_damage, false);
+
+
+        }
     }
 }
