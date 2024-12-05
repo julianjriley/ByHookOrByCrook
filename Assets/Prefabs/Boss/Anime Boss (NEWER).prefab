@@ -1126,7 +1126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cab58fedcf134740a9d63b215a0e63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 25
+  Speed: 30
   _playerTransform: {fileID: 0}
   _offscreenTarget: {fileID: 0}
   _entranceTarget: {fileID: 0}
@@ -1135,33 +1135,42 @@ MonoBehaviour:
   _victoryText: {fileID: 0}
   _defeatText: {fileID: 0}
   _transitionsHandler: {fileID: 0}
-  BossHealth: 300
+  BossHealth: 600
   MaxBossHealth: 100
   _phases:
-  - Threshold: 300
+  - Threshold: 600
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
     StartDelay: 1.5
-    RepeatRate: 3.5
+    RepeatRate: 5
     AttackPrefabs:
-    - {fileID: 5530212971044480126, guid: e8f20ca7daf928e459a6a5fdb2d1e74c, type: 3}
-    - {fileID: 5419112317460699201, guid: 31922cd25e237f647ab82408930bf149, type: 3}
-    - {fileID: 6025033825660226945, guid: 3ba3a8c417d62ab4592db63045e7dd3c, type: 3}
-  - Threshold: 299
+    - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+  - Threshold: 500
+    StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    StartDelay: 1.5
+    RepeatRate: 5
+    AttackPrefabs:
+    - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+  - Threshold: 400
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
     StartDelay: 11.5
-    RepeatRate: 6
+    RepeatRate: 5
     AttackPrefabs:
-    - {fileID: 5419112317460699201, guid: 31922cd25e237f647ab82408930bf149, type: 3}
-  - Threshold: 298
+    - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+  - Threshold: 300
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
     StartDelay: 11.5
-    RepeatRate: 3.5
+    RepeatRate: 2.5
     AttackPrefabs:
     - {fileID: 7453485478561490602, guid: 036c61a15ab068649936dd04308ec1f5, type: 3}
     - {fileID: 6158136998503920516, guid: a1e391125307e874c9cd6d96153b9bf6, type: 3}
@@ -1181,8 +1190,8 @@ MonoBehaviour:
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    StartDelay: 11.5
-    RepeatRate: 3
+    StartDelay: 0.5
+    RepeatRate: 2.5
     AttackPrefabs:
     - {fileID: 586751561527155039, guid: 1ac48c21087c7874f8e1add69ba3ef2c, type: 3}
     - {fileID: 5962596207937716559, guid: bd49da0e51de03b44a1aad9f5d6034a9, type: 3}
@@ -1227,8 +1236,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    StartDelay: 11.5
-    RepeatRate: 3
+    StartDelay: 0.5
+    RepeatRate: 2.5
     AttackPrefabs:
     - {fileID: 586751561527155039, guid: 1ac48c21087c7874f8e1add69ba3ef2c, type: 3}
     - {fileID: 5962596207937716559, guid: bd49da0e51de03b44a1aad9f5d6034a9, type: 3}
@@ -1272,10 +1281,10 @@ MonoBehaviour:
   _wandAnim: {fileID: 2092681179612196492}
   _bigWhiteScreen: {fileID: 0}
   _skipCutscene: 1
-  _mikuAttackEmpty: {fileID: 0}
+  _mikuAttackEmpty: {fileID: 5910219835487344141}
   _laserbeamPrefab: {fileID: 3028064153207335143, guid: 355ae398be7b22d418a9ce2e884388fb, type: 3}
   _laserAttackEmpty: {fileID: 0}
-  _pauseTime: 2
+  _pauseTime: 1.5
 --- !u!136 &6817808309870632791
 CapsuleCollider:
   m_ObjectHideFlags: 0
