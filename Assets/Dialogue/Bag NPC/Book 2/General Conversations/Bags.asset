@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
+  m_Name: Bags
+  m_EditorClassIdentifier: 
+  lines:
+  - "I tell ya, makin these bags is what keeps me sane.\r"
+  - "High quality materials washin\u2019 up at my feet, sellin\u2019 em to\u2026
+    eh, enterprising young fishermen like yourself\u2026"
+  - And makin stacks while I do it.
+  - "If you keep comin\u2019 by I\u2019ll have to keep a bag for myself to store
+    all my loot!\r"
+  RequiredBossLossCount: 0
+  GeneralPriority: 0

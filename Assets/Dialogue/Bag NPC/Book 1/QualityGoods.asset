@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3052eed0dbbe84f9b8bc1cd5d431f9, type: 3}
+  m_Name: QualityGoods
+  m_EditorClassIdentifier: 
+  lines:
+  - "I tell you what, bear, if you\u2019re lookin\u2019 for better bags you won\u2019t
+    find \u2018em in ANY universe."
+  - "These puppies are waterproof, air-tight, breathable - heck, I even found a way
+    to make \u2018em void-goop-resistant."
+  - "Weight capacity? So high I don\u2019t even need to tell you a number."
+  - "Space is limited, sure, but if you\u2019ve got the shells, I can ALWAYS go bigger."
+  - "They\u2019re my pride and joy, these bags - it\u2019s a miracle I\u2019m even
+    willing to sell \u2018em to ya."
+  RequiredBossLossCount: 0
+  GeneralPriority: 0

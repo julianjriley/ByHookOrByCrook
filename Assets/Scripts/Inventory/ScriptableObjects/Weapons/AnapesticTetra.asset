@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
   m_Name: AnapesticTetra
   m_EditorClassIdentifier: 
-  _itemID: 234
+  _itemID: 28
   _itemName: Anapestic Tetra
-  _itemDescription: One fish two fish
-  _sprite: {fileID: 1250833714, guid: 448c100d49a9a98448693d05617c1692, type: 3}
+  _itemDescription: Fires a unique projectile sequence. |  Although they seem unrelated,
+    the things it fires all rhyme perfectly in the poetic meter it is named for.
+  _sprite: {fileID: 21300000, guid: b333676f732e11a44afa3ea7d921060e, type: 3}
   _itemPrefab: {fileID: 666468142319288933, guid: fbdeb3cbd497ee143bdd684cead43e32, type: 3}
-  _cost: 50
+  _cost: 120
+  itemType: 3
   _baseDamage: 3
   _baseFireRate: 2.5
   _baseSize: 1
@@ -25,13 +27,16 @@ MonoBehaviour:
   _baseLifetime: 3
   _baseHeatBuildup: 10
   _baseCoolingSpeed: 10
+  _overHeatCoolingSpeedMultiplier: 1
   _baseProjectileCount: 1
   _baseRecoilAmount: 5
   _fireSound:
     Guid:
-      Data1: 750242881
-      Data2: 1273948051
-      Data3: 284294323
-      Data4: -499286835
-    Path: event:/Combat/Guns/RottenFish
-  canRecoil: 1
+      Data1: 1105150628
+      Data2: 1309988286
+      Data3: 1630208937
+      Data4: 272898615
+    Path: event:/Combat/Guns/Anapestic
+  canRecoil: 0
+  overheatShot: 0
+  overheatDamageBonus: 0

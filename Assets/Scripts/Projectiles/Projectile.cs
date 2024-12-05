@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IDamageable
 {
     [SerializeField, Tooltip("Amount of damage projectile deals on contact.")]
     protected float _damage;
@@ -21,12 +21,14 @@ public class Projectile : MonoBehaviour
     protected Rigidbody _rb;
     protected PlayerCombat _playerCombat;
 
-    bool shortRangeDamage;
+    protected bool shortRangeDamage;
     float distanceToPlayer;
 
+    [SerializeField] protected GameObject _deathEffect;
 
     virtual protected void Start()
     {
+        gameObject.AddComponent<EffectManager>();
         _rb = GetComponent<Rigidbody>();
         
         // allows negative lifetime projectiles to have indefinite lifetime (useful on painterly boss)
@@ -45,7 +47,13 @@ public class Projectile : MonoBehaviour
         shortRangeDamage = _playerCombat.useShortRangeDamage;
     }
 
-    public void TakeDamage(float damage)
+    public virtual void ReassignDamage(float damage)
+    {
+        _damage = damage;
+        _baseDamage = damage;
+    }
+
+    public virtual void TakeDamage(float damage, bool dontUseSound = false)
     {
         _health -= damage;
         if(_health <= 0)
@@ -72,57 +80,48 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
-        //DO DAMAGE CODE HERE
-        //Destroy(gameObject);
-
-        if(collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+        InstantiateDeathEffect();
+        if (collider.TryGetComponent<IDamageable>(out IDamageable component))
         {
-           collider.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
-           Destroy(gameObject);
-        }
-
-        if(collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
-        {
-           collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
-           Destroy(gameObject);
-        }
-
-        if(collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collider.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
-        {
-            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+            component.TakeDamage(_damage, false);
+            if(collider.gameObject.layer == LayerMask.NameToLayer("Player") || collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
+                Destroy(gameObject);
         }
 
         if (_health <= 0)
         {
             Destroy(gameObject);
-            //Debug.Log("gotHere");
         }
             
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        //DO DAMAGE CODE HERE
-        //Destroy(gameObject);
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        InstantiateDeathEffect();
+        if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable component))
         {
-            collision.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
-        {
-            collision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
-        {
-            collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+            component.TakeDamage(_damage, false);
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
+                Destroy(gameObject);
         }
 
         if (_health <= 0)
             Destroy(gameObject);
 
+    }
+
+    protected void InstantiateDeathEffect(float effectDuration = 0.2f)
+    {
+        if(_deathEffect != null)
+        {
+            GameObject deathEffect = Instantiate(_deathEffect, transform.position, Quaternion.identity);
+            Destroy(deathEffect, effectDuration);
+        }
+
+           
+    }
+
+    public void PassEffect(EffectData effectData)
+    {
+        GetComponent<EffectManager>().PassEffect(effectData);
     }
 }

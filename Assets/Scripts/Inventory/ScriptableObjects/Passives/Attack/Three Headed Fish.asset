@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: Three Headed Fish
   m_EditorClassIdentifier: 
-  _itemID: 7
+  _itemID: 11
   _itemName: Three Headed Fish
-  _itemDescription: Triple the bullets. Firing on all sealinders
+  _itemDescription: 'Fires triple the bullets | Bing, Bang, Boom! Literally. '
   _sprite: {fileID: 21300000, guid: 355ec0b4b5035ee41864f107ade6f7dd, type: 3}
   _itemPrefab: {fileID: 5084264862057522776, guid: b454ee96bcb48634b9f88c3602c74642, type: 3}
-  _cost: 45
+  _cost: 450
+  itemType: 0

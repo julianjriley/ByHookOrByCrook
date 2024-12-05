@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: Brickfish
   m_EditorClassIdentifier: 
-  _itemID: -13456
+  _itemID: 20
   _itemName: Brickfish
-  _itemDescription: You feel safe...and a bit heavy
+  _itemDescription: 'Doubles your health but removes your dash ability | Build a
+    house. Throw it through a window. The choice is yours.  '
   _sprite: {fileID: 21300000, guid: f2080273c22ebe34a9182189c90f0e0d, type: 3}
   _itemPrefab: {fileID: 4863703128498904558, guid: 98731a99427210b40be67f58838359fb, type: 3}
-  _cost: 50
+  _cost: 425
+  itemType: 1

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: Nurse Shark
   m_EditorClassIdentifier: 
-  _itemID: 2
+  _itemID: 25
   _itemName: Nurse Shark
-  _itemDescription: Increase health. Most nursing sharks actually end up in business
-    finance
+  _itemDescription: Gives extra health. |  Most nurse sharks actually go into business
+    finance.
   _sprite: {fileID: 21300000, guid: 98a0ba432e7205c4c8783c0388e361c2, type: 3}
   _itemPrefab: {fileID: 7635014375224927991, guid: b4900fbb9c4b6f34aa20e678c1e87d13, type: 3}
-  _cost: 40
+  _cost: 155
+  itemType: 1

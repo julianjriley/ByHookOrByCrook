@@ -2,15 +2,13 @@ using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : MonoBehaviour, IDamageable
 {
 
-    private ActionControls controls;
+    private InputActionMap controls;
     Camera cam;
 
     //Player Movement Script
@@ -50,11 +48,14 @@ public class PlayerCombat : MonoBehaviour
 
     bool dead;
     //Damage taking stuff
+    public bool BossDefeated = false;
     private bool _invulnerable;
     private Collider _collider;
     private LayerMask _invulnerabilityMask;
+    private Coroutine _invulnerableWindow;
 
-
+    //Sprite Renderer
+    SpriteRenderer _spriteRenderer;
 
     public delegate void PlayerDied();
     public static event PlayerDied playerDeath;
@@ -68,7 +69,7 @@ public class PlayerCombat : MonoBehaviour
     public bool canRevive = false;
     private bool _hasRevived = false;
     public bool canInvincibleDash = false;
-
+    public static event Action DeadFishUIEvent;
 
     //Skipper
     [SerializeField] GameObject skipper;
@@ -82,9 +83,6 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] Weapon[] testWeapons;
 #endif
 
-
-  
-
     private void OnEnable()
     {
         cam = Camera.main;
@@ -92,23 +90,29 @@ public class PlayerCombat : MonoBehaviour
 
     private void Awake()
     {
-        controls = new ActionControls();
+        controls = InputSystem.actions.actionMaps[0];
     }
     void Start()
     {
-        controls.Player.FireWeapon.started += FireWeapon;
-        controls.Player.FireWeapon.canceled += FireWeapon;
-        controls.Player.FireWeapon.Enable();
+        controls.FindAction("FireWeapon").started += FireWeapon;
+        controls.FindAction("FireWeapon").canceled += FireWeapon;
+        controls.FindAction("FireWeapon").Enable();
 
-        controls.Player.SwitchWeapon.Enable();
-        controls.Player.SwitchWeapon.performed += ChangeWeapon;
-        
-        
+        controls.FindAction("SwitchWeapon").Enable();
+        controls.FindAction("SwitchWeapon").performed += ChangeWeapon;
+
+        controls.FindAction("InvulnToggle").Enable();
+        controls.FindAction("InvulnToggle").performed += ToggleInvuln;
+
         ResetStats();
         _weapons = new List<WeaponInstance>();
         playerMovement = GetComponent<ArenaMovement>();
         rb = GetComponent<Rigidbody>();
+        gameObject.AddComponent<EffectManager>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        equippedWeaponindex = 0;
 
+        BossDefeated = false;
         _invulnerabilityMask = LayerMask.GetMask("Boss", "BreakableBossProjectile", "BossProjectile");
 
         _collider = GetComponent<Collider>();
@@ -126,7 +130,12 @@ public class PlayerCombat : MonoBehaviour
             foreach (PassiveItem passiveItem in testItems)
                 AddItemToPlayer(passiveItem);
             foreach (Weapon weapon in testWeapons)
+            {
                 AddItemToPlayer(weapon);
+                GameManager.Instance.ScenePersistent.Loadout.Add(weapon);
+            }
+                
+            
         }
 #endif
         //AddItemToPlayer(defaultWeapon);
@@ -140,15 +149,29 @@ public class PlayerCombat : MonoBehaviour
         {
             Instantiate(skipper, new Vector3(0,0,0), Quaternion.identity);
         }
-        
+        InvulnCheckStart();
     }
 
     private void OnDisable()
     {
-        controls.Player.FireWeapon.Disable();
-        controls.Player.SwitchWeapon.Disable();
+        controls.FindAction("FireWeapon").started -= FireWeapon;
+        controls.FindAction("FireWeapon").canceled -= FireWeapon;
+        controls.FindAction("SwitchWeapon").performed -= ChangeWeapon;
+        controls.FindAction("InvulnToggle").performed -= ToggleInvuln;
+
+        controls.FindAction("FireWeapon").Disable();
+        controls.FindAction("SwitchWeapon").Disable();
+        foreach(Item item in _inventory.items)
+        {
+            if(item is Weapon)
+            {
+                Weapon weapon = (Weapon)item;
+                weapon.ResetStats();
+            }
+        }
     }
 
+    
 
 
     void FireWeapon(InputAction.CallbackContext context)
@@ -190,7 +213,7 @@ public class PlayerCombat : MonoBehaviour
         _equippedWeapon.DisableRendering();
         _equippedWeapon = _weapons[equippedWeaponindex];
         _equippedWeapon.EnableRendering();
-        if (controls.Player.FireWeapon.IsPressed())
+        if (controls.FindAction("FireWeapon").IsPressed())
         {
             _equippedWeapon.SetAim(weaponDirection);
             FireFunctionality();
@@ -218,10 +241,22 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    private void InvulnCheckStart() { //ensure invincibility setting is same at start
+        _invulnerable = GameManager.Instance.GamePersistent.IsInvulnerable;
+    }
+
+    private void ToggleInvuln(InputAction.CallbackContext context) { //if changing setting in pause menu call this
+        if (_invulnerableWindow != null) {
+            StopCoroutine(_invulnerableWindow);
+        }
+        _invulnerable = !_invulnerable;
+        GameManager.Instance.GamePersistent.IsInvulnerable = _invulnerable;
+    }
+
     private void Update()
     {
         mousePosition = Mouse.current.position.ReadValue();
-        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 16.745f));
+        worldPos = cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, -cam.transform.position.z));
         if(_equippedWeapon != null)
             _equippedWeapon.SetAim(weaponDirection);
         if (worldPos.x < gameObject.transform.position.x)
@@ -235,8 +270,6 @@ public class PlayerCombat : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
             _facingLeft = false;
         }
-        
-        
     }
 
     private void FixedUpdate()
@@ -286,9 +319,10 @@ public class PlayerCombat : MonoBehaviour
         set { _health = value; }
     }
 
-    public void TakeDamageLikeAGoodBoy()
+    //the damage parameter can be ignored here its just how the interfacing works to make things easier
+    public void TakeDamage(float damage, bool dontUseSound = false)
     {
-        if (_invulnerable)
+        if (_invulnerable || BossDefeated)
             return;
         Health -= 1;
         SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
@@ -301,7 +335,7 @@ public class PlayerCombat : MonoBehaviour
         }
         else
         {
-            StartCoroutine(InvulnerabilityWindow(1));
+            _invulnerableWindow = StartCoroutine(InvulnerabilityWindow(1));
         }
        
     }
@@ -391,10 +425,42 @@ public class PlayerCombat : MonoBehaviour
             yield break;
         _invulnerable = true;
         _collider.excludeLayers = _invulnerabilityMask;
+        StartCoroutine(DamageFlash());
         yield return new WaitForSeconds(1);
         _collider.excludeLayers = 0;
         _invulnerable = false;
     }
+
+    IEnumerator DamageFlash()
+    {
+        Color baseColor = _spriteRenderer.color;
+        for(int i = 0; i < 8; i++)
+        {
+            baseColor.a = 0f;
+            _spriteRenderer.color = baseColor;
+            yield return new WaitForSeconds(0.0625f);
+            baseColor.a = 1f;
+            _spriteRenderer.color = baseColor;
+            yield return new WaitForSeconds(0.0625f);
+        }
+    }
+
+    public void PassEffect(EffectData effectData)
+    {
+        GetComponent<EffectManager>().PassEffect(effectData);
+    }
+
+#if UNITY_EDITOR
+    private void OnApplicationQuit()
+    {
+        foreach(Weapon weapon in testWeapons)
+        {
+            weapon.ResetStats();
+        }
+    }
+#endif
+    
+
 
     #region Zombie Mode Code
 
@@ -409,6 +475,7 @@ public class PlayerCombat : MonoBehaviour
             HealthChanged?.Invoke(Health);
             canRevive = false;
             _hasRevived = true;
+            _invulnerableWindow = StartCoroutine(InvulnerabilityWindow(1));
             StartCoroutine(ZombieDeathTimer());
             return true;
         }
@@ -417,6 +484,7 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator ZombieDeathTimer()
     {
+        DeadFishUIEvent?.Invoke();
         yield return new WaitForSeconds(30);
         playerDeath?.Invoke();
     }

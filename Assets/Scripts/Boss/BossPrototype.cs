@@ -3,13 +3,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 using static Unity.Mathematics.math;
 
 [RequireComponent(typeof(Rigidbody))]
 
-public class BossPrototype : MonoBehaviour
+public class BossPrototype : MonoBehaviour, IDamageable
 {
     [Header ("Boss Movement")]
     protected Transform _target;
@@ -21,6 +22,23 @@ public class BossPrototype : MonoBehaviour
     protected bool _checkingSwap = false;
     public Transform _playerTransform;
     private protected SpriteRenderer _renderer;
+
+    [Header ("Boss Intro & Outro")]
+    [SerializeField] private Transform _offscreenTarget;
+    [SerializeField] private Transform _entranceTarget;
+    [SerializeField] private GameObject _fightText;
+    [SerializeField] private GameObject _introUI;
+    [SerializeField] private GameObject _victoryText;
+    [SerializeField] private GameObject _defeatText;
+    [SerializeField, Tooltip("Used to call scene transitions.")]
+    private SceneTransitionsHandler _transitionsHandler;
+
+    private InputAction _skipIntroAction;
+    private Coroutine _part1Intro;
+    private GameObject _player;
+    private InputActionAsset _actions;
+
+    //private InputAction leftMouseClick;
 
     [Header ("Boss Phases + Attacks")]
     public float BossHealth;
@@ -47,22 +65,94 @@ public class BossPrototype : MonoBehaviour
     //For GameManager; Should be set to the next one
     [SerializeField] protected int _bossProgressionNumber = 0;
     
-
+    void Awake() {
+        _actions = InputSystem.actions;
+    }
     // Start is called before the first frame update
     virtual protected void Start()
     {
+        _introUI.SetActive(true);
         _rb = GetComponent<Rigidbody>();
         _spawnLocation = GameObject.Find("AttackHolderEmpty").GetComponent<Transform>();
         _target = GameObject.Find("Boss Target").GetComponent<Transform>();
         _defaultTarget = _target;
         _defaultSpeed = Speed;
         MaxBossHealth = BossHealth;
-        PhaseSwitch();
+
         //Debug.Log("Phase Counter = " + _phaseCounter);
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         _renderer = GetComponent<SpriteRenderer>();
 
-        PlayerCombat.playerDeath += GoToCashout;
+        _part1Intro = StartCoroutine(TitleCard());
+
+        PlayerCombat.playerDeath += HandlePlayerDeath;
+
+        gameObject.AddComponent<EffectManager>();
+    }
+
+    private void OnDisable()
+    {
+        PlayerCombat.playerDeath -= HandlePlayerDeath;
+    }
+
+    protected IEnumerator TitleCard() {
+        yield return new WaitForSeconds(0.1f);
+
+        _skipIntroAction = new InputAction("skipIntro", binding: "<Mouse>/leftButton");
+        _skipIntroAction.AddBinding("<Mouse>/rightButton");
+        _skipIntroAction.AddBinding("<Keyboard>/space");
+        _skipIntroAction.AddBinding("<Keyboard>/w");
+        _skipIntroAction.AddBinding("<Keyboard>/a");
+        _skipIntroAction.AddBinding("<Keyboard>/s");
+        _skipIntroAction.AddBinding("<Keyboard>/d");
+        _skipIntroAction.Enable();
+        _skipIntroAction.performed += EndTitleCard;
+
+        _fightText.SetActive(false);
+
+        //disable player combat and movement
+        _player = _playerTransform.gameObject;
+        _actions.Disable();
+
+        SetNewTarget(_offscreenTarget, -1);
+
+        yield return new WaitForSeconds(4f);
+
+        EndTitleCard();
+    }
+
+    protected void EndTitleCard() {
+        _skipIntroAction.performed -= EndTitleCard;
+        _skipIntroAction.Disable();
+        Destroy(_introUI);
+        if (_part1Intro != null) {
+            StopCoroutine(_part1Intro);
+        }
+        StartCoroutine(BossEntrance());
+    }
+
+    // this variant is used for input cancelling early
+    protected void EndTitleCard(InputAction.CallbackContext context) {
+        _skipIntroAction.performed -= EndTitleCard;
+        _skipIntroAction.Disable();
+        Destroy(_introUI);
+        if (_part1Intro != null) {
+            StopCoroutine(_part1Intro);
+        }
+        StartCoroutine(BossEntrance());
+    }
+
+    protected IEnumerator BossEntrance() {
+        //change boss target
+        SetNewTarget(_entranceTarget, 2f);
+        //wait
+        yield return new WaitForSeconds(2f);
+        //enable fight! text
+        _fightText.SetActive(true);
+        //enable player combat and movement
+        _actions.Enable();
+        PhaseSwitch();
+        SetDefaultTarget();
     }
 
     // Update is called once per frame
@@ -85,22 +175,28 @@ public class BossPrototype : MonoBehaviour
 
     public virtual void Move() {
         if (_rb == null) {
-            Debug.Log("No rigidbody");
+            //Debug.Log("No rigidbody");
             return;
         }
         if (_target == null) {
-            Debug.Log("No target");
+            //Debug.Log("No target");
             return;
         }
-        
-        //makes the boss lean in the direction it's heading
-        //flipX has to be considered in testing
-        float rotationVal = remap(-13, 13, 20, -20, _rb.velocity.x);
-        if (_renderer.flipX == false) {
-            transform.rotation = Quaternion.Euler(rotationVal, 0f, 0f);
-        } else {
-            transform.rotation = Quaternion.Euler(-rotationVal, 0f, 0f);
+
+        // makes the boss lean in the direction it's heading
+        // remapped/clamped in such a way that it does not jitter when it has a low velocity but rather stabilizes around 0 degree rotation
+        float rotationVal;
+        if (_rb.velocity.x < 0)
+        {
+            rotationVal = remap(-13, -2, 20, 0, _rb.velocity.x);
+            rotationVal = Mathf.Clamp(rotationVal, 0, 20);
         }
+        else
+        {
+            rotationVal = remap(2, 13, 0, -20, _rb.velocity.x);
+            rotationVal = Mathf.Clamp(rotationVal,-20, 0);
+        }
+        transform.rotation = Quaternion.Euler(0f, 0f, rotationVal); 
             
         //Debug.Log("Rigidbody velocity = " + _rb.velocity);
         _rb.AddForce((_target.position - transform.position).normalized * Speed, ForceMode.Force);
@@ -176,7 +272,7 @@ public class BossPrototype : MonoBehaviour
         Instantiate(chosenAttack, _spawnLocation);
     }
 
-    public void SpawnAttackOnce(GameObject gameObj) {
+    public virtual void SpawnAttackOnce(GameObject gameObj) {
         Instantiate(gameObj, _spawnLocation);
     }
 
@@ -204,23 +300,40 @@ public class BossPrototype : MonoBehaviour
         foreach (Transform child in _spawnLocation) { //delete all attacks to ensure player doesn't die after defeating the boss
             Destroy(child.gameObject);
         }
-        CalculateBossBountyMultiplier();
         GameManager.Instance.GamePersistent.BossNumber = _bossProgressionNumber;
+        transform.Find("SmokeExplosionVFX_0").gameObject.SetActive(true);
+        _victoryText.SetActive(true);
+        //_fadeOutPanel.SetActive(true);
+        StartCoroutine(NextSceneDelay());
+    }
+
+    void HandlePlayerDeath() {
+        _actions.Disable();
+        _defeatText.SetActive(true);
+        _player.transform.Find("SmokeExplosionVFX_0").gameObject.SetActive(true);
+        _player.GetComponent<PlayerCombat>().BossDefeated = true;
+        StartCoroutine(NextSceneDelay());
+    }
+
+    IEnumerator NextSceneDelay() {
+        yield return new WaitForSeconds(1.5f);
+        
         GoToCashout();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool dontUseSound)
     {
         BossHealth -= damage;
         HealthChanged?.Invoke(BossHealth);
-        SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
+        if(!dontUseSound)
+            SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
     }
 
-    //ONLY FOR THE PROTOTYPE
     public void GoToCashout()
     {
         CalculateBossBountyMultiplier();
-        SceneManager.LoadScene(_cashoutSceneName);
+
+        _transitionsHandler.LoadScene(_cashoutSceneName);
     }
 
     protected void CalculateBossBountyMultiplier()
@@ -228,16 +341,21 @@ public class BossPrototype : MonoBehaviour
         float percentageOfHealthLeft = BossHealth / MaxBossHealth;
         if(percentageOfHealthLeft <= 0)
         {
-            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 6;
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2;
         }
-        else if(percentageOfHealthLeft < 0.33f)
+        else
+        {
+            double x = ((double)percentageOfHealthLeft);
+            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = (float)(math.remap(0, 1, 1.5, 1, x));
+        }
+        /*else if(percentageOfHealthLeft < 0.33f)
         {
             GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 4;
         }
         else if(percentageOfHealthLeft < 0.66f)
         {
             GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2.5f;
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -245,8 +363,13 @@ public class BossPrototype : MonoBehaviour
         if(collider.gameObject == _playerTransform.gameObject)
         {
             PlayerCombat player = collider.gameObject.GetComponent<PlayerCombat>();
-            player.TakeDamageLikeAGoodBoy();
+            player.TakeDamage(20000, false);
         }
+    }
+
+    public void PassEffect(EffectData effectData)
+    {
+        GetComponent<EffectManager>().PassEffect(effectData);
     }
 
 }

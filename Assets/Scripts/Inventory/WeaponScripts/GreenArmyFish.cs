@@ -25,12 +25,12 @@ public class GreenArmyFish : WeaponInstance
                 projectile.GetComponent<Rigidbody>().AddForce(_direction * _weapon.Speed, ForceMode.Impulse);
                 GreenArmyFishProjectile greenArmyFishProjectile = projectile.GetComponent<GreenArmyFishProjectile>();
                 greenArmyFishProjectile.AssignStats(_weapon);
+                greenArmyFishProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
                 _heatLevel += _weapon.HeatBuildup;
             }
         }
         else
         {
-
             for (int i = -1; i < _weapon.ProjectileCount - 1; i++)
             {
                 Vector3 aimingDir = Quaternion.Euler(0, 0, 8 * i) * _direction;
@@ -39,12 +39,15 @@ public class GreenArmyFish : WeaponInstance
                 projectile.GetComponent<Rigidbody>().AddForce(aimingDir * _weapon.Speed, ForceMode.Impulse);
                 GreenArmyFishProjectile greenArmyFishProjectile = projectile.GetComponent<GreenArmyFishProjectile>();
                 greenArmyFishProjectile.AssignStats(_weapon);
+                greenArmyFishProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
             }
-            _heatLevel += _weapon.HeatBuildup;
         }
+        _animator.Play("Fire");
         TryApplyRecoil();
         if (_heatLevel >= 100)
+        {
             _overHeated = true;
+        }
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
         StartCoroutine(FireRate());
         _autoFireCoroutine = StartCoroutine(FireAuto(_direction));

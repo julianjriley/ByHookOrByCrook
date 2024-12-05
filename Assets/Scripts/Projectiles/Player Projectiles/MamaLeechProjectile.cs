@@ -12,30 +12,22 @@ public class MamaLeechProjectile : Projectile
     private float _maxDamage = 10;
     private Collision _bossCollision;
     private Collider _bossCollider;
+    //[SerializeField] GameObject _poisonEffect;
+    [SerializeField] EffectData _effectData;
 
     [SerializeField, Tooltip("Sprite renderer to be disabled as if projectile was destroyed.")]
     private SpriteRenderer _renderer;
-    
+
     //The two collision functions and apply poision functions are exactly the same
-
-    protected virtual new void OnTriggerEnter(Collider collider)
+    protected override void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+        InstantiateDeathEffect();
+        if (collider.TryGetComponent<IDamageable>(out IDamageable component))
         {
-            collider.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
-            Destroy(gameObject);
-        }
-
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
-        {
-            _bossCollider = collider;
-            InvokeRepeating("ApplyPoison", 0, _repeatTime);
-            _renderer.enabled = false;
-        }
-
-        if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collider.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
-        {
-            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+            component.TakeDamage(_damage, false);
+            component.PassEffect(_effectData);
+            if (collider.gameObject.layer == LayerMask.NameToLayer("Player") || collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
+                Destroy(gameObject);
         }
 
         if (_health <= 0)
@@ -44,37 +36,27 @@ public class MamaLeechProjectile : Projectile
         }
 
     }
-    protected virtual new void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        InstantiateDeathEffect();
+        if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable component))
         {
-            collision.gameObject.GetComponent<PlayerCombat>().TakeDamageLikeAGoodBoy();
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
-        {
-            _bossCollision = collision;
-            InvokeRepeating("ApplyPoisonCollision", 0, _repeatTime);
-            _renderer.enabled = false;
-        }
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
-        {
-            collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+            component.TakeDamage(_damage, false);
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
+                Destroy(gameObject);
         }
 
         if (_health <= 0)
             Destroy(gameObject);
+        
 
     }
-     void ApplyPoison()
+    void ApplyPoison()
      {
         if (_damageDealt <= _maxDamage)
         {
             _damageDealt += _damage;
-            _bossCollider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            _bossCollider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
             InvokeRepeating("ApplyPoison", _startTime, _repeatTime);
         }
         else
@@ -88,7 +70,7 @@ public class MamaLeechProjectile : Projectile
         if (_damageDealt <= _maxDamage)
         {
             _damageDealt += _damage;
-            _bossCollision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            _bossCollision.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
             InvokeRepeating("ApplyPoisonCollision", _startTime, _repeatTime);
         }
         else

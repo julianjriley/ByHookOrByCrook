@@ -32,6 +32,7 @@ public class MamaLeech : WeaponInstance
                 projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
                 MamaLeechProjectile mamaLeechProjectile = projectile.GetComponent<MamaLeechProjectile>();
                 mamaLeechProjectile.AssignStats(_weapon);
+                mamaLeechProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
                 _heatLevel += _weapon.HeatBuildup;
             }
         }
@@ -45,23 +46,21 @@ public class MamaLeech : WeaponInstance
                 projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
                 MamaLeechProjectile mamaLeechProjectile = projectile.GetComponent<MamaLeechProjectile>();
                 mamaLeechProjectile.AssignStats(_weapon);
+                mamaLeechProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
             }
+            
             _heatLevel += _weapon.HeatBuildup;
         }
         TryApplyRecoil();
         if (_heatLevel >= 100)
+        {
+            if (_weapon.overheatShot)
+                _weapon.Damage /= 10f;
             _overHeated = true;
+        }
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
         StartCoroutine(FireRate());
         _autoFireCoroutine = StartCoroutine(FireAuto(_direction));
     }
 
-    protected override IEnumerator FireRate()
-    {
-        // Slower rate of fire
-
-        _canFire = false;
-        yield return new WaitForSeconds(waitTime);
-        _canFire = true;
-    }
 }

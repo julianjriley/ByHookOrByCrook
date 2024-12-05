@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8259124902492410772}
   - component: {fileID: 4069988502811610014}
   - component: {fileID: 3222617611750216558}
+  - component: {fileID: 801067600804145401}
   m_Layer: 7
   m_Name: RottenSalmonProjectile
   m_TagString: Untagged
@@ -27,14 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601086307551454052}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.17212501, y: 1.11, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0, y: -0, z: 0.9900981, w: 0.14037754}
+  m_LocalPosition: {x: 0.0000000068519608, y: -0.010999981, z: 0}
+  m_LocalScale: {x: 0.12, y: 0.10960272, z: 1.3258542}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 163.861}
 --- !u!212 &2830727031234648781
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: -1669246187
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8867924, g: 0.51450694, b: 0.51450694, a: 1}
+  m_Sprite: {fileID: 167958159, guid: a33d2bac5fbe6a74e987afd45705be2d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,6 +106,7 @@ MonoBehaviour:
   _speed: 0
   _lifetime: 0
   _health: 0
+  _deathEffect: {fileID: 4895959312990527715, guid: 465e915088d234547afbb39d99e6f20e, type: 3}
 --- !u!136 &4069988502811610014
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -155,3 +157,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!95 &801067600804145401
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601086307551454052}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: c31f14f8bccccb54480ee539e802a912, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

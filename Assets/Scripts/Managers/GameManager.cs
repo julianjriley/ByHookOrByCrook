@@ -189,6 +189,7 @@ public class GameManager : MonoBehaviour
         
         // Boss-related stats
         public int BossNumber;  // Whether the player is on the first, second, or third boss (0, 1, 2)
+        public int NPCBossNumber;
         public int LossCounter; // How many times you've lost to a boss (resets on victory)
 
         // Money
@@ -206,11 +207,28 @@ public class GameManager : MonoBehaviour
         // Accessibility
         public bool IsSkipper;
         public bool IsBobber;
+        public bool IsInvulnerable = false;
 
         // Hub related stats
         public List<bool> IsConvoHadRod;
+        public bool AllConvosHadRod;
         public List<bool> IsConvoHadBait;
+        public bool AllConvosHadBait;
         public List<bool> IsConvoHadBag;
+        public bool AllConvosHadBag;
+
+        public float SFXVolume;
+        public float MusicVolume;
+
+        public float Brightness;
+        public float Saturation;
+
+        // Actual player settings
+        public bool IsTutorialHub;  // Toggles for the 4 main sections of the tutorial
+        public bool IsTutorialBait;
+        public bool IsTutorialFish;
+        public bool IsTutorialCombat;
+        public bool IsTutorialComplete; // Keeps track of whether the mandatory tutorial run is done
     }
 
     // private stored save data
@@ -239,7 +257,7 @@ public class GameManager : MonoBehaviour
     /// initializes base stats of save data (used for first time playing).
     /// Used both for reading existing save data AND for creating new save data if none is found.
     /// </summary>
-    private void InitializeSaveData()
+    public void InitializeSaveData(bool deleteOldSave = false)
     {
         // initialize and load save data
         GamePersistentData newSaveData = new GamePersistentData();
@@ -247,32 +265,54 @@ public class GameManager : MonoBehaviour
         // TODO: INITIALIZE DEFAULT VALUES FOR SAVE DATA
         // default data in case player prefs not found
         string filePath = Application.persistentDataPath + "/GameData.json";
-        if (System.IO.File.Exists(filePath))
+        if (!deleteOldSave)
         {
-            string saveData = System.IO.File.ReadAllText(filePath);
-            newSaveData = JsonUtility.FromJson<GamePersistentData>(saveData);
-            Instance.GamePersistent = newSaveData;
-            return;
+            if (System.IO.File.Exists(filePath))
+            {
+
+                string saveData = System.IO.File.ReadAllText(filePath);
+                newSaveData = JsonUtility.FromJson<GamePersistentData>(saveData);
+                Instance.GamePersistent = newSaveData;
+                return;
+            }
         }
+
+
         
         newSaveData.BossNumber = 0;
-        newSaveData.LossCounter = 3;
+        newSaveData.LossCounter = 0;
+        newSaveData.NPCBossNumber = 0;
 
-        newSaveData.Gill = 999;
+        newSaveData.Gill = 5;
         newSaveData.BaitInventorySize = 3;
-        newSaveData.BattleInventorySize = 3;
+        newSaveData.BattleInventorySize = 2;
         newSaveData.RodLevel = 0;
         newSaveData.AttackBait = false;
         newSaveData.MovementBait = false;
         newSaveData.SupportBait = false;
-        newSaveData.WeaponBait = true; // TEMPORARY: unlocked by defauly for prototype to make BaitSelection scene work
+        newSaveData.WeaponBait = false; 
 
         newSaveData.IsSkipper = false;
         newSaveData.IsBobber = false;
 
         newSaveData.IsConvoHadRod = new List<bool>();
+        newSaveData.AllConvosHadRod = false;
         newSaveData.IsConvoHadBait = new List<bool>();
+        newSaveData.AllConvosHadBait = false;
         newSaveData.IsConvoHadBag = new List<bool>();
+        newSaveData.AllConvosHadBag = false;
+
+        newSaveData.SFXVolume = 1f;
+        newSaveData.MusicVolume = 1f;
+
+        newSaveData.Brightness = 1f;
+        newSaveData.Saturation = 30f;
+
+        newSaveData.IsTutorialHub = true;
+        newSaveData.IsTutorialBait = true;
+        newSaveData.IsTutorialFish = true;
+        newSaveData.IsTutorialCombat = true;
+        newSaveData.IsTutorialComplete = false;
 
         // TODO: read existing save data (if it exists) from PlayerPrefs
 
@@ -297,8 +337,9 @@ public class GameManager : MonoBehaviour
         // TODO: SAVE PersistentData to PlayerPrefs
         string saveData = JsonUtility.ToJson(GamePersistent);
         string filePath = Application.persistentDataPath + "/GameData.json";
-        Debug.Log(filePath);
         System.IO.File.WriteAllText(filePath, saveData);
+
+        ResetScenePersistentData();
         /*****************************************************************
         // JSON functionality. To be replaced with PlayerPrefs
 

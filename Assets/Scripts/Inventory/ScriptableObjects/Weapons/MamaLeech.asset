@@ -12,26 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
   m_Name: MamaLeech
   m_EditorClassIdentifier: 
-  _itemID: 3
+  _itemID: 30
   _itemName: Mama Leech
-  _itemDescription: 'Poisonous! '
+  _itemDescription: "Shoots projectiles that cause damage over time | Dinner\u2019s
+    on the table, but don\u2019t worry, it\u2019s not poisoned or anything\u2026"
   _sprite: {fileID: 21300000, guid: f55e34f3036bd5f4f9e832398d1ed145, type: 3}
   _itemPrefab: {fileID: 7851906927572201638, guid: 18dd6680215b29c43b77169b549474f8, type: 3}
-  _cost: 100
-  _baseDamage: 3
-  _baseFireRate: 2.5
+  _cost: 180
+  itemType: 3
+  _baseDamage: 0.3
+  _baseFireRate: 1
   _baseSize: 1
   _baseSpeed: 15
   _baseLifetime: 3
-  _baseHeatBuildup: 3
-  _baseCoolingSpeed: 1
+  _baseHeatBuildup: 30
+  _baseCoolingSpeed: 10
+  _overHeatCoolingSpeedMultiplier: 1
   _baseProjectileCount: 1
   _baseRecoilAmount: 6
   _fireSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1176552415
+      Data2: 1255765155
+      Data3: -255580496
+      Data4: -1862671637
+    Path: event:/Combat/Guns/Leech
   canRecoil: 0
+  overheatShot: 0
+  overheatDamageBonus: 0

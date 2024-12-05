@@ -11,9 +11,11 @@ using static GameManager;
 public class RemainingBaitUI : MonoBehaviour
 {
     [SerializeField, Tooltip("Prefab used to instantiate each bait icon")]
-    private GameObject _iconPrefab;
+    private GameObject _remainingBaitPrefab;
     [SerializeField, Tooltip("List of bait sprites for the possible types (in order)")]
     private List<Sprite> _baitSprites = new List<Sprite>();
+    [SerializeField, Tooltip("List of icon sprites for the possible types (in order)")]
+    private List<Sprite> _iconSprites = new List<Sprite>();
 
     private int baitLeft;
 
@@ -39,14 +41,20 @@ public class RemainingBaitUI : MonoBehaviour
         // Add a UI sprite for each bait in the bait list
         foreach (BaitType baitType in GameManager.Instance.ScenePersistent.BaitList)
         {
-            GameObject newIcon = Instantiate(_iconPrefab, transform);
+            GameObject newIcon = Instantiate(_remainingBaitPrefab, transform);
 
-            // REQUIREMENT: Icon Prefab MUST have Image Component.
-            if (!newIcon.TryGetComponent(out Image iconImg))
+            // REQUIREMENT: Icon Prefab MUST have Image Component on child 0.
+            if (!newIcon.transform.GetChild(0).TryGetComponent(out Image baitImg))
+                throw new System.Exception("Remaining Bait Icon prefab MUST have Image component.");
+            // REQUIREMENT: Icon Prefab MUST have Image Component on child 1.
+            if (!newIcon.transform.GetChild(1).TryGetComponent(out Image iconImg))
                 throw new System.Exception("Remaining Bait Icon prefab MUST have Image component.");
 
             // set proper bait sprite
-            iconImg.sprite = _baitSprites[(int)baitType];
+            baitImg.sprite = _baitSprites[(int)baitType];
+            iconImg.sprite = _iconSprites[(int)baitType];
+            // check if no icon needed
+            if (baitType == BaitType.Default) iconImg.enabled = false;
         }
     }
 
@@ -61,5 +69,10 @@ public class RemainingBaitUI : MonoBehaviour
             // Remove bait from the end of the list
             Destroy(transform.GetChild(transform.childCount - 1).gameObject);
         }
+    }
+
+    public int GetBaitLeft()
+    {
+        return baitLeft;
     }
 }

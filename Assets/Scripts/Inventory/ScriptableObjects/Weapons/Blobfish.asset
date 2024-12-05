@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf4393ba91fe144abf710c00912533f, type: 3}
+  m_Name: Blobfish
+  m_EditorClassIdentifier: 
+  _itemID: 37
+  _itemName: ???
+  _itemDescription: Information regarding this creature is strictly confidential.
+    Just trust us.
+  _sprite: {fileID: 2134407485, guid: 8051612ed66daf64a98da1a251c3c520, type: 3}
+  _itemPrefab: {fileID: 1784564430148185939, guid: 54c9ef4a9fe8c9940bf8f40951834996, type: 3}
+  _cost: 800
+  itemType: 0
+  _baseDamage: 1
+  _baseFireRate: 1
+  _baseSize: 1
+  _baseSpeed: 15
+  _baseLifetime: 3
+  _baseHeatBuildup: 200
+  _baseCoolingSpeed: 0
+  _overHeatCoolingSpeedMultiplier: 1
+  _baseProjectileCount: 1
+  _baseRecoilAmount: 20
+  _fireSound:
+    Guid:
+      Data1: -71016327
+      Data2: 1326653352
+      Data3: -1660939382
+      Data4: -1213309905
+    Path: event:/Combat/Guns/BlobfishShot
+  canRecoil: 0
+  overheatShot: 0
+  overheatDamageBonus: 0

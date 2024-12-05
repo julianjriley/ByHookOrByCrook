@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: Flying Fish
   m_EditorClassIdentifier: 
-  _itemID: 5
-  _itemName: Flying Fish
-  _itemDescription: Increased Jump Height. Fish outta water!
+  _itemID: 16
+  _itemName: Rainbow Basketfish
+  _itemDescription: "Lets you jump higher | Another reality\u2019s \u201Cflying fish.\u201D
+    One wonders if evolution created a Zeppelin Basketfish too."
   _sprite: {fileID: 21300000, guid: 1ec035e40949f2142b3725e6661a7c8c, type: 3}
   _itemPrefab: {fileID: 6977784947212119801, guid: fe01a00750801ad488b26d0d2a9995f9, type: 3}
-  _cost: 35
+  _cost: 150
+  itemType: 2

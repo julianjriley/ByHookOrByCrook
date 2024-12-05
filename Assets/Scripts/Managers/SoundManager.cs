@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     public EventInstance fishingEventInstance;
     public EventInstance footstepsEventInstance;
     public EventInstance dialogueEventInstance;
+    public EventInstance laserEventInstance;
 
     public List<EventInstance> eventInstances;
 
@@ -71,6 +72,7 @@ public class SoundManager : MonoBehaviour
         fishingEventInstance.start();
     }
 
+
     public void SetGlobalParameter(string name, float value)
     {
         RuntimeManager.StudioSystem.setParameterByName(name, value);
@@ -93,6 +95,14 @@ public class SoundManager : MonoBehaviour
         dialogueEventInstance.start();
     }
 
+    public void InitializeLaser(EventReference laserEventReference)
+    {
+        laserEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        laserEventInstance.release();
+        laserEventInstance = CreateInstance(laserEventReference);
+        laserEventInstance.start();
+    }
+
     public void StopDialogue()
     {
         dialogueEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -113,16 +123,13 @@ public class SoundManager : MonoBehaviour
         }
         */
     }
-    public void CleanButSpare(string spare, bool complete)
-    {
+    public void CleanButSpareMusic()
+    {/*
         foreach (EventInstance eventInstance in eventInstances)
         {
-            EventDescription description;
-            string result;
-            eventInstance.getDescription(out description);
-            description.getPath(out result);
-            UnityEngine.Debug.Log(result);
-            if (!result.EndsWith(spare)) 
+            eventInstance.getDescription(out EventDescription description);
+            UnityEngine.Debug.Log(description);
+            if (eventInstance != musicEventInstance) 
             {
                 eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 if (complete)
@@ -130,6 +137,44 @@ public class SoundManager : MonoBehaviour
                     eventInstance.release();
                 }
             }
+        }*/
+    }
+    public void CleanButSpare(string spare, bool complete)
+    {
+        foreach (EventInstance eventInstance in eventInstances)
+        {
+            eventInstance.getDescription(out EventDescription description);
+            description.getPath(out string result);
+            //UnityEngine.Debug.Log(result);
+            if (result != null && !result.EndsWith(spare)) 
+            {
+                eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                eventInstance.release();
+            }
         }
     }
+
+    public void PauseAll(bool pause)
+    {
+        foreach (EventInstance eventInstance in eventInstances)
+        {
+            eventInstance.setPaused(pause);
+        }
+    }
+
+    public void Pause(EventInstance eventInstance, bool pause)
+    {
+        eventInstance.setPaused(pause);
+    }
+
+    public void CheckEventInstances()
+    {
+        foreach (EventInstance eventInstance in eventInstances)
+        {
+            eventInstance.getDescription(out EventDescription description);
+            description.getPath(out string result);
+            //UnityEngine.Debug.Log(result);
+        }
+    }
+
     }

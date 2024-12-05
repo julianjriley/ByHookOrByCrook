@@ -8,6 +8,10 @@ TagManager:
   - Ground
   - Wall
   - Boss
+  - Miku
+  - Laser
+  - LoveLetter
+  - AnimeInk
   layers:
   - Default
   - TransparentFX
@@ -20,14 +24,14 @@ TagManager:
   - BreakableBossProjectile
   - BossProjectile
   - Boss
+  - MikuWall
   - TurtleShields
+  - CamBounds
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - PracticeTargets
+  - PostProcessing
   - 
   - 
   - 

@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class SelectedBait : MonoBehaviour
 
     private BaitSelector _baitSelector;
     private Image _img;
+    private Image _imgIcon;
  
     public void Initialize(BaitType baitType)
     {
@@ -22,7 +24,11 @@ public class SelectedBait : MonoBehaviour
             throw new System.Exception("BaitSelector object MUST be present in bait select scene.");
 
         // REQUIREMENT: prefab must have Image Component
-        if (!TryGetComponent(out _img))
+        if (!transform.GetChild(0).TryGetComponent(out _img))
+            throw new System.Exception("Selected Bait prefab MUST have Image Component.");
+
+        // REQUIREMENT: prefab must have Image Component
+        if (!transform.GetChild(1).TryGetComponent(out _imgIcon))
             throw new System.Exception("Selected Bait prefab MUST have Image Component.");
 
         // set bait type
@@ -30,6 +36,9 @@ public class SelectedBait : MonoBehaviour
 
         // set image to match bait
         _img.sprite = _baitSelector.BaitSprites[(int) BaitType];
+        _imgIcon.sprite = _baitSelector.TypeSprites[(int) BaitType];
+        // account for no icon
+        if (BaitType == BaitType.Default) _imgIcon.enabled = false;
     }
 
     /// <summary>
@@ -43,5 +52,11 @@ public class SelectedBait : MonoBehaviour
         // Pseudo-deletion (avoids MissingReferenceException issues with Unity event system)
         Destroy(this); // remove SelectedBait component
         gameObject.SetActive(false);
+
+        // clicking a bait will automatically close the confirmation popup
+        _baitSelector.CancelConfirmationPopup();
+        _baitSelector.PlayAudio();
+
+        // TODO: play bait return audio
     }
 }

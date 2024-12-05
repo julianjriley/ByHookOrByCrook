@@ -36,12 +36,18 @@ public class ShopInteractor : Interactor
     [SerializeField] private EventReference purchaseSound;
     [SerializeField] private EventReference tooPoorSound;
 
+    [Tooltip("If NPC is of shop typ nothing, then after purchase will spwan a fortune")]
+    [SerializeField] private GameObject _whishNPC;
+
     public delegate void OnShopEnter();
     public static event OnShopEnter onShopEnter;
     public delegate void OnShopPurchase(int cost);
     public static event OnShopPurchase onShopPurchase;
     public delegate void OnShopExit();
     public static event OnShopExit onShopExit;
+
+    public delegate void OnBaitPurchase();
+    public static event OnBaitPurchase onBaitPurchase;
 
     private bool shopActiveCoroutine;
 
@@ -52,8 +58,23 @@ public class ShopInteractor : Interactor
         if (this.isActiveAndEnabled)
         {
             ShopCost();
-            _priceText.text = "G " + _currentCost;
+            _priceText.text = "S " + _currentCost;
         }
+        if (GameManager.Instance.GamePersistent.IsTutorialHub && GoodsSold != ShopType.Nothing)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+    private void OnEnable()
+    {
+        onBaitPurchase += BaitCost;
+    }
+
+    private void OnDisable()
+    {
+        onBaitPurchase -= BaitCost;
     }
 
     // Update is called once per frame
@@ -74,12 +95,19 @@ public class ShopInteractor : Interactor
             // Remove the cost from their balance
             GameManager.Instance.GamePersistent.Gill -= _currentCost;
             onShopPurchase?.Invoke(_currentCost);
-            ShopConvo(); // Set the correct conversation
+            if(GoodsSold != ShopType.Nothing)
+                ShopConvo(); // Set the correct conversation
             ShopSell();  // Give them the item
             SoundManager.Instance.PlayOneShot(purchaseSound, gameObject.transform.position);
 
             if (!_multipurchase) // If it's one purchase per load, destroy this thing
             {
+                //If the ShopType Is nothing
+                if (GoodsSold == ShopType.Nothing)
+                {
+                    //Load in the Foutune Teller
+                    _whishNPC.SetActive(true);
+                }
                 Destroy(gameObject); // Destroy on purchase
             }
             else // Essentially respawn/reset the shop
@@ -89,7 +117,7 @@ public class ShopInteractor : Interactor
                 if (this.isActiveAndEnabled)
                 {
                     ShopCost();
-                    _priceText.text = "G " + _currentCost;
+                    _priceText.text = "S " + _currentCost;
                 }
                 yield return new WaitUntil(() => !_interactAction.IsPressed());
                 _col.enabled = true;
@@ -121,8 +149,8 @@ public class ShopInteractor : Interactor
     {
         // This is the only place in the game we will EVER need to check current sizes against a max,
         // so this is where the max rod level, max bait inventory size, and max battle inventory size are stored.
-        int maxBaitSlots = 5;
-        int maxBattleSlots = 5;
+        int maxBaitSlots = 10;
+        int maxBattleSlots = 8;
         if (GoodsSold == ShopType.Rod)
         {
             if (GameManager.Instance.GamePersistent.RodLevel >= 2)
@@ -199,25 +227,29 @@ public class ShopInteractor : Interactor
         else if (GoodsSold == ShopType.WeaponBait)
         {
             GameManager.Instance.GamePersistent.WeaponBait = true;
+            onBaitPurchase?.Invoke();
         }
         else if (GoodsSold == ShopType.AttackBait)
         {
             GameManager.Instance.GamePersistent.AttackBait = true;
+            onBaitPurchase?.Invoke();
         }
         else if (GoodsSold == ShopType.SupportBait)
         {
             GameManager.Instance.GamePersistent.SupportBait = true;
+            onBaitPurchase?.Invoke();
         }
         else if (GoodsSold == ShopType.MovementBait)
         {
             GameManager.Instance.GamePersistent.MovementBait = true;
+            onBaitPurchase?.Invoke();
         }
     }
 
     private void ShopCost() // Sets the price, title, and desc. for the shop
     {
         int minBaitSlots = 3;
-        int minBattleSlots = 3;
+        int minBattleSlots = 2;
         // If you have rod 0, this'll get the cost for rod 1
         if (GoodsSold == ShopType.Rod)
         {
@@ -243,7 +275,9 @@ public class ShopInteractor : Interactor
         }
         else
         {
+            
             _currentCost = _costs[0];
+            BaitCost();
             _titleText.text = _titles[0];
             _descText.text = _descs[0];
             _itemSprite.sprite = _sprites[0];
@@ -253,14 +287,14 @@ public class ShopInteractor : Interactor
     private void ShopConvo() // Assigns the relevant conversation to the attached NPC
     {
         int minBaitSlots = 3;
-        int minBattleSlots = 3;
+        int minBattleSlots = 2;
         if (GoodsSold == ShopType.Rod)
         {
             _npc.SetConversation(_convos[GameManager.Instance.GamePersistent.RodLevel], -1);
         }
         else if (GoodsSold == ShopType.BaitSpace)
         {
-            _npc.SetConversation(_convos[GameManager.Instance.GamePersistent.BattleInventorySize - minBaitSlots], -1);
+            _npc.SetConversation(_convos[GameManager.Instance.GamePersistent.BaitInventorySize - minBaitSlots], -1);
         }
         else if (GoodsSold == ShopType.BagSpace)
         {
@@ -269,6 +303,28 @@ public class ShopInteractor : Interactor
         else
         {
             _npc.SetConversation(_convos[0], -1);
+        }
+    }
+
+    private void BaitCost()
+    {
+        // If this is a bait shop, we need to recalc
+        if (GoodsSold == ShopType.WeaponBait || GoodsSold == ShopType.MovementBait || GoodsSold == ShopType.AttackBait || GoodsSold == ShopType.SupportBait)
+        {
+            int baitCount = 0;
+            if(GameManager.Instance.GamePersistent.WeaponBait == true)
+                baitCount++;
+            if (GameManager.Instance.GamePersistent.AttackBait == true)
+                baitCount++;
+            if (GameManager.Instance.GamePersistent.SupportBait == true)
+                baitCount++;
+            if (GameManager.Instance.GamePersistent.MovementBait == true)
+                baitCount++;
+
+            if(baitCount < 4)
+                _currentCost = _costs[baitCount];
+
+            _priceText.text = "S " + _currentCost;
         }
     }
     #endregion

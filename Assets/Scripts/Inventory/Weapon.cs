@@ -1,7 +1,9 @@
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [CreateAssetMenuAttribute(fileName = "Weapon", menuName = "Assets/Item/Weapon")]
 public class Weapon : Item
@@ -20,16 +22,20 @@ public class Weapon : Item
     private float _heatBuildup;
     [SerializeField] protected float _baseCoolingSpeed;
     private float _coolingSpeed;
+    [SerializeField] protected float _overHeatCoolingSpeedMultiplier = 1;
     [SerializeField] protected int _baseProjectileCount;
     private int _projectileCount;
     [SerializeField] protected float _baseRecoilAmount;
     private float _recoilAmount;
 
 
+
     [SerializeField] private EventReference _fireSound;
 
     //Buff Specific Variable
     public bool canRecoil;
+    public bool overheatShot;
+    public bool overheatDamageBonus;
 
 
 
@@ -50,7 +56,7 @@ public class Weapon : Item
 
     public float BaseSpeed
     {
-        get { return _speed; }
+        get { return _baseSpeed; }
     }
 
     public float BaseLifetime
@@ -60,12 +66,12 @@ public class Weapon : Item
 
     public float BaseHeatBuildup
     {
-        get { return _heatBuildup; }
+        get { return _baseHeatBuildup; }
     }
 
     public float BaseCoolingTime
     {
-        get { return _coolingSpeed; }
+        get { return _baseCoolingSpeed; }
     }
 
     public int BaseProjectileCount
@@ -133,6 +139,12 @@ public class Weapon : Item
         set { _fireSound = value; }
     }
 
+    public float OverheatCoolingSpeedMultiplier
+    {
+        get { return _overHeatCoolingSpeedMultiplier; }
+        set { _overHeatCoolingSpeedMultiplier = value;}
+    }
+
 
     private void OnEnable()
     {
@@ -145,7 +157,12 @@ public class Weapon : Item
         _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
         _recoilAmount = _baseRecoilAmount;
+        overheatDamageBonus = false;
+        overheatShot = false;
+        canRecoil = false;
     }
+
+
 
     public void ResetStats()
     {
@@ -158,7 +175,28 @@ public class Weapon : Item
         _coolingSpeed = _baseCoolingSpeed;
         _projectileCount = _baseProjectileCount;
         _recoilAmount = _baseRecoilAmount;
+        overheatDamageBonus = false;
+        overheatShot = false;
+        canRecoil = false;
     }
+
+    private void OnDisable()
+    {
+        _damage = _baseDamage;
+        _fireRate = _baseFireRate;
+        _size = _baseSize;
+        _speed = _baseSpeed;
+        _lifetime = _baseLifetime;
+        _heatBuildup = _baseHeatBuildup;
+        _coolingSpeed = _baseCoolingSpeed;
+        _projectileCount = _baseProjectileCount;
+        _recoilAmount = _baseRecoilAmount;
+        overheatDamageBonus = false;
+        overheatShot = false;
+        canRecoil = false;
+    }
+
+
 
     public override void SetPlayer(PlayerCombat player)
     {

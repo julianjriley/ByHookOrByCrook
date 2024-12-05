@@ -31,6 +31,8 @@ public class BobberBehavior : MonoBehaviour
     private float _verticalDampen;
     [SerializeField, Tooltip("Gravity Value of the bobbing bobber.")]
     private float _bobbingGravity;
+    [SerializeField, Tooltip("max vertical speed during bobbing phase.")]
+    private float _maxBobbingSpeed;
 
     [Header("Tugging")]
     [SerializeField, Tooltip("Smallest possible time between tugs on the line.")]
@@ -84,7 +86,9 @@ public class BobberBehavior : MonoBehaviour
         switch(State)
         {
             case BobberState.Waiting:
-                // TODO: may need some system here to actually match the position of the bobber with the rod during the animation
+                // keep bobber locked to rod end
+                transform.position = Vector3.Lerp(transform.position, _returnGoal.transform.position, 1f - Mathf.Exp(-_returnSharpness * Time.deltaTime));
+
                 break;
             case BobberState.Launching:
 
@@ -104,6 +108,14 @@ public class BobberBehavior : MonoBehaviour
 
                 break;
             case BobberState.Bobbing:
+
+                // clamp velocity (to prevent gaining height)
+                if (Mathf.Abs(_rigidBody.velocity.y) > _maxBobbingSpeed)
+                {
+                    Vector3 newVelocity = _rigidBody.velocity;
+                    newVelocity.y = newVelocity.y < 0 ? -_maxBobbingSpeed : _maxBobbingSpeed;
+                    _rigidBody.velocity = newVelocity;
+                }
 
                 // float up
                 if (transform.localPosition.y < _waterLevel)

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6260900643170913913}
   - component: {fileID: -4962938994937857213}
   - component: {fileID: 6032463255159157445}
+  - component: {fileID: -1502489315816420557}
+  - component: {fileID: -7874041666430653747}
   m_Layer: 8
   m_Name: PinkMan (right)
   m_TagString: Untagged
@@ -52,13 +54,21 @@ MonoBehaviour:
   _baseDamage: 0
   _size: 1
   _speed: 5
-  _lifetime: 10
+  _lifetime: 7
   _health: 3
+  _deathEffect: {fileID: 0}
   _phaseTwoSpeedMultiplier: 4
   _detectDistance: 0.5
   _initialDirection: {x: 1, y: 0}
   _anim: {fileID: -4962938994937857213}
   _renderer: {fileID: 6260900643170913913}
+  pacSound:
+    Guid:
+      Data1: -1321533083
+      Data2: 1258388893
+      Data3: 2014030512
+      Data4: -417569546
+    Path: event:/Combat/Pixel/PacMan
 --- !u!54 &6842412529798106262
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -180,3 +190,67 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.3793388
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1502489315816420557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229213657047126727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1321533083
+      Data2: 1258388893
+      Data3: 2014030512
+      Data4: -417569546
+    Path: event:/Combat/Pixel/PacMan
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params:
+  - Name: PacSound
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &-7874041666430653747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229213657047126727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1258524949
+      Data2: 1080547674
+      Data3: 969860509
+      Data4: -76266862
+    Path: event:/Combat/General/Poof
+  Event: 
+  EventPlayTrigger: 2
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 1
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

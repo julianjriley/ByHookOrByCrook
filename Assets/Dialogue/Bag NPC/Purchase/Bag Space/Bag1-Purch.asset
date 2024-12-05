@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Bag1-Purch
   m_EditorClassIdentifier: 
   lines:
-  - How's that new bag? Feel a little roomier?
-  - Course it does, I made it!
+  - "Hey, how\u2019s that feel, bear?\r"
+  - 'Roomier already, right? Go out and give it a try. '
+  - "I bet 10 shells you\u2019ll want another.\r"
   RequiredBossLossCount: 0
-  GeneralPriority: 0
+  GeneralPriority: -1

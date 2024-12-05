@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Users;
 
 /// <summary>
 /// Handles behavior of bird 'enemy' movement back and forth across screen.
@@ -19,8 +20,8 @@ public class Bird : Projectile
     [Header("Droppings")]
     [SerializeField, Tooltip("Dropping projectile object to spawn.")]
     private GameObject _droppingPrefab;
-    [SerializeField, Tooltip("Place where droppings will spawn from the bird.")]
-    private GameObject _defecationLocation;
+    [SerializeField, Tooltip("Place where droppings will spawn from the bird. 0 = right-moving pos, 1 = left-moving pos")]
+    private GameObject[] _defecationLocations;
     [SerializeField, Tooltip("Initial downward speed of spawned dropping.")]
     private float _droppingSpeed;
     [SerializeField, Tooltip("min to max delay between bird droppings.")]
@@ -97,7 +98,7 @@ public class Bird : Projectile
         CancelInvoke();
 
         // create dropping
-        GameObject newDropping = Instantiate(_droppingPrefab, _defecationLocation.transform.position, _droppingPrefab.transform.rotation);
+        GameObject newDropping = Instantiate(_droppingPrefab, _defecationLocations[_isFlyingRight ? 0 : 1].transform.position , _droppingPrefab.transform.rotation);
         newDropping.GetComponent<Rigidbody>().velocity = new Vector3(0, -_droppingSpeed, 0);
 
         // ensure waiting at least minimum delay before spawning again

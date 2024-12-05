@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: WornTornSock
   m_EditorClassIdentifier: 
-  _itemID: -4
+  _itemID: 4
   _itemName: Worn Torn Sock
-  _itemDescription: A worn out sock puppet.
+  _itemDescription: 'Useless in combat. | The sock of a sock puppet is the skin that
+    protects the hand. Barbarians. '
   _sprite: {fileID: 21300000, guid: e165e8938a6941648aae1130aa7aff56, type: 3}
   _itemPrefab: {fileID: 8967266825293907742, guid: 5e5a22d15efdbd54eb91d4008151a828, type: 3}
   _cost: 15
+  itemType: 4

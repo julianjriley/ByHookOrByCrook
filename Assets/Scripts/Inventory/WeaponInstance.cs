@@ -12,10 +12,10 @@ public class WeaponInstance : MonoBehaviour
     [SerializeField] protected bool _overHeated;
     [SerializeField] protected bool _canFire = true;
     protected SpriteRenderer spriteRenderer;
-
+    protected Animator _animator;
     PlayerCombat _player;
 
-    
+    public float mult;
 
     public static event Action WeaponOverheated;
     public static event Action WeaponCooledOff;
@@ -30,12 +30,23 @@ public class WeaponInstance : MonoBehaviour
     protected float _heatLevel;
 
     //Used for auto firing weapons
-    protected Coroutine _autoFireCoroutine;
+    protected Coroutine _autoFireCoroutine = null;
 
     protected virtual void Start()
     {
+
+        _animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         _player = _weapon.GetPlayer();
+        mult = 1.0f;
+        WeaponCooledOff += SubtractOverheatMult;
+        WeaponOverheated += AddOverheatMult;
+    }
+
+    void OnDisable()
+    {
+        WeaponCooledOff -= SubtractOverheatMult;
+        WeaponOverheated -= AddOverheatMult;
     }
 
     public virtual void Fire(Vector3 direction)
@@ -58,33 +69,42 @@ public class WeaponInstance : MonoBehaviour
 
     protected IEnumerator FireAuto(Vector3 direction)
     {
-        while (!_canFire)
+        while (!_canFire || _overHeated)
+        {
             yield return null;
+        }
+
         Fire(direction);
     }
 
-    protected virtual void FixedUpdate()
+    protected virtual void Update()
     {
-        if(_overHeated == true && _heatLevel >= 100)
+        if (_overHeated == true && _heatLevel >= 100)
         {
             WeaponOverheated?.Invoke();
+            _weapon.CoolingTime *= _weapon.OverheatCoolingSpeedMultiplier;
+            _heatLevel = 99;
         }
-        if (_direction != null && _direction != Vector3.zero)
-            lookAngle = Vector3.Angle(Vector3.up, _direction);
         _heatLevel = Mathf.Clamp(_heatLevel - _weapon.CoolingTime * Time.deltaTime, 0, 100);
-        
-
 
         if (_heatLevel <= 0)
         {
-            if(_overHeated == true)
+            if (_overHeated == true)
             {
                 WeaponCooledOff?.Invoke();
+                _weapon.CoolingTime /= _weapon.OverheatCoolingSpeedMultiplier;
             }
             _overHeated = false;
         }
-            
- 
+    }
+
+
+    protected virtual void FixedUpdate()
+    {
+        
+        if (_direction != null && _direction != Vector3.zero)
+            lookAngle = Vector3.Angle(Vector3.up, _direction);
+        
     }
 
     public void UpdateRotation(Vector2 lookAt)
@@ -98,12 +118,12 @@ public class WeaponInstance : MonoBehaviour
         _direction = direction;
     }
 
-    public void DisableRendering()
+    public virtual void DisableRendering()
     {
         spriteRenderer.enabled = false;
     }
 
-    public void EnableRendering()
+    public virtual void EnableRendering()
     {
         spriteRenderer.enabled = true;
     }
@@ -111,6 +131,11 @@ public class WeaponInstance : MonoBehaviour
     public float GetHeatLevel()
     {
         return _heatLevel;
+    }
+
+    public void SetHeatLevel(float heatLevel)
+    {
+        _heatLevel = heatLevel;
     }
 
     public Weapon GetWeapon()
@@ -123,6 +148,11 @@ public class WeaponInstance : MonoBehaviour
         return _overHeated;
     }
 
+    public void SetOverHeatedState(bool overHeated)
+    {
+        _overHeated = overHeated;
+    }
+
 
     protected void TryApplyRecoil()
     {
@@ -133,4 +163,26 @@ public class WeaponInstance : MonoBehaviour
             _player.ApplyRecoil(_weapon.RecoilAmount);
         }
     }
+
+    protected float CheckOverheat()
+    {
+        if (_weapon.overheatShot && (_heatLevel + _weapon.HeatBuildup) >= 100)
+            return 4f;
+        else
+            return 1f;
+
+    }
+
+    void AddOverheatMult()
+    {
+        if (_weapon.overheatDamageBonus)
+            mult += 0.2f;
+    }
+
+    void SubtractOverheatMult()
+    {
+        if (_weapon.overheatDamageBonus)
+            mult -= 0.2f;
+    }
+
 }

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: Bubblefish
   m_EditorClassIdentifier: 
-  _itemID: -5
+  _itemID: 12
   _itemName: Bubble Fish
-  _itemDescription: Something
-  _sprite: {fileID: 21300000, guid: 3979ddc284fc18f4aaf6194e46f17bb6, type: 3}
+  _itemDescription: No jump limit when holding an overheated fish. | They pop and
+    reform over and over; though brief, their existence is beautiful.
+  _sprite: {fileID: 21300000, guid: 37f110ad7d71b4c45b5eca65589431b3, type: 3}
   _itemPrefab: {fileID: 8301938474365120508, guid: 074fe03f9ba81864580ffea1ecfa173c, type: 3}
-  _cost: 0
+  _cost: 735
+  itemType: 2

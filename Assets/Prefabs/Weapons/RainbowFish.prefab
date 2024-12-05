@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 5651571089999197184}
   - component: {fileID: 7003954443489229343}
   - component: {fileID: 2514866758539811363}
+  - component: {fileID: 7019201473609639178}
   m_Layer: 6
   m_Name: RainbowFish
   m_TagString: Untagged
@@ -56,15 +57,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7851906927572201638}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.41, y: 1.76, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0, y: -0, z: -0.00083402894, w: 0.9999997}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0}
+  m_LocalScale: {x: 0.12, y: 0.18555553, z: 0.1111111}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3248877353922697550}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.096}
 --- !u!212 &7003954443489229343
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -106,8 +107,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.6981132, g: 0.33917767, b: 0.33917767, a: 1}
+  m_Sprite: {fileID: 12690607, guid: 2aa001ac55a33524baa6f4506e25db1b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,3 +135,24 @@ MonoBehaviour:
   _overHeated: 0
   _canFire: 1
   _projectile: {fileID: 601086307551454052, guid: 5cbdab38676ccca42b6fa554184a8287, type: 3}
+--- !u!95 &7019201473609639178
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7851906927572201638}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cd306c955ab9f824b8897367f51a007c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

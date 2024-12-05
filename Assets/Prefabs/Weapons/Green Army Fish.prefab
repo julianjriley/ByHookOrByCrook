@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 5583783305903353165}
   - component: {fileID: 1137275590429675618}
   - component: {fileID: 516297118186273217}
+  - component: {fileID: 6502604974869879231}
   m_Layer: 6
   m_Name: Green Army Fish
   m_TagString: Untagged
@@ -56,15 +57,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5923885967642778696}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.41, y: 1.76, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0, y: -0, z: -0.011934397, w: 0.99992883}
+  m_LocalPosition: {x: 0.006, y: 0.006, z: 0}
+  m_LocalScale: {x: 2.89, y: 2.7643476, z: 1.5706521}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6209775929009205404}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.368}
 --- !u!212 &1137275590429675618
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -106,8 +107,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.2783019, g: 1, b: 0.35005078, a: 1}
+  m_Sprite: {fileID: 291035018, guid: 00b77fe63c7e31447a38f032421b774a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,3 +135,24 @@ MonoBehaviour:
   _overHeated: 0
   _canFire: 1
   _projectile: {fileID: 7578035484020511912, guid: 68446b7fed138e748b7cbece4b10fbfa, type: 3}
+--- !u!95 &6502604974869879231
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5923885967642778696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: b7fac6cb00db1f343a4d4ced5e5f455c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: DashResetsJumpFish
   m_EditorClassIdentifier: 
-  _itemID: 8
-  _itemName: DashResetsJumpFish
-  _itemDescription: Something
-  _sprite: {fileID: 21300000, guid: 89d62aa0ea1ac3b4fa8938b57d30e102, type: 3}
+  _itemID: 13
+  _itemName: Glitch Fish
+  _itemDescription: Resets jump on dash | Whoever said being a glitch was a bad thing?
+  _sprite: {fileID: 21300000, guid: 625521cfb452d934290ed5a606a02654, type: 3}
   _itemPrefab: {fileID: 7580751328250549230, guid: e6e1071161c47d149b011f1e8cc0c65d, type: 3}
-  _cost: 0
+  _cost: 400
+  itemType: 2

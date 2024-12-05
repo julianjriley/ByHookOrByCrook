@@ -12,7 +12,7 @@ public class GreenArmyFishProjectile : Projectile
     protected override void Start()
     {
         base.Start();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _collider = GetComponent<Collider>();
 
     }
@@ -20,13 +20,13 @@ public class GreenArmyFishProjectile : Projectile
     {
         if (collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
-            collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+            collider.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
             Destroy(gameObject);
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile"))
         {
-            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
         }
 
         if (_health <= 0)
@@ -43,11 +43,11 @@ public class GreenArmyFishProjectile : Projectile
         {
             if (col.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile"))
             {
-                col.gameObject.GetComponent<Projectile>().TakeDamage(_damage);
+                col.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
             }
             if (col.gameObject.layer == LayerMask.NameToLayer("Boss"))
             {
-                col.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage);
+                col.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
             }
         }
 

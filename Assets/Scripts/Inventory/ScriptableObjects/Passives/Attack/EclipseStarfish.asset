@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
+  m_Name: EclipseStarfish
+  m_EditorClassIdentifier: 
+  _itemID: 6
+  _itemName: Eclipse Starfish
+  _itemDescription: "Increases damage the more guns are overheated. | From a dimension
+    of magiks most wretched. Others\u2019 weakness is its strength."
+  _sprite: {fileID: 21300000, guid: 3979ddc284fc18f4aaf6194e46f17bb6, type: 3}
+  _itemPrefab: {fileID: 5172176410571242808, guid: 6488cd729155a8348a7f2b56778ab763, type: 3}
+  _cost: 400
+  itemType: 0

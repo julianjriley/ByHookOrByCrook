@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnapesticTetra : WeaponInstance
 {
     [SerializeField] GameObject[] _projectiles;
+    [SerializeField] float[] _speedValues;
     private int _projectileIndex = 0;
 
 
@@ -24,33 +25,37 @@ public class AnapesticTetra : WeaponInstance
             {
                 GameObject projectile = Instantiate(_projectiles[_projectileIndex], _firePoint.position, Quaternion.FromToRotation(Vector3.up, _direction));
                 projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
-                projectile.GetComponent<Rigidbody>().AddForce(_direction * _weapon.Speed, ForceMode.Impulse);
+                projectile.GetComponent<Rigidbody>().AddForce(_direction * _speedValues[_projectileIndex], ForceMode.Impulse);
                 AnapesticTetraProjectile anapesticTetraProjectile = projectile.GetComponent<AnapesticTetraProjectile>();
                 anapesticTetraProjectile.AssignStats(_weapon);
+                anapesticTetraProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
                 _heatLevel += _weapon.HeatBuildup;
             }
         }
         else
         {
-
             for (int i = -1; i < _weapon.ProjectileCount - 1; i++)
             {
                 Vector3 aimingDir = Quaternion.Euler(0, 0, 8 * i) * _direction;
                 GameObject projectile = Instantiate(_projectiles[_projectileIndex], _firePoint.position, Quaternion.FromToRotation(Vector3.up, aimingDir));
                 projectile.transform.localScale = new Vector3(projectile.transform.localScale.x * _weapon.Size, projectile.transform.localScale.y * _weapon.Size, 1);
-                projectile.GetComponent<Rigidbody>().AddForce(aimingDir * _weapon.Speed, ForceMode.Impulse);
+                projectile.GetComponent<Rigidbody>().AddForce(_direction * _speedValues[_projectileIndex], ForceMode.Impulse);
                 AnapesticTetraProjectile anapesticTetraProjectile = projectile.GetComponent<AnapesticTetraProjectile>();
                 anapesticTetraProjectile.AssignStats(_weapon);
+                anapesticTetraProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
             }
             _heatLevel += _weapon.HeatBuildup;
         }
+        _animator.Play("Fire");
         TryApplyRecoil();
         if(_projectileIndex >= _projectiles.Length - 1)
             _projectileIndex = 0;
         else
             _projectileIndex += 1;
         if (_heatLevel >= 100)
+        {
             _overHeated = true;
+        }
         SoundManager.Instance.PlayOneShot(_weapon.FireSound, gameObject.transform.position);
         StartCoroutine(FireRate());
         _autoFireCoroutine = StartCoroutine(FireAuto(_direction));

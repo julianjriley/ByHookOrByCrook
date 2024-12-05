@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: Piranha
   m_EditorClassIdentifier: 
-  _itemID: 8
+  _itemID: 10
   _itemName: Piranha
-  _itemDescription: Increased Close-range Damage. Yeowch!
-  _sprite: {fileID: 0}
+  _itemDescription: 'Increases damage dealt at close range | Be grateful these vicious
+    little fishies have a taste for takoyaki. '
+  _sprite: {fileID: 1571427276, guid: 2363ca84175ed104c84b3197be452868, type: 3}
   _itemPrefab: {fileID: 7062262107335380373, guid: 6e88e04bcdf654d41b0c06c1f1d5cea2, type: 3}
-  _cost: 30
+  _cost: 160
+  itemType: 0

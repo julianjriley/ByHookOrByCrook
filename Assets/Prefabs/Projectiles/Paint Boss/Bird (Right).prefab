@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9205754366837232019}
+  - component: {fileID: 6081853680432391863}
   m_Layer: 8
   m_Name: Bird (Right)
   m_TagString: Untagged
@@ -32,6 +33,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6081853680432391863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2998447337199283148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1258524949
+      Data2: 1080547674
+      Data3: 969860509
+      Data4: -76266862
+    Path: event:/Combat/General/Poof
+  Event: 
+  EventPlayTrigger: 2
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &4938514379716408499
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8330450284753511297}
   m_Layer: 8
-  m_Name: DefecationLocation
+  m_Name: DefecationLocation (moving right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +88,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4938514379716408499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: -0.4, z: 0}
+  m_LocalPosition: {x: -0.15, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -76,6 +108,7 @@ GameObject:
   - component: {fileID: 3471614574033692694}
   - component: {fileID: 2841377061344579395}
   - component: {fileID: 3287847125607731142}
+  - component: {fileID: 8909052531273838327}
   m_Layer: 8
   m_Name: Bird Object
   m_TagString: Untagged
@@ -92,10 +125,11 @@ Transform:
   m_GameObject: {fileID: 5521726063813682892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8330450284753511297}
+  - {fileID: 1561886799482722877}
   m_Father: {fileID: 9205754366837232019}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -117,11 +151,14 @@ MonoBehaviour:
   _speed: 3
   _lifetime: -1
   _health: 4
+  _deathEffect: {fileID: 0}
   _turnAroundDistance: 15
   _isFlyingRight: 1
   _renderer: {fileID: 3287847125607731142}
   _droppingPrefab: {fileID: 5299787899045936185, guid: ff1a85a5751061646a2da029fc785512, type: 3}
-  _defecationLocation: {fileID: 4938514379716408499}
+  _defecationLocations:
+  - {fileID: 4938514379716408499}
+  - {fileID: 6414275156353832806}
   _droppingSpeed: 2
   _spawnDelayInterval: {x: 1, y: 2.5}
   _attackDistance: 1
@@ -171,8 +208,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.8, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.50610286, y: 0.34016442, z: 0.2}
+  m_Center: {x: 0.008515049, y: -0.039171167, z: 0}
 --- !u!212 &3287847125607731142
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -214,7 +251,7 @@ SpriteRenderer:
   m_SortingLayerID: -1669246187
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 963ef01018edb9543b5e10ba23f01908, type: 3}
+  m_Sprite: {fileID: 2043345656, guid: bb3ce924845396341b58237c0fc7e55e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -225,3 +262,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8909052531273838327
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521726063813682892}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 580b9287e733b1543a9495658317b205, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &6414275156353832806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1561886799482722877}
+  m_Layer: 8
+  m_Name: DefecationLocation (moving left)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1561886799482722877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6414275156353832806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.15, y: -0.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5652248781833165002}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

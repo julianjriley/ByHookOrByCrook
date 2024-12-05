@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4284991857475301165}
+  - component: {fileID: 5709692475807777817}
   m_Layer: 8
   m_Name: Flower
   m_TagString: Untagged
@@ -32,6 +33,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5709692475807777817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206588280844327569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05059003bc11a4d4295b5514ecea48bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot:
+    Guid:
+      Data1: -726380922
+      Data2: 1213468788
+      Data3: 648398229
+      Data4: -2007142473
+    Path: event:/Combat/Painterly/Flower
 --- !u!1 &7557003148225730907
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,6 +65,7 @@ GameObject:
   - component: {fileID: 7053673048107385937}
   - component: {fileID: 3221569401546144287}
   - component: {fileID: 3062965785182424234}
+  - component: {fileID: 4408670368254726378}
   m_Layer: 8
   m_Name: Flower Object
   m_TagString: Untagged
@@ -60,8 +81,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7557003148225730907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.075, y: 0.13, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4284991857475301165}
@@ -84,7 +105,7 @@ MonoBehaviour:
   _size: 1
   _speed: 0
   _lifetime: -1
-  _health: 4
+  _health: 5
 --- !u!54 &7053673048107385937
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,8 +152,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.31467316, y: 0.97241473, z: 0.2}
-  m_Center: {x: 0.015238032, y: -0.0073593855, z: 0}
+  m_Size: {x: 0.23500077, y: 0.734337, z: 0.2}
+  m_Center: {x: -0.057284355, y: -0.06400843, z: 0}
 --- !u!212 &3062965785182424234
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -174,7 +195,7 @@ SpriteRenderer:
   m_SortingLayerID: -1669246187
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 703a5bc92b1bab34eb977685e9c7b4e8, type: 3}
+  m_Sprite: {fileID: -390934416, guid: 4968c23cad4118d4caa39fa76ba6f891, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,3 +206,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4408670368254726378
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7557003148225730907}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b78c5ea228bc06e49b5fe0e6b145d932, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

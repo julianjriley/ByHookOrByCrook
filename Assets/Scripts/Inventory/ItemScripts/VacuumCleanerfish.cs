@@ -26,4 +26,9 @@ public class VacuumCleanerfish : PassiveItemInstance
             Destroy(collider.gameObject);
         }
     }
+
+    private void OnDisable()
+    {
+        WeaponInstance.WeaponOverheated -= DeleteProjectiles;
+    }
 }

@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4427498122017340417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8715438380428805246}
+  - component: {fileID: 747855374360555197}
+  m_Layer: 0
+  m_Name: '[Bait TTRL MGR]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8715438380428805246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4427498122017340417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 44.757668, y: -39.637207, z: -11.384651}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &747855374360555197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4427498122017340417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80457f65e4a542141b4bc0f6b8207ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tutorialView: {fileID: 0}
+  _signAnim: {fileID: 0}
+  _backToHubButton: {fileID: 0}
+  _nextButton: {fileID: 0}
+  _foregroundScreen: {fileID: 0}
+  signSound:
+    Guid:
+      Data1: 2142343668
+      Data2: 1196446327
+      Data3: -1413882210
+      Data4: 45920916
+    Path: event:/Hub/SignCreak
+  _bs: {fileID: 0}

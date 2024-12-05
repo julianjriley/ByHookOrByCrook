@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 6697525709692367226}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6398398627523767191
 PrefabInstance:
@@ -84,11 +84,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8668220848546993176, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8745604044826464000, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
       propertyPath: m_Name
       value: Spawn Galaga Fleet
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8668220848546993176, guid: 6d8a9993210d7354698f4054bc8f87c1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

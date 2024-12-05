@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Rod1Purch
   m_EditorClassIdentifier: 
   lines:
-  - The blue rod...
-  - It was a gift from my first cousin's aunt.
-  - Wield its power well, fisher.
+  - '*sigh*'
+  - If you think it'll help you live longer, I guess you can take it
   RequiredBossLossCount: 0
-  GeneralPriority: 0
+  GeneralPriority: -1

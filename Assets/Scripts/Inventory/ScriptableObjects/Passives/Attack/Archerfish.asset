@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: Archerfish
   m_EditorClassIdentifier: 
-  _itemID: 9
+  _itemID: 5
   _itemName: Archerfish
-  _itemDescription: Increased Fire Rate. The Hunger Games just weren't enough, huh?
+  _itemDescription: Increases fire rate | May the odds be in your favor!
   _sprite: {fileID: 21300000, guid: 14ea249ba469e184a911713de675f086, type: 3}
   _itemPrefab: {fileID: 7941893146189277800, guid: eda4e7f3487a5dd4b8f264ff6664faf5, type: 3}
-  _cost: 40
+  _cost: 135
+  itemType: 0

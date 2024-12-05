@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: DoubleFish
   m_EditorClassIdentifier: 
-  _itemID: 7
+  _itemID: 15
   _itemName: Double Fish
-  _itemDescription: Something
-  _sprite: {fileID: 21300000, guid: 0a63a57345f9ac14a81a29d63fafad63, type: 3}
+  _itemDescription: 'Enables double dash | Thanks for watching another video of the
+    Double Dash Dudes. Make sure to like, subscribe and leave a comment. '
+  _sprite: {fileID: 21300000, guid: 40582a238ff237247bea01fda32790ca, type: 3}
   _itemPrefab: {fileID: 8626136960340420629, guid: 8ad4c7eb8de447841a70afe6c9920d4d, type: 3}
-  _cost: 0
+  _cost: 670
+  itemType: 2

@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,11 @@ public class PlayMusicOnStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.Instance.InitializeMusic(music);
+        SoundManager.Instance.musicEventInstance.getPlaybackState(out PLAYBACK_STATE musicState);
+        if (!musicState.Equals(PLAYBACK_STATE.PLAYING))
+        {
+            SoundManager.Instance.InitializeMusic(music);
+        }
     }
 
     // Update is called once per frame

@@ -20,8 +20,8 @@ public class ChangeParameter : MonoBehaviour
                 string result;
                 eventInstance.getDescription(out description);
                 description.getPath(out result);
-                UnityEngine.Debug.Log(result);
-                if (result.EndsWith(eventName))
+                //UnityEngine.Debug.Log(result);
+                if (result != null && result.EndsWith(eventName))
                 {
                     SoundManager.Instance.SetParameter(eventInstance, parameterName, parameterValue);
                 }

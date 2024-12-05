@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d76d849380df8478b9fef96343a743, type: 3}
   m_Name: Dead Fish
   m_EditorClassIdentifier: 
-  _itemID: -12
+  _itemID: 22
   _itemName: Dead Fish
-  _itemDescription: It's alive!
+  _itemDescription: 'Revives you for a temporary second chance | The smell may be
+    strong, but the power of necromancy is stronger. '
   _sprite: {fileID: 21300000, guid: acbcc3ede5167624eaae025c3ca8964c, type: 3}
   _itemPrefab: {fileID: 9148580210200951323, guid: 484fa37ee9755cb4c9ce67b64ae7f77c, type: 3}
-  _cost: 40
+  _cost: 765
+  itemType: 1
