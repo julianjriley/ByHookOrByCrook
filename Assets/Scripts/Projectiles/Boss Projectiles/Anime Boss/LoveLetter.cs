@@ -33,6 +33,18 @@ public class LoveLetter : Projectile
         Invoke("Explode", _timeTillExplosion);        
     }
 
+
+    protected override void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out PlayerCombat player))
+            Explode();
+    }
+
+    protected override void OnTriggerEnter(Collider collider)
+    {
+        if (collider.TryGetComponent(out PlayerCombat player))
+            Explode();
+    }
     private void Explode()
     {
         Instantiate(Resources.Load("Explosion"), this.transform.position, this.transform.rotation);
@@ -57,7 +69,7 @@ public class LoveLetter : Projectile
         }
 
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, _speed * Time.deltaTime);
-
+        Debug.Log(distanceBetween);
         if (Mathf.Abs(distanceBetween) <= _maxDistance)
         {
             // when the projectile is close to the player, explode
