@@ -51,7 +51,7 @@ public class AnimeBoss : BossPrototype
     {
         base.FixedUpdate();
 
-        if (_phaseCounter >= 2)
+        if (_phaseCounter >= 3)
 
             if (!_phaseTwoChangeInProgress) // If the phase change needs to start, start it
             {
@@ -59,38 +59,10 @@ public class AnimeBoss : BossPrototype
             }
 
         }
-    #region LASER BEAM METHODS
-
-/*    public override void SpawnAttackOnce(GameObject gameObj) // This has just been converted into the "do the laser method"
-    {
-        //_laserbeamPrefab = gameObj;
-        InvokeRepeating("StartLaserBeam", 1f, 30f); // Ahh, so this begins the loop of doing lasers every 30 sec
-    }
-
-    private void StartLaserBeam()
-    {
-        // DISABLED: we want boss to keep moving like normal
-        // SetNewTarget(_laserAttackEmpty, 20f);
-
-        // Actually spawn the lasers
-        
-        StartCoroutine(SpawnLaserBeam());
-    }*/
-
- /*   private IEnumerator SpawnLaserBeam() 
-    {
-        yield return new WaitUntil(() => _inPhaseTwoPos == true);
-        for (int i = 0; i < 4; i++)
-        {
-            GameObject laser = Instantiate(_laserbeamPrefab, _laserAttackEmpty);
-            yield return new WaitForSeconds(1.5f);
-        }
-    }*/
-    #endregion
 
     override protected void AttackLogic()
     {
-        if(_phaseCounter >= 2)
+        if(_phaseCounter >= 3)
         {
             if (_inPhaseTwoPos) // If the phase change has completed, resume normal attack patterns
             {
