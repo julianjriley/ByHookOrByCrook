@@ -56,8 +56,7 @@ public class LoveLetter : Projectile
     }
     private void Explode()
     {
-        Instantiate(Resources.Load("Explosion"), this.transform.position, this.transform.rotation);
+        Instantiate(_explosion, this.transform.position, this.transform.rotation);
         Destroy(gameObject);
-        
     }
 }
