@@ -20,6 +20,7 @@ public class BossTargetRepositioner : MonoBehaviour
     private Coroutine _lerpScale;
     private Transform _playerTransform;
     private bool _hasProtectedTarget = false;
+    private float _defaultDuration;
     
     void Start()
     {
@@ -28,6 +29,7 @@ public class BossTargetRepositioner : MonoBehaviour
         _rotaterTransform = _rotater.GetComponent<Transform>();
         _playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         InvokeRepeating("MakeNewTarget", TimeBetweenRepositions, TimeBetweenRepositions);
+        _defaultDuration = Duration;
     }
     void FixedUpdate() {
         //_rotaterTransform.localPosition = Vector3.zero; //fix bug where rotator/circle does not stay with the player as a child
@@ -149,5 +151,15 @@ public class BossTargetRepositioner : MonoBehaviour
         // Debug.Log("NewBossTarget finished");
         //restart invoke repeating
         InvokeRepeating("MakeNewTarget", TimeBetweenRepositions, TimeBetweenRepositions);
+    }
+
+    public void FreezeMotion()
+    {
+        Duration = 999999999; // basically make it take VERY long to get anywhere
+    }
+
+    public void UnfreezeMotion()
+    {
+        Duration = _defaultDuration;
     }
 }

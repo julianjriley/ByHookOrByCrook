@@ -138,19 +138,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: Duration
-      value: 3
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: ScaleMax
-      value: 35
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: ScaleMin
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: TimeBetweenRepositions
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1394876051387157243, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
       propertyPath: m_Icon
@@ -1634,6 +1634,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332743386}
   m_CullTransparentMesh: 1
+--- !u!114 &1408187262 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
+  m_PrefabInstance: {fileID: 75252322}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9a7cbe0e5260141aec68bc52868a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1411796101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3236,6 +3247,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: Speed
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _b3Cam
       value: 
       objectReference: {fileID: 2072145338}
@@ -3252,6 +3267,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1992433308}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _pauseTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _defeatText
       value: 
       objectReference: {fileID: 1992433306}
@@ -3259,6 +3278,10 @@ PrefabInstance:
       propertyPath: _victoryText
       value: 
       objectReference: {fileID: 1992433307}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _repositioner
+      value: 
+      objectReference: {fileID: 1408187262}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _bigWhiteScreen
       value: 
