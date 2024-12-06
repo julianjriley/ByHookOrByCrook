@@ -2,7 +2,6 @@ using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AnimeBoss : BossPrototype
@@ -79,6 +78,7 @@ public class AnimeBoss : BossPrototype
         music.getParameterByName("Phase1Over", out float volume);
     }
 
+    #region Attack Logic
     override protected void AttackLogic()
     {
         if(_phaseCounter >= 3)
@@ -122,6 +122,34 @@ public class AnimeBoss : BossPrototype
         }
     }
 
+    private IEnumerator DoCastLaser(GameObject chosenAttack)
+    {
+        SetSpeed(0);
+        _wandAnim.speed = 1;
+        Instantiate(chosenAttack, _laserAttackEmpty);
+        yield return new WaitForSeconds(_pauseTime);
+        _wandAnim.speed = 0;
+        SetDefaultSpeed();
+        yield return null;
+    }
+
+    private IEnumerator DoPhase1Spawn(GameObject chosenAttack)
+    {
+        SetSpeed(0);
+        Instantiate(chosenAttack, _mikuAttackEmpty);
+        yield return new WaitForSeconds(_pauseTime / 1.5f);
+        SetDefaultSpeed();
+        yield return null;
+    }
+    #endregion
+
+    #region MAJOR PHASE CHANGE
+    [Header("Major Phase Change")]
+    [SerializeField, Tooltip("Visual effect accompanying phase 1 end screen wipe")]
+    private GameObject _flashEffect;
+    [SerializeField, Tooltip("Collision layers used to destroy all enemy projectiles.")]
+    private LayerMask _enemyProjectileMask;
+
     private IEnumerator DoMajorPhaseChange()
     {
         // When we get to the second half of the fight...
@@ -131,6 +159,9 @@ public class AnimeBoss : BossPrototype
         _gSpawner.IsFinalSpawn = true;
         CapsuleCollider col = GetComponent<CapsuleCollider>();
         col.enabled = false;
+
+        // clear all enemy projectiles
+        ScreenWipe();
 
         // Fly on up to this new point
         yield return new WaitForSeconds(.1f);
@@ -185,25 +216,22 @@ public class AnimeBoss : BossPrototype
         yield return null;
     }
 
-    private IEnumerator DoCastLaser(GameObject chosenAttack)
+    /// <summary>
+    /// Wipes the screen of hazards at the end of major phase 1
+    /// </summary>
+    void ScreenWipe()
     {
-        SetSpeed(0);
-        _wandAnim.speed = 1;
-        Instantiate(chosenAttack, _laserAttackEmpty);
-        yield return new WaitForSeconds(_pauseTime);
-        _wandAnim.speed = 0;
-        SetDefaultSpeed();
-        yield return null;
+        // visual effect
+        GameObject flashEffect = Instantiate(_flashEffect, gameObject.transform.position, Quaternion.identity);
+        Destroy(flashEffect, 2f);
+
+        // actual projectile clearing
+        Collider[] colliders;
+        colliders = Physics.OverlapSphere(gameObject.transform.position, 60, _enemyProjectileMask, QueryTriggerInteraction.Collide);
+        foreach (Collider collider in colliders)
+        {
+            Destroy(collider.gameObject);
+        }
     }
-
-    private IEnumerator DoPhase1Spawn(GameObject chosenAttack)
-    {
-        SetSpeed(0);
-        Instantiate(chosenAttack, _mikuAttackEmpty);
-        yield return new WaitForSeconds(_pauseTime/1.5f);
-        SetDefaultSpeed();
-        yield return null;
-    }
-
-
+    #endregion
 }

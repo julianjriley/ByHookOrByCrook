@@ -986,7 +986,6 @@ GameObject:
   - component: {fileID: 7927285212343226323}
   - component: {fileID: 1249819102022961680}
   - component: {fileID: 6817808309870632791}
-  - component: {fileID: 6582263638916956392}
   m_Layer: 10
   m_Name: Anime Boss (NEWER)
   m_TagString: Boss
@@ -1012,7 +1011,7 @@ Transform:
   - {fileID: 5707883226058391673}
   - {fileID: 1073788579407919150}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2983809155565501779
 SpriteRenderer:
@@ -1147,29 +1146,54 @@ MonoBehaviour:
     AttackPrefabs:
     - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
     - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - {fileID: 8464523043721956308, guid: c0825f75bf2654e4a8276f64d36999e5, type: 3}
+    - {fileID: 3525953262652235345, guid: eee10edc04a48f04fa02e14a1e11218c, type: 3}
   - Threshold: 500
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    StartDelay: 1.5
-    RepeatRate: 5
+    StartDelay: 1
+    RepeatRate: 4.5
     AttackPrefabs:
     - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
     - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - {fileID: 1955756811694309828, guid: e63edd0364a071748b3f8e3488c821de, type: 3}
+    - {fileID: 7848507025822695964, guid: 3b128ed2191b0484f9f01c49a8655eb5, type: 3}
+    - {fileID: 2515766167871629070, guid: 26683f989fed7a543b601459fa11b691, type: 3}
+    - {fileID: 319369555003794758, guid: ce2a3ea6b61479f4abac051e6bf6af2a, type: 3}
   - Threshold: 400
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    StartDelay: 11.5
-    RepeatRate: 5
+    StartDelay: 1
+    RepeatRate: 4
     AttackPrefabs:
-    - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - {fileID: 5680928314903981171, guid: 5dca16b6be91b0a4583ef4741a59fd47, type: 3}
+    - {fileID: 7848507025822695964, guid: 3b128ed2191b0484f9f01c49a8655eb5, type: 3}
+    - {fileID: 1955756811694309828, guid: e63edd0364a071748b3f8e3488c821de, type: 3}
+    - {fileID: 319369555003794758, guid: ce2a3ea6b61479f4abac051e6bf6af2a, type: 3}
+    - {fileID: 2515766167871629070, guid: 26683f989fed7a543b601459fa11b691, type: 3}
     - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
   - Threshold: 300
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    StartDelay: 11.5
+    StartDelay: 10
     RepeatRate: 2.5
     AttackPrefabs:
     - {fileID: 7453485478561490602, guid: 036c61a15ab068649936dd04308ec1f5, type: 3}
@@ -1186,7 +1210,7 @@ MonoBehaviour:
     - {fileID: 3693629592956994482, guid: e2c6abbde80a709439bbd9cf3581050f, type: 3}
     - {fileID: 7900697639880987432, guid: 4d5371f4f737bf44080ad9a987e44b4d, type: 3}
     - {fileID: 3919691256913672284, guid: e7def24a7bc8df342a5676c78b3640f9, type: 3}
-  - Threshold: 200
+  - Threshold: 225
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -1220,7 +1244,7 @@ MonoBehaviour:
     - {fileID: 1313593509738440572, guid: 7a027be133a4daa47b15621dff49e76e, type: 3}
     - {fileID: 6234742286634803195, guid: e580110b535298440beb4b158002e0f5, type: 3}
     - {fileID: 1149532525272193349, guid: 7838fdb4657939949964543d751c973d, type: 3}
-  - Threshold: 100
+  - Threshold: 125
     StartEvent:
       m_PersistentCalls:
         m_Calls:
@@ -1274,13 +1298,13 @@ MonoBehaviour:
       Data4: -1696129653
     Path: event:/Combat/General/BossHit
   _cashoutSceneName: 8_BETA_Cashout
-  _bossProgressionNumber: 2
+  _bossProgressionNumber: 3
   _gSpawner: {fileID: 0}
   _b3Cam: {fileID: 0}
   _wand: {fileID: 808827481700249917}
   _wandAnim: {fileID: 2092681179612196492}
   _bigWhiteScreen: {fileID: 0}
-  _skipCutscene: 1
+  _skipCutscene: 0
   transitionLeadup:
     Guid:
       Data1: 639408310
@@ -1299,6 +1323,10 @@ MonoBehaviour:
   _laserbeamPrefab: {fileID: 3028064153207335143, guid: 355ae398be7b22d418a9ce2e884388fb, type: 3}
   _laserAttackEmpty: {fileID: 0}
   _pauseTime: 1.5
+  _flashEffect: {fileID: 6705548514229982336, guid: 303edf10fa75f0c4f817a595fa67133f, type: 3}
+  _enemyProjectileMask:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!136 &6817808309870632791
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1322,25 +1350,6 @@ CapsuleCollider:
   m_Height: 2.9705431
   m_Direction: 1
   m_Center: {x: 0.0464042, y: -0.2501716, z: 0}
---- !u!114 &6582263638916956392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5751095749247107456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18bedda90d9e5de40a5e659956336b9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  music:
-    Guid:
-      Data1: 817889303
-      Data2: 1287124787
-      Data3: 109520307
-      Data4: -1313791562
-    Path: event:/Music/PixelFight
 --- !u!1 &5969635309876731442
 GameObject:
   m_ObjectHideFlags: 0
