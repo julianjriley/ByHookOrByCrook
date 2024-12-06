@@ -154,11 +154,11 @@ MonoBehaviour:
   _baseDamage: 1
   _size: 1
   _speed: 4
-  _lifetime: 4
+  _lifetime: -1
   _health: 5
   _deathEffect: {fileID: 0}
-  _timeTillExplosion: 3
   _maxDistance: 2
+  _seekingSpeed: 5
   _explosion: {fileID: 565081720219544214, guid: 9ddaec7f7d6cc4b4ab238223c39962b7, type: 3}
 --- !u!114 &2150289851845469404
 MonoBehaviour:
