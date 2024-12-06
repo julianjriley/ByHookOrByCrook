@@ -193,6 +193,9 @@ public class AnimeBoss : BossPrototype
             _bwsAnim.Play("FadeWhite", 0, 0);
             yield return new WaitForSeconds(6.67f);
             _wand.SetActive(true);
+
+            _inPhaseTwoPos = true; ; // this needs to be here for the boss health bar to update appropriate
+
             _bwsAnim.Play("FadeClear", 0, 0);
             //_bossAnim.Play("Idle", 0, 0);
             _bossAnim.Play("Idle2",0,0);
@@ -212,7 +215,6 @@ public class AnimeBoss : BossPrototype
         SetDefaultSpeed();
         col.enabled = true;
 
-        _inPhaseTwoPos = true;
         yield return null;
     }
 
@@ -232,6 +234,23 @@ public class AnimeBoss : BossPrototype
         {
             Destroy(collider.gameObject);
         }
+    }
+
+    /// <summary>
+    /// Returns health threshold at which first major boss phase ends.
+    /// </summary>
+    public float GetMajorPhaseThreshold()
+    {
+        return _phases[3].Threshold;
+    }
+
+    /// <summary>
+    /// Returns true if the boss has completed phase 1.
+    /// Does NOT return true if phase change is currently in progress.
+    /// </summary>
+    public bool IsInMajorPhaseTwo()
+    {
+        return _inPhaseTwoPos;
     }
     #endregion
 }
