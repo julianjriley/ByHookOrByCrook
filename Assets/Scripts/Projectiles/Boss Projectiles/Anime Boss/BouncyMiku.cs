@@ -19,6 +19,12 @@ public class BouncyMiku : Projectile
     [SerializeField, Tooltip("Vertical distance down from center that counts as bounds.")]
     private float _lowBound;
 
+    [Header("Color Swapping!")]
+    [SerializeField, Tooltip("Sprite to swap colors on.")]
+    SpriteRenderer _colorSprite;
+    [SerializeField, Tooltip("List of colors to randomly swap between.")]
+    Color[] _colorOptions;
+
     private Transform _centerScreenPos;
 
     override protected void Start()
@@ -32,6 +38,9 @@ public class BouncyMiku : Projectile
         _rb.velocity = _direction * _speed;
 
         _centerScreenPos = GameObject.Find("Center Screen").transform;
+
+        // randomly swap to new color
+        SwapColor(_colorOptions);
     }
 
     protected override void FixedUpdate()
@@ -45,6 +54,9 @@ public class BouncyMiku : Projectile
 
             // bounce sound
             SoundManager.Instance.PlayOneShot(mikuSound, gameObject.transform.position);
+
+            // randomly swap to new color
+            SwapColor(_colorOptions);
         }
 
         // flip horizontal
@@ -56,9 +68,45 @@ public class BouncyMiku : Projectile
 
             // bounce sound
             SoundManager.Instance.PlayOneShot(mikuSound, gameObject.transform.position);
+
+            // randomly swap to new color
+            SwapColor(_colorOptions);
         }
+    }
 
+    /// <summary>
+    /// Swaps miku to a random color that is different from miku's current color
+    /// </summary>
+    private void SwapColor(Color[] colorOptions)
+    {
+        if (colorOptions.Length == 0)
+            throw new System.Exception("Unable to use SwapColor function for Miku with no colors. stop that.");
 
-        //_sprite.transform.Rotate(0, 0, _direction.x * 5);
+        int rand = Random.Range(0, colorOptions.Length);
+        Color selectedColor = colorOptions[rand];
+
+        // same color detected, try again
+        if (ColorsEqual(selectedColor, _colorSprite.color))
+        {
+            List<Color> newList = new List<Color>();
+            for (int i = 0; i < colorOptions.Length; i++)
+            {
+                // add all but duplicate
+                if (i != rand)
+                    newList.Add(colorOptions[i]);
+            }
+
+            SwapColor(newList.ToArray());
+        }
+        else // unique color found - so swap it
+            _colorSprite.color = selectedColor;
+    }
+
+    /// <summary>
+    /// Returns true ONLY if all color components (r, g, b, a) are equal.
+    /// </summary>
+    private bool ColorsEqual(Color color1, Color color2)
+    {
+        return color1.r == color2.r && color1.g == color2.g && color1.b == color2.b && color1.a == color2.a;
     }
 }
