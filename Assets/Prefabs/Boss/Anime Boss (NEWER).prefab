@@ -1134,10 +1134,10 @@ MonoBehaviour:
   _victoryText: {fileID: 0}
   _defeatText: {fileID: 0}
   _transitionsHandler: {fileID: 0}
-  BossHealth: 600
+  BossHealth: 800
   MaxBossHealth: 100
   _phases:
-  - Threshold: 600
+  - Threshold: 800
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -1148,7 +1148,7 @@ MonoBehaviour:
     - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
     - {fileID: 8464523043721956308, guid: c0825f75bf2654e4a8276f64d36999e5, type: 3}
     - {fileID: 3525953262652235345, guid: eee10edc04a48f04fa02e14a1e11218c, type: 3}
-  - Threshold: 500
+  - Threshold: 700
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -1167,7 +1167,7 @@ MonoBehaviour:
     - {fileID: 7848507025822695964, guid: 3b128ed2191b0484f9f01c49a8655eb5, type: 3}
     - {fileID: 2515766167871629070, guid: 26683f989fed7a543b601459fa11b691, type: 3}
     - {fileID: 319369555003794758, guid: ce2a3ea6b61479f4abac051e6bf6af2a, type: 3}
-  - Threshold: 400
+  - Threshold: 550
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -1189,7 +1189,7 @@ MonoBehaviour:
     - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
     - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
     - {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
-  - Threshold: 300
+  - Threshold: 400
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -1326,7 +1326,7 @@ MonoBehaviour:
   _flashEffect: {fileID: 6705548514229982336, guid: 303edf10fa75f0c4f817a595fa67133f, type: 3}
   _enemyProjectileMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 2816
 --- !u!136 &6817808309870632791
 CapsuleCollider:
   m_ObjectHideFlags: 0
