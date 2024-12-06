@@ -54,6 +54,17 @@ public class LoveLetter : Projectile
         if (collider.TryGetComponent(out PlayerCombat player))
             Explode();
     }
+
+    override public void TakeDamage(float damage, bool dontUseSound = false)
+    {
+        // override to ensure explosion plays any time it dies from being shot
+        _health -= damage;
+        if (_health <= 0)
+        {
+            Explode();
+        }
+    }
+
     private void Explode()
     {
         Instantiate(_explosion, this.transform.position, this.transform.rotation);
