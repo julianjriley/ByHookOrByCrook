@@ -104,8 +104,8 @@ MonoBehaviour:
   _baseDamage: 0
   _size: 1
   _speed: 5
-  _lifetime: 10
-  _health: 5
+  _lifetime: -1
+  _health: 10
   _deathEffect: {fileID: 0}
   _sprite: {fileID: 5213961956247577238}
   mikuSound:
