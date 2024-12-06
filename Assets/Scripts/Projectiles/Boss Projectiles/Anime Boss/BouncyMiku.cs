@@ -1,7 +1,6 @@
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 /// <summary>
 /// Note: Ground needs a CHILD gameobject with a box collider with a Layer set to MikuWall.
@@ -12,6 +11,16 @@ public class BouncyMiku : Projectile
     [SerializeField] private GameObject _sprite;
     [SerializeField] private EventReference mikuSound;
 
+    [Header("Miku Bounds")]
+    [SerializeField, Tooltip("Horizontal distance from center that counts as bounds.")]
+    private float _horBound;
+    [SerializeField, Tooltip("Vertical distance up from center that counts as bounds.")]
+    private float _topBound;
+    [SerializeField, Tooltip("Vertical distance down from center that counts as bounds.")]
+    private float _lowBound;
+
+    private Transform _centerScreenPos;
+
     override protected void Start()
     {
         base.Start();
@@ -21,48 +30,35 @@ public class BouncyMiku : Projectile
         _direction.y = Random.Range(0, 2) == 0 ? -1 : 1;
 
         _rb.velocity = _direction * _speed;
+
+        _centerScreenPos = GameObject.Find("Center Screen").transform;
     }
 
     protected override void FixedUpdate()
     {
-        base.FixedUpdate();
-        //_sprite.transform.Rotate(0, 0, _direction.x * 5);
-    }
-
-    override protected void OnCollisionEnter(Collision collision)
-    {
-        base.OnCollisionEnter(collision);
-
-        if (collision.gameObject.CompareTag("Ground") || collision.transform.gameObject.layer == 11)
+        // flip vertical
+        if ((transform.position.y > _centerScreenPos.position.y + _topBound && _rb.velocity.y > 0)
+            || (transform.position.y < _centerScreenPos.position.y - _lowBound && _rb.velocity.y < 0))
         {
-            if(collision.gameObject.name == "Wall")
-            {
-                _direction.x *= -1;
-            }
-            else
-            {
-                _direction.y *= -1;
-            }
+            _direction.y *= -1;
             _rb.velocity = _direction * _speed;
+
+            // bounce sound
             SoundManager.Instance.PlayOneShot(mikuSound, gameObject.transform.position);
         }
-    }
 
-    override protected void OnTriggerEnter(Collider collider)
-    {
-        base.OnTriggerEnter(collider);
-
-        /*if (collider.gameObject.CompareTag("Ground") || collider.transform.gameObject.layer == 11)
+        // flip horizontal
+        if ((transform.position.x > _centerScreenPos.position.x + _horBound && _rb.velocity.x > 0) 
+            || (transform.position.x < _centerScreenPos.position.x - _horBound && _rb.velocity.x < 0))
         {
-            if (collider.gameObject.name == "Wall")
-            {
-                _direction.x *= -1;
-            }
-            else
-            {
-                _direction.y *= -1;
-            }
+            _direction.x *= -1;
             _rb.velocity = _direction * _speed;
-        }*/
+
+            // bounce sound
+            SoundManager.Instance.PlayOneShot(mikuSound, gameObject.transform.position);
+        }
+
+
+        //_sprite.transform.Rotate(0, 0, _direction.x * 5);
     }
 }
