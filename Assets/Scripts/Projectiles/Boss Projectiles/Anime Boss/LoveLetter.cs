@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class LoveLetter : Projectile
 {
-    [SerializeField, Tooltip("Time until love letter explodes")]
-    private float _timeTillExplosion;
     [SerializeField, Tooltip("Max distance from the player's position that the love letter explodes from.")]
     private float _maxDistance;
     [SerializeField, Tooltip("Kaboom prefab")]
@@ -27,10 +25,7 @@ public class LoveLetter : Projectile
 
         // set velocity
         _direction.x = Vector3.right.x;
-        _rb.velocity = _direction * _speed;
-       
-        // explodes after a given time
-        Invoke("Explode", _timeTillExplosion);        
+        _rb.velocity = _direction * _speed;      
     }
 
 
@@ -51,9 +46,15 @@ public class LoveLetter : Projectile
         Destroy(gameObject);
         
     }
-    private void FixedUpdate()
+    override protected void FixedUpdate()
     {
+        // proximity explosion logic
         float distanceBetween = Vector3.Distance(_player.transform.position, transform.position);
+        if (Mathf.Abs(distanceBetween) <= _maxDistance)
+        {
+            // when the projectile is close to the player, explode
+            Explode();
+        }
 
         if (_player.transform.position.x < Screen.width / 2)
         {
@@ -69,12 +70,8 @@ public class LoveLetter : Projectile
         }
 
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, _speed * Time.deltaTime);
-        //Debug.Log(distanceBetween);
-        if (Mathf.Abs(distanceBetween) <= _maxDistance)
-        {
-            // when the projectile is close to the player, explode
-            Explode();
-        }
+        
+        
 
     }
 }
