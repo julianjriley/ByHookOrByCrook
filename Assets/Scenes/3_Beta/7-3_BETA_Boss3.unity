@@ -3247,10 +3247,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
-      propertyPath: Speed
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _b3Cam
       value: 
       objectReference: {fileID: 2072145338}
@@ -3266,10 +3262,6 @@ PrefabInstance:
       propertyPath: _fightText
       value: 
       objectReference: {fileID: 1992433308}
-    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
-      propertyPath: _pauseTime
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _defeatText
       value: 
