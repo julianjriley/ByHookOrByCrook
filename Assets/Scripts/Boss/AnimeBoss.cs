@@ -314,11 +314,11 @@ public class AnimeBoss : BossPrototype
     }
 
     /// <summary>
-    /// Returns true if the boss is in one of the last two segments of major phase 2
+    /// Returns true if the boss is in major phase 2
     /// </summary>
     public bool CanBossUseInvincibility()
     {
-        return _phaseCounter >= 4;
+        return _phaseCounter >= 3;
     }
     #endregion
 }

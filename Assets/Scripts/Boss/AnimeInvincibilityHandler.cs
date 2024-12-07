@@ -32,6 +32,9 @@ public class AnimeInvincibilityHandler : MonoBehaviour
     {
         // random starting hue
         _currHue = Random.Range(0f, 1f);
+
+        // start with orb spawning at max interval for the first time
+        _activationTimer = _maxInterval;
     }
 
     // Update is called once per frame
