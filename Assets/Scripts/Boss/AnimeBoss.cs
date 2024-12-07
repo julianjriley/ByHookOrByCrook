@@ -52,10 +52,13 @@ public class AnimeBoss : BossPrototype
 
     [HideInInspector]
     public bool IsInvincible;
+    [HideInInspector]
+    public bool IsTransformingInvincible; // whether the boss is invincible BECAUSE they are transforming
 
     // Booleans for the major phase change
     private bool _inPhaseTwoPos; // True when the boss has entered position for phase 2
     private bool _phaseTwoChangeInProgress; // Blocker boolean for when the phase 2 change is happening
+    private bool _isPhaseTwoBegin = false; // becomes true as soon as the screen becomes fully white during anime transformation
     override protected void Start()
     {
         base.Start();
@@ -193,7 +196,7 @@ public class AnimeBoss : BossPrototype
         // Trigger the spawn for the final platform
         _gSpawner.IsFinalSpawn = true;
         CapsuleCollider col = GetComponent<CapsuleCollider>();
-        col.enabled = false;
+        col.enabled = false; // prevent boss from running over player as soon as it shoots up
 
         // clear all enemy projectiles
         ScreenWipe();
@@ -201,7 +204,7 @@ public class AnimeBoss : BossPrototype
         // Fly on up to this new point
         yield return new WaitForSeconds(.1f);
         SetNewTarget(_gSpawner.getFinalSection());
-        SetSpeed(50f);
+        SetSpeed(500f); // GET THE BOSS OUTTA HERE (looks like it teleports out during flash)
 
         // Stop the music
         SoundManager.Instance.musicEventInstance.setParameterByName("Phase1Over", 1);
@@ -211,6 +214,13 @@ public class AnimeBoss : BossPrototype
         leadupInstance.start();
         yield return new WaitForSeconds(3f);
         isLeadingUp = true;
+        col.enabled = true; // re-enable collider so it can be shot again during phase 2
+
+        SetSpeed(50f); // make sure the boss resumes stable bouncing at goal position
+
+        // enable boss invincibility
+        IsInvincible = true;
+        IsTransformingInvincible = true; // prevents invincibility being overriden to OFF state
 
         // Wait for the camera to catch up
         yield return new WaitUntil(() => _b3Cam.GetFullStop());
@@ -229,7 +239,7 @@ public class AnimeBoss : BossPrototype
             yield return new WaitForSeconds(6.67f);
             _wand.SetActive(true);
 
-            _inPhaseTwoPos = true; ; // this needs to be here for the boss health bar to update appropriate
+            _isPhaseTwoBegin = true; ; // this needs to be here for the boss health bar to update appropriate
 
             _bwsAnim.Play("FadeClear", 0, 0);
             //_bossAnim.Play("Idle", 0, 0);
@@ -248,7 +258,12 @@ public class AnimeBoss : BossPrototype
         // And once that's done, resume normal attacking
         SetDefaultTarget();
         SetDefaultSpeed();
-        col.enabled = true;
+
+        // Allow boss to be hittable again
+        IsInvincible = false;
+        IsTransformingInvincible = false; // prevents invincibility being overriden to OFF state
+
+        _inPhaseTwoPos = true; ; // this needs to be here for the boss health bar to update appropriate
 
         yield return null;
     }
@@ -281,11 +296,11 @@ public class AnimeBoss : BossPrototype
 
     /// <summary>
     /// Returns true if the boss has completed phase 1.
-    /// Does NOT return true if phase change is currently in progress.
+    /// Becomes true when the boss health bar needs it to update visually.
     /// </summary>
     public bool IsInMajorPhaseTwo()
     {
-        return _inPhaseTwoPos;
+        return _isPhaseTwoBegin;
     }
 
     /// <summary>

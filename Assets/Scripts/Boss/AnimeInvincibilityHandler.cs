@@ -49,6 +49,10 @@ public class AnimeInvincibilityHandler : MonoBehaviour
     /// </summary>
     private void HandleFunctionality()
     {
+        // DO NOT handle invincibility activation/deactivation logic while invincibile during transformation
+        if (_boss.IsTransformingInvincible)
+            return;
+        
         // check for de-activation
         if (_boss.IsInvincible)
         {
