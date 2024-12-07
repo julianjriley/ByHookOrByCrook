@@ -47,15 +47,20 @@ MonoBehaviour:
   _attackGroupPrefabs:
   - AttackPrefabs:
     - {fileID: 9163027841056639345, guid: 888bbff370dd29845852747fb7b7ab0b, type: 3}
-  - AttackPrefabs: []
   - AttackPrefabs:
     - {fileID: 1149532525272193349, guid: 7838fdb4657939949964543d751c973d, type: 3}
-  - AttackPrefabs: []
   - AttackPrefabs:
     - {fileID: 6158136998503920516, guid: a1e391125307e874c9cd6d96153b9bf6, type: 3}
+    - {fileID: 7838369470891907009, guid: 54c25c8b3a24c8b409f0d4c37cdce285, type: 3}
+  - AttackPrefabs:
+    - {fileID: 4130649209329565546, guid: cf7948b5e4b6bf249a6023c33948e769, type: 3}
     - {fileID: 487677126486304339, guid: b1367a59d63b58144a271a388114c272, type: 3}
-  - AttackPrefabs: []
+  - AttackPrefabs:
+    - {fileID: 7900697639880987432, guid: 4d5371f4f737bf44080ad9a987e44b4d, type: 3}
   - AttackPrefabs:
     - {fileID: 7838369470891907009, guid: 54c25c8b3a24c8b409f0d4c37cdce285, type: 3}
+    - {fileID: 487677126486304339, guid: b1367a59d63b58144a271a388114c272, type: 3}
+  - AttackPrefabs:
     - {fileID: 4130649209329565546, guid: cf7948b5e4b6bf249a6023c33948e769, type: 3}
+    - {fileID: 6158136998503920516, guid: a1e391125307e874c9cd6d96153b9bf6, type: 3}
   _spawnInterval: 2
