@@ -337,7 +337,7 @@ public class BossPrototype : MonoBehaviour, IDamageable
         
     }
 
-    public void TakeDamage(float damage, bool dontUseSound)
+    virtual public void TakeDamage(float damage, bool dontUseSound)
     {
         BossHealth -= damage;
         HealthChanged?.Invoke(BossHealth);

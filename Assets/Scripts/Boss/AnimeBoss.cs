@@ -46,6 +46,13 @@ public class AnimeBoss : BossPrototype
     [SerializeField, Tooltip("How long the boss stops to cast lasers")]
     private float _pauseTime = .5f;
 
+    [Header("Absorbing Damage")]
+    [SerializeField, Tooltip("VFX prefab for when the boss absorbs damage.")]
+    private GameObject _absorbDamagePrefab;
+
+    [HideInInspector]
+    public bool IsInvincible;
+
     // Booleans for the major phase change
     private bool _inPhaseTwoPos; // True when the boss has entered position for phase 2
     private bool _phaseTwoChangeInProgress; // Blocker boolean for when the phase 2 change is happening
@@ -78,6 +85,25 @@ public class AnimeBoss : BossPrototype
             }
         }
         music.getParameterByName("Phase1Over", out float volume);
+    }
+
+    override public void TakeDamage(float damage, bool dontUseSound)
+    {
+        if (IsInvincible)
+        {
+            // heal the boss
+            BossHealth += damage;
+            // don't heal over max phase health
+            if (BossHealth > GetMajorPhaseThreshold())
+                BossHealth = GetMajorPhaseThreshold();
+
+            // heart visual effect to show healing
+            Instantiate(_absorbDamagePrefab, transform);
+
+            // TODO: unique sound for boss absorbing damage?            
+        }
+        else
+            base.TakeDamage(damage, dontUseSound);
     }
 
     #region Attack Logic
@@ -257,6 +283,14 @@ public class AnimeBoss : BossPrototype
     public bool IsInMajorPhaseTwo()
     {
         return _inPhaseTwoPos;
+    }
+
+    /// <summary>
+    /// Returns true if the boss is in one of the last two segments of major phase 2
+    /// </summary>
+    public bool CanBossUseInvincibility()
+    {
+        return _phaseCounter >= 4;
     }
     #endregion
 }
