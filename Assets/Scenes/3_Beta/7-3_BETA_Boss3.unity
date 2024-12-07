@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a54e839dce70947858aa17eb731945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
+  _maxHealth: 15
   _orbObject: {fileID: 2079999681}
   _orbCollider: {fileID: 118149480}
   _destroyEffect: {fileID: 310207434116256595, guid: 6735e63f7d20ddb438357323bf8ca954, type: 3}
@@ -4521,7 +4521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5328064553761786786, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _invincibilitySaturation
-      value: 0.35
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5751095749247107456, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: m_Name
