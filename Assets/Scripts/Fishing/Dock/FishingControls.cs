@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Mathematics;
+using FMODUnity;
 
 /// <summary>
 /// Handles input gathering (using new input system), processing of casting inputs, and processing of reeling inputs.
@@ -33,6 +34,7 @@ public class FishingControls : MonoBehaviour
     private bool _firstBobEvent = false;
     private bool _tutorialAllowedToCast = false;
     private bool _tutorialAllowedToReel = false;
+    [SerializeField] EventReference perfectReelSound;
 
     // State management
     private bool _isReeling = false;
@@ -204,6 +206,7 @@ public class FishingControls : MonoBehaviour
                 _castingPopup.PopUp(0); // perfect
 
                 // TODO: play perfect cast audio
+                SoundManager.Instance.PlayOneShot(perfectReelSound, gameObject.transform.position);
             }
             else if (_castingGoal.IsSuperFar())
             {
@@ -333,6 +336,7 @@ public class FishingControls : MonoBehaviour
                     _reelingPopup.PopUp(0); // perfect
 
                     // TODO: play perfect reel audio
+                    SoundManager.Instance.PlayOneShot(perfectReelSound, gameObject.transform.position);
                 }
                 // slightly early click (score between 0 and 1)
                 else if (_currentShrinkingScale > perfectScale)
