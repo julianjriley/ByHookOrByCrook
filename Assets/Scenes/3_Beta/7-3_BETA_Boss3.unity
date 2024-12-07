@@ -4495,6 +4495,18 @@ PrefabInstance:
       propertyPath: _transitionsHandler
       value: 
       objectReference: {fileID: 2099227494}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[3].RepeatRate
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[3].AttackPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[3].AttackPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4014801284758641751, guid: e0cd3bf145fed294ba4135dbeabcfddf, type: 3}
     - target: {fileID: 2983809155565501779, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: m_Color.b
       value: 1
