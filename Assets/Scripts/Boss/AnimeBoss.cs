@@ -188,6 +188,15 @@ public class AnimeBoss : BossPrototype
     [SerializeField, Tooltip("Collision layers used to destroy all enemy projectiles.")]
     private LayerMask _enemyProjectileMask;
 
+    override protected void PhaseSwitch()
+    {
+        // skip phase switch logic until AFTER transformation
+        if (_phaseCounter == 3)
+            return;
+
+        base.PhaseSwitch();
+    }
+
     private IEnumerator DoMajorPhaseChange()
     {
         // When we get to the second half of the fight...
@@ -258,6 +267,9 @@ public class AnimeBoss : BossPrototype
         // And once that's done, resume normal attacking
         SetDefaultTarget();
         SetDefaultSpeed();
+
+        // handle officially starting attacks of new phase
+        base.PhaseSwitch();
 
         // Allow boss to be hittable again
         IsInvincible = false;

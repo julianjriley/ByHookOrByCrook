@@ -287,7 +287,7 @@ public class BossPrototype : MonoBehaviour, IDamageable
         choice = _phases[phaseNum].AttackPrefabs[rand];
     }
 
-    void PhaseSwitch() {
+    virtual protected void PhaseSwitch() {
         CancelInvoke();
         _phases[_phaseCounter].StartEvent.Invoke();
         InvokeRepeating("AttackLogic", _phases[_phaseCounter].StartDelay, _phases[_phaseCounter].RepeatRate);
