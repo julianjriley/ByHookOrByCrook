@@ -55,7 +55,6 @@ public class AnimeInvincibilityHandler : MonoBehaviour
             // end invincibility state when orb is destroyed
             if (_theOrb.IsOrbDestroyed())
             {
-                Debug.Log("Destroy");
                 _boss.IsInvincible = false;
             }
         }

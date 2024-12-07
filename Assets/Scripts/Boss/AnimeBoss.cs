@@ -91,11 +91,14 @@ public class AnimeBoss : BossPrototype
     {
         if (IsInvincible)
         {
+            // REMOVED: boss is invincible, but no longer heals
+            /*
             // heal the boss
             BossHealth += damage;
             // don't heal over max phase health
             if (BossHealth > GetMajorPhaseThreshold())
                 BossHealth = GetMajorPhaseThreshold();
+            */
 
             // heart visual effect to show healing
             Instantiate(_absorbDamagePrefab, transform);
