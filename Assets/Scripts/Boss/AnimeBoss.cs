@@ -64,7 +64,6 @@ public class AnimeBoss : BossPrototype
         base.Start();
         _bossAnim = GetComponent<Animator>();
         _bwsAnim = _bigWhiteScreen.GetComponent<Animator>();
-        _wandAnim.speed = 0;
         //music = SoundManager.Instance.musicEventInstance;
     }
 
@@ -160,10 +159,9 @@ public class AnimeBoss : BossPrototype
     {
         SetSpeed(0);
         _repositioner.FreezeMotion();
-        _wandAnim.speed = 1;
+        _wandAnim.SetTrigger("Wiggle");
         Instantiate(chosenAttack, _laserAttackEmpty);
         yield return new WaitForSeconds(_pauseTime);
-        _wandAnim.speed = 0;
         SetDefaultSpeed();
         _repositioner.UnfreezeMotion();
         yield return null;
