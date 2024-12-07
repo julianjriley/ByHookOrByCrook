@@ -50,7 +50,8 @@ public class AnimeInvincibilityHandler : MonoBehaviour
     private void HandleFunctionality()
     {
         // DO NOT handle invincibility activation/deactivation logic while invincibile during transformation
-        if (_boss.IsTransformingInvincible)
+        // DO NOT spawn invincibility orb BEFORE phase 2 - even if you chunk the boss
+        if (_boss.IsTransformingInvincible || !_boss.IsInMajorPhaseTwo())
             return;
         
         // check for de-activation
