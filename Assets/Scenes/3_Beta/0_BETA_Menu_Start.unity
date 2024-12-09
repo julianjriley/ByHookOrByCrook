@@ -2466,6 +2466,7 @@ MonoBehaviour:
   bubble: {fileID: 781442673, guid: d973554198f983049a1f6340fab0612f, type: 3}
   pop: {fileID: -391659098, guid: d973554198f983049a1f6340fab0612f, type: 3}
   _optionsImage: {fileID: 1694803371}
+  _transitionHandler: {fileID: 1883607044}
 --- !u!4 &1448300996
 Transform:
   m_ObjectHideFlags: 0
@@ -3531,6 +3532,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneTransitionsHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 7907522791565036698, guid: 930bdb7b2af542244a46c1a7fde26718, type: 3}
+      propertyPath: _exitTransitionType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3752,6 +3757,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762241053}
   m_CullTransparentMesh: 1
+--- !u!114 &1883607044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7907522791565036698, guid: 930bdb7b2af542244a46c1a7fde26718, type: 3}
+  m_PrefabInstance: {fileID: 1712173385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfcd45622cdedae408f290ef95483b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1924397747
 GameObject:
   m_ObjectHideFlags: 0
