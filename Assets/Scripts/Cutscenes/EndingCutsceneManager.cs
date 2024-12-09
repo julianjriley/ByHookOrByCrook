@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,14 @@ public class EndingCutsceneManager : MonoBehaviour
     [SerializeField] SceneTransitionsHandler _transitionsHandler;
     public string SceneName;
     protected InputAction _interactAction;
+    [SerializeField] EventReference pageTurnSound;
 
     void Start()
     {
         _interactAction = InputSystem.actions.FindAction("Interact");
         _interactAction.Enable();
         StartCoroutine(DoEnding());
+        SoundManager.Instance.musicEventInstance.setParameterByName("HubPosition", 0, true);
     }
 
     // Update is called once per frame
@@ -28,7 +31,16 @@ public class EndingCutsceneManager : MonoBehaviour
         yield return new WaitUntil(() => _interactAction.IsPressed());
         for (int i = 0; i < _animList.Count - 1; i++)
         {
-            _animList[i].Play("Page"); // Turn page
+            _animList[i].Play("Page");
+            SoundManager.Instance.PlayOneShot(pageTurnSound, gameObject.transform.position); // Turn page
+            if(i == 1)
+            {
+                SoundManager.Instance.musicEventInstance.setParameterByName("HubPosition", 1);
+            }
+            if (i == 8)
+            {
+                SoundManager.Instance.musicEventInstance.setParameterByName("HubPosition", 0);
+            }
             yield return new WaitForSeconds(1.5f);
             yield return new WaitUntil(() => !_interactAction.IsPressed());
             yield return new WaitUntil(() => _interactAction.IsPressed());
