@@ -13,6 +13,7 @@ public class StartMenuManager : MonoBehaviour
     [SerializeField]
     private Sprite bubble, pop;
     [SerializeField] private Image _optionsImage;
+    [SerializeField] private SceneTransitionsHandler _transitionHandler;
     public void LoadGameScene()
     {
         if (GameManager.Instance.GamePersistent.LossCounter != 0 || GameManager.Instance.GamePersistent.BossNumber != 0)
@@ -24,7 +25,7 @@ public class StartMenuManager : MonoBehaviour
     public void ClearData()
     {
         GameManager.Instance.InitializeSaveData(true);
-        SceneManager.LoadScene(newStartScene);
+        _transitionHandler.LoadScene(newStartScene);
     }
     public void LoadOptionsScene()
     {
@@ -49,7 +50,7 @@ public class StartMenuManager : MonoBehaviour
 
     public void LoadStartScene()
     {
-        SceneManager.LoadScene(startScene);
+        _transitionHandler.LoadScene(startScene);
     }
 
     public void QuitGame()
