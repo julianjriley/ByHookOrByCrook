@@ -4521,7 +4521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _phases.Array.data[4].AttackPrefabs.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _phases.Array.data[5].AttackPrefabs.Array.size
@@ -4547,6 +4547,10 @@ PrefabInstance:
       propertyPath: _phases.Array.data[4].AttackPrefabs.Array.data[1]
       value: 
       objectReference: {fileID: 6031590391019851063, guid: a35265a996446864ebd85dff1a14d1ac, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[4].AttackPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 6031590391019851063, guid: a1dec5702bef6f64aba2cca429a0e983, type: 3}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _phases.Array.data[5].AttackPrefabs.Array.data[0]
       value: 
