@@ -1912,7 +1912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7907522791565036698, guid: 930bdb7b2af542244a46c1a7fde26718, type: 3}
       propertyPath: _exitTransitionType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7907522791565036698, guid: 930bdb7b2af542244a46c1a7fde26718, type: 3}
       propertyPath: _enterTransitionType
@@ -3200,6 +3200,13 @@ MonoBehaviour:
   - {fileID: 950886561}
   _transitionsHandler: {fileID: 1169247804}
   SceneName: 2_BETA_Menu_Credits
+  pageTurnSound:
+    Guid:
+      Data1: -360336581
+      Data2: 1165024339
+      Data3: 1623024571
+      Data4: 440065680
+    Path: event:/Combat/Anime/LetterOpen
 --- !u!1 &1982460347
 GameObject:
   m_ObjectHideFlags: 0
