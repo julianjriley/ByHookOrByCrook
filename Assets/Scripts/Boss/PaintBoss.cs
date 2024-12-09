@@ -20,6 +20,8 @@ public class PaintBoss : BossPrototype
     private CirclingTarget _paintingTarget;
     [SerializeField, Tooltip("exclamation indicator of moving quickly towards a painting.")]
     private GameObject _exclamation;
+    [SerializeField, Tooltip("Used to call painting animation")]
+    private Animator _anim;
 
     [SerializeField] EventReference paintingSound;
 
@@ -87,7 +89,8 @@ public class PaintBoss : BossPrototype
 
         // painting sound
         SoundManager.Instance.PlayOneShot(paintingSound, gameObject.transform.position);
-        // TODO: painting animation
+        // painting animation
+        _anim.SetTrigger("Paint");
 
         // paint delay
         yield return new WaitForSeconds(_paintDuration);
@@ -101,8 +104,6 @@ public class PaintBoss : BossPrototype
         // return to non-painting movement behavior
         SetDefaultTarget();
         SetDefaultSpeed();
-
-        // TODO: return to idle animation
 
         _isPainting = false;
     }
