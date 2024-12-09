@@ -321,4 +321,12 @@ public class AnimeBoss : BossPrototype
         return _phaseCounter >= 3;
     }
     #endregion
+
+    /// <summary>
+    /// Returns the number phase that the boss is currently in.
+    /// </summary>
+    public int GetCurrPhase()
+    {
+        return _phaseCounter;
+    }
 }

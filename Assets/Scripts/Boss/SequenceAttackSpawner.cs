@@ -13,6 +13,8 @@ public class SequenceAttackSpawner : MonoBehaviour
     private float _spawnInterval;
 
     private int _listIndex = 0;
+    private AnimeBoss _boss;
+    private int _currBossPhase;
 
     [System.Serializable]
     class AttackTurn
@@ -23,7 +25,26 @@ public class SequenceAttackSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnNext", 0, _spawnInterval);   
+        InvokeRepeating("SpawnNext", 0, _spawnInterval);
+
+        // Find object
+        GameObject bossObj = GameObject.FindWithTag("Boss");
+        if (bossObj is null)
+            throw new System.Exception("Why is there nothing tagged with Boss in this combat scene?");
+
+        // Find component
+        if (!bossObj.TryGetComponent(out AnimeBoss bossComp))
+            throw new System.Exception("Why is something tagged as Boss (in anime scene) but does not have Anime Boss component.");
+        _boss = bossComp;
+
+        _currBossPhase = _boss.GetCurrPhase();
+    }
+
+    private void Update()
+    {
+        // Stop spawning if next phase is entered
+        if (_boss.GetCurrPhase() != _currBossPhase)
+            Destroy(gameObject);
     }
 
     private void SpawnNext()
