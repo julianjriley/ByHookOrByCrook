@@ -31,7 +31,6 @@ public class EndingCutsceneManager : MonoBehaviour
         yield return new WaitUntil(() => _interactAction.IsPressed());
         for (int i = 0; i < _animList.Count - 1; i++)
         {
-            Debug.Log(i);
             _animList[i].Play("Page");
             SoundManager.Instance.PlayOneShot(pageTurnSound, gameObject.transform.position); // Turn page
             if(i == 1)
