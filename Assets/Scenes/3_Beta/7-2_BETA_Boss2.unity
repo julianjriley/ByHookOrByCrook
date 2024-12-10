@@ -3267,7 +3267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.size
@@ -3276,7 +3276,7 @@ PrefabInstance:
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 9817c8438ea15af4fb7a9d42c53f0c3b, type: 2}
+      objectReference: {fileID: 11400000, guid: f58fe4e8aa1949e489d8318041853c70, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[1]
       value: 
@@ -4457,6 +4457,10 @@ PrefabInstance:
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: _bossProgressionNumber
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: _phases.Array.data[0].RepeatRate
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[17]
