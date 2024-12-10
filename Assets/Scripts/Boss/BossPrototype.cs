@@ -46,7 +46,7 @@ public class BossPrototype : MonoBehaviour, IDamageable
     [HideInInspector]
     public float MaxBossHealth;
     protected int _phaseCounter = 0;
-    private bool _defeated = false;
+    private bool _endStateReached = false;
     protected Transform _spawnLocation;
     [SerializeField]
     protected PhaseInfo[] _phases;
@@ -160,7 +160,9 @@ public class BossPrototype : MonoBehaviour, IDamageable
     // Update is called once per frame
     virtual protected void FixedUpdate()
     {
-        if (!_defeated) {
+        // ensure victory/defeat cannot both happen
+        // also freeze other boss logic when it dies or player dies
+        if (!_endStateReached) {
             Move();
             //check for phase change
             if (BossHealth <= 0) {
@@ -297,7 +299,7 @@ public class BossPrototype : MonoBehaviour, IDamageable
     }
     void DefeatLogic() {
         //Debug.Log("Defeated!");
-        _defeated = true;
+        _endStateReached = true;
         CancelInvoke();
         foreach (Transform child in _spawnLocation) { //delete all attacks to ensure player doesn't die after defeating the boss
             Destroy(child.gameObject);
@@ -319,11 +321,16 @@ public class BossPrototype : MonoBehaviour, IDamageable
     }
 
     void HandlePlayerDeath() {
-        _actions.Disable();
-        _defeatText.SetActive(true);
-        _player.transform.Find("SmokeExplosionVFX_0").gameObject.SetActive(true);
-        _player.GetComponent<PlayerCombat>().BossDefeated = true;
-        StartCoroutine(NextSceneDelay(false));
+        // ensure player death ONLY triggers if boss death has not already happened
+        if (!_endStateReached)
+        {
+            _endStateReached = true;
+            _actions.Disable();
+            _defeatText.SetActive(true);
+            _player.transform.Find("SmokeExplosionVFX_0").gameObject.SetActive(true);
+            _player.GetComponent<PlayerCombat>().BossDefeated = true;
+            StartCoroutine(NextSceneDelay(false));
+        }
     }
 
     IEnumerator NextSceneDelay(bool boss3Win) {
