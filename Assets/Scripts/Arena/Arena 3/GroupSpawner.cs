@@ -26,8 +26,8 @@ public class GroupSpawner : MonoBehaviour
     {
         Instantiate(selectPlatGroup(), new Vector3(0, _currentSpawnHeight, 0), Quaternion.identity); // Make the first and second set of platforms for a buffer
         _currentSpawnHeight += _spawnHeightDistance;
-        Instantiate(selectPlatGroup(), new Vector3(0, _currentSpawnHeight, 0), Quaternion.identity); 
-        _currentSpawnHeight += _spawnHeightDistance;
+        /*Instantiate(selectPlatGroup(), new Vector3(0, _currentSpawnHeight, 0), Quaternion.identity); 
+        _currentSpawnHeight += _spawnHeightDistance;*/
 
         _lastCamPosY = 0;
 

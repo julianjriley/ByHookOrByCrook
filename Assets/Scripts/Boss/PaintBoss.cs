@@ -1,5 +1,4 @@
 using FMODUnity;
-using FMOD.Studio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +18,11 @@ public class PaintBoss : BossPrototype
     private float _paintDuration;
     [SerializeField, Tooltip("Target used to make the boss track to a painting to spawn an 'enemy'.")]
     private CirclingTarget _paintingTarget;
+    [SerializeField, Tooltip("exclamation indicator of moving quickly towards a painting.")]
+    private GameObject _exclamation;
+    [SerializeField, Tooltip("Used to call painting animation")]
+    private Animator _anim;
+
     [SerializeField] EventReference paintingSound;
 
     // queue of spawners the boss must track to
@@ -48,6 +52,10 @@ public class PaintBoss : BossPrototype
         // track to first spawner in list (like queue)
         if (_spawners.Count > 0 && !_isPainting)
         {
+            // indicator of charging to portrait
+            _exclamation.SetActive(true);
+            _spawners[0].SetNextTarget(true);
+
             // update where boss tracks towards
             if (_target != _paintingTarget.transform)
             {
@@ -72,12 +80,17 @@ public class PaintBoss : BossPrototype
     /// </summary>
     private IEnumerator MakeSomeArt()
     {
+        // no longer charging towards portrait
+        _exclamation.SetActive(false);
+        _spawners[0].SetNextTarget(false);
+
         // start paint effect on spawner
         _spawners[0].StartPaint();
 
         // painting sound
         SoundManager.Instance.PlayOneShot(paintingSound, gameObject.transform.position);
-        // TODO: painting animation
+        // painting animation
+        _anim.SetTrigger("Paint");
 
         // paint delay
         yield return new WaitForSeconds(_paintDuration);
@@ -91,8 +104,6 @@ public class PaintBoss : BossPrototype
         // return to non-painting movement behavior
         SetDefaultTarget();
         SetDefaultSpeed();
-
-        // TODO: return to idle animation
 
         _isPainting = false;
     }

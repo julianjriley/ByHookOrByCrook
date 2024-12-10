@@ -41,6 +41,7 @@ public class GreenArmyFish : WeaponInstance
                 greenArmyFishProjectile.AssignStats(_weapon);
                 greenArmyFishProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
             }
+                _heatLevel += _weapon.HeatBuildup;
         }
         _animator.Play("Fire");
         TryApplyRecoil();

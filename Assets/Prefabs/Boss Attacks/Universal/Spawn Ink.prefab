@@ -94,7 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9014502619438345740}
   - component: {fileID: 8210276117154856281}
-  m_Layer: 0
+  - component: {fileID: 423283574442086833}
+  m_Layer: 11
   m_Name: Spawn Ink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,6 +133,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnTime: 2
   _projectilePrefab: {fileID: 7080548220480504319, guid: ce091a55604cbc049b0f35d6e9d80ea5, type: 3}
+--- !u!65 &423283574442086833
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123999255432267849}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.25, y: 0.25, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4804637981021511443
 GameObject:
   m_ObjectHideFlags: 0

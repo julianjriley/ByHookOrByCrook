@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class LaserBeam : Projectile
     [SerializeField] private float _activeDuration = 2.5f;
     [Tooltip("Total time of laser cycle (nondamaging => damaging)")]
     [SerializeField] private float _cycleDuration = 5f;
+    [SerializeField] private EventReference laserSound;
     private float _downDuration;
 
     override protected void Start()
@@ -74,17 +76,19 @@ public class LaserBeam : Projectile
         yield return new WaitForSeconds(_downDuration / 2);
         _animator.Play("LaserThreaten");
         yield return new WaitForSeconds(_downDuration / 4); // Speed up the animation
-        _animator.speed = 1.5f;
+        _animator.speed = 3f;
         yield return new WaitForSeconds(_downDuration / 4);
 
         _animator.speed = 1;
         _animator.Play("LaserAppear");
+        SoundManager.Instance.InitializeLaser(laserSound);
         _collider.enabled = true;
 
         yield return new WaitForSeconds(_activeDuration);
 
         _collider.enabled = false;
         _animator.Play("LaserFade");
+        SoundManager.Instance.laserEventInstance.setParameterByName("LaserOn", 1);
     }
 
 

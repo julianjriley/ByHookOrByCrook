@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7248781632990475724}
   - component: {fileID: 7151161189939041623}
   - component: {fileID: 5308727306712629826}
-  - component: {fileID: 3717053446057670138}
+  - component: {fileID: 7022989223189799177}
   - component: {fileID: -3825279290709488291}
+  - component: {fileID: 2150289851845469404}
   m_Layer: 8
   m_Name: LoveLetter
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3147431625062083812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -1669246187
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: b0c107d07f5bea54f83a74bc0b4c7c8a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 622d093f2e55756468006a5080716457, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -114,8 +115,8 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!136 &3717053446057670138
-CapsuleCollider:
+--- !u!65 &7022989223189799177
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -132,11 +133,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Size: {x: 0.68080586, y: 0.41699117, z: 0.2}
+  m_Center: {x: -0.0021402836, y: -0.16335802, z: 0}
 --- !u!114 &-3825279290709488291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,9 +152,40 @@ MonoBehaviour:
   _baseDamage: 1
   _size: 1
   _speed: 4
-  _lifetime: 4
-  _health: 5
+  _lifetime: -1
+  _health: 3
   _deathEffect: {fileID: 0}
-  _timeTillExplosion: 3
-  _maxDistance: 2
+  _maxDistance: 2.5
+  _seekingSpeed: 5
   _explosion: {fileID: 565081720219544214, guid: 9ddaec7f7d6cc4b4ab238223c39962b7, type: 3}
+--- !u!114 &2150289851845469404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3147431625062083812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -360336581
+      Data2: 1165024339
+      Data3: 1623024571
+      Data4: 440065680
+    Path: event:/Combat/Anime/LetterOpen
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

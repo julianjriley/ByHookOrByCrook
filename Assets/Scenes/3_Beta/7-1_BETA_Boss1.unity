@@ -1768,16 +1768,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: f79162a3400d7f64ab45dda97c3223b4, type: 2}
+      objectReference: {fileID: 11400000, guid: 7d5259b2ce82e814b8411efdf587051b, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.data[1]
       value: 
@@ -1801,7 +1801,7 @@ PrefabInstance:
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: cdcb881443434e14abd8e0ce08db8810, type: 2}
+      objectReference: {fileID: 11400000, guid: 60d2a0e74ba19284fb95c2dc06357187, type: 2}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.data[3]
       value: 
@@ -3919,6 +3919,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1435887812646945556}
     m_Modifications:
+    - target: {fileID: 2654662467534787710, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b08bbed67e0d9e44aa199777d92f72c, type: 2}
+    - target: {fileID: 2654662467534787710, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3009414729312138314, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4001,6 +4009,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3009414729312138314, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461873773169119458, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b08bbed67e0d9e44aa199777d92f72c, type: 2}
+    - target: {fileID: 5461873773169119458, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5624498320728542699, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6216035640418785883, guid: 2b2d39248de233e4986356415c0231e2, type: 3}

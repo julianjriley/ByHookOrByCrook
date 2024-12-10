@@ -19,7 +19,7 @@ MonoBehaviour:
   _sprite: {fileID: 2134407485, guid: 8051612ed66daf64a98da1a251c3c520, type: 3}
   _itemPrefab: {fileID: 1784564430148185939, guid: 54c9ef4a9fe8c9940bf8f40951834996, type: 3}
   _cost: 800
-  itemType: 0
+  itemType: 3
   _baseDamage: 1
   _baseFireRate: 1
   _baseSize: 1
@@ -32,11 +32,11 @@ MonoBehaviour:
   _baseRecoilAmount: 20
   _fireSound:
     Guid:
-      Data1: 750242881
-      Data2: 1273948051
-      Data3: 284294323
-      Data4: -499286835
-    Path: event:/Combat/Guns/RottenFish
+      Data1: -71016327
+      Data2: 1326653352
+      Data3: -1660939382
+      Data4: -1213309905
+    Path: event:/Combat/Guns/BlobfishShot
   canRecoil: 0
   overheatShot: 0
   overheatDamageBonus: 0

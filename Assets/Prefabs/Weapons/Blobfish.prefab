@@ -104,6 +104,13 @@ MonoBehaviour:
   _overHeated: 0
   _canFire: 1
   _projectile: {fileID: 9108192296873865193, guid: 6d6b9da9426dc314f99df6a4cb197134, type: 3}
+  _blobSound:
+    Guid:
+      Data1: -1152774074
+      Data2: 1262489695
+      Data3: -681888846
+      Data4: -1174042912
+    Path: event:/Combat/Guns/Blobfish
 --- !u!95 &-1342527543297664829
 Animator:
   serializedVersion: 5

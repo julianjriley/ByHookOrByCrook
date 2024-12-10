@@ -27,7 +27,7 @@ public class RailgunFishProjectile : Projectile
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collider.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
         {
-            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
+            collider.gameObject.GetComponent<IDamageable>().TakeDamage(_damage, false);
         }
         InstantiateDeathEffect();
     }
@@ -49,7 +49,7 @@ public class RailgunFishProjectile : Projectile
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
         {
-            collision.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
+            collision.gameObject.GetComponent<IDamageable>().TakeDamage(_damage, false);
         }
         InstantiateDeathEffect();
     }
