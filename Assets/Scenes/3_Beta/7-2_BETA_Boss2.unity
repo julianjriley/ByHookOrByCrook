@@ -4130,6 +4130,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
+--- !u!114 &1009215092764784609 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
+  m_PrefabInstance: {fileID: 1009215092764784608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9a7cbe0e5260141aec68bc52868a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1435887812646945555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4423,6 +4434,10 @@ PrefabInstance:
       propertyPath: _playerTransform
       value: 
       objectReference: {fileID: 1673396115}
+    - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
+      propertyPath: _targetRepositioner
+      value: 
+      objectReference: {fileID: 1009215092764784609}
     - target: {fileID: 3080034036361531369, guid: 1edbe814ef1a35d458cd81f3d679536a, type: 3}
       propertyPath: _transitionsHandler
       value: 
