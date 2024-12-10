@@ -79,7 +79,7 @@ public class AnimeBoss : BossPrototype
             }
             if(isLeadingUp)
             {
-                leadupDistance = gameObject.transform.position.y - _playerTransform.position.y;
+                leadupDistance = gameObject.transform.position.y - Camera.main.transform.position.y;
                 if (leadupDistance < 40)
                 {
                     SoundManager.Instance.SetParameter(leadupInstance, "Distance", leadupDistance / 4);
