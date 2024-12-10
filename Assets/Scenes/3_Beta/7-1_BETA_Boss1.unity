@@ -2586,6 +2586,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
+--- !u!114 &1009215092764784609 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 555277240241301308, guid: f2371e0cb388c56429f3b57b58b89a59, type: 3}
+  m_PrefabInstance: {fileID: 1009215092764784608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9a7cbe0e5260141aec68bc52868a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &1183962011684666013
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4070,6 +4081,7 @@ MonoBehaviour:
   _introUI: {fileID: 1502547066}
   _victoryText: {fileID: 1856346709}
   _defeatText: {fileID: 1761118095}
+  _targetRepositioner: {fileID: 1009215092764784609}
   _transitionsHandler: {fileID: 1620775887}
   BossHealth: 300
   MaxBossHealth: 300

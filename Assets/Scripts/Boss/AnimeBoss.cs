@@ -21,8 +21,6 @@ public class AnimeBoss : BossPrototype
     private GameObject _bigWhiteScreen;
     [SerializeField, Tooltip("Skips phase change cutscene for testing")]
     private bool _skipCutscene;
-    [SerializeField, Tooltip("Used to pause repositioner motion")]
-    private BossTargetRepositioner _repositioner;
     private Animator _bossAnim;
     private Animator _bwsAnim;
 
@@ -158,22 +156,18 @@ public class AnimeBoss : BossPrototype
     private IEnumerator DoCastLaser(GameObject chosenAttack)
     {
         SetSpeed(0);
-        _repositioner.FreezeMotion();
         _wandAnim.SetTrigger("Wiggle");
         Instantiate(chosenAttack, _laserAttackEmpty);
         yield return new WaitForSeconds(_pauseTime);
         SetDefaultSpeed();
-        _repositioner.UnfreezeMotion();
         yield return null;
     }
 
     private IEnumerator DoPhase1Spawn(GameObject chosenAttack)
     {
         SetSpeed(0);
-        _repositioner.FreezeMotion();
         Instantiate(chosenAttack, _mikuAttackEmpty);
         yield return new WaitForSeconds(_pauseTime / 1.5f);
-        _repositioner.UnfreezeMotion();
         SetDefaultSpeed();
         yield return null;
     }
