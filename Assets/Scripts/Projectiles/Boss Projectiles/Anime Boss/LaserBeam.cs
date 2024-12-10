@@ -76,7 +76,7 @@ public class LaserBeam : Projectile
         yield return new WaitForSeconds(_downDuration / 2);
         _animator.Play("LaserThreaten");
         yield return new WaitForSeconds(_downDuration / 4); // Speed up the animation
-        _animator.speed = 1.5f;
+        _animator.speed = 3f;
         yield return new WaitForSeconds(_downDuration / 4);
 
         _animator.speed = 1;

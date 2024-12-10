@@ -287,7 +287,7 @@ public class BossPrototype : MonoBehaviour, IDamageable
         choice = _phases[phaseNum].AttackPrefabs[rand];
     }
 
-    void PhaseSwitch() {
+    virtual protected void PhaseSwitch() {
         CancelInvoke();
         _phases[_phaseCounter].StartEvent.Invoke();
         InvokeRepeating("AttackLogic", _phases[_phaseCounter].StartDelay, _phases[_phaseCounter].RepeatRate);
@@ -337,7 +337,7 @@ public class BossPrototype : MonoBehaviour, IDamageable
         
     }
 
-    public void TakeDamage(float damage, bool dontUseSound)
+    virtual public void TakeDamage(float damage, bool dontUseSound)
     {
         BossHealth -= damage;
         HealthChanged?.Invoke(BossHealth);

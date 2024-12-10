@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3925302597560307346}
   - component: {fileID: 4479598209664823706}
-  - component: {fileID: 200201163924875462}
   - component: {fileID: 2709412597720014026}
   - component: {fileID: 8643602353941430029}
   - component: {fileID: 348324164140915882}
@@ -65,29 +64,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!136 &200201163924875462
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809019826170991230}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 2056
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2709412597720014026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,8 +80,8 @@ MonoBehaviour:
   _baseDamage: 0
   _size: 1
   _speed: 5
-  _lifetime: 10
-  _health: 5
+  _lifetime: -1
+  _health: 8
   _deathEffect: {fileID: 0}
   _sprite: {fileID: 5213961956247577238}
   mikuSound:
@@ -115,6 +91,19 @@ MonoBehaviour:
       Data3: -890027090
       Data4: -1118170487
     Path: event:/Combat/Anime/Miku
+  _horBound: 14.3
+  _topBound: 7.6
+  _lowBound: 5
+  _colorSprite: {fileID: 2704868052586328659}
+  _colorOptions:
+  - {r: 1, g: 0.9333334, b: 0, a: 1}
+  - {r: 0.04705883, g: 0, b: 0.9803922, a: 1}
+  - {r: 0.9960785, g: 0.9960785, b: 0.9960785, a: 1}
+  - {r: 0.9960785, g: 0.0627451, b: 0.5372549, a: 1}
+  - {r: 0.15686275, g: 0.97647065, b: 0.098039225, a: 1}
+  - {r: 0.9921569, g: 0.14509805, b: 0, a: 1}
+  - {r: 0.9607844, g: 0.50980395, b: 0.023529414, a: 1}
+  - {r: 0.37647063, g: 0.1764706, b: 0.49411768, a: 1}
 --- !u!136 &8643602353941430029
 CapsuleCollider:
   m_ObjectHideFlags: 0
