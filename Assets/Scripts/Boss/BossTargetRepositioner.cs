@@ -116,8 +116,10 @@ public class BossTargetRepositioner : MonoBehaviour
     }
     public void NewBossTarget(int rotation, int scale) {
         CancelInvoke();
-        StopCoroutine(_lerpScale);
-        StopCoroutine(_lerpRotation);
+        if (_lerpScale is not null) // avoid crash case when skipping intro very quickly
+            StopCoroutine(_lerpScale);
+        if (_lerpRotation is not null) // avoid crash case when skipping intro very quickly
+            StopCoroutine(_lerpRotation);
         _hasProtectedTarget = true;
         //make new rotator and target
         GameObject newTarget;

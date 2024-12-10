@@ -46,7 +46,8 @@ public class BossPrototype : MonoBehaviour, IDamageable
     [HideInInspector]
     public float MaxBossHealth;
     protected int _phaseCounter = 0;
-    private bool _defeated = false;
+    private bool _endStateReached = false;
+    private bool _didPlayerWin = false; // used only for cashout multiplier calculation
     protected Transform _spawnLocation;
     [SerializeField]
     protected PhaseInfo[] _phases;
@@ -160,7 +161,9 @@ public class BossPrototype : MonoBehaviour, IDamageable
     // Update is called once per frame
     virtual protected void FixedUpdate()
     {
-        if (!_defeated) {
+        // ensure victory/defeat cannot both happen
+        // also freeze other boss logic when it dies or player dies
+        if (!_endStateReached) {
             Move();
             //check for phase change
             if (BossHealth <= 0) {
@@ -297,7 +300,8 @@ public class BossPrototype : MonoBehaviour, IDamageable
     }
     void DefeatLogic() {
         //Debug.Log("Defeated!");
-        _defeated = true;
+        _didPlayerWin = true;
+        _endStateReached = true;
         CancelInvoke();
         foreach (Transform child in _spawnLocation) { //delete all attacks to ensure player doesn't die after defeating the boss
             Destroy(child.gameObject);
@@ -319,11 +323,16 @@ public class BossPrototype : MonoBehaviour, IDamageable
     }
 
     void HandlePlayerDeath() {
-        _actions.Disable();
-        _defeatText.SetActive(true);
-        _player.transform.Find("SmokeExplosionVFX_0").gameObject.SetActive(true);
-        _player.GetComponent<PlayerCombat>().BossDefeated = true;
-        StartCoroutine(NextSceneDelay(false));
+        // ensure player death ONLY triggers if boss death has not already happened
+        if (!_endStateReached)
+        {
+            _endStateReached = true;
+            _actions.Disable();
+            _defeatText.SetActive(true);
+            _player.transform.Find("SmokeExplosionVFX_0").gameObject.SetActive(true);
+            _player.GetComponent<PlayerCombat>().BossDefeated = true;
+            StartCoroutine(NextSceneDelay(false));
+        }
     }
 
     IEnumerator NextSceneDelay(bool boss3Win) {
@@ -357,23 +366,14 @@ public class BossPrototype : MonoBehaviour, IDamageable
     protected void CalculateBossBountyMultiplier()
     {
         float percentageOfHealthLeft = BossHealth / MaxBossHealth;
-        if(percentageOfHealthLeft <= 0)
-        {
+        if (_didPlayerWin)
             GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2;
-        }
         else
         {
+            // multiplier based on progress towards victory made
             double x = ((double)percentageOfHealthLeft);
             GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = (float)(math.remap(0, 1, 1.5, 1, x));
         }
-        /*else if(percentageOfHealthLeft < 0.33f)
-        {
-            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 4;
-        }
-        else if(percentageOfHealthLeft < 0.66f)
-        {
-            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2.5f;
-        }*/
     }
 
     private void OnTriggerEnter(Collider collider)
