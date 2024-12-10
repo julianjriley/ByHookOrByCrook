@@ -30,6 +30,7 @@ public class BossPrototype : MonoBehaviour, IDamageable
     [SerializeField] private GameObject _introUI;
     [SerializeField] private GameObject _victoryText;
     [SerializeField] private GameObject _defeatText;
+    [SerializeField] private BossTargetRepositioner _targetRepositioner;
     [SerializeField, Tooltip("Used to call scene transitions.")]
     private SceneTransitionsHandler _transitionsHandler;
 
@@ -153,6 +154,7 @@ public class BossPrototype : MonoBehaviour, IDamageable
         _actions.Enable();
         PhaseSwitch();
         SetDefaultTarget();
+        _targetRepositioner.NewBossTarget(0, 18);
     }
 
     // Update is called once per frame
