@@ -152,14 +152,4 @@ public class BossTargetRepositioner : MonoBehaviour
         //restart invoke repeating
         InvokeRepeating("MakeNewTarget", TimeBetweenRepositions, TimeBetweenRepositions);
     }
-
-    public void FreezeMotion()
-    {
-        Duration = 999999999; // basically make it take VERY long to get anywhere
-    }
-
-    public void UnfreezeMotion()
-    {
-        Duration = _defaultDuration;
-    }
 }
