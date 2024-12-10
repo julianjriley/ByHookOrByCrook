@@ -1001,6 +1001,7 @@ MonoBehaviour:
   _introUI: {fileID: 0}
   _victoryText: {fileID: 0}
   _defeatText: {fileID: 0}
+  _targetRepositioner: {fileID: 0}
   _transitionsHandler: {fileID: 0}
   BossHealth: 800
   MaxBossHealth: 100
@@ -1061,45 +1062,23 @@ MonoBehaviour:
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    StartDelay: 10
+    StartDelay: 1.5
     RepeatRate: 16
     AttackPrefabs:
     - {fileID: 4014801284758641751, guid: e0cd3bf145fed294ba4135dbeabcfddf, type: 3}
-  - Threshold: 225
+    - {fileID: 4110811846846651699, guid: 4073649b8ecc1ed4bb29e97eedc58e99, type: 3}
+    - {fileID: 7321076040093551069, guid: 88605ed084fc4134b908793a59e4bc45, type: 3}
+  - Threshold: 300
     StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    StartDelay: 0.5
-    RepeatRate: 2.5
+    StartDelay: 2
+    RepeatRate: 16
     AttackPrefabs:
-    - {fileID: 586751561527155039, guid: 1ac48c21087c7874f8e1add69ba3ef2c, type: 3}
-    - {fileID: 5962596207937716559, guid: bd49da0e51de03b44a1aad9f5d6034a9, type: 3}
-    - {fileID: 6366594180365824582, guid: de91494b55e446c49a97024ffcb373f4, type: 3}
-    - {fileID: 3848993560049277504, guid: f30f37fc7f708d4499267d1dcdefd81e, type: 3}
-    - {fileID: 8779451128299037341, guid: aee432ab6f857334ebe7f2ed31f34fb1, type: 3}
-    - {fileID: 1577371681655717310, guid: cbf5afd92a6e1ab44801fd90c04872b1, type: 3}
-    - {fileID: 7453485478561490602, guid: 036c61a15ab068649936dd04308ec1f5, type: 3}
-    - {fileID: 6158136998503920516, guid: a1e391125307e874c9cd6d96153b9bf6, type: 3}
-    - {fileID: 7838369470891907009, guid: 54c25c8b3a24c8b409f0d4c37cdce285, type: 3}
-    - {fileID: 6053827862461707217, guid: 6d5e7d8ef8e9782488bf2692b831bc10, type: 3}
-    - {fileID: 487677126486304339, guid: b1367a59d63b58144a271a388114c272, type: 3}
-    - {fileID: 4130649209329565546, guid: cf7948b5e4b6bf249a6023c33948e769, type: 3}
-    - {fileID: 4734824460262262603, guid: ff9f0142786c2dd4bbd251b4129f6b17, type: 3}
-    - {fileID: 6564452776831401484, guid: 3dc823cf7bc22df4693619a6b7565cd3, type: 3}
-    - {fileID: 5657812542449007132, guid: bdb880e6461e61b4c8a13beced94b218, type: 3}
-    - {fileID: 3919691256913672284, guid: e7def24a7bc8df342a5676c78b3640f9, type: 3}
-    - {fileID: 7900697639880987432, guid: 4d5371f4f737bf44080ad9a987e44b4d, type: 3}
-    - {fileID: 3693629592956994482, guid: e2c6abbde80a709439bbd9cf3581050f, type: 3}
-    - {fileID: 7482703264570985396, guid: 5f80a39188f36884e9f529d3eb37d3a8, type: 3}
-    - {fileID: 4798447765693129418, guid: 38a198ce03ffccc4a925ddfc07ebff17, type: 3}
-    - {fileID: 6339863087777551465, guid: 55800ec82c2354641af28d9d5f5aed84, type: 3}
-    - {fileID: 6621855051909973360, guid: 2eb0ceb31f54749469acc05f615ce8a7, type: 3}
-    - {fileID: 3795539057491804075, guid: 896b89c9d3b1f234a947fc96853d1eec, type: 3}
-    - {fileID: 9163027841056639345, guid: 888bbff370dd29845852747fb7b7ab0b, type: 3}
-    - {fileID: 1313593509738440572, guid: 7a027be133a4daa47b15621dff49e76e, type: 3}
-    - {fileID: 6234742286634803195, guid: e580110b535298440beb4b158002e0f5, type: 3}
-    - {fileID: 1149532525272193349, guid: 7838fdb4657939949964543d751c973d, type: 3}
-  - Threshold: 125
+    - {fileID: 6031590391019851063, guid: 05c5315ce8c31354ea8e727869a955e8, type: 3}
+    - {fileID: 6031590391019851063, guid: a35265a996446864ebd85dff1a14d1ac, type: 3}
+    - {fileID: 6031590391019851063, guid: a1dec5702bef6f64aba2cca429a0e983, type: 3}
+  - Threshold: 150
     StartEvent:
       m_PersistentCalls:
         m_Calls:
@@ -1115,36 +1094,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    StartDelay: 0.5
-    RepeatRate: 2.5
+    StartDelay: 2
+    RepeatRate: 16
     AttackPrefabs:
-    - {fileID: 586751561527155039, guid: 1ac48c21087c7874f8e1add69ba3ef2c, type: 3}
-    - {fileID: 5962596207937716559, guid: bd49da0e51de03b44a1aad9f5d6034a9, type: 3}
-    - {fileID: 6366594180365824582, guid: de91494b55e446c49a97024ffcb373f4, type: 3}
-    - {fileID: 3848993560049277504, guid: f30f37fc7f708d4499267d1dcdefd81e, type: 3}
-    - {fileID: 8779451128299037341, guid: aee432ab6f857334ebe7f2ed31f34fb1, type: 3}
-    - {fileID: 1577371681655717310, guid: cbf5afd92a6e1ab44801fd90c04872b1, type: 3}
-    - {fileID: 7453485478561490602, guid: 036c61a15ab068649936dd04308ec1f5, type: 3}
-    - {fileID: 6158136998503920516, guid: a1e391125307e874c9cd6d96153b9bf6, type: 3}
-    - {fileID: 7838369470891907009, guid: 54c25c8b3a24c8b409f0d4c37cdce285, type: 3}
-    - {fileID: 6053827862461707217, guid: 6d5e7d8ef8e9782488bf2692b831bc10, type: 3}
-    - {fileID: 487677126486304339, guid: b1367a59d63b58144a271a388114c272, type: 3}
-    - {fileID: 4130649209329565546, guid: cf7948b5e4b6bf249a6023c33948e769, type: 3}
-    - {fileID: 4734824460262262603, guid: ff9f0142786c2dd4bbd251b4129f6b17, type: 3}
-    - {fileID: 6564452776831401484, guid: 3dc823cf7bc22df4693619a6b7565cd3, type: 3}
-    - {fileID: 5657812542449007132, guid: bdb880e6461e61b4c8a13beced94b218, type: 3}
-    - {fileID: 3919691256913672284, guid: e7def24a7bc8df342a5676c78b3640f9, type: 3}
-    - {fileID: 7900697639880987432, guid: 4d5371f4f737bf44080ad9a987e44b4d, type: 3}
-    - {fileID: 3693629592956994482, guid: e2c6abbde80a709439bbd9cf3581050f, type: 3}
-    - {fileID: 7482703264570985396, guid: 5f80a39188f36884e9f529d3eb37d3a8, type: 3}
-    - {fileID: 4798447765693129418, guid: 38a198ce03ffccc4a925ddfc07ebff17, type: 3}
-    - {fileID: 6339863087777551465, guid: 55800ec82c2354641af28d9d5f5aed84, type: 3}
-    - {fileID: 6621855051909973360, guid: 2eb0ceb31f54749469acc05f615ce8a7, type: 3}
-    - {fileID: 3795539057491804075, guid: 896b89c9d3b1f234a947fc96853d1eec, type: 3}
-    - {fileID: 9163027841056639345, guid: 888bbff370dd29845852747fb7b7ab0b, type: 3}
-    - {fileID: 1313593509738440572, guid: 7a027be133a4daa47b15621dff49e76e, type: 3}
-    - {fileID: 6234742286634803195, guid: e580110b535298440beb4b158002e0f5, type: 3}
-    - {fileID: 1149532525272193349, guid: 7838fdb4657939949964543d751c973d, type: 3}
+    - {fileID: 4014801284758641751, guid: e0cd3bf145fed294ba4135dbeabcfddf, type: 3}
+    - {fileID: 4110811846846651699, guid: 4073649b8ecc1ed4bb29e97eedc58e99, type: 3}
+    - {fileID: 7321076040093551069, guid: 88605ed084fc4134b908793a59e4bc45, type: 3}
   damageSound:
     Guid:
       Data1: 1622638801
@@ -1160,7 +1115,6 @@ MonoBehaviour:
   _wandAnim: {fileID: 2092681179612196492}
   _bigWhiteScreen: {fileID: 0}
   _skipCutscene: 0
-  _repositioner: {fileID: 0}
   transitionLeadup:
     Guid:
       Data1: 639408310
