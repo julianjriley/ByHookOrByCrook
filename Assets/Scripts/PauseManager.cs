@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+// WISHLIST: Countdown Timer. Some functions are written but don't work.
+
 public class PauseManager : MonoBehaviour
 {
     [SerializeField]
@@ -14,6 +16,9 @@ public class PauseManager : MonoBehaviour
 
     [SerializeField]
     private GameObject _optionsMenu;
+
+    [SerializeField]
+    private GameObject _areYouSureMenu;
 
     private InputActionAsset actions;
     private ActionControls _controls;
@@ -67,10 +72,7 @@ public class PauseManager : MonoBehaviour
         actions.Disable();
         _isPaused = true;
         _pauseMenu.SetActive(true);
-        //Debug.Log("disabling input");
-
     }
-
 
     public void Resume()
     {
@@ -79,10 +81,6 @@ public class PauseManager : MonoBehaviour
         actions.Enable();
         _isPaused = false;
         Time.timeScale = 1f;
-
-
-        // WISHLIST: Countdown Timer. Some functions are written but don't work.
-
     }
 
     void Countdown()
@@ -98,18 +96,34 @@ public class PauseManager : MonoBehaviour
 
     public void MainMenu()
     {
-        Time.timeScale = 1f;
-        actions.Enable();
-        _pauseMenu.SetActive(false);
-        GameManager.Instance.ResetScenePersistentData();
-        SceneManager.LoadScene(0);
+        AreYouSure();
+        // Make sure to call LoadScene function by 0 ON BUTTON
+    }
+    public void LoadScene(int index)
+    {
+        SceneManager.LoadScene(index);
     }
     public void Hub()
     {
+        AreYouSure();
+        // Make sure to call LoadScene function by 3 ON BUTTON
+    }
+
+    public void AreYouSure()
+    {
+        // Make content appear
+        _areYouSureMenu.SetActive(true);
+    }
+    public void IMSUREGOD()
+    {
+        _areYouSureMenu.SetActive(false);
         Time.timeScale = 1f;
         actions.Enable();
         GameManager.Instance.ResetScenePersistentData();
-        SceneManager.LoadScene(3);
+    }
+    public void IMNOTSURE()
+    {
+        _areYouSureMenu.SetActive(false);
     }
 
     private IEnumerator DoCountdown()
