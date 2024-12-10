@@ -47,6 +47,7 @@ public class BossPrototype : MonoBehaviour, IDamageable
     public float MaxBossHealth;
     protected int _phaseCounter = 0;
     private bool _endStateReached = false;
+    private bool _didPlayerWin = false; // used only for cashout multiplier calculation
     protected Transform _spawnLocation;
     [SerializeField]
     protected PhaseInfo[] _phases;
@@ -299,6 +300,7 @@ public class BossPrototype : MonoBehaviour, IDamageable
     }
     void DefeatLogic() {
         //Debug.Log("Defeated!");
+        _didPlayerWin = true;
         _endStateReached = true;
         CancelInvoke();
         foreach (Transform child in _spawnLocation) { //delete all attacks to ensure player doesn't die after defeating the boss
@@ -364,23 +366,14 @@ public class BossPrototype : MonoBehaviour, IDamageable
     protected void CalculateBossBountyMultiplier()
     {
         float percentageOfHealthLeft = BossHealth / MaxBossHealth;
-        if(percentageOfHealthLeft <= 0)
-        {
+        if (_didPlayerWin)
             GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2;
-        }
         else
         {
+            // multiplier based on progress towards victory made
             double x = ((double)percentageOfHealthLeft);
             GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = (float)(math.remap(0, 1, 1.5, 1, x));
         }
-        /*else if(percentageOfHealthLeft < 0.33f)
-        {
-            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 4;
-        }
-        else if(percentageOfHealthLeft < 0.66f)
-        {
-            GameManager.Instance.ScenePersistent.BossPerformanceMultiplier = 2.5f;
-        }*/
     }
 
     private void OnTriggerEnter(Collider collider)
