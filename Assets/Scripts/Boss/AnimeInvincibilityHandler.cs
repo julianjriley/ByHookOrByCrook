@@ -25,6 +25,8 @@ public class AnimeInvincibilityHandler : MonoBehaviour
     private float _invincibilitySaturation;
     [SerializeField, Tooltip("Speed at which hue cycles during invincibility.")]
     private float _hueCycleSpeed;
+    [SerializeField, Tooltip("Time before spawn where effect shows orb fading in.")]
+    private float _orbIndicatorTime;
 
     private float _currHue;
 
@@ -80,7 +82,12 @@ public class AnimeInvincibilityHandler : MonoBehaviour
                 _activationTimer = Random.Range(_minInterval, _maxInterval);
             }
             else
+            {
+                if (_activationTimer < _orbIndicatorTime)
+                    _theOrb.ShowOrbSpawning();
+
                 _activationTimer -= Time.deltaTime;
+            }
         }
     }
 
