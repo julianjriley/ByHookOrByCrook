@@ -3382,7 +3382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testItems.Array.size
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7600398866597072913, guid: 2b0cb8d70e603f441a0868f83664cbca, type: 3}
       propertyPath: testWeapons.Array.size
@@ -4515,6 +4515,74 @@ PrefabInstance:
       propertyPath: _transitionsHandler
       value: 
       objectReference: {fileID: 2099227494}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 319369555003794758, guid: ce2a3ea6b61479f4abac051e6bf6af2a, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[0].AttackPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 2515766167871629070, guid: 26683f989fed7a543b601459fa11b691, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 319369555003794758, guid: 9e856ae396af5a44999899404bfa565b, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].AttackPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 2515766167871629070, guid: 19531ac79e4e43449abafd9fa1e1853c, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2515766167871629070, guid: 19531ac79e4e43449abafd9fa1e1853c, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 319369555003794758, guid: 9e856ae396af5a44999899404bfa565b, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 7378992784451185382, guid: 562ed18b3e13b3540aa752ba9e0c4ef4, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].AttackPrefabs.Array.data[15]
+      value: 
+      objectReference: {fileID: 5419112317460699201, guid: 9d597bf8f3993514db88b6b667a96574, type: 3}
     - target: {fileID: 5328064553761786786, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _theOrb
       value: 
