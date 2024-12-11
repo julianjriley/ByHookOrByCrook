@@ -51,4 +51,27 @@ public class InvincibilityOrb : MonoBehaviour, IDamageable
     {
         return _currHealth < 0;
     }
+
+    #region Contact Damage
+    //The two collision functions are exactly the same its just safety honestly (some projectiles are triggers and others aren't)
+
+    protected virtual void OnTriggerEnter(Collider collider)
+    {
+        if (collider.TryGetComponent<IDamageable>(out IDamageable component) && collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            component.TakeDamage(1, false);
+
+            // orb is unaffected by contact with player
+        }
+    }
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable component) && collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            component.TakeDamage(1, false);
+
+            // orb is unaffected by contact with player
+        }
+    }
+    #endregion
 }
