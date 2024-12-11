@@ -102,9 +102,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         controls.FindAction("SwitchWeapon").Enable();
         controls.FindAction("SwitchWeapon").performed += ChangeWeapon;
 
-        controls.FindAction("InvulnToggle").Enable();
-        controls.FindAction("InvulnToggle").performed += ToggleInvuln;
-
         ResetStats();
         _weapons = new List<WeaponInstance>();
         playerMovement = GetComponent<ArenaMovement>();
@@ -158,7 +155,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         controls.FindAction("FireWeapon").started -= FireWeapon;
         controls.FindAction("FireWeapon").canceled -= FireWeapon;
         controls.FindAction("SwitchWeapon").performed -= ChangeWeapon;
-        controls.FindAction("InvulnToggle").performed -= ToggleInvuln;
 
         controls.FindAction("FireWeapon").Disable();
         controls.FindAction("SwitchWeapon").Disable();
