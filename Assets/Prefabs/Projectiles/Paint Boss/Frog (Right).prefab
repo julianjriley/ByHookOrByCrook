@@ -54,6 +54,7 @@ MonoBehaviour:
   _speed: 1
   _lifetime: -1
   _health: 4
+  _deathEffect: {fileID: 0}
   _anim: {fileID: 8273449813463403512}
   _sprite: {fileID: 5565403296360854682}
   _hopSpeed: {x: 5, y: 3}
@@ -128,7 +129,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ba4fc77dc5717bf4bb9c61f7bb71300b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

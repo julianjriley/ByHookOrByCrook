@@ -106,6 +106,7 @@ MonoBehaviour:
   _speed: 0
   _lifetime: -1
   _health: 5
+  _deathEffect: {fileID: 0}
 --- !u!54 &7053673048107385937
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -174,7 +175,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d1c4d5632347c734dbb4156371de9884, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
