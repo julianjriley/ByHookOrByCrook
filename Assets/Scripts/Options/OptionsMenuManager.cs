@@ -17,6 +17,12 @@ public class OptionsMenuManager : MonoBehaviour
     [SerializeField] private GameObject _currentTab;
     [SerializeField] private int _currentTabNum;
 
+    [SerializeField]
+    private Toggle _invulToggle;
+
+    [SerializeField]
+    private GameObject _skipperSlider;
+
     [SerializeField, Header("Tabs")]
     private List<GameObject> _tabs;
 
@@ -36,7 +42,6 @@ public class OptionsMenuManager : MonoBehaviour
     [SerializeField, Tooltip("Profile")]
     private PostProcessProfile _profile;
     [SerializeField, Tooltip("Pass in the main camera")]
-    private PostProcessLayer _layer;
     private AutoExposure _exposure;
     private ColorGrading _saturation;
 
@@ -77,9 +82,31 @@ public class OptionsMenuManager : MonoBehaviour
         GameManager.Instance.GamePersistent.MusicVolume = _musicSlider.value;
         SoundManager.Instance.SetGlobalParameter("MusicSlider", _musicSlider.value);
     }
+
+    public void ResetMusic()
+    {
+        _musicSlider.value = 1;
+        GameManager.Instance.GamePersistent.MusicVolume = _musicSlider.value;
+        SoundManager.Instance.SetGlobalParameter("MusicSlider", _musicSlider.value);
+    }
+    public void ResetSFX()
+    {
+        _sfxSlider.value = 1;
+        GameManager.Instance.GamePersistent.SFXVolume = _sfxSlider.value;
+        SoundManager.Instance.SetGlobalParameter("SFXSlider", _sfxSlider.value);
+    }
+
     public void AdjustSaturation()
     {
         _profile.TryGetSettings(out _saturation);
+        _saturation.saturation.value = _saturationSlider.value;
+        GameManager.Instance.GamePersistent.Saturation = _saturationSlider.value;
+    }
+
+    public void ResetSaturation()
+    {
+        _profile.TryGetSettings(out _saturation);
+        _saturationSlider.value = 30;
         _saturation.saturation.value = _saturationSlider.value;
         GameManager.Instance.GamePersistent.Saturation = _saturationSlider.value;
     }
@@ -92,10 +119,16 @@ public class OptionsMenuManager : MonoBehaviour
         }
         else
         {
-            _exposure.keyValue.value = .05f; // the lowest brightenss setting
+            _exposure.keyValue.value = .05f; 
             GameManager.Instance.GamePersistent.Brightness = .05f;
         }
         
+    }
+    public void ResetBrightness()
+    {
+        _brightnessSlider.value = 1;
+        _exposure.keyValue.value = _brightnessSlider.value;
+        GameManager.Instance.GamePersistent.Brightness = _brightnessSlider.value;
     }
     public void LoadStartScene()
     {
@@ -121,5 +154,33 @@ public class OptionsMenuManager : MonoBehaviour
             _buttons[_currentTabNum].interactable = true;
             _currentTab.SetActive(false);
         }
+    }
+
+    public void ToggleInvul()
+    {
+        if (_invulToggle.GetComponent<Toggle>().isOn == true)
+        {
+            Debug.Log("Invul is on");
+            GameManager.Instance.GamePersistent.IsInvulnerable = true;
+        }
+        else
+        {
+            GameManager.Instance.GamePersistent.IsInvulnerable = false;
+        }
+    }
+
+    public void UpdateSkipperSlider()
+    {
+        // TODO: Increase Skipper's bullet damage and link it to Skipper Slider in hierarchy
+    }
+
+    public void ResetSkipperSlider()
+    {
+        _skipperSlider.GetComponent<Slider>().value = 1;
+    }
+
+    public void AddShells()
+    {
+        GameManager.Instance.GamePersistent.Gill += 1000;
     }
 }

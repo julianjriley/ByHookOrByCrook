@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
@@ -5,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 // WISHLIST: Countdown Timer. Some functions are written but don't work.
 
@@ -27,14 +29,16 @@ public class PauseManager : MonoBehaviour
     private float _startTime;
     private float _endTime;
 
+    private bool _isSure;
+
     private void Awake()
     {
-        actions = InputSystem.actions;
-       
+        actions = InputSystem.actions;  
     }
 
     private void Start()
     {
+        _isSure = false;
         _isPaused = false;
         _pauseMenu.SetActive(false);
         _player = FindAnyObjectByType<PlayerCombat>();
@@ -82,13 +86,6 @@ public class PauseManager : MonoBehaviour
         _isPaused = false;
         Time.timeScale = 1f;
     }
-
-    void Countdown()
-    {
-        StartCoroutine(DoCountdown());
-
-    }
-
     public void Options()
     {
         _optionsMenu.SetActive(true);
@@ -97,33 +94,43 @@ public class PauseManager : MonoBehaviour
     public void MainMenu()
     {
         AreYouSure();
-        // Make sure to call LoadScene function by 0 ON BUTTON
-    }
-    public void LoadScene(int index)
-    {
-        SceneManager.LoadScene(index);
+
+        // BUG: Checks for _isSure ONLY during OnClick event, causing no scene change.
+        if (_isSure)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
     public void Hub()
     {
         AreYouSure();
-        // Make sure to call LoadScene function by 3 ON BUTTON
+
+        // BUG: Checks for _isSure ONLY during OnClick event, causing no scene change.
+        if (_isSure)
+        {
+            SceneManager.LoadScene(3);
+        }
     }
 
     public void AreYouSure()
     {
-        // Make content appear
         _areYouSureMenu.SetActive(true);
     }
     public void IMSUREGOD()
     {
+        // This goes on YES button on the Are You Sure? menu
+
         _areYouSureMenu.SetActive(false);
+        _isSure = true;
         Time.timeScale = 1f;
         actions.Enable();
         GameManager.Instance.ResetScenePersistentData();
     }
     public void IMNOTSURE()
     {
+        // This goes on NO button on the Are You Sure? menu
         _areYouSureMenu.SetActive(false);
+        _isSure = false;
     }
 
     private IEnumerator DoCountdown()
@@ -136,4 +143,10 @@ public class PauseManager : MonoBehaviour
             Time.timeScale = 1f;
             _isPaused = false;
     }
+
+    void Countdown()
+    {
+        StartCoroutine(DoCountdown());
+    }
+
 }
