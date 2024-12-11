@@ -336,7 +336,7 @@ public class GameManager : MonoBehaviour
     {
         // TODO: SAVE PersistentData to PlayerPrefs
         string saveData = JsonUtility.ToJson(GamePersistent);
-        string filePath = Application.persistentDataPath + "/GameData.json";
+        string filePath = Application.persistentDataPath + "\\GameData.json";
         System.IO.File.WriteAllText(filePath, saveData);
 
         ResetScenePersistentData();
