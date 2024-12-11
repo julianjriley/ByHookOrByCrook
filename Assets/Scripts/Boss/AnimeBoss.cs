@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class AnimeBoss : BossPrototype
 {
+    [SerializeField, Tooltip("Used to prevent ramming into the boss.")]
+    private Transform _player;
+
     [Header("Arena")]
     [SerializeField, Tooltip("The platform group spawner")]
     private GroupSpawner _gSpawner;
@@ -253,6 +256,12 @@ public class AnimeBoss : BossPrototype
         }
         
         _bossAnim.speed = 1;
+
+        // ensure boss doesn't steamroller the player at phase 2 start
+         if (_player.transform.position.x < transform.position.x)
+             _targetRepositioner.NewBossTarget(0, 20, true);
+         else
+             _targetRepositioner.NewBossTarget(180, 20, true);
 
         // And once that's done, resume normal attacking
         SetDefaultTarget();
