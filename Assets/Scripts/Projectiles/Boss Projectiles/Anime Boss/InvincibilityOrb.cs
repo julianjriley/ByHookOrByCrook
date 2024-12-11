@@ -85,7 +85,7 @@ public class InvincibilityOrb : MonoBehaviour, IDamageable
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
-        if (collider.TryGetComponent<IDamageable>(out IDamageable component) && collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collider.TryGetComponent<IDamageable>(out IDamageable component))
         {
             component.TakeDamage(1, false);
 
