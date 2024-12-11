@@ -41,8 +41,6 @@ public class AnimeBoss : BossPrototype
     private GameObject _laserbeamPrefab;
     [SerializeField, Tooltip("Spawn location for the lasers")]
     private Transform _laserAttackEmpty;
-    [SerializeField, Tooltip("How long the boss stops to cast lasers")]
-    private float _pauseTime = .5f;
 
     [Header("Absorbing Damage")]
     [SerializeField, Tooltip("VFX prefab for when the boss absorbs damage.")]
@@ -160,7 +158,6 @@ public class AnimeBoss : BossPrototype
         SetSpeed(0);
         _wandAnim.SetTrigger("Wiggle");
         Instantiate(chosenAttack, _laserAttackEmpty);
-        yield return new WaitForSeconds(_pauseTime);
         SetDefaultSpeed();
         yield return null;
     }
@@ -169,7 +166,6 @@ public class AnimeBoss : BossPrototype
     {
         SetSpeed(0);
         Instantiate(chosenAttack, _mikuAttackEmpty);
-        yield return new WaitForSeconds(_pauseTime / 1.5f);
         SetDefaultSpeed();
         yield return null;
     }
