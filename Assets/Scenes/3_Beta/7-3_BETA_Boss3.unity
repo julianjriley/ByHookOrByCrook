@@ -4516,6 +4516,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2099227494}
     - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[1].RepeatRate
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
+      propertyPath: _phases.Array.data[2].RepeatRate
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249819102022961680, guid: 64f97ccb89f2bc142a54e3d3d5327e6b, type: 3}
       propertyPath: _phases.Array.data[2].AttackPrefabs.Array.size
       value: 6
       objectReference: {fileID: 0}
