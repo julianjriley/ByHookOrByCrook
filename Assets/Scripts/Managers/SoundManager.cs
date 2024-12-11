@@ -97,7 +97,6 @@ public class SoundManager : MonoBehaviour
 
     public void InitializeLaser(EventReference laserEventReference)
     {
-        // TODO: make it not cut off the previous one anymore please - it feels really bad currently on the rotating death attack
         laserEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         laserEventInstance.release();
         laserEventInstance = CreateInstance(laserEventReference);
