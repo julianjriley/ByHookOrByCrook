@@ -47,6 +47,8 @@ public class AnimeBoss : BossPrototype
     [Header("Absorbing Damage")]
     [SerializeField, Tooltip("VFX prefab for when the boss absorbs damage.")]
     private GameObject _absorbDamagePrefab;
+    [SerializeField, Tooltip("Used to activate spinning motion only as soon as phase 2 starts (make sure it is locked with camera).")]
+    CirclingTarget _orbTarget;
 
     [HideInInspector]
     public bool IsInvincible;
@@ -262,6 +264,8 @@ public class AnimeBoss : BossPrototype
 
         // handle officially starting attacks of new phase
         base.PhaseSwitch();
+
+        _orbTarget.enabled = true;
 
         // Allow boss to be hittable again
         IsInvincible = false;
