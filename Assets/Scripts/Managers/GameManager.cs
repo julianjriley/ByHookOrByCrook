@@ -186,7 +186,8 @@ public class GameManager : MonoBehaviour
     {
         // TODO: ADD SAVE DATA HERE
         // i.e. UPGRADES, CURRENCY (ECONOMY), SETTINGS
-        
+        public bool SaveStarted = false;
+
         // Boss-related stats
         public int BossNumber;  // Whether the player is on the first, second, or third boss (0, 1, 2)
         public int NPCBossNumber;
@@ -278,7 +279,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        
+        newSaveData.SaveStarted = true;
         newSaveData.BossNumber = 0;
         newSaveData.LossCounter = 0;
         newSaveData.NPCBossNumber = 0;

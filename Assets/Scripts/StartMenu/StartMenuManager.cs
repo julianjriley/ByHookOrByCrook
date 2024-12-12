@@ -16,15 +16,15 @@ public class StartMenuManager : MonoBehaviour
     [SerializeField] private SceneTransitionsHandler _transitionHandler;
     [SerializeField] private GameObject _continueButton;
     [SerializeField] private GameObject _areYouSure;
-    private string _filePath;
 
     void Start()
     {
-        _filePath = Application.persistentDataPath + "/GameData.json";
-        if(GameManager.Instance.GamePersistent.BossNumber == 0 && GameManager.Instance.GamePersistent.Gill == 5) {  //System.IO.File.Exists(_filePath)
-            _continueButton.SetActive(false);
-        } else {
-            _continueButton.SetActive(true);
+        if (_continueButton != null) {
+            if(GameManager.Instance.GamePersistent.SaveStarted) {  //GameManager.Instance.GamePersistent.BossNumber == 0 && GameManager.Instance.GamePersistent.Gill == 5
+                _continueButton.SetActive(true);
+            } else {
+                _continueButton.SetActive(false);
+            }
         }
     }    
     /// <summary>
@@ -32,27 +32,17 @@ public class StartMenuManager : MonoBehaviour
     /// </summary>
     public void LoadGameScene()
     {
-        // TODO: make this actually work properly as a check for if you have save data or not
-        // (loss counter is probably not a good check since you technically don't need to die)
-        //if (GameManager.Instance.GamePersistent.BossNumber != 0) //GameManager.Instance.GamePersistent.LossCounter != 0 || 
-        //{
-            _transitionHandler.LoadScene(gameScene);
-        //} else {
-            //Debug.Log("Chicken butt");
-        //}
-        
-        // TODO: we need some logic to hide the resume button altogether when there is no data to resume.
-        // in that case it should only be new available to press
+        _transitionHandler.LoadScene(gameScene);
     }
 
     public void NewSaveCheck() {
-        if (GameManager.Instance.GamePersistent.BossNumber != 0) { //System.IO.File.Exists(_filePath)
+        if (GameManager.Instance.GamePersistent.SaveStarted) { // GameManager.Instance.GamePersistent.BossNumber != 0
             _areYouSure.SetActive(true);
         } else {
             ClearData();
         }
     }
-    public void NoNewSave() {
+    public void DeactivateAreYouSure() {
         _areYouSure.SetActive(false);
     }
     public void ClearData()
