@@ -62,8 +62,11 @@ public class TurtleProjectile : Projectile
         // destroy BOTH breakable and non-breakable projectiles
         if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collider.gameObject.layer == LayerMask.NameToLayer("BossProjectile"))
         {
-            // destroy projectile regardless of its health value
-            Destroy(collider.gameObject);
+            // destroy projectile regardless of its health value (EXCEPT FOR ORB)
+            if (collider.TryGetComponent(out InvincibilityOrb orb))
+                orb.TakeDamage(_damage);
+            else
+                Destroy(collider.gameObject);
 
             DestroyOrDisable();
         }
@@ -81,8 +84,11 @@ public class TurtleProjectile : Projectile
         // destroy BOTH breakable and non-breakable projectiles
         if (collision.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("BossProjectile"))
         {
-            // destroy projectile regardless of its health value
-            Destroy(collision.gameObject);
+            // destroy projectile regardless of its health value (EXCEPT FOR ORB)
+            if (collision.gameObject.TryGetComponent(out InvincibilityOrb orb))
+                orb.TakeDamage(_damage);
+            else
+                Destroy(collision.gameObject);
 
             DestroyOrDisable();
         }
