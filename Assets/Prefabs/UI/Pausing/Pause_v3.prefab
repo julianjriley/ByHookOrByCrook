@@ -12846,6 +12846,7 @@ GameObject:
   - component: {fileID: 6621246487834313815}
   - component: {fileID: 5951821853881543890}
   - component: {fileID: 7422850309192461260}
+  - component: {fileID: 5351171765515663042}
   m_Layer: 5
   m_Name: Shells Button
   m_TagString: Untagged
@@ -12969,6 +12970,45 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5351171765515663042}
+        m_TargetAssemblyTypeName: AudioOnClick, Assembly-CSharp
+        m_MethodName: PlayAudioOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5351171765515663042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8494546519498626070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d30b0deb75990479342fb7d53c782b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound:
+    Guid:
+      Data1: -867108775
+      Data2: 1117955784
+      Data3: 1396166557
+      Data4: -195442670
+    Path: event:/Hub/Purchase
+  cantClickSound:
+    Guid:
+      Data1: -1808635281
+      Data2: 1229730467
+      Data3: 2053126310
+      Data4: -582312650
+    Path: event:/Hub/TooPoor
+  thisButton: {fileID: 7422850309192461260}
 --- !u!1 &8733594677875578745
 GameObject:
   m_ObjectHideFlags: 0
