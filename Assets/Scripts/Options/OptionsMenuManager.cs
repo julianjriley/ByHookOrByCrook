@@ -168,16 +168,32 @@ public class OptionsMenuManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets game manager to match selected slider value for skipper multiplier
+    /// </summary>
     public void UpdateSkipperSlider()
     {
-        // TODO: Increase Skipper's bullet damage and link it to Skipper Slider in hierarchy
+        float val = _skipperSlider.GetComponent<Slider>().value;
+
+        // make it reduced but not 0 if at that option, otherwise keep the same
+        if (Mathf.RoundToInt(val) == 0) val = 0.5f;
+
+        // update skipper damage in game manager
+        GameManager.Instance.GamePersistent.SkipperMultiplier = val;
     }
 
+    /// <summary>
+    /// Resets skipper multiplier both on slider and in game manager
+    /// </summary>
     public void ResetSkipperSlider()
     {
         _skipperSlider.GetComponent<Slider>().value = 1;
+        GameManager.Instance.GamePersistent.SkipperMultiplier = 1f;
     }
 
+    /// <summary>
+    /// Interfaces with game manager to add money to the player's account.
+    /// </summary>
     public void AddShells()
     {
         GameManager.Instance.GamePersistent.Gill += 1000;
