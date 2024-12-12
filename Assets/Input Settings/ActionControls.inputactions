@@ -85,15 +85,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "InvulnToggle",
-                    "type": "Button",
-                    "id": "a4143287-adf5-4029-b900-1fb10c6a9bff",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -338,17 +329,6 @@
                     "action": "SwitchWeapon",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "b8d4cacb-8ebb-4fcc-985c-27a3d1de6dd6",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard Config",
-                    "action": "InvulnToggle",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

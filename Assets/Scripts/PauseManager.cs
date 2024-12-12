@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+
+// WISHLIST: Countdown Timer. Some functions are written but don't work.
 
 public class PauseManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class PauseManager : MonoBehaviour
     [SerializeField]
     private GameObject _optionsMenu;
 
+    [SerializeField]
+    private GameObject _areYouSureMenu;
+
     private InputActionAsset actions;
     private ActionControls _controls;
     private PlayerCombat _player;
@@ -22,21 +26,30 @@ public class PauseManager : MonoBehaviour
     private float _startTime;
     private float _endTime;
 
+    private bool _isSure;
+
+    [Header("Scene Transitions")]
+    [SerializeField, Tooltip("Name of hub scene.")]
+    private string _hubScene;
+    [SerializeField, Tooltip("Name of main menu scene.")]
+    private string _mainMenuScene;
+
+    private bool _isToLoadHub = true;
+
     private void Awake()
     {
-        actions = InputSystem.actions;
-       
+        actions = InputSystem.actions;  
     }
 
     private void Start()
     {
+        _isSure = false;
         _isPaused = false;
         _pauseMenu.SetActive(false);
         _player = FindAnyObjectByType<PlayerCombat>();
     }
     private void Update()
     {
-
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
 
@@ -67,10 +80,7 @@ public class PauseManager : MonoBehaviour
         actions.Disable();
         _isPaused = true;
         _pauseMenu.SetActive(true);
-        //Debug.Log("disabling input");
-
     }
-
 
     public void Resume()
     {
@@ -79,18 +89,7 @@ public class PauseManager : MonoBehaviour
         actions.Enable();
         _isPaused = false;
         Time.timeScale = 1f;
-
-
-        // WISHLIST: Countdown Timer. Some functions are written but don't work.
-
     }
-
-    void Countdown()
-    {
-        StartCoroutine(DoCountdown());
-
-    }
-
     public void Options()
     {
         _optionsMenu.SetActive(true);
@@ -98,21 +97,43 @@ public class PauseManager : MonoBehaviour
 
     public void MainMenu()
     {
-        Time.timeScale = 1f;
-        actions.Enable();
-        _pauseMenu.SetActive(false);
-        GameManager.Instance.ResetScenePersistentData();
-        SceneManager.LoadScene(0);
+        _isToLoadHub = false;
+
+        AreYouSure();
     }
     public void Hub()
     {
+        _isToLoadHub = true;
+
+        AreYouSure();
+    }
+
+    public void AreYouSure()
+    {
+        _areYouSureMenu.SetActive(true);
+    }
+    public void IMSUREGOD()
+    {
+        // This goes on YES button on the Are You Sure? menu
+        _isSure = true;
         Time.timeScale = 1f;
         actions.Enable();
         GameManager.Instance.ResetScenePersistentData();
-        SceneManager.LoadScene(3);
+
+        // actually load the scene
+        if (_isToLoadHub)
+            SceneManager.LoadScene(_hubScene);
+        else
+            SceneManager.LoadScene(_mainMenuScene);
+    }
+    public void IMNOTSURE()
+    {
+        // This goes on NO button on the Are You Sure? menu
+        _areYouSureMenu.SetActive(false);
+        _isSure = false;
     }
 
-    private IEnumerator DoCountdown()
+    /*private IEnumerator DoCountdown()
     {
         _startTime = Time.unscaledTime;
         _endTime = _startTime + 3f;
@@ -122,4 +143,9 @@ public class PauseManager : MonoBehaviour
             Time.timeScale = 1f;
             _isPaused = false;
     }
+
+    void Countdown()
+    {
+        StartCoroutine(DoCountdown());
+    }*/
 }
