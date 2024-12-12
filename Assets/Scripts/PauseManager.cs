@@ -133,7 +133,7 @@ public class PauseManager : MonoBehaviour
         _isSure = false;
     }
 
-    private IEnumerator DoCountdown()
+    /*private IEnumerator DoCountdown()
     {
         _startTime = Time.unscaledTime;
         _endTime = _startTime + 3f;
@@ -147,6 +147,5 @@ public class PauseManager : MonoBehaviour
     void Countdown()
     {
         StartCoroutine(DoCountdown());
-    }
-
+    }*/
 }
