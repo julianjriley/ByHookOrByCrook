@@ -7734,13 +7734,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4661716482291230957, guid: cd11afe194f6ab5449a0b49e10269532, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 882931192202172557, guid: cd11afe194f6ab5449a0b49e10269532, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd11afe194f6ab5449a0b49e10269532, type: 3}
 --- !u!1 &402520612
 GameObject:
@@ -53950,6 +53944,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bait Space Shop
       objectReference: {fileID: 0}
+    - target: {fileID: 4620301696115574682, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620301696115574682, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620301696115574682, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4987058517494800957, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
       propertyPath: _npc
       value: 
@@ -53978,6 +53984,34 @@ PrefabInstance:
       propertyPath: _convos.Array.data[6]
       value: 
       objectReference: {fileID: 11400000, guid: 5cf136b3cfea35947bcdf69c55333744, type: 2}
+    - target: {fileID: 4987058517494800957, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
+      propertyPath: _sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 51be3d48867a3ec4bbaf7af09bda6df1, type: 3}
+    - target: {fileID: 4987058517494800957, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
+      propertyPath: _sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 51be3d48867a3ec4bbaf7af09bda6df1, type: 3}
+    - target: {fileID: 4987058517494800957, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
+      propertyPath: _sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 51be3d48867a3ec4bbaf7af09bda6df1, type: 3}
+    - target: {fileID: 4987058517494800957, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
+      propertyPath: _sprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 51be3d48867a3ec4bbaf7af09bda6df1, type: 3}
+    - target: {fileID: 4987058517494800957, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
+      propertyPath: _sprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 51be3d48867a3ec4bbaf7af09bda6df1, type: 3}
+    - target: {fileID: 4987058517494800957, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
+      propertyPath: _sprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 51be3d48867a3ec4bbaf7af09bda6df1, type: 3}
+    - target: {fileID: 4987058517494800957, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
+      propertyPath: _sprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 51be3d48867a3ec4bbaf7af09bda6df1, type: 3}
     - target: {fileID: 6197473531207633848, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -54010,6 +54044,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8968050915627276043, guid: 2603b41e527c917428d7e5988560fe8b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 51be3d48867a3ec4bbaf7af09bda6df1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

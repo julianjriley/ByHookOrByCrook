@@ -3930,6 +3930,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1435887812646945556}
     m_Modifications:
+    - target: {fileID: 1520752588603765045, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -350.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573957748776520229, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -347
+      objectReference: {fileID: 0}
     - target: {fileID: 2654662467534787710, guid: 2b2d39248de233e4986356415c0231e2, type: 3}
       propertyPath: m_fontAsset
       value: 
