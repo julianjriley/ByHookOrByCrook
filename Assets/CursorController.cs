@@ -11,30 +11,45 @@ public class CursorController : MonoBehaviour
     public Camera ArenaCamera;
     [SerializeField, Tooltip("Bear cursor list")]
     private List<Sprite> _cursorList;
+    [SerializeField, Tooltip("Multiplier to scale up the bear cursor.")]
+    private float _bearHandScaleMult;
+    [SerializeField, Tooltip("Used to apply offset for bear hand cursor.")]
+    private RectTransform _rect;
+
+    private bool _isCrosshair = false; // whether the crosshair is being used in this scene
 
     private void Awake()
     {
         Cursor.visible = false;
+
+        // Bear cursor in main menu, cutscene, options, credits, hub, bait, fishing, loadout, cashout, ending
         if (!(SceneManager.GetActiveScene().buildIndex >= 0 && SceneManager.GetActiveScene().buildIndex <= 7
             || SceneManager.GetActiveScene().buildIndex > 12 && SceneManager.GetActiveScene().buildIndex <= 14))
         {
             this.GetComponent<Image>().sprite = _cursorList[2];
+            _isCrosshair = true;
+        }
+        else // bear hand
+        {
+            // make it bigger to account for the fact that the cursor is slid over to the side to make the click part on the finger not the middle
+            _rect.localScale *= _bearHandScaleMult;
         }
     }
     private void Start()
     {
         Cursor.visible = false;
     }
+
     private void Update()
     {
-        Vector2 cursorPos = Mouse.current.position.value;//ArenaCamera.ScreenToWorldPoint(Mouse.current.position.value);
-        transform.position = new Vector3(cursorPos.x, cursorPos.y, 1);
+        // center sprite directly on cursor
+        Vector2 cursorPos = Mouse.current.position.value;
 
-        if (SceneManager.GetActiveScene().buildIndex >= 0 && SceneManager.GetActiveScene().buildIndex <= 7
-            || SceneManager.GetActiveScene().buildIndex > 12 && SceneManager.GetActiveScene().buildIndex <= 14)
+        _rect.position = new Vector3(cursorPos.x, cursorPos.y, 1);
+
+        if (!_isCrosshair)
         {
-            // Bear cursor in main menu, cutscene, options, credits, hub, bait, fishing, loadout, cashout, ending
-
+            // account for click vs non-click sprite
             if (Mouse.current.leftButton.isPressed)
             {
                 this.GetComponent<Image>().sprite = _cursorList[1];
@@ -42,7 +57,6 @@ public class CursorController : MonoBehaviour
             else
             {
                 this.GetComponent<Image>().sprite = _cursorList[0];
-
             }
         }
     }
