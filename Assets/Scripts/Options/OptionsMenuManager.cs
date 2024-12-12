@@ -160,7 +160,6 @@ public class OptionsMenuManager : MonoBehaviour
     {
         if (_invulToggle.GetComponent<Toggle>().isOn == true)
         {
-            Debug.Log("Invul is on");
             GameManager.Instance.GamePersistent.IsInvulnerable = true;
         }
         else
