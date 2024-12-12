@@ -17,6 +17,7 @@ public class CursorController : MonoBehaviour
     private RectTransform _rect;
 
     private bool _isCrosshair = false; // whether the crosshair is being used in this scene
+    private Vector3 _baseScale;
 
     private void Awake()
     {
@@ -32,6 +33,9 @@ public class CursorController : MonoBehaviour
             // make it bigger to account for the fact that the cursor is slid over to the side to make the click part on the finger not the middle
             _rect.localScale *= _bearHandScaleMult;
         }
+
+        // allows changing scale based on base scale within a single scene
+        _baseScale = _rect.localScale;
     }
 
     private void Update()
@@ -59,6 +63,9 @@ public class CursorController : MonoBehaviour
             Cursor.visible = true;
         else
             Cursor.visible = false;
+
+        // update scale based on crosshair size slider
+        _rect.localScale = _baseScale * GameManager.Instance.GamePersistent.CrosshairSizeMultiplier;
     }
 
     public void UpdateSprite(Sprite sprite)

@@ -872,9 +872,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3385429174511234617}
-        m_TargetAssemblyTypeName: CustomCrosshair, Assembly-CSharp
-        m_MethodName: ChangeSize
+      - m_Target: {fileID: 6911881083965096430}
+        m_TargetAssemblyTypeName: OptionsMenuManager, Assembly-CSharp
+        m_MethodName: ReadCrosshairSlider
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8961,7 +8961,7 @@ Transform:
   - {fileID: 1379484279861954809}
   - {fileID: 6184672380339700245}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2529523035637768560
 MonoBehaviour:
@@ -11161,6 +11161,7 @@ MonoBehaviour:
   _currentTabNum: 0
   _invulToggle: {fileID: 9027990355665398046}
   _skipperSlider: {fileID: 3053710964376189941}
+  _crosshairSlider: {fileID: 8345004612554591214}
   _tabs:
   - {fileID: 665048728604405647}
   - {fileID: 134944240593362213}

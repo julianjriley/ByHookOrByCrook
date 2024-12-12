@@ -209,6 +209,7 @@ public class GameManager : MonoBehaviour
         public bool IsBobber;
         public bool IsInvulnerable;
         public float SkipperMultiplier;
+        public float CrosshairSizeMultiplier;
 
         // Hub related stats
         public List<bool> IsConvoHadRod;
@@ -281,6 +282,7 @@ public class GameManager : MonoBehaviour
         newSaveData.IsBobber = false;
         newSaveData.IsInvulnerable = false;
         newSaveData.SkipperMultiplier = 1f;
+        newSaveData.CrosshairSizeMultiplier = 1f;
 
         newSaveData.IsConvoHadRod = new List<bool>();
         newSaveData.AllConvosHadRod = false;

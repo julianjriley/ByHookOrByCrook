@@ -22,6 +22,8 @@ public class OptionsMenuManager : MonoBehaviour
 
     [SerializeField]
     private GameObject _skipperSlider;
+    [SerializeField]
+    private Slider _crosshairSlider;
 
     [SerializeField, Header("Tabs")]
     private List<GameObject> _tabs;
@@ -189,6 +191,29 @@ public class OptionsMenuManager : MonoBehaviour
     {
         _skipperSlider.GetComponent<Slider>().value = 1;
         GameManager.Instance.GamePersistent.SkipperMultiplier = 1f;
+    }
+
+    /// <summary>
+    /// Sets game manager to match selected slider value for crosshair size multiplier
+    /// </summary>
+    public void ReadCrosshairSlider()
+    {
+        float val = _crosshairSlider.value;
+
+        // make it reduced but not 0 if at that option, otherwise keep the same
+        if (Mathf.RoundToInt(val) == 0) val = 0.5f;
+
+        // update skipper damage in game manager
+        GameManager.Instance.GamePersistent.CrosshairSizeMultiplier = val;
+    }
+
+    /// <summary>
+    /// Resets crosshari size multiplier both on slider and in game manager.
+    /// </summary>
+    public void ResetCrosshairSlider()
+    {
+        _crosshairSlider.value = 1;
+        GameManager.Instance.GamePersistent.CrosshairSizeMultiplier = 1f;
     }
 
     /// <summary>
