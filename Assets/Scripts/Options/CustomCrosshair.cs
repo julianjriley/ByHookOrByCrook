@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// THIS SCRIPT IS DEPRECATED, DO NOT USE IT
+/// </summary>
 public class CustomCrosshair : MonoBehaviour
 {
     public Slider SizeSlider;
