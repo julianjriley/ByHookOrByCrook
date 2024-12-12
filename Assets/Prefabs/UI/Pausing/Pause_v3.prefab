@@ -8826,7 +8826,7 @@ Transform:
   - {fileID: 1379484279861954809}
   - {fileID: 6184672380339700245}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2529523035637768560
 MonoBehaviour:
@@ -8843,6 +8843,8 @@ MonoBehaviour:
   _pauseMenu: {fileID: 4101149034963867506}
   _optionsMenu: {fileID: 8038282476518356838}
   _areYouSureMenu: {fileID: 6233803927495981600}
+  _hubScene: 3_BETA_Hub
+  _mainMenuScene: 0_BETA_Menu_Start
 --- !u!1 &6175337365754630078
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 // WISHLIST: Countdown Timer. Some functions are written but don't work.
 
@@ -30,6 +27,14 @@ public class PauseManager : MonoBehaviour
     private float _endTime;
 
     private bool _isSure;
+
+    [Header("Scene Transitions")]
+    [SerializeField, Tooltip("Name of hub scene.")]
+    private string _hubScene;
+    [SerializeField, Tooltip("Name of main menu scene.")]
+    private string _mainMenuScene;
+
+    private bool _isToLoadHub = true;
 
     private void Awake()
     {
@@ -93,23 +98,15 @@ public class PauseManager : MonoBehaviour
 
     public void MainMenu()
     {
-        AreYouSure();
+        _isToLoadHub = false;
 
-        // BUG: Checks for _isSure ONLY during OnClick event, causing no scene change.
-        if (_isSure)
-        {
-            SceneManager.LoadScene(0);
-        }
+        AreYouSure();
     }
     public void Hub()
     {
-        AreYouSure();
+        _isToLoadHub = true;
 
-        // BUG: Checks for _isSure ONLY during OnClick event, causing no scene change.
-        if (_isSure)
-        {
-            SceneManager.LoadScene(3);
-        }
+        AreYouSure();
     }
 
     public void AreYouSure()
@@ -119,12 +116,16 @@ public class PauseManager : MonoBehaviour
     public void IMSUREGOD()
     {
         // This goes on YES button on the Are You Sure? menu
-
-        _areYouSureMenu.SetActive(false);
         _isSure = true;
         Time.timeScale = 1f;
         actions.Enable();
         GameManager.Instance.ResetScenePersistentData();
+
+        // actually load the scene
+        if (_isToLoadHub)
+            SceneManager.LoadScene(_hubScene);
+        else
+            SceneManager.LoadScene(_mainMenuScene);
     }
     public void IMNOTSURE()
     {
