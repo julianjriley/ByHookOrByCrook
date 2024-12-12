@@ -207,7 +207,9 @@ public class GameManager : MonoBehaviour
         // Accessibility
         public bool IsSkipper;
         public bool IsBobber;
-        public bool IsInvulnerable = false;
+        public bool IsInvulnerable;
+        public float SkipperMultiplier;
+        public float CrosshairSizeMultiplier;
 
         // Hub related stats
         public List<bool> IsConvoHadRod;
@@ -259,26 +261,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void InitializeSaveData(bool deleteOldSave = false)
     {
-        // initialize and load save data
+        // new persistent data instance to initialize/load
         GamePersistentData newSaveData = new GamePersistentData();
 
-        // TODO: INITIALIZE DEFAULT VALUES FOR SAVE DATA
         // default data in case player prefs not found
-        string filePath = Application.persistentDataPath + "/GameData.json";
-        if (!deleteOldSave)
-        {
-            if (System.IO.File.Exists(filePath))
-            {
-
-                string saveData = System.IO.File.ReadAllText(filePath);
-                newSaveData = JsonUtility.FromJson<GamePersistentData>(saveData);
-                Instance.GamePersistent = newSaveData;
-                return;
-            }
-        }
-
-
-        
         newSaveData.BossNumber = 0;
         newSaveData.LossCounter = 0;
         newSaveData.NPCBossNumber = 0;
@@ -294,6 +280,9 @@ public class GameManager : MonoBehaviour
 
         newSaveData.IsSkipper = false;
         newSaveData.IsBobber = false;
+        newSaveData.IsInvulnerable = false;
+        newSaveData.SkipperMultiplier = 1f;
+        newSaveData.CrosshairSizeMultiplier = 1f;
 
         newSaveData.IsConvoHadRod = new List<bool>();
         newSaveData.AllConvosHadRod = false;
@@ -314,19 +303,19 @@ public class GameManager : MonoBehaviour
         newSaveData.IsTutorialCombat = true;
         newSaveData.IsTutorialComplete = false;
 
-        // TODO: read existing save data (if it exists) from PlayerPrefs
 
-        /*****************************************************************
-        // JSON functionality. To be replaced with PlayerPrefs
-
-        string path = Application.persistentDataPath + "\\savedata.json";
-        if (File.Exists(path))
+        // read save data, overriding existing data as it is found
+        string filePath = Application.persistentDataPath + "/GameData.json";
+        if (!deleteOldSave)
         {
-            // read json file into data object
-            string json = File.ReadAllText(path);
-            newSaveData = JsonUtility.FromJson<PersistentData>(json);
+            if (System.IO.File.Exists(filePath))
+            {
+                string saveData = System.IO.File.ReadAllText(filePath);
+                newSaveData = JsonUtility.FromJson<GamePersistentData>(saveData);
+                Instance.GamePersistent = newSaveData;
+                return;
+            }
         }
-        *****************************************************************/
 
         // Apply read/initialized data to instance
         Instance.GamePersistent = newSaveData;
@@ -339,13 +328,8 @@ public class GameManager : MonoBehaviour
         string filePath = Application.persistentDataPath + "/GameData.json";
         System.IO.File.WriteAllText(filePath, saveData);
 
+        // I believe this line is entirely redundant - but at one point someone thought it was a fix for buffs carrying over in editor
         ResetScenePersistentData();
-        /*****************************************************************
-        // JSON functionality. To be replaced with PlayerPrefs
-
-        string json = JsonUtility.ToJson(SaveData);
-        File.WriteAllText(Application.persistentDataPath + "\\savedata.json", json);
-        *****************************************************************/
     }
     #endregion
 

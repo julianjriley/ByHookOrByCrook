@@ -17,6 +17,14 @@ public class OptionsMenuManager : MonoBehaviour
     [SerializeField] private GameObject _currentTab;
     [SerializeField] private int _currentTabNum;
 
+    [SerializeField]
+    private Toggle _invulToggle;
+
+    [SerializeField]
+    private Slider _skipperSlider;
+    [SerializeField]
+    private Slider _crosshairSlider;
+
     [SerializeField, Header("Tabs")]
     private List<GameObject> _tabs;
 
@@ -36,7 +44,6 @@ public class OptionsMenuManager : MonoBehaviour
     [SerializeField, Tooltip("Profile")]
     private PostProcessProfile _profile;
     [SerializeField, Tooltip("Pass in the main camera")]
-    private PostProcessLayer _layer;
     private AutoExposure _exposure;
     private ColorGrading _saturation;
 
@@ -61,6 +68,10 @@ public class OptionsMenuManager : MonoBehaviour
         _sfxSlider.value = GameManager.Instance.GamePersistent.SFXVolume;
         _musicSlider.value = GameManager.Instance.GamePersistent.MusicVolume;
 
+        // set starting values of assist sliders correctly - floor to account for 0.5 converted to 0
+        _skipperSlider.value = Mathf.FloorToInt(GameManager.Instance.GamePersistent.SkipperMultiplier);
+        _crosshairSlider.value = Mathf.FloorToInt(GameManager.Instance.GamePersistent.CrosshairSizeMultiplier);
+
         if (_currentTab != null)
         {
             _buttons[_currentTabNum].interactable = false;
@@ -77,9 +88,31 @@ public class OptionsMenuManager : MonoBehaviour
         GameManager.Instance.GamePersistent.MusicVolume = _musicSlider.value;
         SoundManager.Instance.SetGlobalParameter("MusicSlider", _musicSlider.value);
     }
+
+    public void ResetMusic()
+    {
+        _musicSlider.value = 1;
+        GameManager.Instance.GamePersistent.MusicVolume = _musicSlider.value;
+        SoundManager.Instance.SetGlobalParameter("MusicSlider", _musicSlider.value);
+    }
+    public void ResetSFX()
+    {
+        _sfxSlider.value = 1;
+        GameManager.Instance.GamePersistent.SFXVolume = _sfxSlider.value;
+        SoundManager.Instance.SetGlobalParameter("SFXSlider", _sfxSlider.value);
+    }
+
     public void AdjustSaturation()
     {
         _profile.TryGetSettings(out _saturation);
+        _saturation.saturation.value = _saturationSlider.value;
+        GameManager.Instance.GamePersistent.Saturation = _saturationSlider.value;
+    }
+
+    public void ResetSaturation()
+    {
+        _profile.TryGetSettings(out _saturation);
+        _saturationSlider.value = 30;
         _saturation.saturation.value = _saturationSlider.value;
         GameManager.Instance.GamePersistent.Saturation = _saturationSlider.value;
     }
@@ -92,10 +125,16 @@ public class OptionsMenuManager : MonoBehaviour
         }
         else
         {
-            _exposure.keyValue.value = .05f; // the lowest brightenss setting
+            _exposure.keyValue.value = .05f; 
             GameManager.Instance.GamePersistent.Brightness = .05f;
         }
         
+    }
+    public void ResetBrightness()
+    {
+        _brightnessSlider.value = 1;
+        _exposure.keyValue.value = _brightnessSlider.value;
+        GameManager.Instance.GamePersistent.Brightness = _brightnessSlider.value;
     }
     public void LoadStartScene()
     {
@@ -121,5 +160,71 @@ public class OptionsMenuManager : MonoBehaviour
             _buttons[_currentTabNum].interactable = true;
             _currentTab.SetActive(false);
         }
+    }
+
+    public void ToggleInvul()
+    {
+        if (_invulToggle.GetComponent<Toggle>().isOn == true)
+        {
+            GameManager.Instance.GamePersistent.IsInvulnerable = true;
+        }
+        else
+        {
+            GameManager.Instance.GamePersistent.IsInvulnerable = false;
+        }
+    }
+
+    /// <summary>
+    /// Sets game manager to match selected slider value for skipper multiplier
+    /// </summary>
+    public void UpdateSkipperSlider()
+    {
+        float val = _skipperSlider.value;
+
+        // make it reduced but not 0 if at that option, otherwise keep the same
+        if (Mathf.RoundToInt(val) == 0) val = 0.5f;
+
+        // update skipper damage in game manager
+        GameManager.Instance.GamePersistent.SkipperMultiplier = val;
+    }
+
+    /// <summary>
+    /// Resets skipper multiplier both on slider and in game manager
+    /// </summary>
+    public void ResetSkipperSlider()
+    {
+        _skipperSlider.value = 1;
+        GameManager.Instance.GamePersistent.SkipperMultiplier = 1f;
+    }
+
+    /// <summary>
+    /// Sets game manager to match selected slider value for crosshair size multiplier
+    /// </summary>
+    public void ReadCrosshairSlider()
+    {
+        float val = _crosshairSlider.value;
+
+        // make it reduced but not 0 if at that option, otherwise keep the same
+        if (Mathf.RoundToInt(val) == 0) val = 0.5f;
+
+        // update skipper damage in game manager
+        GameManager.Instance.GamePersistent.CrosshairSizeMultiplier = val;
+    }
+
+    /// <summary>
+    /// Resets crosshari size multiplier both on slider and in game manager.
+    /// </summary>
+    public void ResetCrosshairSlider()
+    {
+        _crosshairSlider.value = 1;
+        GameManager.Instance.GamePersistent.CrosshairSizeMultiplier = 1f;
+    }
+
+    /// <summary>
+    /// Interfaces with game manager to add money to the player's account.
+    /// </summary>
+    public void AddShells()
+    {
+        GameManager.Instance.GamePersistent.Gill += 1000;
     }
 }
