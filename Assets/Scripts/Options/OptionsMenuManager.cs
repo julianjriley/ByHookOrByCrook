@@ -21,7 +21,7 @@ public class OptionsMenuManager : MonoBehaviour
     private Toggle _invulToggle;
 
     [SerializeField]
-    private GameObject _skipperSlider;
+    private Slider _skipperSlider;
     [SerializeField]
     private Slider _crosshairSlider;
 
@@ -67,6 +67,10 @@ public class OptionsMenuManager : MonoBehaviour
         // Correctly default set volume settings
         _sfxSlider.value = GameManager.Instance.GamePersistent.SFXVolume;
         _musicSlider.value = GameManager.Instance.GamePersistent.MusicVolume;
+
+        // set starting values of assist sliders correctly - floor to account for 0.5 converted to 0
+        _skipperSlider.value = Mathf.FloorToInt(GameManager.Instance.GamePersistent.SkipperMultiplier);
+        _crosshairSlider.value = Mathf.FloorToInt(GameManager.Instance.GamePersistent.CrosshairSizeMultiplier);
 
         if (_currentTab != null)
         {
@@ -175,7 +179,7 @@ public class OptionsMenuManager : MonoBehaviour
     /// </summary>
     public void UpdateSkipperSlider()
     {
-        float val = _skipperSlider.GetComponent<Slider>().value;
+        float val = _skipperSlider.value;
 
         // make it reduced but not 0 if at that option, otherwise keep the same
         if (Mathf.RoundToInt(val) == 0) val = 0.5f;
@@ -189,7 +193,7 @@ public class OptionsMenuManager : MonoBehaviour
     /// </summary>
     public void ResetSkipperSlider()
     {
-        _skipperSlider.GetComponent<Slider>().value = 1;
+        _skipperSlider.value = 1;
         GameManager.Instance.GamePersistent.SkipperMultiplier = 1f;
     }
 
