@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -11,9 +10,12 @@ public class CrosshairOverheat : MonoBehaviour
     [SerializeField] Color _heatingColor;
     [SerializeField] Color _overheatedColor;
     [SerializeField] GameObject _overheatedImage;
+    [SerializeField] RectTransform _rect;
     PlayerCombat _player;
     WeaponInstance[] _weaponInstances;
     WeaponInstance _currentWeapon;
+
+    private Vector3 _baseScale;
 
     bool _active = false;
 
@@ -30,6 +32,8 @@ public class CrosshairOverheat : MonoBehaviour
         _circle = GetComponent<Image>();
         _player = GameObject.FindWithTag("Player").GetComponent<PlayerCombat>();
         StartCoroutine(StartFunctions());
+
+        _baseScale = _rect.localScale;
     }
     private void Update()
     {
@@ -47,6 +51,9 @@ public class CrosshairOverheat : MonoBehaviour
             _overheatedImage.SetActive(false);
         }
         transform.position = Mouse.current.position.ReadValue();
+
+        // update scale to match crosshair scale from settings
+        _rect.localScale = _baseScale * GameManager.Instance.GamePersistent.CrosshairSizeMultiplier;
     }
 
     void ChangeWeapon(int index)

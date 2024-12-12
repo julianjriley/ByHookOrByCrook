@@ -51,6 +51,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     //Damage taking stuff
     public bool BossDefeated = false;
     private bool _invulnerable;
+    private bool _assistInvulnerable;
     private Collider _collider;
     private LayerMask _invulnerabilityMask;
     private Coroutine _invulnerableWindow;
@@ -102,9 +103,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         controls.FindAction("SwitchWeapon").Enable();
         controls.FindAction("SwitchWeapon").performed += ChangeWeapon;
 
-        controls.FindAction("InvulnToggle").Enable();
-        controls.FindAction("InvulnToggle").performed += ToggleInvuln;
-
         ResetStats();
         _weapons = new List<WeaponInstance>();
         playerMovement = GetComponent<ArenaMovement>();
@@ -150,7 +148,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         {
             Instantiate(skipper, new Vector3(0,0,0), Quaternion.identity);
         }
-        InvulnCheckStart();
     }
 
     private void OnDisable()
@@ -158,7 +155,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         controls.FindAction("FireWeapon").started -= FireWeapon;
         controls.FindAction("FireWeapon").canceled -= FireWeapon;
         controls.FindAction("SwitchWeapon").performed -= ChangeWeapon;
-        controls.FindAction("InvulnToggle").performed -= ToggleInvuln;
 
         controls.FindAction("FireWeapon").Disable();
         controls.FindAction("SwitchWeapon").Disable();
@@ -242,18 +238,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         }
     }
 
-    private void InvulnCheckStart() { //ensure invincibility setting is same at start
-        _invulnerable = GameManager.Instance.GamePersistent.IsInvulnerable;
-    }
-
-    private void ToggleInvuln(InputAction.CallbackContext context) { //if changing setting in pause menu call this
-        if (_invulnerableWindow != null) {
-            StopCoroutine(_invulnerableWindow);
-        }
-        _invulnerable = !_invulnerable;
-        GameManager.Instance.GamePersistent.IsInvulnerable = _invulnerable;
-    }
-
     private void Update()
     {
         mousePosition = Mouse.current.position.ReadValue();
@@ -284,7 +268,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
             
         }
 
-
+        // make sure invulnerability state ALWAYS matches game manager
+        _assistInvulnerable = GameManager.Instance.GamePersistent.IsInvulnerable;
     }
     public void UpdateRotation(Vector2 lookAt)
     {
@@ -323,7 +308,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     //the damage parameter can be ignored here its just how the interfacing works to make things easier
     public void TakeDamage(float damage, bool dontUseSound = false)
     {
-        if (_invulnerable || BossDefeated || SceneManager.GetActiveScene().name == "6.5PracTut")
+        if (_invulnerable || _assistInvulnerable || BossDefeated || SceneManager.GetActiveScene().name == "6.5PracTut")
             return;
         Health -= 1;
         SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
