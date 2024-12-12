@@ -51,7 +51,7 @@ public class WeaponInstance : MonoBehaviour
 
     public virtual void Fire(Vector3 direction)
     {
-        
+        //StartCoroutine(FireAuto(direction));
     }
 
     public virtual void CeaseFire()
@@ -67,12 +67,15 @@ public class WeaponInstance : MonoBehaviour
         _canFire = true;
     }
 
-    protected IEnumerator FireAuto(Vector3 direction)
+    public IEnumerator FireAuto(Vector3 direction)
     {
+        
         while (!_canFire || _overHeated)
         {
             yield return null;
         }
+        
+        //yield return new WaitUntil(() => _canFire == true || _overHeated == false);
 
         Fire(direction);
     }
@@ -183,6 +186,11 @@ public class WeaponInstance : MonoBehaviour
     {
         if (_weapon.overheatDamageBonus)
             mult -= 0.2f;
+    }
+
+    bool GetCanFire()
+    {
+        return _canFire;
     }
 
 }

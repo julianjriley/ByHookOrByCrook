@@ -12,6 +12,7 @@ public class RottenFish : WeaponInstance
     {
         if(!_canFire)
         {
+            _autoFireCoroutine = StartCoroutine(FireAuto(direction));
             return;
         }
 
