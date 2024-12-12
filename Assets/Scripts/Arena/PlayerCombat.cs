@@ -147,7 +147,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         {
             Instantiate(skipper, new Vector3(0,0,0), Quaternion.identity);
         }
-        InvulnCheckStart();
     }
 
     private void OnDisable()
@@ -238,18 +237,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         }
     }
 
-    private void InvulnCheckStart() { //ensure invincibility setting is same at start
-        _invulnerable = GameManager.Instance.GamePersistent.IsInvulnerable;
-    }
-
-    private void ToggleInvuln(InputAction.CallbackContext context) { //if changing setting in pause menu call this
-        if (_invulnerableWindow != null) {
-            StopCoroutine(_invulnerableWindow);
-        }
-        _invulnerable = !_invulnerable;
-        GameManager.Instance.GamePersistent.IsInvulnerable = _invulnerable;
-    }
-
     private void Update()
     {
         mousePosition = Mouse.current.position.ReadValue();
@@ -280,7 +267,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
             
         }
 
-
+        // make sure invulnerability state ALWAYS matches game manager
+        _invulnerable = GameManager.Instance.GamePersistent.IsInvulnerable;
     }
     public void UpdateRotation(Vector2 lookAt)
     {
