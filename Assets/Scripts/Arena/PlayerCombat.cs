@@ -51,6 +51,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     //Damage taking stuff
     public bool BossDefeated = false;
     private bool _invulnerable;
+    private bool _assistInvulnerable;
     private Collider _collider;
     private LayerMask _invulnerabilityMask;
     private Coroutine _invulnerableWindow;
@@ -268,7 +269,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         }
 
         // make sure invulnerability state ALWAYS matches game manager
-        _invulnerable = GameManager.Instance.GamePersistent.IsInvulnerable;
+        _assistInvulnerable = GameManager.Instance.GamePersistent.IsInvulnerable;
     }
     public void UpdateRotation(Vector2 lookAt)
     {
@@ -307,7 +308,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     //the damage parameter can be ignored here its just how the interfacing works to make things easier
     public void TakeDamage(float damage, bool dontUseSound = false)
     {
-        if (_invulnerable || BossDefeated || SceneManager.GetActiveScene().name == "6.5PracTut")
+        if (_invulnerable || _assistInvulnerable || BossDefeated || SceneManager.GetActiveScene().name == "6.5PracTut")
             return;
         Health -= 1;
         SoundManager.Instance.PlayOneShot(damageSound, gameObject.transform.position);
