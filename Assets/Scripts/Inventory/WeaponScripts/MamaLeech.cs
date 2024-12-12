@@ -17,7 +17,10 @@ public class MamaLeech : WeaponInstance
     public override void Fire(Vector3 direction)
     {
         if (!_canFire)
+        {
+            _autoFireCoroutine = StartCoroutine(FireAuto(direction));
             return;
+        }
         if (_overHeated)
         {
             // Modify later

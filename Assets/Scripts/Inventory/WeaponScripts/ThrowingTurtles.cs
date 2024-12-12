@@ -15,7 +15,10 @@ public class ThrowingTurtles : WeaponInstance
     public override void Fire(Vector3 direction)
     {
         if (!_canFire)
+        {
+            _autoFireCoroutine = StartCoroutine(FireAuto(direction));
             return;
+        }
         if (_overHeated)
         {
             //Modify later if we wanna do cool stuff to the gun while overheated idk

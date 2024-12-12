@@ -19,6 +19,7 @@ public class RainbowFish : WeaponInstance
         if (!_canFire)
         {
             increasedFireRate = 0;
+            _autoFireCoroutine = StartCoroutine(FireAuto(direction));
             return;
         }
             

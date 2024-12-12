@@ -73,7 +73,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7851906927572201638}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -134,6 +134,7 @@ MonoBehaviour:
   _firePoint: {fileID: 3248877353922697550}
   _overHeated: 0
   _canFire: 1
+  mult: 0
   _projectile: {fileID: 601086307551454052, guid: 5cbdab38676ccca42b6fa554184a8287, type: 3}
 --- !u!95 &7019201473609639178
 Animator:
@@ -145,7 +146,7 @@ Animator:
   m_GameObject: {fileID: 7851906927572201638}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cd306c955ab9f824b8897367f51a007c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9e0e5da41f6df1c49a285c4a8d8b923e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
