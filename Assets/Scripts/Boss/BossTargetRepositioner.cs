@@ -114,7 +114,7 @@ public class BossTargetRepositioner : MonoBehaviour
         }
         _rotaterTransform.localScale = end; 
     }
-    public void NewBossTarget(int rotation, int scale) {
+    public void NewBossTarget(int rotation, int scale, bool setInstantly = false) {
         CancelInvoke();
         StopCoroutine(_lerpScale);
         StopCoroutine(_lerpRotation);
@@ -143,11 +143,11 @@ public class BossTargetRepositioner : MonoBehaviour
         //lerp rotater to newTarget scale and rotation over time
         float rotaterZ = _rotaterTransform.eulerAngles.z;
         float targetZ = _currentTarget.GetComponent<Transform>().eulerAngles.z;
-        _lerpRotation = StartCoroutine(LerpRotation(rotaterZ, targetZ, Duration/2));
+        _lerpRotation = StartCoroutine(LerpRotation(rotaterZ, targetZ, setInstantly ? 0.1f : Duration/2));
 
         Vector3 rotaterScale = _rotaterTransform.localScale;
         Vector3 targetScale = _currentTargetTransform.localScale;
-        _lerpScale = StartCoroutine(LerpScale(rotaterScale, targetScale, Duration/2));
+        _lerpScale = StartCoroutine(LerpScale(rotaterScale, targetScale, setInstantly ? 0.1f : Duration /2));
         // Debug.Log("NewBossTarget finished");
         //restart invoke repeating
         InvokeRepeating("MakeNewTarget", TimeBetweenRepositions, TimeBetweenRepositions);

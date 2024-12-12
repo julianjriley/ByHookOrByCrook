@@ -30,7 +30,7 @@ public class BossPrototype : MonoBehaviour, IDamageable
     [SerializeField] private GameObject _introUI;
     [SerializeField] private GameObject _victoryText;
     [SerializeField] private GameObject _defeatText;
-    [SerializeField] private BossTargetRepositioner _targetRepositioner;
+    [SerializeField] protected BossTargetRepositioner _targetRepositioner;
     [SerializeField, Tooltip("Used to call scene transitions.")]
     private SceneTransitionsHandler _transitionsHandler;
 

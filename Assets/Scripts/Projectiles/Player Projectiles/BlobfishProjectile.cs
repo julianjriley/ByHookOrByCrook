@@ -77,12 +77,17 @@ public class BlobfishProjectile : Projectile
         colliders = Physics.OverlapSphere(gameObject.transform.position, 60, enemyProjectileMask, QueryTriggerInteraction.Collide);
         foreach (Collider collider in colliders)
         {
-            if(collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
+            if (collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
             {
                 collider.GetComponent<BossPrototype>().TakeDamage(_damage, false);
             }
             else
-                Destroy(collider.gameObject);
+            {
+                if (collider.TryGetComponent(out InvincibilityOrb orb))
+                    orb.TakeDamage(1000);
+                else
+                    Destroy(collider.gameObject);
+            }
         }
     }
 }

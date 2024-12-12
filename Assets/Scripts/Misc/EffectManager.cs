@@ -9,11 +9,14 @@ public class EffectManager : MonoBehaviour
 {
     IDamageable _entity;
     public int poisonCounter = 0;
+    [SerializeField]
     SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        if (TryGetComponent(out SpriteRenderer renderer))
+            _spriteRenderer = renderer;
+
         _entity = GetComponent<IDamageable>();
     }
     public void PassEffect(EffectData effectData)
