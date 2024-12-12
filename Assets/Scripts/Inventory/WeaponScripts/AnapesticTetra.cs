@@ -32,7 +32,10 @@ public class AnapesticTetra : WeaponInstance
                 projectile.GetComponent<Rigidbody>().AddForce(_direction * _speedValues[_projectileIndex], ForceMode.Impulse);
                 AnapesticTetraProjectile anapesticTetraProjectile = projectile.GetComponent<AnapesticTetraProjectile>();
                 anapesticTetraProjectile.AssignStats(_weapon);
-                anapesticTetraProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
+                if(_projectileIndex == 1)
+                    anapesticTetraProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult * 2);
+                else
+                    anapesticTetraProjectile.ReassignDamage(CheckOverheat() * _weapon.Damage * mult);
                 _heatLevel += _weapon.HeatBuildup;
             }
         }
