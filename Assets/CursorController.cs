@@ -20,8 +20,6 @@ public class CursorController : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.visible = false;
-
         // Bear cursor in main menu, cutscene, options, credits, hub, bait, fishing, loadout, cashout, ending
         if (!(SceneManager.GetActiveScene().buildIndex >= 0 && SceneManager.GetActiveScene().buildIndex <= 7
             || SceneManager.GetActiveScene().buildIndex > 12 && SceneManager.GetActiveScene().buildIndex <= 14))
@@ -34,10 +32,6 @@ public class CursorController : MonoBehaviour
             // make it bigger to account for the fact that the cursor is slid over to the side to make the click part on the finger not the middle
             _rect.localScale *= _bearHandScaleMult;
         }
-    }
-    private void Start()
-    {
-        Cursor.visible = false;
     }
 
     private void Update()
@@ -59,6 +53,12 @@ public class CursorController : MonoBehaviour
                 this.GetComponent<Image>().sprite = _cursorList[0];
             }
         }
+
+        // enable default cursor if out of bounds of game window, otherwise keep it hidden
+        if (cursorPos.x < 0 || cursorPos.x > Screen.width || cursorPos.y < 0 || cursorPos.y > Screen.height)
+            Cursor.visible = true;
+        else
+            Cursor.visible = false;
     }
 
     public void UpdateSprite(Sprite sprite)

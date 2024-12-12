@@ -50,7 +50,6 @@ public class PauseManager : MonoBehaviour
     }
     private void Update()
     {
-
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
 
