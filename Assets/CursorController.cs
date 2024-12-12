@@ -20,9 +20,9 @@ public class CursorController : MonoBehaviour
 
     private void Awake()
     {
-        // Bear cursor in main menu, cutscene, options, credits, hub, bait, fishing, loadout, cashout, ending
-        if (!(SceneManager.GetActiveScene().buildIndex >= 0 && SceneManager.GetActiveScene().buildIndex <= 7
-            || SceneManager.GetActiveScene().buildIndex > 12 && SceneManager.GetActiveScene().buildIndex <= 14))
+        string sceneName = SceneManager.GetActiveScene().name;
+        // Cross hair only in practice, boss 1, boss 2, boss 3
+        if (sceneName.Equals("6.5PracTut") || sceneName.Equals("7-1_BETA_Boss1") || sceneName.Equals("7-2_BETA_Boss2") || sceneName.Equals("7-3_BETA_Boss3"))
         {
             this.GetComponent<Image>().sprite = _cursorList[2];
             _isCrosshair = true;
