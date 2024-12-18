@@ -26,14 +26,15 @@ public class GreenArmyFishProjectile : Projectile
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile"))
         {
-            collider.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
+            collider.gameObject.GetComponent<IDamageable>().TakeDamage(_damage, false);
         }
+
 
         if (_health <= 0)
         {
             Destroy(gameObject, 1f);
             _spriteRenderer.enabled = false;
-            collider.enabled = false;
+            _collider.enabled = false;
             //Debug.Log("gotHere");
         }
         Instantiate(explosionEffect,transform.position, Quaternion.identity); 
@@ -43,13 +44,15 @@ public class GreenArmyFishProjectile : Projectile
         {
             if (col.gameObject.layer == LayerMask.NameToLayer("BreakableBossProjectile"))
             {
-                col.gameObject.GetComponent<Projectile>().TakeDamage(_damage, false);
+                col.gameObject.GetComponent<IDamageable>().TakeDamage(_damage, false);
             }
             if (col.gameObject.layer == LayerMask.NameToLayer("Boss"))
             {
                 col.gameObject.GetComponent<BossPrototype>().TakeDamage(_damage, false);
             }
+
         }
 
     }
+
 }

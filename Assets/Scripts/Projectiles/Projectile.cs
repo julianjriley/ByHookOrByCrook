@@ -28,7 +28,8 @@ public class Projectile : MonoBehaviour, IDamageable
 
     virtual protected void Start()
     {
-        gameObject.AddComponent<EffectManager>();
+
+        
         _rb = GetComponent<Rigidbody>();
         
         // allows negative lifetime projectiles to have indefinite lifetime (useful on painterly boss)

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2709412597720014026}
   - component: {fileID: 8643602353941430029}
   - component: {fileID: 348324164140915882}
+  - component: {fileID: 1437743796410969550}
   m_Layer: 8
   m_Name: Miku
   m_TagString: Miku
@@ -158,6 +159,20 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &1437743796410969550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809019826170991230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984422597e12cda47a3b723d949f3df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poisonCounter: 0
+  _spriteRenderer: {fileID: 9060017516629107136}
 --- !u!1 &4930767534375511951
 GameObject:
   m_ObjectHideFlags: 0
