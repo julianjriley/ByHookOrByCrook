@@ -12,6 +12,7 @@ public class EffectManager : MonoBehaviour
     [SerializeField]
     SpriteRenderer _spriteRenderer;
 
+
     private void Start()
     {
         if (TryGetComponent(out SpriteRenderer renderer))

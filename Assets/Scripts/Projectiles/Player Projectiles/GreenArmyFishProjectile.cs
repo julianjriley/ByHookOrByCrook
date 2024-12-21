@@ -29,14 +29,13 @@ public class GreenArmyFishProjectile : Projectile
             collider.gameObject.GetComponent<IDamageable>().TakeDamage(_damage, false);
         }
 
-
         if (_health <= 0)
         {
-            Destroy(gameObject, 1f);
+            
             _spriteRenderer.enabled = false;
             _collider.enabled = false;
-            //Debug.Log("gotHere");
         }
+
         Instantiate(explosionEffect,transform.position, Quaternion.identity); 
         Collider[] colliders;
         colliders = Physics.OverlapSphere(gameObject.transform.position, 4, enemyMask, QueryTriggerInteraction.Collide);
@@ -52,6 +51,8 @@ public class GreenArmyFishProjectile : Projectile
             }
 
         }
+
+        Destroy(gameObject, 0.05f);
 
     }
 

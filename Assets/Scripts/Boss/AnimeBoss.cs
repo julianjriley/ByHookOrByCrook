@@ -50,7 +50,8 @@ public class AnimeBoss : BossPrototype
     private GameObject _absorbDamagePrefab;
     [SerializeField, Tooltip("Used to activate spinning motion only as soon as phase 2 starts (make sure it is locked with camera).")]
     CirclingTarget _orbTarget;
-
+    [SerializeField, Tooltip("VFX prefab shield for when boss is invulnerable and orb is active")]
+    private GameObject _shield;
     [HideInInspector]
     public bool IsInvincible;
     [HideInInspector]

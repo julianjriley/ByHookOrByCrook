@@ -13,6 +13,8 @@ public class AnimeInvincibilityHandler : MonoBehaviour
     private float _maxInterval;
     [SerializeField, Tooltip("Used to determine the status of THE ORB.")]
     private InvincibilityOrb _theOrb;
+    [SerializeField, Tooltip("Used for the shield around the boss")]
+    private BossShield _theShield;
 
     private float _activationTimer = 0;
 
@@ -67,6 +69,7 @@ public class AnimeInvincibilityHandler : MonoBehaviour
             if (_theOrb.IsOrbDestroyed())
             {
                 _boss.IsInvincible = false;
+                _theShield.StopPlaying();
             }
         }
         // check for activation
@@ -78,6 +81,7 @@ public class AnimeInvincibilityHandler : MonoBehaviour
 
                 // activate THE ORB
                 _theOrb.RespawnOrb();
+                _theShield.StartPlaying();
 
                 // reset timer for next time
                 _activationTimer = Random.Range(_minInterval, _maxInterval);
