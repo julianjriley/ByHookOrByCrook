@@ -25,8 +25,11 @@ public class AnimeInvincibilityHandler : MonoBehaviour
     private float _invincibilitySaturation;
     [SerializeField, Tooltip("Speed at which hue cycles during invincibility.")]
     private float _hueCycleSpeed;
+    [SerializeField, Tooltip("Time before spawn where effect shows orb fading in.")]
+    private float _orbIndicatorTime;
 
     private float _currHue;
+    private bool _isAlreadyUnvisualed = false;
 
     private void Start()
     {
@@ -80,7 +83,12 @@ public class AnimeInvincibilityHandler : MonoBehaviour
                 _activationTimer = Random.Range(_minInterval, _maxInterval);
             }
             else
+            {
+                if (_activationTimer < _orbIndicatorTime)
+                    _theOrb.ShowOrbSpawning();
+
                 _activationTimer -= Time.deltaTime;
+            }
         }
     }
 
@@ -99,13 +107,20 @@ public class AnimeInvincibilityHandler : MonoBehaviour
                 _currHue = 0;
             Color newColor = Color.HSVToRGB(_currHue, _invincibilitySaturation, 1f);
             _renderer.color = newColor;
+
+            _isAlreadyUnvisualed = false;
         }
         else // not invincible
         {
-            _particles.SetActive(false);
+            if (!_isAlreadyUnvisualed)
+            {
+                _particles.SetActive(false);
 
-            // default appearance
-            _renderer.color = Color.white;
+                // default appearance
+                _renderer.color = Color.white;
+
+                _isAlreadyUnvisualed = true;
+            }
         }
     }
 }

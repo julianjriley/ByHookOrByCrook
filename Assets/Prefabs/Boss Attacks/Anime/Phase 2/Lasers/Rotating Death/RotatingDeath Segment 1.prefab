@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6031590391019851063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2741354364860751402}
+  - component: {fileID: 166584851644335865}
+  m_Layer: 0
+  m_Name: RotatingDeath Segment 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2741354364860751402
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031590391019851063}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &166584851644335865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031590391019851063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7443485f5d75a044a6e56abfa36a222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackGroupPrefabs:
+  - AttackPrefabs:
+    - {fileID: 1313593509738440572, guid: 8f75e40beeca7154f955e73da841bb8c, type: 3}
+  - AttackPrefabs:
+    - {fileID: 1313593509738440572, guid: b7c509f5745f4f147a5ddf38a051cecb, type: 3}
+  - AttackPrefabs:
+    - {fileID: 1313593509738440572, guid: 568efc17aa873944bb4700935f4eb565, type: 3}
+  - AttackPrefabs:
+    - {fileID: 1313593509738440572, guid: b3f5f932ea6b19d4c8bf3a76ad35abcc, type: 3}
+  - AttackPrefabs: []
+  - AttackPrefabs: []
+  - AttackPrefabs: []
+  _spawnInterval: 0.5

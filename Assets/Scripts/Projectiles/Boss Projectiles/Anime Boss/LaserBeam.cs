@@ -88,7 +88,7 @@ public class LaserBeam : Projectile
 
         _collider.enabled = false;
         _animator.Play("LaserFade");
-        SoundManager.Instance.laserEventInstance.setParameterByName("LaserOn", 1);
+        //SoundManager.Instance.laserEventInstance.setParameterByName("LaserOn", 1);
     }
 
 

@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class AnimeBoss : BossPrototype
 {
+    [SerializeField, Tooltip("Used to prevent ramming into the boss.")]
+    private Transform _player;
+
     [Header("Arena")]
     [SerializeField, Tooltip("The platform group spawner")]
     private GroupSpawner _gSpawner;
@@ -41,12 +44,12 @@ public class AnimeBoss : BossPrototype
     private GameObject _laserbeamPrefab;
     [SerializeField, Tooltip("Spawn location for the lasers")]
     private Transform _laserAttackEmpty;
-    [SerializeField, Tooltip("How long the boss stops to cast lasers")]
-    private float _pauseTime = .5f;
 
     [Header("Absorbing Damage")]
     [SerializeField, Tooltip("VFX prefab for when the boss absorbs damage.")]
     private GameObject _absorbDamagePrefab;
+    [SerializeField, Tooltip("Used to activate spinning motion only as soon as phase 2 starts (make sure it is locked with camera).")]
+    CirclingTarget _orbTarget;
 
     [HideInInspector]
     public bool IsInvincible;
@@ -158,7 +161,6 @@ public class AnimeBoss : BossPrototype
         SetSpeed(0);
         _wandAnim.SetTrigger("Wiggle");
         Instantiate(chosenAttack, _laserAttackEmpty);
-        yield return new WaitForSeconds(_pauseTime);
         SetDefaultSpeed();
         yield return null;
     }
@@ -167,7 +169,6 @@ public class AnimeBoss : BossPrototype
     {
         SetSpeed(0);
         Instantiate(chosenAttack, _mikuAttackEmpty);
-        yield return new WaitForSeconds(_pauseTime / 1.5f);
         SetDefaultSpeed();
         yield return null;
     }
@@ -256,12 +257,20 @@ public class AnimeBoss : BossPrototype
         
         _bossAnim.speed = 1;
 
+        // ensure boss doesn't steamroller the player at phase 2 start
+         if (_player.transform.position.x < transform.position.x)
+             _targetRepositioner.NewBossTarget(0, 20, true);
+         else
+             _targetRepositioner.NewBossTarget(180, 20, true);
+
         // And once that's done, resume normal attacking
         SetDefaultTarget();
         SetDefaultSpeed();
 
         // handle officially starting attacks of new phase
         base.PhaseSwitch();
+
+        _orbTarget.enabled = true;
 
         // Allow boss to be hittable again
         IsInvincible = false;
